@@ -13,7 +13,7 @@ import java.util.List;
 public class FaceRecognitionDemo {
     static {
         // Load OpenCV native library
-        System.load("C:\\Program Files\\Java\\jdk-24\\bin\\opencv_java480.dll");
+        System.load("C:\\opencv\\build\\java\\x64\\opencv_java480.dll");
     }
     public static void main(String[] args) {
         // if (args.length < 3) {

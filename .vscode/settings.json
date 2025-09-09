@@ -3,6 +3,9 @@
         "."
     ],
     "java.project.referencedLibraries": [
-        "C:/opencv/build/java/opencv-480.jar"
+        ".;C:/opencv/build/java/opencv-480.jar"
     ]
 }
+
+// java --enable-native-access=ALL-UNNAMED -cp ".;C:/opencv/build/java/opencv-480.jar" OpenCvTest.java
+// Above code works, issue with seetings.json found .;C:/opencv/build/java/opencv-480.jar but cant use its classes
