@@ -9,7 +9,7 @@ import java.io.File;
 public class FaceCropDemo {
     static {
         // Load OpenCV native library
-        System.load("C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.8.9-hotspot\\bin\\opencv_java480.dll");
+        System.loadLibrary("opencv_java480");
     }
 
     public static void main(String[] args) {
