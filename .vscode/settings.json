@@ -3,7 +3,7 @@
         "."
     ],
     "java.project.referencedLibraries": [
-        ".;C:/opencv/build/java/opencv-480.jar"
+        "C:\\opencv\\build\\java\\opencv-480.jar"
     ]
 }
 
