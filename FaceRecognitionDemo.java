@@ -19,7 +19,7 @@ public class FaceRecognitionDemo {
         // if (args.length < 3) {
         //     System.out.println("Usage: java FaceRecognitionDemo <person1-dir> <person2-dir> <haarcascade-path>");
         //     System.out.println("Example: java FaceRecognitionDemo D:\\person1 D:\\person2 .\\haarcascade_frontalface_alt.xml");
-        //     return;
+        //     return;t
         // }
 
         String person1Dir = ".\\project\\Trump"; // args[0];
