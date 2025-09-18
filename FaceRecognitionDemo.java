@@ -13,13 +13,13 @@ import java.util.List;
 public class FaceRecognitionDemo {
     static {
         // Load OpenCV native library
-        System.load("C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.8.9-hotspot\\bin\\opencv_java480.dll");
+        System.load(new File("lib/opencv_java480.dll").getAbsolutePath());
     }
     public static void main(String[] args) {
         // if (args.length < 3) {
         //     System.out.println("Usage: java FaceRecognitionDemo <person1-dir> <person2-dir> <haarcascade-path>");
         //     System.out.println("Example: java FaceRecognitionDemo D:\\person1 D:\\person2 .\\haarcascade_frontalface_alt.xml");
-        //     return;
+        //     return;t
         // }
 
         String person1Dir = ".\\project\\Trump"; // args[0];

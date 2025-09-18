@@ -10,6 +10,7 @@ public class FaceCropDemo {
     static {
         // Load OpenCV native library
         System.loadLibrary("opencv_java480");
+        System.load(new File("lib/opencv_java480.dll").getAbsolutePath());
     }
 
     public static void main(String[] args) {
