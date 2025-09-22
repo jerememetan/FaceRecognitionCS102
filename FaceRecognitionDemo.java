@@ -56,7 +56,7 @@ public class FaceRecognitionDemo {
 
         // Create display window
         JFrame frame = new JFrame("Real-Time Face Recognition");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JLabel label = new JLabel();
         frame.add(label);
         frame.setSize(640, 480);
