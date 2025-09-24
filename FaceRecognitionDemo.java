@@ -21,10 +21,28 @@ public class FaceRecognitionDemo {
         //     System.out.println("Example: java FaceRecognitionDemo D:\\person1 D:\\person2 .\\haarcascade_frontalface_alt.xml");
         //     return;t
         // }
+        // make this an array in the future for this entire part
+        String image_folder_path = ".\\project";
+        File folder_directories = new File(image_folder_path);
 
-        String person1Dir = ".\\project\\Trump"; // args[0];
-        String person2Dir = ".\\project\\Jereme"; // args[1];
-        String person3Dir = ".\\project\\TaylorSwift"; // args[1];
+        ArrayList<String> folder_names = new ArrayList<String>();  // this stores the folder_names in an array list
+        // [.\project\1_taylor, .\projects\5_jere]
+
+        File[] list_files = folder_directories.listFiles(); // this 
+        if (list_files != null){
+            for (File file: list_files){  // for each file in list files
+                // if its a folder
+                if (file.isDirectory()){
+                    folder_names.add(image_folder_path+ "\\" +file.getName());
+                }
+
+            }
+        }
+
+        // REPLACED
+        // String person1Dir = ".\\project\\Trump"; // args[0];
+        // String person2Dir = ".\\project\\Jereme"; // args[1];
+        // String person3Dir = ".\\project\\TaylorSwift"; // args[1];
         String cascadePath = ".\\haarcascade_frontalface_alt.xml"; // args[2];
 
         // Load face detector
@@ -35,17 +53,39 @@ public class FaceRecognitionDemo {
         }
 
         // Load training images and compute histograms
-        List<Mat> person1Images = loadImages(person1Dir);
-        List<Mat> person2Images = loadImages(person2Dir);
-        List<Mat> person3Images = loadImages(person3Dir);
-        if (person1Images.isEmpty() || person2Images.isEmpty() || person3Images.isEmpty()) {
-            System.out.println("No training images found in one or both directories!");
-            return;
+        // personImages will be an array that has a list of MAT Images, seperated by folders
+        ArrayList<List<Mat>> personImages = new ArrayList<List<Mat>>();
+        for (String s: folder_names){
+            List<Mat> temp = loadImages(s);
+            personImages.add(temp);   
         }
+        // REPLACED
+        // List<Mat> person1Images = loadImages(person1Dir);
+        // List<Mat> person2Images = loadImages(person2Dir);
+        // List<Mat> person3Images = loadImages(person3Dir);
 
-        List<Mat> person1Histograms = computeHistograms(person1Images);
-        List<Mat> person2Histograms = computeHistograms(person2Images);
-        List<Mat> person3Histograms = computeHistograms(person3Images);
+        // Check empty of any of the files
+        for (List<Mat> t: personImages){
+            if (t.isEmpty()){
+            System.out.println("No training images found in one of the directories!");
+            return;               
+            }
+        }
+        // REPLACED
+        // if (person1Images.isEmpty() || person2Images.isEmpty() || person3Images.isEmpty()) {
+        //     System.out.println("No training images found in one of the directories!");
+        //     return;
+        // }
+
+        ArrayList<List<Mat>> personHistograms = new ArrayList<List<Mat>>();
+        for (List<Mat> s: personImages){
+            List<Mat> temp = computeHistograms(s);
+            personHistograms.add(temp);
+        }
+        // REPLACED
+        // List<Mat> person1Histograms = computeHistograms(person1Images);
+        // List<Mat> person2Histograms = computeHistograms(person2Images);
+        // List<Mat> person3Histograms = computeHistograms(person3Images);
 
         // Open webcam
         VideoCapture capture = new VideoCapture(0);
@@ -79,27 +119,44 @@ public class FaceRecognitionDemo {
                         new Scalar(0, 255, 0), 2);
 
                 // Crop and resize face
-                Mat face = gray.submat(rect);
+                Mat face = gray.submat(rect); 
                 Imgproc.resize(face, face, new Size(200, 200));
                 Mat faceHist = computeHistogram(face);
 
                 // Compare with training histograms
-                double bestScore1 = getBestHistogramScore(faceHist, person1Histograms);
-                double bestScore2 = getBestHistogramScore(faceHist, person2Histograms);
-                double bestScore3 = getBestHistogramScore(faceHist, person3Histograms);
-                System.out.println("Scores: Trump=" + bestScore1 + ", Jereme=" + bestScore2 + ", Taylor=" + bestScore3);
-
-                // Label based on best score (correlation: higher is better)
-                // CHANGED THIS SO THAT IT CAN BE EXTENDABLE
-                double[] scores = {bestScore1, bestScore2, bestScore3};
-                String[] names = {"Donald Trump", "Jereme Tan", "Taylor Swift"};
-                int maxIdx = 0;
-                for (int i = 1; i < scores.length; i++) {
-                    if (scores[i] > scores[maxIdx]) maxIdx = i;
+                ArrayList<Double> personScores = new ArrayList<Double>();
+                for (List<Mat> s: personHistograms){
+                    double temp = getBestHistogramScore(faceHist,s);
+                    personScores.add(temp);
                 }
-                String displayText = scores[maxIdx] > 0.65 ? names[maxIdx] : "Unknown";
+
+                System.out.println("Person Scores: " + personScores.toString());
+                // REPLACED
+                // double bestScore1 = getBestHistogramScore(faceHist, person1Histograms);
+                // double bestScore2 = getBestHistogramScore(faceHist, person2Histograms);
+                // double bestScore3 = getBestHistogramScore(faceHist, person3Histograms);
+
+                // double[] scores = {bestScore1, bestScore2, bestScore3};
+                // String[] names = {"Donald Trump", "Jereme Tan", "Taylor Swift"};
+                String displayText;
+                int maxIdx = 0;
+                for (int i = 1; i < personScores.size(); i++) {
+                    if (personScores.get(i) > personScores.get(maxIdx)){
+                        maxIdx = i;
+                    }
+                }
+                if (personScores.get(maxIdx) > 0.65){
+                    String[] parts = folder_names.get(maxIdx).split("_");
+                    String ShowScore = String.format("%.2f", personScores.get(maxIdx));
+                    displayText = parts[1] + " - " + ShowScore;
+                    
+                }
+                else{
+                    displayText = "unknown";
+                }
+                // String displayText = scores[maxIdx] > 0.65 ? names[maxIdx] : "Unknown";
                 Imgproc.putText(webcamFrame, displayText, new Point(rect.x, rect.y - 10),
-                        Imgproc.FONT_HERSHEY_SIMPLEX, 0.9, new Scalar(0, 255, 0), 2);
+                        Imgproc.FONT_HERSHEY_SIMPLEX, 0.9, new Scalar(15, 255, 15), 2);
             }
 
             // Display frame
