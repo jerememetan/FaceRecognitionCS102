@@ -1,0 +1,1 @@
+javac -cp lib/* FaceCropDemo.java FaceRecognitionDemo.java
