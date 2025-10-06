@@ -15,29 +15,49 @@ public class FaceRecognitionDemo {
         // Load OpenCV native library
         System.load(new File("lib/opencv_java480.dll").getAbsolutePath());
     }
+
     public static void main(String[] args) {
         // if (args.length < 3) {
-        //     System.out.println("Usage: java FaceRecognitionDemo <person1-dir> <person2-dir> <haarcascade-path>");
-        //     System.out.println("Example: java FaceRecognitionDemo D:\\person1 D:\\person2 .\\haarcascade_frontalface_alt.xml");
-        //     return;t
+        // System.out.println("Usage: java FaceRecognitionDemo <person1-dir>
+        // <person2-dir> <haarcascade-path>");
+        // System.out.println("Example: java FaceRecognitionDemo D:\\person1 D:\\person2
+        // .\\haarcascade_frontalface_alt.xml");
+        // return;t
         // }
         // make this an array in the future for this entire part
-        String image_folder_path = ".\\project";
+        String image_folder_path = ".\\data\\facedata\\";
         File folder_directories = new File(image_folder_path);
 
-        ArrayList<String> folder_names = new ArrayList<String>();  // this stores the folder_names in an array list
+        ArrayList<String> folder_names = new ArrayList<String>(); // this stores the folder_names in an array list
         // [.\project\1_taylor, .\projects\5_jere]
 
-        File[] list_files = folder_directories.listFiles(); // this 
-        if (list_files != null){
-            for (File file: list_files){  // for each file in list files
+        File[] list_files = folder_directories.listFiles(); // this
+        if (list_files != null) {
+            for (File file : list_files) { // for each file in list files
                 // if its a folder
-                if (file.isDirectory()){
-                    folder_names.add(image_folder_path+ "\\" +file.getName());
+                if (file.isDirectory()) {
+                    folder_names.add(image_folder_path + "\\" + file.getName());
                 }
 
             }
         }
+
+        System.out.println("=== Folder debug ===");
+        for (String s : folder_names) {
+            System.out.println("Found folder: " + s);
+            File f = new File(s);
+            if (f.exists()) {
+                File[] imgs = f.listFiles();
+                if (imgs != null) {
+                    System.out.println("  Contains: " + imgs.length + " items");
+                } else {
+                    System.out.println("  (Cannot list files)");
+                }
+            } else {
+                System.out.println("  (Folder does not exist!)");
+            }
+        }
+        System.out.println("====================");
 
         // REPLACED
         // String person1Dir = ".\\project\\Trump"; // args[0];
@@ -53,11 +73,12 @@ public class FaceRecognitionDemo {
         }
 
         // Load training images and compute histograms
-        // personImages will be an array that has a list of MAT Images, seperated by folders
+        // personImages will be an array that has a list of MAT Images, seperated by
+        // folders
         ArrayList<List<Mat>> personImages = new ArrayList<List<Mat>>();
-        for (String s: folder_names){
+        for (String s : folder_names) {
             List<Mat> temp = loadImages(s);
-            personImages.add(temp);   
+            personImages.add(temp);
         }
         // REPLACED
         // List<Mat> person1Images = loadImages(person1Dir);
@@ -65,20 +86,21 @@ public class FaceRecognitionDemo {
         // List<Mat> person3Images = loadImages(person3Dir);
 
         // Check empty of any of the files
-        for (List<Mat> t: personImages){
-            if (t.isEmpty()){
-            System.out.println("No training images found in one of the directories!");
-            return;               
+        for (List<Mat> t : personImages) {
+            if (t.isEmpty()) {
+                System.out.println("No training images found in one of the directories!");
+                return;
             }
         }
         // REPLACED
-        // if (person1Images.isEmpty() || person2Images.isEmpty() || person3Images.isEmpty()) {
-        //     System.out.println("No training images found in one of the directories!");
-        //     return;
+        // if (person1Images.isEmpty() || person2Images.isEmpty() ||
+        // person3Images.isEmpty()) {
+        // System.out.println("No training images found in one of the directories!");
+        // return;
         // }
 
         ArrayList<List<Mat>> personHistograms = new ArrayList<List<Mat>>();
-        for (List<Mat> s: personImages){
+        for (List<Mat> s : personImages) {
             List<Mat> temp = computeHistograms(s);
             personHistograms.add(temp);
         }
@@ -119,14 +141,14 @@ public class FaceRecognitionDemo {
                         new Scalar(0, 255, 0), 2);
 
                 // Crop and resize face
-                Mat face = gray.submat(rect); 
+                Mat face = gray.submat(rect);
                 Imgproc.resize(face, face, new Size(200, 200));
                 Mat faceHist = computeHistogram(face);
 
                 // Compare with training histograms
                 ArrayList<Double> personScores = new ArrayList<Double>();
-                for (List<Mat> s: personHistograms){
-                    double temp = getBestHistogramScore(faceHist,s);
+                for (List<Mat> s : personHistograms) {
+                    double temp = getBestHistogramScore(faceHist, s);
                     personScores.add(temp);
                 }
 
@@ -141,17 +163,16 @@ public class FaceRecognitionDemo {
                 String displayText;
                 int maxIdx = 0;
                 for (int i = 1; i < personScores.size(); i++) {
-                    if (personScores.get(i) > personScores.get(maxIdx)){
+                    if (personScores.get(i) > personScores.get(maxIdx)) {
                         maxIdx = i;
                     }
                 }
-                if (personScores.get(maxIdx) > 0.65){
+                if (personScores.get(maxIdx) > 0.65) {
                     String[] parts = folder_names.get(maxIdx).split("_");
                     String ShowScore = String.format("%.2f", personScores.get(maxIdx));
                     displayText = parts[1] + " - " + ShowScore;
-                    
-                }
-                else{
+
+                } else {
                     displayText = "unknown";
                 }
                 // String displayText = scores[maxIdx] > 0.65 ? names[maxIdx] : "Unknown";
@@ -174,7 +195,8 @@ public class FaceRecognitionDemo {
     private static List<Mat> loadImages(String dirPath) {
         List<Mat> images = new ArrayList<>();
         File dir = new File(dirPath);
-        File[] files = dir.listFiles((d, name) -> name.toLowerCase().endsWith(".jpg") || name.toLowerCase().endsWith(".png"));
+        File[] files = dir
+                .listFiles((d, name) -> name.toLowerCase().endsWith(".jpg") || name.toLowerCase().endsWith(".png"));
         if (files != null) {
             for (File file : files) {
                 Mat img = Imgcodecs.imread(file.getAbsolutePath(), Imgcodecs.IMREAD_GRAYSCALE);
@@ -233,7 +255,7 @@ public class FaceRecognitionDemo {
         }
 
         BufferedImage image = new BufferedImage(width, height, type);
-        byte[] data = new byte[width * height * (int)mat.elemSize()];
+        byte[] data = new byte[width * height * (int) mat.elemSize()];
         mat.get(0, 0, data);
         image.getRaster().setDataElements(0, 0, width, height, data);
         return image;

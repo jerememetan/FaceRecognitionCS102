@@ -18,7 +18,7 @@ public class FaceCropDemo {
     final static AtomicReference<String> finalSaveFolder = new AtomicReference<>(null);
 
     public static void main(String[] args) {
-        String saveFolder = ".\\project\\"; // thiking abt gettin rid of this
+        String saveFolder = ".\\data\\facedata\\"; // thiking abt gettin rid of this
         String cascadePath =".\\haarcascade_frontalface_alt.xml";
         new File(saveFolder).mkdirs();
         // Create save folder if it doesn't exist

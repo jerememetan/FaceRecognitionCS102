@@ -1,0 +1,1 @@
+javac -d "classes" -cp "./src;./lib/*" ".\src\app\Main.java"

@@ -1,0 +1,1 @@
+java -cp "./classes;./lib/*" app.Main
