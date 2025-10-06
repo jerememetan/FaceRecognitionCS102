@@ -20,7 +20,7 @@ public class FaceCropDemo {
 
     public static void main(String[] args) {
         String saveFolder = ".\\project\\"; // thiking abt gettin rid of this
-        String cascadePath =".\\haarcascade_frontalface_alt.xml";
+        String cascadePath =".\\opencv-cascade-classifier\\haarcascade_frontalface_alt.xml";
         new File(saveFolder).mkdirs();
         // Create save folder if it doesn't exist
 
