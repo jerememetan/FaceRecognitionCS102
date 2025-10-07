@@ -12,23 +12,33 @@ public class LoginPage extends JFrame{
 
     public LoginPage(){
         setTitle("Login");
-        setSize(350, 200);
+        setSize(350, 150);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(3, 2, 5, 5));
+        setLocationRelativeTo(null); // center the screen
+
+        // create the main panel
+        JPanel mainPanel = new JPanel(new GridLayout(3, 2));
 
         // First row userID
-        add(new JLabel("Enter your ID:"));
+        mainPanel.add(new JLabel("Enter your ID:"));
         idField = new JTextField();
-        add(idField);
+        mainPanel.add(idField);
         //second row password
-        add(new JLabel("Password:"));
+        mainPanel.add(new JLabel("Password:"));
         passwordField = new JPasswordField();
-        add(passwordField);
+        mainPanel.add(passwordField);
         
         //login button
         loginButton = new JButton("Login");
-        add(loginButton);
+        // create the button panel --> button can stretch horixzontally
+        JPanel btnPanel = new JPanel(new BorderLayout());
+        btnPanel.add(loginButton, BorderLayout.CENTER);
+        // add 2 cells
+        mainPanel.add(btnPanel);
+        mainPanel.add(new JLabel()); // a placeholder cell
+        
+        add(mainPanel);
 
         // add the actionListener
         loginButton.addActionListener(new ActionListener() {
@@ -51,10 +61,11 @@ public class LoginPage extends JFrame{
                 // if the user input invalid id/password
                 if(role == null) {
                     JOptionPane.showMessageDialog(LoginPage.this, "Invalid ID or password!");
+                    loginButton.setBackground(Color.red);
                     return;
                 }
 
-                System.out.println("Logging in as " + role + "with ID: " + id);
+                System.out.println("Logging in as " + role + " with ID: " + id);
                 
                 // show the GUI of the main dashboard if login success
                 SwingUtilities.invokeLater(new Runnable(){
@@ -66,6 +77,8 @@ public class LoginPage extends JFrame{
                 dispose();
             }
         });
+
+        
 
     }
 
