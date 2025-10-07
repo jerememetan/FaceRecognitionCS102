@@ -1,9 +1,17 @@
+package src;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import javax.swing.*;
 
 public class MyGUIProgram extends JFrame {
+    static {
+        // Load OpenCV native library
+        System.load(new File("lib/opencv_java480.dll").getAbsolutePath());
+    }
+    
     public MyGUIProgram() {
+
         setTitle("My GUI Program");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

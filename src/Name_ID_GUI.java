@@ -1,11 +1,18 @@
+package src;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.File;
 public class Name_ID_GUI extends JFrame {
     private JTextField IDText;
     private JTextField NameText;
     private JButton submit;
     private DataSubmittedListener Listener;
+
+    static {
+        // Load OpenCV native library
+        System.load(new File("lib/opencv_java480.dll").getAbsolutePath());
+    }
 
     public static interface DataSubmittedListener {
             void onDataSubmitted(int id, String name);
