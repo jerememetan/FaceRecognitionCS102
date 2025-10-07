@@ -16,29 +16,28 @@ public class LoginPage extends JFrame{
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // center the screen
+        setLayout(new BorderLayout());
 
         // create the main panel
-        JPanel mainPanel = new JPanel(new GridLayout(3, 2));
+        JPanel formPanel = new JPanel(new GridLayout(2, 2));
 
         // First row userID
-        mainPanel.add(new JLabel("Enter your ID:"));
-        idField = new JTextField();
-        mainPanel.add(idField);
+        formPanel.add(new JLabel("Enter your ID:"));
+        idField = new JTextField(20);
+        formPanel.add(idField);
         //second row password
-        mainPanel.add(new JLabel("Password:"));
+        formPanel.add(new JLabel("Password:"));
         passwordField = new JPasswordField();
-        mainPanel.add(passwordField);
+        formPanel.add(passwordField);
+        
+        add(formPanel);
         
         //login button
         loginButton = new JButton("Login");
-        // create the button panel --> button can stretch horixzontally
-        JPanel btnPanel = new JPanel(new BorderLayout());
-        btnPanel.add(loginButton, BorderLayout.CENTER);
-        // add 2 cells
-        mainPanel.add(btnPanel);
-        mainPanel.add(new JLabel()); // a placeholder cell
-        
-        add(mainPanel);
+        // create the button panel
+        JPanel buttonPanel = new JPanel(new BorderLayout());
+        buttonPanel.add(loginButton, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH); // stretch horizontaly to occupy the full width
 
         // add the actionListener
         loginButton.addActionListener(new ActionListener() {

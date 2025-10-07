@@ -19,6 +19,8 @@ public class MainDashboard  extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
+        setVisible(true);
+
     }
 }
 
