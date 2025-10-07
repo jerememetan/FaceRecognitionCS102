@@ -1,3 +1,4 @@
+package gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +13,12 @@ public class MainDashboard  extends JFrame{
     public MainDashboard(String role, String id){
         this.role = role;
         this.id = id;
+
+        setTitle("Dashboard - " + role + " (" + id + ")");
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setLayout(new BorderLayout());
     }
 }
 
