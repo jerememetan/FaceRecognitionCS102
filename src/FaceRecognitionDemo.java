@@ -39,11 +39,11 @@ public class FaceRecognitionDemo {
 
             }
         }
-
+        System.out.println("ListFiles Loaded:" + list_files);
         // REPLACED
-        // String person1Dir = ".\\project\\Trump"; // args[0];
-        // String person2Dir = ".\\project\\Jereme"; // args[1];
-        // String person3Dir = ".\\project\\TaylorSwift"; // args[1];
+        // String person1Dir = ".\\project\\Trump"; 
+        // String person2Dir = ".\\project\\Jereme"; 
+        // String person3Dir = ".\\project\\TaylorSwift"; 
         String cascadePath = "./opencv-cascade-classifier/haarcascade_frontalface_alt.xml"; // args[2];
 
         // Load face detector
@@ -52,7 +52,7 @@ public class FaceRecognitionDemo {
             System.out.println("Error loading cascade file: " + cascadePath);
             return;
         }
-
+        
         // Load training images and compute histograms
         // personImages will be an array that has a list of MAT Images, seperated by folders
         ArrayList<List<Mat>> personImages = new ArrayList<List<Mat>>();
@@ -72,6 +72,7 @@ public class FaceRecognitionDemo {
             return;               
             }
         }
+        
         // REPLACED
         // if (person1Images.isEmpty() || person2Images.isEmpty() || person3Images.isEmpty()) {
         //     System.out.println("No training images found in one of the directories!");
@@ -123,7 +124,7 @@ public class FaceRecognitionDemo {
                 Mat face = gray.submat(rect); 
                 Imgproc.resize(face, face, new Size(200, 200));
                 Mat faceHist = computeHistogram(face);
-
+                
                 // Compare with training histograms
                 ArrayList<Double> personScores = new ArrayList<Double>();
                 for (List<Mat> s: personHistograms){
@@ -141,7 +142,7 @@ public class FaceRecognitionDemo {
                 // String[] names = {"Donald Trump", "Jereme Tan", "Taylor Swift"};
                 String displayText;
                 int maxIdx = 0;
-                for (int i = 1; i < personScores.size(); i++) {
+                for (int i = 0; i < personScores.size(); i++) {
                     if (personScores.get(i) > personScores.get(maxIdx)){
                         maxIdx = i;
                     }
