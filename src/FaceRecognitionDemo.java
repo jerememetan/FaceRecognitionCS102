@@ -23,7 +23,7 @@ public class FaceRecognitionDemo {
         //     return;t
         // }
         // make this an array in the future for this entire part
-        String image_folder_path = "../project";
+        String image_folder_path = "./project";
         File folder_directories = new File(image_folder_path);
 
         ArrayList<String> folder_names = new ArrayList<String>();  // this stores the folder_names in an array list
