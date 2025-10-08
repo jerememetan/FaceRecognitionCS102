@@ -1,3 +1,4 @@
+package facecrop;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
@@ -60,10 +61,10 @@ public class FaceRecognitionDemo {
         System.out.println("====================");
 
         // REPLACED
-        // String person1Dir = ".\\project\\Trump"; // args[0];
-        // String person2Dir = ".\\project\\Jereme"; // args[1];
-        // String person3Dir = ".\\project\\TaylorSwift"; // args[1];
-        String cascadePath = ".\\haarcascade_frontalface_alt.xml"; // args[2];
+        // String person1Dir = ".\\project\\Trump"; 
+        // String person2Dir = ".\\project\\Jereme"; 
+        // String person3Dir = ".\\project\\TaylorSwift"; 
+        String cascadePath = "./data/resources/haarcascade_frontalface_alt.xml"; // args[2];
 
         // Load face detector
         CascadeClassifier faceDetector = new CascadeClassifier(cascadePath);
@@ -71,7 +72,7 @@ public class FaceRecognitionDemo {
             System.out.println("Error loading cascade file: " + cascadePath);
             return;
         }
-
+        
         // Load training images and compute histograms
         // personImages will be an array that has a list of MAT Images, seperated by
         // folders
@@ -92,6 +93,7 @@ public class FaceRecognitionDemo {
                 return;
             }
         }
+        
         // REPLACED
         // if (person1Images.isEmpty() || person2Images.isEmpty() ||
         // person3Images.isEmpty()) {
@@ -144,7 +146,7 @@ public class FaceRecognitionDemo {
                 Mat face = gray.submat(rect);
                 Imgproc.resize(face, face, new Size(200, 200));
                 Mat faceHist = computeHistogram(face);
-
+                
                 // Compare with training histograms
                 ArrayList<Double> personScores = new ArrayList<Double>();
                 for (List<Mat> s : personHistograms) {

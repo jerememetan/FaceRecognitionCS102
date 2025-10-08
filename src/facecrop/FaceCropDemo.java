@@ -1,8 +1,12 @@
+package facecrop;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.videoio.VideoCapture;
+
+import facecrop.Name_ID_GUI.DataSubmittedListener;
+
 import org.opencv.highgui.HighGui;
 import java.util.concurrent.atomic.AtomicReference;
 import java.io.File;
@@ -12,14 +16,14 @@ import javax.swing.SwingUtilities;
 public class FaceCropDemo {
     static {
         // Load OpenCV native library
-        System.load(new File("lib/opencv_java480.dll").getAbsolutePath());   
+        System.load(new File("lib/opencv_java480.dll").getAbsolutePath());
     }
     final static Object syncObject = new Object();
     final static AtomicReference<String> finalSaveFolder = new AtomicReference<>(null);
 
     public static void main(String[] args) {
         String saveFolder = ".\\data\\facedata\\"; // thiking abt gettin rid of this
-        String cascadePath =".\\haarcascade_frontalface_alt.xml";
+        String cascadePath =".\\data\\resources\\haarcascade_frontalface_alt.xml";
         new File(saveFolder).mkdirs();
         // Create save folder if it doesn't exist
 
@@ -27,7 +31,6 @@ public class FaceCropDemo {
     SwingUtilities.invokeLater(() -> {
         Name_ID_GUI gui = new Name_ID_GUI();
             gui.setDataSubmittedListener(new Name_ID_GUI.DataSubmittedListener() {
-                @Override
                 public void onDataSubmitted(int id, String name) {
                     // The data is now extracted and available here
                     System.out.println("GUI has been closed.");
