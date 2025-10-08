@@ -18,6 +18,7 @@ public class FaceCropDemo {
     }
     final static Object syncObject = new Object();
     final static AtomicReference<String> finalSaveFolder = new AtomicReference<>(null);
+    private static AppConfig config;
 
     public static void main(String[] args) {
         String saveFolder = ".\\project\\";
