@@ -38,13 +38,7 @@ public class MainDashboard extends JFrame {
         sidebar.setBackground(new Color(50, 50, 50));
         sidebar.setPreferredSize(new Dimension(200, 600)); // set the deimension
 
-        sidebar.add(new JButton("Live Recogniion"));
-        sidebar.add(new JButton("Students"));
-        sidebar.add(new JButton("Attendence Sessions"));
-        sidebar.add(new JButton("Reports"));
-        sidebar.add(new JButton("Settings"));
-
-        //
+        addSideBarButtons();
 
         // Main content panel
         mainContent = new JPanel();
@@ -60,42 +54,68 @@ public class MainDashboard extends JFrame {
         menuButton.addActionListener(new ActionListener() {
             // make sidebar appear by sliding (animation)
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 toggleSidebar(); // all the function
             }
-        }); 
+        });
 
     }
 
+    // function adding buttons
+    public void addSideBarButtons() {
+        JButton recognitionBtn = new JButton("Live Recognition");
+        JButton studentBtn = new JButton("Students");
+        JButton sessionBtn = new JButton("Attendence Sessions");
+        JButton reportBtn = new JButton("Reports");
+        JButton settingBtn = new JButton("Settings");
 
-    public void toggleSidebar(){
-        int targetWidth = isSidebarVisible ? 0 : 200; // collapse or expand the sidebar
-            int step = isSidebarVisible ? -20 : 20; // direction of the sidebar animation (how much to change the width)
+        // define a consistent size for all the buttons
+        Dimension buttonSize = new Dimension(180, 40);
+        // put them in an array
+        JButton[] buttons = { recognitionBtn, studentBtn, sessionBtn, reportBtn, settingBtn };
+        for (JButton btn : buttons) {
+            btn.setMaximumSize(buttonSize);
+            btn.setPreferredSize(buttonSize);
+            btn.setAlignmentX(Component.CENTER_ALIGNMENT);
+            sidebar.add(Box.createRigidArea(new Dimension(0, 10))); // veritcal spacing
+            sidebar.add(btn);
+        }
+        sidebar.add(Box.createVerticalGlue()); // push everything up neatly
 
-            Timer timer = new Timer(15, null);
-            timer.addActionListener(new ActionListener() {
-                int width = sidebar.getWidth();
+    }
 
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    width += step; // changes the siderbar's width gradually
-                    
-                    // stop the animation when target width reached
-                    //check if reach the goal width 0 or 200
-                    if((step<0 && width<=targetWidth) || (step>0 && width>=targetWidth)){
-                        width = targetWidth;
-                        ((Timer)e.getSource()).stop();  // if yes stop the timer
-                        isSidebarVisible = !isSidebarVisible; // everytime click, if true-->false, if false-->true
-                    }
+    // function of toggle sidebar
+    private void toggleSidebar() {
+        // make it as an animation (sliding)
+        int startWidth = sidebar.getWidth(); // get the current width
+        int targetWidth = isSidebarVisible ? 0 : 200; // 0 to hide, 200 to show
+        int step = (targetWidth > startWidth) ? 10 : -10; // slide direction, how much to change the width
 
-                    sidebar.setPreferredSize(new Dimension(width, sidebar.getHeight()));
-                    revalidate(); // tell Swing to recalculate the layout
-                    repaint(); // refreshed the window
+        Timer timer = new Timer(5, null); // runs every 5 milliseconds
+        timer.addActionListener(new ActionListener() {
+            int width = startWidth;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                width += step; // changes the sidebar's width gradually
+
+                // stop animation when we reach the target
+                if ((step < 0 && width <= targetWidth) || (step > 0 && width >= targetWidth)) {
+                    width = targetWidth;
+                    timer.stop();
+                    isSidebarVisible = !isSidebarVisible; // update the status, if true-->false, if false->true 
                 }
-            });
-            timer.start();
-    }
 
+                // resize the sidebar & window
+                sidebar.setPreferredSize(new Dimension(Math.max(0, width), sidebar.getHeight()));
+                sidebar.revalidate(); // recalculate and adjust the layout
+                sidebar.repaint(); // redraws the window
+                MainDashboard.this.revalidate();
+            }
+        });
+
+        timer.start();
+    }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
