@@ -1,10 +1,10 @@
-package gui;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 
 import java.awt.*;
 import java.awt.event.*;
+
 
 public class MainDashboard extends JFrame {
     private String role;
@@ -82,6 +82,22 @@ public class MainDashboard extends JFrame {
         }
         sidebar.add(Box.createVerticalGlue()); // push everything up neatly
 
+        // ---------ActionListener for the buttons--------------
+        recognitionBtn.addActionListener(e ->{
+            MainDashboard.this.setVisible(false);
+            Thread demoThread = new Thread(() -> MyGUIProgram.main(null));
+            demoThread.start();
+            // Wait for demo to finish, then show GUI again
+            new Thread(()->{
+                try{
+                    demoThread.join(); // waits for the thread to terminate
+                } catch (InterruptedException ex){
+                    ex.printStackTrace();
+                }
+                // Show GUI again on the AWT event thread
+                SwingUtilities.invokeLater(() -> MainDashboard.this.setVisible(true));
+            }).start();
+        });
     }
 
     // function of toggle sidebar
