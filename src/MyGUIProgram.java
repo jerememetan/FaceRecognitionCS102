@@ -70,7 +70,7 @@ public class MyGUIProgram extends JFrame {
         }
     }
     public static void main(String[] args) {
-        AppLogger.info("Running MyGUIProgram...");
+        AppLogger.info("MyGUIProgram Started!");
         SwingUtilities.invokeLater(MyGUIProgram::new);
     }
 }

@@ -64,7 +64,7 @@ public class Name_ID_GUI extends JFrame {
                         try {
                             int id = Integer.parseInt(IDText.getText());
                             String name = NameText.getText();
-                            System.out.println("ID: " + id + ", Name: " + name);
+                            AppLogger.info("Loaded User Data ---> ID: " + id + ", Name: " + name);
                             if (Listener != null){
                             submit.setText("Success!");
                             submit.setBackground(Color.GREEN);
@@ -106,23 +106,24 @@ public class Name_ID_GUI extends JFrame {
             this.Listener = listener;
         }
 
-        public static void main(String[] args){
-                    SwingUtilities.invokeLater(() -> {
-            Name_ID_GUI gui = new Name_ID_GUI();
-            AppLogger.info("Name_ID_GUI Running....");
-            // Set the listener. The onDataSubmitted method will be called
-            // when the submit button is pressed and the data is valid.
-            gui.setDataSubmittedListener(new DataSubmittedListener() {
-                @Override
-                public void onDataSubmitted(int id, String name) {
-                    System.out.println("Data received from GUI in the main class:");
-                    System.out.println("ID: " + id);
-                    System.out.println("Name: " + name);
-                    // You can now process the data here
-                    // e.g., save it to a database, perform calculations, etc.
-                }
-            });
-        });
-        }
+        // public static void main(String[] args){
+        //     AppLogger.info("Name_ID_GUI Running....");
+        //     SwingUtilities.invokeLater(() -> {
+        //     Name_ID_GUI gui = new Name_ID_GUI();
+            
+        //     // Set the listener. The onDataSubmitted method will be called
+        //     // when the submit button is pressed and the data is valid.
+        //     gui.setDataSubmittedListener(new DataSubmittedListener() {
+        //         @Override
+        //         public void onDataSubmitted(int id, String name) {
+        //             // System.out.println("Data received from GUI in the main class:");
+        //             // System.out.println("ID: " + id);
+        //             // System.out.println("Name: " + name);
+        //             // You can now process the data here
+        //             // e.g., save it to a database, perform calculations, etc.
+        //         }
+        //     });
+        // });
+        // }
     
 }

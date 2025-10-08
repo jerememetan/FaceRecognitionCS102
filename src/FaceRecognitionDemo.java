@@ -36,14 +36,19 @@ public class FaceRecognitionDemo {
 
             }
         }
-        System.out.println("ListFiles Loaded:" + list_files);
+        // checks if ./project Folder is empty
+        if (list_files == null){
+            AppLogger.error("No Image Files found at " +image_folder_path +"!");
+            return;
+        }
+        
 
         String cascadePath = "./opencv-cascade-classifier/haarcascade_frontalface_alt.xml"; // args[2];
 
         // Load face detector
         CascadeClassifier faceDetector = new CascadeClassifier(cascadePath);
         if (faceDetector.empty()) {
-            System.out.println("Error loading cascade file: " + cascadePath);
+            AppLogger.error("Error loading cascade file: " + cascadePath);
             return;
         }
         
@@ -59,7 +64,7 @@ public class FaceRecognitionDemo {
         // Check empty of any of the files
         for (List<Mat> t: personImages){
             if (t.isEmpty()){
-            System.out.println("No training images found in one of the directories!");
+            AppLogger.error("No training images found in one of the directories!");
             return;               
             }
         }
@@ -76,7 +81,7 @@ public class FaceRecognitionDemo {
         // Open webcam
         VideoCapture capture = new VideoCapture(0);
         if (!capture.isOpened()) {
-            System.out.println("Error opening webcam!");
+            AppLogger.error("Error opening webcam!");
             return;
         }
 
@@ -116,7 +121,7 @@ public class FaceRecognitionDemo {
                     personScores.add(temp);
                 }
 
-                System.out.println("Person Scores: " + personScores.toString());
+                //System.out.println("Person Scores: " + personScores.toString());
 
                 String displayText;
                 int maxIdx = 0;
@@ -145,6 +150,7 @@ public class FaceRecognitionDemo {
         }
 
         // Cleanup
+        AppLogger.info("Exited FaceRecognitionDemo");
         capture.release();
         frame.dispose();
     }
@@ -161,7 +167,7 @@ public class FaceRecognitionDemo {
                     Imgproc.resize(img, img, new Size(200, 200));
                     images.add(img);
                 } else {
-                    System.out.println("Failed to load image: " + file.getAbsolutePath());
+                    AppLogger.error("Failed to load image: " + file.getAbsolutePath());
                 }
             }
         }

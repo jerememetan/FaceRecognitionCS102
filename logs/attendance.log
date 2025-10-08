@@ -1,4 +1,21 @@
-[2025-10-07 18:00:25] INFO: Application Logger Initialized.
-[2025-10-07 18:00:25] INFO: Running MyGUIProgram...
-[2025-10-07 18:00:37] INFO: FaceCropDemo Running....
-[2025-10-07 18:01:05] INFO: FaceRecognitionDemo Running....
+[2025-10-08 17:44:03] INFO: Application Logger Initialized.
+[2025-10-08 17:44:03] INFO: MyGUIProgram Started!
+[2025-10-08 17:44:09] INFO: Loaded User Data ---> ID: 1, Name: jereme
+[2025-10-08 17:44:09] INFO: Launching FaceCropDemo for Id:1 Name:jereme
+[2025-10-08 17:44:09] INFO: FaceCropDemo Program Started!
+[2025-10-08 17:44:28] INFO: ✓ Captured Image has been saved! 
+[2025-10-08 17:44:29] WARNING: Face did not get captured!
+[2025-10-08 17:44:34] WARNING: Face did not get captured!
+[2025-10-08 17:44:35] INFO: ✓ Captured Image has been saved! 
+[2025-10-08 17:44:35] INFO: ✓ Captured Image has been saved! 
+[2025-10-08 17:44:41] INFO: ✓ Captured Image has been saved! 
+[2025-10-08 17:44:43] INFO: ✓ Captured Image has been saved! 
+[2025-10-08 17:44:47] WARNING: Face did not get captured!
+[2025-10-08 17:44:47] INFO: ✓ Captured Image has been saved! 
+[2025-10-08 17:44:48] WARNING: Face did not get captured!
+[2025-10-08 17:44:48] WARNING: Face did not get captured!
+[2025-10-08 17:44:49] INFO: ✓ Captured Image has been saved! 
+[2025-10-08 17:44:49] INFO: ✓ Captured Image has been saved! 
+[2025-10-08 17:45:05] INFO: Ended Capturing Session for .\project\1_jereme
+[2025-10-08 17:45:09] INFO: FaceRecognitionDemo Running....
+[2025-10-08 17:45:54] INFO: Exited FaceRecognitionDemo

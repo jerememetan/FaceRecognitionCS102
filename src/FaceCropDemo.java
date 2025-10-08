@@ -20,7 +20,6 @@ public class FaceCropDemo {
     final static AtomicReference<String> finalSaveFolder = new AtomicReference<>(null);
 
     public static void main(String[] args) {
-        AppLogger.info("FaceCropDemo Running....");
         String saveFolder = ".\\project\\";
         String cascadePath =".\\opencv-cascade-classifier\\haarcascade_frontalface_alt.xml";
         new File(saveFolder).mkdirs();         // Create save folder if it doesn't exist
@@ -31,9 +30,10 @@ public class FaceCropDemo {
             gui.setDataSubmittedListener(new Name_ID_GUI.DataSubmittedListener() {
                 public void onDataSubmitted(int id, String name) {
                     // The data is now extracted and available here
+                    
                     finalSaveFolder.set(saveFolder + id + "_" + name);
                     new File(finalSaveFolder.get()).mkdirs(); // creates a folder if no folder is found
-
+                    AppLogger.info("Launching FaceCropDemo for Id:" + id + " Name:" + name );
                     // Notify the main thread that the data is ready
                     synchronized(syncObject) {
                         syncObject.notify();
@@ -54,32 +54,25 @@ public class FaceCropDemo {
         // Load face detector
         CascadeClassifier faceDetector = new CascadeClassifier(cascadePath);
         if (faceDetector.empty()) {
-            System.out.println("Error loading cascade file: " + cascadePath);
+            AppLogger.error("Error loading cascade file: " + cascadePath);
             return;
         }
 
         // Open webcam
         VideoCapture capture = new VideoCapture(0);
         if (!capture.isOpened()) {
-            System.out.println("Error opening webcam!");
+            AppLogger.error("Error opening webcam!");
             return;
         }
 
         Mat frame = new Mat();
         Mat gray = new Mat();
         HighGui.namedWindow("Face Detection - Press 'p' to save face, 'q' to quit", HighGui.WINDOW_AUTOSIZE);
+        AppLogger.info("FaceCropDemo Program Started!");
 
-        System.out.println("Face detection started!");
-        System.out.println("Controls:");
-        System.out.println("  - Press 'p' to save detected face");
-        System.out.println("  - Press 'q' to quit");
-        System.out.println("  - Make sure the OpenCV window is in focus when pressing keys");
-
-        // if the name and ID is inside the folder "project", use that as folder
-        // if it doesnt exist, create a new folder with the name and ID in the format "ID_Name"
         while (true) {
             if (!capture.read(frame)) {
-                System.out.println("No frame captured!");
+                AppLogger.warn("No Frame Captured!");
                 break;
             }
             // Img camera settings
@@ -119,31 +112,40 @@ public class FaceCropDemo {
             HighGui.imshow("Face Detection - Press 'p' to save face, 'q' to quit", frame);
 
             // SOLUTION 1: Use shorter wait time and mask the key
-            int key = HighGui.waitKey(30) & 0xFF;
+            int key = HighGui.waitKey(5) & 0xFF;
             
             if (faceArray.length > 0 && key == 'p' || key == 'P') {
                     // Crop and save the first detected face
-                    Rect rect = faceArray[0];
-                    // image preprocess
-                    Mat face = gray.submat(rect);
-                    Mat resizedFace = new Mat();
-                    Imgproc.resize(face, resizedFace, new Size(200, 200));
-                    String fileName = finalPath + "\\face_" + System.currentTimeMillis() + ".jpg";
-                    boolean saved = Imgcodecs.imwrite(fileName, resizedFace);
-                    
-                    if (saved) {
-                        AppLogger.info("✓ Saved: " + fileName);
-                    } else {
-                        AppLogger.error("✗ Failed to save: " + fileName);
+                    try {
+                        Rect rect = faceArray[0];
+                        // image preprocess
+                        Mat face = gray.submat(rect);
+                        Mat resizedFace = new Mat();
+                        Imgproc.resize(face, resizedFace, new Size(200, 200));
+                        String fileName = finalPath + "\\face_" + System.currentTimeMillis() + ".jpg";
+                        boolean saved = Imgcodecs.imwrite(fileName, resizedFace);
+                        if (saved) {
+                            AppLogger.info("✓ Captured Image has been saved! ");
+                        } else {
+                            AppLogger.error("✗ Captured Image failed to save!");
+                        }
+                        // Clean up temporary Mat
+                        resizedFace.release();
+                        face.release();
+
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        AppLogger.warn("Face did not get captured!");
+
                     }
                     
-                    // Clean up temporary Mat
-                    resizedFace.release();
-                    face.release();
+
+
+                    
+
+
             }
             
             if (key == 'q' || key == 'Q' || key == 27) { // 'q', 'Q', or ESC
-                System.out.println("Quitting...");
                 break;
             }
             
@@ -155,7 +157,7 @@ public class FaceCropDemo {
         gray.release();
         HighGui.waitKey(3);
         HighGui.destroyAllWindows(); // Ensure all windows are closed properly
-        System.out.println("Program ended.");
+        AppLogger.info("Ended Capturing Session for "+ finalPath);
         System.gc();
     }
 }
