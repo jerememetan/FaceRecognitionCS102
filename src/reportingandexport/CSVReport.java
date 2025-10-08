@@ -1,7 +1,7 @@
 // CSVReport.java
 // TODO: Can consider to switch from native FileWriter to use CSVWriter library
 
-package src.reportingandexport;
+package reportingandexport;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,7 +20,7 @@ public class CSVReport implements ReportGenerator{
 
     public static void main(String[] args) {
 
-        String folderPath = "./ExportedDataFiles";
+        String folderPath = "./data/export/";
 
         int newCSVCount = 0;
 
@@ -39,7 +39,7 @@ public class CSVReport implements ReportGenerator{
         // CSV Headers for easy ref
         data.add(new String[] {"StudentID", "Name", "Status", "Timestamp", "Confidence", "Method", "Notes"});
         
-        String studentsFileName = "./SampleData/sampleStudentData.txt";
+        String studentsFileName = "./data/sampledata/sampleStudentData.txt";
         StudentData.loadSampleDataFromFile(studentsFileName);
 
         System.out.println(StudentData.SampleStudentData);
@@ -57,7 +57,7 @@ public class CSVReport implements ReportGenerator{
             });
         }
 
-        try (FileWriter writer = new FileWriter("./ExportedDataFiles/" + fileName)) {
+        try (FileWriter writer = new FileWriter(folderPath + fileName)) {
             for (String[] row : data) {
                 writer.append(String.join(",", row));
                 writer.append("\n");

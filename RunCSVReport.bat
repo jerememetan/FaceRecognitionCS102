@@ -1,1 +1,1 @@
-java -cp "compiled" src.reportingandexport.CSVReport
+java -cp "compiled" reportingandexport.CSVReport

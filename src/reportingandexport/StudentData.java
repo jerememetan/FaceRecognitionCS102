@@ -2,7 +2,7 @@
 // TODO: Project brief mentions #include and #exclude for builders, dk what this means
 // TODO: convert to try-with for Scanners
 
-package src.reportingandexport;
+package reportingandexport;
 
 import java.io.File;
 import java.io.FileNotFoundException;
