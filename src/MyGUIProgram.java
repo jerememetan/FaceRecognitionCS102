@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import javax.swing.*;
+import src.ConfigurationAndLogging.*;
 
 public class MyGUIProgram extends JFrame {
     static {
@@ -69,6 +70,7 @@ public class MyGUIProgram extends JFrame {
         }
     }
     public static void main(String[] args) {
+        AppLogger.info("Running MyGUIProgram...");
         SwingUtilities.invokeLater(MyGUIProgram::new);
     }
 }

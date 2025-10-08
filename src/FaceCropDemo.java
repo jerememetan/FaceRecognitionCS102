@@ -7,6 +7,7 @@ import org.opencv.videoio.VideoCapture;
 import org.opencv.highgui.HighGui;
 import java.util.concurrent.atomic.AtomicReference;
 import java.io.File;
+import src.ConfigurationAndLogging.*;
 
 import javax.swing.SwingUtilities;
 
@@ -19,10 +20,10 @@ public class FaceCropDemo {
     final static AtomicReference<String> finalSaveFolder = new AtomicReference<>(null);
 
     public static void main(String[] args) {
-        String saveFolder = ".\\project\\"; // thiking abt gettin rid of this
+        AppLogger.info("FaceCropDemo Running....");
+        String saveFolder = ".\\project\\";
         String cascadePath =".\\opencv-cascade-classifier\\haarcascade_frontalface_alt.xml";
-        new File(saveFolder).mkdirs();
-        // Create save folder if it doesn't exist
+        new File(saveFolder).mkdirs();         // Create save folder if it doesn't exist
 
 
     SwingUtilities.invokeLater(() -> {
@@ -30,9 +31,8 @@ public class FaceCropDemo {
             gui.setDataSubmittedListener(new Name_ID_GUI.DataSubmittedListener() {
                 public void onDataSubmitted(int id, String name) {
                     // The data is now extracted and available here
-                    System.out.println("GUI has been closed.");
                     finalSaveFolder.set(saveFolder + id + "_" + name);
-                    new File(finalSaveFolder.get()).mkdirs();
+                    new File(finalSaveFolder.get()).mkdirs(); // creates a folder if no folder is found
 
                     // Notify the main thread that the data is ready
                     synchronized(syncObject) {
@@ -41,6 +41,8 @@ public class FaceCropDemo {
                 }
             });
         });
+
+    // sync data
     synchronized(syncObject) {
         try {
             syncObject.wait();
@@ -72,9 +74,6 @@ public class FaceCropDemo {
         System.out.println("  - Press 'p' to save detected face");
         System.out.println("  - Press 'q' to quit");
         System.out.println("  - Make sure the OpenCV window is in focus when pressing keys");
-        // create a GUI to prompt user for a name and ID
-
-
 
         // if the name and ID is inside the folder "project", use that as folder
         // if it doesnt exist, create a new folder with the name and ID in the format "ID_Name"
@@ -83,7 +82,7 @@ public class FaceCropDemo {
                 System.out.println("No frame captured!");
                 break;
             }
-
+            // Img camera settings
             Imgproc.cvtColor(frame, gray, Imgproc.COLOR_BGR2GRAY);
             // Adding Noise Reduction with blurring
             Imgproc.GaussianBlur(gray, gray, new Size(5, 5), 0);
@@ -125,25 +124,17 @@ public class FaceCropDemo {
             if (faceArray.length > 0 && key == 'p' || key == 'P') {
                     // Crop and save the first detected face
                     Rect rect = faceArray[0];
-
-                    // SUGGEESTION: saving it as coloured images, if planning to use for colour based models in the future
-
-                    // Mat face = frame.submit((rect));
-                    // Mat resizedFace = new Mat();
-                    // Imgproc.resize(face, resizedFace, new Size(200, 200));
-
+                    // image preprocess
                     Mat face = gray.submat(rect);
                     Mat resizedFace = new Mat();
                     Imgproc.resize(face, resizedFace, new Size(200, 200));
-
-
                     String fileName = finalPath + "\\face_" + System.currentTimeMillis() + ".jpg";
                     boolean saved = Imgcodecs.imwrite(fileName, resizedFace);
                     
                     if (saved) {
-                        System.out.println("✓ Saved: " + fileName);
+                        AppLogger.info("✓ Saved: " + fileName);
                     } else {
-                        System.out.println("✗ Failed to save: " + fileName);
+                        AppLogger.error("✗ Failed to save: " + fileName);
                     }
                     
                     // Clean up temporary Mat

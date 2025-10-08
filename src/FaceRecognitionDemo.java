@@ -5,6 +5,8 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.videoio.VideoCapture;
 
+import src.ConfigurationAndLogging.AppLogger;
+
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -17,12 +19,7 @@ public class FaceRecognitionDemo {
         System.load(new File("lib/opencv_java480.dll").getAbsolutePath());
     }
     public static void main(String[] args) {
-        // if (args.length < 3) {
-        //     System.out.println("Usage: java FaceRecognitionDemo <person1-dir> <person2-dir> <haarcascade-path>");
-        //     System.out.println("Example: java FaceRecognitionDemo D:\\person1 D:\\person2 .\\haarcascade_frontalface_alt.xml");
-        //     return;t
-        // }
-        // make this an array in the future for this entire part
+        AppLogger.info("FaceRecognitionDemo Running....");
         String image_folder_path = "./project";
         File folder_directories = new File(image_folder_path);
 
@@ -40,10 +37,7 @@ public class FaceRecognitionDemo {
             }
         }
         System.out.println("ListFiles Loaded:" + list_files);
-        // REPLACED
-        // String person1Dir = ".\\project\\Trump"; 
-        // String person2Dir = ".\\project\\Jereme"; 
-        // String person3Dir = ".\\project\\TaylorSwift"; 
+
         String cascadePath = "./opencv-cascade-classifier/haarcascade_frontalface_alt.xml"; // args[2];
 
         // Load face detector
@@ -60,10 +54,7 @@ public class FaceRecognitionDemo {
             List<Mat> temp = loadImages(s);
             personImages.add(temp);   
         }
-        // REPLACED
-        // List<Mat> person1Images = loadImages(person1Dir);
-        // List<Mat> person2Images = loadImages(person2Dir);
-        // List<Mat> person3Images = loadImages(person3Dir);
+
 
         // Check empty of any of the files
         for (List<Mat> t: personImages){
@@ -73,21 +64,14 @@ public class FaceRecognitionDemo {
             }
         }
         
-        // REPLACED
-        // if (person1Images.isEmpty() || person2Images.isEmpty() || person3Images.isEmpty()) {
-        //     System.out.println("No training images found in one of the directories!");
-        //     return;
-        // }
+
 
         ArrayList<List<Mat>> personHistograms = new ArrayList<List<Mat>>();
         for (List<Mat> s: personImages){
             List<Mat> temp = computeHistograms(s);
             personHistograms.add(temp);
         }
-        // REPLACED
-        // List<Mat> person1Histograms = computeHistograms(person1Images);
-        // List<Mat> person2Histograms = computeHistograms(person2Images);
-        // List<Mat> person3Histograms = computeHistograms(person3Images);
+
 
         // Open webcam
         VideoCapture capture = new VideoCapture(0);
@@ -133,13 +117,7 @@ public class FaceRecognitionDemo {
                 }
 
                 System.out.println("Person Scores: " + personScores.toString());
-                // REPLACED
-                // double bestScore1 = getBestHistogramScore(faceHist, person1Histograms);
-                // double bestScore2 = getBestHistogramScore(faceHist, person2Histograms);
-                // double bestScore3 = getBestHistogramScore(faceHist, person3Histograms);
 
-                // double[] scores = {bestScore1, bestScore2, bestScore3};
-                // String[] names = {"Donald Trump", "Jereme Tan", "Taylor Swift"};
                 String displayText;
                 int maxIdx = 0;
                 for (int i = 0; i < personScores.size(); i++) {
@@ -147,7 +125,7 @@ public class FaceRecognitionDemo {
                         maxIdx = i;
                     }
                 }
-                if (personScores.get(maxIdx) > 0.65){
+                if (personScores.get(maxIdx) > 0.7){
                     String[] parts = folder_names.get(maxIdx).split("_");
                     String ShowScore = String.format("%.2f", personScores.get(maxIdx));
                     displayText = parts[1] + " - " + ShowScore;
@@ -156,9 +134,8 @@ public class FaceRecognitionDemo {
                 else{
                     displayText = "unknown";
                 }
-                // String displayText = scores[maxIdx] > 0.65 ? names[maxIdx] : "Unknown";
-                Imgproc.putText(webcamFrame, displayText, new Point(rect.x, rect.y - 10),
-                        Imgproc.FONT_HERSHEY_SIMPLEX, 0.9, new Scalar(15, 255, 15), 2);
+                    Imgproc.putText(webcamFrame, displayText, new Point(rect.x, rect.y - 10),
+                    Imgproc.FONT_HERSHEY_SIMPLEX, 0.9, new Scalar(15, 255, 15), 2);
             }
 
             // Display frame

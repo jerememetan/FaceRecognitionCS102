@@ -1,6 +1,9 @@
 package src;
 import java.awt.*;
 import javax.swing.*;
+
+import src.ConfigurationAndLogging.AppLogger;
+
 import java.awt.event.*;
 import java.io.File;
 public class Name_ID_GUI extends JFrame {
@@ -106,7 +109,7 @@ public class Name_ID_GUI extends JFrame {
         public static void main(String[] args){
                     SwingUtilities.invokeLater(() -> {
             Name_ID_GUI gui = new Name_ID_GUI();
-            
+            AppLogger.info("Name_ID_GUI Running....");
             // Set the listener. The onDataSubmitted method will be called
             // when the submit button is pressed and the data is valid.
             gui.setDataSubmittedListener(new DataSubmittedListener() {
