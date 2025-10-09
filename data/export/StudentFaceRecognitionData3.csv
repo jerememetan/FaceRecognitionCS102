@@ -1,3 +1,4 @@
+StudentID,Name,Status,Timestamp,Confidence,Method,Notes
 1,John,Present,24:09,75.5,Scan,Nil
 2,Mary,Absent,24:09,34.2,Scan,Always Missing :(
 3,Tom,Present,24:09,89.0,Scan,Nil
