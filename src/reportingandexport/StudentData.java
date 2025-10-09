@@ -1,4 +1,4 @@
-// StudentData & its Builder
+// StudentData & its Builder: used to carry data from sampleData.txt
 // TODO: Project brief mentions #include and #exclude for builders, dk what this means
 // TODO: convert to try-with for Scanners
 
@@ -40,6 +40,7 @@ public class StudentData {
     public String getMethod() { return Method; }
     public String getNotes() { return Notes; }
 
+    // Builder to construct the initial values for Student Data
     public static class Builder {
         private Integer StudentID = null;
         private String Name = null;
@@ -89,6 +90,7 @@ public class StudentData {
         }
     }
 
+    // Method called with argument sampleData.txt to load Student Data
     public static void loadSampleDataFromFile(String fileName) {
         File file = new File(fileName);
 
