@@ -1,1 +1,1 @@
-javac -d compiled -cp "src" src\ConfigurationAndLogging\AppConfig.java
+javac -d compiled -cp "src" src\ConfigurationAndLogging\*.java

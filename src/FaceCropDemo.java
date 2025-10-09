@@ -18,11 +18,10 @@ public class FaceCropDemo {
     }
     final static Object syncObject = new Object();
     final static AtomicReference<String> finalSaveFolder = new AtomicReference<>(null);
-    private static AppConfig config;
-
+    
     public static void main(String[] args) {
-        String saveFolder = ".\\project\\";
-        String cascadePath =".\\opencv-cascade-classifier\\haarcascade_frontalface_alt.xml";
+        String saveFolder = AppConfig.getInstance().getDatabaseStoragePath();
+        String cascadePath = AppConfig.getInstance().getCascadePath();
         new File(saveFolder).mkdirs();         // Create save folder if it doesn't exist
 
 
@@ -32,7 +31,7 @@ public class FaceCropDemo {
                 public void onDataSubmitted(int id, String name) {
                     // The data is now extracted and available here
                     
-                    finalSaveFolder.set(saveFolder + id + "_" + name);
+                    finalSaveFolder.set(saveFolder + "/"+ id + "_" + name);
                     new File(finalSaveFolder.get()).mkdirs(); // creates a folder if no folder is found
                     AppLogger.info("Launching FaceCropDemo for Id:" + id + " Name:" + name );
                     // Notify the main thread that the data is ready
@@ -51,7 +50,9 @@ public class FaceCropDemo {
             e.printStackTrace();
         }
     }
+    
     String finalPath = finalSaveFolder.get(); 
+
         // Load face detector
         CascadeClassifier faceDetector = new CascadeClassifier(cascadePath);
         if (faceDetector.empty()) {
@@ -71,7 +72,26 @@ public class FaceCropDemo {
         HighGui.namedWindow("Face Detection - Press 'p' to save face, 'q' to quit", HighGui.WINDOW_AUTOSIZE);
         AppLogger.info("FaceCropDemo Program Started!");
 
+
+
         while (true) {
+        // Load face detection optimizer settings
+            double RECOGNITION_CROP_SIZE_PX = AppConfig.getInstance().getRecognitionCropSizePx();
+            Double DETECTION_SCALE_FACTOR = AppConfig.getInstance().getDetectionScaleFactor();
+            int DETECTION_MIN_NEIGHBORS = AppConfig.getInstance().getDetectionMinNeighbors();
+            int DETECTION_MIN_SIZE_PX = AppConfig.getInstance().getDetectionMinSize();
+            int PREPROCESSING_GAUSSIAN_KERNEL_SIZE = AppConfig.getInstance().getPreprocessingGaussianKernelSize();
+            int PREPROCESSING_GAUSSIAN_SIGMA_X = AppConfig.getInstance().getPreprocessingGaussianSigmaX();
+            double PREPROCESSING_CLAHE_CLIP_LIMIT = AppConfig.getInstance().getPreprocessingClaheClipLimit();
+            double PREPROCESSING_CLAHE_GRID_SIZE = AppConfig.getInstance().getPreprocessingClaheGridSize();
+            // DEBUGING
+            // System.out.println(DETECTION_SCALE_FACTOR);
+            // System.out.println(DETECTION_MIN_NEIGHBORS);
+            // System.out.println(DETECTION_MIN_SIZE_PX);
+            // System.out.println(PREPROCESSING_GAUSSIAN_KERNEL_SIZE);
+            // System.out.println(PREPROCESSING_GAUSSIAN_SIGMA_X);
+            // System.out.println(PREPROCESSING_CLAHE_CLIP_LIMIT);
+            // System.out.println(PREPROCESSING_CLAHE_GRID_SIZE);
             if (!capture.read(frame)) {
                 AppLogger.warn("No Frame Captured!");
                 break;
@@ -79,16 +99,16 @@ public class FaceCropDemo {
             // Img camera settings
             Imgproc.cvtColor(frame, gray, Imgproc.COLOR_BGR2GRAY);
             // Adding Noise Reduction with blurring
-            Imgproc.GaussianBlur(gray, gray, new Size(5, 5), 0);
+            Imgproc.GaussianBlur(gray, gray, new Size(PREPROCESSING_GAUSSIAN_KERNEL_SIZE, PREPROCESSING_GAUSSIAN_KERNEL_SIZE), PREPROCESSING_GAUSSIAN_SIGMA_X);
             // OPTION 2: using Adpative Histogram Equalization to improve constract with fancy algothrim
-            Imgproc.createCLAHE(2.0, new Size(8, 8)).apply(gray, gray);
+            Imgproc.createCLAHE(PREPROCESSING_CLAHE_CLIP_LIMIT , new Size(PREPROCESSING_CLAHE_GRID_SIZE, PREPROCESSING_CLAHE_GRID_SIZE)).apply(gray, gray);
             // Detect faces
             MatOfRect faces = new MatOfRect();
             // CHANGABLE: This is changable and adjust its settings
             // scale factor - increase for speed, decrease for accuracy
             // Min neigbours: increase for better detection and the risk of false positives
             // Min Size: minimum size, increase, if faces are closer to camera, decrease if faces are further from camera
-            faceDetector.detectMultiScale(gray, faces, 1.05, 5, 0, new Size(80, 80), new Size());
+            faceDetector.detectMultiScale(gray, faces, DETECTION_SCALE_FACTOR, DETECTION_MIN_NEIGHBORS, 0, new Size(DETECTION_MIN_SIZE_PX, DETECTION_MIN_SIZE_PX), new Size());
 
             Rect[] faceArray = faces.toArray();
             
@@ -122,7 +142,7 @@ public class FaceCropDemo {
                         // image preprocess
                         Mat face = gray.submat(rect);
                         Mat resizedFace = new Mat();
-                        Imgproc.resize(face, resizedFace, new Size(200, 200));
+                        Imgproc.resize(face, resizedFace, new Size(RECOGNITION_CROP_SIZE_PX, RECOGNITION_CROP_SIZE_PX));
                         String fileName = finalPath + "\\face_" + System.currentTimeMillis() + ".jpg";
                         boolean saved = Imgcodecs.imwrite(fileName, resizedFace);
                         if (saved) {
@@ -138,10 +158,6 @@ public class FaceCropDemo {
                         AppLogger.warn("Face did not get captured!");
 
                     }
-                    
-
-
-                    
 
 
             }

@@ -5,6 +5,7 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.videoio.VideoCapture;
 
+import src.ConfigurationAndLogging.AppConfig;
 import src.ConfigurationAndLogging.AppLogger;
 
 import javax.swing.*;
@@ -20,7 +21,7 @@ public class FaceRecognitionDemo {
     }
     public static void main(String[] args) {
         AppLogger.info("FaceRecognitionDemo Running....");
-        String image_folder_path = "./project";
+        String image_folder_path = AppConfig.getInstance().getDatabaseStoragePath();
         File folder_directories = new File(image_folder_path);
 
         ArrayList<String> folder_names = new ArrayList<String>();  // this stores the folder_names in an array list
@@ -43,7 +44,7 @@ public class FaceRecognitionDemo {
         }
         
 
-        String cascadePath = "./opencv-cascade-classifier/haarcascade_frontalface_alt.xml"; // args[2];
+        String cascadePath = AppConfig.getInstance().getCascadePath(); // args[2];
 
         // Load face detector
         CascadeClassifier faceDetector = new CascadeClassifier(cascadePath);
@@ -68,9 +69,8 @@ public class FaceRecognitionDemo {
             return;               
             }
         }
-        
 
-
+        // create Histogram for images
         ArrayList<List<Mat>> personHistograms = new ArrayList<List<Mat>>();
         for (List<Mat> s: personImages){
             List<Mat> temp = computeHistograms(s);
@@ -92,16 +92,39 @@ public class FaceRecognitionDemo {
         frame.add(label);
         frame.setSize(640, 480);
         frame.setVisible(true);
+        
+        // load Recognition settings
+        double RECOGNITION_THRESHOLD = AppConfig.getInstance().getRecognitionThreshold();
+        double RECOGNITION_CROP_SIZE_PX = AppConfig.getInstance().getRecognitionCropSizePx();
+        Double DETECTION_SCALE_FACTOR = AppConfig.getInstance().getDetectionScaleFactor();
+        int DETECTION_MIN_NEIGHBORS = AppConfig.getInstance().getDetectionMinNeighbors();
+        int DETECTION_MIN_SIZE_PX = AppConfig.getInstance().getDetectionMinSize();
+        double PREPROCESSING_GAUSSIAN_KERNEL_SIZE = AppConfig.getInstance().getPreprocessingGaussianKernelSize();
+        int PREPROCESSING_GAUSSIAN_SIGMA_X = AppConfig.getInstance().getPreprocessingGaussianSigmaX();
+        double PREPROCESSING_CLAHE_CLIP_LIMIT = AppConfig.getInstance().getPreprocessingClaheClipLimit();
+        double PREPROCESSING_CLAHE_GRID_SIZE = AppConfig.getInstance().getPreprocessingClaheGridSize();
+        // DEBUGING
+        // System.out.println(RECOGNITION_THRESHOLD);
+        // System.out.println(RECOGNITION_CROP_SIZE_PX);
+        // System.out.println(DETECTION_SCALE_FACTOR);
+        // System.out.println(DETECTION_MIN_NEIGHBORS);
+        // System.out.println(DETECTION_MIN_SIZE_PX);
+        // System.out.println(PREPROCESSING_GAUSSIAN_SIGMA_X);
+        // System.out.println(PREPROCESSING_CLAHE_CLIP_LIMIT);
+        // System.out.println(PREPROCESSING_CLAHE_GRID_SIZE);
 
+       
         Mat webcamFrame = new Mat();
         while (frame.isVisible() && capture.read(webcamFrame)) {
             Mat gray = new Mat();
             Imgproc.cvtColor(webcamFrame, gray, Imgproc.COLOR_BGR2GRAY);
-            // CHANGED: ADDED HISTOGRAM EQUALIZATION TO IMPROVE CONTRAST
-            Imgproc.equalizeHist(gray, gray);
+            // Adding Noise Reduction with blurring
+            Imgproc.GaussianBlur(gray, gray, new Size(PREPROCESSING_GAUSSIAN_KERNEL_SIZE, PREPROCESSING_GAUSSIAN_KERNEL_SIZE), PREPROCESSING_GAUSSIAN_SIGMA_X);
+            // OPTION 2: using Adpative Histogram Equalization to improve constract with fancy algothrim
+            Imgproc.createCLAHE(PREPROCESSING_CLAHE_CLIP_LIMIT , new Size(PREPROCESSING_CLAHE_GRID_SIZE, PREPROCESSING_CLAHE_GRID_SIZE)).apply(gray, gray);
             // Detect faces
             MatOfRect faces = new MatOfRect();
-            faceDetector.detectMultiScale(gray, faces, 1.05, 5, 0, new Size(80, 80), new Size());
+            faceDetector.detectMultiScale(gray, faces, DETECTION_SCALE_FACTOR, DETECTION_MIN_NEIGHBORS, 0, new Size(DETECTION_MIN_SIZE_PX, DETECTION_MIN_SIZE_PX), new Size());
 
             for (Rect rect : faces.toArray()) {
                 // Draw rectangle
@@ -111,7 +134,7 @@ public class FaceRecognitionDemo {
 
                 // Crop and resize face
                 Mat face = gray.submat(rect); 
-                Imgproc.resize(face, face, new Size(200, 200));
+                Imgproc.resize(face, face, new Size(RECOGNITION_CROP_SIZE_PX, RECOGNITION_CROP_SIZE_PX));
                 Mat faceHist = computeHistogram(face);
                 
                 // Compare with training histograms
@@ -121,7 +144,7 @@ public class FaceRecognitionDemo {
                     personScores.add(temp);
                 }
 
-                //System.out.println("Person Scores: " + personScores.toString());
+                System.out.println("Person Scores: " + personScores.toString());
 
                 String displayText;
                 int maxIdx = 0;
@@ -130,7 +153,7 @@ public class FaceRecognitionDemo {
                         maxIdx = i;
                     }
                 }
-                if (personScores.get(maxIdx) > 0.7){
+                if (personScores.get(maxIdx) > RECOGNITION_THRESHOLD){
                     String[] parts = folder_names.get(maxIdx).split("_");
                     String ShowScore = String.format("%.2f", personScores.get(maxIdx));
                     displayText = parts[1] + " - " + ShowScore;

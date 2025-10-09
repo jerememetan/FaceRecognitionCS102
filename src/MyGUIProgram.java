@@ -70,6 +70,11 @@ public class MyGUIProgram extends JFrame {
         }
     }
     public static void main(String[] args) {
+        // load App Configs
+        AppLogger.info("Configuration and core components loaded.");
+        AppConfig.getInstance();
+        AppLogger.info("Configuration file loaded");
+        // start up MyGUIProgram
         AppLogger.info("MyGUIProgram Started!");
         SwingUtilities.invokeLater(MyGUIProgram::new);
     }

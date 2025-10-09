@@ -1,10 +1,10 @@
 package src.ConfigurationAndLogging;
-import java.util.*;
 import java.io.InputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.io.FileOutputStream;
 
-public class AppConfig {
+public class AppConfig{
     // Settings
     public final static String KEY_DATABASE_STORAGE_PATH = "database.storage_path";
     public final static String KEY_CASCADE_PATH = "cascade.path";
@@ -70,9 +70,10 @@ public class AppConfig {
     public String getDatabaseStoragePath(){
         return properties.getProperty(KEY_DATABASE_STORAGE_PATH, ".\\project");
     }
+
     public void setDatabaseStoragePath(String Path){
         if (Path == null){
-            AppLogger.error("Failed to change "+ KEY_DATABASE_STORAGE_PATH ".Path is null");
+            AppLogger.error("Failed to change "+ KEY_DATABASE_STORAGE_PATH +".Path is null");
         }
         else{
             this.properties.setProperty(KEY_DATABASE_STORAGE_PATH, Path);
@@ -84,9 +85,10 @@ public class AppConfig {
     public String getCascadePath(){
         return properties.getProperty(KEY_CASCADE_PATH, "./opencv-cascade-classifier/haarcascade_frontalface_alt.xml");
     }
+
     public void setCascadePath(String Path){
         if (Path == null){
-            AppLogger.error("Failed to change " + KEY_CASCADE_PATH ".Path is null");
+            AppLogger.error("Failed to change " + KEY_CASCADE_PATH +".Path is null");
         }
         else{
             this.properties.setProperty(KEY_CASCADE_PATH, Path);
@@ -100,7 +102,7 @@ public class AppConfig {
     }
     public void setLogFileName(String Path){
         if (Path == null){
-            AppLogger.error("Failed to change " + KEY_LOG_FILE_NAME ".Name is null");
+            AppLogger.error("Failed to change " + KEY_LOG_FILE_NAME + ".Name is null");
         }
         else{
             this.properties.setProperty(KEY_LOG_FILE_NAME, Path);
@@ -120,8 +122,8 @@ public class AppConfig {
     }
     public void setCameraIndex(int newIndex) {
     // 1. Convert the integer back to a String
-        if (newIndex == null){
-            AppLogger.error("Failed to change " + KEY_CAMERA_INDEX ".Index is null");
+        if (newIndex < 0){
+            AppLogger.error("Failed to change " + KEY_CAMERA_INDEX +".Index is null");
         }
         else{
             String newIndexStr = String.valueOf(newIndex);
@@ -141,11 +143,12 @@ public class AppConfig {
         } catch (NumberFormatException e) {
             AppLogger.error("Config error: Invalid number format for " + KEY_DETECTION_SCALE_FACTOR, e);
             return 1.05; // Return safe default on failure
+        }
     }
     public void setDetectionScaleFactor(Double newIndex) {
     // 1. Convert the integer back to a String
         if (newIndex == null){
-            AppLogger.error("Failed to change " + KEY_DETECTION_SCALE_FACTOR ".Index is null");
+            AppLogger.error("Failed to change " + KEY_DETECTION_SCALE_FACTOR +".Index is null");
         }
         else{
             String newIndexStr = String.valueOf(newIndex);
@@ -167,8 +170,8 @@ public class AppConfig {
     }
     public void setDetectionMinNeighbors(int newIndex) {
     // 1. Convert the integer back to a String
-        if (newIndex == null){
-            AppLogger.error("Failed to change " + KEY_DETECTION_MIN_NEIGHBORS ".Index is null");
+        if (newIndex < 0){
+            AppLogger.error("Failed to change " + KEY_DETECTION_MIN_NEIGHBORS +".Index is null");
         }
         else{
             String newIndexStr = String.valueOf(newIndex);
@@ -191,8 +194,8 @@ public class AppConfig {
     }
     public void setDetectionMinSize(int newIndex) {
     // 1. Convert the integer back to a String
-        if (newIndex == null){
-            AppLogger.error("Failed to change " + KEY_DETECTION_MIN_SIZE_PX ".Index is null");
+        if (newIndex < 0){
+            AppLogger.error("Failed to change " + KEY_DETECTION_MIN_SIZE_PX +".Index is null");
         }
         else{
             String newIndexStr = String.valueOf(newIndex);
@@ -216,7 +219,7 @@ public class AppConfig {
     public void setRecognitionThreshold(Double newIndex) {
     // 1. Convert the integer back to a String
         if (newIndex == null){
-            AppLogger.error("Failed to change " + KEY_RECOGNITION_THRESHOLD ".Index is null");
+            AppLogger.error("Failed to change " + KEY_RECOGNITION_THRESHOLD +".Index is null");
         }
         else{
             String newIndexStr = String.valueOf(newIndex);
@@ -238,8 +241,8 @@ public class AppConfig {
     }
     public void setRecognitionCropSizePx(int newIndex) {
     // 1. Convert the integer back to a String
-        if (newIndex == null){
-            AppLogger.error("Failed to change " + KEY_RECOGNITION_CROP_SIZE_PX ".Index is null");
+        if (newIndex < 0){
+            AppLogger.error("Failed to change " + KEY_RECOGNITION_CROP_SIZE_PX +".Index is null");
         }
         else{
             String newIndexStr = String.valueOf(newIndex);
@@ -256,7 +259,7 @@ public class AppConfig {
     }
     public void setRecognitionImageFormat(String Path){
         if (Path == null){
-            AppLogger.error("Failed to change "+ KEY_RECOGNITION_IMAGE_FORMAT  ". String is null");
+            AppLogger.error("Failed to change "+ KEY_RECOGNITION_IMAGE_FORMAT  +". String is null");
         }
         else{
             this.properties.setProperty(KEY_RECOGNITION_IMAGE_FORMAT , Path);
@@ -277,8 +280,8 @@ public class AppConfig {
     }
     public void setPreprocessingGaussianKernelSize(int newIndex) {
     // 1. Convert the integer back to a String
-        if (newIndex == null){
-            AppLogger.error("Failed to change " + KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE  ".Index is null");
+        if (newIndex < 0){
+            AppLogger.error("Failed to change " + KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE  +".Index is null");
         }
         else{
             String newIndexStr = String.valueOf(newIndex);
@@ -300,8 +303,8 @@ public class AppConfig {
     }
     public void setPreprocessingGaussianSigmaX(int newIndex) {
     // 1. Convert the integer back to a String
-        if (newIndex == null){
-            AppLogger.error("Failed to change " + KEY_PREPROCESSING_GAUSSIAN_SIGMA_X  ".Index is null");
+        if (newIndex < 0){
+            AppLogger.error("Failed to change " + KEY_PREPROCESSING_GAUSSIAN_SIGMA_X + ".Index is null");
         }
         else{
             String newIndexStr = String.valueOf(newIndex);
@@ -321,10 +324,10 @@ public class AppConfig {
             return 2.0; // Return safe default on failure
             }
     }
-    public void setRecognitionThreshold(Double newIndex) {
+    public void setPreprocessingClaheClipLimit(Double newIndex) {
     // 1. Convert the integer back to a String
         if (newIndex == null){
-            AppLogger.error("Failed to change " + KEY_PREPRKEY_RECOGNITION_THRESHOLDOCESSING_CLAHE_CLIP_LIMIT ".Index is null");
+            AppLogger.error("Failed to change " + KEY_PREPROCESSING_CLAHE_CLIP_LIMIT +".Index is null");
         }
         else{
             String newIndexStr = String.valueOf(newIndex);
@@ -346,8 +349,8 @@ public class AppConfig {
     }
     public void setPreprocessingClaheGridSize(int newIndex) {
     // 1. Convert the integer back to a String
-        if (newIndex == null){
-            AppLogger.error("Failed to change " + KEY_PREPROCESSING_CLAHE_GRID_SIZE  ".Index is null");
+        if (newIndex < 0){
+            AppLogger.error("Failed to change " + KEY_PREPROCESSING_CLAHE_GRID_SIZE  +".Index is null");
         }
         else{
             String newIndexStr = String.valueOf(newIndex);
@@ -356,5 +359,6 @@ public class AppConfig {
 
             AppLogger.info(KEY_PREPROCESSING_CLAHE_GRID_SIZE  + " has been changed to " + newIndex);
         }
+    }
 }
-}
+

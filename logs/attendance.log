@@ -19,3 +19,55 @@
 [2025-10-08 17:45:05] INFO: Ended Capturing Session for .\project\1_jereme
 [2025-10-08 17:45:09] INFO: FaceRecognitionDemo Running....
 [2025-10-08 17:45:54] INFO: Exited FaceRecognitionDemo
+[2025-10-09 12:13:41] INFO: Application Logger Initialized.
+[2025-10-09 12:13:41] INFO: MyGUIProgram Started!
+[2025-10-09 12:13:41] INFO: Configuration and core components loaded.
+[2025-10-09 12:13:41] INFO: Configuration loaded from app.properties.
+[2025-10-09 12:13:41] INFO: Configuration file loaded
+[2025-10-09 12:14:06] INFO: Loaded User Data ---> ID: 1, Name: jereme
+[2025-10-09 12:14:06] INFO: Launching FaceCropDemo for Id:1 Name:jereme
+[2025-10-09 12:14:06] INFO: FaceCropDemo Program Started!
+[2025-10-09 12:14:32] INFO: Ended Capturing Session for .\project\1_jereme
+[2025-10-09 12:20:09] INFO: Application Logger Initialized.
+[2025-10-09 12:20:09] INFO: Configuration and core components loaded.
+[2025-10-09 12:20:09] INFO: Configuration loaded from app.properties.
+[2025-10-09 12:20:09] INFO: Configuration file loaded
+[2025-10-09 12:20:09] INFO: MyGUIProgram Started!
+[2025-10-09 12:20:15] INFO: Loaded User Data ---> ID: 1, Name: jereme
+[2025-10-09 12:20:15] INFO: Launching FaceCropDemo for Id:1 Name:jereme
+[2025-10-09 12:20:16] INFO: FaceCropDemo Program Started!
+[2025-10-09 12:20:25] INFO: ✓ Captured Image has been saved! 
+[2025-10-09 12:20:49] INFO: Ended Capturing Session for ./project/1_jereme
+[2025-10-09 12:20:52] INFO: FaceRecognitionDemo Running....
+[2025-10-09 12:20:56] INFO: Exited FaceRecognitionDemo
+[2025-10-09 12:34:08] INFO: Application Logger Initialized.
+[2025-10-09 12:34:08] INFO: Configuration and core components loaded.
+[2025-10-09 12:34:08] INFO: Configuration loaded from app.properties.
+[2025-10-09 12:34:08] INFO: Configuration file loaded
+[2025-10-09 12:34:08] INFO: MyGUIProgram Started!
+[2025-10-09 12:34:14] INFO: Loaded User Data ---> ID: 1, Name: jereme
+[2025-10-09 12:34:14] INFO: Launching FaceCropDemo for Id:1 Name:jereme
+[2025-10-09 12:34:14] INFO: FaceCropDemo Program Started!
+[2025-10-09 12:34:39] INFO: Ended Capturing Session for ./project/1_jereme
+[2025-10-09 12:36:34] INFO: Application Logger Initialized.
+[2025-10-09 12:36:34] INFO: Configuration and core components loaded.
+[2025-10-09 12:36:34] INFO: Configuration loaded from app.properties.
+[2025-10-09 12:36:34] INFO: Configuration file loaded
+[2025-10-09 12:36:34] INFO: MyGUIProgram Started!
+[2025-10-09 12:36:39] INFO: Loaded User Data ---> ID: 1, Name: jereme
+[2025-10-09 12:36:39] INFO: Launching FaceCropDemo for Id:1 Name:jereme
+[2025-10-09 12:36:39] INFO: FaceCropDemo Program Started!
+[2025-10-09 12:56:19] INFO: Application Logger Initialized.
+[2025-10-09 12:56:19] INFO: Configuration and core components loaded.
+[2025-10-09 12:56:19] INFO: Configuration loaded from app.properties.
+[2025-10-09 12:56:19] INFO: Configuration file loaded
+[2025-10-09 12:56:19] INFO: MyGUIProgram Started!
+[2025-10-09 12:56:22] INFO: FaceRecognitionDemo Running....
+[2025-10-09 12:56:43] INFO: Exited FaceRecognitionDemo
+[2025-10-09 13:06:44] INFO: Application Logger Initialized.
+[2025-10-09 13:06:44] INFO: Configuration and core components loaded.
+[2025-10-09 13:06:44] INFO: Configuration loaded from app.properties.
+[2025-10-09 13:06:44] INFO: Configuration file loaded
+[2025-10-09 13:06:44] INFO: MyGUIProgram Started!
+[2025-10-09 13:06:48] INFO: FaceRecognitionDemo Running....
+[2025-10-09 13:07:47] INFO: Exited FaceRecognitionDemo
