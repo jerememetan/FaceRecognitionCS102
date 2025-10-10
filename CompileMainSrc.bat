@@ -1,1 +1,1 @@
-javac -d "compiled" -cp "./src;./lib/*" src/facecrop/Name_ID_GUI.java src/facecrop/FaceRecognitionDemo.java src/facecrop/FaceCropDemo.java src/facecrop/MyGUIProgram.java
+javac -d "compiled" -cp "./src;./lib/*" src/facecrop/Name_ID_GUI.java src/facecrop/NewFaceRecognitionDemo.java src/facecrop/NewFaceCropDemo.java src/facecrop/MyGUIProgram.java

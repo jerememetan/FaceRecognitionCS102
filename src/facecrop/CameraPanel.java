@@ -1,7 +1,6 @@
-package src;
+package facecrop;
 
 import org.opencv.core.Mat;
-import org.opencv.imgproc.Imgproc;
 import org.opencv.highgui.HighGui; // Assuming HighGui.toBufferedImage is available (common in modern OpenCV)
 
 import javax.swing.*;
