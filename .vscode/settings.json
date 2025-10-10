@@ -1,9 +1,10 @@
 {
     "java.project.sourcePaths": [
-        "."
+        "src"
     ],
     "java.project.referencedLibraries": [
-        "./lib/opencv-480.jar"
+        "./lib/opencv-480.jar",
+        "./lib/opencv_java480.dll"
     ]
 }
 

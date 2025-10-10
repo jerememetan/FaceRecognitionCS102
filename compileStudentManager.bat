@@ -1,0 +1,1 @@
+javac -d "compiled" -cp "./src;./lib/*" ".\src\app\Main.java"
