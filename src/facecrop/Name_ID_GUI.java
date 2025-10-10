@@ -2,7 +2,7 @@ package facecrop;
 import java.awt.*;
 import javax.swing.*;
 
-import src.ConfigurationAndLogging.AppLogger;
+import ConfigurationAndLogging.AppLogger;
 
 import java.awt.event.*;
 import java.io.File;

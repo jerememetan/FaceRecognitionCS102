@@ -1,16 +1,14 @@
-package src;
+package facecrop;
 import org.opencv.core.*;
 import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.videoio.VideoCapture;
-import org.opencv.highgui.HighGui;
-import java.util.concurrent.atomic.AtomicReference;
 import java.awt.*;
 import java.io.File;
 
-import src.ConfigurationAndLogging.*;
+import ConfigurationAndLogging.*;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;

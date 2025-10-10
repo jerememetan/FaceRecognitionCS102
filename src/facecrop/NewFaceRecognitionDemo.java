@@ -1,4 +1,4 @@
-package src;
+package facecrop;
 import org.opencv.core.*;
 import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
@@ -6,7 +6,7 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.videoio.VideoCapture;
 
-import src.ConfigurationAndLogging.*;
+import ConfigurationAndLogging.*;
 
 import javax.swing.*;
 
@@ -82,6 +82,24 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
 
             }
         }
+
+        System.out.println("=== Folder debug ===");
+        for (String s : folder_names) {
+            System.out.println("Found folder: " + s);
+            File f = new File(s);
+            if (f.exists()) {
+                File[] imgs = f.listFiles();
+                if (imgs != null) {
+                    System.out.println("  Contains: " + imgs.length + " items");
+                } else {
+                    System.out.println("  (Cannot list files)");
+                }
+            } else {
+                System.out.println("  (Folder does not exist!)");
+            }
+        }
+        System.out.println("====================");
+
         // checks if ./project Folder is empty
         if (list_files == null){
             AppLogger.error("No Image Files found at " +image_folder_path +"!");
@@ -177,10 +195,11 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                         maxIdx = i;
                     }
                 }
+                // TODO -> SPLITTING NEEDS 
                 if (personScores.get(maxIdx) > RECOGNITION_THRESHOLD){
-                    String[] parts = folder_names.get(maxIdx).split("_");
+                    String parts = folder_names.get(maxIdx);
                     String ShowScore = String.format("%.2f", personScores.get(maxIdx));
-                    displayText = parts[1] + " - " + ShowScore;
+                    displayText = parts + " - " + ShowScore;
                     
                 }
                 else{

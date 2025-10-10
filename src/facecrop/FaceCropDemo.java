@@ -4,13 +4,9 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.videoio.VideoCapture;
-
-import facecrop.Name_ID_GUI.DataSubmittedListener;
-
 import org.opencv.highgui.HighGui;
 import java.util.concurrent.atomic.AtomicReference;
 import java.io.File;
-
 import javax.swing.SwingUtilities;
 
 public class FaceCropDemo {

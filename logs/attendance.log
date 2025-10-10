@@ -983,3 +983,33 @@
 [2025-10-10 17:25:11] INFO: Ending Capturing Session for ./project/1_jereme
 [2025-10-10 17:25:23] INFO: Exiting Face Recognition Demo...
 [2025-10-10 17:25:23] INFO: Exiting Face Recognition Demo...
+[2025-10-10 18:10:26] INFO: Application Logger Initialized.
+[2025-10-10 18:10:26] INFO: Configuration and core components loaded.
+[2025-10-10 18:10:26] INFO: Configuration file loaded
+[2025-10-10 18:10:26] INFO: MyGUIProgram Started!
+[2025-10-10 18:10:33] INFO: Loaded User Data ---> ID: 1, Name: jereme
+[2025-10-10 18:10:33] INFO: Launching NewFaceCropDemo for Id:1 Name:jereme
+[2025-10-10 18:10:33] SEVERE: Error loading cascade file: ./opencv-cascade-classifier/haarcascade_frontalface_alt.xml
+[2025-10-10 18:12:55] INFO: Application Logger Initialized.
+[2025-10-10 18:12:55] INFO: Configuration and core components loaded.
+[2025-10-10 18:12:55] INFO: Configuration file loaded
+[2025-10-10 18:12:55] INFO: MyGUIProgram Started!
+[2025-10-10 18:13:04] INFO: Loaded User Data ---> ID: 1, Name: jereme
+[2025-10-10 18:13:04] INFO: Launching NewFaceCropDemo for Id:1 Name:jereme
+[2025-10-10 18:13:04] SEVERE: Error loading cascade file: /data/resources/haarcascade_frontalface_alt.xml
+[2025-10-10 18:13:40] INFO: Application Logger Initialized.
+[2025-10-10 18:13:40] INFO: Configuration and core components loaded.
+[2025-10-10 18:13:40] INFO: Configuration file loaded
+[2025-10-10 18:13:40] INFO: MyGUIProgram Started!
+[2025-10-10 18:13:47] INFO: Loaded User Data ---> ID: 1, Name: jereme
+[2025-10-10 18:13:47] INFO: Launching NewFaceCropDemo for Id:1 Name:jereme
+[2025-10-10 18:14:02] INFO: ✓ Image captured and saved to: ./data/facedata/1_jereme/face_1760091242315.jpg
+[2025-10-10 18:14:39] INFO: Ending Capturing Session for ./data/facedata/1_jereme
+[2025-10-10 18:14:39] INFO: Ending Capturing Session for ./data/facedata/1_jereme
+[2025-10-10 18:17:56] INFO: Exiting Face Recognition Demo...
+[2025-10-10 18:18:07] INFO: Application Logger Initialized.
+[2025-10-10 18:18:07] INFO: Configuration and core components loaded.
+[2025-10-10 18:18:07] INFO: Configuration file loaded
+[2025-10-10 18:18:07] INFO: MyGUIProgram Started!
+[2025-10-10 18:18:29] INFO: Exiting Face Recognition Demo...
+[2025-10-10 18:18:29] INFO: Exiting Face Recognition Demo...

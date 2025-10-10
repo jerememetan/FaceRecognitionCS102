@@ -1,4 +1,4 @@
-package src.ConfigurationAndLogging;
+package ConfigurationAndLogging;
 
 import java.io.IOException;
 import java.time.LocalDateTime;

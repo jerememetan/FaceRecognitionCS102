@@ -1,9 +1,9 @@
 package facecrop;
+import ConfigurationAndLogging.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import javax.swing.*;
-import src.ConfigurationAndLogging.*;
 
 public class MyGUIProgram extends JFrame {
     static {

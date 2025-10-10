@@ -5,8 +5,8 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.videoio.VideoCapture;
 
-import src.ConfigurationAndLogging.AppConfig;
-import src.ConfigurationAndLogging.AppLogger;
+import ConfigurationAndLogging.AppConfig;
+import ConfigurationAndLogging.AppLogger;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
