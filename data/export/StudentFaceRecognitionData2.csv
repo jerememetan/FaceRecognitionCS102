@@ -1,6 +1,0 @@
-StudentID,Name,Status,Timestamp,Confidence,Method,Notes
-1,John,Present,24:09,75.5,Scan,Nil
-2,Mary,Absent,24:09,34.2,Scan,Always Missing :(
-3,Tom,Present,24:09,89.0,Scan,Nil
-4,Dick,Present,24:09,23.1,Scan,Needs to leave class early for piano
-5,Harry,Absent,24:09,100.0,Scan,Nil
