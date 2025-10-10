@@ -94,15 +94,15 @@ public class FaceRecognitionDemo {
         frame.setVisible(true);
         
         // load Recognition settings
-        double RECOGNITION_THRESHOLD = AppConfig.getInstance().getRecognitionThreshold();
-        double RECOGNITION_CROP_SIZE_PX = AppConfig.getInstance().getRecognitionCropSizePx();
+        final double RECOGNITION_CROP_SIZE_PX = AppConfig.KEY_RECOGNITION_CROP_SIZE_PX;
         Double DETECTION_SCALE_FACTOR = AppConfig.getInstance().getDetectionScaleFactor();
         int DETECTION_MIN_NEIGHBORS = AppConfig.getInstance().getDetectionMinNeighbors();
         int DETECTION_MIN_SIZE_PX = AppConfig.getInstance().getDetectionMinSize();
-        double PREPROCESSING_GAUSSIAN_KERNEL_SIZE = AppConfig.getInstance().getPreprocessingGaussianKernelSize();
-        int PREPROCESSING_GAUSSIAN_SIGMA_X = AppConfig.getInstance().getPreprocessingGaussianSigmaX();
-        double PREPROCESSING_CLAHE_CLIP_LIMIT = AppConfig.getInstance().getPreprocessingClaheClipLimit();
-        double PREPROCESSING_CLAHE_GRID_SIZE = AppConfig.getInstance().getPreprocessingClaheGridSize();
+        final double PREPROCESSING_GAUSSIAN_KERNEL_SIZE = AppConfig.KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE;
+        final int PREPROCESSING_GAUSSIAN_SIGMA_X = AppConfig.KEY_PREPROCESSING_GAUSSIAN_SIGMA_X;
+        final double PREPROCESSING_CLAHE_CLIP_LIMIT = AppConfig.KEY_PREPROCESSING_CLAHE_CLIP_LIMIT;
+        final double PREPROCESSING_CLAHE_GRID_SIZE = AppConfig.KEY_PREPROCESSING_CLAHE_GRID_SIZE;
+        final double RECOGNITION_THRESHOLD = AppConfig.getInstance().getRecognitionThreshold();
         // DEBUGING
         // System.out.println(RECOGNITION_THRESHOLD);
         // System.out.println(RECOGNITION_CROP_SIZE_PX);
@@ -113,7 +113,6 @@ public class FaceRecognitionDemo {
         // System.out.println(PREPROCESSING_CLAHE_CLIP_LIMIT);
         // System.out.println(PREPROCESSING_CLAHE_GRID_SIZE);
 
-       
         Mat webcamFrame = new Mat();
         while (frame.isVisible() && capture.read(webcamFrame)) {
             Mat gray = new Mat();

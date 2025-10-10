@@ -19,12 +19,12 @@ public class AppLogger {
 
             // 2. Configure File Handler to write to attendance.log
             // The 'true' argument means append mode (add to the existing file)
-            FileHandler fileHandler = new FileHandler(".\\logs\\attendance.log", true);
+            
+            FileHandler fileHandler = new FileHandler(".\\logs\\" + AppConfig.getInstance().getLogFileName(), true);
             
             // 3. Set Custom Formatter for clean log file output
             fileHandler.setFormatter(new LogFormatter());
             logger.addHandler(fileHandler);
-
             logger.info("Application Logger Initialized.");
 
         } catch (IOException e) {

@@ -1,8 +1,8 @@
 package src.ConfigurationAndLogging;
-import java.io.InputStream;
-import java.io.IOException;
-import java.util.Properties;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 public class AppConfig{
     // Settings
@@ -14,12 +14,11 @@ public class AppConfig{
     public final static String KEY_DETECTION_MIN_NEIGHBORS = "detection.min.neighbors";
     public final static String KEY_DETECTION_MIN_SIZE_PX= "detection.min_size_px";
     public final static String KEY_RECOGNITION_THRESHOLD = "recognition.threshold";
-    public final static String KEY_RECOGNITION_CROP_SIZE_PX = "recognition.crop_size_px";
-    public final static String KEY_RECOGNITION_IMAGE_FORMAT = "recognition.image_format";
-    public final static String KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE = "preprocessing.gaussian.kernel_size";
-    public final static String KEY_PREPROCESSING_GAUSSIAN_SIGMA_X = "preprocessing.gaussian.sigma_x";
-    public final static String KEY_PREPROCESSING_CLAHE_CLIP_LIMIT = "preprocessing.clahe.clip_limit";
-    public final static String KEY_PREPROCESSING_CLAHE_GRID_SIZE = "preprocessing.clahe.grid_size";
+    public final static int KEY_RECOGNITION_CROP_SIZE_PX = 200;
+    public final static int KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE = 5;
+    public final static int KEY_PREPROCESSING_GAUSSIAN_SIGMA_X = 0;
+    public final static double KEY_PREPROCESSING_CLAHE_CLIP_LIMIT = 2.0;
+    public final static int KEY_PREPROCESSING_CLAHE_GRID_SIZE = 8;
     
     // --- Singleton Implementation ---
     private static AppConfig instance = null;
@@ -228,137 +227,8 @@ public class AppConfig{
 
             AppLogger.info(KEY_RECOGNITION_THRESHOLD + " has been changed to " + newIndex);
         }
-    }
-    // KEY_RECOGNITION_CROP_SIZE_PX = "recognition.crop_size_px";
-        public int getRecognitionCropSizePx() {
-        String indexStr = properties.getProperty(KEY_RECOGNITION_CROP_SIZE_PX,"200"); 
-        try {
-            return Integer.parseInt(indexStr);
-        } catch (NumberFormatException e) {
-            AppLogger.error("Config error: Invalid number format for " + KEY_RECOGNITION_CROP_SIZE_PX, e);
-            return 200; // Return safe default on failure
-        }
-    }
-    public void setRecognitionCropSizePx(int newIndex) {
-    // 1. Convert the integer back to a String
-        if (newIndex < 0){
-            AppLogger.error("Failed to change " + KEY_RECOGNITION_CROP_SIZE_PX +".Index is null");
-        }
-        else{
-            String newIndexStr = String.valueOf(newIndex);
-            // 2. Use the final KEY to set the new value in the mutable properties object
-            this.properties.setProperty(KEY_RECOGNITION_CROP_SIZE_PX, newIndexStr);
+    }    
 
-            AppLogger.info(KEY_RECOGNITION_CROP_SIZE_PX + " has been changed to " + newIndex);
-        }
-    }  
-    
-    // KEY_RECOGNITION_IMAGE_FORMAT = "recognition.image_format";
-    public String getRecognitionImageFormat(){
-        return properties.getProperty(KEY_RECOGNITION_IMAGE_FORMAT , ".png");
-    }
-    public void setRecognitionImageFormat(String Path){
-        if (Path == null){
-            AppLogger.error("Failed to change "+ KEY_RECOGNITION_IMAGE_FORMAT  +". String is null");
-        }
-        else{
-            this.properties.setProperty(KEY_RECOGNITION_IMAGE_FORMAT , Path);
-            AppLogger.info(KEY_RECOGNITION_IMAGE_FORMAT  + " has been changed to " + Path);
-        }
 
-    }
-
-    // KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE = "preprocessing.gaussian.kernel_size";
-        public int getPreprocessingGaussianKernelSize() {
-        String indexStr = properties.getProperty(KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE ,"5"); 
-        try {
-            return Integer.parseInt(indexStr);
-        } catch (NumberFormatException e) {
-            AppLogger.error("Config error: Invalid number format for " + KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE , e);
-            return 5; // Return safe default on failure
-        }
-    }
-    public void setPreprocessingGaussianKernelSize(int newIndex) {
-    // 1. Convert the integer back to a String
-        if (newIndex < 0){
-            AppLogger.error("Failed to change " + KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE  +".Index is null");
-        }
-        else{
-            String newIndexStr = String.valueOf(newIndex);
-            // 2. Use the final KEY to set the new value in the mutable properties object
-            this.properties.setProperty(KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE , newIndexStr);
-
-            AppLogger.info(KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE  + " has been changed to " + newIndex);
-        }
-    }  
-    // KEY_PREPROCESSING_GAUSSIAN_SIGMA_X = "preprocessing.gaussian.sigma_x";
-        public int getPreprocessingGaussianSigmaX() {
-        String indexStr = properties.getProperty(KEY_PREPROCESSING_GAUSSIAN_SIGMA_X ,"0"); 
-        try {
-            return Integer.parseInt(indexStr);
-        } catch (NumberFormatException e) {
-            AppLogger.error("Config error: Invalid number format for " + KEY_PREPROCESSING_GAUSSIAN_SIGMA_X , e);
-            return 0; // Return safe default on failure
-        }
-    }
-    public void setPreprocessingGaussianSigmaX(int newIndex) {
-    // 1. Convert the integer back to a String
-        if (newIndex < 0){
-            AppLogger.error("Failed to change " + KEY_PREPROCESSING_GAUSSIAN_SIGMA_X + ".Index is null");
-        }
-        else{
-            String newIndexStr = String.valueOf(newIndex);
-            // 2. Use the final KEY to set the new value in the mutable properties object
-            this.properties.setProperty(KEY_PREPROCESSING_GAUSSIAN_SIGMA_X , newIndexStr);
-
-            AppLogger.info(KEY_PREPROCESSING_GAUSSIAN_SIGMA_X  + " has been changed to " + newIndex);
-        }
-    }      
-    // KEY_PREPROCESSING_CLAHE_CLIP_LIMIT = "preprocessing.clahe.clip_limit";
-    public double getPreprocessingClaheClipLimit() {
-        String indexStr = properties.getProperty(KEY_PREPROCESSING_CLAHE_CLIP_LIMIT, "2.0"); // Default value "0"
-        try {
-            return Double.parseDouble(indexStr);
-        } catch (NumberFormatException e) {
-            AppLogger.error("Config error: Invalid number format for " + KEY_PREPROCESSING_CLAHE_CLIP_LIMIT, e);
-            return 2.0; // Return safe default on failure
-            }
-    }
-    public void setPreprocessingClaheClipLimit(Double newIndex) {
-    // 1. Convert the integer back to a String
-        if (newIndex == null){
-            AppLogger.error("Failed to change " + KEY_PREPROCESSING_CLAHE_CLIP_LIMIT +".Index is null");
-        }
-        else{
-            String newIndexStr = String.valueOf(newIndex);
-            // 2. Use the final KEY to set the new value in the mutable properties object
-            this.properties.setProperty(KEY_PREPROCESSING_CLAHE_CLIP_LIMIT, newIndexStr);
-
-            AppLogger.info(KEY_PREPROCESSING_CLAHE_CLIP_LIMIT + " has been changed to " + newIndex);
-        }
-    }
-    // KEY_PREPROCESSING_CLAHE_GRID_SIZE = "prepr// 
-        public int getPreprocessingClaheGridSize() {
-        String indexStr = properties.getProperty(KEY_PREPROCESSING_CLAHE_GRID_SIZE ,"8"); 
-        try {
-            return Integer.parseInt(indexStr);
-        } catch (NumberFormatException e) {
-            AppLogger.error("Config error: Invalid number format for " + KEY_PREPROCESSING_CLAHE_GRID_SIZE , e);
-            return 8; // Return safe default on failure
-        }
-    }
-    public void setPreprocessingClaheGridSize(int newIndex) {
-    // 1. Convert the integer back to a String
-        if (newIndex < 0){
-            AppLogger.error("Failed to change " + KEY_PREPROCESSING_CLAHE_GRID_SIZE  +".Index is null");
-        }
-        else{
-            String newIndexStr = String.valueOf(newIndex);
-            // 2. Use the final KEY to set the new value in the mutable properties object
-            this.properties.setProperty(KEY_PREPROCESSING_CLAHE_GRID_SIZE , newIndexStr);
-
-            AppLogger.info(KEY_PREPROCESSING_CLAHE_GRID_SIZE  + " has been changed to " + newIndex);
-        }
-    }
 }
 

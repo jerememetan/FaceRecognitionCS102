@@ -71,27 +71,19 @@ public class FaceCropDemo {
         Mat gray = new Mat();
         HighGui.namedWindow("Face Detection - Press 'p' to save face, 'q' to quit", HighGui.WINDOW_AUTOSIZE);
         AppLogger.info("FaceCropDemo Program Started!");
-
-
+        double RECOGNITION_CROP_SIZE_PX = AppConfig.KEY_RECOGNITION_CROP_SIZE_PX;
+        int PREPROCESSING_GAUSSIAN_KERNEL_SIZE = AppConfig.KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE;
+        int PREPROCESSING_GAUSSIAN_SIGMA_X = AppConfig.KEY_PREPROCESSING_GAUSSIAN_SIGMA_X;
+        double PREPROCESSING_CLAHE_CLIP_LIMIT = AppConfig.KEY_PREPROCESSING_CLAHE_CLIP_LIMIT;
+        double PREPROCESSING_CLAHE_GRID_SIZE = AppConfig.KEY_PREPROCESSING_CLAHE_GRID_SIZE;
 
         while (true) {
         // Load face detection optimizer settings
-            double RECOGNITION_CROP_SIZE_PX = AppConfig.getInstance().getRecognitionCropSizePx();
-            Double DETECTION_SCALE_FACTOR = AppConfig.getInstance().getDetectionScaleFactor();
+
+            double DETECTION_SCALE_FACTOR = AppConfig.getInstance().getDetectionScaleFactor();
             int DETECTION_MIN_NEIGHBORS = AppConfig.getInstance().getDetectionMinNeighbors();
             int DETECTION_MIN_SIZE_PX = AppConfig.getInstance().getDetectionMinSize();
-            int PREPROCESSING_GAUSSIAN_KERNEL_SIZE = AppConfig.getInstance().getPreprocessingGaussianKernelSize();
-            int PREPROCESSING_GAUSSIAN_SIGMA_X = AppConfig.getInstance().getPreprocessingGaussianSigmaX();
-            double PREPROCESSING_CLAHE_CLIP_LIMIT = AppConfig.getInstance().getPreprocessingClaheClipLimit();
-            double PREPROCESSING_CLAHE_GRID_SIZE = AppConfig.getInstance().getPreprocessingClaheGridSize();
-            // DEBUGING
-            // System.out.println(DETECTION_SCALE_FACTOR);
-            // System.out.println(DETECTION_MIN_NEIGHBORS);
-            // System.out.println(DETECTION_MIN_SIZE_PX);
-            // System.out.println(PREPROCESSING_GAUSSIAN_KERNEL_SIZE);
-            // System.out.println(PREPROCESSING_GAUSSIAN_SIGMA_X);
-            // System.out.println(PREPROCESSING_CLAHE_CLIP_LIMIT);
-            // System.out.println(PREPROCESSING_CLAHE_GRID_SIZE);
+            
             if (!capture.read(frame)) {
                 AppLogger.warn("No Frame Captured!");
                 break;
