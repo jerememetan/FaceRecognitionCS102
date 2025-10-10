@@ -34,40 +34,62 @@ public class MyGUIProgram extends JFrame {
         setVisible(true);
     }
     private class RunFaceCropDemo implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent evt){
-            MyGUIProgram.this.setVisible(false);
-            Thread demoThread = new Thread(() -> FaceCropDemo.main(null));
-            demoThread.start();
-        // Wait for demo to finish, then show GUI again
-            new Thread(() -> {
-                try {
-                    demoThread.join(); // waits for the thread to terminate
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                // Show GUI again on the AWT event thread
-                SwingUtilities.invokeLater(() -> MyGUIProgram.this.setVisible(true));
-            }).start();
-            }
+
+    @Override
+    public void actionPerformed(ActionEvent evt) {
+        // 1. Hide the launcher window immediately
+        MyGUIProgram.this.setVisible(false);
+
+        // --- NEW LOGIC: Start the Name/ID GUI on the EDT ---
+        SwingUtilities.invokeLater(() -> {
+            // Get necessary file paths (should be done once in the main launch sequence, but safe here)
+            String saveFolder = AppConfig.getInstance().getDatabaseStoragePath();
+            new File(saveFolder).mkdirs(); 
+            
+            Name_ID_GUI gui = new Name_ID_GUI();
+            
+            gui.setDataSubmittedListener((int id, String name1) -> {
+                // This is executed when the user submits ID/Name
+                // 1. Determine the final save path
+                String finalPath = saveFolder + "/"+ id + "_" + name1;
+                new File(finalPath).mkdirs();
+                AppLogger.info("Launching NewFaceCropDemo for Id:" + id + " Name:" + name1);
+                // 2. Launch the NEW DEMO WINDOW
+                // This must also be called on the EDT
+                SwingUtilities.invokeLater(() -> {
+                    NewFaceCropDemo demoWindow = new NewFaceCropDemo(finalPath);
+                    // 3. Set a listener to show the launcher when the demo is closed
+                    demoWindow.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                            // Show the launcher again when the demo is closed (via the 'X' button)
+                            SwingUtilities.invokeLater(() -> MyGUIProgram.this.setVisible(true));
+                        }
+                    });
+                });
+            });
+            // You might need to set the Name_ID_GUI visible here if it's not by default
+            gui.setVisible(true);
+        });
+    }
     }
     private class RunFaceRecognitionDemo implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent evt){
             MyGUIProgram.this.setVisible(false);
-            Thread demoThread = new Thread(() -> FaceRecognitionDemo.main(null));
-            demoThread.start();
-
-            new Thread(() -> {
-                try {
-                    demoThread.join(); // waits for the thread to terminate
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                SwingUtilities.invokeLater(() -> MyGUIProgram.this.setVisible(true));
-            }).start();
+            SwingUtilities.invokeLater(()->{
+                NewFaceRecognitionDemo demoWindow = new NewFaceRecognitionDemo();
+                demoWindow.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                        SwingUtilities.invokeLater(() -> MyGUIProgram.this.setVisible(true));
+                    }
+                });
+            
+            });
 
         }
+        
     }
     public static void main(String[] args) {
         // load App Configs
@@ -78,4 +100,5 @@ public class MyGUIProgram extends JFrame {
         AppLogger.info("MyGUIProgram Started!");
         SwingUtilities.invokeLater(MyGUIProgram::new);
     }
+
 }

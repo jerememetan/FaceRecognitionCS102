@@ -6,7 +6,7 @@ public class FaceCropSettingsPanel extends JPanel {
     private final IConfigChangeListener listener;
     
     // Pass the listener into the constructor
-    public FaceCropSettingsPanel(IConfigChangeListener listener) {
+    public FaceCropSettingsPanel(IConfigChangeListener listener, Boolean showCaptureButton) {
         this.listener = listener;
 
         // Use BoxLayout to stack components vertically in a simple column
@@ -15,8 +15,10 @@ public class FaceCropSettingsPanel extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Padding
 
         // Add a Capture Button and a Label
-        addCaptureButton();
-        add(Box.createVerticalStrut(25));        
+        if (showCaptureButton){
+            addCaptureButton();
+            add(Box.createVerticalStrut(25));  
+        }
         add(new JLabel("<html><b><font size='+1'>Detection Tuning</font></b></html>"));
         add(Box.createVerticalStrut(15));
         // Add all controls
@@ -103,12 +105,12 @@ public class FaceCropSettingsPanel extends JPanel {
         saveButton.addActionListener(e -> {
             listener.onSaveSettingsRequested();
             JOptionPane.showMessageDialog(this, "Detection settings saved to AppConfig file.", 
-                                          "Configuration Saved", JOptionPane.INFORMATION_MESSAGE);
+            "Configuration Saved", JOptionPane.INFORMATION_MESSAGE);
         });
         
         add(saveButton);
     }
-    
+
         private void addCaptureButton() {
         JButton captureButton = new JButton("CAPTURE FACE (Save to DB)");
         captureButton.setAlignmentX(Component.CENTER_ALIGNMENT);
