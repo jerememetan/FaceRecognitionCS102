@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -85,18 +84,9 @@ public class MainDashboard extends JFrame {
         // ---------ActionListener for the buttons--------------
         recognitionBtn.addActionListener(e ->{
             MainDashboard.this.setVisible(false);
-            Thread demoThread = new Thread(() -> MyGUIProgram.main(null));
-            demoThread.start();
-            // Wait for demo to finish, then show GUI again
-            new Thread(()->{
-                try{
-                    demoThread.join(); // waits for the thread to terminate
-                } catch (InterruptedException ex){
-                    ex.printStackTrace();
-                }
-                // Show GUI again on the AWT event thread
-                SwingUtilities.invokeLater(() -> MainDashboard.this.setVisible(true));
-            }).start();
+            MyGUIProgram.main(null); // just run the program
+            // show the window again after MYGUIProgram close
+            MainDashboard.this.setVisible(true);
         });
     }
 
@@ -132,6 +122,7 @@ public class MainDashboard extends JFrame {
 
         timer.start();
     }
+    
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
