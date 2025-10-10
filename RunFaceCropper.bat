@@ -1,1 +1,1 @@
-java --enable-native-access=ALL-UNNAMED "-Djava.library.path=./lib" -cp ".;./lib/opencv-480.jar" FaceCropDemo
+java --enable-native-access=ALL-UNNAMED "-Djava.library.path=./lib" -cp ".;./lib/opencv-480.jar;compiled" facecrop.FaceCropDemo
