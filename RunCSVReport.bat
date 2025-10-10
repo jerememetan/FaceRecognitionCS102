@@ -1,1 +1,0 @@
-java -cp "compiled" reportingandexport.CSVGenerator

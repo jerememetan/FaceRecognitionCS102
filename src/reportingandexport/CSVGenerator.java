@@ -26,7 +26,7 @@ public class CSVGenerator implements ReportGenerator {
 
 
         // Export Path
-        String exportedFolderPath = "./data/export/";
+        String exportedFolderPath = "./data/export/CSV/";
 
         // Get the count of .*** files in export folder
         // Error Handling to access export files
@@ -35,7 +35,7 @@ public class CSVGenerator implements ReportGenerator {
             long csvCount = util.countFilesInFolder(exportedFolderPath, "csv");
             newCSVCount = (int)csvCount + 1;
         } catch (IOException e) {
-            System.err.println("CSVReport: Error accessing the exportedDataFiles folder: " + e.getMessage());
+            System.err.println("\nCSVReport: Error accessing the exportedDataFiles folder: " + e.getMessage());
         }
 
         // New Exported File Name with incremented count
