@@ -77,7 +77,7 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
             for (File file: list_files){  // for each file in list files
                 // if its a folder
                 if (file.isDirectory()){
-                   folder_names.add(image_folder_path+ "\\" +file.getName());
+                folder_names.add(image_folder_path+ "\\" +file.getName());
                 }
 
             }
