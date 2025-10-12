@@ -7,17 +7,18 @@ import app.util.ImageProcessor;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
-import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.videoio.VideoCapture;
 import org.opencv.dnn.Net;
 import org.opencv.dnn.Dnn;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FaceDetection {
-    private CascadeClassifier faceDetector;
     private Net dnnFaceDetector;
     private VideoCapture camera;
     private ImageProcessor imageProcessor;
@@ -26,36 +27,29 @@ public class FaceDetection {
     private static final double MIN_CONFIDENCE_SCORE = 0.5;
     private static final double MIN_FACE_SIZE = 50.0;
     private static final double MAX_FACE_SIZE = 400.0;
-    private static final int CAPTURE_INTERVAL_MS = 500;
+    private static final int CAPTURE_INTERVAL_MS = 900;
+    private static final int CAPTURE_ATTEMPT_MULTIPLIER = 12;
+    private static final boolean DEBUG_LOGS = Boolean.parseBoolean(
+            System.getProperty("app.faceDetectionDebug", "false"));
 
     public FaceDetection() {
-        System.out.println(" Initializing FaceDetection...");
+        logDebug("Initializing FaceDetection...");
         initializeDetectors();
         camera = new VideoCapture(0);
         imageProcessor = new ImageProcessor();
         embeddingGenerator = new FaceEmbeddingGenerator();
 
         if (camera.isOpened()) {
-            System.out.println(" ✓ Camera initialized successfully");
+            logDebug("Camera initialized successfully");
         } else {
-            System.err.println(" ✗ Camera failed to initialize");
+            System.err.println("Camera failed to initialize");
         }
     }
 
     private void initializeDetectors() {
         try {
             System.loadLibrary("opencv_java480");
-            System.out.println(" ✓ OpenCV library loaded");
-
-            String cascadeFile = "data/resources/haarcascade_frontalface_default.xml";
-            faceDetector = new CascadeClassifier(cascadeFile);
-
-            if (faceDetector.empty()) {
-                System.err.println(" ✗ Haar cascade file not found: " + cascadeFile);
-                throw new RuntimeException("Failed to load Haar cascade classifier");
-            } else {
-                System.out.println(" ✓ Haar cascade loaded successfully");
-            }
+            logDebug("OpenCV library loaded");
 
             String modelConfiguration = "data/resources/opencv_face_detector.pbtxt";
             String modelWeights = "data/resources/opencv_face_detector_uint8.pb";
@@ -63,48 +57,40 @@ public class FaceDetection {
             if (new File(modelConfiguration).exists() && new File(modelWeights).exists()) {
                 try {
                     dnnFaceDetector = Dnn.readNetFromTensorflow(modelWeights, modelConfiguration);
-                    System.out.println(" ✓ DNN face detector loaded successfully");
+                    logDebug("DNN face detector loaded successfully");
                 } catch (Exception e) {
-                    System.err.println(" ⚠ DNN loading failed: " + e.getMessage());
+                    System.err.println("DNN loading failed: " + e.getMessage());
                     dnnFaceDetector = null;
                 }
             } else {
-                System.out.println(" ⚠ DNN model files not found, using Haar cascade only");
+                System.err.println("DNN model files not found; face detection unavailable");
                 dnnFaceDetector = null;
             }
 
         } catch (Exception e) {
-            System.err.println(" ✗ Face detector initialization failed: " + e.getMessage());
+            System.err.println("Face detector initialization failed: " + e.getMessage());
             throw new RuntimeException("Failed to initialize face detectors: " + e.getMessage(), e);
         }
     }
 
     public FaceDetectionResult detectFaceForPreview(Mat frame) {
         if (frame.empty()) {
-            System.out.println(" Empty frame received");
             return new FaceDetectionResult(new ArrayList<>());
         }
 
-        System.out.println(" Processing frame: " + frame.width() + "x" + frame.height());
         return detectFaceWithConfidence(frame);
     }
 
     private FaceDetectionResult detectFaceWithConfidence(Mat frame) {
-        System.out.println(" detectFaceWithConfidence called");
-
         if (dnnFaceDetector != null) {
-            System.out.println(" Using DNN detection");
             return detectFaceWithDNN(frame);
-        } else {
-            System.out.println(" Using Haar cascade detection");
-            return detectFaceWithHaar(frame);
         }
+
+        return new FaceDetectionResult(new ArrayList<>());
     }
 
     private FaceDetectionResult detectFaceWithDNN(Mat frame) {
         try {
-            System.out.println(" DNN detection starting...");
-
             Size size = new Size(300, 300);
             Mat blob = Dnn.blobFromImage(frame, 1.0, size, new Scalar(104.0, 177.0, 123.0));
 
@@ -118,11 +104,6 @@ public class FaceDetection {
             int numDetections = (int) detectionsFloat.size(2);
             int dims = (int) detectionsFloat.size(3);
 
-            System.out.println(" DNN output shape: " +
-                    detectionsFloat.size(0) + "x" + detectionsFloat.size(1) + "x" +
-                    detectionsFloat.size(2) + "x" + detectionsFloat.size(3));
-            System.out.println(" Found " + numDetections + " potential faces");
-
             List<FaceCandidate> faces = new ArrayList<>();
 
             for (int i = 0; i < numDetections; i++) {
@@ -131,84 +112,47 @@ public class FaceDetection {
 
                 float confidence = detection[2];
                 if (confidence > MIN_CONFIDENCE_SCORE) {
-                    int x = (int) (detection[3] * frame.cols());
-                    int y = (int) (detection[4] * frame.rows());
-                    int width = (int) ((detection[5] * frame.cols()) - x);
-                    int height = (int) ((detection[6] * frame.rows()) - y);
+                    int x1 = (int) Math.round(detection[3] * frame.cols());
+                    int y1 = (int) Math.round(detection[4] * frame.rows());
+                    int x2 = (int) Math.round(detection[5] * frame.cols());
+                    int y2 = (int) Math.round(detection[6] * frame.rows());
+
+                    x1 = Math.max(0, Math.min(x1, frame.cols() - 1));
+                    y1 = Math.max(0, Math.min(y1, frame.rows() - 1));
+                    x2 = Math.max(0, Math.min(x2, frame.cols() - 1));
+                    y2 = Math.max(0, Math.min(y2, frame.rows() - 1));
+
+                    if (x2 <= x1 || y2 <= y1) {
+                        continue;
+                    }
+
+                    int width = x2 - x1;
+                    int height = y2 - y1;
 
                     if (width >= MIN_FACE_SIZE && width <= MAX_FACE_SIZE &&
                             height >= MIN_FACE_SIZE && height <= MAX_FACE_SIZE) {
 
-                        Rect face = new Rect(x, y, width, height);
+                        Rect face = new Rect(x1, y1, width, height);
+                        logDebug(String.format("DNN candidate accepted: conf=%.2f rect=[%d,%d,%d,%d]",
+                                confidence, face.x, face.y, face.width, face.height));
                         faces.add(new FaceCandidate(face, confidence));
-                        System.out.printf(" ✓ Face %.2f%% at [%d,%d,%d,%d]%n",
-                                confidence * 100, x, y, width, height);
                     } else {
-                        System.out.println(" ✗ Face rejected - size out of range");
+                        logDebug(String.format(
+                                "DNN candidate rejected (size out of bounds): conf=%.2f width=%d height=%d",
+                                confidence, width, height));
                     }
+                } else {
+                    logDebug(String.format("DNN candidate rejected due to confidence %.2f", confidence));
                 }
             }
 
-            System.out.println(" DNN detection completed, " + faces.size() + " valid faces");
             return new FaceDetectionResult(faces);
 
         } catch (Exception e) {
-            System.err.println(" DNN detection failed: " + e.getMessage());
-            e.printStackTrace();
-            return detectFaceWithHaar(frame);
-        }
-    }
-
-    private FaceDetectionResult detectFaceWithHaar(Mat frame) {
-        try {
-            System.out.println(" Haar detection starting...");
-
-            MatOfRect faceDetections = new MatOfRect();
-
-            faceDetector.detectMultiScale(frame, faceDetections,
-                    1.1, 3,
-                    0,
-                    new Size(MIN_FACE_SIZE, MIN_FACE_SIZE),
-                    new Size(MAX_FACE_SIZE, MAX_FACE_SIZE));
-
-            Rect[] faces = faceDetections.toArray();
-            System.out.println(" Haar found " + faces.length + " faces");
-
-            List<FaceCandidate> candidates = new ArrayList<>();
-
-            for (int i = 0; i < faces.length; i++) {
-                Rect face = faces[i];
-                double confidence = calculateHaarConfidence(face, frame);
-
-                System.out.println(String.format(" Haar face %d: bounds=(%d,%d,%d,%d), confidence=%.2f",
-                        i, face.x, face.y, face.width, face.height, confidence));
-
-                if (confidence >= 0.3) {
-                    candidates.add(new FaceCandidate(face, confidence));
-                    System.out.println(" ✓ Haar face accepted");
-                } else {
-                    System.out.println(" ✗ Haar face rejected - low confidence");
-                }
-            }
-
-            System.out.println(" Haar detection completed, " + candidates.size() + " valid faces");
-            return new FaceDetectionResult(candidates);
-
-        } catch (Exception e) {
-            System.err.println(" Haar detection failed: " + e.getMessage());
+            System.err.println("DNN detection failed: " + e.getMessage());
             e.printStackTrace();
             return new FaceDetectionResult(new ArrayList<>());
         }
-    }
-
-    private double calculateHaarConfidence(Rect face, Mat frame) {
-
-        double sizeScore = Math.min(1.0, face.width / 100.0);
-        double centerScore = 1.0 - Math.abs((face.x + face.width / 2.0) - frame.width() / 2.0) / (frame.width() / 2.0);
-        double aspectScore = 1.0 - Math.abs((face.height / (double) face.width) - 1.0) / 1.0;
-
-        double confidence = (sizeScore * 0.4 + centerScore * 0.3 + aspectScore * 0.3) * 0.8 + 0.2;
-        return Math.min(0.99, confidence);
     }
 
     public Mat drawFaceOverlay(Mat frame, FaceDetectionResult result) {
@@ -236,9 +180,6 @@ public class FaceDetection {
                 Imgproc.putText(debugFrame, confidenceText, textPoint,
                         Imgproc.FONT_HERSHEY_SIMPLEX, 0.8, color, 2);
 
-                System.out.println(String.format(" Drew face rectangle: (%.0f,%.0f) %.0fx%.0f, confidence=%.2f",
-                        (double) face.x, (double) face.y, (double) face.width, (double) face.height, confidence));
-
             }
         } else {
 
@@ -252,67 +193,79 @@ public class FaceDetection {
 
     public FaceCaptureResult captureAndStoreFaceImages(Student student, int numberOfImages,
             FaceCaptureCallback callback) {
-        System.out.println(" Starting face capture for: " + student.getName());
+        logDebug("Starting face capture for: " + student.getName());
 
         if (!camera.isOpened()) {
-            System.err.println(" Camera not opened");
+            System.err.println("Camera not opened");
             return new FaceCaptureResult(false, "Cannot open camera", new ArrayList<>());
         }
 
-        String folderPath = student.getFaceData().getFolderPath();
-        File folder = new File(folderPath);
-        if (!folder.exists()) {
-            folder.mkdirs();
-            System.out.println(" Created folder: " + folderPath);
+        Path folderPath = Paths.get(student.getFaceData().getFolderPath());
+        try {
+            Files.createDirectories(folderPath);
+        } catch (Exception ex) {
+            System.err.println("Failed to create face data directory: " + folderPath + " - " + ex.getMessage());
+            return new FaceCaptureResult(false, "Cannot create storage directory", new ArrayList<>());
         }
 
         Mat frame = new Mat();
         List<String> capturedImages = new ArrayList<>();
         int capturedCount = 0;
         int attemptCount = 0;
-        int maxAttempts = numberOfImages * 5;
+        int maxAttempts = Math.max(numberOfImages * CAPTURE_ATTEMPT_MULTIPLIER, numberOfImages + 30);
 
         callback.onCaptureStarted();
 
         while (capturedCount < numberOfImages && attemptCount < maxAttempts) {
             if (!camera.read(frame)) {
-                System.err.println(" Failed to read camera frame");
+                System.err.println("Failed to read camera frame");
                 callback.onError("Failed to capture frame from camera");
                 break;
             }
 
             attemptCount++;
-            System.out.println(String.format(" Capture attempt %d/%d", attemptCount, maxAttempts));
+            logDebug(String.format("Capture attempt %d/%d", attemptCount, maxAttempts));
 
             callback.onFrameUpdate(frame.clone());
             FaceDetectionResult detectionResult = detectFaceWithConfidence(frame);
 
             if (detectionResult.hasValidFace()) {
-                System.out.println(String.format(" Valid face detected with confidence %.2f",
-                        detectionResult.getConfidence()));
-
                 Rect bestFace = detectionResult.getBestFace();
                 Mat faceROI = extractFaceROI(frame, bestFace);
 
                 if (faceROI != null) {
-                    Mat processedFace = imageProcessor.preprocessFaceImage(faceROI);
+                    ImageProcessor.ImageQualityResult qualityResult = imageProcessor
+                            .validateImageQualityDetailed(faceROI);
+                    String rawFeedback = qualityResult.getFeedback();
+                    String feedbackMessage = rawFeedback != null ? rawFeedback.trim() : "Unknown quality issue";
 
-                    if (imageProcessor.validateImageQuality(processedFace)) {
-                        String imagePath = folderPath + student.getStudentId() + "_" +
+                    // Accept frames that pass all checks or miss only one metric narrowly (score >=
+                    // 70)
+                    boolean qualityAcceptable = qualityResult.isGoodQuality()
+                            || qualityResult.getQualityScore() >= 70.0;
+
+                    if (qualityAcceptable) {
+                        Mat processedFace = preprocessForRecognition(faceROI);
+                        faceROI.release();
+                        String fileName = student.getStudentId() + "_" +
                                 String.format("%03d", capturedCount + 1) + ".jpg";
+                        Path imageFile = folderPath.resolve(fileName);
 
-                        if (Imgcodecs.imwrite(imagePath, processedFace)) {
+                        if (Imgcodecs.imwrite(imageFile.toString(), processedFace)) {
                             byte[] embedding = embeddingGenerator.generateEmbedding(processedFace);
-                            FaceImage faceImage = new FaceImage(imagePath, embedding);
-                            faceImage.setQualityScore(detectionResult.getConfidence());
+                            FaceImage faceImage = new FaceImage(imageFile.toString(), embedding);
+                            double normalizedQuality = Math.min(1.0, Math.max(0.0,
+                                    qualityResult.getQualityScore() / 100.0));
+                            faceImage.setQualityScore(normalizedQuality);
 
                             student.getFaceData().addImage(faceImage);
-                            capturedImages.add(imagePath);
+                            capturedImages.add(imageFile.toString());
                             capturedCount++;
 
                             callback.onImageCaptured(capturedCount, numberOfImages, detectionResult.getConfidence());
-                            System.out.printf(" ✓ Captured image %d/%d (confidence: %.2f)\n",
-                                    capturedCount, numberOfImages, detectionResult.getConfidence());
+                            if (!qualityResult.isGoodQuality()) {
+                                callback.onWarning("Captured, but consider improving quality: " + feedbackMessage);
+                            }
 
                             try {
                                 Thread.sleep(CAPTURE_INTERVAL_MS);
@@ -321,20 +274,21 @@ public class FaceDetection {
                                 break;
                             }
                         } else {
-                            System.err.println(" Failed to save image: " + imagePath);
+                            System.err.println("Failed to save image: " + imageFile);
                             callback.onWarning("Failed to save image, please try again");
                         }
+                        processedFace.release();
                     } else {
-                        System.out.println(" Image quality validation failed");
-                        callback.onWarning("Image quality too low, please improve lighting");
+                        logDebug("Image quality validation failed: " + feedbackMessage);
+                        callback.onWarning("Image rejected: " + feedbackMessage);
+                        faceROI.release();
                     }
                 } else {
-                    System.out.println(" Face ROI extraction failed");
+                    logDebug("Face ROI extraction failed");
                     callback.onWarning("Face too close to edge, please center your face");
                 }
             } else {
                 String warning = getDetectionFeedback(detectionResult);
-                System.out.println(" " + warning);
                 callback.onWarning(warning);
             }
 
@@ -353,26 +307,70 @@ public class FaceDetection {
                 : String.format("Only captured %d images, need at least %d", capturedCount,
                         Math.min(10, numberOfImages));
 
-        System.out.println(" Face capture completed. " + message);
         return new FaceCaptureResult(success, message, capturedImages);
     }
 
     private Mat extractFaceROI(Mat frame, Rect face) {
         try {
-            int padding = (int) (Math.min(face.width, face.height) * 0.1);
-
-            int x = Math.max(0, face.x - padding);
-            int y = Math.max(0, face.y - padding);
-            int width = Math.min(frame.cols() - x, face.width + 2 * padding);
-            int height = Math.min(frame.rows() - y, face.height + 2 * padding);
-
-            Rect paddedRect = new Rect(x, y, width, height);
-            return new Mat(frame, paddedRect);
+            Rect captureRegion = buildSquareRegionWithPadding(frame.size(), face, 0.12);
+            return new Mat(frame, captureRegion).clone();
 
         } catch (Exception e) {
             System.err.println(" Failed to extract face ROI: " + e.getMessage());
             return null;
         }
+    }
+
+    private Mat preprocessForRecognition(Mat faceROI) {
+        if (faceROI == null || faceROI.empty()) {
+            return new Mat();
+        }
+        Mat aligned = imageProcessor.correctFaceOrientation(faceROI);
+        Mat denoised = imageProcessor.reduceNoise(aligned);
+        Mat processed = imageProcessor.preprocessFaceImage(denoised);
+
+        aligned.release();
+        denoised.release();
+
+        return processed;
+    }
+
+    private Rect buildSquareRegionWithPadding(Size frameSize, Rect face, double paddingRatio) {
+        int frameWidth = (int) frameSize.width;
+        int frameHeight = (int) frameSize.height;
+
+        if (frameWidth <= 0 || frameHeight <= 0) {
+            return face;
+        }
+
+        int centerX = face.x + face.width / 2;
+        int centerY = face.y + face.height / 2;
+
+        double safePadding = Math.max(0.0, paddingRatio);
+        int paddedSize = (int) Math.round(Math.max(face.width, face.height) * (1.0 + safePadding));
+        paddedSize = Math.max(paddedSize, (int) Math.round(MIN_FACE_SIZE));
+        paddedSize = Math.min(paddedSize, Math.min(frameWidth, frameHeight));
+
+        int x = centerX - paddedSize / 2;
+        int y = centerY - paddedSize / 2;
+
+        if (x < 0) {
+            x = 0;
+        }
+        if (y < 0) {
+            y = 0;
+        }
+        if (x + paddedSize > frameWidth) {
+            x = frameWidth - paddedSize;
+        }
+        if (y + paddedSize > frameHeight) {
+            y = frameHeight - paddedSize;
+        }
+
+        x = Math.max(0, x);
+        y = Math.max(0, y);
+
+        return new Rect(x, y, paddedSize, paddedSize);
     }
 
     private String getDetectionFeedback(FaceDetectionResult result) {
@@ -421,16 +419,16 @@ public class FaceDetection {
         Mat frame = new Mat();
         if (camera != null && camera.isOpened()) {
             boolean success = camera.read(frame);
-            System.out.println(" getCurrentFrame: success=" + success + ", empty=" + frame.empty());
+            logDebug("getCurrentFrame: success=" + success + ", empty=" + frame.empty());
         } else {
-            System.err.println(" Camera not available for getCurrentFrame");
+            System.err.println("Camera not available for getCurrentFrame");
         }
         return frame;
     }
 
     public boolean isCameraAvailable() {
         boolean available = camera != null && camera.isOpened();
-        System.out.println(" Camera available: " + available);
+        logDebug("Camera available: " + available);
         return available;
     }
 
@@ -453,7 +451,7 @@ public class FaceDetection {
     public void release() {
         if (camera != null && camera.isOpened()) {
             camera.release();
-            System.out.println(" Camera released");
+            logDebug("Camera released");
         }
     }
 
@@ -533,5 +531,11 @@ public class FaceDetection {
         void onError(String message);
 
         void onCaptureCompleted();
+    }
+
+    private void logDebug(String message) {
+        if (DEBUG_LOGS) {
+            System.out.println(message);
+        }
     }
 }
