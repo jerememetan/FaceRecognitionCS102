@@ -9,11 +9,11 @@ public class Student extends Entity {
     private String phone;
     private FaceData faceData;
 
-    public Student(String studentId, String name){
+    public Student(String studentId, String name) {
         super();
         this.studentId = studentId;
         this.name = name;
-        this.faceData = new FaceData(studentId);
+        this.faceData = new FaceData(studentId, name);
         this.email = null;
         this.phone = null;
     }
@@ -23,7 +23,7 @@ public class Student extends Entity {
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.faceData = new FaceData(studentId);
+        this.faceData = new FaceData(studentId, name);
     }
 
     public String getStudentId() {
@@ -50,7 +50,7 @@ public class Student extends Entity {
         this.phone = phone;
     }
 
-    public void setFaceData(FaceData faceData){
+    public void setFaceData(FaceData faceData) {
         this.faceData = faceData;
     }
 
@@ -67,8 +67,8 @@ public class Student extends Entity {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("Student{id='%s', name='%s', email='%s', phone='%s'}", studentId, name, email, phone);
     }
-    
+
 }
