@@ -1,19 +1,42 @@
 package app.model;
 
-import java.util.*;
-import java.io.*;
+import ConfigurationAndLogging.AppConfig;
+
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FaceData {
     private String studentId;
+    private String studentName;
     private List<FaceImage> images;
     private boolean isValid;
+    private Path studentFolder;
 
-    public FaceData(String studentId) {
+    public FaceData(String studentId, String studentName) {
         this.studentId = studentId;
+        this.studentName = studentName != null ? studentName : "";
         this.images = new ArrayList<>();
         this.isValid = false;
 
-        File folder = new File(getFolderPath());
+        initializeStudentFolder();
+        loadExistingImages();
+    }
+
+    private void initializeStudentFolder() {
+        String basePath = AppConfig.getInstance().getDatabaseStoragePath();
+        if (basePath == null || basePath.trim().isEmpty()) {
+            basePath = ".";
+        }
+
+        String folderName = buildFolderName(studentId, studentName);
+        this.studentFolder = Paths.get(basePath).resolve(folderName);
+    }
+
+    private void loadExistingImages() {
+        File folder = studentFolder.toFile();
         if (folder.exists() && folder.isDirectory()) {
             File[] files = folder.listFiles(
                     (dir, name) -> name.toLowerCase().endsWith(".jpg"));
@@ -24,6 +47,25 @@ public class FaceData {
                 }
             }
         }
+    }
+
+    private String buildFolderName(String id, String name) {
+        String safeId = id != null ? id.trim().replaceAll("[\\\\/:*?\"<>|]", "") : "";
+        String safeName = name != null ? name.trim().replaceAll("[\\\\/:*?\"<>|]", "") : "";
+
+        StringBuilder combined = new StringBuilder();
+        if (!safeId.isEmpty()) {
+            combined.append(safeId);
+        }
+        if (!safeName.isEmpty()) {
+            if (combined.length() > 0) {
+                combined.append("_");
+            }
+            combined.append(safeName);
+        }
+
+        String result = combined.toString().trim();
+        return result.isEmpty() ? "unknown" : result;
     }
 
     public boolean addImage(FaceImage faceImage) {
@@ -44,11 +86,15 @@ public class FaceData {
     }
 
     public String getFolderPath() {
-        return "data/facedata/" + this.studentId + "/";
+        return studentFolder.toAbsolutePath().toString();
     }
 
     public String getStudentId() {
         return studentId;
+    }
+
+    public String getStudentName() {
+        return studentName;
     }
 
     public List<FaceImage> getImages() {
@@ -82,7 +128,7 @@ public class FaceData {
 
     @Override
     public String toString() {
-        return String.format("FaceData{studentId='%s', imageCount=%d, isValid=%b}",
-                studentId, images.size(), isValid);
+        return String.format("FaceData{studentId='%s', studentName='%s', folder='%s', imageCount=%d, isValid=%b}",
+                studentId, studentName, studentFolder, images.size(), isValid);
     }
 }
