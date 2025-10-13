@@ -1,5 +1,6 @@
 package app.util;
 
+import ConfigurationAndLogging.*;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.photo.Photo;
@@ -31,9 +32,17 @@ public class ImageProcessor {
         }
 
         Mat filteredImage = new Mat();
-        Imgproc.bilateralFilter(processedImage, filteredImage, 9, 75, 75);
 
-        CLAHE clahe = Imgproc.createCLAHE(2.0, new Size(8, 8));
+        double kernelSize = (double)AppConfig.KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE; 
+        double sigmaX = (double)AppConfig.KEY_PREPROCESSING_GAUSSIAN_SIGMA_X;
+        // --- ADDED: FIXED GAUSSIAN BLUR (Noise Reduction) in replacement of bilateralFilter--- 
+        Imgproc.GaussianBlur(processedImage, filteredImage, new Size(kernelSize, kernelSize), sigmaX);      
+        
+        // Imgproc.bilateralFilter(processedImage, filteredImage, 9, 75, 75);
+
+        double clipLimit = AppConfig.KEY_PREPROCESSING_CLAHE_CLIP_LIMIT; 
+        double gridSize = AppConfig.KEY_PREPROCESSING_CLAHE_GRID_SIZE;
+        CLAHE clahe = Imgproc.createCLAHE(clipLimit, new Size(gridSize, gridSize));
         Mat contrastEnhanced = new Mat();
         clahe.apply(filteredImage, contrastEnhanced);
 
@@ -42,6 +51,11 @@ public class ImageProcessor {
 
         Mat normalized = new Mat();
         Core.normalize(resized, normalized, 0, 255, Core.NORM_MINMAX, CvType.CV_8U);
+        // Release intermediate Mats
+        processedImage.release();
+        filteredImage.release();
+        contrastEnhanced.release();
+        resized.release();       
 
         return normalized;
     }
