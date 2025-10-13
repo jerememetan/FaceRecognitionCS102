@@ -1,1 +1,1 @@
-java -cp "./compiled;./lib/*" app.Main
+java -Djava.library.path=./lib  --enable-native-access=ALL-UNNAMED  -cp "./compiled;./lib/*" app.Main 

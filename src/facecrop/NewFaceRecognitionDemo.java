@@ -201,6 +201,7 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                         double temp = getBestHistogramScore(faceHist, s);
                         personScores.add(temp);
                     }
+                    //System.out.println(personScores);
 
                     String displayText;
                     if (personScores.isEmpty()) {
