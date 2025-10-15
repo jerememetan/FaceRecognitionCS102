@@ -496,7 +496,32 @@ public class FaceCaptureDialog extends JDialog {
         FaceDetection.FaceCaptureResult result = faceDetection.captureAndStoreFaceImages(
                 student, targetImages, callback);
 
-    AppLogger.info("Capture result: " + result.isSuccess() + " - " + result.getMessage());
+        AppLogger.info("Capture result: " + result.isSuccess() + " - " + result.getMessage());
+
+        // Post-capture summary to the user
+        int accepted = result.getAcceptedCount();
+        int rejected = result.getRejectedCount();
+        java.util.List<String> reasons = result.getRejectedReasons();
+        if (rejected > 0) {
+            StringBuilder detail = new StringBuilder();
+            int showUpTo = Math.min(10, reasons.size());
+            for (int i = 0; i < showUpTo; i++) {
+                detail.append("• ").append(reasons.get(i)).append("\n");
+            }
+            if (reasons.size() > showUpTo) {
+                detail.append("(and ").append(reasons.size() - showUpTo).append(" more...)\n");
+            }
+            String msg = String.format(
+                    "Captured %d images. Accepted %d, Rejected %d.\n\nRejected details:\n%s",
+                    accepted + rejected, accepted, rejected, detail.toString());
+            JOptionPane.showMessageDialog(this, htmlize(msg),
+                    "Capture Summary", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String msg = String.format("Captured %d images. All %d accepted.", accepted, accepted);
+            JOptionPane.showMessageDialog(this, htmlize(msg),
+                    "Capture Summary", JOptionPane.INFORMATION_MESSAGE);
+        }
+
         return result.isSuccess();
     }
 
@@ -522,7 +547,7 @@ public class FaceCaptureDialog extends JDialog {
         startButton.setEnabled(true);
         stopButton.setEnabled(false);
 
-        if (success) {
+    if (success) {
             statusLabel.setText("Capture successful!");
             statusLabel.setForeground(SUCCESS_COLOR);
             instructionLabel.setText("<html><center><b>SUCCESS!</b><br/>" +
@@ -532,26 +557,14 @@ public class FaceCaptureDialog extends JDialog {
             progressBar.setString("100% Complete");
             AppLogger.info("Debug: All images captured successfully");
 
-        JOptionPane.showMessageDialog(this,
-            htmlize(String.format("Successfully captured %d face images for %s!\n\n" +
-                "Images are stored and ready for face recognition.",
-                capturedCount.get(), student.getName())),
-            "Capture Successful",
-            JOptionPane.INFORMATION_MESSAGE);
+        // Success message is shown in the summary dialog above
         } else {
             statusLabel.setText("Capture failed");
             statusLabel.setForeground(ERROR_COLOR);
         instructionLabel.setText("<html><center><font color='red'>Capture failed.</font><br/>" +
             "Please try again with better lighting.</center></html>");
     AppLogger.warn("Debug: Capture failed - insufficient valid images");
-
-        JOptionPane.showMessageDialog(this,
-            htmlize(String.format("Face capture failed.\n\n" +
-                "Only captured %d valid images (need at least 10).\n" +
-                "Please ensure good lighting and try again.",
-                capturedCount.get())),
-            "Capture Failed",
-            JOptionPane.ERROR_MESSAGE);
+        // Failure details are shown in the summary dialog above
         }
     }
 

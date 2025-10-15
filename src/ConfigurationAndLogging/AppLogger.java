@@ -18,22 +18,26 @@ public class AppLogger {
             logger.setUseParentHandlers(false); 
             logger.setLevel(Level.INFO); // Set the default minimum logging level
 
-            // 2. Configure File Handler to write to attendance.log
-            // The 'true' argument means append mode (add to the existing file)
+       
+            java.io.File logsDir = new java.io.File(".\\logs\\");
+            if (!logsDir.exists()) {
+                logsDir.mkdirs();
+            }
+
+           
+            String tsName = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss")
+                    .format(LocalDateTime.now()) + ".log";
+
+            FileHandler fileHandler = new FileHandler(".\\logs\\" + tsName, false);
             
-            FileHandler fileHandler = new FileHandler(".\\logs\\" + AppConfig.getInstance().getLogFileName(), true);
-            
-            // 3. Set Custom Formatter for clean log file output
             fileHandler.setFormatter(new LogFormatter());
             logger.addHandler(fileHandler);
             logger.info("Application Logger Initialized.");
 
-            // Redirect System.out and System.err to the logger so all prints go into attendance.log
             System.setOut(new PrintStream(new LoggingOutputStream(logger, Level.INFO), true));
             System.setErr(new PrintStream(new LoggingOutputStream(logger, Level.SEVERE), true));
 
         } catch (IOException e) {
-            // If the file handler fails, print the error to console and disable logging
             logger.log(Level.SEVERE, "Could not set up file logger!", e);
         }
     }
