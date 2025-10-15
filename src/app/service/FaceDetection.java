@@ -926,7 +926,7 @@ public class FaceDetection {
 
     private void logDebug(String message) {
         if (DEBUG_LOGS) {
-            System.out.println(message);
+            ConfigurationAndLogging.AppLogger.info(message);
         }
     }
 }

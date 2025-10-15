@@ -7,7 +7,10 @@ import org.opencv.videoio.VideoCapture;
 import org.opencv.highgui.HighGui;
 import java.util.concurrent.atomic.AtomicReference;
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.SwingUtilities;
+import ConfigurationAndLogging.AppConfig;
 
 public class FaceCropDemo {
     static {
@@ -18,22 +21,25 @@ public class FaceCropDemo {
     final static AtomicReference<String> finalSaveFolder = new AtomicReference<>(null);
 
     public static void main(String[] args) {
-        String saveFolder = ".\\data\\facedata\\"; // thiking abt gettin rid of this
-        String cascadePath =".\\data\\resources\\haarcascade_frontalface_alt.xml";
-        new File(saveFolder).mkdirs();
-        // Create save folder if it doesn't exist
+        String baseFolder = AppConfig.getInstance().getDatabaseStoragePath();
+        String cascadePath = AppConfig.getInstance().getCascadePath();
+        new File(baseFolder).mkdirs();
+        
 
 
     SwingUtilities.invokeLater(() -> {
         Name_ID_GUI gui = new Name_ID_GUI();
             gui.setDataSubmittedListener(new Name_ID_GUI.DataSubmittedListener() {
                 public void onDataSubmitted(int id, String name) {
-                    // The data is now extracted and available here
+                    
                     System.out.println("GUI has been closed.");
-                    finalSaveFolder.set(saveFolder + id + "_" + name);
+                    String safeName = name == null ? "" : name.trim().replaceAll("[\\\\/:*?\"<>|]", "").replaceAll("\\s+","_");
+                    String folderName = id + (safeName.isEmpty() ? "" : ("_" + safeName));
+                    Path studentPath = Paths.get(baseFolder).resolve(folderName).toAbsolutePath().normalize();
+                    finalSaveFolder.set(studentPath.toString());
                     new File(finalSaveFolder.get()).mkdirs();
 
-                    // Notify the main thread that the data is ready
+                
                     synchronized(syncObject) {
                         syncObject.notify();
                     };
@@ -48,14 +54,14 @@ public class FaceCropDemo {
         }
     }
     String finalPath = finalSaveFolder.get(); 
-        // Load face detector
+    
         CascadeClassifier faceDetector = new CascadeClassifier(cascadePath);
         if (faceDetector.empty()) {
             System.out.println("Error loading cascade file: " + cascadePath);
             return;
         }
 
-        // Open webcam
+       
         VideoCapture capture = new VideoCapture(0);
         if (!capture.isOpened()) {
             System.out.println("Error opening webcam!");
