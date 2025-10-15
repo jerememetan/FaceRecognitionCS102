@@ -3137,3 +3137,113 @@
 [2025-10-13 17:35:03] INFO: detection.min_size_px has been changed to 91
 [2025-10-13 17:35:49] INFO: Exiting Face Recognition Demo...
 [2025-10-13 17:35:49] INFO: Exiting Face Recognition Demo...
+[2025-10-15 08:12:59] INFO: Application Logger Initialized.
+[2025-10-15 08:12:59] SEVERE: Sorry, unable to find app.properties
+[2025-10-15 08:15:01] INFO: Application Logger Initialized.
+[2025-10-15 08:15:01] INFO: Configuration and core components loaded.
+[2025-10-15 08:15:01] INFO: Configuration file loaded
+[2025-10-15 08:15:01] INFO: MyGUIProgram Started!
+[2025-10-15 08:15:26] INFO: detection.scale_factor has been changed to 1.03
+[2025-10-15 08:15:27] INFO: detection.scale_factor has been changed to 1.02
+[2025-10-15 08:15:27] INFO: detection.scale_factor has been changed to 1.01
+[2025-10-15 08:15:27] INFO: detection.scale_factor has been changed to 1.01
+[2025-10-15 08:15:28] INFO: detection.min.neighbors has been changed to 8
+[2025-10-15 08:15:28] INFO: detection.min.neighbors has been changed to 7
+[2025-10-15 08:15:28] INFO: detection.min.neighbors has been changed to 6
+[2025-10-15 08:15:29] INFO: detection.min.neighbors has been changed to 5
+[2025-10-15 08:15:29] INFO: detection.min.neighbors has been changed to 4
+[2025-10-15 08:15:29] INFO: detection.min.neighbors has been changed to 5
+[2025-10-15 08:15:29] INFO: detection.min.neighbors has been changed to 6
+[2025-10-15 08:15:29] INFO: detection.min.neighbors has been changed to 7
+[2025-10-15 08:15:29] INFO: detection.min.neighbors has been changed to 8
+[2025-10-15 08:15:29] INFO: detection.min.neighbors has been changed to 9
+[2025-10-15 08:15:29] INFO: detection.min.neighbors has been changed to 10
+[2025-10-15 08:15:30] INFO: detection.min.neighbors has been changed to 9
+[2025-10-15 08:15:30] INFO: detection.min.neighbors has been changed to 8
+[2025-10-15 08:15:30] INFO: detection.min.neighbors has been changed to 7
+[2025-10-15 08:15:30] INFO: detection.min.neighbors has been changed to 6
+[2025-10-15 08:15:30] INFO: detection.min.neighbors has been changed to 5
+[2025-10-15 08:15:30] INFO: detection.min.neighbors has been changed to 4
+[2025-10-15 08:15:30] INFO: detection.min.neighbors has been changed to 3
+[2025-10-15 08:15:31] INFO: detection.min.neighbors has been changed to 3
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 171
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 170
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 169
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 167
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 165
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 163
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 161
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 158
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 154
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 151
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 145
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 139
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 133
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 125
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 116
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 107
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 97
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 88
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 80
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 73
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 68
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 63
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 61
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 59
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 57
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 55
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 53
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 52
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 50
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 47
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 44
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 42
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 40
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 38
+[2025-10-15 08:15:31] INFO: detection.min_size_px has been changed to 37
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 32
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 31
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 33
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 34
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 32
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 31
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 30
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 28
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 26
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 25
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 24
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 23
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 22
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 21
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 20
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 22
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 67
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 133
+[2025-10-15 08:15:32] INFO: detection.min_size_px has been changed to 200
+[2025-10-15 08:15:33] INFO: detection.min_size_px has been changed to 200
+[2025-10-15 08:15:34] INFO: Exiting Face Recognition Demo...
+[2025-10-15 08:15:34] INFO: Exiting Face Recognition Demo...
+[2025-10-15 08:27:58] INFO: Application Logger Initialized.
+[2025-10-15 08:27:58] SEVERE: Sorry, unable to find app.properties
+[2025-10-15 08:34:01] INFO: Application Logger Initialized.
+[2025-10-15 08:34:01] SEVERE: Sorry, unable to find app.properties
+[2025-10-15 08:34:54] INFO: Application Logger Initialized.
+[2025-10-15 08:34:54] SEVERE: Sorry, unable to find app.properties
+[2025-10-15 09:29:45] INFO: Application Logger Initialized.
+[2025-10-15 09:29:45] SEVERE: Sorry, unable to find app.properties
+[2025-10-15 09:50:38] INFO: Application Logger Initialized.
+[2025-10-15 09:50:38] SEVERE: Sorry, unable to find app.properties
+[2025-10-15 12:27:30] INFO: Application Logger Initialized.
+[2025-10-15 12:27:30] SEVERE: Sorry, unable to find app.properties
+[2025-10-15 12:38:52] INFO: Application Logger Initialized.
+[2025-10-15 12:38:52] SEVERE: Sorry, unable to find app.properties
+[2025-10-15 12:40:53] INFO: Application Logger Initialized.
+[2025-10-15 12:40:53] SEVERE: Sorry, unable to find app.properties
+[2025-10-15 12:50:41] INFO: Application Logger Initialized.
+[2025-10-15 12:50:41] SEVERE: Sorry, unable to find app.properties
+[2025-10-15 12:53:19] INFO: Application Logger Initialized.
+[2025-10-15 12:53:19] SEVERE: Sorry, unable to find app.properties
+[2025-10-15 13:00:43] INFO: Application Logger Initialized.
+[2025-10-15 13:00:43] SEVERE: Sorry, unable to find app.properties
+[2025-10-15 13:10:14] INFO: Application Logger Initialized.
+[2025-10-15 13:10:14] SEVERE: Sorry, unable to find app.properties

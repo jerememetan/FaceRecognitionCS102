@@ -27,7 +27,6 @@ public class FaceCaptureDialog extends JDialog {
     private JProgressBar progressBar;
     private JLabel progressLabel;
     private JLabel qualityLabel;
-    private JLabel debugLabel; 
     private JButton startButton;
     private JButton stopButton;
     private JButton closeButton;
@@ -102,19 +101,15 @@ public class FaceCaptureDialog extends JDialog {
                 "<html><center><font color='white'>Initializing camera...<br/>Please wait...</font></center></html>");
         videoLabel.setBorder(BorderFactory.createLoweredBevelBorder());
 
-        JPanel statusPanel = new JPanel(new GridLayout(5, 1, 5, 5));
+    JPanel statusPanel = new JPanel(new GridLayout(4, 1, 5, 5));
         statusPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         statusLabel = new JLabel("Initializing...", JLabel.CENTER);
         statusLabel.setFont(statusLabel.getFont().deriveFont(Font.BOLD, 14f));
         statusLabel.setForeground(WARNING_COLOR);
 
-        qualityLabel = new JLabel("Face quality: Initializing...", JLabel.CENTER);
+    qualityLabel = new JLabel("Face quality: Initializing...", JLabel.CENTER);
         qualityLabel.setFont(qualityLabel.getFont().deriveFont(12f));
-
-        debugLabel = new JLabel("Debug: Starting up...", JLabel.CENTER);
-        debugLabel.setFont(debugLabel.getFont().deriveFont(Font.ITALIC, 11f));
-        debugLabel.setForeground(Color.GRAY);
 
         progressLabel = new JLabel("Images captured: 0", JLabel.CENTER);
         progressLabel.setFont(progressLabel.getFont().deriveFont(12f));
@@ -123,11 +118,10 @@ public class FaceCaptureDialog extends JDialog {
         progressBar.setStringPainted(true);
         progressBar.setString("0%");
 
-        statusPanel.add(statusLabel);
-        statusPanel.add(qualityLabel);
-        statusPanel.add(debugLabel);
-        statusPanel.add(progressLabel);
-        statusPanel.add(progressBar);
+    statusPanel.add(statusLabel);
+    statusPanel.add(qualityLabel);
+    statusPanel.add(progressLabel);
+    statusPanel.add(progressBar);
 
         panel.add(videoLabel, BorderLayout.CENTER);
         panel.add(statusPanel, BorderLayout.SOUTH);
@@ -222,18 +216,15 @@ public class FaceCaptureDialog extends JDialog {
                 if (!isCapturing.get()) {
                     updateQualityFeedback(result);
                 }
-
-         
                 updateDebugInfo(result);
 
             } else {
-                System.out.println(" Empty frame received");
-                debugLabel.setText("Debug: Empty frame received");
+                System.out.println("Debug: Empty frame received");
             }
         } catch (Exception e) {
             System.err.println(" Preview update failed: " + e.getMessage());
             e.printStackTrace();
-            debugLabel.setText("Debug: Preview error - " + e.getMessage());
+            System.out.println("Debug: Preview error - " + e.getMessage());
         }
     }
 
@@ -265,13 +256,12 @@ public class FaceCaptureDialog extends JDialog {
             int faceCount = result.getFaces().size();
             if (faceCount > 0) {
                 double bestConf = result.getBestConfidence();
-                debugLabel.setText(
-                        String.format("Debug: %d face(s) detected, best confidence: %.2f", faceCount, bestConf));
+                System.out.println(String.format("Debug: %d face(s) detected, best confidence: %.2f", faceCount, bestConf));
             } else {
-                debugLabel.setText("Debug: No faces detected this frame");
+                System.out.println("Debug: No faces detected this frame");
             }
         } else {
-            debugLabel.setText("Debug: Detection result is null");
+            System.out.println("Debug: Detection result is null");
         }
     }
 
@@ -359,7 +349,7 @@ public class FaceCaptureDialog extends JDialog {
             public void onCaptureStarted() {
                 SwingUtilities.invokeLater(() -> {
                     statusLabel.setText("Starting capture...");
-                    debugLabel.setText("Debug: Capture process started");
+                    System.out.println("Debug: Capture process started");
                 });
             }
 
@@ -378,7 +368,7 @@ public class FaceCaptureDialog extends JDialog {
                     progressLabel.setText(String.format("Images captured: %d/%d (Quality: %.1f%%)",
                             current, total, confidence * 100));
                     statusLabel.setText(String.format("Captured %d/%d", current, total));
-                    debugLabel.setText(String.format("Debug: Image saved with confidence %.2f", confidence));
+                    System.out.println(String.format("Debug: Image saved with confidence %.2f", confidence));
                 });
             }
 
@@ -387,7 +377,7 @@ public class FaceCaptureDialog extends JDialog {
                 SwingUtilities.invokeLater(() -> {
                     statusLabel.setText(message);
                     statusLabel.setForeground(WARNING_COLOR);
-                    debugLabel.setText("Debug: Warning - " + message);
+                    System.out.println("Debug: Warning - " + message);
                 });
             }
 
@@ -396,7 +386,7 @@ public class FaceCaptureDialog extends JDialog {
                 SwingUtilities.invokeLater(() -> {
                     statusLabel.setText("Error: " + message);
                     statusLabel.setForeground(ERROR_COLOR);
-                    debugLabel.setText("Debug: Error - " + message);
+                    System.out.println("Debug: Error - " + message);
                 });
             }
 
@@ -405,7 +395,7 @@ public class FaceCaptureDialog extends JDialog {
                 SwingUtilities.invokeLater(() -> {
                     statusLabel.setText("Capture process completed");
                     statusLabel.setForeground(SUCCESS_COLOR);
-                    debugLabel.setText("Debug: Capture process finished");
+                    System.out.println("Debug: Capture process finished");
                 });
             }
         };
@@ -426,7 +416,7 @@ public class FaceCaptureDialog extends JDialog {
 
         statusLabel.setText("Capture stopped");
         statusLabel.setForeground(WARNING_COLOR);
-        debugLabel.setText("Debug: Capture manually stopped");
+    System.out.println("Debug: Capture manually stopped");
 
         instructionLabel.setText("<html><center>Capture stopped by user.<br/>" +
                 "You can start again when ready.</center></html>");
@@ -447,8 +437,7 @@ public class FaceCaptureDialog extends JDialog {
 
             progressBar.setValue(100);
             progressBar.setString("100% Complete");
-
-            debugLabel.setText("Debug: All images captured successfully");
+            System.out.println("Debug: All images captured successfully");
 
             JOptionPane.showMessageDialog(this,
                     String.format("Successfully captured %d face images for %s!\n\n" +
@@ -459,10 +448,9 @@ public class FaceCaptureDialog extends JDialog {
         } else {
             statusLabel.setText("Capture failed");
             statusLabel.setForeground(ERROR_COLOR);
-            instructionLabel.setText("<html><center><font color='red'>Capture failed.</font><br/>" +
-                    "Please try again with better lighting.</center></html>");
-
-            debugLabel.setText("Debug: Capture failed - insufficient valid images");
+        instructionLabel.setText("<html><center><font color='red'>Capture failed.</font><br/>" +
+            "Please try again with better lighting.</center></html>");
+        System.out.println("Debug: Capture failed - insufficient valid images");
 
             JOptionPane.showMessageDialog(this,
                     String.format("Face capture failed.\n\n" +
@@ -477,7 +465,7 @@ public class FaceCaptureDialog extends JDialog {
     private void showError(String message) {
         statusLabel.setText("Error: " + message);
         statusLabel.setForeground(ERROR_COLOR);
-        debugLabel.setText("Debug: Error - " + message);
+        System.out.println("Debug: Error - " + message);
         JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
