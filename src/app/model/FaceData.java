@@ -1,6 +1,7 @@
 package app.model;
 
 import ConfigurationAndLogging.AppConfig;
+import ConfigurationAndLogging.AppLogger;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -31,11 +32,16 @@ public class FaceData {
             basePath = ".";
         }
 
+
         String folderName = buildFolderName(studentId, studentName);
-        this.studentFolder = Paths.get(basePath).resolve(folderName);
+        Path preferred = Paths.get(basePath).resolve(folderName).toAbsolutePath().normalize();
+        this.studentFolder = preferred;
     }
 
     private void loadExistingImages() {
+        if (studentFolder == null) {
+            return; 
+        }
         File folder = studentFolder.toFile();
         if (folder.exists() && folder.isDirectory()) {
             File[] files = folder.listFiles(
@@ -52,6 +58,10 @@ public class FaceData {
     private String buildFolderName(String id, String name) {
         String safeId = id != null ? id.trim().replaceAll("[\\\\/:*?\"<>|]", "") : "";
         String safeName = name != null ? name.trim().replaceAll("[\\\\/:*?\"<>|]", "") : "";
+
+        if (!safeName.isEmpty()) {
+            safeName = safeName.replaceAll("\\s+", "_");
+        }
 
         StringBuilder combined = new StringBuilder();
         if (!safeId.isEmpty()) {
@@ -124,6 +134,15 @@ public class FaceData {
     }
 
     public String getFolderPath() {
+        // Ensure we always return a usable path; if somehow uninitialized, fall back to base path with built folder name
+        if (studentFolder == null) {
+            String basePath = AppConfig.getInstance().getDatabaseStoragePath();
+            if (basePath == null || basePath.trim().isEmpty()) {
+                basePath = ".";
+            }
+            String folderName = buildFolderName(studentId, studentName);
+            studentFolder = Paths.get(basePath).resolve(folderName).toAbsolutePath().normalize();
+        }
         return studentFolder.toAbsolutePath().toString();
     }
 
