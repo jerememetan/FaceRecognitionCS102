@@ -375,7 +375,7 @@ public class FaceCaptureDialog extends JDialog {
             @Override
             public void onWarning(String message) {
                 SwingUtilities.invokeLater(() -> {
-                    statusLabel.setText(message);
+                    statusLabel.setText(htmlize(message));
                     statusLabel.setForeground(WARNING_COLOR);
                     System.out.println("Debug: Warning - " + message);
                 });
@@ -384,7 +384,7 @@ public class FaceCaptureDialog extends JDialog {
             @Override
             public void onError(String message) {
                 SwingUtilities.invokeLater(() -> {
-                    statusLabel.setText("Error: " + message);
+                    statusLabel.setText(htmlize("Error: " + message));
                     statusLabel.setForeground(ERROR_COLOR);
                     System.out.println("Debug: Error - " + message);
                 });
@@ -439,12 +439,12 @@ public class FaceCaptureDialog extends JDialog {
             progressBar.setString("100% Complete");
             System.out.println("Debug: All images captured successfully");
 
-            JOptionPane.showMessageDialog(this,
-                    String.format("Successfully captured %d face images for %s!\n\n" +
-                            "Images are stored and ready for face recognition.",
-                            capturedCount.get(), student.getName()),
-                    "Capture Successful",
-                    JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this,
+            htmlize(String.format("Successfully captured %d face images for %s!\n\n" +
+                "Images are stored and ready for face recognition.",
+                capturedCount.get(), student.getName())),
+            "Capture Successful",
+            JOptionPane.INFORMATION_MESSAGE);
         } else {
             statusLabel.setText("Capture failed");
             statusLabel.setForeground(ERROR_COLOR);
@@ -452,21 +452,37 @@ public class FaceCaptureDialog extends JDialog {
             "Please try again with better lighting.</center></html>");
         System.out.println("Debug: Capture failed - insufficient valid images");
 
-            JOptionPane.showMessageDialog(this,
-                    String.format("Face capture failed.\n\n" +
-                            "Only captured %d valid images (need at least 10).\n" +
-                            "Please ensure good lighting and try again.",
-                            capturedCount.get()),
-                    "Capture Failed",
-                    JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this,
+            htmlize(String.format("Face capture failed.\n\n" +
+                "Only captured %d valid images (need at least 10).\n" +
+                "Please ensure good lighting and try again.",
+                capturedCount.get())),
+            "Capture Failed",
+            JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void showError(String message) {
-        statusLabel.setText("Error: " + message);
+    statusLabel.setText(htmlize("Error: " + message));
         statusLabel.setForeground(ERROR_COLOR);
         System.out.println("Debug: Error - " + message);
-        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(this, htmlize(message), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    private String htmlize(String text) {
+    if (text == null) return "";
+    String trimmed = text.trim();
+    if (trimmed.toLowerCase().startsWith("<html>")) {
+        return text; // already HTML
+    }
+        String escaped = trimmed
+        .replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+                // Replace both actual newlines and literal backslash-n sequences
+                .replace("\n", "<br/>")
+                .replace("\\n", "<br/>");
+    return "<html>" + escaped + "</html>";
     }
 
     @Override
