@@ -19,15 +19,18 @@ public class FaceEmbeddingGenerator {
 
     private void initializeEmbeddingNet() {
         try {
+            String modelPath = ConfigurationAndLogging.AppConfig.getInstance().getEmbeddingModelPath();
+            java.io.File modelFile = new java.io.File(modelPath).getAbsolutePath() != null
+                    ? new java.io.File(modelPath)
+                    : new java.io.File("data\\resources\\openface.nn4.small2.v1.t7");
 
-            String modelPath = "data\\resources\\openface.nn4.small2.v1.t7";
-
-            if (new java.io.File(modelPath).exists()) {
+            if (modelFile.exists()) {
                 embeddingNet = Dnn.readNetFromTorch(modelPath);
                 isInitialized = true;
-                System.out.println("Face embedding model loaded successfully");
+                System.out.println("Face embedding model loaded successfully from: " + modelFile.getAbsolutePath());
             } else {
-                System.out.println("Face embedding model not found, using feature-based embeddings");
+                System.out.println("Face embedding model not found at: " + modelFile.getAbsolutePath() +
+                        ". Falling back to feature-based embeddings");
                 isInitialized = false;
             }
         } catch (Exception e) {

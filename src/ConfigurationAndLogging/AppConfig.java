@@ -17,6 +17,7 @@ public class AppConfig {
     public final static String KEY_DETECTION_MIN_NEIGHBORS = "detection.min.neighbors";
     public final static String KEY_DETECTION_MIN_SIZE_PX = "detection.min_size_px";
     public final static String KEY_RECOGNITION_THRESHOLD = "recognition.threshold";
+    public final static String KEY_EMBEDDING_MODEL_PATH = "embedding.model_path";
     public final static int KEY_RECOGNITION_CROP_SIZE_PX = 200;
     public final static int KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE = 5;
     public final static int KEY_PREPROCESSING_GAUSSIAN_SIGMA_X = 0;
@@ -245,6 +246,21 @@ public class AppConfig {
             this.properties.setProperty(KEY_RECOGNITION_THRESHOLD, newIndexStr);
 
             AppLogger.info(KEY_RECOGNITION_THRESHOLD + " has been changed to " + newIndex);
+        }
+    }
+
+    // EMBEDDING MODEL PATH (OpenFace .t7)
+    public String getEmbeddingModelPath() {
+        // default to repository resource path
+        return properties.getProperty(KEY_EMBEDDING_MODEL_PATH, "data/resources/openface.nn4.small2.v1.t7");
+    }
+
+    public void setEmbeddingModelPath(String path) {
+        if (path == null || path.isEmpty()) {
+            AppLogger.error("Failed to change " + KEY_EMBEDDING_MODEL_PATH + ". Path is null/empty");
+        } else {
+            this.properties.setProperty(KEY_EMBEDDING_MODEL_PATH, path);
+            AppLogger.info(KEY_EMBEDDING_MODEL_PATH + " has been changed to " + path);
         }
     }
 
