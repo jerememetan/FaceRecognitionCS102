@@ -42,26 +42,37 @@ public class AppConfig {
         return instance;
     }
 
-    // --- Loading Logic ---
     private void load() {
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("app.properties")) {
-            if (input == null) {
-                // Log an error if the file isn't found
-                AppLogger.error("Sorry, unable to find app.properties");
+        InputStream input = null;
+        try {
+            input = getClass().getClassLoader().getResourceAsStream("app.properties");
+            if (input != null) {
+                properties.load(input);
+                AppLogger.info("Configuration loaded from classpath: app.properties");
                 return;
             }
-            // Load the configuration data
-            properties.load(input);
-            AppLogger.info("Configuration loaded from app.properties.");
+            java.nio.file.Path p = java.nio.file.Paths.get("app.properties").toAbsolutePath().normalize();
+            if (java.nio.file.Files.exists(p)) {
+                try (InputStream fsIn = java.nio.file.Files.newInputStream(p)) {
+                    properties.load(fsIn);
+                    AppLogger.info("Configuration loaded from file: " + p);
+                    return;
+                }
+            }
 
+            AppLogger.error("Sorry, unable to find app.properties (classpath or " +
+                    java.nio.file.Paths.get("app.properties").toAbsolutePath().normalize() + ")");
         } catch (IOException ex) {
             AppLogger.error("Error reading app.properties file.", ex);
+        } finally {
+            if (input != null) {
+                try { input.close(); } catch (IOException ignored) {}
+            }
         }
     }
 
     public void save() {
         try (FileOutputStream output = new FileOutputStream("app.properties")) {
-            // Write the current state of the properties object back to the file
             properties.store(output, "Configuration saved by user at runtime.");
             AppLogger.info("Configuration saved to file.");
         } catch (IOException ex) {
