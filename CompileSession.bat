@@ -1,0 +1,1 @@
+javac -d compiled -cp "./src;./lib/*" src/app/gui/SessionViewer.java src/app/gui/SessionForm.java src/app/entity/Session.java src/app/entity/Student.java src/app/test/SessionManager.java src/app/gui/SessionRosterManagement.java
