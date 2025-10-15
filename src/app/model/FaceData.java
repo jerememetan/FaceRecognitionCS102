@@ -69,11 +69,49 @@ public class FaceData {
     }
 
     public boolean addImage(FaceImage faceImage) {
-        if (images.size() >= 30) {
+        return addOrReplaceImage(faceImage);
+    }
+
+    public boolean addOrReplaceImage(FaceImage faceImage) {
+        if (faceImage == null || faceImage.getImagePath() == null) {
             return false;
         }
+
+        int existingIndex = indexOfImagePath(faceImage.getImagePath());
+        if (existingIndex >= 0) {
+            images.set(existingIndex, faceImage);
+            validateImages();
+            return true; 
+        }
+
+        if (images.size() >= 30) {
+            return false; 
+        }
         images.add(faceImage);
+        validateImages();
         return true;
+    }
+
+    private int indexOfImagePath(String path) {
+        if (path == null) return -1;
+        String target = normalizePath(path);
+        for (int i = 0; i < images.size(); i++) {
+            FaceImage img = images.get(i);
+            if (img != null && img.getImagePath() != null) {
+                if (normalizePath(img.getImagePath()).equals(target)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    private String normalizePath(String p) {
+        try {
+            return new File(p).getAbsolutePath().replace('\\', '/').toLowerCase();
+        } catch (Exception e) {
+            return p.replace('\\', '/').toLowerCase();
+        }
     }
 
     public boolean validateImages() {
