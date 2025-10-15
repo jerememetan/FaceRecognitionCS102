@@ -1,6 +1,7 @@
 package ConfigurationAndLogging;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.*;
@@ -26,6 +27,10 @@ public class AppLogger {
             fileHandler.setFormatter(new LogFormatter());
             logger.addHandler(fileHandler);
             logger.info("Application Logger Initialized.");
+
+            // Redirect System.out and System.err to the logger so all prints go into attendance.log
+            System.setOut(new PrintStream(new LoggingOutputStream(logger, Level.INFO), true));
+            System.setErr(new PrintStream(new LoggingOutputStream(logger, Level.SEVERE), true));
 
         } catch (IOException e) {
             // If the file handler fails, print the error to console and disable logging
@@ -73,5 +78,39 @@ public class AppLogger {
     /** Logs an error along with an exception. */
     public static void error(String message, Throwable thrown) {
         logger.log(Level.SEVERE, message, thrown);
+    }
+
+    // --- Internal helper to redirect System.out/err into logger ---
+    private static class LoggingOutputStream extends java.io.OutputStream {
+        private final Logger targetLogger;
+        private final Level level;
+        private final StringBuilder buffer = new StringBuilder(256);
+
+        LoggingOutputStream(Logger logger, Level level) {
+            this.targetLogger = logger;
+            this.level = level;
+        }
+
+        @Override
+        public void write(int b) {
+            char c = (char) b;
+            if (c == '\n' || c == '\r') {
+                flushBuffer();
+            } else {
+                buffer.append(c);
+            }
+        }
+
+        @Override
+        public void flush() {
+            flushBuffer();
+        }
+
+        private void flushBuffer() {
+            if (buffer.length() == 0) return;
+            String msg = buffer.toString();
+            buffer.setLength(0);
+            targetLogger.log(level, msg);
+        }
     }
 }

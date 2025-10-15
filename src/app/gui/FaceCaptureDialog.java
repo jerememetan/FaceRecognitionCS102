@@ -4,6 +4,10 @@ import app.entity.Student;
 import app.service.StudentManager;
 import app.service.FaceDetection;
 import org.opencv.core.*;
+import ConfigurationAndLogging.AppConfig;
+import ConfigurationAndLogging.AppLogger;
+import ConfigurationAndLogging.FaceCropSettingsPanel;
+import ConfigurationAndLogging.IConfigChangeListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,7 +54,7 @@ public class FaceCaptureDialog extends JDialog {
         this.studentManager = studentManager;
         this.faceDetection = new FaceDetection();
 
-        System.out.println(" FaceCaptureDialog created for student: " + student.getName());
+    AppLogger.info("FaceCaptureDialog created for student: " + student.getName());
 
         initializeDialog();
         startCameraPreview();
@@ -65,8 +69,9 @@ public class FaceCaptureDialog extends JDialog {
         add(createInfoPanel(), BorderLayout.NORTH);
         add(createVideoPanel(), BorderLayout.CENTER);
         add(createControlPanel(), BorderLayout.SOUTH);
+        add(createSettingsPanel(), BorderLayout.EAST);
 
-        System.out.println(" Dialog initialized");
+    AppLogger.info("Dialog initialized");
     }
 
     private JPanel createInfoPanel() {
@@ -89,6 +94,53 @@ public class FaceCaptureDialog extends JDialog {
         panel.add(instructionLabel, BorderLayout.SOUTH);
 
         return panel;
+    }
+
+    private JPanel createSettingsPanel() {
+        // Integrate configuration and logging settings panel as a sidebar
+        IConfigChangeListener listener = new IConfigChangeListener() {
+            @Override
+            public void onScaleFactorChanged(double newScaleFactor) {
+                AppConfig.getInstance().setDetectionScaleFactor(newScaleFactor);
+                AppLogger.info("Detection scale factor changed to " + newScaleFactor);
+                statusLabel.setText("Scale Factor: " + String.format("%.2f", newScaleFactor));
+                statusLabel.setForeground(SUCCESS_COLOR);
+            }
+
+            @Override
+            public void onMinNeighborsChanged(int newMinNeighbors) {
+                AppConfig.getInstance().setDetectionMinNeighbors(newMinNeighbors);
+                AppLogger.info("Min neighbors changed to " + newMinNeighbors);
+                statusLabel.setText("Min Neighbors: " + newMinNeighbors);
+                statusLabel.setForeground(SUCCESS_COLOR);
+            }
+
+            @Override
+            public void onMinSizeChanged(int newMinSize) {
+                AppConfig.getInstance().setDetectionMinSize(newMinSize);
+                AppLogger.info("Min size px changed to " + newMinSize);
+                statusLabel.setText("Min Size: " + newMinSize + " px");
+                statusLabel.setForeground(SUCCESS_COLOR);
+            }
+
+            @Override
+            public void onCaptureFaceRequested() {
+                // The settings panel can request a capture; reuse startCapture
+                if (!isCapturing.get()) {
+                    startCapture();
+                }
+            }
+
+            @Override
+            public void onSaveSettingsRequested() {
+                AppConfig.getInstance().save();
+                AppLogger.info("Detection settings saved to app.properties");
+            }
+        };
+
+        // We already have capture controls in this dialog; hide capture button in settings panel
+        FaceCropSettingsPanel settings = new FaceCropSettingsPanel(listener, false);
+        return settings;
     }
 
     private JPanel createVideoPanel() {
@@ -201,7 +253,7 @@ public class FaceCaptureDialog extends JDialog {
     }
 
     private void startCameraPreview() {
-        System.out.println(" Starting camera preview...");
+        AppLogger.info("Starting camera preview...");
 
         if (!faceDetection.isCameraAvailable()) {
             showError("Camera not available. Please check camera connection.");
@@ -219,7 +271,7 @@ public class FaceCaptureDialog extends JDialog {
         });
         previewTimer.start();
 
-        System.out.println(" Preview timer started");
+    AppLogger.info("Preview timer started");
     }
 
     private void updatePreview() {
@@ -228,7 +280,7 @@ public class FaceCaptureDialog extends JDialog {
             Mat frame = faceDetection.getCurrentFrame();
 
             if (!frame.empty()) {
-                System.out.println(" Frame received: " + frame.width() + "x" + frame.height());
+                AppLogger.info("Frame received: " + frame.width() + "x" + frame.height());
 
          
                 FaceDetection.FaceDetectionResult result = faceDetection.detectFaceForPreview(frame);
@@ -260,12 +312,10 @@ public class FaceCaptureDialog extends JDialog {
                 updateDebugInfo(result);
 
             } else {
-                System.out.println("Debug: Empty frame received");
+                AppLogger.warn("Debug: Empty frame received");
             }
         } catch (Exception e) {
-            System.err.println(" Preview update failed: " + e.getMessage());
-            e.printStackTrace();
-            System.out.println("Debug: Preview error - " + e.getMessage());
+            AppLogger.error("Preview update failed: " + e.getMessage(), e);
         }
     }
 
@@ -299,12 +349,12 @@ public class FaceCaptureDialog extends JDialog {
             int faceCount = result.getFaces().size();
             if (faceCount > 0) {
                 double bestConf = result.getBestConfidence();
-                System.out.println(String.format("Debug: %d face(s) detected, best confidence: %.2f", faceCount, bestConf));
+                AppLogger.info(String.format("Debug: %d face(s) detected, best confidence: %.2f", faceCount, bestConf));
             } else {
-                System.out.println("Debug: No faces detected this frame");
+                AppLogger.info("Debug: No faces detected this frame");
             }
         } else {
-            System.out.println("Debug: Detection result is null");
+            AppLogger.warn("Debug: Detection result is null");
         }
     }
 
@@ -347,7 +397,7 @@ public class FaceCaptureDialog extends JDialog {
         if (isCapturing.get())
             return;
 
-        System.out.println(" Starting capture process...");
+    AppLogger.info("Starting capture process...");
 
         isCapturing.set(true);
         capturedCount.set(0);
@@ -375,7 +425,7 @@ public class FaceCaptureDialog extends JDialog {
                     boolean success = get();
                     onCaptureCompleted(success);
                 } catch (Exception e) {
-                    System.err.println(" Capture worker failed: " + e.getMessage());
+                    AppLogger.error("Capture worker failed: " + e.getMessage(), e);
                     showError("Capture failed: " + e.getMessage());
                     onCaptureCompleted(false);
                 }
@@ -385,7 +435,7 @@ public class FaceCaptureDialog extends JDialog {
     }
 
     private boolean performCapture() {
-        System.out.println(" Performing capture with target: " + targetImages);
+    AppLogger.info("Performing capture with target: " + targetImages);
 
         FaceDetection.FaceCaptureCallback callback = new FaceDetection.FaceCaptureCallback() {
             @Override
@@ -411,7 +461,7 @@ public class FaceCaptureDialog extends JDialog {
                     progressLabel.setText(String.format("Images captured: %d/%d (Quality: %.1f%%)",
                             current, total, confidence * 100));
                     statusLabel.setText(String.format("Captured %d/%d", current, total));
-                    System.out.println(String.format("Debug: Image saved with confidence %.2f", confidence));
+                    AppLogger.info(String.format("Debug: Image saved with confidence %.2f", confidence));
                 });
             }
 
@@ -438,7 +488,7 @@ public class FaceCaptureDialog extends JDialog {
                 SwingUtilities.invokeLater(() -> {
                     statusLabel.setText("Capture process completed");
                     statusLabel.setForeground(SUCCESS_COLOR);
-                    System.out.println("Debug: Capture process finished");
+                    AppLogger.info("Debug: Capture process finished");
                 });
             }
         };
@@ -446,12 +496,12 @@ public class FaceCaptureDialog extends JDialog {
         FaceDetection.FaceCaptureResult result = faceDetection.captureAndStoreFaceImages(
                 student, targetImages, callback);
 
-        System.out.println(" Capture result: " + result.isSuccess() + " - " + result.getMessage());
+    AppLogger.info("Capture result: " + result.isSuccess() + " - " + result.getMessage());
         return result.isSuccess();
     }
 
     private void stopCapture() {
-        System.out.println(" Stopping capture...");
+    AppLogger.info("Stopping capture...");
         isCapturing.set(false);
 
         startButton.setEnabled(true);
@@ -459,7 +509,7 @@ public class FaceCaptureDialog extends JDialog {
 
         statusLabel.setText("Capture stopped");
         statusLabel.setForeground(WARNING_COLOR);
-    System.out.println("Debug: Capture manually stopped");
+    AppLogger.info("Debug: Capture manually stopped");
 
         instructionLabel.setText("<html><center>Capture stopped by user.<br/>" +
                 "You can start again when ready.</center></html>");
@@ -480,7 +530,7 @@ public class FaceCaptureDialog extends JDialog {
 
             progressBar.setValue(100);
             progressBar.setString("100% Complete");
-            System.out.println("Debug: All images captured successfully");
+            AppLogger.info("Debug: All images captured successfully");
 
         JOptionPane.showMessageDialog(this,
             htmlize(String.format("Successfully captured %d face images for %s!\n\n" +
@@ -493,7 +543,7 @@ public class FaceCaptureDialog extends JDialog {
             statusLabel.setForeground(ERROR_COLOR);
         instructionLabel.setText("<html><center><font color='red'>Capture failed.</font><br/>" +
             "Please try again with better lighting.</center></html>");
-        System.out.println("Debug: Capture failed - insufficient valid images");
+    AppLogger.warn("Debug: Capture failed - insufficient valid images");
 
         JOptionPane.showMessageDialog(this,
             htmlize(String.format("Face capture failed.\n\n" +
@@ -508,7 +558,7 @@ public class FaceCaptureDialog extends JDialog {
     private void showError(String message) {
     statusLabel.setText(htmlize("Error: " + message));
         statusLabel.setForeground(ERROR_COLOR);
-        System.out.println("Debug: Error - " + message);
+        AppLogger.error("Debug: Error - " + message);
     JOptionPane.showMessageDialog(this, htmlize(message), "Error", JOptionPane.ERROR_MESSAGE);
     }
 
@@ -530,17 +580,17 @@ public class FaceCaptureDialog extends JDialog {
 
     @Override
     public void dispose() {
-        System.out.println(" Disposing FaceCaptureDialog...");
+        AppLogger.info("Disposing FaceCaptureDialog...");
 
         if (previewTimer != null) {
             previewTimer.stop();
-            System.out.println(" Preview timer stopped");
+            AppLogger.info("Preview timer stopped");
         }
         isCapturing.set(false);
 
         if (faceDetection != null) {
             faceDetection.release();
-            System.out.println(" Face detection resources released");
+            AppLogger.info("Face detection resources released");
         }
 
         

@@ -7,6 +7,8 @@ import org.opencv.videoio.VideoCapture;
 import org.opencv.highgui.HighGui;
 import java.util.concurrent.atomic.AtomicReference;
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import src.ConfigurationAndLogging.*;
 
 import javax.swing.SwingUtilities;
@@ -20,9 +22,9 @@ public class FaceCropDemo {
     final static AtomicReference<String> finalSaveFolder = new AtomicReference<>(null);
     
     public static void main(String[] args) {
-        String saveFolder = AppConfig.getInstance().getDatabaseStoragePath();
+        String baseFolder = AppConfig.getInstance().getDatabaseStoragePath();
         String cascadePath = AppConfig.getInstance().getCascadePath();
-        new File(saveFolder).mkdirs();         // Create save folder if it doesn't exist
+        new File(baseFolder).mkdirs();         // Create base folder if it doesn't exist
 
 
     SwingUtilities.invokeLater(() -> {
@@ -30,8 +32,10 @@ public class FaceCropDemo {
             gui.setDataSubmittedListener(new Name_ID_GUI.DataSubmittedListener() {
                 public void onDataSubmitted(int id, String name) {
                     // The data is now extracted and available here
-                    
-                    finalSaveFolder.set(saveFolder + "/"+ id + "_" + name);
+                    String safeName = name == null ? "" : name.trim().replaceAll("[\\\\/:*?\"<>|]", "").replaceAll("\\s+","_");
+                    String folderName = id + (safeName.isEmpty() ? "" : ("_" + safeName));
+                    Path studentPath = Paths.get(baseFolder).resolve(folderName).toAbsolutePath().normalize();
+                    finalSaveFolder.set(studentPath.toString());
                     new File(finalSaveFolder.get()).mkdirs(); // creates a folder if no folder is found
                     AppLogger.info("Launching FaceCropDemo for Id:" + id + " Name:" + name );
                     // Notify the main thread that the data is ready
