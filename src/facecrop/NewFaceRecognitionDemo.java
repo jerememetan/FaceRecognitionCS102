@@ -174,9 +174,9 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
 
                 // ... (Preprocessing using FIXED CONSTANTS) ...
                 Imgproc.cvtColor(webcamFrame, gray, Imgproc.COLOR_BGR2GRAY);
-                Imgproc.GaussianBlur(gray, gray,
-                        new Size(PREPROCESSING_GAUSSIAN_KERNEL_SIZE, PREPROCESSING_GAUSSIAN_KERNEL_SIZE),
-                        PREPROCESSING_GAUSSIAN_SIGMA_X);
+                // Imgproc.GaussianBlur(gray, gray,
+                //         new Size(PREPROCESSING_GAUSSIAN_KERNEL_SIZE, PREPROCESSING_GAUSSIAN_KERNEL_SIZE),
+                //         PREPROCESSING_GAUSSIAN_SIGMA_X);
                 Imgproc.createCLAHE(PREPROCESSING_CLAHE_CLIP_LIMIT,
                         new Size(PREPROCESSING_CLAHE_GRID_SIZE, PREPROCESSING_CLAHE_GRID_SIZE)).apply(gray, gray);
                 MatOfRect faces = new MatOfRect();
@@ -206,6 +206,7 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                         }
                         personScores.add(best);
                     }
+                    System.out.println(personScores);
 
                     String displayText;
                     if (personScores.isEmpty()) {
