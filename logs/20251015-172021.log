@@ -1,0 +1,22 @@
+[2025-10-15 17:20:21] INFO: Application Logger Initialized.
+[2025-10-15 17:20:21] INFO: Configuration and core components loaded.
+[2025-10-15 17:20:21] INFO: Configuration loaded from classpath: app.properties
+[2025-10-15 17:20:21] INFO: Configuration file loaded
+[2025-10-15 17:20:21] INFO: MyGUIProgram Started!
+[2025-10-15 17:20:23] INFO: Face embedding model loaded successfully
+[2025-10-15 17:20:23] INFO: === Folder debug ===
+[2025-10-15 17:20:23] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S11234_PY
+[2025-10-15 17:20:23] INFO:   Contains: 15 items
+[2025-10-15 17:20:23] INFO:   Display label: S11234 - PY
+[2025-10-15 17:20:23] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S12127_Jin_Rae
+[2025-10-15 17:20:23] INFO:   Contains: 30 items
+[2025-10-15 17:20:23] INFO:   Display label: S12127 - Jin_Rae
+[2025-10-15 17:20:23] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S12345_Jereme
+[2025-10-15 17:20:23] INFO:   Contains: 15 items
+[2025-10-15 17:20:23] INFO:   Display label: S12345 - Jereme
+[2025-10-15 17:20:23] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S32445_Beverly_Seet
+[2025-10-15 17:20:23] INFO:   Contains: 30 items
+[2025-10-15 17:20:23] INFO:   Display label: S32445 - Beverly_Seet
+[2025-10-15 17:20:23] INFO: ====================
+[2025-10-15 17:20:32] INFO: Exiting Face Recognition Demo...
+[2025-10-15 17:20:32] INFO: Exiting Face Recognition Demo...
