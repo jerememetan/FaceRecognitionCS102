@@ -1,9 +1,12 @@
+package gui;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 
 import java.awt.*;
 import java.awt.event.*;
 
+import facecrop.MyGUIProgram;
 
 public class MainDashboard extends JFrame {
     private String role;
