@@ -5,7 +5,7 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.photo.Photo;
 import org.opencv.imgproc.CLAHE;
 import org.opencv.objdetect.CascadeClassifier;
-
+import ConfigurationAndLogging.*;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -15,7 +15,8 @@ public class ImageProcessor {
     private static final double MIN_BRIGHTNESS = 30.0;
     private static final double MAX_BRIGHTNESS = 230.0;
     private static final double MIN_CONTRAST = 20.0;
-    private static final Size STANDARD_SIZE = new Size(200, 200);
+    private static final int crop_size = AppConfig.KEY_RECOGNITION_CROP_SIZE_PX;
+    private static final Size STANDARD_SIZE = new Size(crop_size, crop_size);
 
     public Mat preprocessFaceImage(Mat faceImage) {
         if (faceImage.empty()) {
