@@ -2,12 +2,12 @@ package facecrop;
 
 import org.opencv.core.*;
 import org.opencv.core.Point;
-import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.videoio.VideoCapture;
 
 import ConfigurationAndLogging.*;
+import app.service.FaceEmbeddingGenerator;
 
 import javax.swing.*;
 
@@ -23,7 +23,7 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
     private final CameraPanel cameraPanel = new CameraPanel();
     private VideoCapture capture;
     private CascadeClassifier faceDetector;
-    private ArrayList<List<Mat>> personHistograms = new ArrayList<>(); // Store model data
+    private ArrayList<List<byte[]>> personEmbeddings = new ArrayList<>(); // Store model data
     private ArrayList<String> folder_names = new ArrayList<>(); // Store training folders (absolute paths)
     private ArrayList<String> personLabels = new ArrayList<>(); // Store display labels
 
@@ -65,12 +65,11 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
 
     // --- INITIALIZATION METHODS ---
     private void initializeModelData() {
-        // [*** Copy your load/histogram calculation logic from the old main() here ***]
-        // This calculates personHistograms and folderNames
+    // Load per-person embeddings (.emb files) for each folder
 
         // Example:
         folder_names.clear();
-        personLabels.clear();
+    personLabels.clear();
 
         String image_folder_path = AppConfig.getInstance().getDatabaseStoragePath(); //
         File folder_directories = new File(image_folder_path); //
@@ -111,26 +110,27 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         // checks if ./project Folder is empty
         if (list_files == null) {
             AppLogger.error("No Image Files found at " + image_folder_path + "!");
-            personHistograms.clear();
+            personEmbeddings.clear();
             return;
         }
-        ArrayList<List<Mat>> personImages = new ArrayList<List<Mat>>();
-        for (String s : folder_names) {
-            List<Mat> temp = loadImages(s);
-            personImages.add(temp);
-        }
-        // Check empty of any of the files
-        for (List<Mat> t : personImages) {
-            if (t.isEmpty()) {
-                AppLogger.error("No training images found in one of the directories!");
-                personHistograms.clear();
-                return;
+        personEmbeddings = new ArrayList<>();
+        for (String folder : folder_names) {
+            List<byte[]> embList = new ArrayList<>();
+            File dir = new File(folder);
+            File[] files = dir.listFiles((d, name) -> name.toLowerCase().endsWith(".emb"));
+            if (files != null) {
+                for (File f : files) {
+                    try {
+                        byte[] emb = java.nio.file.Files.readAllBytes(f.toPath());
+                        if (emb != null && emb.length > 0) {
+                            embList.add(emb);
+                        }
+                    } catch (Exception readEx) {
+                        AppLogger.warn("Failed to read embedding file: " + f.getAbsolutePath());
+                    }
+                }
             }
-        }
-        personHistograms = new ArrayList<List<Mat>>();
-        for (List<Mat> s : personImages) {
-            List<Mat> temp = computeHistograms(s);
-            personHistograms.add(temp);
+            personEmbeddings.add(embList);
         }
     }
 
@@ -184,6 +184,7 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                 faceDetector.detectMultiScale(gray, faces, DETECTION_SCALE_FACTOR, DETECTION_MIN_NEIGHBORS, 0,
                         new Size(DETECTION_MIN_SIZE_PX, DETECTION_MIN_SIZE_PX), new Size());
 
+                FaceEmbeddingGenerator embGen = new FaceEmbeddingGenerator();
                 for (Rect rect : faces.toArray()) {
                     // Draw rectangle
                     Imgproc.rectangle(webcamFrame, new Point(rect.x, rect.y),
@@ -193,15 +194,18 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                     // Crop and resize face
                     Mat face = gray.submat(rect);
                     Imgproc.resize(face, face, new Size(RECOGNITION_CROP_SIZE_PX, RECOGNITION_CROP_SIZE_PX));
-                    Mat faceHist = computeHistogram(face);
+                    byte[] queryEmbedding = embGen.generateEmbedding(face);
 
-                    // Compare with training histograms
-                    ArrayList<Double> personScores = new ArrayList<Double>();
-                    for (List<Mat> s : personHistograms) {
-                        double temp = getBestHistogramScore(faceHist, s);
-                        personScores.add(temp);
+                    // Compare with stored embeddings per person using cosine/euclidean similarity inside generator
+                    ArrayList<Double> personScores = new ArrayList<>();
+                    for (List<byte[]> person : personEmbeddings) {
+                        double best = 0.0;
+                        for (byte[] emb : person) {
+                            double s = embGen.calculateSimilarity(queryEmbedding, emb);
+                            if (s > best) best = s;
+                        }
+                        personScores.add(best);
                     }
-                    //System.out.println(personScores);
 
                     String displayText;
                     if (personScores.isEmpty()) {
@@ -213,7 +217,7 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                                 maxIdx = i;
                             }
                         }
-                        if (personScores.get(maxIdx) > RECOGNITION_THRESHOLD) {
+            if (personScores.get(maxIdx) > RECOGNITION_THRESHOLD) {
                             String label = maxIdx < personLabels.size()
                                     ? personLabels.get(maxIdx)
                                     : new File(folder_names.get(maxIdx)).getName();
@@ -315,26 +319,6 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         });
     }
 
-    // Load images from a directory
-    private static List<Mat> loadImages(String dirPath) {
-        List<Mat> images = new ArrayList<>();
-        File dir = new File(dirPath);
-        File[] files = dir
-                .listFiles((d, name) -> name.toLowerCase().endsWith(".jpg") || name.toLowerCase().endsWith(".png"));
-        if (files != null) {
-            for (File file : files) {
-                Mat img = Imgcodecs.imread(file.getAbsolutePath(), Imgcodecs.IMREAD_GRAYSCALE);
-                if (!img.empty()) {
-                    Imgproc.resize(img, img, new Size(200, 200));
-                    images.add(img);
-                } else {
-                    AppLogger.error("Failed to load image: " + file.getAbsolutePath());
-                }
-            }
-        }
-        return images;
-    }
-
     private static String buildDisplayLabel(String folderName) {
         if (folderName == null || folderName.isEmpty()) {
             return "unknown";
@@ -352,33 +336,4 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         return folderName;
     }
 
-    // Compute histogram for a single image
-    private static Mat computeHistogram(Mat image) {
-        Mat hist = new Mat();
-        MatOfInt histSize = new MatOfInt(256);
-        MatOfFloat ranges = new MatOfFloat(0f, 256f);
-        MatOfInt channels = new MatOfInt(0);
-        Imgproc.calcHist(List.of(image), channels, new Mat(), hist, histSize, ranges);
-        Core.normalize(hist, hist, 0, 1, Core.NORM_MINMAX);
-        return hist;
-    }
-
-    // Compute histograms for a list of images
-    private static List<Mat> computeHistograms(List<Mat> images) {
-        List<Mat> histograms = new ArrayList<>();
-        for (Mat img : images) {
-            histograms.add(computeHistogram(img));
-        }
-        return histograms;
-    }
-
-    // Get best histogram comparison score
-    private static double getBestHistogramScore(Mat faceHist, List<Mat> histograms) {
-        double bestScore = 0;
-        for (Mat hist : histograms) {
-            double score = Imgproc.compareHist(faceHist, hist, Imgproc.HISTCMP_CORREL);
-            bestScore = Math.max(bestScore, score);
-        }
-        return bestScore;
-    }
 }

@@ -338,55 +338,26 @@ public class FaceDetection {
 
                     if (faceROI != null) {
                         try {
-                            ImageProcessor.ImageQualityResult qualityResult = imageProcessor
-                                    .validateImageQualityDetailed(faceROI);
-                            String rawFeedback = qualityResult.getFeedback();
-                            String feedbackMessage = rawFeedback != null ? rawFeedback.trim() : "Unknown quality issue";
+                            String fileName = student.getStudentId() + "_" +
+                                    String.format("%03d", capturedCount + 1) + ".jpg";
+                            Path imageFile = folderPath.resolve(fileName);
 
-                            boolean qualityAcceptable = qualityResult.isGoodQuality()
-                                    || qualityResult.getQualityScore() >= 70.0;
+                            if (Imgcodecs.imwrite(imageFile.toString(), faceROI)) {
+                                capturedImages.add(imageFile.toString());
+                                capturedCount++;
 
-                            if (qualityAcceptable) {
-                                Mat processedFace = preprocessForRecognition(faceROI);
+                                callback.onImageCaptured(capturedCount, numberOfImages,
+                                        detectionResult.getConfidence());
+
                                 try {
-                                    String fileName = student.getStudentId() + "_" +
-                                            String.format("%03d", capturedCount + 1) + ".jpg";
-                                    Path imageFile = folderPath.resolve(fileName);
-
-                                    if (Imgcodecs.imwrite(imageFile.toString(), processedFace)) {
-                                        byte[] embedding = embeddingGenerator.generateEmbedding(processedFace);
-                                        FaceImage faceImage = new FaceImage(imageFile.toString(), embedding);
-                                        double normalizedQuality = Math.min(1.0, Math.max(0.0,
-                                                qualityResult.getQualityScore() / 100.0));
-                                        faceImage.setQualityScore(normalizedQuality);
-
-                                        student.getFaceData().addImage(faceImage);
-                                        capturedImages.add(imageFile.toString());
-                                        capturedCount++;
-
-                                        callback.onImageCaptured(capturedCount, numberOfImages,
-                                                detectionResult.getConfidence());
-                                        if (!qualityResult.isGoodQuality()) {
-                                            callback.onWarning(
-                                                    "Captured, but consider improving quality: " + feedbackMessage);
-                                        }
-
-                                        try {
-                                            Thread.sleep(CAPTURE_INTERVAL_MS);
-                                        } catch (InterruptedException e) {
-                                            Thread.currentThread().interrupt();
-                                            break;
-                                        }
-                                    } else {
-                                        System.err.println("Failed to save image: " + imageFile);
-                                        callback.onWarning("Failed to save image, please try again");
-                                    }
-                                } finally {
-                                    processedFace.release();
+                                    Thread.sleep(CAPTURE_INTERVAL_MS);
+                                } catch (InterruptedException e) {
+                                    Thread.currentThread().interrupt();
+                                    break;
                                 }
                             } else {
-                                logDebug("Image quality validation failed: " + feedbackMessage);
-                                callback.onWarning("Image rejected: " + feedbackMessage);
+                                System.err.println("Failed to save image: " + imageFile);
+                                callback.onWarning("Failed to save image, please try again");
                             }
                         } finally {
                             faceROI.release();
@@ -411,14 +382,71 @@ public class FaceDetection {
             }
         }
 
+        // Batch post-processing: validate, normalize and generate embeddings
+        int index = 0;
+        List<String> accepted = new ArrayList<>();
+        List<String> rejectedReasons = new ArrayList<>();
+
+        for (String path : capturedImages) {
+            index++;
+            Mat img = Imgcodecs.imread(path);
+            if (img.empty()) {
+                rejectedReasons.add("Image " + index + " could not be loaded");
+                continue;
+            }
+            try {
+                ImageProcessor.ImageQualityResult qualityResult = imageProcessor.validateImageQualityDetailed(img);
+                String feedback = qualityResult.getFeedback() != null ? qualityResult.getFeedback().trim() : "Unknown";
+                boolean qualityAcceptable = qualityResult.isGoodQuality() || qualityResult.getQualityScore() >= 70.0;
+
+                if (!qualityAcceptable) {
+                    rejectedReasons.add("Image " + index + " " + feedback);
+                    continue;
+                }
+
+                // Normalize and overwrite file for consistent downstream reads
+                Mat processed = preprocessForRecognition(img);
+                try {
+                    Imgcodecs.imwrite(path, processed);
+                    byte[] embedding = embeddingGenerator.generateEmbedding(processed);
+                    
+                    try {
+                        String embeddingPath = path.replaceAll("\\.[^.]+$", ".emb");
+                        Files.write(Paths.get(embeddingPath), embedding);
+                    } catch (Exception ioEx) {
+                        System.err.println("Failed to write embedding file for " + path + ": " + ioEx.getMessage());
+                    }
+                    FaceImage faceImage = new FaceImage(path, embedding);
+                    double normalizedQuality = Math.min(1.0, Math.max(0.0, qualityResult.getQualityScore() / 100.0));
+                    faceImage.setQualityScore(normalizedQuality);
+                    
+                    student.getFaceData().addImage(faceImage);
+                    accepted.add(path);
+                } finally {
+                    processed.release();
+                }
+            } catch (Exception ex) {
+                rejectedReasons.add("Image " + index + " processing failed: " + ex.getMessage());
+            } finally {
+                img.release();
+            }
+        }
+
+        int acceptedCount = accepted.size();
+        int rejectedCount = rejectedReasons.size();
+        int required = Math.min(10, numberOfImages);
+        boolean success = (acceptedCount >= required);
+        String message = success
+                ? String.format("Captured %d images. Accepted %d, Rejected %d.", capturedCount, acceptedCount, rejectedCount)
+                : String.format("Captured %d images. Only %d accepted (need at least %d). Rejected %d.", capturedCount, acceptedCount, required, rejectedCount);
+
+        FaceCaptureResult result = new FaceCaptureResult(success, message, accepted);
+        result.setAcceptedCount(acceptedCount);
+        result.setRejectedCount(rejectedCount);
+        result.setRejectedReasons(rejectedReasons);
+
         callback.onCaptureCompleted();
-
-        boolean success = (capturedCount >= Math.min(10, numberOfImages));
-        String message = success ? String.format("Successfully captured %d high-quality face images", capturedCount)
-                : String.format("Only captured %d images, need at least %d", capturedCount,
-                        Math.min(10, numberOfImages));
-
-        return new FaceCaptureResult(success, message, capturedImages);
+        return result;
     }
 
     private Mat extractFaceROI(Mat frame, Rect face) {
@@ -890,11 +918,17 @@ public class FaceDetection {
         private boolean success;
         private String message;
         private List<String> capturedImages;
+        private int acceptedCount;
+        private int rejectedCount;
+        private List<String> rejectedReasons;
 
         public FaceCaptureResult(boolean success, String message, List<String> capturedImages) {
             this.success = success;
             this.message = message;
-            this.capturedImages = capturedImages;
+            this.capturedImages = capturedImages != null ? capturedImages : new ArrayList<>();
+            this.acceptedCount = this.capturedImages.size();
+            this.rejectedCount = 0;
+            this.rejectedReasons = new ArrayList<>();
         }
 
         public boolean isSuccess() {
@@ -908,6 +942,14 @@ public class FaceDetection {
         public List<String> getCapturedImages() {
             return capturedImages;
         }
+
+        public int getAcceptedCount() { return acceptedCount; }
+        public int getRejectedCount() { return rejectedCount; }
+        public List<String> getRejectedReasons() { return rejectedReasons; }
+
+        public void setAcceptedCount(int acceptedCount) { this.acceptedCount = acceptedCount; }
+        public void setRejectedCount(int rejectedCount) { this.rejectedCount = rejectedCount; }
+        public void setRejectedReasons(List<String> reasons) { this.rejectedReasons = reasons != null ? reasons : new ArrayList<>(); }
     }
 
     public interface FaceCaptureCallback {

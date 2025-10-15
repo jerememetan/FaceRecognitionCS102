@@ -49,7 +49,7 @@ public class StudentEnrollmentGUI extends JFrame {
     }
 
     private void initializeGUI() {
-        setTitle("Student Enrollment & Face Recognition System - Enhanced");
+        setTitle("Student Manager");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLayout(new BorderLayout());
 
