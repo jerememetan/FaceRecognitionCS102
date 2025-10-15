@@ -698,6 +698,8 @@ public class FaceDetection {
             cap.set(Videoio.CAP_PROP_BUFFERSIZE, 1);
             // FourCC MJPG often helps with USB cams
             cap.set(Videoio.CAP_PROP_FOURCC, VideoWriter_fcc('M','J','P','G'));
+
+            // Do not adjust exposure/white-balance/auto-focus here; use device defaults for raw feed
         } catch (Exception ignored) {
         }
     }
@@ -717,6 +719,26 @@ public class FaceDetection {
 
             camera = openCameraWithFallback();
         }
+    }
+
+    // Expose driver settings dialog (Windows DirectShow typically), no image filtering is applied.
+    public boolean showCameraSettingsDialog() {
+        try {
+            if (camera != null && camera.isOpened()) {
+                return camera.set(Videoio.CAP_PROP_SETTINGS, 1);
+            }
+        } catch (Exception ignored) { }
+        return false;
+    }
+
+    // Allow user to change FPS which often affects max exposure time in low light.
+    public boolean setFps(double fps) {
+        try {
+            if (camera != null && camera.isOpened()) {
+                return camera.set(Videoio.CAP_PROP_FPS, fps);
+            }
+        } catch (Exception ignored) { }
+        return false;
     }
 
     private FaceCandidate findClosestFace(FaceCandidate target, List<FaceCandidate> candidates) {

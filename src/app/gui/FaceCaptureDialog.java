@@ -4,7 +4,6 @@ import app.entity.Student;
 import app.service.StudentManager;
 import app.service.FaceDetection;
 import org.opencv.core.*;
-import org.opencv.imgproc.Imgproc;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+ 
 
 
 public class FaceCaptureDialog extends JDialog {
@@ -30,6 +30,9 @@ public class FaceCaptureDialog extends JDialog {
     private JButton startButton;
     private JButton stopButton;
     private JButton closeButton;
+    
+    private JButton cameraSettingsButton;
+    private JComboBox<String> fpsCombo;
 
     private AtomicBoolean isCapturing = new AtomicBoolean(false);
     private AtomicInteger capturedCount = new AtomicInteger(0);
@@ -132,7 +135,7 @@ public class FaceCaptureDialog extends JDialog {
     private JPanel createControlPanel() {
         JPanel panel = new JPanel(new FlowLayout());
 
-        JLabel targetLabel = new JLabel("Target images:");
+    JLabel targetLabel = new JLabel("Target images:");
         String[] options = { "10", "15", "20" };
         JComboBox<String> targetCombo = new JComboBox<>(options);
         targetCombo.setSelectedItem("15");
@@ -140,6 +143,9 @@ public class FaceCaptureDialog extends JDialog {
         startButton = new JButton("Start Capture");
         stopButton = new JButton("Stop Capture");
         closeButton = new JButton("Close");
+    cameraSettingsButton = new JButton("Camera Settings…");
+    fpsCombo = new JComboBox<>(new String[]{"15 fps", "24 fps", "30 fps"});
+    fpsCombo.setSelectedItem("30 fps");
 
         stopButton.setEnabled(false);
 
@@ -151,9 +157,42 @@ public class FaceCaptureDialog extends JDialog {
         stopButton.addActionListener(e -> stopCapture());
         closeButton.addActionListener(e -> dispose());
 
+        cameraSettingsButton.addActionListener(e -> {
+            boolean opened = faceDetection.showCameraSettingsDialog();
+            if (!opened) {
+                statusLabel.setText("Camera settings dialog not supported by this backend");
+                statusLabel.setForeground(WARNING_COLOR);
+            } else {
+                statusLabel.setText("Adjust camera exposure/brightness in driver dialog");
+                statusLabel.setForeground(SUCCESS_COLOR);
+            }
+        });
+
+        fpsCombo.addActionListener(e -> {
+            String sel = (String) fpsCombo.getSelectedItem();
+            double fps = 30;
+            if (sel != null) {
+                if (sel.startsWith("15")) fps = 15;
+                else if (sel.startsWith("24")) fps = 24;
+                else if (sel.startsWith("30")) fps = 30;
+            }
+            boolean ok = faceDetection.setFps(fps);
+            if (ok) {
+                statusLabel.setText("FPS set to " + (int)fps);
+                statusLabel.setForeground(SUCCESS_COLOR);
+            } else {
+                statusLabel.setText("Unable to set FPS on this camera");
+                statusLabel.setForeground(WARNING_COLOR);
+            }
+        });
+
         panel.add(targetLabel);
         panel.add(targetCombo);
-        panel.add(Box.createHorizontalStrut(20));
+    panel.add(Box.createHorizontalStrut(20));
+    panel.add(new JLabel("FPS:"));
+    panel.add(fpsCombo);
+    panel.add(Box.createHorizontalStrut(10));
+    panel.add(cameraSettingsButton);
         panel.add(startButton);
         panel.add(stopButton);
         panel.add(closeButton);
@@ -197,6 +236,8 @@ public class FaceCaptureDialog extends JDialog {
                 
                 Mat displayFrame = faceDetection.drawFaceOverlay(frame, result);
 
+                // Show raw camera frame with overlay only (no filters)
+
         
                 BufferedImage bufferedImage = matToBufferedImage(displayFrame);
                 if (bufferedImage != null) {
@@ -227,6 +268,8 @@ public class FaceCaptureDialog extends JDialog {
             System.out.println("Debug: Preview error - " + e.getMessage());
         }
     }
+
+    
 
     private void updateQualityFeedback(FaceDetection.FaceDetectionResult result) {
         if (result.hasValidFace()) {
@@ -499,6 +542,8 @@ public class FaceCaptureDialog extends JDialog {
             faceDetection.release();
             System.out.println(" Face detection resources released");
         }
+
+        
 
         super.dispose();
     }
