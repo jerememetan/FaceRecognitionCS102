@@ -17,6 +17,7 @@ public class AppConfig {
     public final static String KEY_DETECTION_MIN_NEIGHBORS = "detection.min.neighbors";
     public final static String KEY_DETECTION_MIN_SIZE_PX = "detection.min_size_px";
     public final static String KEY_RECOGNITION_THRESHOLD = "recognition.threshold";
+    public final static String KEY_RECOGNITION_IMAGE_FORMAT = "recognition.image_format";
     public final static int KEY_RECOGNITION_CROP_SIZE_PX = 200;
     public final static int KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE = 5;
     public final static int KEY_PREPROCESSING_GAUSSIAN_SIGMA_X = 0;
@@ -247,5 +248,21 @@ public class AppConfig {
             AppLogger.info(KEY_RECOGNITION_THRESHOLD + " has been changed to " + newIndex);
         }
     }
+    // KEY_RECOGNITION_IMAGE_FORMAT = ".jpg";
+    public String getRecognitionImageFormat() {
+        return properties.getProperty(KEY_RECOGNITION_IMAGE_FORMAT, ".jpg");
+    }
+
+    public void setRecognitionImageFormat(String Path) {
+        if (Path == null) {
+            AppLogger.error("Failed to change " + KEY_RECOGNITION_IMAGE_FORMAT + ".Name is null");
+        } else {
+            this.properties.setProperty(KEY_RECOGNITION_IMAGE_FORMAT, Path);
+            AppLogger.info(KEY_RECOGNITION_IMAGE_FORMAT + " has been changed to " + Path);
+        }
+
+    }
+
+
 
 }
