@@ -1,7 +1,5 @@
-package src.reportingandexport;
-
-import java.util.*;
+package reportingandexport;
 
 public interface ReportGenerator {
-    public abstract void generate(ArrayList<String> userData);
+    public abstract void generate();
 }

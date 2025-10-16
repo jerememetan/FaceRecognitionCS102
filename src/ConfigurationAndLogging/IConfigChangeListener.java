@@ -1,4 +1,4 @@
-package src.ConfigurationAndLogging;
+package ConfigurationAndLogging;
 
 public interface IConfigChangeListener {
     // These are the adjustable parameters in the AppConfig class

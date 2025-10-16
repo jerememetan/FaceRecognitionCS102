@@ -1,1 +1,1 @@
-javac -d "compiled" -cp "src" src/reportingandexport/*.java
+javac -proc:none -Xlint:-options -d compiled -cp "src;lib/*" src\reportingandexport\*.java

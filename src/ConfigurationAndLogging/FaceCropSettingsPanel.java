@@ -1,4 +1,4 @@
-package src.ConfigurationAndLogging;
+package ConfigurationAndLogging;
 import java.awt.*;
 import javax.swing.*;
 public class FaceCropSettingsPanel extends JPanel {
