@@ -1,0 +1,340 @@
+package facecrop;
+
+import org.opencv.core.*;
+import org.opencv.core.Point;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.objdetect.CascadeClassifier;
+import org.opencv.videoio.VideoCapture;
+
+import ConfigurationAndLogging.*;
+import app.service.FaceEmbeddingGenerator;
+
+import javax.swing.*;
+
+import java.awt.*;
+import java.io.File;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListener {
+
+    // --- INSTANCE FIELDS ---
+    private final CameraPanel cameraPanel = new CameraPanel();
+    private VideoCapture capture;
+    private CascadeClassifier faceDetector;
+    private ArrayList<List<byte[]>> personEmbeddings = new ArrayList<>(); // Store model data
+    private ArrayList<String> folder_names = new ArrayList<>(); // Store training folders (absolute paths)
+    private ArrayList<String> personLabels = new ArrayList<>(); // Store display labels
+
+    // Read Recognition Threshold once at initialization
+    private final int RECOGNITION_CROP_SIZE_PX = AppConfig.KEY_RECOGNITION_CROP_SIZE_PX;
+    private final int PREPROCESSING_GAUSSIAN_KERNEL_SIZE = AppConfig.KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE;
+    private final int PREPROCESSING_GAUSSIAN_SIGMA_X = AppConfig.KEY_PREPROCESSING_GAUSSIAN_SIGMA_X;
+    private final double PREPROCESSING_CLAHE_CLIP_LIMIT = AppConfig.KEY_PREPROCESSING_CLAHE_CLIP_LIMIT;
+    private final double PREPROCESSING_CLAHE_GRID_SIZE = AppConfig.KEY_PREPROCESSING_CLAHE_GRID_SIZE;
+    private final double RECOGNITION_THRESHOLD = AppConfig.getInstance().getRecognitionThreshold();
+    private Mat webcamFrame = new Mat();
+    private Mat gray = new Mat();
+    private volatile boolean running = true;
+    private Thread recognitionThread;
+
+    static {
+        // Load OpenCV native library
+        System.load(new File("lib/opencv_java480.dll").getAbsolutePath());
+    }
+
+    public NewFaceRecognitionDemo() {
+        super("Real-Time Face Recognition - Configurable Detection");
+
+        initializeModelData();
+        initializeOpenCV();
+
+        // 2. Setup GUI (Camera + Sidebar)
+        setLayout(new BorderLayout());
+
+        // Pass 'this' as the listener. The panel only shows Detection controls now.
+        FaceCropSettingsPanel settingsPanel = new FaceCropSettingsPanel(this, false);
+
+        add(cameraPanel, BorderLayout.CENTER);
+        add(settingsPanel, BorderLayout.EAST);
+
+        setupFrameAndListener();
+        startRecognitionLoop();
+    }
+
+    // --- INITIALIZATION METHODS ---
+    private void initializeModelData() {
+    // Load per-person embeddings (.emb files) for each folder
+
+        // Example:
+        folder_names.clear();
+    personLabels.clear();
+
+        String image_folder_path = AppConfig.getInstance().getDatabaseStoragePath(); //
+        File folder_directories = new File(image_folder_path); //
+
+        File[] list_files = folder_directories.listFiles(); // this
+        if (list_files != null) {
+            for (File file : list_files) { // for each file in list files
+                // if its a folder
+                if (file.isDirectory()) {
+                    folder_names.add(file.getAbsolutePath());
+                    personLabels.add(buildDisplayLabel(file.getName()));
+                }
+
+            }
+        }
+
+        System.out.println("=== Folder debug ===");
+        for (int i = 0; i < folder_names.size(); i++) {
+            String s = folder_names.get(i);
+            System.out.println("Found folder: " + s);
+            File f = new File(s);
+            if (f.exists()) {
+                File[] imgs = f.listFiles();
+                if (imgs != null) {
+                    System.out.println("  Contains: " + imgs.length + " items");
+                } else {
+                    System.out.println("  (Cannot list files)");
+                }
+            } else {
+                System.out.println("  (Folder does not exist!)");
+            }
+            if (i < personLabels.size()) {
+                System.out.println("  Display label: " + personLabels.get(i));
+            }
+        }
+        System.out.println("====================");
+
+        // checks if ./project Folder is empty
+        if (list_files == null) {
+            AppLogger.error("No Image Files found at " + image_folder_path + "!");
+            personEmbeddings.clear();
+            return;
+        }
+        personEmbeddings = new ArrayList<>();
+        for (String folder : folder_names) {
+            List<byte[]> embList = new ArrayList<>();
+            File dir = new File(folder);
+            File[] files = dir.listFiles((d, name) -> name.toLowerCase().endsWith(".emb"));
+            if (files != null) {
+                for (File f : files) {
+                    try {
+                        byte[] emb = java.nio.file.Files.readAllBytes(f.toPath());
+                        if (emb != null && emb.length > 0) {
+                            embList.add(emb);
+                        }
+                    } catch (Exception readEx) {
+                        AppLogger.warn("Failed to read embedding file: " + f.getAbsolutePath());
+                    }
+                }
+            }
+            personEmbeddings.add(embList);
+        }
+    }
+
+    private void initializeOpenCV() {
+        // [*** Copy your faceDetector and VideoCapture initialization here ***]
+        String cascadePath = AppConfig.getInstance().getCascadePath(); //
+        faceDetector = new CascadeClassifier(cascadePath);
+        if (faceDetector.empty()) {
+            AppLogger.error("Error loading cascade file: " + cascadePath);
+            throw new RuntimeException("Classifier Initialization failed.");
+        }
+
+        capture = new VideoCapture(AppConfig.getInstance().getCameraIndex());
+        if (!capture.isOpened()) {
+            AppLogger.error("Error opening webcam!");
+            throw new RuntimeException("Camera Initialization failed.");
+        }
+    }
+
+    private void setupFrameAndListener() {
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        // Add window listener to call stopRecognitionLoop() when closing
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                stopRecognitionLoop();
+            }
+        });
+        pack();
+        setVisible(true);
+    }
+
+    // --- RECOGNITION LOOP (Refactored from old while loop) ---
+    private void startRecognitionLoop() {
+        recognitionThread = new Thread(() -> {
+            while (running && capture.read(webcamFrame)) {
+                // --- LOAD ADJUSTABLE SETTINGS FROM APPCONFIG ---
+                double DETECTION_SCALE_FACTOR = AppConfig.getInstance().getDetectionScaleFactor();
+                int DETECTION_MIN_NEIGHBORS = AppConfig.getInstance().getDetectionMinNeighbors();
+                int DETECTION_MIN_SIZE_PX = AppConfig.getInstance().getDetectionMinSize();
+
+                // ... (Preprocessing using FIXED CONSTANTS) ...
+                Imgproc.cvtColor(webcamFrame, gray, Imgproc.COLOR_BGR2GRAY);
+                // Imgproc.GaussianBlur(gray, gray,
+                //         new Size(PREPROCESSING_GAUSSIAN_KERNEL_SIZE, PREPROCESSING_GAUSSIAN_KERNEL_SIZE),
+                //         PREPROCESSING_GAUSSIAN_SIGMA_X);
+                Imgproc.createCLAHE(PREPROCESSING_CLAHE_CLIP_LIMIT,
+                        new Size(PREPROCESSING_CLAHE_GRID_SIZE, PREPROCESSING_CLAHE_GRID_SIZE)).apply(gray, gray);
+                MatOfRect faces = new MatOfRect();
+                // Detect faces using ADJUSTABLE detection settings
+                faceDetector.detectMultiScale(gray, faces, DETECTION_SCALE_FACTOR, DETECTION_MIN_NEIGHBORS, 0,
+                        new Size(DETECTION_MIN_SIZE_PX, DETECTION_MIN_SIZE_PX), new Size());
+
+                FaceEmbeddingGenerator embGen = new FaceEmbeddingGenerator();
+                for (Rect rect : faces.toArray()) {
+                    // Draw rectangle
+                    Imgproc.rectangle(webcamFrame, new Point(rect.x, rect.y),
+                            new Point(rect.x + rect.width, rect.y + rect.height),
+                            new Scalar(0, 255, 0), 2);
+
+                    // Crop and resize face
+                    Mat face = gray.submat(rect);
+                    Imgproc.resize(face, face, new Size(RECOGNITION_CROP_SIZE_PX, RECOGNITION_CROP_SIZE_PX));
+                    byte[] queryEmbedding = embGen.generateEmbedding(face);
+
+                    // Compare with stored embeddings per person using cosine/euclidean similarity inside generator
+                    ArrayList<Double> personScores = new ArrayList<>();
+                    for (List<byte[]> person : personEmbeddings) {
+                        double best = 0.0;
+                        for (byte[] emb : person) {
+                            double s = embGen.calculateSimilarity(queryEmbedding, emb);
+                            if (s > best) best = s;
+                        }
+                        personScores.add(best);
+                    }
+                    System.out.println(personScores);
+
+                    String displayText;
+                    if (personScores.isEmpty()) {
+                        displayText = "unknown";
+                    } else {
+                        int maxIdx = 0;
+                        for (int i = 1; i < personScores.size(); i++) {
+                            if (personScores.get(i) > personScores.get(maxIdx)) {
+                                maxIdx = i;
+                            }
+                        }
+            if (personScores.get(maxIdx) > RECOGNITION_THRESHOLD) {
+                            String label = maxIdx < personLabels.size()
+                                    ? personLabels.get(maxIdx)
+                                    : new File(folder_names.get(maxIdx)).getName();
+                            displayText = label;
+
+                        } else {
+                            displayText = "unknown";
+                        }
+                    }
+                    Imgproc.putText(webcamFrame, displayText, new Point(rect.x, rect.y - 10),
+                            Imgproc.FONT_HERSHEY_SIMPLEX, 0.9, new Scalar(15, 255, 15), 2);
+                }
+                cameraPanel.displayMat(webcamFrame);
+                try {
+                    Thread.sleep(30);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+
+            }
+            // ... stopRecognitionLoop cleanup ...
+            stopRecognitionLoop();
+        });
+        recognitionThread.start();
+    }
+
+    private void stopRecognitionLoop() {
+        // ... (Your cleanup logic for running, capture, frame, etc.) ...
+        running = false;
+        AppLogger.info("Exiting Face Recognition Demo...");
+
+        if (recognitionThread != null) {
+            recognitionThread.interrupt();
+
+            try {
+                // Wait a short time for the thread to recognize the interrupt and close
+                recognitionThread.join(100); // Wait up to 100 milliseconds
+            } catch (InterruptedException e) {
+                // Re-interrupt the calling thread (main thread)
+                Thread.currentThread().interrupt();
+            }
+        }
+
+        // Cleanup resources
+        if (capture != null && capture.isOpened()) {
+            capture.release();
+            webcamFrame.release();
+            gray.release();
+        }
+    }
+
+    @Override
+    public void onScaleFactorChanged(double newScaleFactor) {
+        AppConfig.getInstance().setDetectionScaleFactor(newScaleFactor);
+    }
+
+    @Override
+    public void onMinNeighborsChanged(int newMinNeighbors) {
+        AppConfig.getInstance().setDetectionMinNeighbors(newMinNeighbors);
+    }
+
+    @Override
+    public void onMinSizeChanged(int newMinSize) {
+        AppConfig.getInstance().setDetectionMinSize(newMinSize);
+    }
+
+    // REQUIRED by interface, but UNUSED in this recognition demo.
+    @Override
+    public void onCaptureFaceRequested() {
+        // Log or show message that capture is not supported in this demo
+        AppLogger.warn("Face capture requested, but not supported in FaceRecognitionDemo.");
+    }
+
+    @Override
+    public void onSaveSettingsRequested() {
+        // Saves the current Detection settings
+        AppConfig.getInstance().save();
+    }
+
+    public static void main(String[] args) {
+        AppLogger.info("FaceRecognitionDemo Starting...");
+
+        // 1. Ensure core configurations are loaded
+        AppConfig.getInstance();
+
+        // 2. Start the application on the Event Dispatch Thread (EDT)
+        SwingUtilities.invokeLater(() -> {
+            try {
+                // Instantiate the JFrame, which triggers all initialization (loading model,
+                // starting camera).
+                new NewFaceRecognitionDemo();
+            } catch (Exception e) {
+                AppLogger.error("Failed to launch FaceRecognitionDemo: " + e.getMessage());
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "The Recognition Demo failed to start. See logs for details.",
+                        "Startup Error", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+    }
+
+    private static String buildDisplayLabel(String folderName) {
+        if (folderName == null || folderName.isEmpty()) {
+            return "unknown";
+        }
+
+        String[] parts = folderName.split("_", 2);
+        if (parts.length == 2) {
+            String studentId = parts[0].trim();
+            String studentName = parts[1].trim();
+            if (!studentId.isEmpty() && !studentName.isEmpty()) {
+                return studentId + " - " + studentName;
+            }
+        }
+
+        return folderName;
+    }
+
+}
