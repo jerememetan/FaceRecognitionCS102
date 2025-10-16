@@ -12,6 +12,7 @@ import org.opencv.videoio.Videoio;
 import org.opencv.dnn.Net;
 import org.opencv.dnn.Dnn;
 
+import ConfigurationAndLogging.*;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,6 +25,7 @@ public class FaceDetection {
     private static final String OPENCV_NATIVE_LIBRARY = "opencv_java480";
     private static final String OPENCV_DLL_RELATIVE_PATH = "lib/opencv_java480.dll";
     private static final boolean OPENCV_LOADED;
+    private String imageFormat = AppConfig.getInstance().getRecognitionImageFormat();
 
     static {
         boolean loaded = false;
@@ -339,7 +341,7 @@ public class FaceDetection {
                     if (faceROI != null) {
                         try {
                             String fileName = student.getStudentId() + "_" +
-                                    String.format("%03d", capturedCount + 1) + ".jpg";
+                                    String.format("%03d", capturedCount + 1) + imageFormat;
                             Path imageFile = folderPath.resolve(fileName);
 
                             if (Imgcodecs.imwrite(imageFile.toString(), faceROI)) {

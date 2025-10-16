@@ -15,6 +15,7 @@ public class FaceData {
     private List<FaceImage> images;
     private boolean isValid;
     private Path studentFolder;
+    private String imageType = AppConfig.getInstance().getRecognitionImageFormat();
 
     public FaceData(String studentId, String studentName) {
         this.studentId = studentId;
@@ -45,7 +46,7 @@ public class FaceData {
         File folder = studentFolder.toFile();
         if (folder.exists() && folder.isDirectory()) {
             File[] files = folder.listFiles(
-                    (dir, name) -> name.toLowerCase().endsWith(".jpg"));
+                    (dir, name) -> name.toLowerCase().endsWith(".jpg") || name.toLowerCase().endsWith(".png"));
             if (files != null) {
                 for (File file : files) {
                     FaceImage faceImage = new FaceImage(file.getAbsolutePath(), null);
