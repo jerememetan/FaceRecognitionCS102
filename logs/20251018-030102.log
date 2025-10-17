@@ -1,0 +1,356 @@
+[2025-10-18 03:01:02] INFO: Application Logger Initialized.
+[2025-10-18 03:01:02] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
+[2025-10-18 03:01:02] INFO: GUI launched successfully
+[2025-10-18 03:02:20] INFO: Face embedding model loaded successfully
+[2025-10-18 03:02:20] INFO: ￢ﾜﾓ Facial landmark detector (cascade-based) loaded successfully
+[2025-10-18 03:02:20] INFO: FaceCaptureDialog created for student: Tonald Drump
+[2025-10-18 03:02:20] INFO: Dialog initialized
+[2025-10-18 03:02:20] INFO: Starting camera preview...
+[2025-10-18 03:02:20] INFO: Preview timer started
+[2025-10-18 03:02:21] INFO: Frame received: 640x480
+[2025-10-18 03:02:21] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-18 03:02:21] INFO: Frame received: 640x480
+[2025-10-18 03:02:21] INFO: Debug: 1 face(s) detected, best confidence: 0.99
+[2025-10-18 03:02:21] INFO: Frame received: 640x480
+[2025-10-18 03:02:21] INFO: Debug: 1 face(s) detected, best confidence: 0.96
+[2025-10-18 03:02:21] INFO: Frame received: 640x480
+[2025-10-18 03:02:21] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:21] INFO: Frame received: 640x480
+[2025-10-18 03:02:21] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:21] INFO: Frame received: 640x480
+[2025-10-18 03:02:21] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:22] INFO: Frame received: 640x480
+[2025-10-18 03:02:22] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:22] INFO: Frame received: 640x480
+[2025-10-18 03:02:22] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:22] INFO: Frame received: 640x480
+[2025-10-18 03:02:22] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:22] INFO: Frame received: 640x480
+[2025-10-18 03:02:22] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:22] INFO: Frame received: 640x480
+[2025-10-18 03:02:22] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:22] INFO: Frame received: 640x480
+[2025-10-18 03:02:22] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:22] INFO: Frame received: 640x480
+[2025-10-18 03:02:22] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:22] INFO: Frame received: 640x480
+[2025-10-18 03:02:22] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:22] INFO: Frame received: 640x480
+[2025-10-18 03:02:22] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:23] INFO: Frame received: 640x480
+[2025-10-18 03:02:23] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:23] INFO: Frame received: 640x480
+[2025-10-18 03:02:23] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:23] INFO: Frame received: 640x480
+[2025-10-18 03:02:23] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:23] INFO: Frame received: 640x480
+[2025-10-18 03:02:23] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:23] INFO: Frame received: 640x480
+[2025-10-18 03:02:23] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:23] INFO: Frame received: 640x480
+[2025-10-18 03:02:23] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:23] INFO: Frame received: 640x480
+[2025-10-18 03:02:23] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:23] INFO: Frame received: 640x480
+[2025-10-18 03:02:23] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:23] INFO: Frame received: 640x480
+[2025-10-18 03:02:23] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:24] INFO: Frame received: 640x480
+[2025-10-18 03:02:24] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:24] INFO: Frame received: 640x480
+[2025-10-18 03:02:24] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:24] INFO: Frame received: 640x480
+[2025-10-18 03:02:24] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:24] INFO: Frame received: 640x480
+[2025-10-18 03:02:24] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:24] INFO: Frame received: 640x480
+[2025-10-18 03:02:24] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:24] INFO: Frame received: 640x480
+[2025-10-18 03:02:24] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:24] INFO: Frame received: 640x480
+[2025-10-18 03:02:24] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:24] INFO: Frame received: 640x480
+[2025-10-18 03:02:24] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:24] INFO: Frame received: 640x480
+[2025-10-18 03:02:24] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:25] INFO: Frame received: 640x480
+[2025-10-18 03:02:25] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:25] INFO: Frame received: 640x480
+[2025-10-18 03:02:25] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:25] INFO: Frame received: 640x480
+[2025-10-18 03:02:25] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:25] INFO: Frame received: 640x480
+[2025-10-18 03:02:25] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:25] INFO: Frame received: 640x480
+[2025-10-18 03:02:25] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:25] INFO: Frame received: 640x480
+[2025-10-18 03:02:25] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:25] INFO: Frame received: 640x480
+[2025-10-18 03:02:25] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:25] INFO: Frame received: 640x480
+[2025-10-18 03:02:25] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:25] INFO: Frame received: 640x480
+[2025-10-18 03:02:25] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:26] INFO: Frame received: 640x480
+[2025-10-18 03:02:26] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:26] INFO: Frame received: 640x480
+[2025-10-18 03:02:26] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:26] INFO: Frame received: 640x480
+[2025-10-18 03:02:26] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:26] INFO: Frame received: 640x480
+[2025-10-18 03:02:26] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:26] INFO: Frame received: 640x480
+[2025-10-18 03:02:26] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:26] INFO: Frame received: 640x480
+[2025-10-18 03:02:26] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:26] INFO: Frame received: 640x480
+[2025-10-18 03:02:26] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:26] INFO: Frame received: 640x480
+[2025-10-18 03:02:26] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:26] INFO: Frame received: 640x480
+[2025-10-18 03:02:26] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:26] INFO: Frame received: 640x480
+[2025-10-18 03:02:27] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:27] INFO: Frame received: 640x480
+[2025-10-18 03:02:27] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:27] INFO: Frame received: 640x480
+[2025-10-18 03:02:27] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:27] INFO: Frame received: 640x480
+[2025-10-18 03:02:27] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:27] INFO: Frame received: 640x480
+[2025-10-18 03:02:27] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:27] INFO: Frame received: 640x480
+[2025-10-18 03:02:27] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:27] INFO: Frame received: 640x480
+[2025-10-18 03:02:27] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:27] INFO: Frame received: 640x480
+[2025-10-18 03:02:27] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:27] INFO: Frame received: 640x480
+[2025-10-18 03:02:27] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:27] INFO: Frame received: 640x480
+[2025-10-18 03:02:27] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:28] INFO: Frame received: 640x480
+[2025-10-18 03:02:28] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:28] INFO: Frame received: 640x480
+[2025-10-18 03:02:28] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:28] INFO: Frame received: 640x480
+[2025-10-18 03:02:28] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:28] INFO: Frame received: 640x480
+[2025-10-18 03:02:28] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:28] INFO: Frame received: 640x480
+[2025-10-18 03:02:28] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:28] INFO: Frame received: 640x480
+[2025-10-18 03:02:28] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:28] INFO: Frame received: 640x480
+[2025-10-18 03:02:28] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:28] INFO: Frame received: 640x480
+[2025-10-18 03:02:28] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:28] INFO: Frame received: 640x480
+[2025-10-18 03:02:28] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:29] INFO: Frame received: 640x480
+[2025-10-18 03:02:29] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:29] INFO: Frame received: 640x480
+[2025-10-18 03:02:29] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:29] INFO: Frame received: 640x480
+[2025-10-18 03:02:29] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:29] INFO: Frame received: 640x480
+[2025-10-18 03:02:29] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:29] INFO: Frame received: 640x480
+[2025-10-18 03:02:29] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:29] INFO: Frame received: 640x480
+[2025-10-18 03:02:29] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:29] INFO: Frame received: 640x480
+[2025-10-18 03:02:29] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:29] INFO: Frame received: 640x480
+[2025-10-18 03:02:29] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:29] INFO: Frame received: 640x480
+[2025-10-18 03:02:29] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:30] INFO: Frame received: 640x480
+[2025-10-18 03:02:30] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:30] INFO: Frame received: 640x480
+[2025-10-18 03:02:30] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:30] INFO: Frame received: 640x480
+[2025-10-18 03:02:30] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:30] INFO: Frame received: 640x480
+[2025-10-18 03:02:30] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:30] INFO: Frame received: 640x480
+[2025-10-18 03:02:30] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:30] INFO: Frame received: 640x480
+[2025-10-18 03:02:30] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:30] INFO: Frame received: 640x480
+[2025-10-18 03:02:30] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:30] INFO: Frame received: 640x480
+[2025-10-18 03:02:30] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:30] INFO: Frame received: 640x480
+[2025-10-18 03:02:30] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:31] INFO: Frame received: 640x480
+[2025-10-18 03:02:31] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:31] INFO: Frame received: 640x480
+[2025-10-18 03:02:31] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:31] INFO: Frame received: 640x480
+[2025-10-18 03:02:31] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:31] INFO: Frame received: 640x480
+[2025-10-18 03:02:31] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:31] INFO: Frame received: 640x480
+[2025-10-18 03:02:31] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:31] INFO: Frame received: 640x480
+[2025-10-18 03:02:31] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:31] INFO: Frame received: 640x480
+[2025-10-18 03:02:31] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:31] INFO: Frame received: 640x480
+[2025-10-18 03:02:31] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:31] INFO: Frame received: 640x480
+[2025-10-18 03:02:31] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:31] INFO: Frame received: 640x480
+[2025-10-18 03:02:32] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:32] INFO: Frame received: 640x480
+[2025-10-18 03:02:32] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:32] INFO: Frame received: 640x480
+[2025-10-18 03:02:32] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:32] INFO: Frame received: 640x480
+[2025-10-18 03:02:32] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:32] INFO: Frame received: 640x480
+[2025-10-18 03:02:32] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:32] INFO: Frame received: 640x480
+[2025-10-18 03:02:32] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:32] INFO: Frame received: 640x480
+[2025-10-18 03:02:32] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:32] INFO: Frame received: 640x480
+[2025-10-18 03:02:32] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:32] INFO: Frame received: 640x480
+[2025-10-18 03:02:32] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:32] INFO: Frame received: 640x480
+[2025-10-18 03:02:33] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:33] INFO: Frame received: 640x480
+[2025-10-18 03:02:33] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:33] INFO: Frame received: 640x480
+[2025-10-18 03:02:33] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:33] INFO: Frame received: 640x480
+[2025-10-18 03:02:33] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:33] INFO: Frame received: 640x480
+[2025-10-18 03:02:33] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:33] INFO: Frame received: 640x480
+[2025-10-18 03:02:33] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:33] INFO: Frame received: 640x480
+[2025-10-18 03:02:33] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:33] INFO: Frame received: 640x480
+[2025-10-18 03:02:33] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:33] INFO: Frame received: 640x480
+[2025-10-18 03:02:33] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:33] INFO: Frame received: 640x480
+[2025-10-18 03:02:33] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:34] INFO: Frame received: 640x480
+[2025-10-18 03:02:34] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:34] INFO: Frame received: 640x480
+[2025-10-18 03:02:34] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:34] INFO: Frame received: 640x480
+[2025-10-18 03:02:34] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:34] INFO: Frame received: 640x480
+[2025-10-18 03:02:34] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:34] INFO: Frame received: 640x480
+[2025-10-18 03:02:34] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:34] INFO: Frame received: 640x480
+[2025-10-18 03:02:34] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:34] INFO: Frame received: 640x480
+[2025-10-18 03:02:34] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:34] INFO: Frame received: 640x480
+[2025-10-18 03:02:34] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:34] INFO: Frame received: 640x480
+[2025-10-18 03:02:34] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:35] INFO: Frame received: 640x480
+[2025-10-18 03:02:35] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:35] INFO: Frame received: 640x480
+[2025-10-18 03:02:35] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:35] INFO: Frame received: 640x480
+[2025-10-18 03:02:35] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:35] INFO: Frame received: 640x480
+[2025-10-18 03:02:35] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:35] INFO: Frame received: 640x480
+[2025-10-18 03:02:35] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:35] INFO: Frame received: 640x480
+[2025-10-18 03:02:35] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:35] INFO: Frame received: 640x480
+[2025-10-18 03:02:35] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:35] INFO: Frame received: 640x480
+[2025-10-18 03:02:35] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:35] INFO: Frame received: 640x480
+[2025-10-18 03:02:35] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:36] INFO: Frame received: 640x480
+[2025-10-18 03:02:36] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:36] INFO: Frame received: 640x480
+[2025-10-18 03:02:36] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:36] INFO: Frame received: 640x480
+[2025-10-18 03:02:36] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:36] INFO: Frame received: 640x480
+[2025-10-18 03:02:36] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:36] INFO: Frame received: 640x480
+[2025-10-18 03:02:36] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:36] INFO: Frame received: 640x480
+[2025-10-18 03:02:36] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:36] INFO: Frame received: 640x480
+[2025-10-18 03:02:36] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:36] INFO: Frame received: 640x480
+[2025-10-18 03:02:36] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:36] INFO: Frame received: 640x480
+[2025-10-18 03:02:36] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:37] INFO: Frame received: 640x480
+[2025-10-18 03:02:37] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:37] INFO: Frame received: 640x480
+[2025-10-18 03:02:37] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:37] INFO: Frame received: 640x480
+[2025-10-18 03:02:37] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:37] INFO: Frame received: 640x480
+[2025-10-18 03:02:37] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:37] INFO: Frame received: 640x480
+[2025-10-18 03:02:37] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:37] INFO: Frame received: 640x480
+[2025-10-18 03:02:37] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:37] INFO: Frame received: 640x480
+[2025-10-18 03:02:37] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:37] INFO: Frame received: 640x480
+[2025-10-18 03:02:37] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:37] INFO: Frame received: 640x480
+[2025-10-18 03:02:37] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:38] INFO: Frame received: 640x480
+[2025-10-18 03:02:38] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:38] INFO: Frame received: 640x480
+[2025-10-18 03:02:38] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:38] INFO: Frame received: 640x480
+[2025-10-18 03:02:38] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:38] INFO: Frame received: 640x480
+[2025-10-18 03:02:38] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:38] INFO: Frame received: 640x480
+[2025-10-18 03:02:38] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:38] INFO: Frame received: 640x480
+[2025-10-18 03:02:38] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:38] INFO: Frame received: 640x480
+[2025-10-18 03:02:38] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:38] INFO: Frame received: 640x480
+[2025-10-18 03:02:38] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:38] INFO: Frame received: 640x480
+[2025-10-18 03:02:38] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:38] INFO: Frame received: 640x480
+[2025-10-18 03:02:39] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:39] INFO: Frame received: 640x480
+[2025-10-18 03:02:39] INFO: Debug: No faces detected this frame
+[2025-10-18 03:02:39] INFO: Frame received: 640x480
+[2025-10-18 03:02:39] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-18 03:02:39] INFO: Frame received: 640x480
+[2025-10-18 03:02:39] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-18 03:02:39] INFO: Frame received: 640x480
+[2025-10-18 03:02:39] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-18 03:02:39] INFO: Frame received: 640x480
+[2025-10-18 03:02:39] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-18 03:02:39] INFO: Frame received: 640x480
+[2025-10-18 03:02:39] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-18 03:02:39] INFO: Frame received: 640x480
+[2025-10-18 03:02:39] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-18 03:02:39] INFO: Frame received: 640x480
+[2025-10-18 03:02:39] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-18 03:02:39] INFO: Frame received: 640x480
+[2025-10-18 03:02:39] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-18 03:02:40] INFO: Frame received: 640x480
+[2025-10-18 03:02:40] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-18 03:02:40] INFO: Disposing FaceCaptureDialog...
+[2025-10-18 03:02:40] INFO: Preview timer stopped
+[2025-10-18 03:02:40] INFO: Face detection resources released

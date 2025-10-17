@@ -5,6 +5,7 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.photo.Photo;
 import org.opencv.imgproc.CLAHE;
 import org.opencv.objdetect.CascadeClassifier;
+import app.service.FacialLandmarkDetector;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -12,10 +13,10 @@ import java.util.Comparator;
 public class ImageProcessor {
 
     private static final double MIN_SHARPNESS_THRESHOLD = 80.0;
-    private static final double MIN_BRIGHTNESS = 30.0;
+    private static final double MIN_BRIGHTNESS = 40.0;
     private static final double MAX_BRIGHTNESS = 230.0;
-    private static final double MIN_CONTRAST = 20.0;
-    private static final Size STANDARD_SIZE = new Size(200, 200);
+    private static final double MIN_CONTRAST = 25.0;
+    private static final Size STANDARD_SIZE = new Size(96, 96);
 
     public Mat preprocessFaceImage(Mat faceImage) {
         if (faceImage.empty()) {
@@ -31,7 +32,7 @@ public class ImageProcessor {
         }
 
         Mat filteredImage = new Mat();
-        Imgproc.bilateralFilter(processedImage, filteredImage, 9, 75, 75);
+        Imgproc.bilateralFilter(processedImage, filteredImage, 5, 50, 50);
 
         CLAHE clahe = Imgproc.createCLAHE(2.0, new Size(8, 8));
         Mat contrastEnhanced = new Mat();
@@ -237,12 +238,7 @@ public class ImageProcessor {
         return denoised;
     }
 
-    /**
-     * Reduces glare and specular highlights from glasses.
-     * Uses HSV color space to detect and attenuate bright spots.
-     * @param image Input color image (BGR format)
-     * @return Image with reduced glare
-     */
+\
     public Mat reduceGlare(Mat image) {
         if (image.empty() || image.channels() != 3) {
             return image;
@@ -252,31 +248,28 @@ public class ImageProcessor {
         Mat result = image.clone();
 
         try {
-            // Convert to HSV color space
+
             Imgproc.cvtColor(image, hsv, Imgproc.COLOR_BGR2HSV);
 
-            // Split channels
+
             java.util.List<Mat> hsvChannels = new java.util.ArrayList<>();
             Core.split(hsv, hsvChannels);
-            Mat vChannel = hsvChannels.get(2); // Value channel
+            Mat vChannel = hsvChannels.get(2); 
 
-            // Detect bright highlights (glare from glasses)
             Mat glareMask = new Mat();
             Core.inRange(vChannel, new Scalar(220), new Scalar(255), glareMask);
 
-            // Dilate mask slightly to cover glare edges
             Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(5, 5));
             Imgproc.dilate(glareMask, glareMask, kernel);
 
-            // Apply inpainting to fill glare regions with surrounding texture
             if (Core.countNonZero(glareMask) > 0) {
                 Photo.inpaint(image, glareMask, result, 3, Photo.INPAINT_TELEA);
             }
 
-            // Clean up
             glareMask.release();
             kernel.release();
-            for (Mat ch : hsvChannels) ch.release();
+            for (Mat ch : hsvChannels)
+                ch.release();
 
         } catch (Exception e) {
             System.err.println("Glare reduction failed: " + e.getMessage());
