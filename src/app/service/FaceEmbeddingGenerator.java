@@ -19,18 +19,15 @@ public class FaceEmbeddingGenerator {
 
     private void initializeEmbeddingNet() {
         try {
-            String modelPath = ConfigurationAndLogging.AppConfig.getInstance().getEmbeddingModelPath();
-            java.io.File modelFile = new java.io.File(modelPath).getAbsolutePath() != null
-                    ? new java.io.File(modelPath)
-                    : new java.io.File("data\\resources\\openface.nn4.small2.v1.t7");
 
-            if (modelFile.exists()) {
+            String modelPath = "data\\resources\\openface.nn4.small2.v1.t7";
+
+            if (new java.io.File(modelPath).exists()) {
                 embeddingNet = Dnn.readNetFromTorch(modelPath);
                 isInitialized = true;
-                System.out.println("Face embedding model loaded successfully from: " + modelFile.getAbsolutePath());
+                System.out.println("Face embedding model loaded successfully");
             } else {
-                System.out.println("Face embedding model not found at: " + modelFile.getAbsolutePath() +
-                        ". Falling back to feature-based embeddings");
+                System.out.println("Face embedding model not found, using feature-based embeddings");
                 isInitialized = false;
             }
         } catch (Exception e) {
@@ -59,9 +56,8 @@ public class FaceEmbeddingGenerator {
             Mat processedImage = new Mat();
             Imgproc.resize(colorImage, processedImage, INPUT_SIZE);
 
-            processedImage.convertTo(processedImage, CvType.CV_32F, 1.0 / 255.0);
-
-            Mat blob = Dnn.blobFromImage(processedImage, 1.0, INPUT_SIZE, new Scalar(0, 0, 0), true, false);
+            Mat blob = Dnn.blobFromImage(processedImage, 1.0 / 128.0, INPUT_SIZE,
+                    new Scalar(127.5, 127.5, 127.5), true, false);
 
             embeddingNet.setInput(blob);
 
@@ -70,7 +66,12 @@ public class FaceEmbeddingGenerator {
             colorImage.release();
             processedImage.release();
 
-            return matToByteArray(embedding);
+            byte[] embBytes = matToByteArray(embedding);
+            float[] embFloats = byteArrayToFloatArray(embBytes);
+            l2NormalizeInPlace(embFloats);
+            embBytes = floatArrayToByteArray(embFloats);
+
+            return embBytes;
 
         } catch (Exception e) {
             System.err.println("Deep embedding generation failed: " + e.getMessage());
@@ -296,6 +297,25 @@ public class FaceEmbeddingGenerator {
             doubles[i] = buffer.getDouble();
         }
         return doubles;
+    }
+
+    private byte[] floatArrayToByteArray(float[] floats) {
+        java.nio.ByteBuffer buffer = java.nio.ByteBuffer.allocate(floats.length * 4);
+        for (float f : floats) {
+            buffer.putFloat(f);
+        }
+        return buffer.array();
+    }
+
+    private void l2NormalizeInPlace(float[] vector) {
+        double norm = 0.0;
+        for (float v : vector) {
+            norm += v * v;
+        }
+        norm = Math.sqrt(Math.max(norm, 1e-12));
+        for (int i = 0; i < vector.length; i++) {
+            vector[i] = (float) (vector[i] / norm);
+        }
     }
 
     public boolean isDeepLearningAvailable() {
