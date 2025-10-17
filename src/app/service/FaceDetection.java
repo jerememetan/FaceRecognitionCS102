@@ -404,26 +404,43 @@ public class FaceDetection {
                     continue;
                 }
 
-                // Normalize and overwrite file for consistent downstream reads
-                Mat processed = preprocessForRecognition(img);
+                // CRITICAL: Save ORIGINAL color image, generate embeddings from COLOR images
+                // Embedding generator will handle internal preprocessing (resize, normalization)
                 try {
-                    Imgcodecs.imwrite(path, processed);
-                    byte[] embedding = embeddingGenerator.generateEmbedding(processed);
+                    // GLASSES-AWARE: Apply glare reduction before saving and embedding generation
+                    Mat glareReduced = imageProcessor.reduceGlare(img);
+                    
+                    // Save the glare-reduced color image for visual reference
+                    Imgcodecs.imwrite(path, glareReduced);
+                    
+                    // Generate embedding directly from COLOR image (no grayscale preprocessing!)
+                    // The FaceEmbeddingGenerator expects color images and handles preprocessing internally
+                    byte[] embedding = embeddingGenerator.generateEmbedding(glareReduced);
+                    glareReduced.release();
+                    
+                    if (embedding == null || embedding.length == 0) {
+                        rejectedReasons.add("Image " + index + " embedding generation failed");
+                        continue;
+                    }
                     
                     try {
                         String embeddingPath = path.replaceAll("\\.[^.]+$", ".emb");
                         Files.write(Paths.get(embeddingPath), embedding);
                     } catch (Exception ioEx) {
                         System.err.println("Failed to write embedding file for " + path + ": " + ioEx.getMessage());
+                        rejectedReasons.add("Image " + index + " failed to save embedding");
+                        continue;
                     }
+                    
                     FaceImage faceImage = new FaceImage(path, embedding);
                     double normalizedQuality = Math.min(1.0, Math.max(0.0, qualityResult.getQualityScore() / 100.0));
                     faceImage.setQualityScore(normalizedQuality);
                     
                     student.getFaceData().addImage(faceImage);
                     accepted.add(path);
-                } finally {
-                    processed.release();
+                    
+                } catch (Exception saveEx) {
+                    rejectedReasons.add("Image " + index + " failed to save: " + saveEx.getMessage());
                 }
             } catch (Exception ex) {
                 rejectedReasons.add("Image " + index + " processing failed: " + ex.getMessage());

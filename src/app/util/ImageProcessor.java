@@ -237,6 +237,57 @@ public class ImageProcessor {
         return denoised;
     }
 
+    /**
+     * Reduces glare and specular highlights from glasses.
+     * Uses HSV color space to detect and attenuate bright spots.
+     * @param image Input color image (BGR format)
+     * @return Image with reduced glare
+     */
+    public Mat reduceGlare(Mat image) {
+        if (image.empty() || image.channels() != 3) {
+            return image;
+        }
+
+        Mat hsv = new Mat();
+        Mat result = image.clone();
+
+        try {
+            // Convert to HSV color space
+            Imgproc.cvtColor(image, hsv, Imgproc.COLOR_BGR2HSV);
+
+            // Split channels
+            java.util.List<Mat> hsvChannels = new java.util.ArrayList<>();
+            Core.split(hsv, hsvChannels);
+            Mat vChannel = hsvChannels.get(2); // Value channel
+
+            // Detect bright highlights (glare from glasses)
+            Mat glareMask = new Mat();
+            Core.inRange(vChannel, new Scalar(220), new Scalar(255), glareMask);
+
+            // Dilate mask slightly to cover glare edges
+            Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(5, 5));
+            Imgproc.dilate(glareMask, glareMask, kernel);
+
+            // Apply inpainting to fill glare regions with surrounding texture
+            if (Core.countNonZero(glareMask) > 0) {
+                Photo.inpaint(image, glareMask, result, 3, Photo.INPAINT_TELEA);
+            }
+
+            // Clean up
+            glareMask.release();
+            kernel.release();
+            for (Mat ch : hsvChannels) ch.release();
+
+        } catch (Exception e) {
+            System.err.println("Glare reduction failed: " + e.getMessage());
+            return image;
+        } finally {
+            hsv.release();
+        }
+
+        return result;
+    }
+
     public static class ImageQualityResult {
         private boolean goodQuality;
         private double qualityScore;

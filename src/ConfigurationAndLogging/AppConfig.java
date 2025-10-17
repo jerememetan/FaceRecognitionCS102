@@ -24,6 +24,27 @@ public class AppConfig {
     public final static double KEY_PREPROCESSING_CLAHE_CLIP_LIMIT = 2.0;
     public final static int KEY_PREPROCESSING_CLAHE_GRID_SIZE = 8;
 
+    // Advanced detection/recognition keys
+    private static final String KEY_DNN_ENABLED = "detection.dnn.enabled";
+    private static final String KEY_DNN_MODEL_PATH = "detection.dnn.model_path";
+    private static final String KEY_DNN_CONFIG_PATH = "detection.dnn.config_path";
+    private static final String KEY_DNN_CONFIDENCE = "detection.dnn.confidence";
+    private static final String KEY_RECOGNITION_TOP_K = "recognition.top_k";
+    private static final String KEY_RECOGNITION_MARGIN_DEEP = "recognition.margin.deep";
+    private static final String KEY_RECOGNITION_MARGIN_FALLBACK = "recognition.margin.fallback";
+    private static final String KEY_RECOGNITION_SOFT_THRESHOLD = "recognition.soft_threshold";
+    private static final String KEY_RECOGNITION_HIGH_THRESHOLD = "recognition.high_threshold";
+    private static final String KEY_RECOGNITION_CONSISTENCY_WINDOW = "recognition.consistency.window";
+    private static final String KEY_RECOGNITION_CONSISTENCY_MIN_COUNT = "recognition.consistency.min_count";
+    private static final String KEY_RECOGNITION_COHORT_ENABLED = "recognition.cohort.enabled";
+    private static final String KEY_RECOGNITION_COHORT_SIZE = "recognition.cohort.size";
+    private static final String KEY_RECOGNITION_COHORT_Z_MIN = "recognition.cohort.z_min";
+    private static final String KEY_PRUNING_ENABLED = "recognition.pruning.enabled";
+    private static final String KEY_PRUNING_STD_FACTOR = "recognition.pruning.std_factor";
+    private static final String KEY_PRUNING_MIN_KEEP = "recognition.pruning.min_keep";
+    private static final String KEY_PERSON_THRESHOLDS_ENABLED = "recognition.thresholds.person.enabled";
+    private static final String KEY_PERSON_THRESHOLDS_BETA = "recognition.thresholds.person.beta";
+
     // --- Singleton Implementation ---
     private static AppConfig instance = null;
     private final Properties properties = new Properties();
@@ -264,4 +285,144 @@ public class AppConfig {
         }
     }
 
+    public boolean isDnnDetectionEnabled() {
+        return Boolean.parseBoolean(properties.getProperty(KEY_DNN_ENABLED, "true"));
+    }
+
+    public String getDnnModelPath() {
+        return properties.getProperty(KEY_DNN_MODEL_PATH, "data/resources/opencv_face_detector_uint8.pb");
+    }
+
+    public String getDnnConfigPath() {
+        return properties.getProperty(KEY_DNN_CONFIG_PATH, "data/resources/opencv_face_detector.pbtxt");
+    }
+
+    public double getDnnConfidence() {
+        try {
+            return Double.parseDouble(properties.getProperty(KEY_DNN_CONFIDENCE, "0.55"));
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: invalid number for " + KEY_DNN_CONFIDENCE, ex);
+            return 0.55;
+        }
+    }
+
+    public int getRecognitionTopK() {
+        try {
+            return Integer.parseInt(properties.getProperty(KEY_RECOGNITION_TOP_K, "5"));
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: invalid number for " + KEY_RECOGNITION_TOP_K, ex);
+            return 5;
+        }
+    }
+
+    public double getRecognitionMarginDeep() {
+        try {
+            return Double.parseDouble(properties.getProperty(KEY_RECOGNITION_MARGIN_DEEP, "0.10"));
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: invalid number for " + KEY_RECOGNITION_MARGIN_DEEP, ex);
+            return 0.10;
+        }
+    }
+
+    public double getRecognitionMarginFallback() {
+        try {
+            return Double.parseDouble(properties.getProperty(KEY_RECOGNITION_MARGIN_FALLBACK, "0.18"));
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: invalid number for " + KEY_RECOGNITION_MARGIN_FALLBACK, ex);
+            return 0.18;
+        }
+    }
+
+    public double getRecognitionSoftThreshold() {
+        try {
+            return Double.parseDouble(properties.getProperty(KEY_RECOGNITION_SOFT_THRESHOLD, "0.72"));
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: invalid number for " + KEY_RECOGNITION_SOFT_THRESHOLD, ex);
+            return 0.72;
+        }
+    }
+
+    public double getRecognitionHighThreshold() {
+        try {
+            return Double.parseDouble(properties.getProperty(KEY_RECOGNITION_HIGH_THRESHOLD, "0.82"));
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: invalid number for " + KEY_RECOGNITION_HIGH_THRESHOLD, ex);
+            return 0.82;
+        }
+    }
+
+    public int getConsistencyWindow() {
+        try {
+            return Integer.parseInt(properties.getProperty(KEY_RECOGNITION_CONSISTENCY_WINDOW, "5"));
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: invalid number for " + KEY_RECOGNITION_CONSISTENCY_WINDOW, ex);
+            return 5;
+        }
+    }
+
+    public int getConsistencyMinCount() {
+        try {
+            return Integer.parseInt(properties.getProperty(KEY_RECOGNITION_CONSISTENCY_MIN_COUNT, "3"));
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: invalid number for " + KEY_RECOGNITION_CONSISTENCY_MIN_COUNT, ex);
+            return 3;
+        }
+    }
+
+    public boolean isCohortEnabled() {
+        return Boolean.parseBoolean(properties.getProperty(KEY_RECOGNITION_COHORT_ENABLED, "true"));
+    }
+
+    public int getCohortSize() {
+        try {
+            return Integer.parseInt(properties.getProperty(KEY_RECOGNITION_COHORT_SIZE, "6"));
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: invalid number for " + KEY_RECOGNITION_COHORT_SIZE, ex);
+            return 6;
+        }
+    }
+
+    public double getCohortZMin() {
+        try {
+            return Double.parseDouble(properties.getProperty(KEY_RECOGNITION_COHORT_Z_MIN, "-1.0"));
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: invalid number for " + KEY_RECOGNITION_COHORT_Z_MIN, ex);
+            return -1.0;
+        }
+    }
+
+    public boolean isPruningEnabled() {
+        return Boolean.parseBoolean(properties.getProperty(KEY_PRUNING_ENABLED, "true"));
+    }
+
+    public double getPruningStdFactor() {
+        try {
+            return Double.parseDouble(properties.getProperty(KEY_PRUNING_STD_FACTOR, "1.5"));
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: invalid number for " + KEY_PRUNING_STD_FACTOR, ex);
+            return 1.5;
+        }
+    }
+
+    public int getPruningMinKeep() {
+        try {
+            return Integer.parseInt(properties.getProperty(KEY_PRUNING_MIN_KEEP, "5"));
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: invalid number for " + KEY_PRUNING_MIN_KEEP, ex);
+            return 5;
+        }
+    }
+
+    public boolean isPersonThresholdsEnabled() {
+        return Boolean.parseBoolean(properties.getProperty(KEY_PERSON_THRESHOLDS_ENABLED, "true"));
+    }
+
+    public double getPersonThresholdsBeta() {
+        try {
+            return Double.parseDouble(properties.getProperty(KEY_PERSON_THRESHOLDS_BETA, "0.15"));
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: invalid number for " + KEY_PERSON_THRESHOLDS_BETA, ex);
+            return 0.15;
+        }
+    }
 }

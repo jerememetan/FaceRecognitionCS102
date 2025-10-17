@@ -48,14 +48,22 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
     // Recognition helpers
     private final ImageProcessor imageProcessor = new ImageProcessor();
     private final FaceEmbeddingGenerator embGen = new FaceEmbeddingGenerator();
-    private final int TOP_K = 3; // average top-K similarities per person to reduce outliers
-    private final double MARGIN_DEEP = 0.06; // slightly relaxed to reduce false negatives
-    private final double MARGIN_FALLBACK = 0.08;
-    private final int CONSISTENCY_WINDOW = 5; // frames to consider
-    private final int CONSISTENCY_MIN_COUNT = 3; // required consistent predictions
+    private final int TOP_K = 5; // capture more exemplars for robustness
+    private final int CONSISTENCY_WINDOW = 8; // longer window for stability
+    private final int CONSISTENCY_MIN_COUNT = 5; // require strong agreement
     private final Deque<Integer> recentPredictions = new ArrayDeque<>(CONSISTENCY_WINDOW);
-    private final int Q_EMB_WINDOW = 5; // smoothing window for query embeddings
+    private final int Q_EMB_WINDOW = 5; // moderate smoothing
     private final Deque<byte[]> recentQueryEmbeddings = new ArrayDeque<>(Q_EMB_WINDOW);
+    
+    // Advanced differentiation parameters
+    private final double PENALTY_WEIGHT = 0.20; // penalize similarity to wrong persons
+    private final double MIN_RELATIVE_MARGIN_PCT = 0.10; // 10% relative margin minimum
+    
+    // Per-person adaptive thresholds and metadata
+    private ArrayList<Double> personTightness = new ArrayList<>();
+    private ArrayList<Double> personAbsoluteThresholds = new ArrayList<>();
+    private ArrayList<Double> personRelativeMargins = new ArrayList<>();
+    private ArrayList<Double> personStdDevs = new ArrayList<>(); // cluster spread measure
 
     static {
         // Load OpenCV native library
@@ -133,6 +141,10 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         }
         personEmbeddings = new ArrayList<>();
         personCentroids = new ArrayList<>();
+        personTightness = new ArrayList<>();
+        personAbsoluteThresholds = new ArrayList<>();
+        personRelativeMargins = new ArrayList<>();
+        personStdDevs = new ArrayList<>();
         for (String folder : folder_names) {
             List<byte[]> embList = new ArrayList<>();
             File dir = new File(folder);
@@ -150,8 +162,79 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                 }
             }
             personEmbeddings.add(embList);
-            personCentroids.add(computeCentroid(embList));
+            double[] centroid = computeCentroid(embList);
+            personCentroids.add(centroid);
+            
+            // Compute per-person tightness (average pairwise similarity)
+            double tightness = computeTightness(embList);
+            personTightness.add(tightness);
+            
+            // Compute standard deviation of distances to centroid
+            double stdDev = computeStdDev(embList, centroid);
+            personStdDevs.add(stdDev);
+            
+            // Multi-way discriminative thresholds
+            boolean deep = embGen.isDeepLearningAvailable();
+            
+            // Base thresholds: stricter than before to reduce false positives
+            double baseAbsolute = deep ? 0.75 : 0.68;
+            double baseMargin = deep ? 0.08 : 0.12;
+            
+            // GLASSES-AWARE: High stdDev indicates varied appearances (with/without glasses, different angles)
+            // Relax thresholds for people with high variation to accommodate glasses
+            boolean likelyHasGlasses = stdDev > 0.12; // High variation suggests occlusion (glasses)
+            
+            if (likelyHasGlasses) {
+                // Relax absolute threshold by 7% for glasses wearers
+                baseAbsolute *= 0.93; // e.g., 0.75 -> 0.70
+                // Slightly reduce margin requirement (glasses cause natural variation)
+                baseMargin *= 0.85; // e.g., 0.08 -> 0.068
+                System.out.println("  [Glasses Mode] Detected high variation (stdDev=" + String.format("%.3f", stdDev) + ") - relaxed thresholds");
+            }
+            
+            // Tight clusters need higher absolute score (they should match well)
+            // Loose clusters get lower absolute but higher margin (discriminative)
+            double absoluteThreshold = baseAbsolute + (tightness * 0.08);
+            double relativeMargin = baseMargin + ((1.0 - tightness) * 0.08);
+            
+            personAbsoluteThresholds.add(absoluteThreshold);
+            personRelativeMargins.add(relativeMargin);
+            
+            System.out.printf("Person %s: tightness=%.3f, stdDev=%.3f, absThresh=%.3f, margin=%.3f%n", 
+                buildDisplayLabel(new File(folder).getName()), tightness, stdDev, absoluteThreshold, relativeMargin);
         }
+    }
+    
+    // Compute tightness: average pairwise similarity within person's embeddings
+    private double computeTightness(List<byte[]> embList) {
+        if (embList == null || embList.size() < 2) return 1.0; // single embedding = tight
+        double sum = 0.0;
+        int count = 0;
+        for (int i = 0; i < embList.size(); i++) {
+            for (int j = i + 1; j < embList.size(); j++) {
+                sum += embGen.calculateSimilarity(embList.get(i), embList.get(j));
+                count++;
+            }
+        }
+        return count > 0 ? sum / count : 1.0;
+    }
+    
+    // Compute standard deviation of similarity to centroid
+    private double computeStdDev(List<byte[]> embList, double[] centroid) {
+        if (embList == null || embList.size() < 2 || centroid == null) return 0.0;
+        double[] similarities = new double[embList.size()];
+        double mean = 0.0;
+        for (int i = 0; i < embList.size(); i++) {
+            similarities[i] = cosineSimilarity(embList.get(i), centroid);
+            mean += similarities[i];
+        }
+        mean /= embList.size();
+        double variance = 0.0;
+        for (double sim : similarities) {
+            double diff = sim - mean;
+            variance += diff * diff;
+        }
+        return Math.sqrt(variance / embList.size());
     }
 
     // Compute normalized centroid for a person
@@ -214,19 +297,86 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
     }
 
     private void initializeOpenCV() {
-        // [*** Copy your faceDetector and VideoCapture initialization here ***]
-        String cascadePath = AppConfig.getInstance().getCascadePath(); //
+        // Initialize face detector
+        String cascadePath = AppConfig.getInstance().getCascadePath();
         faceDetector = new CascadeClassifier(cascadePath);
         if (faceDetector.empty()) {
             AppLogger.error("Error loading cascade file: " + cascadePath);
             throw new RuntimeException("Classifier Initialization failed.");
         }
 
-        capture = new VideoCapture(AppConfig.getInstance().getCameraIndex());
+        // Initialize camera with fallback strategy
+        capture = openCameraWithFallback();
         if (!capture.isOpened()) {
-            AppLogger.error("Error opening webcam!");
+            AppLogger.error("Error opening webcam with all backends!");
             throw new RuntimeException("Camera Initialization failed.");
         }
+        
+        // Configure camera settings
+        configureCamera(capture);
+        AppLogger.info("Camera initialized successfully");
+    }
+    
+    /**
+     * Opens camera with multiple backend fallbacks to handle DSHOW errors.
+     * Tries DSHOW -> MSMF -> Any available backend.
+     */
+    private VideoCapture openCameraWithFallback() {
+        int cameraIndex = AppConfig.getInstance().getCameraIndex();
+        
+        // Try DirectShow first (preferred on Windows, avoids MSMF grabFrame errors)
+        AppLogger.info("Attempting to open camera with DSHOW backend...");
+        VideoCapture cap = new VideoCapture(cameraIndex, org.opencv.videoio.Videoio.CAP_DSHOW);
+        if (cap.isOpened()) {
+            AppLogger.info("Camera opened successfully with DSHOW backend");
+            return cap;
+        }
+        AppLogger.warn("DSHOW backend failed, trying MSMF...");
+        
+        // Fallback to MSMF (Microsoft Media Foundation)
+        cap.release();
+        cap = new VideoCapture(cameraIndex, org.opencv.videoio.Videoio.CAP_MSMF);
+        if (cap.isOpened()) {
+            AppLogger.info("Camera opened successfully with MSMF backend");
+            return cap;
+        }
+        AppLogger.warn("MSMF backend failed, trying any available backend...");
+        
+        // Last resort: let OpenCV choose any available backend
+        cap.release();
+        cap = new VideoCapture(cameraIndex);
+        if (cap.isOpened()) {
+            AppLogger.info("Camera opened successfully with default backend");
+        } else {
+            AppLogger.error("All camera backends failed!");
+        }
+        return cap;
+    }
+    
+    /**
+     * Configures camera resolution and codec settings for optimal performance.
+     */
+    private void configureCamera(VideoCapture cap) {
+        try {
+            cap.set(org.opencv.videoio.Videoio.CAP_PROP_FRAME_WIDTH, 640);
+            cap.set(org.opencv.videoio.Videoio.CAP_PROP_FRAME_HEIGHT, 480);
+            cap.set(org.opencv.videoio.Videoio.CAP_PROP_FPS, 30);
+            
+            // Use MJPEG codec for better performance
+            cap.set(org.opencv.videoio.Videoio.CAP_PROP_FOURCC, 
+                    VideoWriter_fourcc('M', 'J', 'P', 'G'));
+            
+            AppLogger.info("Camera configured: 640x480 @ 30fps with MJPEG codec");
+        } catch (Exception e) {
+            AppLogger.warn("Camera configuration failed (non-critical): " + e.getMessage());
+        }
+    }
+    
+    /**
+     * Helper to create FOURCC code for video codec.
+     */
+    private static int VideoWriter_fourcc(char c1, char c2, char c3, char c4) {
+        return ((int) c1) | (((int) c2) << 8) | (((int) c3) << 16) | (((int) c4) << 24);
     }
 
     private void setupFrameAndListener() {
@@ -269,21 +419,31 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                             new Point(rect.x + rect.width, rect.y + rect.height),
                             new Scalar(0, 255, 0), 2);
 
-                    // Crop from color frame for richer preprocessing
+                    // Crop from color frame - keep as COLOR for embedding generation
                     Mat faceColor = webcamFrame.submat(rect);
-                    // Quality gate and preprocessing
-                    ImageProcessor.ImageQualityResult q = imageProcessor.validateImageQualityDetailed(faceColor);
-                    if (!q.isGoodQuality()) {
-                        // Skip low-quality detections to reduce false positives
+                    
+                    // GLASSES-AWARE: Reduce glare and specular highlights from glasses
+                    Mat glareReduced = imageProcessor.reduceGlare(faceColor);
+                    
+                    // Quality gate - relaxed to allow more faces through
+                    ImageProcessor.ImageQualityResult q = imageProcessor.validateImageQualityDetailed(glareReduced);
+                    // Only reject severely poor quality (score < 30)
+                    boolean severelyPoor = q.getQualityScore() < 30.0;
+                    
+                    // Generate embedding directly from COLOR image
+                    // The FaceEmbeddingGenerator expects color images and handles preprocessing internally
+                    Mat aligned = imageProcessor.correctFaceOrientation(glareReduced);
+                    byte[] queryEmbedding = embGen.generateEmbedding(aligned);
+                    aligned.release();
+                    glareReduced.release();
+                    
+                    // Skip only if severely poor quality AND embedding generation failed
+                    if (severelyPoor && queryEmbedding == null) {
                         Imgproc.putText(webcamFrame, "unknown", new Point(rect.x, rect.y - 10),
                                 Imgproc.FONT_HERSHEY_SIMPLEX, 0.9, new Scalar(0, 0, 255), 2);
                         continue;
                     }
-
-                    Mat preprocessed = imageProcessor.preprocessFaceImage(
-                            imageProcessor.correctFaceOrientation(faceColor));
-                    Imgproc.resize(preprocessed, preprocessed, new Size(RECOGNITION_CROP_SIZE_PX, RECOGNITION_CROP_SIZE_PX));
-                    byte[] queryEmbedding = embGen.generateEmbedding(preprocessed);
+                    
                     // update temporal embedding buffer
                     if (recentQueryEmbeddings.size() == Q_EMB_WINDOW) {
                         recentQueryEmbeddings.pollFirst();
@@ -302,6 +462,7 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                         double[] centroid = (p < personCentroids.size()) ? personCentroids.get(p) : null;
                         double fusedRaw = computeFusedScore(queryEmbedding, person, centroid);
                         double fusedSmooth = smoothedEmbedding != null ? computeFusedScore(smoothedEmbedding, person, centroid) : 0.0;
+                        // Use max of raw and smoothed without quality boost (bias removal)
                         personScores.add(Math.max(fusedRaw, fusedSmooth));
                     }
 
@@ -310,6 +471,7 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                     if (personScores.isEmpty()) {
                         displayText = "unknown";
                     } else {
+                        // Find top-2 scores for discriminative decision
                         int maxIdx = 0;
                         for (int i = 1; i < personScores.size(); i++) {
                             if (personScores.get(i) > personScores.get(maxIdx)) {
@@ -324,18 +486,83 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                             if (i == bestIdx) continue;
                             if (personScores.get(i) > second) second = personScores.get(i);
                         }
-                        boolean deep = embGen.isDeepLearningAvailable();
-                        double high = deep ? 0.90 : 0.85;
-                        double soft = Math.max(RECOGNITION_THRESHOLD, deep ? 0.80 : 0.70);
-                        double requiredMargin = deep ? MARGIN_DEEP : MARGIN_FALLBACK;
-
+                        
+                        // Get person-specific discriminative thresholds
+                        double absThresh = bestIdx < personAbsoluteThresholds.size() 
+                            ? personAbsoluteThresholds.get(bestIdx) 
+                            : 0.75;
+                        double margin = bestIdx < personRelativeMargins.size() 
+                            ? personRelativeMargins.get(bestIdx) 
+                            : 0.10;
+                        
+                        // Calculate negative evidence: how much does query match OTHER persons?
+                        double negativeEvidence = 0.0;
+                        int negCount = 0;
+                        for (int i = 0; i < personScores.size(); i++) {
+                            if (i != bestIdx) {
+                                negativeEvidence += personScores.get(i);
+                                negCount++;
+                            }
+                        }
+                        double avgNegative = negCount > 0 ? negativeEvidence / negCount : 0.0;
+                        
+                        // Discriminative score with penalty for matching wrong persons
+                        double discriminativeScore = best - (PENALTY_WEIGHT * avgNegative);
+                        
+                        // Relative margin as percentage of best score (more robust than absolute)
+                        double relativeMarginPct = best > 0 ? (best - second) / best : 0.0;
+                        double requiredMarginPct = Math.max(MIN_RELATIVE_MARGIN_PCT, margin / best);
+                        
+                        // Debug logging: show all person scores for transparency
+                        StringBuilder allScores = new StringBuilder("[Recognition] Scores: ");
+                        for (int i = 0; i < personScores.size(); i++) {
+                            String personName = i < personLabels.size() ? personLabels.get(i) : "P" + i;
+                            allScores.append(String.format("%s=%.3f ", personName, personScores.get(i)));
+                        }
+                        double tightness = bestIdx < personTightness.size() ? personTightness.get(bestIdx) : 0.0;
+                        double stdDev = bestIdx < personStdDevs.size() ? personStdDevs.get(bestIdx) : 0.0;
+                        String bestName = bestIdx < personLabels.size() ? personLabels.get(bestIdx) : "unknown";
+                        System.out.println(allScores.toString());
+                        System.out.printf("[Decision] Best=%s(%.3f), 2nd=%.3f, Discriminative=%.3f, AvgNeg=%.3f%n",
+                            bestName, best, second, discriminativeScore, avgNegative);
+                        System.out.printf("[Thresholds] Abs=%.3f, Margin=%.3f(%.1f%%), RelMargin=%.1f%%, Tightness=%.3f, StdDev=%.3f%n",
+                            absThresh, margin, requiredMarginPct * 100, relativeMarginPct * 100, tightness, stdDev);
+                        
+                        // Multi-criteria discriminative decision
+                        boolean absolutePass = best >= absThresh;
+                        boolean absoluteMarginPass = (best - second) >= margin;
+                        boolean relativeMarginPass = relativeMarginPct >= requiredMarginPct;
+                        boolean discriminativePass = discriminativeScore >= absThresh;
+                        boolean consistent = isConsistent(bestIdx);
+                        
                         boolean accept = false;
-                        if (best >= high) {
+                        // Tier 1: Strong discrimination - both absolute quality AND margin separation
+                        if (absolutePass && (absoluteMarginPass || relativeMarginPass)) {
                             accept = true;
-                        } else if (best >= soft && (best - second) >= requiredMargin) {
+                            System.out.println("[Decision] ACCEPT: Tier 1 - Absolute + Margin");
+                        } 
+                        // Tier 2: Discriminative scoring - penalized score still good + consistency
+                        else if (discriminativePass && relativeMarginPass && consistent) {
                             accept = true;
-                        } else if (best >= (soft - 0.02) && isConsistent(bestIdx)) {
-                            accept = true;
+                            System.out.println("[Decision] ACCEPT: Tier 2 - Discriminative + RelMargin + Consistency");
+                        }
+                        // Tier 3: Very strong consistency with good discriminative score
+                        else if (discriminativePass && consistent && recentPredictions.size() >= CONSISTENCY_WINDOW - 1) {
+                            int strongCount = 0;
+                            for (Integer v : recentPredictions) {
+                                if (v != null && v == bestIdx) strongCount++;
+                            }
+                            // Require very strong consistency (6 out of last 7-8 frames)
+                            if (strongCount >= CONSISTENCY_MIN_COUNT + 1) {
+                                accept = true;
+                                System.out.println("[Decision] ACCEPT: Tier 3 - Strong Consistency (" + strongCount + " frames)");
+                            } else {
+                                System.out.printf("[Decision] REJECT: Weak consistency (%d frames)%n", strongCount);
+                            }
+                        }
+                        else {
+                            System.out.printf("[Decision] REJECT: Abs=%s, AbsMargin=%s, RelMargin=%s, Discrim=%s, Consist=%s%n",
+                                absolutePass, absoluteMarginPass, relativeMarginPass, discriminativePass, consistent);
                         }
 
                         if (accept) {
@@ -426,14 +653,17 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         }
         double avgTopK = sumTopK / k;
         double medianTopK = (k % 2 == 1) ? topK[k / 2] : (topK[k / 2 - 1] + topK[k / 2]) / 2.0;
-        double exemplarScore = 0.7 * avgTopK + 0.3 * medianTopK;
+        double maxTopK = topK[0]; // best exemplar
+        // Weight: max gets more influence to reduce false negatives
+        double exemplarScore = 0.50 * maxTopK + 0.35 * avgTopK + 0.15 * medianTopK;
 
         double centroidScore = 0.0;
         if (centroid != null) {
             centroidScore = cosineSimilarity(queryEmb, centroid);
         }
         int n = sims.length;
-        double alpha = Math.min(0.8, Math.max(0.4, 0.4 + 0.02 * Math.max(0, n - 5)));
+        // Increase centroid weight for larger clusters (more stable)
+        double alpha = Math.min(0.70, Math.max(0.35, 0.35 + 0.03 * Math.max(0, n - 5)));
         return alpha * centroidScore + (1.0 - alpha) * exemplarScore;
     }
 
