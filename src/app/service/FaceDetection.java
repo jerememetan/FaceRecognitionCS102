@@ -25,7 +25,7 @@ public class FaceDetection {
     private FaceEmbeddingGenerator embeddingGenerator;
     private FacialLandmarkDetector landmarkDetector;
 
-    private static final double MIN_CONFIDENCE_SCORE = 0.55;
+    private static final double MIN_CONFIDENCE_SCORE = 0.55; // Increased from 0.5 for better quality
     private static final double MIN_FACE_SIZE = 50.0;
     private static final double MAX_FACE_SIZE = 400.0;
     private static final int CAPTURE_INTERVAL_MS = 900;
@@ -94,7 +94,8 @@ public class FaceDetection {
     private FaceDetectionResult detectFaceWithDNN(Mat frame) {
         try {
             Size size = new Size(300, 300);
-            Mat blob = Dnn.blobFromImage(frame, 1.0, size, new Scalar(104.0, 177.0, 123.0));
+            // Fixed: Correct BGR mean values (was 177 for green, should be 117)
+            Mat blob = Dnn.blobFromImage(frame, 1.0, size, new Scalar(104.0, 117.0, 123.0));
 
             dnnFaceDetector.setInput(blob);
             Mat detections = dnnFaceDetector.forward();
@@ -239,14 +240,18 @@ public class FaceDetection {
                 Mat faceROI = extractFaceROI(frame, bestFace);
 
                 if (faceROI != null) {
+                    // First check image quality (blur, brightness, contrast)
                     ImageProcessor.ImageQualityResult qualityResult = imageProcessor
                             .validateImageQualityDetailed(faceROI);
                     String rawFeedback = qualityResult.getFeedback();
                     String feedbackMessage = rawFeedback != null ? rawFeedback.trim() : "Unknown quality issue";
 
+                    // Accept frames that pass all checks or miss only one metric narrowly (score >=
+                    // 70)
                     boolean qualityAcceptable = qualityResult.isGoodQuality()
                             || qualityResult.getQualityScore() >= 70.0;
 
+                    // Now check facial landmarks for pose quality (if detector is available)
                     boolean landmarkQualityAcceptable = true;
                     String landmarkFeedback = "";
 
@@ -269,18 +274,20 @@ public class FaceDetection {
                     }
 
                     // Combine quality checks
-                        }
-                    }
-
                     boolean allQualityChecksPass = qualityAcceptable && landmarkQualityAcceptable;
 
-                    if (allQualityChecksPass) {%03d", capturedCount + 1) + ".jpg";
+                    if (allQualityChecksPass) {
+                        Mat processedFace = preprocessForRecognition(faceROI);
+                        faceROI.release();
+                        String fileName = student.getStudentId() + "_" +
+                                String.format("%03d", capturedCount + 1) + ".jpg";
                         Path imageFile = folderPath.resolve(fileName);
 
                         if (Imgcodecs.imwrite(imageFile.toString(), processedFace)) {
                             byte[] embedding = embeddingGenerator.generateEmbedding(processedFace);
                             FaceImage faceImage = new FaceImage(imageFile.toString(), embedding);
 
+                            // Calculate combined quality score from image and landmark quality
                             double imageQualityScore = qualityResult.getQualityScore() / 100.0;
                             double landmarkQualityScore = landmarkQualityAcceptable ? 1.0 : 0.7;
                             double combinedQuality = (imageQualityScore * 0.6) + (landmarkQualityScore * 0.4);
@@ -294,6 +301,7 @@ public class FaceDetection {
 
                             callback.onImageCaptured(capturedCount, numberOfImages, detectionResult.getConfidence());
 
+                            // Provide quality feedback to user
                             if (!qualityResult.isGoodQuality()) {
                                 callback.onWarning("Captured, but consider improving quality: " + feedbackMessage);
                             } else if (!landmarkQualityAcceptable && !landmarkFeedback.isEmpty()) {
@@ -311,37 +319,45 @@ public class FaceDetection {
                             callback.onWarning("Failed to save image, please try again");
                         }
                         processedFace.release();
-                        }
-                        processedFace.release();
                     } else {
+                        // Provide specific feedback about what failed
                         String rejectionReason = !qualityAcceptable ? feedbackMessage : landmarkFeedback;
                         logDebug("Image quality validation failed: " + rejectionReason);
+                        callback.onWarning("Image rejected: " + rejectionReason);
+                        rejectedReasons.add(rejectionReason);
                         rejectedCount++;
                         faceROI.release();
                     }
-                }else
+                } else {
+                    logDebug("Face ROI extraction failed");
+                    String reason = "Face too close to edge, please center your face";
+                    callback.onWarning(reason);
+                    rejectedReasons.add(reason);
+                    rejectedCount++;
+                }
+            } else {
+                String warning = getDetectionFeedback(detectionResult);
+                callback.onWarning(warning);
+                rejectedReasons.add(warning);
+                rejectedCount++;
+            }
 
-    {
-        logDebug("Face ROI extraction failed");
-        String reason = "Face too close to edge, please center your face";
-        callback.onWarning(reason);
-        rejectedReasons.add(reason);
-        rejectedCount++;
-    }}else{
-    String warning = getDetectionFeedback(
-            detectionResult);callback.onWarning(warning);rejectedReasons.add(warning);rejectedCount++;}
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
 
-    try{Thread.sleep(100);}catch(
-    InterruptedException e){Thread.currentThread().interrupt();break;}}
+        callback.onCaptureCompleted();
 
-    callback.onCaptureCompleted();
-
-    boolean success = (capturedCount >= Math.min(10, numberOfImages));
-    String message = success ? String.format("Successfully captured %d high-quality face images", capturedCount)
+        boolean success = (capturedCount >= Math.min(10, numberOfImages));
+        String message = success ? String.format("Successfully captured %d high-quality face images", capturedCount)
                 : String.format("Only captured %d images, need at least %d", capturedCount,
                         Math.min(10, numberOfImages));
 
-    return new FaceCaptureResult(success,message,capturedImages,capturedCount,rejectedCount,rejectedReasons);
+        return new FaceCaptureResult(success, message, capturedImages, capturedCount, rejectedCount, rejectedReasons);
     }
 
     private Mat extractFaceROI(Mat frame, Rect face) {

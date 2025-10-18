@@ -16,10 +16,11 @@ public class FacialLandmarkDetector {
     private CascadeClassifier mouthDetector;
     private boolean isInitialized = false;
 
-    private static final double MIN_EYE_DISTANCE = 30.0;
-    private static final double MAX_YAW_ANGLE = 20.0;
-    private static final double MAX_PITCH_ANGLE = 20.0;
-    private static final double MIN_SYMMETRY_SCORE = 0.7;
+    // Quality thresholds
+    private static final double MIN_EYE_DISTANCE = 30.0; // Minimum pixels between eyes
+    private static final double MAX_YAW_ANGLE = 20.0; // Maximum head rotation (degrees) - reduced from 25.0
+    private static final double MAX_PITCH_ANGLE = 20.0; // Maximum head tilt (degrees)
+    private static final double MIN_SYMMETRY_SCORE = 0.7; // Minimum face symmetry (0-1)
 
     public FacialLandmarkDetector() {
         initializeLandmarkDetector();

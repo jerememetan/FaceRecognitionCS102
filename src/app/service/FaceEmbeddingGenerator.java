@@ -56,6 +56,7 @@ public class FaceEmbeddingGenerator {
             Mat processedImage = new Mat();
             Imgproc.resize(colorImage, processedImage, INPUT_SIZE);
 
+            // Proper OpenFace normalization: scale by 1/128 and subtract mean 127.5
             Mat blob = Dnn.blobFromImage(processedImage, 1.0 / 128.0, INPUT_SIZE,
                     new Scalar(127.5, 127.5, 127.5), true, false);
 
