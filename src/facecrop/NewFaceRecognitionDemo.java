@@ -405,14 +405,10 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         AppLogger.info("Camera initialized successfully");
     }
 
-    /**
-     * Opens camera with multiple backend fallbacks to handle DSHOW errors.
-     * Tries DSHOW -> MSMF -> Any available backend.
-     */
     private VideoCapture openCameraWithFallback() {
         int cameraIndex = AppConfig.getInstance().getCameraIndex();
 
-        // Try DirectShow first (preferred on Windows, avoids MSMF grabFrame errors)
+ 
         AppLogger.info("Attempting to open camera with DSHOW backend...");
         VideoCapture cap = new VideoCapture(cameraIndex, org.opencv.videoio.Videoio.CAP_DSHOW);
         if (cap.isOpened()) {
@@ -421,7 +417,7 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         }
         AppLogger.warn("DSHOW backend failed, trying MSMF...");
 
-        // Fallback to MSMF (Microsoft Media Foundation)
+
         cap.release();
         cap = new VideoCapture(cameraIndex, org.opencv.videoio.Videoio.CAP_MSMF);
         if (cap.isOpened()) {

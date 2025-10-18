@@ -64,10 +64,14 @@ public class FaceEmbeddingGenerator {
 
             Mat embedding = embeddingNet.forward();
 
+            // Release all intermediate Mats to prevent memory leaks
+            blob.release();
             colorImage.release();
             processedImage.release();
 
             byte[] embBytes = matToByteArray(embedding);
+            embedding.release(); // Release embedding Mat after conversion
+
             float[] embFloats = byteArrayToFloatArray(embBytes);
             l2NormalizeInPlace(embFloats);
             embBytes = floatArrayToByteArray(embFloats);
@@ -91,13 +95,19 @@ public class FaceEmbeddingGenerator {
             if (resized.channels() > 1) {
                 Imgproc.cvtColor(resized, gray, Imgproc.COLOR_BGR2GRAY);
             } else {
-                gray = resized;
+                gray = resized.clone(); // Clone to avoid releasing input parameter
             }
 
             extractHistogramFeatures(gray, features, 0);
             extractTextureFeatures(gray, features, 32);
             extractGeometricFeatures(gray, features, 64);
             extractGradientFeatures(gray, features, 96);
+
+            // Release temporary Mats
+            resized.release();
+            if (gray != resized) {
+                gray.release();
+            }
 
             return doubleArrayToByteArray(features);
 
@@ -120,6 +130,9 @@ public class FaceEmbeddingGenerator {
         for (int i = 0; i < 32 && i < hist.rows(); i++) {
             features[offset + i] = hist.get(i, 0)[0];
         }
+
+        // Release temporary Mat
+        hist.release();
     }
 
     private void extractTextureFeatures(Mat image, double[] features, int offset) {
@@ -155,7 +168,15 @@ public class FaceEmbeddingGenerator {
                 features[baseIdx + 2] = meanY.toArray()[0] / 255.0;
                 features[baseIdx + 3] = stdY.toArray()[0] / 255.0;
             }
+
+            // Release region submats
+            regionGradX.release();
+            regionGradY.release();
         }
+
+        // Release gradient Mats
+        gradX.release();
+        gradY.release();
     }
 
     private void extractGeometricFeatures(Mat image, double[] features, int offset) {
@@ -170,10 +191,12 @@ public class FaceEmbeddingGenerator {
             Mat huMoments = new Mat();
             Imgproc.HuMoments(moments, huMoments);
 
-            for (int i = 0; i < Math.min(7, huMoments.rows()) && (offset + 3 + i) < features.length; i++) {
-                double hu = huMoments.get(i, 0)[0];
-                features[offset + 3 + i] = Math.log(Math.abs(hu) + 1e-10);
+            for (int i = 0; i < 7 && (offset + 3 + i) < features.length; i++) {
+                double huValue = huMoments.get(i, 0)[0];
+                features[offset + 3 + i] = Math.log(Math.abs(huValue) + 1e-7);
             }
+
+            huMoments.release();
         }
     }
 
@@ -204,6 +227,12 @@ public class FaceEmbeddingGenerator {
                 features[offset + i] = hogFeatures[i] / sum;
             }
         }
+
+        // Release all temporary Mats
+        gradX.release();
+        gradY.release();
+        magnitude.release();
+        angle.release();
     }
 
     private byte[] matToByteArray(Mat mat) {
