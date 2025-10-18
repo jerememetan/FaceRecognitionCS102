@@ -32,11 +32,10 @@ public class ImageProcessor {
         }
 
         Mat filteredImage = new Mat();
-        Imgproc.bilateralFilter(processedImage, filteredImage, 5, 50, 50); // Reduced from d=9, sigma=75 to preserve
-                                                                           // detail
+        Imgproc.bilateralFilter(processedImage, filteredImage, 3, 25, 25);
         processedImage.release(); // Release intermediate Mat
 
-        CLAHE clahe = Imgproc.createCLAHE(2.0, new Size(8, 8));
+        CLAHE clahe = Imgproc.createCLAHE(1.0, new Size(8, 8));
         Mat contrastEnhanced = new Mat();
         clahe.apply(filteredImage, contrastEnhanced);
         filteredImage.release(); // Release intermediate Mat
@@ -45,11 +44,7 @@ public class ImageProcessor {
         Imgproc.resize(contrastEnhanced, resized, STANDARD_SIZE, 0, 0, Imgproc.INTER_CUBIC);
         contrastEnhanced.release(); // Release intermediate Mat
 
-        Mat normalized = new Mat();
-        Core.normalize(resized, normalized, 0, 255, Core.NORM_MINMAX, CvType.CV_8U);
-        resized.release(); // Release intermediate Mat
-
-        return normalized;
+        return resized;
     }
 
     public ImageQualityResult validateImageQualityDetailed(Mat image) {

@@ -295,16 +295,18 @@ public class FaceCaptureDialog extends JDialog {
     }
 
     private void updatePreview() {
-        try {
+        Mat frame = null;
+        Mat displayFrame = null;
 
-            Mat frame = faceDetection.getCurrentFrame();
+        try {
+            frame = faceDetection.getCurrentFrame();
 
             if (!frame.empty()) {
                 AppLogger.info("Frame received: " + frame.width() + "x" + frame.height());
 
                 FaceDetection.FaceDetectionResult result = faceDetection.detectFaceForPreview(frame);
 
-                Mat displayFrame = faceDetection.drawFaceOverlay(frame, result);
+                displayFrame = faceDetection.drawFaceOverlay(frame, result);
 
                 // Show raw camera frame with overlay only (no filters)
 
@@ -316,22 +318,16 @@ public class FaceCaptureDialog extends JDialog {
                     final int displayHeight = videoLabel.getHeight();
 
                     if (displayWidth > 0 && displayHeight > 0) {
-                        // Scale image BEFORE creating icon to avoid layout thrashing
+                        // Scale image to fit display area
                         Image scaledImage = bufferedImage.getScaledInstance(
                                 displayWidth, displayHeight, Image.SCALE_FAST);
                         ImageIcon icon = new ImageIcon(scaledImage);
 
-                        // Update icon in one atomic operation to prevent flicker/resize
-                        if (videoLabel.getIcon() == null ||
-                                videoLabel.getIcon().getIconWidth() != icon.getIconWidth() ||
-                                videoLabel.getIcon().getIconHeight() != icon.getIconHeight()) {
-                            // First update causes resize - batch with text clear
-                            videoLabel.setIcon(icon);
+                        // Update icon - clear text on first frame only
+                        if (videoLabel.getText() != null && !videoLabel.getText().isEmpty()) {
                             videoLabel.setText("");
-                        } else {
-                            // Subsequent updates - just replace icon (no resize)
-                            videoLabel.setIcon(icon);
                         }
+                        videoLabel.setIcon(icon);
                     }
                 }
 
@@ -345,6 +341,14 @@ public class FaceCaptureDialog extends JDialog {
             }
         } catch (Exception e) {
             AppLogger.error("Preview update failed: " + e.getMessage(), e);
+        } finally {
+            // CRITICAL: Release Mat objects to prevent memory leak and frame stuttering
+            if (frame != null && !frame.empty()) {
+                frame.release();
+            }
+            if (displayFrame != null && !displayFrame.empty()) {
+                displayFrame.release();
+            }
         }
     }
 
@@ -515,6 +519,37 @@ public class FaceCaptureDialog extends JDialog {
                     statusLabel.setText("Capture process completed");
                     statusLabel.setForeground(SUCCESS_COLOR);
                     AppLogger.info("Debug: Capture process finished");
+                });
+            }
+
+            @Override
+            public void onProcessingStarted(String message) {
+                SwingUtilities.invokeLater(() -> {
+                    statusLabel.setText(message);
+                    statusLabel.setForeground(WARNING_COLOR);
+                    progressBar.setValue(0);
+                    progressBar.setString("Processing...");
+                    AppLogger.info("Debug: " + message);
+                });
+            }
+
+            @Override
+            public void onProcessingProgress(int current, int total) {
+                SwingUtilities.invokeLater(() -> {
+                    int percentage = (int) ((current * 100.0) / total);
+                    progressBar.setValue(percentage);
+                    progressBar.setString("Processing " + current + "/" + total + " (" + percentage + "%)");
+                    statusLabel.setText(String.format("Generating embeddings: %d/%d", current, total));
+                    AppLogger.info(String.format("Debug: Processing embedding %d/%d", current, total));
+                });
+            }
+
+            @Override
+            public void onProcessingCompleted() {
+                SwingUtilities.invokeLater(() -> {
+                    statusLabel.setText("Processing embeddings completed");
+                    statusLabel.setForeground(SUCCESS_COLOR);
+                    AppLogger.info("Debug: Embedding generation completed");
                 });
             }
         };

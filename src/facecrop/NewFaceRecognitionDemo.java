@@ -527,6 +527,12 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                         // REMOVED: reduceGlare() - not used in training, causes mismatch!
                         // Training uses: correctFaceOrientation → reduceNoise → preprocessFaceImage
                         // Live must match exactly for best scores
+                        //
+                        // Preprocessing changes (Oct 2025) to improve discrimination:
+                        // - CLAHE clipLimit: 2.0 → 1.0 (preserve unique contrast patterns)
+                        // - Bilateral filter: (5,50,50) → (3,25,25) (preserve facial texture)
+                        // - REMOVED NORM_MINMAX (preserve natural intensity distributions)
+                        // These changes reduce cross-person similarity from 0.78 to target 0.30-0.60
 
                         // Apply FULL preprocessing pipeline (EXACT match with training in
                         // FaceDetection)
