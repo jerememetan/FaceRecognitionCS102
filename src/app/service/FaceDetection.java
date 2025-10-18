@@ -505,6 +505,10 @@ public class FaceDetection {
 
     /**
      * Sets the camera FPS (frames per second).
+     * Note: Many webcams do not support FPS changes, especially on Windows MSMF
+     * backend.
+     * This method will attempt to set FPS but may silently fail on unsupported
+     * hardware.
      * 
      * @param fps desired frames per second
      * @return true if FPS was successfully set, false if not supported
@@ -512,19 +516,48 @@ public class FaceDetection {
     public boolean setFps(double fps) {
         if (camera != null && camera.isOpened()) {
             try {
+                // Get current FPS before attempting to change
+                double currentFps = camera.get(org.opencv.videoio.Videoio.CAP_PROP_FPS);
+
+                // Attempt to set new FPS
                 boolean result = camera.set(org.opencv.videoio.Videoio.CAP_PROP_FPS, fps);
-                if (result) {
-                    logDebug("FPS set to: " + fps);
+
+                // Verify if FPS actually changed
+                double actualFps = camera.get(org.opencv.videoio.Videoio.CAP_PROP_FPS);
+
+                if (result && Math.abs(actualFps - fps) < 1.0) {
+                    logDebug("FPS successfully set to: " + fps + " (actual: " + actualFps + ")");
+                    return true;
                 } else {
-                    logDebug("Failed to set FPS to: " + fps);
+                    logDebug("FPS change not supported by camera. Current FPS: " + actualFps);
+                    // Note: Windows MSMF backend often shows warnings but doesn't support FPS
+                    // changes
+                    // This is expected behavior for many webcams
+                    return false;
                 }
-                return result;
             } catch (Exception e) {
-                System.err.println("Failed to set FPS: " + e.getMessage());
+                logDebug("FPS setting not supported: " + e.getMessage());
                 return false;
             }
         }
         return false;
+    }
+
+    /**
+     * Gets the current camera FPS (frames per second).
+     * 
+     * @return current FPS, or 0 if camera is not available
+     */
+    public double getCurrentFps() {
+        if (camera != null && camera.isOpened()) {
+            try {
+                return camera.get(org.opencv.videoio.Videoio.CAP_PROP_FPS);
+            } catch (Exception e) {
+                logDebug("Failed to get FPS: " + e.getMessage());
+                return 0;
+            }
+        }
+        return 0;
     }
 
     public boolean deleteFaceData(FaceData faceData) {

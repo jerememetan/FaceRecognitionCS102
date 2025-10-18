@@ -17,8 +17,6 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
- 
-
 
 public class FaceCaptureDialog extends JDialog {
     private Student student;
@@ -34,7 +32,7 @@ public class FaceCaptureDialog extends JDialog {
     private JButton startButton;
     private JButton stopButton;
     private JButton closeButton;
-    
+
     private JButton cameraSettingsButton;
     private JComboBox<String> fpsCombo;
 
@@ -54,14 +52,14 @@ public class FaceCaptureDialog extends JDialog {
         this.studentManager = studentManager;
         this.faceDetection = new FaceDetection();
 
-    AppLogger.info("FaceCaptureDialog created for student: " + student.getName());
+        AppLogger.info("FaceCaptureDialog created for student: " + student.getName());
 
         initializeDialog();
         startCameraPreview();
     }
 
     private void initializeDialog() {
-        setSize(800, 700); 
+        setSize(800, 700);
         setLocationRelativeTo(getParent());
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -71,7 +69,7 @@ public class FaceCaptureDialog extends JDialog {
         add(createControlPanel(), BorderLayout.SOUTH);
         add(createSettingsPanel(), BorderLayout.EAST);
 
-    AppLogger.info("Dialog initialized");
+        AppLogger.info("Dialog initialized");
     }
 
     private JPanel createInfoPanel() {
@@ -138,7 +136,8 @@ public class FaceCaptureDialog extends JDialog {
             }
         };
 
-        // We already have capture controls in this dialog; hide capture button in settings panel
+        // We already have capture controls in this dialog; hide capture button in
+        // settings panel
         FaceCropSettingsPanel settings = new FaceCropSettingsPanel(listener, false);
         return settings;
     }
@@ -156,14 +155,14 @@ public class FaceCaptureDialog extends JDialog {
                 "<html><center><font color='white'>Initializing camera...<br/>Please wait...</font></center></html>");
         videoLabel.setBorder(BorderFactory.createLoweredBevelBorder());
 
-    JPanel statusPanel = new JPanel(new GridLayout(4, 1, 5, 5));
+        JPanel statusPanel = new JPanel(new GridLayout(4, 1, 5, 5));
         statusPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         statusLabel = new JLabel("Initializing...", JLabel.CENTER);
         statusLabel.setFont(statusLabel.getFont().deriveFont(Font.BOLD, 14f));
         statusLabel.setForeground(WARNING_COLOR);
 
-    qualityLabel = new JLabel("Face quality: Initializing...", JLabel.CENTER);
+        qualityLabel = new JLabel("Face quality: Initializing...", JLabel.CENTER);
         qualityLabel.setFont(qualityLabel.getFont().deriveFont(12f));
 
         progressLabel = new JLabel("Images captured: 0", JLabel.CENTER);
@@ -173,10 +172,10 @@ public class FaceCaptureDialog extends JDialog {
         progressBar.setStringPainted(true);
         progressBar.setString("0%");
 
-    statusPanel.add(statusLabel);
-    statusPanel.add(qualityLabel);
-    statusPanel.add(progressLabel);
-    statusPanel.add(progressBar);
+        statusPanel.add(statusLabel);
+        statusPanel.add(qualityLabel);
+        statusPanel.add(progressLabel);
+        statusPanel.add(progressBar);
 
         panel.add(videoLabel, BorderLayout.CENTER);
         panel.add(statusPanel, BorderLayout.SOUTH);
@@ -187,7 +186,7 @@ public class FaceCaptureDialog extends JDialog {
     private JPanel createControlPanel() {
         JPanel panel = new JPanel(new FlowLayout());
 
-    JLabel targetLabel = new JLabel("Target images:");
+        JLabel targetLabel = new JLabel("Target images:");
         String[] options = { "10", "15", "20" };
         JComboBox<String> targetCombo = new JComboBox<>(options);
         targetCombo.setSelectedItem("15");
@@ -195,9 +194,9 @@ public class FaceCaptureDialog extends JDialog {
         startButton = new JButton("Start Capture");
         stopButton = new JButton("Stop Capture");
         closeButton = new JButton("Close");
-    cameraSettingsButton = new JButton("Camera Settings…");
-    fpsCombo = new JComboBox<>(new String[]{"15 fps", "24 fps", "30 fps"});
-    fpsCombo.setSelectedItem("30 fps");
+        cameraSettingsButton = new JButton("Camera Settings…");
+        fpsCombo = new JComboBox<>(new String[] { "15 fps", "24 fps", "30 fps" });
+        fpsCombo.setSelectedItem("30 fps");
 
         stopButton.setEnabled(false);
 
@@ -224,27 +223,41 @@ public class FaceCaptureDialog extends JDialog {
             String sel = (String) fpsCombo.getSelectedItem();
             double fps = 30;
             if (sel != null) {
-                if (sel.startsWith("15")) fps = 15;
-                else if (sel.startsWith("24")) fps = 24;
-                else if (sel.startsWith("30")) fps = 30;
+                if (sel.startsWith("15"))
+                    fps = 15;
+                else if (sel.startsWith("24"))
+                    fps = 24;
+                else if (sel.startsWith("30"))
+                    fps = 30;
             }
             boolean ok = faceDetection.setFps(fps);
             if (ok) {
-                statusLabel.setText("FPS set to " + (int)fps);
+                statusLabel.setText("FPS set to " + (int) fps);
                 statusLabel.setForeground(SUCCESS_COLOR);
+                AppLogger.info("FPS successfully changed to " + (int) fps);
             } else {
-                statusLabel.setText("Unable to set FPS on this camera");
+                statusLabel.setText("FPS control not supported by this camera");
                 statusLabel.setForeground(WARNING_COLOR);
+                AppLogger.warn("Camera does not support FPS changes (this is normal for many webcams)");
+                // Show a one-time tooltip explaining this is normal
+                JOptionPane.showMessageDialog(this,
+                        "<html><b>FPS Control Not Supported</b><br/><br/>" +
+                                "Your camera does not support FPS (frames per second) adjustments.<br/>" +
+                                "This is normal behavior for most built-in webcams.<br/><br/>" +
+                                "The camera will continue to work at its default frame rate.<br/>" +
+                                "You can safely ignore the warnings in the console.</html>",
+                        "Camera Information",
+                        JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
         panel.add(targetLabel);
         panel.add(targetCombo);
-    panel.add(Box.createHorizontalStrut(20));
-    panel.add(new JLabel("FPS:"));
-    panel.add(fpsCombo);
-    panel.add(Box.createHorizontalStrut(10));
-    panel.add(cameraSettingsButton);
+        panel.add(Box.createHorizontalStrut(20));
+        panel.add(new JLabel("FPS:"));
+        panel.add(fpsCombo);
+        panel.add(Box.createHorizontalStrut(10));
+        panel.add(cameraSettingsButton);
         panel.add(startButton);
         panel.add(stopButton);
         panel.add(closeButton);
@@ -260,7 +273,14 @@ public class FaceCaptureDialog extends JDialog {
             return;
         }
 
-        statusLabel.setText("Camera ready");
+        // Get and display actual camera FPS
+        double actualFps = faceDetection.getCurrentFps();
+        if (actualFps > 0) {
+            statusLabel.setText(String.format("Camera ready (running at %.0f fps)", actualFps));
+            AppLogger.info("Camera FPS: " + actualFps);
+        } else {
+            statusLabel.setText("Camera ready");
+        }
         statusLabel.setForeground(SUCCESS_COLOR);
 
         previewTimer = new Timer(100, new ActionListener() {
@@ -271,29 +291,26 @@ public class FaceCaptureDialog extends JDialog {
         });
         previewTimer.start();
 
-    AppLogger.info("Preview timer started");
+        AppLogger.info("Preview timer started");
     }
 
     private void updatePreview() {
         try {
-    
+
             Mat frame = faceDetection.getCurrentFrame();
 
             if (!frame.empty()) {
                 AppLogger.info("Frame received: " + frame.width() + "x" + frame.height());
 
-         
                 FaceDetection.FaceDetectionResult result = faceDetection.detectFaceForPreview(frame);
 
-                
                 Mat displayFrame = faceDetection.drawFaceOverlay(frame, result);
 
                 // Show raw camera frame with overlay only (no filters)
 
-        
                 BufferedImage bufferedImage = matToBufferedImage(displayFrame);
                 if (bufferedImage != null) {
-                   
+
                     int displayWidth = videoLabel.getWidth();
                     int displayHeight = videoLabel.getHeight();
 
@@ -318,8 +335,6 @@ public class FaceCaptureDialog extends JDialog {
             AppLogger.error("Preview update failed: " + e.getMessage(), e);
         }
     }
-
-    
 
     private void updateQualityFeedback(FaceDetection.FaceDetectionResult result) {
         if (result.hasValidFace()) {
@@ -358,7 +373,6 @@ public class FaceCaptureDialog extends JDialog {
         }
     }
 
-  
     private BufferedImage matToBufferedImage(Mat mat) {
         try {
             if (mat.empty()) {
@@ -397,7 +411,7 @@ public class FaceCaptureDialog extends JDialog {
         if (isCapturing.get())
             return;
 
-    AppLogger.info("Starting capture process...");
+        AppLogger.info("Starting capture process...");
 
         isCapturing.set(true);
         capturedCount.set(0);
@@ -435,7 +449,7 @@ public class FaceCaptureDialog extends JDialog {
     }
 
     private boolean performCapture() {
-    AppLogger.info("Performing capture with target: " + targetImages);
+        AppLogger.info("Performing capture with target: " + targetImages);
 
         FaceDetection.FaceCaptureCallback callback = new FaceDetection.FaceCaptureCallback() {
             @Override
@@ -448,7 +462,7 @@ public class FaceCaptureDialog extends JDialog {
 
             @Override
             public void onFrameUpdate(Mat frame) {
-            
+
             }
 
             @Override
@@ -526,7 +540,7 @@ public class FaceCaptureDialog extends JDialog {
     }
 
     private void stopCapture() {
-    AppLogger.info("Stopping capture...");
+        AppLogger.info("Stopping capture...");
         isCapturing.set(false);
 
         startButton.setEnabled(true);
@@ -534,7 +548,7 @@ public class FaceCaptureDialog extends JDialog {
 
         statusLabel.setText("Capture stopped");
         statusLabel.setForeground(WARNING_COLOR);
-    AppLogger.info("Debug: Capture manually stopped");
+        AppLogger.info("Debug: Capture manually stopped");
 
         instructionLabel.setText("<html><center>Capture stopped by user.<br/>" +
                 "You can start again when ready.</center></html>");
@@ -547,7 +561,7 @@ public class FaceCaptureDialog extends JDialog {
         startButton.setEnabled(true);
         stopButton.setEnabled(false);
 
-    if (success) {
+        if (success) {
             statusLabel.setText("Capture successful!");
             statusLabel.setForeground(SUCCESS_COLOR);
             instructionLabel.setText("<html><center><b>SUCCESS!</b><br/>" +
@@ -557,38 +571,39 @@ public class FaceCaptureDialog extends JDialog {
             progressBar.setString("100% Complete");
             AppLogger.info("Debug: All images captured successfully");
 
-        // Success message is shown in the summary dialog above
+            // Success message is shown in the summary dialog above
         } else {
             statusLabel.setText("Capture failed");
             statusLabel.setForeground(ERROR_COLOR);
-        instructionLabel.setText("<html><center><font color='red'>Capture failed.</font><br/>" +
-            "Please try again with better lighting.</center></html>");
-    AppLogger.warn("Debug: Capture failed - insufficient valid images");
-        // Failure details are shown in the summary dialog above
+            instructionLabel.setText("<html><center><font color='red'>Capture failed.</font><br/>" +
+                    "Please try again with better lighting.</center></html>");
+            AppLogger.warn("Debug: Capture failed - insufficient valid images");
+            // Failure details are shown in the summary dialog above
         }
     }
 
     private void showError(String message) {
-    statusLabel.setText(htmlize("Error: " + message));
+        statusLabel.setText(htmlize("Error: " + message));
         statusLabel.setForeground(ERROR_COLOR);
         AppLogger.error("Debug: Error - " + message);
-    JOptionPane.showMessageDialog(this, htmlize(message), "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, htmlize(message), "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     private String htmlize(String text) {
-    if (text == null) return "";
-    String trimmed = text.trim();
-    if (trimmed.toLowerCase().startsWith("<html>")) {
-        return text; // already HTML
-    }
+        if (text == null)
+            return "";
+        String trimmed = text.trim();
+        if (trimmed.toLowerCase().startsWith("<html>")) {
+            return text; // already HTML
+        }
         String escaped = trimmed
-        .replace("&", "&amp;")
-        .replace("<", "&lt;")
-        .replace(">", "&gt;")
+                .replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
                 // Replace both actual newlines and literal backslash-n sequences
                 .replace("\n", "<br/>")
                 .replace("\\n", "<br/>");
-    return "<html>" + escaped + "</html>";
+        return "<html>" + escaped + "</html>";
     }
 
     @Override
@@ -605,8 +620,6 @@ public class FaceCaptureDialog extends JDialog {
             faceDetection.release();
             AppLogger.info("Face detection resources released");
         }
-
-        
 
         super.dispose();
     }
