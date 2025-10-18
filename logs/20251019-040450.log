@@ -1,0 +1,518 @@
+[2025-10-19 04:04:50] INFO: Application Logger Initialized.
+[2025-10-19 04:04:50] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
+[2025-10-19 04:04:50] INFO: GUI launched successfully
+[2025-10-19 04:04:54] INFO: Face embedding model loaded successfully
+[2025-10-19 04:04:54] INFO: FaceCaptureDialog created for student: Jin Rae
+[2025-10-19 04:04:55] INFO: Dialog initialized
+[2025-10-19 04:04:55] INFO: Starting camera preview...
+[2025-10-19 04:04:55] INFO: Preview timer started
+[2025-10-19 04:04:55] INFO: Frame received: 640x480
+[2025-10-19 04:04:55] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:55] INFO: Frame received: 640x480
+[2025-10-19 04:04:55] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:55] INFO: Frame received: 640x480
+[2025-10-19 04:04:55] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:56] INFO: Frame received: 640x480
+[2025-10-19 04:04:56] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:56] INFO: Frame received: 640x480
+[2025-10-19 04:04:56] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:56] INFO: Frame received: 640x480
+[2025-10-19 04:04:56] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:56] INFO: Frame received: 640x480
+[2025-10-19 04:04:56] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:56] INFO: Frame received: 640x480
+[2025-10-19 04:04:56] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:56] INFO: Frame received: 640x480
+[2025-10-19 04:04:56] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:56] INFO: Frame received: 640x480
+[2025-10-19 04:04:56] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:56] INFO: Frame received: 640x480
+[2025-10-19 04:04:56] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:56] INFO: Frame received: 640x480
+[2025-10-19 04:04:56] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:57] INFO: Frame received: 640x480
+[2025-10-19 04:04:57] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:57] INFO: Frame received: 640x480
+[2025-10-19 04:04:57] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:57] INFO: Frame received: 640x480
+[2025-10-19 04:04:57] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:57] INFO: Frame received: 640x480
+[2025-10-19 04:04:57] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:57] INFO: Frame received: 640x480
+[2025-10-19 04:04:57] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:57] INFO: Frame received: 640x480
+[2025-10-19 04:04:57] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:57] INFO: Frame received: 640x480
+[2025-10-19 04:04:57] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:57] INFO: Frame received: 640x480
+[2025-10-19 04:04:57] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:57] INFO: Frame received: 640x480
+[2025-10-19 04:04:57] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:58] INFO: Frame received: 640x480
+[2025-10-19 04:04:58] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:58] INFO: Frame received: 640x480
+[2025-10-19 04:04:58] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:58] INFO: Frame received: 640x480
+[2025-10-19 04:04:58] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:58] INFO: Frame received: 640x480
+[2025-10-19 04:04:58] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:58] INFO: Frame received: 640x480
+[2025-10-19 04:04:58] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:58] INFO: Frame received: 640x480
+[2025-10-19 04:04:58] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:58] INFO: Frame received: 640x480
+[2025-10-19 04:04:58] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:58] INFO: Frame received: 640x480
+[2025-10-19 04:04:58] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:58] INFO: Frame received: 640x480
+[2025-10-19 04:04:58] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:59] INFO: Frame received: 640x480
+[2025-10-19 04:04:59] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:59] INFO: Frame received: 640x480
+[2025-10-19 04:04:59] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:59] INFO: Frame received: 640x480
+[2025-10-19 04:04:59] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:59] INFO: Starting capture process...
+[2025-10-19 04:04:59] INFO: Performing capture with target: 15
+[2025-10-19 04:04:59] INFO: Debug: Capture process started
+[2025-10-19 04:04:59] INFO: Frame received: 640x480
+[2025-10-19 04:04:59] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:59] INFO: Frame received: 640x480
+[2025-10-19 04:04:59] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:59] INFO: Frame received: 640x480
+[2025-10-19 04:04:59] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:59] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:04:59] INFO: Frame received: 640x480
+[2025-10-19 04:04:59] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:59] INFO: Frame received: 640x480
+[2025-10-19 04:04:59] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:04:59] INFO: Frame received: 640x480
+[2025-10-19 04:04:59] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:00] INFO: Frame received: 640x480
+[2025-10-19 04:05:00] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:00] INFO: Frame received: 640x480
+[2025-10-19 04:05:00] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:00] INFO: Frame received: 640x480
+[2025-10-19 04:05:00] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:00] INFO: Frame received: 640x480
+[2025-10-19 04:05:00] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:00] INFO: Frame received: 640x480
+[2025-10-19 04:05:00] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:00] INFO: Frame received: 640x480
+[2025-10-19 04:05:00] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:00] INFO: Frame received: 640x480
+[2025-10-19 04:05:00] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:00] INFO: Frame received: 640x480
+[2025-10-19 04:05:00] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:00] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:00] INFO: Frame received: 640x480
+[2025-10-19 04:05:00] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:01] INFO: Frame received: 640x480
+[2025-10-19 04:05:01] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:01] INFO: Frame received: 640x480
+[2025-10-19 04:05:01] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:01] INFO: Frame received: 640x480
+[2025-10-19 04:05:01] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:01] INFO: Frame received: 640x480
+[2025-10-19 04:05:01] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:01] INFO: Frame received: 640x480
+[2025-10-19 04:05:01] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:01] INFO: Frame received: 640x480
+[2025-10-19 04:05:01] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:01] INFO: Frame received: 640x480
+[2025-10-19 04:05:01] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:01] INFO: Frame received: 640x480
+[2025-10-19 04:05:01] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:01] INFO: Frame received: 640x480
+[2025-10-19 04:05:01] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:01] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:02] INFO: Frame received: 640x480
+[2025-10-19 04:05:02] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:02] INFO: Frame received: 640x480
+[2025-10-19 04:05:02] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:02] INFO: Frame received: 640x480
+[2025-10-19 04:05:02] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:02] INFO: Frame received: 640x480
+[2025-10-19 04:05:02] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:02] INFO: Frame received: 640x480
+[2025-10-19 04:05:02] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:02] INFO: Frame received: 640x480
+[2025-10-19 04:05:02] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:02] INFO: Frame received: 640x480
+[2025-10-19 04:05:02] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:02] INFO: Frame received: 640x480
+[2025-10-19 04:05:02] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:02] INFO: Frame received: 640x480
+[2025-10-19 04:05:02] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:03] INFO: Frame received: 640x480
+[2025-10-19 04:05:03] INFO: Debug: No faces detected this frame
+[2025-10-19 04:05:03] INFO: Debug: Warning - No face detected - please position your face in the camera view
+[2025-10-19 04:05:03] INFO: Frame received: 640x480
+[2025-10-19 04:05:03] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:03] INFO: Frame received: 640x480
+[2025-10-19 04:05:03] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:03] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:03] INFO: Frame received: 640x480
+[2025-10-19 04:05:03] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:03] INFO: Frame received: 640x480
+[2025-10-19 04:05:03] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:03] INFO: Frame received: 640x480
+[2025-10-19 04:05:03] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:03] INFO: Frame received: 640x480
+[2025-10-19 04:05:03] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:03] INFO: Frame received: 640x480
+[2025-10-19 04:05:03] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:03] INFO: Frame received: 640x480
+[2025-10-19 04:05:03] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:03] INFO: Frame received: 640x480
+[2025-10-19 04:05:04] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:04] INFO: Frame received: 640x480
+[2025-10-19 04:05:04] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:04] INFO: Frame received: 640x480
+[2025-10-19 04:05:04] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:04] INFO: Frame received: 640x480
+[2025-10-19 04:05:04] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:04] INFO: Frame received: 640x480
+[2025-10-19 04:05:04] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:04] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:04] INFO: Frame received: 640x480
+[2025-10-19 04:05:04] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:04] INFO: Frame received: 640x480
+[2025-10-19 04:05:04] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:04] INFO: Frame received: 640x480
+[2025-10-19 04:05:04] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:04] INFO: Frame received: 640x480
+[2025-10-19 04:05:04] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:04] INFO: Frame received: 640x480
+[2025-10-19 04:05:05] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:05] INFO: Frame received: 640x480
+[2025-10-19 04:05:05] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:05] INFO: Frame received: 640x480
+[2025-10-19 04:05:05] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:05] INFO: Frame received: 640x480
+[2025-10-19 04:05:05] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:05] INFO: Frame received: 640x480
+[2025-10-19 04:05:05] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:05] INFO: Frame received: 640x480
+[2025-10-19 04:05:05] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:05] INFO: Frame received: 640x480
+[2025-10-19 04:05:05] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:05] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:05] INFO: Frame received: 640x480
+[2025-10-19 04:05:05] INFO: Debug: 1 face(s) detected, best confidence: 0.99
+[2025-10-19 04:05:05] INFO: Frame received: 640x480
+[2025-10-19 04:05:05] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:05] INFO: Frame received: 640x480
+[2025-10-19 04:05:06] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:06] INFO: Frame received: 640x480
+[2025-10-19 04:05:06] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:06] INFO: Frame received: 640x480
+[2025-10-19 04:05:06] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:06] INFO: Frame received: 640x480
+[2025-10-19 04:05:06] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:06] INFO: Frame received: 640x480
+[2025-10-19 04:05:06] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:06] INFO: Frame received: 640x480
+[2025-10-19 04:05:06] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:06] INFO: Frame received: 640x480
+[2025-10-19 04:05:06] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:06] INFO: Frame received: 640x480
+[2025-10-19 04:05:06] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:06] INFO: Frame received: 640x480
+[2025-10-19 04:05:06] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:06] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:07] INFO: Frame received: 640x480
+[2025-10-19 04:05:07] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:07] INFO: Frame received: 640x480
+[2025-10-19 04:05:07] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:07] INFO: Frame received: 640x480
+[2025-10-19 04:05:07] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:07] INFO: Frame received: 640x480
+[2025-10-19 04:05:07] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:07] INFO: Frame received: 640x480
+[2025-10-19 04:05:07] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:07] INFO: Frame received: 640x480
+[2025-10-19 04:05:07] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:07] INFO: Frame received: 640x480
+[2025-10-19 04:05:07] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:07] INFO: Frame received: 640x480
+[2025-10-19 04:05:07] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:07] INFO: Frame received: 640x480
+[2025-10-19 04:05:07] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:08] INFO: Frame received: 640x480
+[2025-10-19 04:05:08] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:08] INFO: Frame received: 640x480
+[2025-10-19 04:05:08] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:08] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:08] INFO: Frame received: 640x480
+[2025-10-19 04:05:08] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:08] INFO: Frame received: 640x480
+[2025-10-19 04:05:08] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:08] INFO: Frame received: 640x480
+[2025-10-19 04:05:08] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:08] INFO: Frame received: 640x480
+[2025-10-19 04:05:08] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:08] INFO: Frame received: 640x480
+[2025-10-19 04:05:08] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:08] INFO: Frame received: 640x480
+[2025-10-19 04:05:08] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:08] INFO: Frame received: 640x480
+[2025-10-19 04:05:08] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:09] INFO: Frame received: 640x480
+[2025-10-19 04:05:09] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:09] INFO: Frame received: 640x480
+[2025-10-19 04:05:09] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:09] INFO: Frame received: 640x480
+[2025-10-19 04:05:09] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:09] INFO: Frame received: 640x480
+[2025-10-19 04:05:09] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:09] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:09] INFO: Frame received: 640x480
+[2025-10-19 04:05:09] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:09] INFO: Frame received: 640x480
+[2025-10-19 04:05:09] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:09] INFO: Frame received: 640x480
+[2025-10-19 04:05:09] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:09] INFO: Frame received: 640x480
+[2025-10-19 04:05:09] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:09] INFO: Frame received: 640x480
+[2025-10-19 04:05:09] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:10] INFO: Frame received: 640x480
+[2025-10-19 04:05:10] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:10] INFO: Frame received: 640x480
+[2025-10-19 04:05:10] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:10] INFO: Frame received: 640x480
+[2025-10-19 04:05:10] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:10] INFO: Frame received: 640x480
+[2025-10-19 04:05:10] INFO: Debug: No faces detected this frame
+[2025-10-19 04:05:10] INFO: Debug: Warning - No face detected - please position your face in the camera view
+[2025-10-19 04:05:10] INFO: Frame received: 640x480
+[2025-10-19 04:05:10] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:10] INFO: Frame received: 640x480
+[2025-10-19 04:05:10] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:10] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:10] INFO: Frame received: 640x480
+[2025-10-19 04:05:10] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:10] INFO: Frame received: 640x480
+[2025-10-19 04:05:10] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:10] INFO: Frame received: 640x480
+[2025-10-19 04:05:10] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:11] INFO: Frame received: 640x480
+[2025-10-19 04:05:11] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:11] INFO: Frame received: 640x480
+[2025-10-19 04:05:11] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:11] INFO: Frame received: 640x480
+[2025-10-19 04:05:11] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:11] INFO: Frame received: 640x480
+[2025-10-19 04:05:11] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:11] INFO: Frame received: 640x480
+[2025-10-19 04:05:11] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:11] INFO: Frame received: 640x480
+[2025-10-19 04:05:11] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:11] INFO: Frame received: 640x480
+[2025-10-19 04:05:11] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:11] INFO: Frame received: 640x480
+[2025-10-19 04:05:11] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:11] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:11] INFO: Frame received: 640x480
+[2025-10-19 04:05:11] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:12] INFO: Frame received: 640x480
+[2025-10-19 04:05:12] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:12] INFO: Frame received: 640x480
+[2025-10-19 04:05:12] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:12] INFO: Frame received: 640x480
+[2025-10-19 04:05:12] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:12] INFO: Frame received: 640x480
+[2025-10-19 04:05:12] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:12] INFO: Frame received: 640x480
+[2025-10-19 04:05:12] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:12] INFO: Frame received: 640x480
+[2025-10-19 04:05:12] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:12] INFO: Frame received: 640x480
+[2025-10-19 04:05:12] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:12] INFO: Frame received: 640x480
+[2025-10-19 04:05:12] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:12] INFO: Frame received: 640x480
+[2025-10-19 04:05:12] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:13] INFO: Frame received: 640x480
+[2025-10-19 04:05:13] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:13] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:13] INFO: Frame received: 640x480
+[2025-10-19 04:05:13] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:13] INFO: Frame received: 640x480
+[2025-10-19 04:05:13] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:13] INFO: Frame received: 640x480
+[2025-10-19 04:05:13] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:13] INFO: Frame received: 640x480
+[2025-10-19 04:05:13] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:13] INFO: Frame received: 640x480
+[2025-10-19 04:05:13] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:13] INFO: Frame received: 640x480
+[2025-10-19 04:05:13] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:13] INFO: Frame received: 640x480
+[2025-10-19 04:05:13] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:13] INFO: Frame received: 640x480
+[2025-10-19 04:05:13] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:14] INFO: Frame received: 640x480
+[2025-10-19 04:05:14] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:14] INFO: Frame received: 640x480
+[2025-10-19 04:05:14] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:14] INFO: Frame received: 640x480
+[2025-10-19 04:05:14] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:14] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:14] INFO: Frame received: 640x480
+[2025-10-19 04:05:14] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:14] INFO: Frame received: 640x480
+[2025-10-19 04:05:14] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:14] INFO: Frame received: 640x480
+[2025-10-19 04:05:14] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:14] INFO: Frame received: 640x480
+[2025-10-19 04:05:14] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:14] INFO: Frame received: 640x480
+[2025-10-19 04:05:14] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:14] INFO: Frame received: 640x480
+[2025-10-19 04:05:14] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:15] INFO: Frame received: 640x480
+[2025-10-19 04:05:15] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:15] INFO: Frame received: 640x480
+[2025-10-19 04:05:15] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:15] INFO: Frame received: 640x480
+[2025-10-19 04:05:15] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:15] INFO: Frame received: 640x480
+[2025-10-19 04:05:15] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:15] INFO: Frame received: 640x480
+[2025-10-19 04:05:15] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:15] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:15] INFO: Frame received: 640x480
+[2025-10-19 04:05:15] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:15] INFO: Frame received: 640x480
+[2025-10-19 04:05:15] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:15] INFO: Frame received: 640x480
+[2025-10-19 04:05:15] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:15] INFO: Frame received: 640x480
+[2025-10-19 04:05:15] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:16] INFO: Frame received: 640x480
+[2025-10-19 04:05:16] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:16] INFO: Frame received: 640x480
+[2025-10-19 04:05:16] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:16] INFO: Frame received: 640x480
+[2025-10-19 04:05:16] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:16] INFO: Frame received: 640x480
+[2025-10-19 04:05:16] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:16] INFO: Frame received: 640x480
+[2025-10-19 04:05:16] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:16] INFO: Frame received: 640x480
+[2025-10-19 04:05:16] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:16] INFO: Frame received: 640x480
+[2025-10-19 04:05:16] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:16] INFO: Debug: Image saved with confidence 1.00
+[2025-10-19 04:05:16] INFO: Frame received: 640x480
+[2025-10-19 04:05:16] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:16] INFO: Frame received: 640x480
+[2025-10-19 04:05:16] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:17] INFO: Frame received: 640x480
+[2025-10-19 04:05:17] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:17] INFO: Frame received: 640x480
+[2025-10-19 04:05:17] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:17] INFO: Frame received: 640x480
+[2025-10-19 04:05:17] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:17] INFO: Frame received: 640x480
+[2025-10-19 04:05:17] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:17] INFO: Frame received: 640x480
+[2025-10-19 04:05:17] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:17] INFO: Frame received: 640x480
+[2025-10-19 04:05:17] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:17] INFO: Frame received: 640x480
+[2025-10-19 04:05:17] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:17] INFO: Debug: Capture process finished
+[2025-10-19 04:05:17] INFO: Capture result: true - Successfully captured 15 high-quality face images
+[2025-10-19 04:05:17] INFO: Frame received: 640x480
+[2025-10-19 04:05:17] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:17] INFO: Frame received: 640x480
+[2025-10-19 04:05:17] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:18] INFO: Frame received: 640x480
+[2025-10-19 04:05:18] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:18] INFO: Frame received: 640x480
+[2025-10-19 04:05:18] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:18] INFO: Frame received: 640x480
+[2025-10-19 04:05:18] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:18] INFO: Frame received: 640x480
+[2025-10-19 04:05:18] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:18] INFO: Frame received: 640x480
+[2025-10-19 04:05:18] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:18] INFO: Frame received: 640x480
+[2025-10-19 04:05:18] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:18] INFO: Frame received: 640x480
+[2025-10-19 04:05:18] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:18] INFO: Frame received: 640x480
+[2025-10-19 04:05:18] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:18] INFO: Frame received: 640x480
+[2025-10-19 04:05:18] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:19] INFO: Frame received: 640x480
+[2025-10-19 04:05:19] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:19] INFO: Frame received: 640x480
+[2025-10-19 04:05:19] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:19] INFO: Frame received: 640x480
+[2025-10-19 04:05:19] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:19] INFO: Debug: All images captured successfully
+[2025-10-19 04:05:19] INFO: Frame received: 640x480
+[2025-10-19 04:05:19] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:19] INFO: Frame received: 640x480
+[2025-10-19 04:05:19] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:19] INFO: Frame received: 640x480
+[2025-10-19 04:05:19] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:19] INFO: Frame received: 640x480
+[2025-10-19 04:05:19] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:19] INFO: Frame received: 640x480
+[2025-10-19 04:05:19] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:19] INFO: Frame received: 640x480
+[2025-10-19 04:05:19] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:20] INFO: Frame received: 640x480
+[2025-10-19 04:05:20] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:20] INFO: Frame received: 640x480
+[2025-10-19 04:05:20] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:20] INFO: Frame received: 640x480
+[2025-10-19 04:05:20] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:20] INFO: Frame received: 640x480
+[2025-10-19 04:05:20] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:20] INFO: Frame received: 640x480
+[2025-10-19 04:05:20] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:20] INFO: Frame received: 640x480
+[2025-10-19 04:05:20] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:20] INFO: Frame received: 640x480
+[2025-10-19 04:05:20] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:20] INFO: Frame received: 640x480
+[2025-10-19 04:05:20] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:20] INFO: Frame received: 640x480
+[2025-10-19 04:05:20] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:21] INFO: Frame received: 640x480
+[2025-10-19 04:05:21] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:21] INFO: Frame received: 640x480
+[2025-10-19 04:05:21] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:21] INFO: Frame received: 640x480
+[2025-10-19 04:05:21] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:21] INFO: Frame received: 640x480
+[2025-10-19 04:05:21] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:21] INFO: Frame received: 640x480
+[2025-10-19 04:05:21] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:21] INFO: Frame received: 640x480
+[2025-10-19 04:05:21] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:21] INFO: Frame received: 640x480
+[2025-10-19 04:05:21] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:21] INFO: Frame received: 640x480
+[2025-10-19 04:05:21] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:21] INFO: Frame received: 640x480
+[2025-10-19 04:05:21] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:21] INFO: Frame received: 640x480
+[2025-10-19 04:05:22] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:22] INFO: Frame received: 640x480
+[2025-10-19 04:05:22] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:22] INFO: Frame received: 640x480
+[2025-10-19 04:05:22] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:22] INFO: Frame received: 640x480
+[2025-10-19 04:05:22] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:22] INFO: Frame received: 640x480
+[2025-10-19 04:05:22] INFO: Debug: 1 face(s) detected, best confidence: 1.00
+[2025-10-19 04:05:22] INFO: Disposing FaceCaptureDialog...
+[2025-10-19 04:05:22] INFO: Preview timer stopped
+[2025-10-19 04:05:22] INFO: Face detection resources released

@@ -298,4 +298,77 @@ public class FaceEmbeddingGenerator {
     public boolean isDeepLearningAvailable() {
         return isInitialized;
     }
+
+    /**
+     * IMPROVED: Validates embedding quality by checking for valid values
+     * Helps prevent storing corrupted or low-quality embeddings
+     * 
+     * @param embedding The embedding byte array to validate
+     * @return true if the embedding appears valid, false otherwise
+     */
+    public boolean isEmbeddingValid(byte[] embedding) {
+        if (embedding == null || embedding.length == 0) {
+            return false;
+        }
+
+        // Check expected size
+        int expectedSize = isInitialized ? (EMBEDDING_SIZE * 4) : (EMBEDDING_SIZE * 8);
+        if (embedding.length != expectedSize) {
+            System.err.println("Invalid embedding size: " + embedding.length + ", expected: " + expectedSize);
+            return false;
+        }
+
+        try {
+            // Check for NaN or Inf values and compute magnitude
+            double magnitude = 0.0;
+            int validCount = 0;
+
+            if (isInitialized) {
+                // Deep learning embeddings (float)
+                float[] floats = byteArrayToFloatArray(embedding);
+                for (float f : floats) {
+                    if (Float.isNaN(f) || Float.isInfinite(f)) {
+                        System.err.println("Invalid embedding: contains NaN or Inf");
+                        return false;
+                    }
+                    magnitude += f * f;
+                    if (Math.abs(f) > 1e-6)
+                        validCount++;
+                }
+            } else {
+                // Feature-based embeddings (double)
+                double[] doubles = byteArrayToDoubleArray(embedding);
+                for (double d : doubles) {
+                    if (Double.isNaN(d) || Double.isInfinite(d)) {
+                        System.err.println("Invalid embedding: contains NaN or Inf");
+                        return false;
+                    }
+                    magnitude += d * d;
+                    if (Math.abs(d) > 1e-6)
+                        validCount++;
+                }
+            }
+
+            // Check that embedding has sufficient information (not all zeros)
+            magnitude = Math.sqrt(magnitude);
+            if (magnitude < 1e-6) {
+                System.err.println("Invalid embedding: zero magnitude");
+                return false;
+            }
+
+            // Check that at least 50% of values are non-zero (has information)
+            double nonZeroRatio = (double) validCount / EMBEDDING_SIZE;
+            if (nonZeroRatio < 0.5) {
+                System.err.println("Invalid embedding: too sparse (" +
+                        String.format("%.1f%%", nonZeroRatio * 100) + " non-zero)");
+                return false;
+            }
+
+            return true;
+
+        } catch (Exception e) {
+            System.err.println("Embedding validation failed: " + e.getMessage());
+            return false;
+        }
+    }
 }

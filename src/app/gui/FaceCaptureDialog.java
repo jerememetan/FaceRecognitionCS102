@@ -187,9 +187,12 @@ public class FaceCaptureDialog extends JDialog {
         JPanel panel = new JPanel(new FlowLayout());
 
         JLabel targetLabel = new JLabel("Target images:");
-        String[] options = { "10", "15", "20" };
+        // EXPERIMENTAL: Added 25 option and changed default to 20 for more training
+        // data
+        // Revert to original if too time-consuming: remove "25", default to "15"
+        String[] options = { "10", "15", "20", "25" };
         JComboBox<String> targetCombo = new JComboBox<>(options);
-        targetCombo.setSelectedItem("15");
+        targetCombo.setSelectedItem("20"); // Was "15" - more training data recommended
 
         startButton = new JButton("Start Capture");
         stopButton = new JButton("Stop Capture");
@@ -249,7 +252,8 @@ public class FaceCaptureDialog extends JDialog {
         statusLabel.setText("Camera ready");
         statusLabel.setForeground(SUCCESS_COLOR);
 
-        previewTimer = new Timer(100, new ActionListener() {
+        // Faster preview rate for smooth display (every 33ms = ~30fps)
+        previewTimer = new Timer(33, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updatePreview();
