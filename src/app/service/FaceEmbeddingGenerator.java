@@ -56,27 +56,18 @@ public class FaceEmbeddingGenerator {
             Mat processedImage = new Mat();
             Imgproc.resize(colorImage, processedImage, INPUT_SIZE);
 
-            // Proper OpenFace normalization: scale by 1/128 and subtract mean 127.5
-            Mat blob = Dnn.blobFromImage(processedImage, 1.0 / 128.0, INPUT_SIZE,
-                    new Scalar(127.5, 127.5, 127.5), true, false);
+            processedImage.convertTo(processedImage, CvType.CV_32F, 1.0 / 255.0);
+
+            Mat blob = Dnn.blobFromImage(processedImage, 1.0, INPUT_SIZE, new Scalar(0, 0, 0), true, false);
 
             embeddingNet.setInput(blob);
 
             Mat embedding = embeddingNet.forward();
 
-            // Release all intermediate Mats to prevent memory leaks
-            blob.release();
             colorImage.release();
             processedImage.release();
 
-            byte[] embBytes = matToByteArray(embedding);
-            embedding.release(); // Release embedding Mat after conversion
-
-            float[] embFloats = byteArrayToFloatArray(embBytes);
-            l2NormalizeInPlace(embFloats);
-            embBytes = floatArrayToByteArray(embFloats);
-
-            return embBytes;
+            return matToByteArray(embedding);
 
         } catch (Exception e) {
             System.err.println("Deep embedding generation failed: " + e.getMessage());
@@ -95,19 +86,13 @@ public class FaceEmbeddingGenerator {
             if (resized.channels() > 1) {
                 Imgproc.cvtColor(resized, gray, Imgproc.COLOR_BGR2GRAY);
             } else {
-                gray = resized.clone(); // Clone to avoid releasing input parameter
+                gray = resized;
             }
 
             extractHistogramFeatures(gray, features, 0);
             extractTextureFeatures(gray, features, 32);
             extractGeometricFeatures(gray, features, 64);
             extractGradientFeatures(gray, features, 96);
-
-            // Release temporary Mats
-            resized.release();
-            if (gray != resized) {
-                gray.release();
-            }
 
             return doubleArrayToByteArray(features);
 
@@ -130,9 +115,6 @@ public class FaceEmbeddingGenerator {
         for (int i = 0; i < 32 && i < hist.rows(); i++) {
             features[offset + i] = hist.get(i, 0)[0];
         }
-
-        // Release temporary Mat
-        hist.release();
     }
 
     private void extractTextureFeatures(Mat image, double[] features, int offset) {
@@ -168,15 +150,7 @@ public class FaceEmbeddingGenerator {
                 features[baseIdx + 2] = meanY.toArray()[0] / 255.0;
                 features[baseIdx + 3] = stdY.toArray()[0] / 255.0;
             }
-
-            // Release region submats
-            regionGradX.release();
-            regionGradY.release();
         }
-
-        // Release gradient Mats
-        gradX.release();
-        gradY.release();
     }
 
     private void extractGeometricFeatures(Mat image, double[] features, int offset) {
@@ -191,12 +165,10 @@ public class FaceEmbeddingGenerator {
             Mat huMoments = new Mat();
             Imgproc.HuMoments(moments, huMoments);
 
-            for (int i = 0; i < 7 && (offset + 3 + i) < features.length; i++) {
-                double huValue = huMoments.get(i, 0)[0];
-                features[offset + 3 + i] = Math.log(Math.abs(huValue) + 1e-7);
+            for (int i = 0; i < Math.min(7, huMoments.rows()) && (offset + 3 + i) < features.length; i++) {
+                double hu = huMoments.get(i, 0)[0];
+                features[offset + 3 + i] = Math.log(Math.abs(hu) + 1e-10);
             }
-
-            huMoments.release();
         }
     }
 
@@ -227,12 +199,6 @@ public class FaceEmbeddingGenerator {
                 features[offset + i] = hogFeatures[i] / sum;
             }
         }
-
-        // Release all temporary Mats
-        gradX.release();
-        gradY.release();
-        magnitude.release();
-        angle.release();
     }
 
     private byte[] matToByteArray(Mat mat) {
@@ -280,15 +246,21 @@ public class FaceEmbeddingGenerator {
         float[] vec1 = byteArrayToFloatArray(emb1);
         float[] vec2 = byteArrayToFloatArray(emb2);
 
-        // For L2-normalized vectors, cosine similarity = dot product
-        // No need to calculate norms since they are already 1.0
         double dotProduct = 0.0;
+        double norm1 = 0.0;
+        double norm2 = 0.0;
+
         for (int i = 0; i < vec1.length; i++) {
             dotProduct += vec1[i] * vec2[i];
+            norm1 += vec1[i] * vec1[i];
+            norm2 += vec2[i] * vec2[i];
         }
 
-        // Clamp to [-1, 1] to handle floating-point errors
-        return Math.max(-1.0, Math.min(1.0, dotProduct));
+        if (norm1 == 0.0 || norm2 == 0.0) {
+            return 0.0;
+        }
+
+        return dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
     }
 
     private double calculateEuclideanSimilarity(byte[] emb1, byte[] emb2) {
@@ -321,25 +293,6 @@ public class FaceEmbeddingGenerator {
             doubles[i] = buffer.getDouble();
         }
         return doubles;
-    }
-
-    private byte[] floatArrayToByteArray(float[] floats) {
-        java.nio.ByteBuffer buffer = java.nio.ByteBuffer.allocate(floats.length * 4);
-        for (float f : floats) {
-            buffer.putFloat(f);
-        }
-        return buffer.array();
-    }
-
-    private void l2NormalizeInPlace(float[] vector) {
-        double norm = 0.0;
-        for (float v : vector) {
-            norm += v * v;
-        }
-        norm = Math.sqrt(Math.max(norm, 1e-12));
-        for (int i = 0; i < vector.length; i++) {
-            vector[i] = (float) (vector[i] / norm);
-        }
     }
 
     public boolean isDeepLearningAvailable() {

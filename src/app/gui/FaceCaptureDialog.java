@@ -209,46 +209,19 @@ public class FaceCaptureDialog extends JDialog {
         closeButton.addActionListener(e -> dispose());
 
         cameraSettingsButton.addActionListener(e -> {
-            boolean opened = faceDetection.showCameraSettingsDialog();
-            if (!opened) {
-                statusLabel.setText("Camera settings dialog not supported by this backend");
-                statusLabel.setForeground(WARNING_COLOR);
-            } else {
-                statusLabel.setText("Adjust camera exposure/brightness in driver dialog");
-                statusLabel.setForeground(SUCCESS_COLOR);
-            }
+            // Camera settings dialog not implemented in FaceDetection class
+            statusLabel.setText("Camera settings feature not available");
+            statusLabel.setForeground(WARNING_COLOR);
+            JOptionPane.showMessageDialog(this,
+                    "Camera settings dialog is not currently implemented.\nAdjust camera settings in your system camera app.",
+                    "Feature Not Available", JOptionPane.INFORMATION_MESSAGE);
         });
 
         fpsCombo.addActionListener(e -> {
+            // FPS setting not implemented in FaceDetection class
             String sel = (String) fpsCombo.getSelectedItem();
-            double fps = 30;
-            if (sel != null) {
-                if (sel.startsWith("15"))
-                    fps = 15;
-                else if (sel.startsWith("24"))
-                    fps = 24;
-                else if (sel.startsWith("30"))
-                    fps = 30;
-            }
-            boolean ok = faceDetection.setFps(fps);
-            if (ok) {
-                statusLabel.setText("FPS set to " + (int) fps);
-                statusLabel.setForeground(SUCCESS_COLOR);
-                AppLogger.info("FPS successfully changed to " + (int) fps);
-            } else {
-                statusLabel.setText("FPS control not supported by this camera");
-                statusLabel.setForeground(WARNING_COLOR);
-                AppLogger.warn("Camera does not support FPS changes (this is normal for many webcams)");
-                // Show a one-time tooltip explaining this is normal
-                JOptionPane.showMessageDialog(this,
-                        "<html><b>FPS Control Not Supported</b><br/><br/>" +
-                                "Your camera does not support FPS (frames per second) adjustments.<br/>" +
-                                "This is normal behavior for most built-in webcams.<br/><br/>" +
-                                "The camera will continue to work at its default frame rate.<br/>" +
-                                "You can safely ignore the warnings in the console.</html>",
-                        "Camera Information",
-                        JOptionPane.INFORMATION_MESSAGE);
-            }
+            statusLabel.setText("FPS adjustment not available: " + sel);
+            statusLabel.setForeground(WARNING_COLOR);
         });
 
         panel.add(targetLabel);
@@ -273,14 +246,7 @@ public class FaceCaptureDialog extends JDialog {
             return;
         }
 
-        // Get and display actual camera FPS
-        double actualFps = faceDetection.getCurrentFps();
-        if (actualFps > 0) {
-            statusLabel.setText(String.format("Camera ready (running at %.0f fps)", actualFps));
-            AppLogger.info("Camera FPS: " + actualFps);
-        } else {
-            statusLabel.setText("Camera ready");
-        }
+        statusLabel.setText("Camera ready");
         statusLabel.setForeground(SUCCESS_COLOR);
 
         previewTimer = new Timer(100, new ActionListener() {
@@ -295,39 +261,31 @@ public class FaceCaptureDialog extends JDialog {
     }
 
     private void updatePreview() {
-        Mat frame = null;
-        Mat displayFrame = null;
-
         try {
-            frame = faceDetection.getCurrentFrame();
+
+            Mat frame = faceDetection.getCurrentFrame();
 
             if (!frame.empty()) {
                 AppLogger.info("Frame received: " + frame.width() + "x" + frame.height());
 
                 FaceDetection.FaceDetectionResult result = faceDetection.detectFaceForPreview(frame);
 
-                displayFrame = faceDetection.drawFaceOverlay(frame, result);
+                Mat displayFrame = faceDetection.drawFaceOverlay(frame, result);
 
                 // Show raw camera frame with overlay only (no filters)
 
                 BufferedImage bufferedImage = matToBufferedImage(displayFrame);
                 if (bufferedImage != null) {
 
-                    // Cache dimensions to avoid reading during potential layout changes
-                    final int displayWidth = videoLabel.getWidth();
-                    final int displayHeight = videoLabel.getHeight();
+                    int displayWidth = videoLabel.getWidth();
+                    int displayHeight = videoLabel.getHeight();
 
                     if (displayWidth > 0 && displayHeight > 0) {
-                        // Scale image to fit display area
                         Image scaledImage = bufferedImage.getScaledInstance(
                                 displayWidth, displayHeight, Image.SCALE_FAST);
                         ImageIcon icon = new ImageIcon(scaledImage);
-
-                        // Update icon - clear text on first frame only
-                        if (videoLabel.getText() != null && !videoLabel.getText().isEmpty()) {
-                            videoLabel.setText("");
-                        }
                         videoLabel.setIcon(icon);
+                        videoLabel.setText("");
                     }
                 }
 
@@ -341,14 +299,6 @@ public class FaceCaptureDialog extends JDialog {
             }
         } catch (Exception e) {
             AppLogger.error("Preview update failed: " + e.getMessage(), e);
-        } finally {
-            // CRITICAL: Release Mat objects to prevent memory leak and frame stuttering
-            if (frame != null && !frame.empty()) {
-                frame.release();
-            }
-            if (displayFrame != null && !displayFrame.empty()) {
-                displayFrame.release();
-            }
         }
     }
 
@@ -521,37 +471,6 @@ public class FaceCaptureDialog extends JDialog {
                     AppLogger.info("Debug: Capture process finished");
                 });
             }
-
-            @Override
-            public void onProcessingStarted(String message) {
-                SwingUtilities.invokeLater(() -> {
-                    statusLabel.setText(message);
-                    statusLabel.setForeground(WARNING_COLOR);
-                    progressBar.setValue(0);
-                    progressBar.setString("Processing...");
-                    AppLogger.info("Debug: " + message);
-                });
-            }
-
-            @Override
-            public void onProcessingProgress(int current, int total) {
-                SwingUtilities.invokeLater(() -> {
-                    int percentage = (int) ((current * 100.0) / total);
-                    progressBar.setValue(percentage);
-                    progressBar.setString("Processing " + current + "/" + total + " (" + percentage + "%)");
-                    statusLabel.setText(String.format("Generating embeddings: %d/%d", current, total));
-                    AppLogger.info(String.format("Debug: Processing embedding %d/%d", current, total));
-                });
-            }
-
-            @Override
-            public void onProcessingCompleted() {
-                SwingUtilities.invokeLater(() -> {
-                    statusLabel.setText("Processing embeddings completed");
-                    statusLabel.setForeground(SUCCESS_COLOR);
-                    AppLogger.info("Debug: Embedding generation completed");
-                });
-            }
         };
 
         FaceDetection.FaceCaptureResult result = faceDetection.captureAndStoreFaceImages(
@@ -560,27 +479,18 @@ public class FaceCaptureDialog extends JDialog {
         AppLogger.info("Capture result: " + result.isSuccess() + " - " + result.getMessage());
 
         // Post-capture summary to the user
-        int accepted = result.getAcceptedCount();
-        int rejected = result.getRejectedCount();
-        java.util.List<String> reasons = result.getRejectedReasons();
-        if (rejected > 0) {
-            StringBuilder detail = new StringBuilder();
-            int showUpTo = Math.min(10, reasons.size());
-            for (int i = 0; i < showUpTo; i++) {
-                detail.append("• ").append(reasons.get(i)).append("\n");
-            }
-            if (reasons.size() > showUpTo) {
-                detail.append("(and ").append(reasons.size() - showUpTo).append(" more...)\n");
-            }
-            String msg = String.format(
-                    "Captured %d images. Accepted %d, Rejected %d.\n\nRejected details:\n%s",
-                    accepted + rejected, accepted, rejected, detail.toString());
-            JOptionPane.showMessageDialog(this, htmlize(msg),
-                    "Capture Summary", JOptionPane.WARNING_MESSAGE);
-        } else {
-            String msg = String.format("Captured %d images. All %d accepted.", accepted, accepted);
+        // Note: FaceCaptureResult doesn't provide detailed accept/reject counts
+        // Just show the captured images list
+        java.util.List<String> capturedImages = result.getCapturedImages();
+        if (capturedImages != null && !capturedImages.isEmpty()) {
+            String msg = String.format("Capture completed successfully!\nCaptured %d images for %s.",
+                    capturedImages.size(), student.getName());
             JOptionPane.showMessageDialog(this, htmlize(msg),
                     "Capture Summary", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            String msg = "Capture completed but no images were captured.\n" + result.getMessage();
+            JOptionPane.showMessageDialog(this, htmlize(msg),
+                    "Capture Summary", JOptionPane.WARNING_MESSAGE);
         }
 
         return result.isSuccess();

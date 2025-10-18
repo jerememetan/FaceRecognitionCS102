@@ -1,0 +1,104 @@
+================================================================================
+EMBEDDING QUALITY REPORT
+================================================================================
+Generated: 2025-10-19 00:58:01
+Database: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata
+
+================================================================================
+STUDENT: S00001_jereme
+================================================================================
+
+  ⚠ No embedding files found
+
+================================================================================
+STUDENT: S13234_Jin_Rae
+================================================================================
+
+Embeddings found: 19
+
+--- NORMALIZATION CHECK ---
+Norm range: 1.000000 to 1.000000 (avg: 1.000000)
+✓ All embeddings properly L2-normalized
+
+--- QUALITY ANALYSIS ---
+Overall tightness: 0.7642
+Quality level: GOOD
+Expected live recognition scores: 0.75-0.90
+
+--- EMBEDDING RANKING ---
+✓ GOOD  S13234_009.emb  0.8331  (dev: +0.069)
+✓ GOOD  S13234_003.emb  0.8297  (dev: +0.065)
+✓ GOOD  S13234_013.emb  0.8225  (dev: +0.058)
+✓ GOOD  S13234_008.emb  0.8197  (dev: +0.056)
+  OK    S13234_001.emb  0.8061  (dev: +0.042)
+  OK    S13234_020.emb  0.8025  (dev: +0.038)
+  OK    S13234_016.emb  0.7963  (dev: +0.032)
+  OK    S13234_005.emb  0.7952  (dev: +0.031)
+  OK    S13234_017.emb  0.7937  (dev: +0.029)
+  OK    S13234_007.emb  0.7873  (dev: +0.023)
+  OK    S13234_012.emb  0.7800  (dev: +0.016)
+  OK    S13234_010.emb  0.7637  (dev: -0.000)
+  OK    S13234_014.emb  0.7540  (dev: -0.010)
+  OK    S13234_002.emb  0.7319  (dev: -0.032)
+  OK    S13234_011.emb  0.7236  (dev: -0.041)
+⚠ WEAK  S13234_004.emb  0.7094  (dev: -0.055)
+⚠ WEAK  S13234_015.emb  0.6747  (dev: -0.090)
+✗ OUTLIER  S13234_018.emb  0.6564  (dev: -0.108)
+✗ OUTLIER  S13234_006.emb  0.6400  (dev: -0.124)
+
+--- OUTLIERS DETECTED ---
+These embeddings should be REMOVED:
+  ✗ C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_018.emb
+  ✗ C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_006.emb
+
+--- WEAK EMBEDDINGS ---
+Consider removing if tightness needs improvement:
+  ⚠ C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_004.emb
+  ⚠ C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_015.emb
+
+--- PROJECTED IMPROVEMENT ---
+Current tightness: 0.7642
+After removing outliers: 0.7949
+Improvement: +0.0307 (+4.0%)
+New expected scores: 0.74-0.94
+
+
+================================================================================
+OVERALL SUMMARY
+================================================================================
+
+--- STATISTICS ---
+Total students analyzed: 2
+Total embeddings: 19
+Average embeddings per student: 9.5
+
+--- QUALITY METRICS ---
+Average tightness: 0.3821
+Students with outliers: 1 (50.0%)
+Total outliers found: 2
+
+--- QUALITY DISTRIBUTION ---
+EXCELLENT (≥0.85): 0
+GOOD (0.75-0.84): 1
+MODERATE (0.65-0.74): 0
+POOR (<0.65): 0
+
+--- TOP 5 PERFORMERS (Highest Tightness) ---
+  S13234_Jin_Rae: 0.7642 (GOOD, 19 embeddings)
+
+--- STUDENTS NEEDING ATTENTION ---
+  S13234_Jin_Rae: tightness=0.7642, outliers=2, weak=2
+
+--- RECOMMENDATIONS ---
+✗ 1 student(s) have outlier embeddings
+  → Remove outlier files listed above to improve recognition accuracy
+⚠ Overall average tightness is low (<0.70)
+  → Consider re-capturing face images with better quality:
+    • Consistent lighting
+    • Sharp focus (not blurry)
+    • Face straight-on (±15° max)
+    • Neutral expression
+
+================================================================================
+END OF REPORT
+================================================================================

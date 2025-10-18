@@ -21,9 +21,7 @@ public class AppConfig {
     public final static int KEY_RECOGNITION_CROP_SIZE_PX = 200;
     public final static int KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE = 5;
     public final static int KEY_PREPROCESSING_GAUSSIAN_SIGMA_X = 0;
-    // REDUCED from 2.0 to 1.0 to improve discrimination between different people
-    // High clipLimit was over-equalizing faces, making them look too similar
-    public final static double KEY_PREPROCESSING_CLAHE_CLIP_LIMIT = 1.0;
+    public final static double KEY_PREPROCESSING_CLAHE_CLIP_LIMIT = 2.0;
     public final static int KEY_PREPROCESSING_CLAHE_GRID_SIZE = 8;
 
     // Advanced detection/recognition keys
@@ -90,10 +88,7 @@ public class AppConfig {
             AppLogger.error("Error reading app.properties file.", ex);
         } finally {
             if (input != null) {
-                try {
-                    input.close();
-                } catch (IOException ignored) {
-                }
+                try { input.close(); } catch (IOException ignored) {}
             }
         }
     }
