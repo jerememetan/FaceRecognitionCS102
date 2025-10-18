@@ -15,19 +15,21 @@ public class AppLogger {
     static {
         try {
             // Stop the logger from printing to the console (default behavior)
-            logger.setUseParentHandlers(false);
+            logger.setUseParentHandlers(false); 
             logger.setLevel(Level.INFO); // Set the default minimum logging level
 
+       
             java.io.File logsDir = new java.io.File(".\\logs\\");
             if (!logsDir.exists()) {
                 logsDir.mkdirs();
             }
 
+           
             String tsName = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss")
                     .format(LocalDateTime.now()) + ".log";
 
             FileHandler fileHandler = new FileHandler(".\\logs\\" + tsName, false);
-
+            
             fileHandler.setFormatter(new LogFormatter());
             logger.addHandler(fileHandler);
             logger.info("Application Logger Initialized.");
@@ -43,13 +45,14 @@ public class AppLogger {
     // --- Private Static Custom Formatter ---
     // Encapsulates the log format within the Facade class
     private static class LogFormatter extends Formatter {
-        private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        private static final DateTimeFormatter DATE_FORMAT = 
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         @Override
         public String format(LogRecord record) {
             // Build the desired log string format: [TIMESTAMP] LEVEL: MESSAGE
             StringBuilder builder = new StringBuilder();
-
+            
             builder.append("[").append(DATE_FORMAT.format(LocalDateTime.now())).append("] ");
             builder.append(record.getLevel().getName()).append(": ");
             builder.append(formatMessage(record));
@@ -66,9 +69,7 @@ public class AppLogger {
         logger.log(Level.INFO, message);
     }
 
-    /**
-     * Logs a warning message. Used for non-critical issues or unexpected events.
-     */
+    /** Logs a warning message. Used for non-critical issues or unexpected events. */
     public static void warn(String message) {
         logger.log(Level.WARNING, message);
     }
@@ -77,7 +78,7 @@ public class AppLogger {
     public static void error(String message) {
         logger.log(Level.SEVERE, message);
     }
-
+    
     /** Logs an error along with an exception. */
     public static void error(String message, Throwable thrown) {
         logger.log(Level.SEVERE, message, thrown);
@@ -97,24 +98,20 @@ public class AppLogger {
         @Override
         public void write(int b) {
             char c = (char) b;
-            // Only flush on actual newline, ignore carriage returns
-            if (c == '\n') {
+            if (c == '\n' || c == '\r') {
                 flushBuffer();
-            } else if (c != '\r') {
-                // Ignore \r characters entirely
+            } else {
                 buffer.append(c);
             }
         }
 
         @Override
         public void flush() {
-            // Don't auto-flush on every flush() call - wait for newlines
-            // This prevents printf from creating multiple log lines
+            flushBuffer();
         }
 
         private void flushBuffer() {
-            if (buffer.length() == 0)
-                return;
+            if (buffer.length() == 0) return;
             String msg = buffer.toString();
             buffer.setLength(0);
             targetLogger.log(level, msg);

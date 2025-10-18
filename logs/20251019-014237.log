@@ -1,0 +1,26 @@
+[2025-10-19 01:42:37] INFO: Application Logger Initialized.
+[2025-10-19 01:42:37] INFO: === Embedding Reprocessing Tool ===
+[2025-10-19 01:42:37] INFO: This will regenerate all .emb files from existing face images
+[2025-10-19 01:42:37] INFO: Original images will NOT be modified
+[2025-10-19 01:42:37] INFO: 
+[2025-10-19 01:42:37] INFO: Face embedding model loaded successfully
+[2025-10-19 01:42:37] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
+[2025-10-19 01:42:37] INFO: Found 3 person folders to process
+[2025-10-19 01:42:37] INFO: 
+[2025-10-19 01:42:37] INFO: [1/3] Processing: S00001_jereme
+[2025-10-19 01:42:38] INFO:   → 13 images, 13 embeddings generated, 0 errors
+[2025-10-19 01:42:38] INFO: 
+[2025-10-19 01:42:38] INFO: [2/3] Processing: S12342_wyn
+[2025-10-19 01:42:38] INFO:   → 13 images, 13 embeddings generated, 0 errors
+[2025-10-19 01:42:38] INFO: 
+[2025-10-19 01:42:38] INFO: [3/3] Processing: S13234_Jin_Rae
+[2025-10-19 01:42:39] INFO:   → 13 images, 13 embeddings generated, 0 errors
+[2025-10-19 01:42:39] INFO: 
+[2025-10-19 01:42:39] INFO: === Reprocessing Complete ===
+[2025-10-19 01:42:39] INFO: Persons processed: 3
+[2025-10-19 01:42:39] INFO: Images processed: 39
+[2025-10-19 01:42:39] INFO: Embeddings generated: 39
+[2025-10-19 01:42:39] INFO: Errors: 0
+[2025-10-19 01:42:39] INFO: 
+[2025-10-19 01:42:39] INFO: ✓ All embeddings regenerated successfully!
+[2025-10-19 01:42:39] INFO: ✓ Recognition system will use new embeddings on next startup

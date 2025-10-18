@@ -5,7 +5,6 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.photo.Photo;
 import org.opencv.imgproc.CLAHE;
 import org.opencv.objdetect.CascadeClassifier;
-import app.service.FacialLandmarkDetector;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -13,10 +12,10 @@ import java.util.Comparator;
 public class ImageProcessor {
 
     private static final double MIN_SHARPNESS_THRESHOLD = 80.0;
-    private static final double MIN_BRIGHTNESS = 40.0; // Increased from 30.0 for better quality
+    private static final double MIN_BRIGHTNESS = 30.0;
     private static final double MAX_BRIGHTNESS = 230.0;
-    private static final double MIN_CONTRAST = 25.0; // Increased from 20.0 for better quality
-    private static final Size STANDARD_SIZE = new Size(96, 96); // Match OpenFace model input (was 200x200)
+    private static final double MIN_CONTRAST = 20.0;
+    private static final Size STANDARD_SIZE = new Size(200, 200);
 
     public Mat preprocessFaceImage(Mat faceImage) {
         if (faceImage.empty()) {
@@ -32,19 +31,19 @@ public class ImageProcessor {
         }
 
         Mat filteredImage = new Mat();
-        Imgproc.bilateralFilter(processedImage, filteredImage, 3, 25, 25);
-        processedImage.release(); // Release intermediate Mat
+        Imgproc.bilateralFilter(processedImage, filteredImage, 9, 75, 75);
 
         CLAHE clahe = Imgproc.createCLAHE(1.0, new Size(8, 8));
         Mat contrastEnhanced = new Mat();
         clahe.apply(filteredImage, contrastEnhanced);
-        filteredImage.release(); // Release intermediate Mat
 
         Mat resized = new Mat();
         Imgproc.resize(contrastEnhanced, resized, STANDARD_SIZE, 0, 0, Imgproc.INTER_CUBIC);
-        contrastEnhanced.release(); // Release intermediate Mat
 
-        return resized;
+        Mat normalized = new Mat();
+        Core.normalize(resized, normalized, 0, 255, Core.NORM_MINMAX, CvType.CV_8U);
+
+        return normalized;
     }
 
     public ImageQualityResult validateImageQualityDetailed(Mat image) {
@@ -66,8 +65,6 @@ public class ImageProcessor {
         double sharpness = calculateSharpness(grayImage);
         double brightness = calculateBrightness(grayImage);
         double contrast = calculateContrast(grayImage);
-
-        grayImage.release(); // Release the converted grayscale image
 
         StringBuilder feedback = new StringBuilder();
         boolean isQualityGood = true;
@@ -184,18 +181,8 @@ public class ImageProcessor {
             if (eyeArray.length >= 2) {
                 Arrays.sort(eyeArray, Comparator.comparingInt(rect -> rect.x));
 
-                // Take FIRST TWO eyes (left and right), not first and last
-                // This prevents issues when 3+ eye candidates are detected
                 Rect leftEye = eyeArray[0];
-                Rect rightEye = eyeArray[1]; // Fixed from eyeArray[eyeArray.length - 1]
-
-                // Verify they're roughly at same Y level (valid eye pair, not nose/mouth)
-                double yDiff = Math.abs(leftEye.y - rightEye.y);
-                double avgHeight = (leftEye.height + rightEye.height) / 2.0;
-                if (yDiff > avgHeight * 0.5) {
-                    eyes.release();
-                    return faceImage; // Not a valid eye pair
-                }
+                Rect rightEye = eyeArray[eyeArray.length - 1];
 
                 Point leftCenter = new Point(leftEye.x + leftEye.width / 2.0,
                         leftEye.y + leftEye.height / 2.0);
