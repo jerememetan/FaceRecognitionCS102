@@ -1,0 +1,1668 @@
+[2025-10-18 16:19:26] INFO: Application Logger Initialized.
+[2025-10-18 16:19:26] INFO: Configuration and core components loaded.
+[2025-10-18 16:19:26] INFO: Configuration loaded from classpath: app.properties
+[2025-10-18 16:19:26] INFO: Configuration file loaded
+[2025-10-18 16:19:26] INFO: MyGUIProgram Started!
+[2025-10-18 16:19:28] INFO: Face embedding model loaded successfully
+[2025-10-18 16:19:28] INFO: === Folder debug ===
+[2025-10-18 16:19:28] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae
+[2025-10-18 16:19:28] INFO:   Contains: 30 items
+[2025-10-18 16:19:28] INFO:   Display label: S13234 - Jin_Rae
+[2025-10-18 16:19:28] INFO: ====================
+[2025-10-18 16:19:28] INFO:   [Glasses Mode] Detected high variation (stdDev=0.123) - relaxed thresholds by 11.2%
+[2025-10-18 16:19:28] INFO: Person S13234 - Jin_Rae: tightness=0.694, stdDev=0.123, absThresh=0.581, margin=0.099
+[2025-10-18 16:19:28] INFO: DNN face detector loaded successfully for recognition
+[2025-10-18 16:19:28] INFO: Attempting to open camera with DSHOW backend...
+[2025-10-18 16:19:28] INFO: Camera opened successfully with DSHOW backend
+[2025-10-18 16:19:29] INFO: Camera configured: 640x480 @ 30fps with MJPEG codec
+[2025-10-18 16:19:29] INFO: Camera initialized successfully
+[2025-10-18 16:19:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.548 
+[2025-10-18 16:19:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.548), 2nd=0.000, Discriminative=0.548, AvgNeg=0.000
+[2025-10-18 16:19:30] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:30] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.528 
+[2025-10-18 16:19:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.528), 2nd=0.000, Discriminative=0.528, AvgNeg=0.000
+[2025-10-18 16:19:30] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:30] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.557 
+[2025-10-18 16:19:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.557), 2nd=0.000, Discriminative=0.557, AvgNeg=0.000
+[2025-10-18 16:19:30] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:30] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.528 
+[2025-10-18 16:19:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.528), 2nd=0.000, Discriminative=0.528, AvgNeg=0.000
+[2025-10-18 16:19:30] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:30] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.528 
+[2025-10-18 16:19:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.528), 2nd=0.000, Discriminative=0.528, AvgNeg=0.000
+[2025-10-18 16:19:30] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:30] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.524 
+[2025-10-18 16:19:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.524), 2nd=0.000, Discriminative=0.524, AvgNeg=0.000
+[2025-10-18 16:19:30] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:30] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.521 
+[2025-10-18 16:19:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.521), 2nd=0.000, Discriminative=0.521, AvgNeg=0.000
+[2025-10-18 16:19:30] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:30] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.557 
+[2025-10-18 16:19:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.557), 2nd=0.000, Discriminative=0.557, AvgNeg=0.000
+[2025-10-18 16:19:30] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:30] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.571 
+[2025-10-18 16:19:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.571), 2nd=0.000, Discriminative=0.571, AvgNeg=0.000
+[2025-10-18 16:19:30] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:30] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.558 
+[2025-10-18 16:19:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.558), 2nd=0.000, Discriminative=0.558, AvgNeg=0.000
+[2025-10-18 16:19:30] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:30] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.571 
+[2025-10-18 16:19:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.571), 2nd=0.000, Discriminative=0.571, AvgNeg=0.000
+[2025-10-18 16:19:30] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:30] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.568 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.568), 2nd=0.000, Discriminative=0.568, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.592 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.592), 2nd=0.000, Discriminative=0.592, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(16.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.573 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.573), 2nd=0.000, Discriminative=0.573, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.570 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.570), 2nd=0.000, Discriminative=0.570, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.566 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.566), 2nd=0.000, Discriminative=0.566, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.561 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.561), 2nd=0.000, Discriminative=0.561, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.548 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.548), 2nd=0.000, Discriminative=0.548, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.539 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.539), 2nd=0.000, Discriminative=0.539, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.536 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.536), 2nd=0.000, Discriminative=0.536, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.565 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.565), 2nd=0.000, Discriminative=0.565, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.535 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.535), 2nd=0.000, Discriminative=0.535, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.546 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.546), 2nd=0.000, Discriminative=0.546, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.534 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.534), 2nd=0.000, Discriminative=0.534, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.526 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.526), 2nd=0.000, Discriminative=0.526, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.529 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.529), 2nd=0.000, Discriminative=0.529, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.511 
+[2025-10-18 16:19:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.511), 2nd=0.000, Discriminative=0.511, AvgNeg=0.000
+[2025-10-18 16:19:31] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:31] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.507 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.507), 2nd=0.000, Discriminative=0.507, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.495 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.495), 2nd=0.000, Discriminative=0.495, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.570 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.570), 2nd=0.000, Discriminative=0.570, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.497 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.497), 2nd=0.000, Discriminative=0.497, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.543 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.543), 2nd=0.000, Discriminative=0.543, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.523 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.523), 2nd=0.000, Discriminative=0.523, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.519 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.519), 2nd=0.000, Discriminative=0.519, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.528 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.528), 2nd=0.000, Discriminative=0.528, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.533 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.533), 2nd=0.000, Discriminative=0.533, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.522 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.522), 2nd=0.000, Discriminative=0.522, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.525 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.525), 2nd=0.000, Discriminative=0.525, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.523 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.523), 2nd=0.000, Discriminative=0.523, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.518 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.518), 2nd=0.000, Discriminative=0.518, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.509 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.509), 2nd=0.000, Discriminative=0.509, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.489 
+[2025-10-18 16:19:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.489), 2nd=0.000, Discriminative=0.489, AvgNeg=0.000
+[2025-10-18 16:19:32] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:32] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.538 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.538), 2nd=0.000, Discriminative=0.538, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.491 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.491), 2nd=0.000, Discriminative=0.491, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.520 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.520), 2nd=0.000, Discriminative=0.520, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.494 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.494), 2nd=0.000, Discriminative=0.494, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.524 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.524), 2nd=0.000, Discriminative=0.524, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.499 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.499), 2nd=0.000, Discriminative=0.499, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.485 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.485), 2nd=0.000, Discriminative=0.485, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.522 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.522), 2nd=0.000, Discriminative=0.522, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.501 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.501), 2nd=0.000, Discriminative=0.501, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.480 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.480), 2nd=0.000, Discriminative=0.480, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.486 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.486), 2nd=0.000, Discriminative=0.486, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.507 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.507), 2nd=0.000, Discriminative=0.507, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.532 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.532), 2nd=0.000, Discriminative=0.532, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.499 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.499), 2nd=0.000, Discriminative=0.499, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.520 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.520), 2nd=0.000, Discriminative=0.520, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.503 
+[2025-10-18 16:19:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.503), 2nd=0.000, Discriminative=0.503, AvgNeg=0.000
+[2025-10-18 16:19:33] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:33] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.543 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.543), 2nd=0.000, Discriminative=0.543, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.502 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.502), 2nd=0.000, Discriminative=0.502, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.512 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.512), 2nd=0.000, Discriminative=0.512, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.506 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.506), 2nd=0.000, Discriminative=0.506, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.511 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.511), 2nd=0.000, Discriminative=0.511, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.533 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.533), 2nd=0.000, Discriminative=0.533, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.511 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.511), 2nd=0.000, Discriminative=0.511, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.534 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.534), 2nd=0.000, Discriminative=0.534, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.512 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.512), 2nd=0.000, Discriminative=0.512, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.524 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.524), 2nd=0.000, Discriminative=0.524, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.552 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.552), 2nd=0.000, Discriminative=0.552, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.531 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.531), 2nd=0.000, Discriminative=0.531, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.548 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.548), 2nd=0.000, Discriminative=0.548, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.534 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.534), 2nd=0.000, Discriminative=0.534, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.520 
+[2025-10-18 16:19:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.520), 2nd=0.000, Discriminative=0.520, AvgNeg=0.000
+[2025-10-18 16:19:34] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:34] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.505 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.505), 2nd=0.000, Discriminative=0.505, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.522 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.522), 2nd=0.000, Discriminative=0.522, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.509 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.509), 2nd=0.000, Discriminative=0.509, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.556 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.556), 2nd=0.000, Discriminative=0.556, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.527 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.527), 2nd=0.000, Discriminative=0.527, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.531 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.531), 2nd=0.000, Discriminative=0.531, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.562 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.562), 2nd=0.000, Discriminative=0.562, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.535 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.535), 2nd=0.000, Discriminative=0.535, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.523 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.523), 2nd=0.000, Discriminative=0.523, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.526 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.526), 2nd=0.000, Discriminative=0.526, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.512 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.512), 2nd=0.000, Discriminative=0.512, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.487 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.487), 2nd=0.000, Discriminative=0.487, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.490 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.490), 2nd=0.000, Discriminative=0.490, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.503 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.503), 2nd=0.000, Discriminative=0.503, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.463 
+[2025-10-18 16:19:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.463), 2nd=0.000, Discriminative=0.463, AvgNeg=0.000
+[2025-10-18 16:19:35] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:35] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.484 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.484), 2nd=0.000, Discriminative=0.484, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.486 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.486), 2nd=0.000, Discriminative=0.486, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.479 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.479), 2nd=0.000, Discriminative=0.479, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.508 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.508), 2nd=0.000, Discriminative=0.508, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.495 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.495), 2nd=0.000, Discriminative=0.495, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.489 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.489), 2nd=0.000, Discriminative=0.489, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.479 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.479), 2nd=0.000, Discriminative=0.479, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.482 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.482), 2nd=0.000, Discriminative=0.482, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.537 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.537), 2nd=0.000, Discriminative=0.537, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.484 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.484), 2nd=0.000, Discriminative=0.484, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.494 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.494), 2nd=0.000, Discriminative=0.494, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.490 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.490), 2nd=0.000, Discriminative=0.490, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.490 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.490), 2nd=0.000, Discriminative=0.490, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.477 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.477), 2nd=0.000, Discriminative=0.477, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.487 
+[2025-10-18 16:19:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.487), 2nd=0.000, Discriminative=0.487, AvgNeg=0.000
+[2025-10-18 16:19:36] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:36] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.471 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.471), 2nd=0.000, Discriminative=0.471, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.466 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.466), 2nd=0.000, Discriminative=0.466, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.460 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.460), 2nd=0.000, Discriminative=0.460, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.490 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.490), 2nd=0.000, Discriminative=0.490, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.461 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.461), 2nd=0.000, Discriminative=0.461, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.466 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.466), 2nd=0.000, Discriminative=0.466, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.491 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.491), 2nd=0.000, Discriminative=0.491, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.475 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.475), 2nd=0.000, Discriminative=0.475, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.532 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.532), 2nd=0.000, Discriminative=0.532, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.486 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.486), 2nd=0.000, Discriminative=0.486, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.482 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.482), 2nd=0.000, Discriminative=0.482, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.473 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.473), 2nd=0.000, Discriminative=0.473, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.472 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.472), 2nd=0.000, Discriminative=0.472, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.468 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.468), 2nd=0.000, Discriminative=0.468, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.457 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.457), 2nd=0.000, Discriminative=0.457, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.455 
+[2025-10-18 16:19:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.455), 2nd=0.000, Discriminative=0.455, AvgNeg=0.000
+[2025-10-18 16:19:37] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:37] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.472 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.472), 2nd=0.000, Discriminative=0.472, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.461 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.461), 2nd=0.000, Discriminative=0.461, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.454 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.454), 2nd=0.000, Discriminative=0.454, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.537 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.537), 2nd=0.000, Discriminative=0.537, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.478 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.478), 2nd=0.000, Discriminative=0.478, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.519 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.519), 2nd=0.000, Discriminative=0.519, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.489 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.489), 2nd=0.000, Discriminative=0.489, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.505 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.505), 2nd=0.000, Discriminative=0.505, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.472 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.472), 2nd=0.000, Discriminative=0.472, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.527 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.527), 2nd=0.000, Discriminative=0.527, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.509 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.509), 2nd=0.000, Discriminative=0.509, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.471 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.471), 2nd=0.000, Discriminative=0.471, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.476 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.476), 2nd=0.000, Discriminative=0.476, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.501 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.501), 2nd=0.000, Discriminative=0.501, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.474 
+[2025-10-18 16:19:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.474), 2nd=0.000, Discriminative=0.474, AvgNeg=0.000
+[2025-10-18 16:19:38] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:38] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.532 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.532), 2nd=0.000, Discriminative=0.532, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.495 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.495), 2nd=0.000, Discriminative=0.495, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.492 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.492), 2nd=0.000, Discriminative=0.492, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.495 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.495), 2nd=0.000, Discriminative=0.495, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.493 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.493), 2nd=0.000, Discriminative=0.493, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.486 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.486), 2nd=0.000, Discriminative=0.486, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.488 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.488), 2nd=0.000, Discriminative=0.488, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.486 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.486), 2nd=0.000, Discriminative=0.486, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.500 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.500), 2nd=0.000, Discriminative=0.500, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.512 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.512), 2nd=0.000, Discriminative=0.512, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.481 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.481), 2nd=0.000, Discriminative=0.481, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.476 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.476), 2nd=0.000, Discriminative=0.476, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.496 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.496), 2nd=0.000, Discriminative=0.496, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.461 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.461), 2nd=0.000, Discriminative=0.461, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.519 
+[2025-10-18 16:19:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.519), 2nd=0.000, Discriminative=0.519, AvgNeg=0.000
+[2025-10-18 16:19:39] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:39] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.503 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.503), 2nd=0.000, Discriminative=0.503, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.509 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.509), 2nd=0.000, Discriminative=0.509, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.538 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.538), 2nd=0.000, Discriminative=0.538, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.518 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.518), 2nd=0.000, Discriminative=0.518, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.494 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.494), 2nd=0.000, Discriminative=0.494, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.492 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.492), 2nd=0.000, Discriminative=0.492, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.480 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.480), 2nd=0.000, Discriminative=0.480, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.459 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.459), 2nd=0.000, Discriminative=0.459, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.465 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.465), 2nd=0.000, Discriminative=0.465, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.481 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.481), 2nd=0.000, Discriminative=0.481, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.462 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.462), 2nd=0.000, Discriminative=0.462, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.484 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.484), 2nd=0.000, Discriminative=0.484, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.476 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.476), 2nd=0.000, Discriminative=0.476, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.476 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.476), 2nd=0.000, Discriminative=0.476, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.477 
+[2025-10-18 16:19:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.477), 2nd=0.000, Discriminative=0.477, AvgNeg=0.000
+[2025-10-18 16:19:40] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:40] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.461 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.461), 2nd=0.000, Discriminative=0.461, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.519 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.519), 2nd=0.000, Discriminative=0.519, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.455 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.455), 2nd=0.000, Discriminative=0.455, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.448 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.448), 2nd=0.000, Discriminative=0.448, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.501 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.501), 2nd=0.000, Discriminative=0.501, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.503 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.503), 2nd=0.000, Discriminative=0.503, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.497 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.497), 2nd=0.000, Discriminative=0.497, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.485 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.485), 2nd=0.000, Discriminative=0.485, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.496 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.496), 2nd=0.000, Discriminative=0.496, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.506 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.506), 2nd=0.000, Discriminative=0.506, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.485 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.485), 2nd=0.000, Discriminative=0.485, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.478 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.478), 2nd=0.000, Discriminative=0.478, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.473 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.473), 2nd=0.000, Discriminative=0.473, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.494 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.494), 2nd=0.000, Discriminative=0.494, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.469 
+[2025-10-18 16:19:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.469), 2nd=0.000, Discriminative=0.469, AvgNeg=0.000
+[2025-10-18 16:19:41] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:41] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.510 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.510), 2nd=0.000, Discriminative=0.510, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.496 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.496), 2nd=0.000, Discriminative=0.496, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.490 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.490), 2nd=0.000, Discriminative=0.490, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.483 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.483), 2nd=0.000, Discriminative=0.483, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.481 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.481), 2nd=0.000, Discriminative=0.481, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.463 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.463), 2nd=0.000, Discriminative=0.463, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.469 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.469), 2nd=0.000, Discriminative=0.469, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.493 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.493), 2nd=0.000, Discriminative=0.493, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.488 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.488), 2nd=0.000, Discriminative=0.488, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.484 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.484), 2nd=0.000, Discriminative=0.484, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.485 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.485), 2nd=0.000, Discriminative=0.485, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.497 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.497), 2nd=0.000, Discriminative=0.497, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.487 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.487), 2nd=0.000, Discriminative=0.487, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.469 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.469), 2nd=0.000, Discriminative=0.469, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.461 
+[2025-10-18 16:19:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.461), 2nd=0.000, Discriminative=0.461, AvgNeg=0.000
+[2025-10-18 16:19:42] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:42] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.497 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.497), 2nd=0.000, Discriminative=0.497, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.465 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.465), 2nd=0.000, Discriminative=0.465, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.461 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.461), 2nd=0.000, Discriminative=0.461, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.500 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.500), 2nd=0.000, Discriminative=0.500, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.475 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.475), 2nd=0.000, Discriminative=0.475, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.460 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.460), 2nd=0.000, Discriminative=0.460, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.495 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.495), 2nd=0.000, Discriminative=0.495, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.487 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.487), 2nd=0.000, Discriminative=0.487, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.457 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.457), 2nd=0.000, Discriminative=0.457, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.460 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.460), 2nd=0.000, Discriminative=0.460, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.463 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.463), 2nd=0.000, Discriminative=0.463, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.455 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.455), 2nd=0.000, Discriminative=0.455, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.447 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.447), 2nd=0.000, Discriminative=0.447, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.478 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.478), 2nd=0.000, Discriminative=0.478, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.478 
+[2025-10-18 16:19:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.478), 2nd=0.000, Discriminative=0.478, AvgNeg=0.000
+[2025-10-18 16:19:43] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:43] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.459 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.459), 2nd=0.000, Discriminative=0.459, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.465 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.465), 2nd=0.000, Discriminative=0.465, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.471 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.471), 2nd=0.000, Discriminative=0.471, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.467 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.467), 2nd=0.000, Discriminative=0.467, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.460 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.460), 2nd=0.000, Discriminative=0.460, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.465 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.465), 2nd=0.000, Discriminative=0.465, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.458 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.458), 2nd=0.000, Discriminative=0.458, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.499 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.499), 2nd=0.000, Discriminative=0.499, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.455 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.455), 2nd=0.000, Discriminative=0.455, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.443 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.443), 2nd=0.000, Discriminative=0.443, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.476 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.476), 2nd=0.000, Discriminative=0.476, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.451 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.451), 2nd=0.000, Discriminative=0.451, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.453 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.453), 2nd=0.000, Discriminative=0.453, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.443 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.443), 2nd=0.000, Discriminative=0.443, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.431 
+[2025-10-18 16:19:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.431), 2nd=0.000, Discriminative=0.431, AvgNeg=0.000
+[2025-10-18 16:19:44] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:44] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.510 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.510), 2nd=0.000, Discriminative=0.510, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.518 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.518), 2nd=0.000, Discriminative=0.518, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.465 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.465), 2nd=0.000, Discriminative=0.465, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.452 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.452), 2nd=0.000, Discriminative=0.452, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.479 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.479), 2nd=0.000, Discriminative=0.479, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.493 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.493), 2nd=0.000, Discriminative=0.493, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.462 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.462), 2nd=0.000, Discriminative=0.462, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.478 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.478), 2nd=0.000, Discriminative=0.478, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.451 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.451), 2nd=0.000, Discriminative=0.451, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.439 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.439), 2nd=0.000, Discriminative=0.439, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.420 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.420), 2nd=0.000, Discriminative=0.420, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.428 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.428), 2nd=0.000, Discriminative=0.428, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.390 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.390), 2nd=0.000, Discriminative=0.390, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(25.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.427 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.427), 2nd=0.000, Discriminative=0.427, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.460 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.460), 2nd=0.000, Discriminative=0.460, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.474 
+[2025-10-18 16:19:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.474), 2nd=0.000, Discriminative=0.474, AvgNeg=0.000
+[2025-10-18 16:19:45] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:45] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.443 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.443), 2nd=0.000, Discriminative=0.443, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.488 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.488), 2nd=0.000, Discriminative=0.488, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.467 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.467), 2nd=0.000, Discriminative=0.467, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.465 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.465), 2nd=0.000, Discriminative=0.465, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.458 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.458), 2nd=0.000, Discriminative=0.458, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.452 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.452), 2nd=0.000, Discriminative=0.452, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.491 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.491), 2nd=0.000, Discriminative=0.491, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.457 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.457), 2nd=0.000, Discriminative=0.457, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.497 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.497), 2nd=0.000, Discriminative=0.497, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.483 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.483), 2nd=0.000, Discriminative=0.483, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.491 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.491), 2nd=0.000, Discriminative=0.491, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.494 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.494), 2nd=0.000, Discriminative=0.494, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.488 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.488), 2nd=0.000, Discriminative=0.488, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.495 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.495), 2nd=0.000, Discriminative=0.495, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.479 
+[2025-10-18 16:19:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.479), 2nd=0.000, Discriminative=0.479, AvgNeg=0.000
+[2025-10-18 16:19:46] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:46] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.463 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.463), 2nd=0.000, Discriminative=0.463, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.448 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.448), 2nd=0.000, Discriminative=0.448, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.477 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.477), 2nd=0.000, Discriminative=0.477, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.453 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.453), 2nd=0.000, Discriminative=0.453, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.451 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.451), 2nd=0.000, Discriminative=0.451, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.499 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.499), 2nd=0.000, Discriminative=0.499, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.465 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.465), 2nd=0.000, Discriminative=0.465, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.447 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.447), 2nd=0.000, Discriminative=0.447, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.439 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.439), 2nd=0.000, Discriminative=0.439, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.447 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.447), 2nd=0.000, Discriminative=0.447, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.482 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.482), 2nd=0.000, Discriminative=0.482, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.491 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.491), 2nd=0.000, Discriminative=0.491, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.457 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.457), 2nd=0.000, Discriminative=0.457, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.474 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.474), 2nd=0.000, Discriminative=0.474, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.476 
+[2025-10-18 16:19:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.476), 2nd=0.000, Discriminative=0.476, AvgNeg=0.000
+[2025-10-18 16:19:47] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:47] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.467 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.467), 2nd=0.000, Discriminative=0.467, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.447 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.447), 2nd=0.000, Discriminative=0.447, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.499 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.499), 2nd=0.000, Discriminative=0.499, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.443 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.443), 2nd=0.000, Discriminative=0.443, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.432 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.432), 2nd=0.000, Discriminative=0.432, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.436 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.436), 2nd=0.000, Discriminative=0.436, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.431 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.431), 2nd=0.000, Discriminative=0.431, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.474 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.474), 2nd=0.000, Discriminative=0.474, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.467 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.467), 2nd=0.000, Discriminative=0.467, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.454 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.454), 2nd=0.000, Discriminative=0.454, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.456 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.456), 2nd=0.000, Discriminative=0.456, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.470 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.470), 2nd=0.000, Discriminative=0.470, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.460 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.460), 2nd=0.000, Discriminative=0.460, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.489 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.489), 2nd=0.000, Discriminative=0.489, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.465 
+[2025-10-18 16:19:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.465), 2nd=0.000, Discriminative=0.465, AvgNeg=0.000
+[2025-10-18 16:19:48] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:48] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.501 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.501), 2nd=0.000, Discriminative=0.501, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.463 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.463), 2nd=0.000, Discriminative=0.463, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.459 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.459), 2nd=0.000, Discriminative=0.459, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.441 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.441), 2nd=0.000, Discriminative=0.441, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.435 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.435), 2nd=0.000, Discriminative=0.435, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.449 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.449), 2nd=0.000, Discriminative=0.449, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.439 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.439), 2nd=0.000, Discriminative=0.439, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.430 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.430), 2nd=0.000, Discriminative=0.430, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.462 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.462), 2nd=0.000, Discriminative=0.462, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.470 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.470), 2nd=0.000, Discriminative=0.470, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.441 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.441), 2nd=0.000, Discriminative=0.441, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.441 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.441), 2nd=0.000, Discriminative=0.441, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.438 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.438), 2nd=0.000, Discriminative=0.438, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.441 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.441), 2nd=0.000, Discriminative=0.441, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.416 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.416), 2nd=0.000, Discriminative=0.416, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.424 
+[2025-10-18 16:19:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.424), 2nd=0.000, Discriminative=0.424, AvgNeg=0.000
+[2025-10-18 16:19:49] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:49] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.438 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.438), 2nd=0.000, Discriminative=0.438, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.429 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.429), 2nd=0.000, Discriminative=0.429, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.469 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.469), 2nd=0.000, Discriminative=0.469, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.463 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.463), 2nd=0.000, Discriminative=0.463, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.444 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.444), 2nd=0.000, Discriminative=0.444, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.476 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.476), 2nd=0.000, Discriminative=0.476, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.448 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.448), 2nd=0.000, Discriminative=0.448, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.463 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.463), 2nd=0.000, Discriminative=0.463, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.497 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.497), 2nd=0.000, Discriminative=0.497, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.467 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.467), 2nd=0.000, Discriminative=0.467, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.455 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.455), 2nd=0.000, Discriminative=0.455, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.498 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.498), 2nd=0.000, Discriminative=0.498, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.463 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.463), 2nd=0.000, Discriminative=0.463, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.466 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.466), 2nd=0.000, Discriminative=0.466, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.453 
+[2025-10-18 16:19:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.453), 2nd=0.000, Discriminative=0.453, AvgNeg=0.000
+[2025-10-18 16:19:50] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:50] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.455 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.455), 2nd=0.000, Discriminative=0.455, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(21.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.435 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.435), 2nd=0.000, Discriminative=0.435, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.449 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.449), 2nd=0.000, Discriminative=0.449, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.424 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.424), 2nd=0.000, Discriminative=0.424, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.412 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.412), 2nd=0.000, Discriminative=0.412, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.404 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.404), 2nd=0.000, Discriminative=0.404, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(24.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.402 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.402), 2nd=0.000, Discriminative=0.402, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(24.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.422 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.422), 2nd=0.000, Discriminative=0.422, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.472 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.472), 2nd=0.000, Discriminative=0.472, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.424 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.424), 2nd=0.000, Discriminative=0.424, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.426 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.426), 2nd=0.000, Discriminative=0.426, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.426 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.426), 2nd=0.000, Discriminative=0.426, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.424 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.424), 2nd=0.000, Discriminative=0.424, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.427 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.427), 2nd=0.000, Discriminative=0.427, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.406 
+[2025-10-18 16:19:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.406), 2nd=0.000, Discriminative=0.406, AvgNeg=0.000
+[2025-10-18 16:19:51] INFO: [Thresholds] Abs=0.581, Margin=0.099(24.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:51] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.427 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.427), 2nd=0.000, Discriminative=0.427, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.407 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.407), 2nd=0.000, Discriminative=0.407, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(24.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.403 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.403), 2nd=0.000, Discriminative=0.403, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(24.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.393 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.393), 2nd=0.000, Discriminative=0.393, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(25.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.411 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.411), 2nd=0.000, Discriminative=0.411, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(24.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.383 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.383), 2nd=0.000, Discriminative=0.383, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(25.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.384 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.384), 2nd=0.000, Discriminative=0.384, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(25.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.374 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.374), 2nd=0.000, Discriminative=0.374, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(26.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.386 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.386), 2nd=0.000, Discriminative=0.386, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(25.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.404 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.404), 2nd=0.000, Discriminative=0.404, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(24.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.376 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.376), 2nd=0.000, Discriminative=0.376, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(26.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.367 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.367), 2nd=0.000, Discriminative=0.367, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(26.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.403 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.403), 2nd=0.000, Discriminative=0.403, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(24.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.402 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.402), 2nd=0.000, Discriminative=0.402, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(24.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.424 
+[2025-10-18 16:19:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.424), 2nd=0.000, Discriminative=0.424, AvgNeg=0.000
+[2025-10-18 16:19:52] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:52] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.394 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.394), 2nd=0.000, Discriminative=0.394, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(25.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.404 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.404), 2nd=0.000, Discriminative=0.404, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(24.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.400 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.400), 2nd=0.000, Discriminative=0.400, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(24.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.395 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.395), 2nd=0.000, Discriminative=0.395, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(25.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.391 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.391), 2nd=0.000, Discriminative=0.391, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(25.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.383 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.383), 2nd=0.000, Discriminative=0.383, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(25.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.420 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.420), 2nd=0.000, Discriminative=0.420, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.388 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.388), 2nd=0.000, Discriminative=0.388, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(25.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.422 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.422), 2nd=0.000, Discriminative=0.422, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.392 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.392), 2nd=0.000, Discriminative=0.392, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(25.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.446 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.446), 2nd=0.000, Discriminative=0.446, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.415 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.415), 2nd=0.000, Discriminative=0.415, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.436 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.436), 2nd=0.000, Discriminative=0.436, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.435 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.435), 2nd=0.000, Discriminative=0.435, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.432 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.432), 2nd=0.000, Discriminative=0.432, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.419 
+[2025-10-18 16:19:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.419), 2nd=0.000, Discriminative=0.419, AvgNeg=0.000
+[2025-10-18 16:19:53] INFO: [Thresholds] Abs=0.581, Margin=0.099(23.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:53] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.410 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.410), 2nd=0.000, Discriminative=0.410, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(24.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.477 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.477), 2nd=0.000, Discriminative=0.477, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.472 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.472), 2nd=0.000, Discriminative=0.472, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(20.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.442 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.442), 2nd=0.000, Discriminative=0.442, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(22.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.524 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.524), 2nd=0.000, Discriminative=0.524, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.535 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.535), 2nd=0.000, Discriminative=0.535, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.522 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.522), 2nd=0.000, Discriminative=0.522, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.549 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.549), 2nd=0.000, Discriminative=0.549, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.522 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.522), 2nd=0.000, Discriminative=0.522, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.513 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.513), 2nd=0.000, Discriminative=0.513, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(19.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.525 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.525), 2nd=0.000, Discriminative=0.525, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(18.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.592 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.592), 2nd=0.000, Discriminative=0.592, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(16.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.571 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.571), 2nd=0.000, Discriminative=0.571, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(17.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] REJECT: Abs=false, AbsMargin=true, RelMargin=true, Discrim=false, Consist=false
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.621 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.621), 2nd=0.000, Discriminative=0.621, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(15.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.591 
+[2025-10-18 16:19:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.591), 2nd=0.000, Discriminative=0.591, AvgNeg=0.000
+[2025-10-18 16:19:54] INFO: [Thresholds] Abs=0.581, Margin=0.099(16.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:54] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.657 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.657), 2nd=0.000, Discriminative=0.657, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(15.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.666 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.666), 2nd=0.000, Discriminative=0.666, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(14.8%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.694 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.694), 2nd=0.000, Discriminative=0.694, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(14.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.690 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.690), 2nd=0.000, Discriminative=0.690, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(14.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.703 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.703), 2nd=0.000, Discriminative=0.703, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(14.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.699 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.699), 2nd=0.000, Discriminative=0.699, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(14.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.687 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.687), 2nd=0.000, Discriminative=0.687, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(14.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.697 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.697), 2nd=0.000, Discriminative=0.697, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(14.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.691 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.691), 2nd=0.000, Discriminative=0.691, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(14.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.696 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.696), 2nd=0.000, Discriminative=0.696, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(14.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.677 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.677), 2nd=0.000, Discriminative=0.677, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(14.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.756 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.756), 2nd=0.000, Discriminative=0.756, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(13.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.754 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.754), 2nd=0.000, Discriminative=0.754, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(13.1%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.777 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.777), 2nd=0.000, Discriminative=0.777, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.765 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.765), 2nd=0.000, Discriminative=0.765, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.789 
+[2025-10-18 16:19:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.789), 2nd=0.000, Discriminative=0.789, AvgNeg=0.000
+[2025-10-18 16:19:55] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:55] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.782 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.782), 2nd=0.000, Discriminative=0.782, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.819 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.819), 2nd=0.000, Discriminative=0.819, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.796 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.796), 2nd=0.000, Discriminative=0.796, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.800 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.800), 2nd=0.000, Discriminative=0.800, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.3%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.796 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.796), 2nd=0.000, Discriminative=0.796, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.796 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.796), 2nd=0.000, Discriminative=0.796, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.4%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.783 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.783), 2nd=0.000, Discriminative=0.783, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.783 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.783), 2nd=0.000, Discriminative=0.783, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.775 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.775), 2nd=0.000, Discriminative=0.775, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.789 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.789), 2nd=0.000, Discriminative=0.789, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.5%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.774 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.774), 2nd=0.000, Discriminative=0.774, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.781 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.781), 2nd=0.000, Discriminative=0.781, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.6%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.777 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.777), 2nd=0.000, Discriminative=0.777, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.777 
+[2025-10-18 16:19:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.777), 2nd=0.000, Discriminative=0.777, AvgNeg=0.000
+[2025-10-18 16:19:56] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.7%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:56] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:57] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.766 
+[2025-10-18 16:19:57] INFO: [Decision] Best=S13234 - Jin_Rae(0.766), 2nd=0.000, Discriminative=0.766, AvgNeg=0.000
+[2025-10-18 16:19:57] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:57] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:57] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.763 
+[2025-10-18 16:19:57] INFO: [Decision] Best=S13234 - Jin_Rae(0.763), 2nd=0.000, Discriminative=0.763, AvgNeg=0.000
+[2025-10-18 16:19:57] INFO: [Thresholds] Abs=0.581, Margin=0.099(12.9%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:57] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:57] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.756 
+[2025-10-18 16:19:57] INFO: [Decision] Best=S13234 - Jin_Rae(0.756), 2nd=0.000, Discriminative=0.756, AvgNeg=0.000
+[2025-10-18 16:19:57] INFO: [Thresholds] Abs=0.581, Margin=0.099(13.0%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:57] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:57] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.747 
+[2025-10-18 16:19:57] INFO: [Decision] Best=S13234 - Jin_Rae(0.747), 2nd=0.000, Discriminative=0.747, AvgNeg=0.000
+[2025-10-18 16:19:57] INFO: [Thresholds] Abs=0.581, Margin=0.099(13.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:57] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:57] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.744 
+[2025-10-18 16:19:57] INFO: [Decision] Best=S13234 - Jin_Rae(0.744), 2nd=0.000, Discriminative=0.744, AvgNeg=0.000
+[2025-10-18 16:19:57] INFO: [Thresholds] Abs=0.581, Margin=0.099(13.2%), RelMargin=100.0%, Tightness=0.694, StdDev=0.123
+[2025-10-18 16:19:57] INFO: [Decision] ACCEPT: Tier 1 - Absolute + Margin
+[2025-10-18 16:19:57] INFO: Exiting Face Recognition Demo...
+[2025-10-18 16:19:57] INFO: Exiting Face Recognition Demo...

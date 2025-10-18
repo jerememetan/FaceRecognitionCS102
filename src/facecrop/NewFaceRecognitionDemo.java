@@ -46,6 +46,10 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
     private volatile boolean running = true;
     private Thread recognitionThread;
 
+    // Performance optimization: Process every Nth frame to reduce CPU load
+    // Dynamic frame skip based on dataset size for optimal performance
+    private int frameCounter = 0;
+
     // Recognition helpers
     private final ImageProcessor imageProcessor = new ImageProcessor();
     private final FaceEmbeddingGenerator embGen = new FaceEmbeddingGenerator();
@@ -59,6 +63,14 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
     // Advanced differentiation parameters
     private final double PENALTY_WEIGHT = 0.20; // penalize similarity to wrong persons
     private final double MIN_RELATIVE_MARGIN_PCT = 0.10; // 10% relative margin minimum
+
+    // Performance optimization: Centroid pre-filtering threshold
+    // Skip expensive Top-K comparison if centroid score is too low
+    private final double CENTROID_PREFILTER_THRESHOLD = 0.50;
+
+    // Store last recognized text to prevent blinking
+    private String lastDisplayText = "";
+    private Scalar lastDisplayColor = new Scalar(0, 0, 255);
 
     // Per-person adaptive thresholds and metadata
     private ArrayList<Double> personTightness = new ArrayList<>();
@@ -244,7 +256,7 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
             double[] v = decodeEmbeddingToDouble(b);
             if (v == null)
                 continue;
-            normalizeL2InPlace(v);
+            // Do NOT normalize - embeddings are already L2-normalized when loaded!
             if (sum == null) {
                 sum = Arrays.copyOf(v, v.length);
             } else {
@@ -255,8 +267,10 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         }
         if (sum == null || count == 0)
             return null;
+        // Average the embeddings
         for (int i = 0; i < sum.length; i++)
             sum[i] /= count;
+        // Normalize the averaged centroid once
         normalizeL2InPlace(sum);
         return sum;
     }
@@ -408,7 +422,6 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
     private VideoCapture openCameraWithFallback() {
         int cameraIndex = AppConfig.getInstance().getCameraIndex();
 
- 
         AppLogger.info("Attempting to open camera with DSHOW backend...");
         VideoCapture cap = new VideoCapture(cameraIndex, org.opencv.videoio.Videoio.CAP_DSHOW);
         if (cap.isOpened()) {
@@ -416,7 +429,6 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
             return cap;
         }
         AppLogger.warn("DSHOW backend failed, trying MSMF...");
-
 
         cap.release();
         cap = new VideoCapture(cameraIndex, org.opencv.videoio.Videoio.CAP_MSMF);
@@ -480,39 +492,58 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
     private void startRecognitionLoop() {
         recognitionThread = new Thread(() -> {
             while (running && capture.read(webcamFrame)) {
+                frameCounter++;
+
+                // Dynamic frame skip: adjust based on number of people for optimal performance
+                // Small datasets (≤5): every 2nd frame, Medium (≤20): every 3rd, Large (>20):
+                // every 4th
+                int frameSkip = getAdaptiveFrameSkip();
+                boolean shouldProcess = (frameCounter % frameSkip == 0);
+
                 // Detect faces using DNN (consistent with enrollment)
                 List<Rect> detectedFaces = detectFacesWithDNN(webcamFrame);
 
                 for (Rect rect : detectedFaces) {
-                    // Draw rectangle
+                    // Draw rectangle on ALL frames (smooth preview)
                     Imgproc.rectangle(webcamFrame, new Point(rect.x, rect.y),
                             new Point(rect.x + rect.width, rect.y + rect.height),
                             new Scalar(0, 255, 0), 2);
 
-                    // Crop from color frame - keep as COLOR for embedding generation
-                    Mat faceColor = webcamFrame.submat(rect);
+                    // Display last recognized text on ALL frames (prevents blinking)
+                    Imgproc.putText(webcamFrame, lastDisplayText, new Point(rect.x, rect.y - 10),
+                            Imgproc.FONT_HERSHEY_SIMPLEX, 0.9, lastDisplayColor, 2);
+
+                    // Only process recognition on selected frames
+                    if (!shouldProcess) {
+                        continue; // Skip heavy processing, just show detection box and last text
+                    }
+
+                    // Extract face ROI with padding (EXACT match with training in FaceDetection)
+                    // Training uses: buildSquareRegionWithPadding(frame.size(), face, 0.12)
+                    Rect paddedRect = buildSquareRegionWithPadding(webcamFrame.size(), rect, 0.12);
+                    Mat faceColor = new Mat(webcamFrame, paddedRect).clone();
 
                     try {
-                        // GLASSES-AWARE: Reduce glare and specular highlights from glasses
-                        Mat glareReduced = imageProcessor.reduceGlare(faceColor);
+                        // REMOVED: reduceGlare() - not used in training, causes mismatch!
+                        // Training uses: correctFaceOrientation → reduceNoise → preprocessFaceImage
+                        // Live must match exactly for best scores
 
-                        // Quality gate - relaxed to allow more faces through
-                        ImageProcessor.ImageQualityResult q = imageProcessor.validateImageQualityDetailed(glareReduced);
-                        // Only reject severely poor quality (score < 30)
-                        boolean severelyPoor = q.getQualityScore() < 30.0;
+                        // Apply FULL preprocessing pipeline (EXACT match with training in
+                        // FaceDetection)
+                        Mat aligned = imageProcessor.correctFaceOrientation(faceColor);
+                        Mat denoised = imageProcessor.reduceNoise(aligned);
+                        Mat processed = imageProcessor.preprocessFaceImage(denoised);
+                        byte[] queryEmbedding = embGen.generateEmbedding(processed);
 
-                        // Generate embedding directly from COLOR image
-                        // The FaceEmbeddingGenerator expects color images and handles preprocessing
-                        // internally
-                        Mat aligned = imageProcessor.correctFaceOrientation(glareReduced);
-                        byte[] queryEmbedding = embGen.generateEmbedding(aligned);
+                        // Release all intermediate matrices to prevent memory leaks
                         aligned.release();
-                        glareReduced.release();
+                        denoised.release();
+                        processed.release();
 
-                        // Skip only if severely poor quality AND embedding generation failed
-                        if (severelyPoor && queryEmbedding == null) {
-                            Imgproc.putText(webcamFrame, "unknown", new Point(rect.x, rect.y - 10),
-                                    Imgproc.FONT_HERSHEY_SIMPLEX, 0.9, new Scalar(0, 0, 255), 2);
+                        // Skip if embedding generation failed
+                        if (queryEmbedding == null) {
+                            lastDisplayText = "unknown";
+                            lastDisplayColor = new Scalar(0, 0, 255);
                             continue;
                         }
 
@@ -523,16 +554,32 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                         recentQueryEmbeddings.offerLast(queryEmbedding);
                         byte[] smoothedEmbedding = buildSmoothedEmbedding();
 
-                        // Compare with stored embeddings per person by fusing centroid and exemplar
-                        // similarities
+                        // Compare with stored embeddings per person
+                        // Performance optimization: Use centroid pre-filtering to skip unlikely matches
                         ArrayList<Double> personScores = new ArrayList<>();
+                        int prefilterSkipped = 0;
+
                         for (int p = 0; p < personEmbeddings.size(); p++) {
                             List<byte[]> person = personEmbeddings.get(p);
                             if (person == null || person.isEmpty()) {
                                 personScores.add(0.0);
                                 continue;
                             }
+
                             double[] centroid = (p < personCentroids.size()) ? personCentroids.get(p) : null;
+
+                            // PERFORMANCE: Fast centroid pre-filtering
+                            // Only do expensive Top-K comparison if centroid looks promising
+                            if (centroid != null) {
+                                double centroidScore = cosineSimilarity(queryEmbedding, centroid);
+                                if (centroidScore < CENTROID_PREFILTER_THRESHOLD) {
+                                    personScores.add(0.0);
+                                    prefilterSkipped++;
+                                    continue; // Skip expensive full comparison
+                                }
+                            }
+
+                            // Full scoring for promising candidates
                             double fusedRaw = computeFusedScore(queryEmbedding, person, centroid);
                             double fusedSmooth = smoothedEmbedding != null
                                     ? computeFusedScore(smoothedEmbedding, person, centroid)
@@ -607,6 +654,13 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                                     absThresh, margin, requiredMarginPct * 100, relativeMarginPct * 100, tightness,
                                     stdDev);
 
+                            // Performance metrics
+                            if (prefilterSkipped > 0) {
+                                System.out.printf("[Performance] Pre-filter skipped %d/%d persons (%.1f%% speedup)%n",
+                                        prefilterSkipped, personScores.size(),
+                                        (prefilterSkipped * 100.0) / personScores.size());
+                            }
+
                             // Multi-criteria discriminative decision
                             boolean absolutePass = best >= absThresh;
                             boolean absoluteMarginPass = (best - second) >= margin;
@@ -654,17 +708,17 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                                 String label = bestIdx < personLabels.size()
                                         ? personLabels.get(bestIdx)
                                         : new File(folder_names.get(bestIdx)).getName();
-                                displayText = label;
+                                // Display name with confidence score for user feedback
+                                lastDisplayText = String.format("%s (%.2f)", label, best);
+                                lastDisplayColor = new Scalar(15, 255, 15);
 
                             } else {
-                                displayText = "unknown";
+                                lastDisplayText = "unknown";
+                                lastDisplayColor = new Scalar(0, 0, 255);
                             }
                         }
 
-                        updateRecentPredictions("unknown".equals(displayText) ? -1 : bestIdx);
-                        Imgproc.putText(webcamFrame, displayText, new Point(rect.x, rect.y - 10),
-                                Imgproc.FONT_HERSHEY_SIMPLEX, 0.9,
-                                "unknown".equals(displayText) ? new Scalar(0, 0, 255) : new Scalar(15, 255, 15), 2);
+                        updateRecentPredictions("unknown".equals(lastDisplayText) ? -1 : bestIdx);
 
                     } finally {
                         // CRITICAL: Always release the submat to prevent memory leak
@@ -696,7 +750,7 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
             double[] v = decodeEmbeddingToDouble(b);
             if (v == null)
                 continue;
-            normalizeL2InPlace(v);
+            // Do NOT normalize - embeddings are already L2-normalized!
             if (sum == null) {
                 sum = Arrays.copyOf(v, v.length);
             } else {
@@ -706,8 +760,10 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         }
         if (sum == null)
             return null;
+        // Average the embeddings
         for (int i = 0; i < sum.length; i++)
             sum[i] /= recentQueryEmbeddings.size();
+        // Normalize the averaged embedding once
         normalizeL2InPlace(sum);
         return encodeEmbeddingFromDouble(sum);
     }
@@ -788,16 +844,16 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         double[] q = decodeEmbeddingToDouble(queryEmb);
         if (q == null || centroid == null || q.length != centroid.length)
             return 0.0;
-        normalizeL2InPlace(q);
-        double dot = 0.0, n1 = 0.0, n2 = 0.0;
+
+        // Do NOT normalize - embeddings are already L2-normalized!
+        // For normalized vectors, cosine similarity = dot product
+        double dot = 0.0;
         for (int i = 0; i < q.length; i++) {
             dot += q[i] * centroid[i];
-            n1 += q[i] * q[i];
-            n2 += centroid[i] * centroid[i];
         }
-        n1 = Math.sqrt(Math.max(n1, 1e-12));
-        n2 = Math.sqrt(Math.max(n2, 1e-12));
-        return dot / (n1 * n2);
+
+        // Clamp to [-1, 1] to handle floating-point errors
+        return Math.max(-1.0, Math.min(1.0, dot));
     }
 
     private void stopRecognitionLoop() {
@@ -889,6 +945,59 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         }
 
         return folderName;
+    }
+
+    /**
+     * Dynamic frame skip based on dataset size for optimal performance.
+     * Larger datasets require less frequent processing to maintain smooth preview.
+     * 
+     * @return frame skip interval (process every Nth frame)
+     */
+    private int getAdaptiveFrameSkip() {
+        int numPeople = personEmbeddings.size();
+
+        if (numPeople <= 5) {
+            return 2; // Small dataset: Process every 2nd frame (~15 FPS → 7.5 FPS recognition)
+        } else if (numPeople <= 20) {
+            return 3; // Medium dataset: Process every 3rd frame (~15 FPS → 5 FPS recognition)
+        } else {
+            return 4; // Large dataset (40+): Process every 4th frame (~15 FPS → 3.75 FPS recognition)
+        }
+    }
+
+    /**
+     * Build square region with padding around detected face.
+     * This MUST match the training ROI extraction in FaceDetection.java
+     * to ensure consistent preprocessing and embedding quality.
+     */
+    private Rect buildSquareRegionWithPadding(Size frameSize, Rect face, double paddingRatio) {
+        int frameWidth = (int) frameSize.width;
+        int frameHeight = (int) frameSize.height;
+
+        if (frameWidth <= 0 || frameHeight <= 0) {
+            return face;
+        }
+
+        int centerX = face.x + face.width / 2;
+        int centerY = face.y + face.height / 2;
+
+        double safePadding = Math.max(0.0, paddingRatio);
+        int paddedSize = (int) Math.round(Math.max(face.width, face.height) * (1.0 + safePadding));
+
+        // Use same MIN_FACE_SIZE as training (96px)
+        final int MIN_FACE_SIZE = 96;
+        paddedSize = Math.max(paddedSize, MIN_FACE_SIZE);
+        paddedSize = Math.min(paddedSize, Math.min(frameWidth, frameHeight));
+
+        int halfSize = paddedSize / 2;
+
+        int x = centerX - halfSize;
+        int y = centerY - halfSize;
+
+        x = Math.max(0, Math.min(x, frameWidth - paddedSize));
+        y = Math.max(0, Math.min(y, frameHeight - paddedSize));
+
+        return new Rect(x, y, paddedSize, paddedSize);
     }
 
 }

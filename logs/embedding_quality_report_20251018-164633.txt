@@ -1,0 +1,79 @@
+================================================================================
+EMBEDDING QUALITY REPORT
+================================================================================
+Generated: 2025-10-18 16:46:33
+Database: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata
+
+================================================================================
+STUDENT: S13234_Jin_Rae
+================================================================================
+
+Embeddings found: 13
+
+--- NORMALIZATION CHECK ---
+Norm range: 1.000000 to 1.000000 (avg: 1.000000)
+✓ All embeddings properly L2-normalized
+
+--- QUALITY ANALYSIS ---
+Overall tightness: 0.7853
+Quality level: GOOD
+Expected live recognition scores: 0.75-0.90
+
+--- EMBEDDING RANKING ---
+✓ GOOD  S13234_003.emb  0.8549  (dev: +0.070)
+✓ GOOD  S13234_014.emb  0.8430  (dev: +0.058)
+  OK    S13234_007.emb  0.8203  (dev: +0.035)
+  OK    S13234_010.emb  0.8182  (dev: +0.033)
+  OK    S13234_015.emb  0.8152  (dev: +0.030)
+  OK    S13234_002.emb  0.8078  (dev: +0.023)
+  OK    S13234_006.emb  0.7920  (dev: +0.007)
+  OK    S13234_004.emb  0.7775  (dev: -0.008)
+  OK    S13234_012.emb  0.7695  (dev: -0.016)
+  OK    S13234_013.emb  0.7692  (dev: -0.016)
+⚠ WEAK  S13234_001.emb  0.7219  (dev: -0.063)
+⚠ WEAK  S13234_005.emb  0.7134  (dev: -0.072)
+⚠ WEAK  S13234_009.emb  0.7056  (dev: -0.080)
+
+--- WEAK EMBEDDINGS ---
+Consider removing if tightness needs improvement:
+  ⚠ C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_001.emb
+  ⚠ C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_005.emb
+  ⚠ C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_009.emb
+
+--- PROJECTED IMPROVEMENT ---
+Current tightness: 0.7853
+After removing outliers: 0.7853
+Improvement: +0.0000 (+0.0%)
+New expected scores: 0.74-0.94
+
+
+================================================================================
+OVERALL SUMMARY
+================================================================================
+
+--- STATISTICS ---
+Total students analyzed: 1
+Total embeddings: 13
+Average embeddings per student: 13.0
+
+--- QUALITY METRICS ---
+Average tightness: 0.7853
+Students with outliers: 0 (0.0%)
+Total outliers found: 0
+
+--- QUALITY DISTRIBUTION ---
+EXCELLENT (≥0.85): 0
+GOOD (0.75-0.84): 1
+MODERATE (0.65-0.74): 0
+POOR (<0.65): 0
+
+--- TOP 5 PERFORMERS (Highest Tightness) ---
+  S13234_Jin_Rae: 0.7853 (GOOD, 13 embeddings)
+
+--- RECOMMENDATIONS ---
+✓ Average tightness is acceptable (0.70-0.80)
+  → Can be improved by removing outliers and weak embeddings
+
+================================================================================
+END OF REPORT
+================================================================================
