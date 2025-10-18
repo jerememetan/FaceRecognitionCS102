@@ -11,10 +11,13 @@ import java.util.Comparator;
 
 public class ImageProcessor {
 
-    private static final double MIN_SHARPNESS_THRESHOLD = 80.0;
-    private static final double MIN_BRIGHTNESS = 30.0;
-    private static final double MAX_BRIGHTNESS = 230.0;
-    private static final double MIN_CONTRAST = 20.0;
+    // EXPERIMENTAL: Increased quality thresholds for stricter image acceptance
+    // These values prioritize quality over quantity for better embeddings
+    // Revert to original if too many images are rejected: 80.0, 30.0, 230.0, 20.0
+    private static final double MIN_SHARPNESS_THRESHOLD = 120.0; // Was 80.0
+    private static final double MIN_BRIGHTNESS = 40.0; // Was 30.0
+    private static final double MAX_BRIGHTNESS = 220.0; // Was 230.0
+    private static final double MIN_CONTRAST = 25.0; // Was 20.0
     private static final Size STANDARD_SIZE = new Size(200, 200);
 
     public Mat preprocessFaceImage(Mat faceImage) {
@@ -277,8 +280,9 @@ public class ImageProcessor {
             // Clean up
             glareMask.release();
             kernel.release();
-            for (Mat ch : hsvChannels)
-                ch.release();
+            for (Mat ch : hsvChannels) {
+                ch.release(); // FIXED: Release channel Mats to prevent memory leak
+            }
 
         } catch (Exception e) {
             System.err.println("Glare reduction failed: " + e.getMessage());

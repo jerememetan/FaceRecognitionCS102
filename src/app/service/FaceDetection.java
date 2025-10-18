@@ -24,11 +24,13 @@ public class FaceDetection {
     private ImageProcessor imageProcessor;
     private FaceEmbeddingGenerator embeddingGenerator;
 
-    private static final double MIN_CONFIDENCE_SCORE = 0.5;
+    // EXPERIMENTAL: Stricter detection and more diverse capture timing
+    // Revert to original if too restrictive: 0.5, 900, 12
+    private static final double MIN_CONFIDENCE_SCORE = 0.6; // Was 0.5 - fewer false detections
     private static final double MIN_FACE_SIZE = 50.0;
     private static final double MAX_FACE_SIZE = 400.0;
-    private static final int CAPTURE_INTERVAL_MS = 900;
-    private static final int CAPTURE_ATTEMPT_MULTIPLIER = 12;
+    private static final int CAPTURE_INTERVAL_MS = 1200; // Was 900 - more pose variety
+    private static final int CAPTURE_ATTEMPT_MULTIPLIER = 15; // Was 12 - more attempts for quality
     private static final boolean DEBUG_LOGS = Boolean.parseBoolean(
             System.getProperty("app.faceDetectionDebug", "false"));
 
@@ -239,26 +241,19 @@ public class FaceDetection {
                     String rawFeedback = qualityResult.getFeedback();
                     String feedbackMessage = rawFeedback != null ? rawFeedback.trim() : "Unknown quality issue";
 
-                    // Accept frames that pass all checks or miss only one metric narrowly (score >=
-                    // 70)
+                    // FIXED: Score of 65% means 2/3 tests passed (realistic threshold)
+                    // Score system: sharpness(30) + brightness(35) + contrast(35) = 100 max
+                    // 65% = passed 2 out of 3 tests
                     boolean qualityAcceptable = qualityResult.isGoodQuality()
-                            || qualityResult.getQualityScore() >= 70.0;
+                            || qualityResult.getQualityScore() >= 65.0;
 
                     if (qualityAcceptable) {
-                        Mat processedFace = preprocessForRecognition(faceROI);
-                        faceROI.release();
+                        // Save JPG immediately with minimal processing
                         String fileName = student.getStudentId() + "_" +
                                 String.format("%03d", capturedCount + 1) + ".jpg";
                         Path imageFile = folderPath.resolve(fileName);
 
-                        if (Imgcodecs.imwrite(imageFile.toString(), processedFace)) {
-                            byte[] embedding = embeddingGenerator.generateEmbedding(processedFace);
-                            FaceImage faceImage = new FaceImage(imageFile.toString(), embedding);
-                            double normalizedQuality = Math.min(1.0, Math.max(0.0,
-                                    qualityResult.getQualityScore() / 100.0));
-                            faceImage.setQualityScore(normalizedQuality);
-
-                            student.getFaceData().addImage(faceImage);
+                        if (Imgcodecs.imwrite(imageFile.toString(), faceROI)) {
                             capturedImages.add(imageFile.toString());
                             capturedCount++;
 
@@ -277,7 +272,7 @@ public class FaceDetection {
                             System.err.println("Failed to save image: " + imageFile);
                             callback.onWarning("Failed to save image, please try again");
                         }
-                        processedFace.release();
+                        faceROI.release();
                     } else {
                         logDebug("Image quality validation failed: " + feedbackMessage);
                         callback.onWarning("Image rejected: " + feedbackMessage);
@@ -302,6 +297,52 @@ public class FaceDetection {
 
         callback.onCaptureCompleted();
 
+        // FIXED: Process embeddings AFTER capture completes - keeps preview smooth
+        if (capturedCount > 0) {
+            logDebug("Processing embeddings for " + capturedCount + " captured images...");
+            callback.onWarning("Processing captured images...");
+
+            int processedCount = 0;
+            for (String imagePath : capturedImages) {
+                try {
+                    Mat image = Imgcodecs.imread(imagePath);
+                    if (image.empty()) {
+                        System.err.println("Failed to read captured image: " + imagePath);
+                        continue;
+                    }
+
+                    // Process and generate embedding
+                    Mat processedFace = preprocessForRecognition(image);
+                    image.release();
+
+                    byte[] embedding = embeddingGenerator.generateEmbedding(processedFace);
+                    processedFace.release();
+
+                    if (embedding != null && embeddingGenerator.isEmbeddingValid(embedding)) {
+                        // Save embedding as .emb file
+                        String embPath = imagePath.replace(".jpg", ".emb");
+                        try {
+                            java.nio.file.Files.write(Paths.get(embPath), embedding);
+                            processedCount++;
+                            logDebug("Saved embedding: " + embPath);
+                        } catch (Exception e) {
+                            System.err.println("Failed to save embedding for " + imagePath + ": " + e.getMessage());
+                        }
+                    } else {
+                        System.err.println("Invalid embedding generated for: " + imagePath);
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error processing image " + imagePath + ": " + e.getMessage());
+                }
+            }
+
+            logDebug("Embedding processing complete: " + processedCount + "/" + capturedCount + " embeddings saved");
+            if (processedCount < capturedCount) {
+                callback.onWarning(
+                        "Warning: Only " + processedCount + "/" + capturedCount + " embeddings generated successfully");
+            }
+        }
+
         boolean success = (capturedCount >= Math.min(10, numberOfImages));
         String message = success ? String.format("Successfully captured %d high-quality face images", capturedCount)
                 : String.format("Only captured %d images, need at least %d", capturedCount,
@@ -325,10 +366,13 @@ public class FaceDetection {
         if (faceROI == null || faceROI.empty()) {
             return new Mat();
         }
-        Mat aligned = imageProcessor.correctFaceOrientation(faceROI);
+        // IMPROVED: Added glare reduction for better quality with glasses
+        Mat deglared = imageProcessor.reduceGlare(faceROI);
+        Mat aligned = imageProcessor.correctFaceOrientation(deglared);
         Mat denoised = imageProcessor.reduceNoise(aligned);
         Mat processed = imageProcessor.preprocessFaceImage(denoised);
 
+        deglared.release();
         aligned.release();
         denoised.release();
 

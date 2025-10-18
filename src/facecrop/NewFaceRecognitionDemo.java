@@ -49,16 +49,19 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
     private final ImageProcessor imageProcessor = new ImageProcessor();
     private final FaceEmbeddingGenerator embGen = new FaceEmbeddingGenerator();
     private final int TOP_K = 5;
-    // Try app.properties values - maybe peak used these!
-    private final int CONSISTENCY_WINDOW = 5; // was 8
-    private final int CONSISTENCY_MIN_COUNT = 3; // was 5
+    // EXPERIMENTAL: More conservative consistency requirements for stability
+    // Revert to original if too restrictive: WINDOW=5, MIN_COUNT=3
+    private final int CONSISTENCY_WINDOW = 7; // Was 5 - longer temporal window
+    private final int CONSISTENCY_MIN_COUNT = 5; // Was 3 - stronger agreement needed
     private final Deque<Integer> recentPredictions = new ArrayDeque<>(CONSISTENCY_WINDOW);
     private final int Q_EMB_WINDOW = 5;
     private final Deque<byte[]> recentQueryEmbeddings = new ArrayDeque<>(Q_EMB_WINDOW);
 
-    private final double PENALTY_WEIGHT = 0.20;
-    private final double MIN_RELATIVE_MARGIN_PCT = 0.10;
-    private final double STRONG_MARGIN_THRESHOLD = 0.10;
+    // EXPERIMENTAL: Adjusted scoring for clearer winner requirement
+    // Revert to original if too strict: 0.20, 0.10, 0.10
+    private final double PENALTY_WEIGHT = 0.25; // Was 0.20 - stronger ambiguity penalty
+    private final double MIN_RELATIVE_MARGIN_PCT = 0.12; // Was 0.10 - clearer winner needed
+    private final double STRONG_MARGIN_THRESHOLD = 0.15; // Was 0.10 - higher confidence bar
 
     private final double CENTROID_PREFILTER_THRESHOLD = 0.0;
 
@@ -151,7 +154,12 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                 for (File f : files) {
                     try {
                         byte[] emb = java.nio.file.Files.readAllBytes(f.toPath());
+                        // FIXED: Validate embeddings before loading
                         if (emb != null && emb.length > 0) {
+                            if (!embGen.isEmbeddingValid(emb)) {
+                                AppLogger.warn("Skipping invalid embedding file: " + f.getName());
+                                continue;
+                            }
                             embList.add(emb);
                         }
                     } catch (Exception readEx) {
@@ -480,11 +488,14 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
 
                     try {
 
-                        Mat aligned = imageProcessor.correctFaceOrientation(faceColor);
+                        // IMPROVED: Added glare reduction in preprocessing pipeline
+                        Mat deglared = imageProcessor.reduceGlare(faceColor);
+                        Mat aligned = imageProcessor.correctFaceOrientation(deglared);
                         Mat denoised = imageProcessor.reduceNoise(aligned);
                         Mat processed = imageProcessor.preprocessFaceImage(denoised);
                         byte[] queryEmbedding = embGen.generateEmbedding(processed);
 
+                        deglared.release();
                         aligned.release();
                         denoised.release();
                         processed.release();
@@ -613,34 +624,34 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
 
                             boolean accept = false;
 
+                            // EXPERIMENTAL: Refined decision logic with higher confidence requirements
+                            // Tier 1: High score with strong 15% margin (was 10%)
                             if (absolutePass && strongMarginPass) {
                                 accept = true;
-                                System.out.println("[Decision] ACCEPT: Tier 1 - Absolute + Strong Margin (10%)");
+                                System.out.println("[Decision] ACCEPT: Tier 1 - High Score + Strong Margin (15%)");
                             }
 
+                            // Tier 2: High score with strong consistency (5/7 frames, was 3/5)
                             else if (absolutePass && consistent && strongCount >= CONSISTENCY_MIN_COUNT) {
                                 accept = true;
-                                System.out.println("[Decision] ACCEPT: Tier 2 - Absolute + Consistency (" + strongCount
-                                        + " frames)");
+                                System.out.println(
+                                        "[Decision] ACCEPT: Tier 2 - High Score + Strong Consistency (" + strongCount
+                                                + "/" + CONSISTENCY_WINDOW + " frames)");
                             }
 
-                            else if (discriminativePass && consistent && strongCount >= CONSISTENCY_MIN_COUNT) {
+                            // Tier 3: Discriminative + very strong consistency (6/7 frames + margin)
+                            else if (discriminativePass && consistent && strongCount >= CONSISTENCY_MIN_COUNT + 1
+                                    && relativeMarginPass) {
                                 accept = true;
-                                System.out.println("[Decision] ACCEPT: Tier 3 - Discriminative + Consistency ("
-                                        + strongCount + " frames)");
-                            }
-
-                            else if (recentPredictions.size() >= CONSISTENCY_WINDOW - 1
-                                    && strongCount >= CONSISTENCY_MIN_COUNT + 2) {
-                                accept = true;
-                                System.out.println("[Decision] ACCEPT: Tier 4 - Very Strong Consistency (" + strongCount
-                                        + " frames)");
+                                System.out.println(
+                                        "[Decision] ACCEPT: Tier 3 - Discriminative + Very Strong Consistency ("
+                                                + strongCount + "/" + CONSISTENCY_WINDOW + " frames)");
                             } else {
                                 System.out.printf(
                                         "[Decision] REJECT: Abs=%s, AbsMargin=%s, RelMargin=%s(%.1f%%), StrongMargin=%s(%.1f%%), Discrim=%s, Consist=%s(%d/%d)%n",
                                         absolutePass, absoluteMarginPass, relativeMarginPass, relativeMarginPct * 100,
                                         strongMarginPass, STRONG_MARGIN_THRESHOLD * 100, discriminativePass,
-                                        consistent, strongCount, recentPredictions.size());
+                                        consistent, strongCount, CONSISTENCY_WINDOW);
                             }
 
                             if (accept) {
