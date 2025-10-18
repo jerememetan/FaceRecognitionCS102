@@ -280,21 +280,15 @@ public class FaceEmbeddingGenerator {
         float[] vec1 = byteArrayToFloatArray(emb1);
         float[] vec2 = byteArrayToFloatArray(emb2);
 
+        // For L2-normalized vectors, cosine similarity = dot product
+        // No need to calculate norms since they are already 1.0
         double dotProduct = 0.0;
-        double norm1 = 0.0;
-        double norm2 = 0.0;
-
         for (int i = 0; i < vec1.length; i++) {
             dotProduct += vec1[i] * vec2[i];
-            norm1 += vec1[i] * vec1[i];
-            norm2 += vec2[i] * vec2[i];
         }
 
-        if (norm1 == 0.0 || norm2 == 0.0) {
-            return 0.0;
-        }
-
-        return dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
+        // Clamp to [-1, 1] to handle floating-point errors
+        return Math.max(-1.0, Math.min(1.0, dotProduct));
     }
 
     private double calculateEuclideanSimilarity(byte[] emb1, byte[] emb2) {

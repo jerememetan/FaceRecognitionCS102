@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FaceDetection {
@@ -24,6 +25,7 @@ public class FaceDetection {
     private ImageProcessor imageProcessor;
     private FaceEmbeddingGenerator embeddingGenerator;
     private FacialLandmarkDetector landmarkDetector;
+    private final Object cameraLock = new Object(); // Synchronize camera access
 
     private static final double MIN_CONFIDENCE_SCORE = 0.55; // Increased from 0.5 for better quality
     private static final double MIN_FACE_SIZE = 50.0;
@@ -212,6 +214,26 @@ public class FaceDetection {
                     new ArrayList<>());
         }
 
+        File folder = folderPath.toFile();
+        if (folder.exists() && folder.isDirectory()) {
+            File[] oldFiles = folder.listFiles((dir, name) -> {
+                String lower = name.toLowerCase();
+                return lower.endsWith(".jpg") || lower.endsWith(".png") || lower.endsWith(".emb");
+            });
+            if (oldFiles != null && oldFiles.length > 0) {
+                int deletedCount = 0;
+                for (File oldFile : oldFiles) {
+                    if (oldFile.delete()) {
+                        deletedCount++;
+                    }
+                }
+                logDebug("Cleared " + deletedCount + " old files before starting new capture");
+                callback.onWarning("Cleared " + deletedCount + " old files - starting fresh capture");
+            }
+        }
+
+        student.getFaceData().clearImages();
+
         Mat frame = new Mat();
         List<String> capturedImages = new ArrayList<>();
         List<String> rejectedReasons = new ArrayList<>();
@@ -223,16 +245,18 @@ public class FaceDetection {
         callback.onCaptureStarted();
 
         while (capturedCount < numberOfImages && attemptCount < maxAttempts) {
-            if (!camera.read(frame)) {
-                System.err.println("Failed to read camera frame");
-                callback.onError("Failed to capture frame from camera");
-                break;
+            synchronized (cameraLock) {
+                if (!camera.read(frame)) {
+                    System.err.println("Failed to read camera frame");
+                    callback.onError("Failed to capture frame from camera");
+                    break;
+                }
             }
 
             attemptCount++;
             logDebug(String.format("Capture attempt %d/%d", attemptCount, maxAttempts));
 
-            callback.onFrameUpdate(frame.clone());
+            boolean capturedThisFrame = false;
             FaceDetectionResult detectionResult = detectFaceWithConfidence(frame);
 
             if (detectionResult.hasValidFace()) {
@@ -240,93 +264,112 @@ public class FaceDetection {
                 Mat faceROI = extractFaceROI(frame, bestFace);
 
                 if (faceROI != null) {
-                    // First check image quality (blur, brightness, contrast)
+
+                    Mat processedFace = preprocessForRecognition(faceROI);
+                    faceROI.release();
+
                     ImageProcessor.ImageQualityResult qualityResult = imageProcessor
-                            .validateImageQualityDetailed(faceROI);
+                            .validateImageQualityDetailed(processedFace);
                     String rawFeedback = qualityResult.getFeedback();
                     String feedbackMessage = rawFeedback != null ? rawFeedback.trim() : "Unknown quality issue";
 
-                    // Accept frames that pass all checks or miss only one metric narrowly (score >=
-                    // 70)
                     boolean qualityAcceptable = qualityResult.isGoodQuality()
                             || qualityResult.getQualityScore() >= 70.0;
 
-                    // Now check facial landmarks for pose quality (if detector is available)
-                    boolean landmarkQualityAcceptable = true;
-                    String landmarkFeedback = "";
+                    if (qualityAcceptable) {
 
-                    if (landmarkDetector != null && landmarkDetector.isInitialized()) {
-                        FacialLandmarkDetector.LandmarkResult landmarkResult = landmarkDetector.detectLandmarks(faceROI,
-                                new Rect(0, 0, faceROI.width(), faceROI.height()));
+                        boolean landmarkQualityAcceptable = true;
+                        String landmarkFeedback = "";
 
-                        if (landmarkResult.isSuccess()) {
-                            FacialLandmarkDetector.LandmarkQuality landmarkQuality = landmarkResult.getLandmarks()
-                                    .getQuality();
+                        if (landmarkDetector != null && landmarkDetector.isInitialized()) {
+                            FacialLandmarkDetector.LandmarkResult landmarkResult = landmarkDetector.detectLandmarks(
+                                    processedFace,
+                                    new Rect(0, 0, processedFace.width(), processedFace.height()));
 
-                            landmarkQualityAcceptable = landmarkQuality.isGoodQuality() ||
-                                    landmarkQuality.getOverallScore() >= 65.0;
-                            landmarkFeedback = landmarkQuality.getFeedback();
+                            if (landmarkResult.isSuccess()) {
+                                FacialLandmarkDetector.LandmarkQuality landmarkQuality = landmarkResult.getLandmarks()
+                                        .getQuality();
 
-                            logDebug(String.format("Landmark Quality: %s", landmarkQuality.toString()));
-                        } else {
-                            logDebug("Landmark detection failed: " + landmarkResult.getMessage());
-                        }
-                    }
+                                landmarkQualityAcceptable = landmarkQuality.isGoodQuality() ||
+                                        landmarkQuality.getOverallScore() >= 65.0;
+                                landmarkFeedback = landmarkQuality.getFeedback();
 
-                    // Combine quality checks
-                    boolean allQualityChecksPass = qualityAcceptable && landmarkQualityAcceptable;
-
-                    if (allQualityChecksPass) {
-                        Mat processedFace = preprocessForRecognition(faceROI);
-                        faceROI.release();
-                        String fileName = student.getStudentId() + "_" +
-                                String.format("%03d", capturedCount + 1) + ".jpg";
-                        Path imageFile = folderPath.resolve(fileName);
-
-                        if (Imgcodecs.imwrite(imageFile.toString(), processedFace)) {
-                            byte[] embedding = embeddingGenerator.generateEmbedding(processedFace);
-                            FaceImage faceImage = new FaceImage(imageFile.toString(), embedding);
-
-                            // Calculate combined quality score from image and landmark quality
-                            double imageQualityScore = qualityResult.getQualityScore() / 100.0;
-                            double landmarkQualityScore = landmarkQualityAcceptable ? 1.0 : 0.7;
-                            double combinedQuality = (imageQualityScore * 0.6) + (landmarkQualityScore * 0.4);
-                            double normalizedQuality = Math.min(1.0, Math.max(0.0, combinedQuality));
-
-                            faceImage.setQualityScore(normalizedQuality);
-
-                            student.getFaceData().addImage(faceImage);
-                            capturedImages.add(imageFile.toString());
-                            capturedCount++;
-
-                            callback.onImageCaptured(capturedCount, numberOfImages, detectionResult.getConfidence());
-
-                            // Provide quality feedback to user
-                            if (!qualityResult.isGoodQuality()) {
-                                callback.onWarning("Captured, but consider improving quality: " + feedbackMessage);
-                            } else if (!landmarkQualityAcceptable && !landmarkFeedback.isEmpty()) {
-                                callback.onWarning("Captured, but pose could be better: " + landmarkFeedback);
+                                logDebug(String.format("Landmark Quality: %s", landmarkQuality.toString()));
+                            } else {
+                                logDebug("Landmark detection failed: " + landmarkResult.getMessage());
                             }
-
-                            try {
-                                Thread.sleep(CAPTURE_INTERVAL_MS);
-                            } catch (InterruptedException e) {
-                                Thread.currentThread().interrupt();
-                                break;
-                            }
-                        } else {
-                            System.err.println("Failed to save image: " + imageFile);
-                            callback.onWarning("Failed to save image, please try again");
                         }
-                        processedFace.release();
+
+                        if (landmarkQualityAcceptable) {
+
+                            String fileName = student.getStudentId() + "_" +
+                                    String.format("%03d", capturedCount + 1) + ".jpg";
+                            Path imageFile = folderPath.resolve(fileName);
+
+                            if (Imgcodecs.imwrite(imageFile.toString(), processedFace)) {
+                                byte[] embedding = embeddingGenerator.generateEmbedding(processedFace);
+
+                                String embeddingFileName = student.getStudentId() + "_" +
+                                        String.format("%03d", capturedCount + 1) + ".emb";
+                                Path embeddingFile = folderPath.resolve(embeddingFileName);
+                                try {
+                                    Files.write(embeddingFile, embedding);
+                                    logDebug("Saved embedding: " + embeddingFileName);
+                                } catch (Exception e) {
+                                    System.err.println(
+                                            "Failed to save embedding file: " + embeddingFile + " - " + e.getMessage());
+                                    callback.onWarning("Warning: Embedding file save failed for " + embeddingFileName);
+                                }
+
+                                FaceImage faceImage = new FaceImage(imageFile.toString(), embedding);
+
+                                double imageQualityScore = qualityResult.getQualityScore() / 100.0;
+                                double landmarkQualityScore = landmarkQualityAcceptable ? 1.0 : 0.7;
+                                double combinedQuality = (imageQualityScore * 0.6) + (landmarkQualityScore * 0.4);
+                                double normalizedQuality = Math.min(1.0, Math.max(0.0, combinedQuality));
+
+                                faceImage.setQualityScore(normalizedQuality);
+
+                                student.getFaceData().addImage(faceImage);
+                                capturedImages.add(imageFile.toString());
+                                capturedCount++;
+                                capturedThisFrame = true;
+
+                                callback.onImageCaptured(capturedCount, numberOfImages,
+                                        detectionResult.getConfidence());
+
+                                if (!qualityResult.isGoodQuality()) {
+                                    callback.onWarning("Captured, but consider improving quality: " + feedbackMessage);
+                                } else if (!landmarkQualityAcceptable && !landmarkFeedback.isEmpty()) {
+                                    callback.onWarning("Captured, but pose could be better: " + landmarkFeedback);
+                                }
+
+                                try {
+                                    Thread.sleep(CAPTURE_INTERVAL_MS);
+                                } catch (InterruptedException e) {
+                                    Thread.currentThread().interrupt();
+                                    break;
+                                }
+                            } else {
+                                System.err.println("Failed to save image: " + imageFile);
+                                callback.onWarning("Failed to save image, please try again");
+                            }
+                            processedFace.release();
+                        } else {
+
+                            logDebug("Landmark quality validation failed: " + landmarkFeedback);
+                            callback.onWarning("Image rejected: " + landmarkFeedback);
+                            rejectedReasons.add(landmarkFeedback);
+                            rejectedCount++;
+                            processedFace.release();
+                        }
                     } else {
-                        // Provide specific feedback about what failed
-                        String rejectionReason = !qualityAcceptable ? feedbackMessage : landmarkFeedback;
-                        logDebug("Image quality validation failed: " + rejectionReason);
-                        callback.onWarning("Image rejected: " + rejectionReason);
-                        rejectedReasons.add(rejectionReason);
+
+                        logDebug("Image quality validation failed: " + feedbackMessage);
+                        callback.onWarning("Image rejected: " + feedbackMessage);
+                        rejectedReasons.add(feedbackMessage);
                         rejectedCount++;
-                        faceROI.release();
+                        processedFace.release();
                     }
                 } else {
                     logDebug("Face ROI extraction failed");
@@ -342,15 +385,36 @@ public class FaceDetection {
                 rejectedCount++;
             }
 
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                break;
+            if (!capturedThisFrame) {
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
             }
         }
 
         callback.onCaptureCompleted();
+
+        if (capturedCount >= 5) {
+            callback.onWarning("Analyzing captured images for quality...");
+            OutlierDetectionResult outlierResult = detectAndRemoveOutliers(student.getFaceData(), callback);
+
+            if (outlierResult.outliersRemoved > 0) {
+                capturedCount -= outlierResult.outliersRemoved;
+                callback.onWarning(String.format(
+                        "Removed %d outlier image(s) with low similarity (%.1f%% avg). Tightness improved: %.3f → %.3f",
+                        outlierResult.outliersRemoved,
+                        outlierResult.outlierAvgSimilarity * 100,
+                        outlierResult.tightnessBeforeRemoval,
+                        outlierResult.tightnessAfterRemoval));
+            } else {
+                callback.onWarning(String.format(
+                        "✓ All images have good consistency (tightness: %.3f)",
+                        outlierResult.tightnessBeforeRemoval));
+            }
+        }
 
         boolean success = (capturedCount >= Math.min(10, numberOfImages));
         String message = success ? String.format("Successfully captured %d high-quality face images", capturedCount)
@@ -468,8 +532,10 @@ public class FaceDetection {
     public Mat getCurrentFrame() {
         Mat frame = new Mat();
         if (camera != null && camera.isOpened()) {
-            boolean success = camera.read(frame);
-            logDebug("getCurrentFrame: success=" + success + ", empty=" + frame.empty());
+            synchronized (cameraLock) {
+                boolean success = camera.read(frame);
+                logDebug("getCurrentFrame: success=" + success + ", empty=" + frame.empty());
+            }
         } else {
             System.err.println("Camera not available for getCurrentFrame");
         }
@@ -482,16 +548,12 @@ public class FaceDetection {
         return available;
     }
 
-    /**
-     * Shows the camera settings dialog (native driver settings).
-     * 
-     * @return true if the dialog was successfully opened, false if not supported
-     */
+    \
+
     public boolean showCameraSettingsDialog() {
         if (camera != null && camera.isOpened()) {
             try {
-                // Try to open camera settings using CAP_PROP_SETTINGS
-                // This opens the native camera driver dialog on Windows
+      \
                 boolean result = camera.set(org.opencv.videoio.Videoio.CAP_PROP_SETTINGS, 1);
                 logDebug("Camera settings dialog opened: " + result);
                 return result;
@@ -503,26 +565,16 @@ public class FaceDetection {
         return false;
     }
 
-    /**
-     * Sets the camera FPS (frames per second).
-     * Note: Many webcams do not support FPS changes, especially on Windows MSMF
-     * backend.
-     * This method will attempt to set FPS but may silently fail on unsupported
-     * hardware.
-     * 
-     * @param fps desired frames per second
-     * @return true if FPS was successfully set, false if not supported
-     */
+    \
+
     public boolean setFps(double fps) {
         if (camera != null && camera.isOpened()) {
             try {
-                // Get current FPS before attempting to change
+      \
                 double currentFps = camera.get(org.opencv.videoio.Videoio.CAP_PROP_FPS);
-
-                // Attempt to set new FPS
+\
                 boolean result = camera.set(org.opencv.videoio.Videoio.CAP_PROP_FPS, fps);
-
-                // Verify if FPS actually changed
+\
                 double actualFps = camera.get(org.opencv.videoio.Videoio.CAP_PROP_FPS);
 
                 if (result && Math.abs(actualFps - fps) < 1.0) {
@@ -530,9 +582,7 @@ public class FaceDetection {
                     return true;
                 } else {
                     logDebug("FPS change not supported by camera. Current FPS: " + actualFps);
-                    // Note: Windows MSMF backend often shows warnings but doesn't support FPS
-                    // changes
-                    // This is expected behavior for many webcams
+     \
                     return false;
                 }
             } catch (Exception e) {
@@ -543,11 +593,8 @@ public class FaceDetection {
         return false;
     }
 
-    /**
-     * Gets the current camera FPS (frames per second).
-     * 
-     * @return current FPS, or 0 if camera is not available
-     */
+    \
+
     public double getCurrentFps() {
         if (camera != null && camera.isOpened()) {
             try {
@@ -673,6 +720,138 @@ public class FaceDetection {
         public List<String> getRejectedReasons() {
             return rejectedReasons;
         }
+    }
+
+    public static class OutlierDetectionResult {
+        public int outliersRemoved;
+        public double outlierAvgSimilarity;
+        public double tightnessBeforeRemoval;
+        public double tightnessAfterRemoval;
+
+        public OutlierDetectionResult(int outliersRemoved, double outlierAvgSimilarity,
+                double tightnessBeforeRemoval, double tightnessAfterRemoval) {
+            this.outliersRemoved = outliersRemoved;
+            this.outlierAvgSimilarity = outlierAvgSimilarity;
+            this.tightnessBeforeRemoval = tightnessBeforeRemoval;
+            this.tightnessAfterRemoval = tightnessAfterRemoval;
+        }
+    }
+
+    private OutlierDetectionResult detectAndRemoveOutliers(app.model.FaceData faceData, FaceCaptureCallback callback) {
+        List<app.model.FaceImage> images = faceData.getImages();
+
+        if (images == null || images.size() < 5) {
+         
+            return new OutlierDetectionResult(0, 0.0, 1.0, 1.0);
+        }
+
+    
+        List<byte[]> embeddings = new ArrayList<>();
+        for (app.model.FaceImage img : images) {
+            if (img.getEmbedding() != null) {
+                embeddings.add(img.getEmbedding());
+            }
+        }
+
+        if (embeddings.size() < 5) {
+            return new OutlierDetectionResult(0, 0.0, 1.0, 1.0);
+        }
+
+        double[] avgSimilarities = new double[embeddings.size()];
+
+        for (int i = 0; i < embeddings.size(); i++) {
+            double sum = 0;
+            int count = 0;
+            for (int j = 0; j < embeddings.size(); j++) {
+                if (i != j) {
+                    sum += embeddingGenerator.calculateSimilarity(embeddings.get(i), embeddings.get(j));
+                    count++;
+                }
+            }
+            avgSimilarities[i] = sum / count;
+        }
+
+        double overallAvg = 0;
+        for (double s : avgSimilarities) {
+            overallAvg += s;
+        }
+        overallAvg /= avgSimilarities.length;
+        double tightnessBeforeRemoval = overallAvg;
+
+        List<Integer> outlierIndices = new ArrayList<>();
+        double outlierSumSim = 0;
+
+        for (int i = 0; i < avgSimilarities.length; i++) {
+            if (avgSimilarities[i] < overallAvg - 0.10) {
+                outlierIndices.add(i);
+                outlierSumSim += avgSimilarities[i];
+            }
+        }
+
+        if (outlierIndices.isEmpty()) {
+            return new OutlierDetectionResult(0, 0.0, tightnessBeforeRemoval, tightnessBeforeRemoval);
+        }
+
+        double outlierAvgSimilarity = outlierSumSim / outlierIndices.size();
+
+      
+        outlierIndices.sort(Collections.reverseOrder());
+        for (int idx : outlierIndices) {
+            app.model.FaceImage removedImage = images.remove(idx);
+
+    
+            try {
+                File imageFile = new File(removedImage.getImagePath());
+                if (imageFile.exists()) {
+                    imageFile.delete();
+                    logDebug("Deleted outlier image: " + imageFile.getName());
+                }
+
+      
+                String embPath = removedImage.getImagePath().replaceAll("\\.(jpg|png|jpeg)$", ".emb");
+                File embFile = new File(embPath);
+                if (embFile.exists()) {
+                    embFile.delete();
+                    logDebug("Deleted outlier embedding: " + embFile.getName());
+                }
+            } catch (Exception e) {
+                System.err.println("Failed to delete outlier files: " + e.getMessage());
+            }
+        }
+
+        List<byte[]> remainingEmbeddings = new ArrayList<>();
+        for (app.model.FaceImage img : images) {
+            if (img.getEmbedding() != null) {
+                remainingEmbeddings.add(img.getEmbedding());
+            }
+        }
+
+        double tightnessAfterRemoval = calculateTightness(remainingEmbeddings);
+
+        return new OutlierDetectionResult(
+                outlierIndices.size(),
+                outlierAvgSimilarity,
+                tightnessBeforeRemoval,
+                tightnessAfterRemoval);
+    }
+
+
+    private double calculateTightness(List<byte[]> embeddings) {
+        if (embeddings == null || embeddings.size() < 2) {
+            return 1.0;
+        }
+
+        double sum = 0;
+        int count = 0;
+
+        for (int i = 0; i < embeddings.size(); i++) {
+            for (int j = i + 1; j < embeddings.size(); j++) {
+                sum += embeddingGenerator.calculateSimilarity(embeddings.get(i), embeddings.get(j));
+                count++;
+            }
+        }
+
+        return count > 0 ? sum / count : 1.0;
     }
 
     public interface FaceCaptureCallback {

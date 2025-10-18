@@ -1,0 +1,5 @@
+[2025-10-18 17:39:33] INFO: Application Logger Initialized.
+[2025-10-18 17:39:33] INFO: Configuration and core components loaded.
+[2025-10-18 17:39:33] INFO: Configuration loaded from classpath: app.properties
+[2025-10-18 17:39:33] INFO: Configuration file loaded
+[2025-10-18 17:39:33] INFO: MyGUIProgram Started!

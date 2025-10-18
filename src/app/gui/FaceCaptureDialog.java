@@ -311,15 +311,27 @@ public class FaceCaptureDialog extends JDialog {
                 BufferedImage bufferedImage = matToBufferedImage(displayFrame);
                 if (bufferedImage != null) {
 
-                    int displayWidth = videoLabel.getWidth();
-                    int displayHeight = videoLabel.getHeight();
+                    // Cache dimensions to avoid reading during potential layout changes
+                    final int displayWidth = videoLabel.getWidth();
+                    final int displayHeight = videoLabel.getHeight();
 
                     if (displayWidth > 0 && displayHeight > 0) {
+                        // Scale image BEFORE creating icon to avoid layout thrashing
                         Image scaledImage = bufferedImage.getScaledInstance(
                                 displayWidth, displayHeight, Image.SCALE_FAST);
                         ImageIcon icon = new ImageIcon(scaledImage);
-                        videoLabel.setIcon(icon);
-                        videoLabel.setText("");
+
+                        // Update icon in one atomic operation to prevent flicker/resize
+                        if (videoLabel.getIcon() == null ||
+                                videoLabel.getIcon().getIconWidth() != icon.getIconWidth() ||
+                                videoLabel.getIcon().getIconHeight() != icon.getIconHeight()) {
+                            // First update causes resize - batch with text clear
+                            videoLabel.setIcon(icon);
+                            videoLabel.setText("");
+                        } else {
+                            // Subsequent updates - just replace icon (no resize)
+                            videoLabel.setIcon(icon);
+                        }
                     }
                 }
 
