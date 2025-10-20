@@ -6,11 +6,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ServiceLoader;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Table;
 
 public class PDFGenerator implements ReportGenerator {
     @Override
@@ -30,41 +35,69 @@ public class PDFGenerator implements ReportGenerator {
         // Get both Headers and Data -> fullData
         List<List<String>> fullData = ReportBuilder.getFullData();
 
+        // =======================================================================
+        // ==============PREVOUS EXPORT METHOD WITHOUT FILECHOOSER================
+        // =======================================================================
+        // // Export Path
+        // String exportedFolderPath = "./data/export/PDF/";
 
-        // Export Path
-        String exportedFolderPath = "./data/export/PDF/";
+        // // Get the count of .*** files in export folder
+        // // Error Handling to access export files
+        // int newPDFCount = 0;
+        // try {
+        //     long pdfCount = util.countFilesInFolder(exportedFolderPath, "pdf");
+        //     newPDFCount = (int)pdfCount + 1;
+        // } catch (IOException e) {
+        //     System.err.println("PDFReport: Error accessing the exportedDataFiles folder: " + e.getMessage());
+        // }
 
-        // Get the count of .*** files in export folder
-        // Error Handling to access export files
-        int newPDFCount = 0;
+        // // New Exported File Name with incremented count
+        // String fileName = String.format("StudentFaceRecognitionData%d.pdf", newPDFCount);
+
+        // // Exported File Name with full path to export folder
+        // String exportedFileName = exportedFolderPath + fileName;
+
+
+        String fileName = "StudentFaceRecognitionData.pdf";
+
         try {
-            long pdfCount = util.countFilesInFolder(exportedFolderPath, "pdf");
-            newPDFCount = (int)pdfCount + 1;
-        } catch (IOException e) {
-            System.err.println("PDFReport: Error accessing the exportedDataFiles folder: " + e.getMessage());
-        }
+            // Prompt user to save the file using JFileChooser
+            JFrame frame = new JFrame("PDF Export");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(400, 300);
+            frame.setVisible(true);
+            
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Choose where to save your file");
+            fileChooser.setSelectedFile(new File(fileName));
 
-        // New Exported File Name with incremented count
-        String fileName = String.format("StudentFaceRecognitionData%d.pdf", newPDFCount);
+            int userSelection = fileChooser.showSaveDialog(frame);
 
-        // Exported File Name with full path to export folder
-        String exportedFileName = exportedFolderPath + fileName;
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                    File fileToSave = fileChooser.getSelectedFile();
 
+                    PdfWriter writer = new PdfWriter(fileToSave.getAbsolutePath());
+                    PdfDocument pdf = new PdfDocument(writer);
+                    Document document = new Document(pdf);
 
-        // Fill the exported file with data
-        try {
-            PdfWriter writer = new PdfWriter(exportedFileName);
-            PdfDocument pdf = new PdfDocument(writer);
-            Document document = new Document(pdf);
-            for (List<String> row : fullData) {
-                document.add(new Paragraph(String.join(", ", row)));
+                    Table table = new Table(headers.size());
+                    for (List<String> row : fullData) {
+                        for (String cellData : row) {
+                            table.addCell(new Cell().add(new Paragraph(cellData)));
+                        }
+                    }
+                    document.add(table);
+
+                    document.close();
+                    System.out.println("PDF file saved successfully to: " + fileToSave.getAbsolutePath());
+                } else {
+                    System.out.println("File save cancelled by user.");
+                }
+
+                frame.dispose(); // Close the frame
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            System.out.printf("\nPDF file [ %s ] created successfully!", fileName);
-            document.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
     public static void main(String[] args) {
