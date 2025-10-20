@@ -1,0 +1,211 @@
+[2025-10-21 00:33:16] INFO: Application Logger Initialized.
+[2025-10-21 00:33:16] INFO: Configuration and core components loaded.
+[2025-10-21 00:33:16] INFO: Configuration loaded from classpath: app.properties
+[2025-10-21 00:33:16] INFO: Configuration file loaded
+[2025-10-21 00:33:16] INFO: MyGUIProgram Started!
+[2025-10-21 00:33:21] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-21 00:33:21] INFO: === Folder debug ===
+[2025-10-21 00:33:21] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S12313_ma
+[2025-10-21 00:33:21] INFO:   Contains: 36 items
+[2025-10-21 00:33:21] INFO:   Display label: S12313 - ma
+[2025-10-21 00:33:21] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae
+[2025-10-21 00:33:21] INFO:   Contains: 34 items
+[2025-10-21 00:33:21] INFO:   Display label: S13234 - Jin_Rae
+[2025-10-21 00:33:21] INFO: ====================
+[2025-10-21 00:33:21] INFO: Person S12313 - ma: tightness=0.934, stdDev=0.015, absThresh=0.607, margin=0.107
+[2025-10-21 00:33:21] INFO: Person S13234 - Jin_Rae: tightness=0.968, stdDev=0.009, absThresh=0.603, margin=0.103
+[2025-10-21 00:33:21] INFO: DNN face detector loaded successfully for recognition
+[2025-10-21 00:33:21] INFO: Attempting camera index 0 with DSHOW backend...
+[2025-10-21 00:33:22] INFO: Camera opened successfully: index 0 with DSHOW backend
+[2025-10-21 00:33:23] INFO: Camera configured: 640x480 @ 30fps (MJPEG: yes)
+[2025-10-21 00:33:23] INFO: Camera initialized successfully
+[2025-10-21 00:33:24] INFO: [Recognition] Scores: S12313 - ma=0.771 S13234 - Jin_Rae=0.882 
+[2025-10-21 00:33:24] INFO: [Decision] Best=S13234 - Jin_Rae(0.882), 2nd=0.771, Discriminative=0.727, AvgNeg=0.771
+[2025-10-21 00:33:24] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.7%), RelMargin=12.5%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:24] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:24] INFO: [Recognition] Scores: S12313 - ma=0.799 S13234 - Jin_Rae=0.915 
+[2025-10-21 00:33:24] INFO: [Decision] Best=S13234 - Jin_Rae(0.915), 2nd=0.799, Discriminative=0.756, AvgNeg=0.799
+[2025-10-21 00:33:24] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.3%), RelMargin=12.7%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:24] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:24] INFO: [Recognition] Scores: S12313 - ma=0.769 S13234 - Jin_Rae=0.895 
+[2025-10-21 00:33:24] INFO: [Decision] Best=S13234 - Jin_Rae(0.895), 2nd=0.769, Discriminative=0.741, AvgNeg=0.769
+[2025-10-21 00:33:24] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.5%), RelMargin=14.1%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:24] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:25] INFO: [Recognition] Scores: S12313 - ma=0.770 S13234 - Jin_Rae=0.933 
+[2025-10-21 00:33:25] INFO: [Decision] Best=S13234 - Jin_Rae(0.933), 2nd=0.770, Discriminative=0.779, AvgNeg=0.770
+[2025-10-21 00:33:25] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.1%), RelMargin=17.5%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:25] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:25] INFO: [Recognition] Scores: S12313 - ma=0.772 S13234 - Jin_Rae=0.928 
+[2025-10-21 00:33:25] INFO: [Decision] Best=S13234 - Jin_Rae(0.928), 2nd=0.772, Discriminative=0.774, AvgNeg=0.772
+[2025-10-21 00:33:25] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.1%), RelMargin=16.8%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:25] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:25] INFO: [Recognition] Scores: S12313 - ma=0.789 S13234 - Jin_Rae=0.942 
+[2025-10-21 00:33:25] INFO: [Decision] Best=S13234 - Jin_Rae(0.942), 2nd=0.789, Discriminative=0.784, AvgNeg=0.789
+[2025-10-21 00:33:25] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.0%), RelMargin=16.2%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:25] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:25] INFO: [Recognition] Scores: S12313 - ma=0.786 S13234 - Jin_Rae=0.933 
+[2025-10-21 00:33:25] INFO: [Decision] Best=S13234 - Jin_Rae(0.933), 2nd=0.786, Discriminative=0.775, AvgNeg=0.786
+[2025-10-21 00:33:25] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.1%), RelMargin=15.7%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:25] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:25] INFO: [Recognition] Scores: S12313 - ma=0.793 S13234 - Jin_Rae=0.926 
+[2025-10-21 00:33:25] INFO: [Decision] Best=S13234 - Jin_Rae(0.926), 2nd=0.793, Discriminative=0.768, AvgNeg=0.793
+[2025-10-21 00:33:25] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.1%), RelMargin=14.4%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:25] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:25] INFO: [Recognition] Scores: S12313 - ma=0.792 S13234 - Jin_Rae=0.904 
+[2025-10-21 00:33:25] INFO: [Decision] Best=S13234 - Jin_Rae(0.904), 2nd=0.792, Discriminative=0.746, AvgNeg=0.792
+[2025-10-21 00:33:25] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.4%), RelMargin=12.4%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:25] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:25] INFO: [Recognition] Scores: S12313 - ma=0.795 S13234 - Jin_Rae=0.946 
+[2025-10-21 00:33:25] INFO: [Decision] Best=S13234 - Jin_Rae(0.946), 2nd=0.795, Discriminative=0.787, AvgNeg=0.795
+[2025-10-21 00:33:25] INFO: [Thresholds] Abs=0.603, Margin=0.103(10.9%), RelMargin=16.0%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:25] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:25] INFO: [Recognition] Scores: S12313 - ma=0.787 S13234 - Jin_Rae=0.935 
+[2025-10-21 00:33:25] INFO: [Decision] Best=S13234 - Jin_Rae(0.935), 2nd=0.787, Discriminative=0.777, AvgNeg=0.787
+[2025-10-21 00:33:25] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.0%), RelMargin=15.8%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:25] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:26] INFO: [Recognition] Scores: S12313 - ma=0.768 S13234 - Jin_Rae=0.951 
+[2025-10-21 00:33:26] INFO: [Decision] Best=S13234 - Jin_Rae(0.951), 2nd=0.768, Discriminative=0.798, AvgNeg=0.768
+[2025-10-21 00:33:26] INFO: [Thresholds] Abs=0.603, Margin=0.103(10.8%), RelMargin=19.3%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:26] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:26] INFO: [Recognition] Scores: S12313 - ma=0.775 S13234 - Jin_Rae=0.948 
+[2025-10-21 00:33:26] INFO: [Decision] Best=S13234 - Jin_Rae(0.948), 2nd=0.775, Discriminative=0.793, AvgNeg=0.775
+[2025-10-21 00:33:26] INFO: [Thresholds] Abs=0.603, Margin=0.103(10.9%), RelMargin=18.3%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:26] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:26] INFO: [Recognition] Scores: S12313 - ma=0.842 S13234 - Jin_Rae=0.949 
+[2025-10-21 00:33:26] INFO: [Decision] Best=S13234 - Jin_Rae(0.949), 2nd=0.842, Discriminative=0.780, AvgNeg=0.842
+[2025-10-21 00:33:26] INFO: [Thresholds] Abs=0.603, Margin=0.103(10.9%), RelMargin=11.3%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:26] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:26] INFO: [Recognition] Scores: S12313 - ma=0.811 S13234 - Jin_Rae=0.945 
+[2025-10-21 00:33:26] INFO: [Decision] Best=S13234 - Jin_Rae(0.945), 2nd=0.811, Discriminative=0.782, AvgNeg=0.811
+[2025-10-21 00:33:26] INFO: [Thresholds] Abs=0.603, Margin=0.103(10.9%), RelMargin=14.1%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:26] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:26] INFO: [Recognition] Scores: S12313 - ma=0.809 S13234 - Jin_Rae=0.936 
+[2025-10-21 00:33:26] INFO: [Decision] Best=S13234 - Jin_Rae(0.936), 2nd=0.809, Discriminative=0.774, AvgNeg=0.809
+[2025-10-21 00:33:26] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.0%), RelMargin=13.5%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:26] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:26] INFO: [Recognition] Scores: S12313 - ma=0.792 S13234 - Jin_Rae=0.932 
+[2025-10-21 00:33:26] INFO: [Decision] Best=S13234 - Jin_Rae(0.932), 2nd=0.792, Discriminative=0.774, AvgNeg=0.792
+[2025-10-21 00:33:26] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.1%), RelMargin=15.0%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:26] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:26] INFO: [Recognition] Scores: S12313 - ma=0.784 S13234 - Jin_Rae=0.927 
+[2025-10-21 00:33:26] INFO: [Decision] Best=S13234 - Jin_Rae(0.927), 2nd=0.784, Discriminative=0.770, AvgNeg=0.784
+[2025-10-21 00:33:26] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.1%), RelMargin=15.4%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:26] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:26] INFO: [Recognition] Scores: S12313 - ma=0.778 S13234 - Jin_Rae=0.915 
+[2025-10-21 00:33:26] INFO: [Decision] Best=S13234 - Jin_Rae(0.915), 2nd=0.778, Discriminative=0.760, AvgNeg=0.778
+[2025-10-21 00:33:26] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.3%), RelMargin=15.0%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:26] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:27] INFO: [Recognition] Scores: S12313 - ma=0.776 S13234 - Jin_Rae=0.935 
+[2025-10-21 00:33:27] INFO: [Decision] Best=S13234 - Jin_Rae(0.935), 2nd=0.776, Discriminative=0.780, AvgNeg=0.776
+[2025-10-21 00:33:27] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.0%), RelMargin=17.0%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:27] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:27] INFO: [Recognition] Scores: S12313 - ma=0.778 S13234 - Jin_Rae=0.933 
+[2025-10-21 00:33:27] INFO: [Decision] Best=S13234 - Jin_Rae(0.933), 2nd=0.778, Discriminative=0.778, AvgNeg=0.778
+[2025-10-21 00:33:27] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.1%), RelMargin=16.6%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:27] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:27] INFO: [Recognition] Scores: S12313 - ma=0.780 S13234 - Jin_Rae=0.919 
+[2025-10-21 00:33:27] INFO: [Decision] Best=S13234 - Jin_Rae(0.919), 2nd=0.780, Discriminative=0.763, AvgNeg=0.780
+[2025-10-21 00:33:27] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.2%), RelMargin=15.1%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:27] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:27] INFO: [Recognition] Scores: S12313 - ma=0.790 S13234 - Jin_Rae=0.923 
+[2025-10-21 00:33:27] INFO: [Decision] Best=S13234 - Jin_Rae(0.923), 2nd=0.790, Discriminative=0.765, AvgNeg=0.790
+[2025-10-21 00:33:27] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.2%), RelMargin=14.4%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:27] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:27] INFO: [Recognition] Scores: S12313 - ma=0.849 S13234 - Jin_Rae=0.925 
+[2025-10-21 00:33:27] INFO: [Decision] Best=S13234 - Jin_Rae(0.925), 2nd=0.849, Discriminative=0.755, AvgNeg=0.849
+[2025-10-21 00:33:27] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.2%), RelMargin=8.3%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:27] INFO: [Decision] ACCEPT: Consistency override (7/7 frames)
+[2025-10-21 00:33:27] INFO: [Recognition] Scores: S12313 - ma=0.798 S13234 - Jin_Rae=0.949 
+[2025-10-21 00:33:27] INFO: [Decision] Best=S13234 - Jin_Rae(0.949), 2nd=0.798, Discriminative=0.789, AvgNeg=0.798
+[2025-10-21 00:33:27] INFO: [Thresholds] Abs=0.603, Margin=0.103(10.9%), RelMargin=15.9%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:27] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:27] INFO: [Recognition] Scores: S12313 - ma=0.804 S13234 - Jin_Rae=0.941 
+[2025-10-21 00:33:27] INFO: [Decision] Best=S13234 - Jin_Rae(0.941), 2nd=0.804, Discriminative=0.780, AvgNeg=0.804
+[2025-10-21 00:33:27] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.0%), RelMargin=14.5%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:27] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:27] INFO: [Recognition] Scores: S12313 - ma=0.800 S13234 - Jin_Rae=0.935 
+[2025-10-21 00:33:27] INFO: [Decision] Best=S13234 - Jin_Rae(0.935), 2nd=0.800, Discriminative=0.775, AvgNeg=0.800
+[2025-10-21 00:33:27] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.0%), RelMargin=14.5%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:27] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:28] INFO: [Recognition] Scores: S12313 - ma=0.813 S13234 - Jin_Rae=0.915 
+[2025-10-21 00:33:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.915), 2nd=0.813, Discriminative=0.752, AvgNeg=0.813
+[2025-10-21 00:33:28] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.3%), RelMargin=11.1%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:28] INFO: [Decision] ACCEPT: Consistency override (7/7 frames)
+[2025-10-21 00:33:28] INFO: [Recognition] Scores: S12313 - ma=0.803 S13234 - Jin_Rae=0.886 
+[2025-10-21 00:33:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.886), 2nd=0.803, Discriminative=0.725, AvgNeg=0.803
+[2025-10-21 00:33:28] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.7%), RelMargin=9.3%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:28] INFO: [Decision] ACCEPT: Consistency override (7/7 frames)
+[2025-10-21 00:33:28] INFO: [Recognition] Scores: S12313 - ma=0.804 S13234 - Jin_Rae=0.879 
+[2025-10-21 00:33:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.879), 2nd=0.804, Discriminative=0.718, AvgNeg=0.804
+[2025-10-21 00:33:28] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.7%), RelMargin=8.5%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:28] INFO: [Decision] ACCEPT: Consistency override (7/7 frames)
+[2025-10-21 00:33:28] INFO: [Recognition] Scores: S12313 - ma=0.808 S13234 - Jin_Rae=0.868 
+[2025-10-21 00:33:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.868), 2nd=0.808, Discriminative=0.707, AvgNeg=0.808
+[2025-10-21 00:33:28] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.9%), RelMargin=7.0%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:28] INFO: [Decision] ACCEPT: Consistency override (7/7 frames)
+[2025-10-21 00:33:28] INFO: [Recognition] Scores: S12313 - ma=0.807 S13234 - Jin_Rae=0.903 
+[2025-10-21 00:33:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.903), 2nd=0.807, Discriminative=0.742, AvgNeg=0.807
+[2025-10-21 00:33:28] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.4%), RelMargin=10.7%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:28] INFO: [Decision] ACCEPT: Consistency override (7/7 frames)
+[2025-10-21 00:33:28] INFO: [Recognition] Scores: S12313 - ma=0.800 S13234 - Jin_Rae=0.884 
+[2025-10-21 00:33:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.884), 2nd=0.800, Discriminative=0.724, AvgNeg=0.800
+[2025-10-21 00:33:28] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.7%), RelMargin=9.6%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:28] INFO: [Decision] ACCEPT: Consistency override (7/7 frames)
+[2025-10-21 00:33:28] INFO: [Recognition] Scores: S12313 - ma=0.851 S13234 - Jin_Rae=0.909 
+[2025-10-21 00:33:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.909), 2nd=0.851, Discriminative=0.739, AvgNeg=0.851
+[2025-10-21 00:33:28] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.3%), RelMargin=6.5%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:28] INFO: [Decision] ACCEPT: Consistency override (7/7 frames)
+[2025-10-21 00:33:28] INFO: [Recognition] Scores: S12313 - ma=0.809 S13234 - Jin_Rae=0.915 
+[2025-10-21 00:33:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.915), 2nd=0.809, Discriminative=0.753, AvgNeg=0.809
+[2025-10-21 00:33:28] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.3%), RelMargin=11.6%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:28] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:29] INFO: [Recognition] Scores: S12313 - ma=0.798 S13234 - Jin_Rae=0.914 
+[2025-10-21 00:33:29] INFO: [Decision] Best=S13234 - Jin_Rae(0.914), 2nd=0.798, Discriminative=0.755, AvgNeg=0.798
+[2025-10-21 00:33:29] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.3%), RelMargin=12.7%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:29] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:29] INFO: [Recognition] Scores: S12313 - ma=0.778 S13234 - Jin_Rae=0.903 
+[2025-10-21 00:33:29] INFO: [Decision] Best=S13234 - Jin_Rae(0.903), 2nd=0.778, Discriminative=0.748, AvgNeg=0.778
+[2025-10-21 00:33:29] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.4%), RelMargin=13.8%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:29] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:29] INFO: [Recognition] Scores: S12313 - ma=0.760 S13234 - Jin_Rae=0.900 
+[2025-10-21 00:33:29] INFO: [Decision] Best=S13234 - Jin_Rae(0.900), 2nd=0.760, Discriminative=0.748, AvgNeg=0.760
+[2025-10-21 00:33:29] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.5%), RelMargin=15.6%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:29] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:29] INFO: [Recognition] Scores: S12313 - ma=0.771 S13234 - Jin_Rae=0.905 
+[2025-10-21 00:33:29] INFO: [Decision] Best=S13234 - Jin_Rae(0.905), 2nd=0.771, Discriminative=0.751, AvgNeg=0.771
+[2025-10-21 00:33:29] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.4%), RelMargin=14.8%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:29] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:29] INFO: [Recognition] Scores: S12313 - ma=0.772 S13234 - Jin_Rae=0.922 
+[2025-10-21 00:33:29] INFO: [Decision] Best=S13234 - Jin_Rae(0.922), 2nd=0.772, Discriminative=0.767, AvgNeg=0.772
+[2025-10-21 00:33:29] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.2%), RelMargin=16.2%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:29] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:29] INFO: [Recognition] Scores: S12313 - ma=0.768 S13234 - Jin_Rae=0.922 
+[2025-10-21 00:33:29] INFO: [Decision] Best=S13234 - Jin_Rae(0.922), 2nd=0.768, Discriminative=0.768, AvgNeg=0.768
+[2025-10-21 00:33:29] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.2%), RelMargin=16.6%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:29] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:29] INFO: [Recognition] Scores: S12313 - ma=0.765 S13234 - Jin_Rae=0.906 
+[2025-10-21 00:33:29] INFO: [Decision] Best=S13234 - Jin_Rae(0.906), 2nd=0.765, Discriminative=0.753, AvgNeg=0.765
+[2025-10-21 00:33:29] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.4%), RelMargin=15.6%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:29] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:30] INFO: [Recognition] Scores: S12313 - ma=0.784 S13234 - Jin_Rae=0.913 
+[2025-10-21 00:33:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.913), 2nd=0.784, Discriminative=0.756, AvgNeg=0.784
+[2025-10-21 00:33:30] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.3%), RelMargin=14.1%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:30] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:30] INFO: [Recognition] Scores: S12313 - ma=0.767 S13234 - Jin_Rae=0.899 
+[2025-10-21 00:33:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.899), 2nd=0.767, Discriminative=0.746, AvgNeg=0.767
+[2025-10-21 00:33:30] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.5%), RelMargin=14.7%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:30] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:30] INFO: [Recognition] Scores: S12313 - ma=0.758 S13234 - Jin_Rae=0.888 
+[2025-10-21 00:33:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.888), 2nd=0.758, Discriminative=0.736, AvgNeg=0.758
+[2025-10-21 00:33:30] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.6%), RelMargin=14.6%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:30] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:30] INFO: [Recognition] Scores: S12313 - ma=0.782 S13234 - Jin_Rae=0.897 
+[2025-10-21 00:33:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.897), 2nd=0.782, Discriminative=0.740, AvgNeg=0.782
+[2025-10-21 00:33:30] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.5%), RelMargin=12.8%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:30] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:30] INFO: Exiting Face Recognition Demo...
+[2025-10-21 00:33:30] INFO: [Recognition] Scores: S12313 - ma=0.768 S13234 - Jin_Rae=0.892 
+[2025-10-21 00:33:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.892), 2nd=0.768, Discriminative=0.739, AvgNeg=0.768
+[2025-10-21 00:33:30] INFO: [Thresholds] Abs=0.603, Margin=0.103(11.6%), RelMargin=13.9%, Tightness=0.968, StdDev=0.009
+[2025-10-21 00:33:30] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-10-21 00:33:30] INFO: Exiting Face Recognition Demo...
