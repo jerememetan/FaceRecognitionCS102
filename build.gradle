@@ -50,6 +50,11 @@ java {
     }
 }
 
+// Disable annotation processing and suppress related options warning across all Java compile tasks
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['-proc:none', '-Xlint:-options']
+}
+
 task copyLibs(type: Copy) {
     from configurations.runtimeClasspath
     into './lib'

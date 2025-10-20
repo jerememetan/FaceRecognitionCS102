@@ -17,6 +17,7 @@ public class AppConfig {
     public final static String KEY_DETECTION_MIN_NEIGHBORS = "detection.min.neighbors";
     public final static String KEY_DETECTION_MIN_SIZE_PX = "detection.min_size_px";
     public final static String KEY_RECOGNITION_THRESHOLD = "recognition.threshold";
+    public final static String KEY_RECOGNITION_IMAGE_FORMAT = "recognition.image_format";
     public final static int KEY_RECOGNITION_CROP_SIZE_PX = 200;
     public final static int KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE = 5;
     public final static int KEY_PREPROCESSING_GAUSSIAN_SIGMA_X = 0;
@@ -42,26 +43,37 @@ public class AppConfig {
         return instance;
     }
 
-    // --- Loading Logic ---
     private void load() {
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("app.properties")) {
-            if (input == null) {
-                // Log an error if the file isn't found
-                AppLogger.error("Sorry, unable to find app.properties");
+        InputStream input = null;
+        try {
+            input = getClass().getClassLoader().getResourceAsStream("app.properties");
+            if (input != null) {
+                properties.load(input);
+                AppLogger.info("Configuration loaded from classpath: app.properties");
                 return;
             }
-            // Load the configuration data
-            properties.load(input);
-            AppLogger.info("Configuration loaded from app.properties.");
+            java.nio.file.Path p = java.nio.file.Paths.get("app.properties").toAbsolutePath().normalize();
+            if (java.nio.file.Files.exists(p)) {
+                try (InputStream fsIn = java.nio.file.Files.newInputStream(p)) {
+                    properties.load(fsIn);
+                    AppLogger.info("Configuration loaded from file: " + p);
+                    return;
+                }
+            }
 
+            AppLogger.error("Sorry, unable to find app.properties (classpath or " +
+                    java.nio.file.Paths.get("app.properties").toAbsolutePath().normalize() + ")");
         } catch (IOException ex) {
             AppLogger.error("Error reading app.properties file.", ex);
+        } finally {
+            if (input != null) {
+                try { input.close(); } catch (IOException ignored) {}
+            }
         }
     }
 
     public void save() {
         try (FileOutputStream output = new FileOutputStream("app.properties")) {
-            // Write the current state of the properties object back to the file
             properties.store(output, "Configuration saved by user at runtime.");
             AppLogger.info("Configuration saved to file.");
         } catch (IOException ex) {
@@ -236,5 +248,21 @@ public class AppConfig {
             AppLogger.info(KEY_RECOGNITION_THRESHOLD + " has been changed to " + newIndex);
         }
     }
+    // KEY_RECOGNITION_IMAGE_FORMAT = ".jpg";
+    public String getRecognitionImageFormat() {
+        return properties.getProperty(KEY_RECOGNITION_IMAGE_FORMAT, ".jpg");
+    }
+
+    public void setRecognitionImageFormat(String Path) {
+        if (Path == null) {
+            AppLogger.error("Failed to change " + KEY_RECOGNITION_IMAGE_FORMAT + ".Name is null");
+        } else {
+            this.properties.setProperty(KEY_RECOGNITION_IMAGE_FORMAT, Path);
+            AppLogger.info(KEY_RECOGNITION_IMAGE_FORMAT + " has been changed to " + Path);
+        }
+
+    }
+
+
 
 }
