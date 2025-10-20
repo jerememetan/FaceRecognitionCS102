@@ -305,6 +305,10 @@ public class FaceDetection {
 
         callback.onCaptureCompleted();
 
+<<<<<<< HEAD
+        // PHASE 2: Process embeddings using FaceEmbeddingGenerator
+        // This is separated from face detection - embedding generation is its own
+        // concern
         FaceEmbeddingGenerator.BatchProcessingResult batchResult = null;
         if (capturedCount > 0) {
             logDebug("Processing embeddings for " + capturedCount + " captured images...");
@@ -323,6 +327,55 @@ public class FaceDetection {
         }
 
         boolean success = capturedCount >= Math.min(10, numberOfImages);
+=======
+        // FIXED: Process embeddings AFTER capture completes - keeps preview smooth
+        if (capturedCount > 0) {
+            logDebug("Processing embeddings for " + capturedCount + " captured images...");
+            callback.onWarning("Processing captured images...");
+
+            int processedCount = 0;
+            for (String imagePath : capturedImages) {
+                try {
+                    Mat image = Imgcodecs.imread(imagePath);
+                    if (image.empty()) {
+                        System.err.println("Failed to read captured image: " + imagePath);
+                        continue;
+                    }
+
+                    // Process and generate embedding
+                    Mat processedFace = preprocessForRecognition(image);
+                    image.release();
+
+                    byte[] embedding = embeddingGenerator.generateEmbedding(processedFace);
+                    processedFace.release();
+
+                    if (embedding != null && embeddingGenerator.isEmbeddingValid(embedding)) {
+                        // Save embedding as .emb file
+                        String embPath = imagePath.replace(".jpg", ".emb");
+                        try {
+                            java.nio.file.Files.write(Paths.get(embPath), embedding);
+                            processedCount++;
+                            logDebug("Saved embedding: " + embPath);
+                        } catch (Exception e) {
+                            System.err.println("Failed to save embedding for " + imagePath + ": " + e.getMessage());
+                        }
+                    } else {
+                        System.err.println("Invalid embedding generated for: " + imagePath);
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error processing image " + imagePath + ": " + e.getMessage());
+                }
+            }
+
+            logDebug("Embedding processing complete: " + processedCount + "/" + capturedCount + " embeddings saved");
+            if (processedCount < capturedCount) {
+                callback.onWarning(
+                        "Warning: Only " + processedCount + "/" + capturedCount + " embeddings generated successfully");
+            }
+        }
+
+        boolean success = (capturedCount >= Math.min(10, numberOfImages));
+>>>>>>> bec8cf1dcd50dd13c589a045580758942a9473b3
         String message = success ? String.format("Successfully captured %d high-quality face images", capturedCount)
                 : String.format("Only captured %d images, need at least %d", capturedCount,
                         Math.min(10, numberOfImages));
@@ -341,6 +394,26 @@ public class FaceDetection {
         }
     }
 
+<<<<<<< HEAD
+=======
+    private Mat preprocessForRecognition(Mat faceROI) {
+        if (faceROI == null || faceROI.empty()) {
+            return new Mat();
+        }
+        // IMPROVED: Added glare reduction for better quality with glasses
+        Mat deglared = imageProcessor.reduceGlare(faceROI);
+        Mat aligned = imageProcessor.correctFaceOrientation(deglared);
+        Mat denoised = imageProcessor.reduceNoise(aligned);
+        Mat processed = imageProcessor.preprocessFaceImage(denoised);
+
+        deglared.release();
+        aligned.release();
+        denoised.release();
+
+        return processed;
+    }
+
+>>>>>>> bec8cf1dcd50dd13c589a045580758942a9473b3
     private Rect buildSquareRegionWithPadding(Size frameSize, Rect face, double paddingRatio) {
         int frameWidth = (int) frameSize.width;
         int frameHeight = (int) frameSize.height;
