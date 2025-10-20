@@ -1,0 +1,26 @@
+[2025-10-21 00:08:07] INFO: Application Logger Initialized.
+[2025-10-21 00:08:07] INFO: Configuration and core components loaded.
+[2025-10-21 00:08:07] INFO: Configuration loaded from classpath: app.properties
+[2025-10-21 00:08:07] INFO: Configuration file loaded
+[2025-10-21 00:08:07] INFO: MyGUIProgram Started!
+[2025-10-21 00:08:09] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-21 00:08:09] INFO: === Folder debug ===
+[2025-10-21 00:08:09] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S12313_ma
+[2025-10-21 00:08:09] INFO:   Contains: 36 items
+[2025-10-21 00:08:09] INFO:   Display label: S12313 - ma
+[2025-10-21 00:08:09] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae
+[2025-10-21 00:08:09] INFO:   Contains: 38 items
+[2025-10-21 00:08:09] INFO:   Display label: S13234 - Jin_Rae
+[2025-10-21 00:08:09] INFO: ====================
+[2025-10-21 00:08:09] INFO: Person S12313 - ma: tightness=0.934, stdDev=0.015, absThresh=0.607, margin=0.107
+[2025-10-21 00:08:09] INFO: Person S13234 - Jin_Rae: tightness=0.888, stdDev=0.024, absThresh=0.611, margin=0.111
+[2025-10-21 00:08:09] INFO: DNN face detector loaded successfully for recognition
+[2025-10-21 00:08:09] INFO: Attempting to open camera 0 with backend 0
+[2025-10-21 00:08:11] WARNING: Camera opened but cannot read frames at index 0 with backend 0
+[2025-10-21 00:08:11] INFO: Attempting to open camera 0 with backend 700
+[2025-10-21 00:08:12] WARNING: Failed to open camera at index 0 with backend 700
+[2025-10-21 00:08:12] INFO: Attempting to open camera 0 with backend 1400
+[2025-10-21 00:08:14] WARNING: Camera opened but cannot read frames at index 0 with backend 1400
+[2025-10-21 00:08:14] INFO: Attempting to open camera 0 with backend 1410
+[2025-10-21 00:08:14] WARNING: Failed to open camera at index 0 with backend 1410
+[2025-10-21 00:08:14] INFO: Attempting to open camera 0 with backend 0

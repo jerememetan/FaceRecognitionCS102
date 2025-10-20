@@ -5,7 +5,8 @@
     "java.project.referencedLibraries": [
         "./lib/opencv-480.jar",
         "./lib/*.jar"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
 
 // java --enable-native-access=ALL-UNNAMED -cp ".;C:/opencv/build/java/opencv-480.jar" OpenCvTest.java
