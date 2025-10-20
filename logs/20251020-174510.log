@@ -1,0 +1,70 @@
+[2025-10-20 17:45:10] INFO: Application Logger Initialized.
+[2025-10-20 17:45:10] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
+[2025-10-20 17:45:10] INFO: GUI launched successfully
+[2025-10-20 17:45:37] INFO: Face embedding model loaded successfully
+[2025-10-20 17:45:37] INFO: FaceCaptureDialog created for student: ma
+[2025-10-20 17:45:37] INFO: Dialog initialized
+[2025-10-20 17:45:37] INFO: Starting camera preview...
+[2025-10-20 17:45:37] INFO: Preview timer started at 20fps
+[2025-10-20 17:46:02] INFO: Configuration saved to file.
+[2025-10-20 17:46:02] INFO: Detection settings saved to app.properties
+[2025-10-20 17:46:28] INFO: Starting capture process...
+[2025-10-20 17:46:28] INFO: Performing capture with target: 20
+[2025-10-20 17:46:28] INFO: Debug: Capture process started
+[2025-10-20 17:46:28] INFO: Debug: Image saved with confidence 0.99
+[2025-10-20 17:46:29] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:31] INFO: Debug: Image saved with confidence 0.99
+[2025-10-20 17:46:32] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:33] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:35] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:36] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:37] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:39] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:40] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:41] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:43] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:44] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:45] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:47] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:48] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:50] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:51] INFO: Debug: Image saved with confidence 0.99
+[2025-10-20 17:46:52] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:54] INFO: Debug: Image saved with confidence 1.00
+[2025-10-20 17:46:55] INFO: Debug: Capture process finished
+[2025-10-20 17:46:55] INFO: Debug: Warning - Processing captured images...
+[2025-10-20 17:46:55] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_001.emb
+[2025-10-20 17:46:56] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_002.emb
+[2025-10-20 17:46:56] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_003.emb
+[2025-10-20 17:46:56] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_004.emb
+[2025-10-20 17:46:56] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_005.emb
+[2025-10-20 17:46:57] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_006.emb
+[2025-10-20 17:46:57] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_007.emb
+[2025-10-20 17:46:57] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_008.emb
+[2025-10-20 17:46:58] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_009.emb
+[2025-10-20 17:46:58] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_010.emb
+[2025-10-20 17:46:58] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_011.emb
+[2025-10-20 17:46:58] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_012.emb
+[2025-10-20 17:46:59] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_013.emb
+[2025-10-20 17:46:59] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_014.emb
+[2025-10-20 17:46:59] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_015.emb
+[2025-10-20 17:46:59] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_016.emb
+[2025-10-20 17:47:00] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_017.emb
+[2025-10-20 17:47:00] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_018.emb
+[2025-10-20 17:47:00] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_019.emb
+[2025-10-20 17:47:01] INFO: ￃﾢￅﾓ￢ﾀﾜ Saved embedding: S12313_020.emb
+[2025-10-20 17:47:01] INFO: Embedding generation complete: 20/20 successful
+[2025-10-20 17:47:01] INFO:   Outlier detected: index=0, avgSim=0.8589, threshold=0.8884
+[2025-10-20 17:47:01] INFO: Debug: Warning - Analyzing embedding quality...
+[2025-10-20 17:47:01] INFO:   Outlier detected: index=14, avgSim=0.8802, threshold=0.8884
+[2025-10-20 17:47:01] INFO:   ￃﾢￅﾓ￢ﾀﾔ Deleted outlier embedding: S12313_001.emb
+[2025-10-20 17:47:01] INFO:   ￃﾢￅﾓ￢ﾀﾔ Deleted outlier image: S12313_001.png
+[2025-10-20 17:47:01] INFO:   ￃﾢￅﾓ￢ﾀﾔ Deleted outlier embedding: S12313_015.emb
+[2025-10-20 17:47:01] INFO:   ￃﾢￅﾓ￢ﾀﾔ Deleted outlier image: S12313_015.png
+[2025-10-20 17:47:01] INFO: ￃﾢￅﾓ￢ﾀﾜ Auto-removed 2 outlier embedding(s)
+[2025-10-20 17:47:01] INFO: Debug: Warning - Removed 2 low-quality image(s) automatically
+[2025-10-20 17:47:01] INFO: Capture result: true - Successfully captured 20 high-quality face images
+[2025-10-20 17:47:05] INFO: Debug: All images captured successfully
+[2025-10-20 17:47:06] INFO: Disposing FaceCaptureDialog...
+[2025-10-20 17:47:06] INFO: Preview timer stopped
+[2025-10-20 17:47:06] INFO: Face detection resources released
