@@ -305,6 +305,9 @@ public class FaceDetection {
 
         callback.onCaptureCompleted();
 
+        // PHASE 2: Process embeddings using FaceEmbeddingGenerator
+        // This is separated from face detection - embedding generation is its own
+        // concern
         FaceEmbeddingGenerator.BatchProcessingResult batchResult = null;
         if (capturedCount > 0) {
             logDebug("Processing embeddings for " + capturedCount + " captured images...");
@@ -341,6 +344,26 @@ public class FaceDetection {
         }
     }
 
+<<<<<<< HEAD
+=======
+    private Mat preprocessForRecognition(Mat faceROI) {
+        if (faceROI == null || faceROI.empty()) {
+            return new Mat();
+        }
+        // IMPROVED: Added glare reduction for better quality with glasses
+        Mat deglared = imageProcessor.reduceGlare(faceROI);
+        Mat aligned = imageProcessor.correctFaceOrientation(deglared);
+        Mat denoised = imageProcessor.reduceNoise(aligned);
+        Mat processed = imageProcessor.preprocessFaceImage(denoised);
+
+        deglared.release();
+        aligned.release();
+        denoised.release();
+
+        return processed;
+    }
+
+>>>>>>> bec8cf1dcd50dd13c589a045580758942a9473b3
     private Rect buildSquareRegionWithPadding(Size frameSize, Rect face, double paddingRatio) {
         int frameWidth = (int) frameSize.width;
         int frameHeight = (int) frameSize.height;

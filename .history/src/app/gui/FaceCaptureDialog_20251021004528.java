@@ -48,7 +48,7 @@ public class FaceCaptureDialog extends JDialog {
     private static final int DETECTION_INTERVAL = 5; // Detect every 5 frames instead of every frame
     private FaceDetection.FaceDetectionResult lastDetectionResult = null;
 
-    //  Multi-threading: Shared frame between capture and preview
+    // âœ… Multi-threading: Shared frame between capture and preview
     private volatile Mat sharedFrame = null;
     private final Object frameLock = new Object();
 
@@ -277,12 +277,12 @@ public class FaceCaptureDialog extends JDialog {
         try {
             Mat frame = null;
 
-            //  CRITICAL FIX: ALWAYS read from camera, never use shared frames
+            // âœ… CRITICAL FIX: ALWAYS read from camera, never use shared frames
             // The capture thread operates independently - preview must be continuous
             frame = faceDetection.getCurrentFrame();
 
             if (frame != null && !frame.empty()) {
-                //  PERFORMANCE: Only run face detection every N frames (not every frame!)
+                // âœ… PERFORMANCE: Only run face detection every N frames (not every frame!)
                 // DNN face detection is expensive - running at 30fps causes freezing
                 frameCounter++;
                 if (frameCounter >= DETECTION_INTERVAL) {
@@ -413,7 +413,7 @@ public class FaceCaptureDialog extends JDialog {
         isCapturing.set(true);
         capturedCount.set(0);
 
-        //  Multi-threading: Keep preview running, it will use shared frames from
+        // âœ… Multi-threading: Keep preview running, it will use shared frames from
         // capture
 
         startButton.setEnabled(false);
@@ -443,7 +443,7 @@ public class FaceCaptureDialog extends JDialog {
                     showError("Capture failed: " + e.getMessage());
                     onCaptureCompleted(false);
                 } finally {
-                    //  Clean up shared frame
+                    // âœ… Clean up shared frame
                     synchronized (frameLock) {
                         if (sharedFrame != null) {
                             sharedFrame.release();
@@ -470,7 +470,7 @@ public class FaceCaptureDialog extends JDialog {
 
             @Override
             public void onFrameUpdate(Mat frame) {
-                //  NO-OP: Preview reads directly from camera, doesn't need shared frames
+                // âœ… NO-OP: Preview reads directly from camera, doesn't need shared frames
                 // This callback is kept for API compatibility but does nothing
             }
 
@@ -528,7 +528,7 @@ public class FaceCaptureDialog extends JDialog {
             msg.append(String.format("Capture completed successfully!\nCaptured %d images for %s.",
                     capturedImages.size(), student.getName()));
 
-            //  OUTLIER REMOVAL FEEDBACK: Show if any outliers were removed
+            // âœ… OUTLIER REMOVAL FEEDBACK: Show if any outliers were removed
             FaceEmbeddingGenerator.BatchProcessingResult batchResult = result.getBatchProcessingResult();
             if (batchResult != null) {
                 int removedCount = batchResult.getRemovedOutlierCount();
@@ -568,7 +568,7 @@ public class FaceCaptureDialog extends JDialog {
         instructionLabel.setText("<html><center>Capture stopped by user.<br/>" +
                 "You can start again when ready.</center></html>");
 
-        //  Clean up shared frame
+        // âœ… Clean up shared frame
         synchronized (frameLock) {
             if (sharedFrame != null) {
                 sharedFrame.release();
