@@ -7942,3 +7942,9 @@
 [2025-10-15 16:03:37] INFO: Face embedding model loaded successfully
 [2025-10-15 16:03:37] INFO: Exiting Face Recognition Demo...
 >>>>>>> 6d0bc0392324fb87140bc20b01231e35db083a3f
+[2025-10-20 10:30:30] INFO: Application Logger Initialized.
+[2025-10-20 10:30:30] INFO: Configuration and core components loaded.
+[2025-10-20 10:30:30] INFO: Configuration file loaded
+[2025-10-20 10:30:30] INFO: MyGUIProgram Started!
+[2025-10-20 10:31:01] INFO: Application Logger Initialized.
+[2025-10-20 10:31:01] SEVERE: Sorry, unable to find app.properties
