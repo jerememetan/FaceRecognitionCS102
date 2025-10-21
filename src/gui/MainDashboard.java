@@ -43,10 +43,53 @@ public class MainDashboard extends JFrame {
         addSideBarButtons();
 
         // Main content panel
-        mainContent = new JPanel();
-        JLabel welcomJLabel = new JLabel("Welcome!", SwingConstants.CENTER);
-        welcomJLabel.setFont(new Font("Arial", Font.BOLD, 24)); // font, fontstyle, fontsize
-        mainContent.add(welcomJLabel, BorderLayout.CENTER);
+        mainContent = new JPanel(new GridBagLayout());
+        mainContent.setBackground(Color.WHITE);
+
+        JPanel textPanel = new JPanel();
+        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
+        textPanel.setBackground(Color.WHITE);
+
+        // Welcome label
+        JLabel welcomeLabel = new JLabel("Welcome!", SwingConstants.CENTER);
+        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 25)); // font, fontstyle, fontsize
+        welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        // Text area
+        JTextArea textArea = new JTextArea();
+        textArea.setEditable(false);
+        textArea.setOpaque(false); // make it blend with background
+        textArea.setFont(new Font("Arial", Font.PLAIN, 15));
+        textArea.setText("""
+        Press on 'Live Recognition' to start the live face recognition.
+
+        Press on 'Students' to manage student records.
+
+        Press on 'Attendance Sessions' to create and manage attendance sessions.
+
+        Press on 'Reports' to view attendance reports.
+
+        Press on 'Settings' to configure application & camera settings.
+        """);
+        
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setColumns(40); 
+        textArea.setAlignmentX(Component.CENTER_ALIGNMENT);
+        textArea.setMargin(new Insets(10, 30, 10, 30)); // inner padding
+
+        textPanel.add(Box.createRigidArea(new Dimension(0, 40))); // pushes content downward
+        textPanel.add(welcomeLabel);
+        textPanel.add(Box.createRigidArea(new Dimension(0, 20))); // spacing between label and text
+        textPanel.add(textArea);
+
+        // center the text block in the main content panel
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        mainContent.add(textPanel, gbc); // add to main content panel
+
 
         // add both sidebar and maincontent to the frame
         add(sidebar, BorderLayout.WEST);
