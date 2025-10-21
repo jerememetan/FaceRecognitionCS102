@@ -24,6 +24,36 @@ public class AppConfig {
     public final static double KEY_PREPROCESSING_CLAHE_CLIP_LIMIT = 2.0;
     public final static int KEY_PREPROCESSING_CLAHE_GRID_SIZE = 8;
 
+    // --- Added keys (TODO items from app.properties) ---
+    public final static String KEY_CAPTURE_MIN_CONFIDENCE_SCORE = "capture.min_confidence_score";
+    public final static String KEY_CAPTURE_MIN_FACE_SIZE = "capture.min_face_size";
+    public final static String KEY_CAPTURE_INTERVAL_MS = "capture.capture_interval_ms";
+    // Note: keep the same spelling as in properties file
+    public final static String KEY_CAPTURE_ATTEMPT_MULTIPLIER = "capture.capture_attempt_mutliplier";
+    public final static String KEY_CAPTURE_FRAME_WAIT_TIMEOUT_MS = "capture.frame_wait_timeout_ms";
+    public final static String KEY_CAPTURE_FACE_PERSISTENCE_NS = "capture.face_persistence_ns";
+
+    public final static String KEY_EMBEDDING_MODEL_PATH = "embedding.modelPath";
+    public final static String KEY_EMBEDDING_SIZE = "embedding.embedding.size";
+    public final static String KEY_EMBEDDING_INPUT_SIZE = "embedding.input_size";
+
+    public final static String KEY_DATABASE_URL = "database.URL";
+    public final static String KEY_DATABASE_USER = "database.user";
+    public final static String KEY_DATABASE_PASSWORD = "database.password";
+
+    public final static String KEY_DETECTION_MODEL_CONFIG = "detection.model_configuration_path";
+    public final static String KEY_DETECTION_MODEL_WEIGHTS = "detection.model_weights";
+
+    public final static String KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD = "preprocessing.min_sharpness_threshold";
+    public final static String KEY_PREPROCESSING_MIN_BRIGHTNESS = "preprocessing.min_brightness";
+    public final static String KEY_PREPROCESSING_MAX_BRIGHTNESS = "preprocessing.max_brightness";
+    public final static String KEY_PREPROCESSING_MIN_CONTRAST = "preprocessing.min_contrast";
+
+    public final static String KEY_EXPORT_CSV_FOLDER = "export.csv_exported_folder_path";
+    public final static String KEY_EXPORT_EXCEL_FOLDER = "export.excel_exported_folder_path";
+    public final static String KEY_EXPORT_PDF_FOLDER = "export.pdf_exported_folder_path";
+    // --- end added keys ---
+
     // --- Singleton Implementation ---
     private static AppConfig instance = null;
     private final Properties properties = new Properties();
@@ -263,6 +293,351 @@ public class AppConfig {
 
     }
 
+    // capture.min_confidence_score (double)
+    public double getCaptureMinConfidenceScore() {
+        String s = properties.getProperty(KEY_CAPTURE_MIN_CONFIDENCE_SCORE, "0.5");
+        try {
+            return Double.parseDouble(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_CAPTURE_MIN_CONFIDENCE_SCORE, ex);
+            return 0.5;
+        }
+    }
+
+    public void setCaptureMinConfidenceScore(Double value) {
+        if (value == null) {
+            AppLogger.error("Failed to change " + KEY_CAPTURE_MIN_CONFIDENCE_SCORE + ".Value is null");
+            return;
+        }
+        properties.setProperty(KEY_CAPTURE_MIN_CONFIDENCE_SCORE, String.valueOf(value));
+        AppLogger.info(KEY_CAPTURE_MIN_CONFIDENCE_SCORE + " has been changed to " + value);
+    }
+
+    // capture.min_face_size (int)
+    public int getCaptureMinFaceSize() {
+        String s = properties.getProperty(KEY_CAPTURE_MIN_FACE_SIZE, "50");
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_CAPTURE_MIN_FACE_SIZE, ex);
+            return 50;
+        }
+    }
+
+    public void setCaptureMinFaceSize(int value) {
+        if (value < 0) {
+            AppLogger.error("Failed to change " + KEY_CAPTURE_MIN_FACE_SIZE + ".Value is invalid");
+            return;
+        }
+        properties.setProperty(KEY_CAPTURE_MIN_FACE_SIZE, String.valueOf(value));
+        AppLogger.info(KEY_CAPTURE_MIN_FACE_SIZE + " has been changed to " + value);
+    }
+
+    // capture.capture_interval_ms (int)
+    public int getCaptureIntervalMs() {
+        String s = properties.getProperty(KEY_CAPTURE_INTERVAL_MS, "900");
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_CAPTURE_INTERVAL_MS, ex);
+            return 900;
+        }
+    }
+
+    public void setCaptureIntervalMs(int value) {
+        if (value < 0) {
+            AppLogger.error("Failed to change " + KEY_CAPTURE_INTERVAL_MS + ".Value is invalid");
+            return;
+        }
+        properties.setProperty(KEY_CAPTURE_INTERVAL_MS, String.valueOf(value));
+        AppLogger.info(KEY_CAPTURE_INTERVAL_MS + " has been changed to " + value);
+    }
+
+    // capture.capture_attempt_mutliplier (int) -- keep same misspelling
+    public int getCaptureAttemptMultiplier() {
+        String s = properties.getProperty(KEY_CAPTURE_ATTEMPT_MULTIPLIER, "12");
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_CAPTURE_ATTEMPT_MULTIPLIER, ex);
+            return 12;
+        }
+    }
+
+    public void setCaptureAttemptMultiplier(int value) {
+        if (value < 0) {
+            AppLogger.error("Failed to change " + KEY_CAPTURE_ATTEMPT_MULTIPLIER + ".Value is invalid");
+            return;
+        }
+        properties.setProperty(KEY_CAPTURE_ATTEMPT_MULTIPLIER, String.valueOf(value));
+        AppLogger.info(KEY_CAPTURE_ATTEMPT_MULTIPLIER + " has been changed to " + value);
+    }
+
+    // capture.frame_wait_timeout_ms (int)
+    public int getCaptureFrameWaitTimeoutMs() {
+        String s = properties.getProperty(KEY_CAPTURE_FRAME_WAIT_TIMEOUT_MS, "500");
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_CAPTURE_FRAME_WAIT_TIMEOUT_MS, ex);
+            return 500;
+        }
+    }
+
+    public void setCaptureFrameWaitTimeoutMs(int value) {
+        if (value < 0) {
+            AppLogger.error("Failed to change " + KEY_CAPTURE_FRAME_WAIT_TIMEOUT_MS + ".Value is invalid");
+            return;
+        }
+        properties.setProperty(KEY_CAPTURE_FRAME_WAIT_TIMEOUT_MS, String.valueOf(value));
+        AppLogger.info(KEY_CAPTURE_FRAME_WAIT_TIMEOUT_MS + " has been changed to " + value);
+    }
+
+    // capture.face_persistence_ns (long)
+    public long getCaptureFacePersistenceNs() {
+        String s = properties.getProperty(KEY_CAPTURE_FACE_PERSISTENCE_NS, "350");
+        try {
+            return Long.parseLong(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_CAPTURE_FACE_PERSISTENCE_NS, ex);
+            return 350L;
+        }
+    }
+
+    public void setCaptureFacePersistenceNs(long value) {
+        if (value < 0) {
+            AppLogger.error("Failed to change " + KEY_CAPTURE_FACE_PERSISTENCE_NS + ".Value is invalid");
+            return;
+        }
+        properties.setProperty(KEY_CAPTURE_FACE_PERSISTENCE_NS, String.valueOf(value));
+        AppLogger.info(KEY_CAPTURE_FACE_PERSISTENCE_NS + " has been changed to " + value);
+    }
+
+    // embedding.modelPath (String)
+    public String getEmbeddingModelPath() {
+        return properties.getProperty(KEY_EMBEDDING_MODEL_PATH, "data/resources/openface.nn4.small2.v1.t7");
+    }
+
+    public void setEmbeddingModelPath(String path) {
+        if (path == null) {
+            AppLogger.error("Failed to change " + KEY_EMBEDDING_MODEL_PATH + ".Path is null");
+            return;
+        }
+        properties.setProperty(KEY_EMBEDDING_MODEL_PATH, path);
+        AppLogger.info(KEY_EMBEDDING_MODEL_PATH + " has been changed to " + path);
+    }
+
+    // embedding.embedding.size (int)
+    public int getEmbeddingSize() {
+        String s = properties.getProperty(KEY_EMBEDDING_SIZE, "128");
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_EMBEDDING_SIZE, ex);
+            return 128;
+        }
+    }
+
+    public void setEmbeddingSize(int value) {
+        if (value <= 0) {
+            AppLogger.error("Failed to change " + KEY_EMBEDDING_SIZE + ".Value is invalid");
+            return;
+        }
+        properties.setProperty(KEY_EMBEDDING_SIZE, String.valueOf(value));
+        AppLogger.info(KEY_EMBEDDING_SIZE + " has been changed to " + value);
+    }
+
+    // embedding.input_size (int)
+    public int getEmbeddingInputSize() {
+        String s = properties.getProperty(KEY_EMBEDDING_INPUT_SIZE, "96");
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_EMBEDDING_INPUT_SIZE, ex);
+            return 96;
+        }
+    }
+
+    public void setEmbeddingInputSize(int value) {
+        if (value <= 0) {
+            AppLogger.error("Failed to change " + KEY_EMBEDDING_INPUT_SIZE + ".Value is invalid");
+            return;
+        }
+        properties.setProperty(KEY_EMBEDDING_INPUT_SIZE, String.valueOf(value));
+        AppLogger.info(KEY_EMBEDDING_INPUT_SIZE + " has been changed to " + value);
+    }
+
+    // database.URL, database.user, database.password (String)
+    public String getDatabaseURL() {
+        return properties.getProperty(KEY_DATABASE_URL, "");
+    }
+
+    public void setDatabaseURL(String url) {
+        if (url == null) {
+            AppLogger.error("Failed to change " + KEY_DATABASE_URL + ".Value is null");
+            return;
+        }
+        properties.setProperty(KEY_DATABASE_URL, url);
+        AppLogger.info(KEY_DATABASE_URL + " has been changed to " + url);
+    }
+
+    public String getDatabaseUser() {
+        return properties.getProperty(KEY_DATABASE_USER, "");
+    }
+
+    public void setDatabaseUser(String user) {
+        if (user == null) {
+            AppLogger.error("Failed to change " + KEY_DATABASE_USER + ".Value is null");
+            return;
+        }
+        properties.setProperty(KEY_DATABASE_USER, user);
+        AppLogger.info(KEY_DATABASE_USER + " has been changed to " + user);
+    }
+
+    public String getDatabasePassword() {
+        return properties.getProperty(KEY_DATABASE_PASSWORD, "");
+    }
+
+    public void setDatabasePassword(String password) {
+        if (password == null) {
+            AppLogger.error("Failed to change " + KEY_DATABASE_PASSWORD + ".Value is null");
+            return;
+        }
+        properties.setProperty(KEY_DATABASE_PASSWORD, password);
+        AppLogger.info(KEY_DATABASE_PASSWORD + " has been changed.");
+    }
+
+    // detection.model_configuration_path & detection.model_weights
+    public String getDetectionModelConfigurationPath() {
+        return properties.getProperty(KEY_DETECTION_MODEL_CONFIG, "data/resources/opencv_face_detector.pbtxt");
+    }
+
+    public void setDetectionModelConfigurationPath(String path) {
+        if (path == null) {
+            AppLogger.error("Failed to change " + KEY_DETECTION_MODEL_CONFIG + ".Path is null");
+            return;
+        }
+        properties.setProperty(KEY_DETECTION_MODEL_CONFIG, path);
+        AppLogger.info(KEY_DETECTION_MODEL_CONFIG + " has been changed to " + path);
+    }
+
+    public String getDetectionModelWeightsPath() {
+        return properties.getProperty(KEY_DETECTION_MODEL_WEIGHTS, "data/resources/opencv_face_detector_uint8.pb");
+    }
+
+    public void setDetectionModelWeightsPath(String path) {
+        if (path == null) {
+            AppLogger.error("Failed to change " + KEY_DETECTION_MODEL_WEIGHTS + ".Path is null");
+            return;
+        }
+        properties.setProperty(KEY_DETECTION_MODEL_WEIGHTS, path);
+        AppLogger.info(KEY_DETECTION_MODEL_WEIGHTS + " has been changed to " + path);
+    }
+
+    // preprocessing.* numeric thresholds
+    public double getPreprocessingMinSharpnessThreshold() {
+        String s = properties.getProperty(KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, "80.0");
+        try {
+            return Double.parseDouble(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, ex);
+            return 80.0;
+        }
+    }
+
+    public void setPreprocessingMinSharpnessThreshold(Double value) {
+        if (value == null) {
+            AppLogger.error("Failed to change " + KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD + ".Value is null");
+            return;
+        }
+        properties.setProperty(KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, String.valueOf(value));
+        AppLogger.info(KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD + " has been changed to " + value);
+    }
+
+    public int getPreprocessingMinBrightness() {
+        String s = properties.getProperty(KEY_PREPROCESSING_MIN_BRIGHTNESS, "30");
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_PREPROCESSING_MIN_BRIGHTNESS, ex);
+            return 30;
+        }
+    }
+
+    public void setPreprocessingMinBrightness(int value) {
+        properties.setProperty(KEY_PREPROCESSING_MIN_BRIGHTNESS, String.valueOf(value));
+        AppLogger.info(KEY_PREPROCESSING_MIN_BRIGHTNESS + " has been changed to " + value);
+    }
+
+    public int getPreprocessingMaxBrightness() {
+        String s = properties.getProperty(KEY_PREPROCESSING_MAX_BRIGHTNESS, "230");
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_PREPROCESSING_MAX_BRIGHTNESS, ex);
+            return 230;
+        }
+    }
+
+    public void setPreprocessingMaxBrightness(int value) {
+        properties.setProperty(KEY_PREPROCESSING_MAX_BRIGHTNESS, String.valueOf(value));
+        AppLogger.info(KEY_PREPROCESSING_MAX_BRIGHTNESS + " has been changed to " + value);
+    }
+
+    public int getPreprocessingMinContrast() {
+        String s = properties.getProperty(KEY_PREPROCESSING_MIN_CONTRAST, "20");
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_PREPROCESSING_MIN_CONTRAST, ex);
+            return 20;
+        }
+    }
+
+    public void setPreprocessingMinContrast(int value) {
+        properties.setProperty(KEY_PREPROCESSING_MIN_CONTRAST, String.valueOf(value));
+        AppLogger.info(KEY_PREPROCESSING_MIN_CONTRAST + " has been changed to " + value);
+    }
+
+    // export.* folder paths
+    public String getExportCsvFolderPath() {
+        return properties.getProperty(KEY_EXPORT_CSV_FOLDER, "./data/export/CSV/");
+    }
+
+    public void setExportCsvFolderPath(String path) {
+        if (path == null) {
+            AppLogger.error("Failed to change " + KEY_EXPORT_CSV_FOLDER + ".Path is null");
+            return;
+        }
+        properties.setProperty(KEY_EXPORT_CSV_FOLDER, path);
+        AppLogger.info(KEY_EXPORT_CSV_FOLDER + " has been changed to " + path);
+    }
+
+    public String getExportExcelFolderPath() {
+        return properties.getProperty(KEY_EXPORT_EXCEL_FOLDER, "./data/export/Excel/");
+    }
+
+    public void setExportExcelFolderPath(String path) {
+        if (path == null) {
+            AppLogger.error("Failed to change " + KEY_EXPORT_EXCEL_FOLDER + ".Path is null");
+            return;
+        }
+        properties.setProperty(KEY_EXPORT_EXCEL_FOLDER, path);
+        AppLogger.info(KEY_EXPORT_EXCEL_FOLDER + " has been changed to " + path);
+    }
+
+    public String getExportPdfFolderPath() {
+        return properties.getProperty(KEY_EXPORT_PDF_FOLDER, "./data/export/PDF/");
+    }
+
+    public void setExportPdfFolderPath(String path) {
+        if (path == null) {
+            AppLogger.error("Failed to change " + KEY_EXPORT_PDF_FOLDER + ".Path is null");
+            return;
+        }
+        properties.setProperty(KEY_EXPORT_PDF_FOLDER, path);
+        AppLogger.info(KEY_EXPORT_PDF_FOLDER + " has been changed to " + path);
+    }
 
 
 }
