@@ -5,13 +5,15 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.imgproc.Moments;
 import org.opencv.dnn.Net;
 import org.opencv.dnn.Dnn;
+import ConfigurationAndLogging.*;
 
 public class FaceEmbeddingGenerator {
     private Net embeddingNet;
     private boolean isInitialized = false;
 
-    private static final int EMBEDDING_SIZE = 128;
-    private static final Size INPUT_SIZE = new Size(96, 96);
+    private static final int EMBEDDING_SIZE = AppConfig.getInstance().getEmbeddingSize();
+    private static final int INPUT_S = AppConfig.getInstance().getEmbeddingInputSize();
+    private static final Size INPUT_SIZE = new Size(INPUT_S, INPUT_S);
 
     public FaceEmbeddingGenerator() {
         initializeEmbeddingNet();
@@ -20,7 +22,7 @@ public class FaceEmbeddingGenerator {
     private void initializeEmbeddingNet() {
         try {
 
-            String modelPath = "data\\resources\\openface.nn4.small2.v1.t7";
+            String modelPath = AppConfig.getInstance().getEmbeddingModelPath();
 
             if (new java.io.File(modelPath).exists()) {
                 embeddingNet = Dnn.readNetFromTorch(modelPath);

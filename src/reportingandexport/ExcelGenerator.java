@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
+import ConfigurationAndLogging.*;
 
 public class ExcelGenerator implements ReportGenerator {
     @Override
@@ -30,7 +30,7 @@ public class ExcelGenerator implements ReportGenerator {
 
 
         // Export Path
-        String exportedFolderPath = "./data/export/Excel/";
+        String exportedFolderPath = AppConfig.getInstance().getExportExcelFolderPath();
 
         // Get the count of .*** files in export folder
         // Error Handling to access export files
