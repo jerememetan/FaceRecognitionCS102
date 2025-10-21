@@ -37,7 +37,7 @@ public class FaceAligner {
 
             // Fallback to generic eye cascade if specific ones don't exist
             if (new java.io.File(leftEyeCascadePath).exists() &&
-                    new java.io.File(rightEyeCascadePath).exists()) {
+                new java.io.File(rightEyeCascadePath).exists()) {
 
                 leftEyeDetector = new CascadeClassifier(leftEyeCascadePath);
                 rightEyeDetector = new CascadeClassifier(rightEyeCascadePath);
@@ -71,8 +71,7 @@ public class FaceAligner {
     }
 
     /**
-     * Aligns a face image using separate left/right eye detection with geometric
-     * validation
+     * Aligns a face image using separate left/right eye detection with geometric validation
      *
      * @param faceImage Input face ROI (already cropped to face bounding box)
      * @param faceRect  Original face bounding box (for reference)
@@ -80,7 +79,7 @@ public class FaceAligner {
      */
     public Mat align(Mat faceImage, Rect faceRect) {
         if (!isInitialized) {
-            return heuristicFallbackAlignment(faceImage);
+            return fallbackAlignment(faceImage);
         }
 
         if (faceImage == null || faceImage.empty()) {
@@ -98,9 +97,8 @@ public class FaceAligner {
             }
 
             // 1) Detect left and right eyes in constrained halves
-            Rect leftHalf = new Rect(0, 0, faceImage.width() / 2, (int) (faceImage.height() * 0.7));
-            Rect rightHalf = new Rect(faceImage.width() / 2, 0, faceImage.width() / 2,
-                    (int) (faceImage.height() * 0.7));
+            Rect leftHalf = new Rect(0, 0, faceImage.width()/2, (int)(faceImage.height()*0.7));
+            Rect rightHalf = new Rect(faceImage.width()/2, 0, faceImage.width()/2, (int)(faceImage.height()*0.7));
 
             Mat grayLeft = new Mat(gray, leftHalf);
             Mat grayRight = new Mat(gray, rightHalf);
@@ -133,23 +131,24 @@ public class FaceAligner {
                 double distRatio = eyeDist / faceImage.width();
                 double vertRatio = Math.abs(dy) / faceImage.height();
 
-                boolean geometryValid = Math.abs(angle) <= 15.0 &&
-                        vertRatio <= 0.10 &&
-                        distRatio >= 0.35 && distRatio <= 0.60 &&
-                        leftEye.x < rightEye.x;
+                boolean geometryValid =
+                    Math.abs(angle) <= 15.0 &&
+                    vertRatio <= 0.10 &&
+                    distRatio >= 0.35 && distRatio <= 0.60 &&
+                    leftEye.x < rightEye.x;
 
                 if (geometryValid) {
                     if (debugMode) {
                         System.out.println("Eyes validated: Left=" + leftEye + ", Right=" + rightEye +
-                                ", angle=" + String.format("%.1f", angle) +
-                                ", distRatio=" + String.format("%.2f", distRatio));
+                                         ", angle=" + String.format("%.1f", angle) +
+                                         ", distRatio=" + String.format("%.2f", distRatio));
                     }
                     return alignUsingEyes(faceImage, leftEye, rightEye);
                 } else {
                     if (debugMode) {
                         System.out.println("Eye geometry invalid: angle=" + String.format("%.1f", angle) +
-                                ", vertRatio=" + String.format("%.2f", vertRatio) +
-                                ", distRatio=" + String.format("%.2f", distRatio));
+                                         ", vertRatio=" + String.format("%.2f", vertRatio) +
+                                         ", distRatio=" + String.format("%.2f", distRatio));
                     }
                 }
             } else {
@@ -159,11 +158,11 @@ public class FaceAligner {
             }
 
             // Use fallback if eye detection/validation failed
-            return heuristicFallbackAlignment(faceImage);
+            return fallbackAlignment(faceImage);
 
         } catch (Exception e) {
             System.err.println("Eye detection failed: " + e.getMessage());
-            return heuristicFallbackAlignment(faceImage);
+            return fallbackAlignment(faceImage);
         }
     }
 
@@ -211,48 +210,8 @@ public class FaceAligner {
 
         } catch (Exception e) {
             System.err.println("Alignment transformation failed: " + e.getMessage());
-            return heuristicFallbackAlignment(faceImage);
+            return fallbackAlignment(faceImage);
         }
-    }
-
-    /**
-     * Pick the most central eye candidate in a face half
-     */
-    private Point pickBestEyeCenter(Rect[] eyes, Rect halfRegion) {
-        if (eyes == null || eyes.length == 0) {
-            return null;
-        }
-
-        Point bestCenter = null;
-        double bestScore = Double.MAX_VALUE;
-
-        // Calculate center of the half region
-        Point halfCenter = new Point(
-                halfRegion.x + halfRegion.width / 2.0,
-                halfRegion.y + halfRegion.height / 2.0);
-
-        for (Rect eye : eyes) {
-            // Calculate eye center (adjust for half-region offset)
-            Point eyeCenter = new Point(
-                    halfRegion.x + eye.x + eye.width / 2.0,
-                    halfRegion.y + eye.y + eye.height / 2.0);
-
-            // Score based on distance from half center and size preference
-            double distanceFromCenter = Math.hypot(
-                    eyeCenter.x - halfCenter.x,
-                    eyeCenter.y - halfCenter.y);
-
-            // Prefer larger eyes, penalize distance from center
-            double score = distanceFromCenter / halfRegion.width() +
-                    (100.0 - eye.width) / 100.0; // Prefer larger eyes
-
-            if (score < bestScore) {
-                bestScore = score;
-                bestCenter = eyeCenter;
-            }
-        }
-
-        return bestCenter;
     }
 
     /**
@@ -274,49 +233,6 @@ public class FaceAligner {
     }
 
     /**
-     * Heuristic fallback alignment using synthetic eye positions
-     * Places "eyes" at canonical positions and applies same transform as real
-     * alignment
-     */
-    private Mat heuristicFallbackAlignment(Mat faceImage) {
-        if (faceImage == null || faceImage.empty()) {
-            return new Mat();
-        }
-
-        try {
-            // Heuristic synthetic eyes based on face proportions
-            // Left eye at ~32% width, 36% height (from top-left)
-            // Right eye at ~68% width, 36% height (from top-left)
-            Point leftEyeGuess = new Point(
-                    faceImage.width() * 0.32,
-                    faceImage.height() * 0.36);
-            Point rightEyeGuess = new Point(
-                    faceImage.width() * 0.68,
-                    faceImage.height() * 0.36);
-
-            if (debugMode) {
-                System.out.println("Using heuristic alignment: Left=" + leftEyeGuess +
-                        ", Right=" + rightEyeGuess);
-            }
-
-            // Use same alignment transform as real eye detection
-            return alignUsingEyes(faceImage, leftEyeGuess, rightEyeGuess);
-
-        } catch (Exception e) {
-            System.err.println("Heuristic fallback alignment failed: " + e.getMessage());
-            // Ultimate fallback to plain resize
-            try {
-                Mat aligned = new Mat();
-                Imgproc.resize(faceImage, aligned, OUTPUT_SIZE, 0, 0, Imgproc.INTER_CUBIC);
-                return aligned;
-            } catch (Exception e2) {
-                System.err.println("Ultimate fallback failed: " + e2.getMessage());
-                return faceImage.clone();
-            }
-        }
-    }
-
-    /**
      * Enable debug output for testing
      */
     public void setDebugMode(boolean debug) {
@@ -334,13 +250,9 @@ public class FaceAligner {
      * Clean up resources
      */
     public void release() {
-        if (leftEyeDetector != null && !leftEyeDetector.empty()) {
+        if (eyeDetector != null && !eyeDetector.empty()) {
             // CascadeClassifier doesn't need explicit release in Java
-            leftEyeDetector = null;
-        }
-        if (rightEyeDetector != null && !rightEyeDetector.empty() &&
-                rightEyeDetector != leftEyeDetector) { // Don't release if it's the same object
-            rightEyeDetector = null;
+            eyeDetector = null;
         }
     }
 }

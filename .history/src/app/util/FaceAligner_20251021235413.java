@@ -80,7 +80,7 @@ public class FaceAligner {
      */
     public Mat align(Mat faceImage, Rect faceRect) {
         if (!isInitialized) {
-            return heuristicFallbackAlignment(faceImage);
+            return fallbackAlignment(faceImage);
         }
 
         if (faceImage == null || faceImage.empty()) {
@@ -159,11 +159,11 @@ public class FaceAligner {
             }
 
             // Use fallback if eye detection/validation failed
-            return heuristicFallbackAlignment(faceImage);
+            return fallbackAlignment(faceImage);
 
         } catch (Exception e) {
             System.err.println("Eye detection failed: " + e.getMessage());
-            return heuristicFallbackAlignment(faceImage);
+            return fallbackAlignment(faceImage);
         }
     }
 
@@ -211,7 +211,7 @@ public class FaceAligner {
 
         } catch (Exception e) {
             System.err.println("Alignment transformation failed: " + e.getMessage());
-            return heuristicFallbackAlignment(faceImage);
+            return fallbackAlignment(faceImage);
         }
     }
 
@@ -275,8 +275,7 @@ public class FaceAligner {
 
     /**
      * Heuristic fallback alignment using synthetic eye positions
-     * Places "eyes" at canonical positions and applies same transform as real
-     * alignment
+     * Places "eyes" at canonical positions and applies same transform as real alignment
      */
     private Mat heuristicFallbackAlignment(Mat faceImage) {
         if (faceImage == null || faceImage.empty()) {
@@ -288,15 +287,17 @@ public class FaceAligner {
             // Left eye at ~32% width, 36% height (from top-left)
             // Right eye at ~68% width, 36% height (from top-left)
             Point leftEyeGuess = new Point(
-                    faceImage.width() * 0.32,
-                    faceImage.height() * 0.36);
+                faceImage.width() * 0.32,
+                faceImage.height() * 0.36
+            );
             Point rightEyeGuess = new Point(
-                    faceImage.width() * 0.68,
-                    faceImage.height() * 0.36);
+                faceImage.width() * 0.68,
+                faceImage.height() * 0.36
+            );
 
             if (debugMode) {
                 System.out.println("Using heuristic alignment: Left=" + leftEyeGuess +
-                        ", Right=" + rightEyeGuess);
+                                 ", Right=" + rightEyeGuess);
             }
 
             // Use same alignment transform as real eye detection
