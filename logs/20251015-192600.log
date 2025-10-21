@@ -1,0 +1,491 @@
+[2025-10-15 19:26:00] INFO: Application Logger Initialized.
+[2025-10-15 19:26:00] INFO: Configuration and core components loaded.
+[2025-10-15 19:26:00] INFO: Configuration loaded from classpath: app.properties
+[2025-10-15 19:26:00] INFO: Configuration file loaded
+[2025-10-15 19:26:00] INFO: MyGUIProgram Started!
+[2025-10-15 19:26:02] INFO: === Folder debug ===
+[2025-10-15 19:26:02] INFO: Found folder: C:\Users\jerem\Desktop\homework folder wink wink\UNIVERSITEEEE\Year 2 omgommg\SEM SATU\Programming Fundmentals TOOO\Weekly ICEs\project_demo_codes\data\facedata\S11234_PY
+[2025-10-15 19:26:02] INFO:   Contains: 15 items
+[2025-10-15 19:26:02] INFO:   Display label: S11234 - PY
+[2025-10-15 19:26:02] INFO: Found folder: C:\Users\jerem\Desktop\homework folder wink wink\UNIVERSITEEEE\Year 2 omgommg\SEM SATU\Programming Fundmentals TOOO\Weekly ICEs\project_demo_codes\data\facedata\S12127_Jin_Rae
+[2025-10-15 19:26:02] INFO:   Contains: 30 items
+[2025-10-15 19:26:02] INFO:   Display label: S12127 - Jin_Rae
+[2025-10-15 19:26:02] INFO: Found folder: C:\Users\jerem\Desktop\homework folder wink wink\UNIVERSITEEEE\Year 2 omgommg\SEM SATU\Programming Fundmentals TOOO\Weekly ICEs\project_demo_codes\data\facedata\S12345_Jereme
+[2025-10-15 19:26:02] INFO:   Contains: 15 items
+[2025-10-15 19:26:02] INFO:   Display label: S12345 - Jereme
+[2025-10-15 19:26:02] INFO: ====================
+[2025-10-15 19:26:06] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:06] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:06] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:06] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:06] INFO: [0.0, 0.7225228157717298, 0.0]
+[2025-10-15 19:26:06] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:06] INFO: [0.0, 0.675148397448137, 0.0]
+[2025-10-15 19:26:06] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:06] INFO: [0.0, 0.6067265209687207, 0.0]
+[2025-10-15 19:26:07] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:07] INFO: [0.0, 0.6743664354415914, 0.0]
+[2025-10-15 19:26:07] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:07] INFO: [0.0, 0.6325886429411616, 0.0]
+[2025-10-15 19:26:07] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:07] INFO: [0.0, 0.6911212589726715, 0.0]
+[2025-10-15 19:26:07] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:07] INFO: [0.0, 0.6365319983462387, 0.0]
+[2025-10-15 19:26:07] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:07] INFO: [0.0, 0.5741521170085161, 0.0]
+[2025-10-15 19:26:07] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:07] INFO: [0.0, 0.6135662149344165, 0.0]
+[2025-10-15 19:26:07] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:07] INFO: [0.0, 0.596942178336747, 0.0]
+[2025-10-15 19:26:07] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:08] INFO: [0.0, 0.6144162685884191, 0.0]
+[2025-10-15 19:26:08] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:08] INFO: [0.0, 0.6084135290909667, 0.0]
+[2025-10-15 19:26:08] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:08] INFO: [0.0, 0.620829620571814, 0.0]
+[2025-10-15 19:26:08] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:08] INFO: [0.0, 0.6615671316657917, 0.0]
+[2025-10-15 19:26:08] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:08] INFO: [0.0, 0.6149953918714074, 0.0]
+[2025-10-15 19:26:08] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:08] INFO: [0.0, 0.6143933844241255, 0.0]
+[2025-10-15 19:26:08] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:08] INFO: [0.0, 0.6659149940210413, 0.0]
+[2025-10-15 19:26:08] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:09] INFO: [0.0, 0.5892110696501186, 0.0]
+[2025-10-15 19:26:09] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:09] INFO: [0.0, 0.5995625624741986, 0.0]
+[2025-10-15 19:26:09] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:09] INFO: [0.0, 0.5765588266937274, 0.0]
+[2025-10-15 19:26:09] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:09] INFO: [0.0, 0.5698615551462596, 0.0]
+[2025-10-15 19:26:09] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:09] INFO: [0.0, 0.6420690500098737, 0.0]
+[2025-10-15 19:26:09] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:09] INFO: [0.0, 0.643299192303922, 0.0]
+[2025-10-15 19:26:10] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:10] INFO: [0.0, 0.6333549910209763, 0.0]
+[2025-10-15 19:26:10] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:10] INFO: [0.0, 0.7315891044699168, 0.0]
+[2025-10-15 19:26:10] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:10] INFO: [0.0, 0.7313667397030172, 0.0]
+[2025-10-15 19:26:10] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:10] INFO: [0.0, 0.695488563327394, 0.0]
+[2025-10-15 19:26:10] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:10] INFO: [0.0, 0.7042550867085386, 0.0]
+[2025-10-15 19:26:10] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:10] INFO: [0.0, 0.6930621863215267, 0.0]
+[2025-10-15 19:26:10] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:11] INFO: [0.0, 0.6601113367253609, 0.0]
+[2025-10-15 19:26:11] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:11] INFO: [0.0, 0.7036009868416743, 0.0]
+[2025-10-15 19:26:11] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:11] INFO: [0.0, 0.7136310487164503, 0.0]
+[2025-10-15 19:26:11] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:11] INFO: [0.0, 0.7032340314928529, 0.0]
+[2025-10-15 19:26:11] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:11] INFO: [0.0, 0.6750764305192839, 0.0]
+[2025-10-15 19:26:11] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:11] INFO: [0.0, 0.6429844379858092, 0.0]
+[2025-10-15 19:26:11] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:11] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:12] INFO: [0.0, 0.6465391184937123, 0.0]
+[2025-10-15 19:26:12] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:12] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:12] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:12] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:12] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:12] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:12] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:12] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:12] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:13] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:13] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:13] INFO: [0.0, 0.4759800382027175, 0.0]
+[2025-10-15 19:26:13] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:13] INFO: [0.0, 0.7953899652343768, 0.0]
+[2025-10-15 19:26:13] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:13] INFO: [0.0, 0.7887937517260255, 0.0]
+[2025-10-15 19:26:13] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:13] INFO: [0.0, 0.7670806100381222, 0.0]
+[2025-10-15 19:26:13] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:13] INFO: [0.0, 0.7614487386146189, 0.0]
+[2025-10-15 19:26:14] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:14] INFO: [0.0, 0.7991791663947768, 0.0]
+[2025-10-15 19:26:14] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:14] INFO: [0.0, 0.7957708934035076, 0.0]
+[2025-10-15 19:26:14] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:14] INFO: [0.0, 0.781029856162711, 0.0]
+[2025-10-15 19:26:14] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:14] INFO: [0.0, 0.8099643459849337, 0.0]
+[2025-10-15 19:26:14] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:14] INFO: [0.0, 0.764012390339045, 0.0]
+[2025-10-15 19:26:14] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:14] INFO: [0.0, 0.8419770838501441, 0.0]
+[2025-10-15 19:26:15] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:15] INFO: [0.0, 0.8573379553897158, 0.0]
+[2025-10-15 19:26:15] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:15] INFO: [0.0, 0.8130240435979764, 0.0]
+[2025-10-15 19:26:15] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:15] INFO: [0.0, 0.8582151476670741, 0.0]
+[2025-10-15 19:26:15] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:15] INFO: [0.0, 0.910744961914036, 0.0]
+[2025-10-15 19:26:15] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:15] INFO: [0.0, 0.7927060009939869, 0.0]
+[2025-10-15 19:26:15] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:15] INFO: [0.0, 0.7007735985230814, 0.0]
+[2025-10-15 19:26:16] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:16] INFO: [0.0, 0.8269136067991537, 0.0]
+[2025-10-15 19:26:16] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:16] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:16] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:16] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:16] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:16] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:16] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:16] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:17] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:17] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:17] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:17] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:17] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:17] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:17] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:17] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:17] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:18] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:18] INFO: [0.0, 0.6822332203420405, 0.0]
+[2025-10-15 19:26:18] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:18] INFO: [0.0, 0.6318230594840072, 0.0]
+[2025-10-15 19:26:18] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:18] INFO: [0.0, 0.7348943430424333, 0.0]
+[2025-10-15 19:26:18] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:18] INFO: [0.0, 0.7737810393005794, 0.0]
+[2025-10-15 19:26:18] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:18] INFO: [0.0, 0.7065744082523433, 0.0]
+[2025-10-15 19:26:18] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:18] INFO: [0.0, 0.5999238313849974, 0.0]
+[2025-10-15 19:26:19] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:19] INFO: [0.0, 0.704429956548637, 0.0]
+[2025-10-15 19:26:19] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:19] INFO: [0.0, 0.7961889654136154, 0.0]
+[2025-10-15 19:26:19] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:19] INFO: [0.0, 0.6606334112219429, 0.0]
+[2025-10-15 19:26:19] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:19] INFO: [0.0, 0.673236814711564, 0.0]
+[2025-10-15 19:26:19] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:19] INFO: [0.0, 0.6321393311374419, 0.0]
+[2025-10-15 19:26:19] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:19] INFO: [0.0, 0.8322884165272122, 0.0]
+[2025-10-15 19:26:20] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:20] INFO: [0.0, 0.8273601463532592, 0.0]
+[2025-10-15 19:26:20] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:20] INFO: [0.0, 0.7692187558908149, 0.0]
+[2025-10-15 19:26:20] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:20] INFO: [0.0, 0.7300145534857775, 0.0]
+[2025-10-15 19:26:20] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:20] INFO: [0.0, 0.7197637225369541, 0.0]
+[2025-10-15 19:26:20] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:20] INFO: [0.0, 0.7492829302139131, 0.0]
+[2025-10-15 19:26:20] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:20] INFO: [0.0, 0.7435285120875091, 0.0]
+[2025-10-15 19:26:20] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:20] INFO: [0.0, 0.7558350491709575, 0.0]
+[2025-10-15 19:26:20] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:21] INFO: [0.0, 0.7510198865235157, 0.0]
+[2025-10-15 19:26:21] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:21] INFO: [0.0, 0.7288552842745802, 0.0]
+[2025-10-15 19:26:21] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:21] INFO: [0.0, 0.7209292660638081, 0.0]
+[2025-10-15 19:26:21] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:21] INFO: [0.0, 0.7468801615209373, 0.0]
+[2025-10-15 19:26:21] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:21] INFO: [0.0, 0.7530238904283645, 0.0]
+[2025-10-15 19:26:21] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:21] INFO: [0.0, 0.7928864370405643, 0.0]
+[2025-10-15 19:26:21] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:21] INFO: [0.0, 0.7740778195432523, 0.0]
+[2025-10-15 19:26:22] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:22] INFO: [0.0, 0.6966851055877095, 0.0]
+[2025-10-15 19:26:22] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:22] INFO: [0.0, 0.7400571330082931, 0.0]
+[2025-10-15 19:26:22] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:22] INFO: [0.0, 0.7273534463686819, 0.0]
+[2025-10-15 19:26:22] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:22] INFO: [0.0, 0.7650213977376293, 0.0]
+[2025-10-15 19:26:22] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:22] INFO: [0.0, 0.7114217428165582, 0.0]
+[2025-10-15 19:26:22] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:22] INFO: [0.0, 0.7459272044810974, 0.0]
+[2025-10-15 19:26:22] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:22] INFO: [0.0, 0.7234910632668732, 0.0]
+[2025-10-15 19:26:22] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:22] INFO: [0.0, 0.7296865216939931, 0.0]
+[2025-10-15 19:26:23] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:23] INFO: [0.0, 0.7512129550203233, 0.0]
+[2025-10-15 19:26:23] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:23] INFO: [0.0, 0.7380112459524198, 0.0]
+[2025-10-15 19:26:23] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:23] INFO: [0.0, 0.721688330517204, 0.0]
+[2025-10-15 19:26:23] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:23] INFO: [0.0, 0.6534497324107774, 0.0]
+[2025-10-15 19:26:23] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:23] INFO: [0.0, 0.6917743220120989, 0.0]
+[2025-10-15 19:26:23] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:23] INFO: [0.0, 0.754107847786371, 0.0]
+[2025-10-15 19:26:23] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:23] INFO: [0.0, 0.6895011220109319, 0.0]
+[2025-10-15 19:26:23] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:24] INFO: [0.0, 0.6602389665933383, 0.0]
+[2025-10-15 19:26:24] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:24] INFO: [0.0, 0.7408887049722207, 0.0]
+[2025-10-15 19:26:24] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:24] INFO: [0.0, 0.7465502922923267, 0.0]
+[2025-10-15 19:26:24] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:24] INFO: [0.0, 0.7001501007882119, 0.0]
+[2025-10-15 19:26:24] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:24] INFO: [0.0, 0.7391209796644145, 0.0]
+[2025-10-15 19:26:24] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:24] INFO: [0.0, 0.7393598353820999, 0.0]
+[2025-10-15 19:26:24] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:24] INFO: [0.0, 0.7606164006413196, 0.0]
+[2025-10-15 19:26:24] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:24] INFO: [0.0, 0.7158468389404813, 0.0]
+[2025-10-15 19:26:24] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:25] INFO: [0.0, 0.7207838559105275, 0.0]
+[2025-10-15 19:26:25] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:25] INFO: [0.0, 0.6735910563858934, 0.0]
+[2025-10-15 19:26:25] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:25] INFO: [0.0, 0.6768037944673735, 0.0]
+[2025-10-15 19:26:25] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:25] INFO: [0.0, 0.6593258449347229, 0.0]
+[2025-10-15 19:26:25] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:25] INFO: [0.0, 0.7187626857266888, 0.0]
+[2025-10-15 19:26:25] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:25] INFO: [0.0, 0.6965431002399669, 0.0]
+[2025-10-15 19:26:25] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:25] INFO: [0.0, 0.707126876973081, 0.0]
+[2025-10-15 19:26:25] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:25] INFO: [0.0, 0.6793357462934508, 0.0]
+[2025-10-15 19:26:26] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:26] INFO: [0.0, 0.7636218969461991, 0.0]
+[2025-10-15 19:26:26] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:26] INFO: [0.0, 0.8098760410959147, 0.0]
+[2025-10-15 19:26:26] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:26] INFO: [0.0, 0.8142775237023991, 0.0]
+[2025-10-15 19:26:26] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:26] INFO: [0.0, 0.8154321989315304, 0.0]
+[2025-10-15 19:26:26] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:26] INFO: [0.0, 0.791185184014864, 0.0]
+[2025-10-15 19:26:26] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:26] INFO: [0.0, 0.7922393804467793, 0.0]
+[2025-10-15 19:26:26] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:26] INFO: [0.0, 0.8098326491202191, 0.0]
+[2025-10-15 19:26:27] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:27] INFO: [0.0, 0.8128526826367434, 0.0]
+[2025-10-15 19:26:27] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:27] INFO: [0.0, 0.8126134663712168, 0.0]
+[2025-10-15 19:26:27] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:27] INFO: [0.0, 0.8506182526397214, 0.0]
+[2025-10-15 19:26:27] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:27] INFO: [0.0, 0.7543920784454377, 0.0]
+[2025-10-15 19:26:27] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:27] INFO: [0.0, 0.7267953597623162, 0.0]
+[2025-10-15 19:26:27] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:27] INFO: [0.0, 0.7006888439282293, 0.0]
+[2025-10-15 19:26:27] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:27] INFO: [0.0, 0.8058174190230494, 0.0]
+[2025-10-15 19:26:28] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:28] INFO: [0.0, 0.8318625913650292, 0.0]
+[2025-10-15 19:26:28] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:28] INFO: [0.0, 0.8006062706690239, 0.0]
+[2025-10-15 19:26:28] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:28] INFO: [0.0, 0.8119035306967036, 0.0]
+[2025-10-15 19:26:28] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:28] INFO: [0.0, 0.81433496090153, 0.0]
+[2025-10-15 19:26:28] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:28] INFO: [0.0, 0.8107465628563338, 0.0]
+[2025-10-15 19:26:28] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:28] INFO: [0.0, 0.8425243606174451, 0.0]
+[2025-10-15 19:26:28] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:28] INFO: [0.0, 0.8390773444976192, 0.0]
+[2025-10-15 19:26:29] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 171
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 170
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 169
+[2025-10-15 19:26:29] INFO: [0.0, 0.8128237885903749, 0.0]
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 167
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 166
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 164
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 163
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 162
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 161
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 160
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 159
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 158
+[2025-10-15 19:26:29] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 157
+[2025-10-15 19:26:29] INFO: [0.0, 0.7989295089308895, 0.0]
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 156
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 155
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 154
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 153
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 152
+[2025-10-15 19:26:29] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 151
+[2025-10-15 19:26:29] INFO: [0.0, 0.7812553437785364, 0.0]
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 150
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 149
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 148
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 147
+[2025-10-15 19:26:29] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:29] INFO: [0.0, 0.6522658609062232, 0.0]
+[2025-10-15 19:26:29] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:29] INFO: [0.0, 0.7684108502515065, 0.0]
+[2025-10-15 19:26:29] INFO: detection.min_size_px has been changed to 146
+[2025-10-15 19:26:29] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:30] INFO: [0.0, 0.8077276168427182, 0.0]
+[2025-10-15 19:26:30] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:30] INFO: [0.0, 0.8037271082968861, 0.0]
+[2025-10-15 19:26:30] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 145
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 144
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 143
+[2025-10-15 19:26:30] INFO: [0.0, 0.8458836245845353, 0.0]
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 142
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 141
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 140
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 139
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 138
+[2025-10-15 19:26:30] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 137
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 136
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 134
+[2025-10-15 19:26:30] INFO: [0.0, 0.8079089077525607, 0.0]
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 133
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 132
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 131
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 130
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 129
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 128
+[2025-10-15 19:26:30] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 127
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 126
+[2025-10-15 19:26:30] INFO: [0.0, 0.8173150651016718, 0.0]
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 125
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 124
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 123
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 122
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 121
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 120
+[2025-10-15 19:26:30] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 119
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 118
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 117
+[2025-10-15 19:26:30] INFO: [0.0, 0.8004106403111372, 0.0]
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 116
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 115
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 114
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 113
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 112
+[2025-10-15 19:26:30] INFO: detection.min_size_px has been changed to 111
+[2025-10-15 19:26:30] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:31] INFO: detection.min_size_px has been changed to 110
+[2025-10-15 19:26:31] INFO: [0.0, 0.7625136394707288, 0.0]
+[2025-10-15 19:26:31] INFO: detection.min_size_px has been changed to 109
+[2025-10-15 19:26:31] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:31] INFO: [0.0, 0.7853591361396568, 0.0]
+[2025-10-15 19:26:31] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:31] INFO: [0.0, 0.8206876958365892, 0.0]
+[2025-10-15 19:26:31] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:31] INFO: [0.0, 0.8088921189127904, 0.0]
+[2025-10-15 19:26:31] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:31] INFO: [0.0, 0.8002954836183837, 0.0]
+[2025-10-15 19:26:31] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:31] INFO: [0.0, 0.7914572583235852, 0.0]
+[2025-10-15 19:26:31] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:31] INFO: [0.0, 0.7892762149976492, 0.0]
+[2025-10-15 19:26:32] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:32] INFO: [0.0, 0.7125805198261094, 0.0]
+[2025-10-15 19:26:32] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:32] INFO: [0.0, 0.7575547297415165, 0.0]
+[2025-10-15 19:26:32] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:32] INFO: [0.0, 0.6927909435659407, 0.0]
+[2025-10-15 19:26:32] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:32] INFO: [0.0, 0.6850616700822508, 0.0]
+[2025-10-15 19:26:32] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:32] INFO: [0.0, 0.8298371814579996, 0.0]
+[2025-10-15 19:26:32] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:32] INFO: [0.0, 0.815505119501841, 0.0]
+[2025-10-15 19:26:32] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:32] INFO: [0.0, 0.694380056407206, 0.0]
+[2025-10-15 19:26:33] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:33] INFO: [0.0, 0.7186784853294446, 0.0]
+[2025-10-15 19:26:33] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:33] INFO: [0.0, 0.7211619847812218, 0.0]
+[2025-10-15 19:26:33] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:33] INFO: [0.0, 0.6391468583296508, 0.0]
+[2025-10-15 19:26:33] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:33] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:33] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:33] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:33] INFO: [0.0, 0.7453810230042539, 0.0]
+[2025-10-15 19:26:33] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:33] INFO: [0.0, 0.7592990448477612, 0.0]
+[2025-10-15 19:26:34] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:34] INFO: [0.0, 0.7889061485711844, 0.0]
+[2025-10-15 19:26:34] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:34] INFO: [0.0, 0.7723861022486825, 0.0]
+[2025-10-15 19:26:34] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:34] INFO: [0.0, 0.7418463866885198, 0.0]
+[2025-10-15 19:26:34] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:34] INFO: [0.0, 0.7622822542220643, 0.0]
+[2025-10-15 19:26:34] INFO: detection.min_size_px has been changed to 109
+[2025-10-15 19:26:34] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:34] INFO: [0.0, 0.8036735468326635, 0.0]
+[2025-10-15 19:26:34] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:34] INFO: [0.0, 0.8620452923638474, 0.0]
+[2025-10-15 19:26:34] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:34] INFO: [0.0, 0.8394561613624272, 0.0]
+[2025-10-15 19:26:35] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:35] INFO: [0.0, 0.80862710277926, 0.0]
+[2025-10-15 19:26:35] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:35] INFO: [0.0, 0.71885141620076, 0.0]
+[2025-10-15 19:26:35] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:35] INFO: [0.0, 0.7925881850534929, 0.0]
+[2025-10-15 19:26:35] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:35] INFO: [0.0, 0.7823195190075342, 0.0]
+[2025-10-15 19:26:35] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:35] INFO: [0.0, 0.7627114264696777, 0.0]
+[2025-10-15 19:26:35] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:35] INFO: [0.0, 0.6905832148347055, 0.0]
+[2025-10-15 19:26:35] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:35] INFO: [0.0, 0.7075179733733745, 0.0]
+[2025-10-15 19:26:36] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:36] INFO: [0.0, 0.7512937884193461, 0.0]
+[2025-10-15 19:26:36] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:36] INFO: [0.0, 0.6910958084997002, 0.0]
+[2025-10-15 19:26:36] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:36] INFO: [0.0, 0.6909672434294488, 0.0]
+[2025-10-15 19:26:36] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:36] INFO: [0.0, 0.6517806397604242, 0.0]
+[2025-10-15 19:26:36] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:36] INFO: [0.0, 0.6594830471474747, 0.0]
+[2025-10-15 19:26:36] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:36] INFO: [0.0, 0.6376792703796578, 0.0]
+[2025-10-15 19:26:36] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:36] INFO: [0.0, 0.5958244875316132, 0.0]
+[2025-10-15 19:26:37] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:37] INFO: [0.0, 0.5840595649664123, 0.0]
+[2025-10-15 19:26:37] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:37] INFO: [0.0, 0.6892304879095169, 0.0]
+[2025-10-15 19:26:37] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:37] INFO: [0.0, 0.6302188002357689, 0.0]
+[2025-10-15 19:26:37] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:37] INFO: [0.0, 0.6386641782276676, 0.0]
+[2025-10-15 19:26:37] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:37] INFO: [0.0, 0.6173520955434701, 0.0]
+[2025-10-15 19:26:37] INFO: Exiting Face Recognition Demo...
+[2025-10-15 19:26:37] INFO: Face embedding model loaded successfully
+[2025-10-15 19:26:37] INFO: [0.0, 0.7942870178400081, 0.0]
+[2025-10-15 19:26:37] INFO: Exiting Face Recognition Demo...
