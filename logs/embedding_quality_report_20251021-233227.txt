@@ -1,0 +1,43 @@
+================================================================================
+EMBEDDING QUALITY REPORT
+================================================================================
+Generated: 2025-10-21 23:32:27
+Database: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata
+
+================================================================================
+STUDENT: S13234_Jin_Rae
+================================================================================
+
+  ⚠ No embedding files found
+
+================================================================================
+OVERALL SUMMARY
+================================================================================
+
+--- STATISTICS ---
+Total students analyzed: 1
+Total embeddings: 0
+Average embeddings per student: 0.0
+
+--- QUALITY METRICS ---
+Average tightness: 0.0000
+Students with outliers: 0 (0.0%)
+Total outliers found: 0
+
+--- QUALITY DISTRIBUTION ---
+EXCELLENT (≥0.85): 0
+GOOD (0.75-0.84): 0
+MODERATE (0.65-0.74): 0
+POOR (<0.65): 0
+
+--- RECOMMENDATIONS ---
+⚠ Overall average tightness is low (<0.70)
+  → Consider re-capturing face images with better quality:
+    • Consistent lighting
+    • Sharp focus (not blurry)
+    • Face straight-on (±15° max)
+    • Neutral expression
+
+================================================================================
+END OF REPORT
+================================================================================
