@@ -11,7 +11,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-
+import ConfigurationAndLogging.*;
 public class PDFGenerator implements ReportGenerator {
     @Override
     public void generate(){
@@ -32,7 +32,7 @@ public class PDFGenerator implements ReportGenerator {
 
 
         // Export Path
-        String exportedFolderPath = "./data/export/PDF/";
+        String exportedFolderPath = AppConfig.getInstance().getExportPdfFolderPath();
 
         // Get the count of .*** files in export folder
         // Error Handling to access export files

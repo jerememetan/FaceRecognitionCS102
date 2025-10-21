@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import ConfigurationAndLogging.*;
 
 public class CSVGenerator implements ReportGenerator {
     @Override
@@ -26,7 +27,7 @@ public class CSVGenerator implements ReportGenerator {
 
 
         // Export Path
-        String exportedFolderPath = "./data/export/CSV/";
+        String exportedFolderPath = AppConfig.getInstance().getExportCsvFolderPath();
 
         // Get the count of .*** files in export folder
         // Error Handling to access export files

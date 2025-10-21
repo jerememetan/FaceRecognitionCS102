@@ -12,10 +12,10 @@ import java.util.Comparator;
 
 public class ImageProcessor {
 
-    private static final double MIN_SHARPNESS_THRESHOLD = 80.0;
-    private static final double MIN_BRIGHTNESS = 30.0;
-    private static final double MAX_BRIGHTNESS = 230.0;
-    private static final double MIN_CONTRAST = 20.0;
+    private static final double MIN_SHARPNESS_THRESHOLD = AppConfig.getInstance().getPreprocessingMinSharpnessThreshold();
+    private static final double MIN_BRIGHTNESS = AppConfig.getInstance().getPreprocessingMinBrightness();
+    private static final double MAX_BRIGHTNESS = AppConfig.getInstance().getPreprocessingMaxBrightness();
+    private static final double MIN_CONTRAST = AppConfig.getInstance().getPreprocessingMinContrast();
     private static final int crop_size = AppConfig.KEY_RECOGNITION_CROP_SIZE_PX;
     private static final Size STANDARD_SIZE = new Size(crop_size, crop_size);
 

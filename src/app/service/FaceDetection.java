@@ -94,8 +94,8 @@ public class FaceDetection {
 
     private void initializeDetectors() {
         try {
-            String modelConfiguration = "data/resources/opencv_face_detector.pbtxt";
-            String modelWeights = "data/resources/opencv_face_detector_uint8.pb";
+            String modelConfiguration = AppConfig.getInstance().getDetectionModelConfigurationPath();
+            String modelWeights = AppConfig.getInstance().getDetectionModelWeightsPath();
 
             if (new File(modelConfiguration).exists() && new File(modelWeights).exists()) {
                 try {
