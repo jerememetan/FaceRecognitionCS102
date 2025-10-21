@@ -1,11 +1,12 @@
 package app.util;
 
+import ConfigurationAndLogging.*;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.photo.Photo;
 import org.opencv.imgproc.CLAHE;
 import org.opencv.objdetect.CascadeClassifier;
-
+import ConfigurationAndLogging.*;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -15,7 +16,8 @@ public class ImageProcessor {
     private static final double MIN_BRIGHTNESS = 30.0;
     private static final double MAX_BRIGHTNESS = 230.0;
     private static final double MIN_CONTRAST = 20.0;
-    private static final Size STANDARD_SIZE = new Size(200, 200);
+    private static final int crop_size = AppConfig.KEY_RECOGNITION_CROP_SIZE_PX;
+    private static final Size STANDARD_SIZE = new Size(crop_size, crop_size);
 
     public Mat preprocessFaceImage(Mat faceImage) {
         if (faceImage.empty()) {
@@ -31,9 +33,17 @@ public class ImageProcessor {
         }
 
         Mat filteredImage = new Mat();
-        Imgproc.bilateralFilter(processedImage, filteredImage, 9, 75, 75);
 
-        CLAHE clahe = Imgproc.createCLAHE(2.0, new Size(8, 8));
+        double kernelSize = (double)AppConfig.KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE; 
+        double sigmaX = (double)AppConfig.KEY_PREPROCESSING_GAUSSIAN_SIGMA_X;
+        // --- ADDED: FIXED GAUSSIAN BLUR (Noise Reduction) in replacement of bilateralFilter--- 
+        Imgproc.GaussianBlur(processedImage, filteredImage, new Size(kernelSize, kernelSize), sigmaX);      
+        
+        // Imgproc.bilateralFilter(processedImage, filteredImage, 9, 75, 75);
+
+        double clipLimit = AppConfig.KEY_PREPROCESSING_CLAHE_CLIP_LIMIT; 
+        double gridSize = AppConfig.KEY_PREPROCESSING_CLAHE_GRID_SIZE;
+        CLAHE clahe = Imgproc.createCLAHE(clipLimit, new Size(gridSize, gridSize));
         Mat contrastEnhanced = new Mat();
         clahe.apply(filteredImage, contrastEnhanced);
 
@@ -42,6 +52,11 @@ public class ImageProcessor {
 
         Mat normalized = new Mat();
         Core.normalize(resized, normalized, 0, 255, Core.NORM_MINMAX, CvType.CV_8U);
+        // Release intermediate Mats
+        processedImage.release();
+        filteredImage.release();
+        contrastEnhanced.release();
+        resized.release();       
 
         return normalized;
     }

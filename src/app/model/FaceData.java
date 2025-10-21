@@ -1,6 +1,7 @@
 package app.model;
 
 import ConfigurationAndLogging.AppConfig;
+import ConfigurationAndLogging.AppLogger;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -14,6 +15,7 @@ public class FaceData {
     private List<FaceImage> images;
     private boolean isValid;
     private Path studentFolder;
+    private String imageType = AppConfig.getInstance().getRecognitionImageFormat();
 
     public FaceData(String studentId, String studentName) {
         this.studentId = studentId;
@@ -31,15 +33,20 @@ public class FaceData {
             basePath = ".";
         }
 
+
         String folderName = buildFolderName(studentId, studentName);
-        this.studentFolder = Paths.get(basePath).resolve(folderName);
+        Path preferred = Paths.get(basePath).resolve(folderName).toAbsolutePath().normalize();
+        this.studentFolder = preferred;
     }
 
     private void loadExistingImages() {
+        if (studentFolder == null) {
+            return; 
+        }
         File folder = studentFolder.toFile();
         if (folder.exists() && folder.isDirectory()) {
             File[] files = folder.listFiles(
-                    (dir, name) -> name.toLowerCase().endsWith(".jpg"));
+                    (dir, name) -> name.toLowerCase().endsWith(".jpg") || name.toLowerCase().endsWith(".png"));
             if (files != null) {
                 for (File file : files) {
                     FaceImage faceImage = new FaceImage(file.getAbsolutePath(), null);
@@ -52,6 +59,10 @@ public class FaceData {
     private String buildFolderName(String id, String name) {
         String safeId = id != null ? id.trim().replaceAll("[\\\\/:*?\"<>|]", "") : "";
         String safeName = name != null ? name.trim().replaceAll("[\\\\/:*?\"<>|]", "") : "";
+
+        if (!safeName.isEmpty()) {
+            safeName = safeName.replaceAll("\\s+", "_");
+        }
 
         StringBuilder combined = new StringBuilder();
         if (!safeId.isEmpty()) {
@@ -69,11 +80,49 @@ public class FaceData {
     }
 
     public boolean addImage(FaceImage faceImage) {
-        if (images.size() >= 30) {
+        return addOrReplaceImage(faceImage);
+    }
+
+    public boolean addOrReplaceImage(FaceImage faceImage) {
+        if (faceImage == null || faceImage.getImagePath() == null) {
             return false;
         }
+
+        int existingIndex = indexOfImagePath(faceImage.getImagePath());
+        if (existingIndex >= 0) {
+            images.set(existingIndex, faceImage);
+            validateImages();
+            return true; 
+        }
+
+        if (images.size() >= 30) {
+            return false; 
+        }
         images.add(faceImage);
+        validateImages();
         return true;
+    }
+
+    private int indexOfImagePath(String path) {
+        if (path == null) return -1;
+        String target = normalizePath(path);
+        for (int i = 0; i < images.size(); i++) {
+            FaceImage img = images.get(i);
+            if (img != null && img.getImagePath() != null) {
+                if (normalizePath(img.getImagePath()).equals(target)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    private String normalizePath(String p) {
+        try {
+            return new File(p).getAbsolutePath().replace('\\', '/').toLowerCase();
+        } catch (Exception e) {
+            return p.replace('\\', '/').toLowerCase();
+        }
     }
 
     public boolean validateImages() {
@@ -86,6 +135,15 @@ public class FaceData {
     }
 
     public String getFolderPath() {
+        // Ensure we always return a usable path; if somehow uninitialized, fall back to base path with built folder name
+        if (studentFolder == null) {
+            String basePath = AppConfig.getInstance().getDatabaseStoragePath();
+            if (basePath == null || basePath.trim().isEmpty()) {
+                basePath = ".";
+            }
+            String folderName = buildFolderName(studentId, studentName);
+            studentFolder = Paths.get(basePath).resolve(folderName).toAbsolutePath().normalize();
+        }
         return studentFolder.toAbsolutePath().toString();
     }
 
