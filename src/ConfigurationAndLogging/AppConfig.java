@@ -17,11 +17,74 @@ public class AppConfig {
     public final static String KEY_DETECTION_MIN_NEIGHBORS = "detection.min.neighbors";
     public final static String KEY_DETECTION_MIN_SIZE_PX = "detection.min_size_px";
     public final static String KEY_RECOGNITION_THRESHOLD = "recognition.threshold";
+    public final static String KEY_RECOGNITION_IMAGE_FORMAT = "recognition.image_format";
+
+    // constants used in methods
     public final static int KEY_RECOGNITION_CROP_SIZE_PX = 200;
     public final static int KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE = 5;
     public final static int KEY_PREPROCESSING_GAUSSIAN_SIGMA_X = 0;
     public final static double KEY_PREPROCESSING_CLAHE_CLIP_LIMIT = 2.0;
     public final static int KEY_PREPROCESSING_CLAHE_GRID_SIZE = 8;
+
+    // --- Added/missing keys (restored from app.properties) ---
+    // capture.*
+    public final static String KEY_CAPTURE_MIN_CONFIDENCE_SCORE = "capture.min_confidence_score";
+    public final static String KEY_CAPTURE_MIN_FACE_SIZE = "capture.min_face_size";
+    public final static String KEY_CAPTURE_INTERVAL_MS = "capture.capture_interval_ms";
+    public final static String KEY_CAPTURE_ATTEMPT_MULTIPLIER = "capture.capture_attempt_mutliplier"; // keep misspelling
+    public final static String KEY_CAPTURE_FRAME_WAIT_TIMEOUT_MS = "capture.frame_wait_timeout_ms";
+    public final static String KEY_CAPTURE_FACE_PERSISTENCE_NS = "capture.face_persistence_ns";
+
+    // embedding.*
+    public final static String KEY_EMBEDDING_MODEL_PATH = "embedding.model_path";
+    public final static String KEY_EMBEDDING_SIZE = "embedding.embedding.size";
+    public final static String KEY_EMBEDDING_INPUT_SIZE = "embedding.input_size";
+
+    // database.*
+    public final static String KEY_DATABASE_URL = "database.URL";
+    public final static String KEY_DATABASE_USER = "database.user";
+    public final static String KEY_DATABASE_PASSWORD = "database.password";
+
+    // detection model files (alternate keys present in app.properties)
+    public final static String KEY_DETECTION_MODEL_CONFIG = "detection.model_configuration_path";
+    public final static String KEY_DETECTION_MODEL_WEIGHTS = "detection.model_weights";
+
+    // dnn keys (detection.dnn.*)
+    public final static String KEY_DNN_ENABLED = "detection.dnn.enabled";
+    public final static String KEY_DNN_MODEL_PATH = "detection.dnn.model_path";
+    public final static String KEY_DNN_CONFIG_PATH = "detection.dnn.config_path";
+    public final static String KEY_DNN_CONFIDENCE = "detection.dnn.confidence";
+
+    // preprocessing thresholds
+    public final static String KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD = "preprocessing.min_sharpness_threshold";
+    public final static String KEY_PREPROCESSING_MIN_BRIGHTNESS = "preprocessing.min_brightness";
+    public final static String KEY_PREPROCESSING_MAX_BRIGHTNESS = "preprocessing.max_brightness";
+    public final static String KEY_PREPROCESSING_MIN_CONTRAST = "preprocessing.min_contrast";
+
+    // export folders
+    public final static String KEY_EXPORT_CSV_FOLDER = "export.csv_exported_folder_path";
+    public final static String KEY_EXPORT_EXCEL_FOLDER = "export.excel_exported_folder_path";
+    public final static String KEY_EXPORT_PDF_FOLDER = "export.pdf_exported_folder_path";
+
+    // recognition detailed keys
+    public final static String KEY_RECOGNITION_TOP_K = "recognition.top_k";
+    public final static String KEY_RECOGNITION_MARGIN_DEEP = "recognition.margin.deep";
+    public final static String KEY_RECOGNITION_MARGIN_FALLBACK = "recognition.margin.fallback";
+    public final static String KEY_RECOGNITION_SOFT_THRESHOLD = "recognition.soft_threshold";
+    public final static String KEY_RECOGNITION_HIGH_THRESHOLD = "recognition.high_threshold";
+    public final static String KEY_RECOGNITION_CONSISTENCY_WINDOW = "recognition.consistency.window";
+    public final static String KEY_RECOGNITION_CONSISTENCY_MIN_COUNT = "recognition.consistency.min_count";
+    public final static String KEY_RECOGNITION_COHORT_ENABLED = "recognition.cohort.enabled";
+    public final static String KEY_RECOGNITION_COHORT_SIZE = "recognition.cohort.size";
+    public final static String KEY_RECOGNITION_COHORT_Z_MIN = "recognition.cohort.z_min";
+
+    // pruning / person thresholds
+    public final static String KEY_PRUNING_ENABLED = "recognition.pruning.enabled";
+    public final static String KEY_PRUNING_STD_FACTOR = "recognition.pruning.std_factor";
+    public final static String KEY_PRUNING_MIN_KEEP = "recognition.pruning.min_keep";
+    public final static String KEY_PERSON_THRESHOLDS_ENABLED = "recognition.thresholds.person.enabled";
+    public final static String KEY_PERSON_THRESHOLDS_BETA = "recognition.thresholds.person.beta";
+    // --- end added keys ---
 
     // --- Singleton Implementation ---
     private static AppConfig instance = null;
@@ -48,6 +111,7 @@ public class AppConfig {
             input = getClass().getClassLoader().getResourceAsStream("app.properties");
             if (input != null) {
                 properties.load(input);
+                normalizeProperties();
                 AppLogger.info("Configuration loaded from classpath: app.properties");
                 return;
             }
@@ -55,6 +119,7 @@ public class AppConfig {
             if (java.nio.file.Files.exists(p)) {
                 try (InputStream fsIn = java.nio.file.Files.newInputStream(p)) {
                     properties.load(fsIn);
+                    normalizeProperties();
                     AppLogger.info("Configuration loaded from file: " + p);
                     return;
                 }
@@ -69,6 +134,50 @@ public class AppConfig {
                 try { input.close(); } catch (IOException ignored) {}
             }
         }
+    }
+
+    /**
+     * Clean up loaded properties:
+     *  - Trim keys and values
+     *  - Remove trailing semicolons from values (e.g. "50;")
+     *  - Map known alias keys to canonical KEY_* names used by AppConfig
+     */
+    private void normalizeProperties() {
+        java.util.Map<String, String> aliases = new java.util.HashMap<>();
+        aliases.put("embedding.modelPath", KEY_EMBEDDING_MODEL_PATH);
+        aliases.put("detection.min_neighbors", KEY_DETECTION_MIN_NEIGHBORS);
+        // keep detection.dnn.* keys already match KEY_DNN_*
+        // add any other aliases you encounter:
+        // aliases.put("some.alias", KEY_WHATEVER);
+
+        Properties cleaned = new Properties();
+
+        for (java.util.Map.Entry<Object, Object> e : properties.entrySet()) {
+            String rawKey = String.valueOf(e.getKey());
+            String rawVal = String.valueOf(e.getValue());
+
+            String key = rawKey.trim();
+            String val = rawVal.trim();
+
+            // Remove trailing semicolons that appear in your properties file
+            if (val.endsWith(";")) {
+                val = val.substring(0, val.length() - 1).trim();
+            }
+
+            // Map aliases -> canonical key names
+            if (aliases.containsKey(key)) {
+                key = aliases.get(key);
+            }
+
+            // If the cleaned key already exists we overwrite with the latest (last wins).
+            cleaned.setProperty(key, val);
+        }
+
+        // Replace original properties with cleaned version
+        properties.clear();
+        properties.putAll(cleaned);
+
+        AppLogger.info("app.properties normalized (" + properties.size() + " entries).");
     }
 
     public void save() {
@@ -609,20 +718,6 @@ public class AppConfig {
     }
 
 
-    // EMBEDDING MODEL PATH (OpenFace .t7)
-    public String getEmbeddingModelPath() {
-        // default to repository resource path
-        return properties.getProperty(KEY_EMBEDDING_MODEL_PATH, "data/resources/openface.nn4.small2.v1.t7");
-    }
-
-    public void setEmbeddingModelPath(String path) {
-        if (path == null || path.isEmpty()) {
-            AppLogger.error("Failed to change " + KEY_EMBEDDING_MODEL_PATH + ". Path is null/empty");
-        } else {
-            this.properties.setProperty(KEY_EMBEDDING_MODEL_PATH, path);
-            AppLogger.info(KEY_EMBEDDING_MODEL_PATH + " has been changed to " + path);
-        }
-    }
 
     public boolean isDnnDetectionEnabled() {
         return Boolean.parseBoolean(properties.getProperty(KEY_DNN_ENABLED, "true"));

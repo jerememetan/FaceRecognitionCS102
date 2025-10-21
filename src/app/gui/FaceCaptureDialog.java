@@ -74,8 +74,6 @@ public class FaceCaptureDialog extends JDialog{
         setLocationRelativeTo(getParent());
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
-        FaceCropSettingsPanel settingsPanel = new FaceCropSettingsPanel(this,true);
-        add(settingsPanel, BorderLayout.EAST); // Sidebar
         add(createInfoPanel(), BorderLayout.NORTH);
         add(createVideoPanel(), BorderLayout.CENTER);
         add(createControlPanel(), BorderLayout.SOUTH);
@@ -653,25 +651,5 @@ public class FaceCaptureDialog extends JDialog{
         return captureCompleted;
     }
 
-    @Override
-    public void onScaleFactorChanged(double newScaleFactor) {
-        AppConfig.getInstance().setDetectionScaleFactor(newScaleFactor);
-    }
 
-    @Override
-    public void onMinNeighborsChanged(int newMinNeighbors) {
-        AppConfig.getInstance().setDetectionMinNeighbors(newMinNeighbors);
-    }
-
-    @Override
-    public void onMinSizeChanged(int newMinSize) {
-        AppConfig.getInstance().setDetectionMinSize(newMinSize);
-    }
-
-    @Override
-    public void onSaveSettingsRequested() {
-        AppConfig.getInstance().save(); 
-    }
-    @Override
-    public void onCaptureFaceRequested() {} 
 }
