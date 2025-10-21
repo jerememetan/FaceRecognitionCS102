@@ -46,7 +46,7 @@ public class RegenerateEmbeddings {
                     return lower.endsWith(".jpg") || lower.endsWith(".png");
                 });
         if (imageFiles == null || imageFiles.length == 0) {
-            System.err.println("No .jpg/.png images found in " + studentFolder);
+            System.err.println("No .jpg images found in " + studentFolder);
             return;
         }
 

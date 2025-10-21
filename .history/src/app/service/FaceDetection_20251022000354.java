@@ -235,13 +235,25 @@ public class FaceDetection {
                 Mat faceROI = extractFaceROI(frame, bestFace);
 
                 if (faceROI != null) {
-                    // ✅ REMOVED: Quality validation during capture - now accept all detectable
-                    // faces
-                    // Quality control will be handled post-capture through embedding similarity
-                    // analysis
-                    // This allows more diverse training data while still filtering poor embeddings
+                    // Validate image quality (sharpness, brightness, contrast) - more lenient for
+                    // face capture
+                    boolean qualityPasses = imageProcessor.validateFaceCaptureQuality(faceROI);
 
-                    // Image has detectable face - save it (quality filtering happens later)
+                    // Check if image quality passes (this is mandatory)
+                    if (!qualityPasses) {
+                        logDebug("Face capture quality validation failed - skipping frame");
+                        // Don't show warning during capture - causes UI glitching
+                        faceROI.release();
+                        continue; // Try next frame
+                    }
+
+                    // âœ… REMOVED: Landmark detection validation - too restrictive, causing quality
+                    // drop
+                    // Accepting all images that pass basic quality checks (sharpness, brightness,
+                    // contrast)
+                    // This allows more diverse poses and angles, improving embedding robustness
+
+                    // Image passed quality checks - save it
                     String fileName = student.getStudentId() + "_" +
                             String.format("%03d", capturedCount + 1) + ".png";
                     Path imageFile = folderPath.resolve(fileName);

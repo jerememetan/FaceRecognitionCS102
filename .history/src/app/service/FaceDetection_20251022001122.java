@@ -235,10 +235,8 @@ public class FaceDetection {
                 Mat faceROI = extractFaceROI(frame, bestFace);
 
                 if (faceROI != null) {
-                    // ✅ REMOVED: Quality validation during capture - now accept all detectable
-                    // faces
-                    // Quality control will be handled post-capture through embedding similarity
-                    // analysis
+                    // ✅ REMOVED: Quality validation during capture - now accept all detectable faces
+                    // Quality control will be handled post-capture through embedding similarity analysis
                     // This allows more diverse training data while still filtering poor embeddings
 
                     // Image has detectable face - save it (quality filtering happens later)
