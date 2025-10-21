@@ -3154,3 +3154,17 @@
 [2025-10-15 13:17:42] INFO: Configuration and core components loaded.
 [2025-10-15 13:17:42] INFO: Configuration file loaded
 [2025-10-15 13:17:42] INFO: MyGUIProgram Started!
+[2025-10-15 13:27:43] INFO: Application Logger Initialized.
+[2025-10-15 13:27:43] INFO: Configuration and core components loaded.
+[2025-10-15 13:27:43] INFO: Configuration file loaded
+[2025-10-15 13:27:43] INFO: MyGUIProgram Started!
+[2025-10-15 13:29:59] INFO: Application Logger Initialized.
+[2025-10-15 13:29:59] SEVERE: Sorry, unable to find app.properties
+[2025-10-21 00:02:57] INFO: Application Logger Initialized.
+[2025-10-21 00:02:57] INFO: Configuration and core components loaded.
+[2025-10-21 00:02:57] INFO: Configuration file loaded
+[2025-10-21 00:02:57] INFO: MyGUIProgram Started!
+[2025-10-21 00:03:33] INFO: Application Logger Initialized.
+[2025-10-21 00:03:33] INFO: Configuration and core components loaded.
+[2025-10-21 00:03:33] INFO: Configuration file loaded
+[2025-10-21 00:03:33] INFO: MyGUIProgram Started!
