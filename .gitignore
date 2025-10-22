@@ -7,3 +7,6 @@ build
 
 # Ignore large model files
 data/resources/arcface.onnx
+
+# Ignore VS Code Local History backups
+.history
