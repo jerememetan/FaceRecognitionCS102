@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.util.CellRangeAddress;
-
+import ConfigurationAndLogging.*;
 
 public class ExcelGenerator implements ReportGenerator {
     @Override
@@ -33,11 +33,8 @@ public class ExcelGenerator implements ReportGenerator {
         // Get both Headers and Data -> fullData
         List<List<String>> fullData = ReportBuilder.getFullData();
 
-        // =======================================================================
-        // ==============PREVOUS EXPORT METHOD WITHOUT FILECHOOSER================
-        // =======================================================================
-        // // Export Path
-        // String exportedFolderPath = "./data/export/Excel/";
+
+        // Export Path
 
         // // Get the count of .*** files in export folder
         // // Error Handling to access export files

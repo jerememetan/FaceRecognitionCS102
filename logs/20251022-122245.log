@@ -1,0 +1,71 @@
+[2025-10-22 12:22:45] INFO: Application Logger Initialized.
+[2025-10-22 12:22:45] INFO: app.properties normalized (55 entries).
+[2025-10-22 12:22:45] INFO: Configuration loaded from file: C:\Users\jerem\Desktop\homework folder wink wink\UNIVERSITEEEE\Year 2 omgommg\SEM SATU\Programming Fundmentals TOOO\Weekly ICEs\project_demo_codes\app.properties
+[2025-10-22 12:22:51] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-22 12:22:51] INFO: StudentManager initialized successfully
+[2025-10-22 12:22:54] INFO: GUI launched successfully
+[2025-10-22 12:23:47] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-22 12:23:47] INFO: FaceCaptureDialog created for student: jereme
+[2025-10-22 12:23:47] INFO: Dialog initialized
+[2025-10-22 12:23:47] INFO: Starting camera preview...
+[2025-10-22 12:23:47] INFO: Preview timer started at 20fps
+[2025-10-22 12:23:55] INFO: Starting capture process...
+[2025-10-22 12:23:55] INFO: Performing capture with target: 20
+[2025-10-22 12:23:55] INFO: Debug: Capture process started
+[2025-10-22 12:23:55] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:23:57] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:23:58] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:23:59] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:01] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:02] INFO: Debug: Image saved with confidence 0.99
+[2025-10-22 12:24:03] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:05] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:06] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:08] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:09] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:10] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:12] INFO: Debug: Image saved with confidence 0.99
+[2025-10-22 12:24:13] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:14] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:16] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:17] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:19] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:20] INFO: Debug: Image saved with confidence 0.73
+[2025-10-22 12:24:21] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 12:24:23] INFO: Debug: Capture process finished
+[2025-10-22 12:24:23] INFO: Debug: Warning - Processing captured images...
+[2025-10-22 12:24:24] INFO: ￢ﾜﾓ Saved embedding: S00001_001.emb
+[2025-10-22 12:24:24] INFO: ￢ﾜﾓ Saved embedding: S00001_002.emb
+[2025-10-22 12:24:25] INFO: ￢ﾜﾓ Saved embedding: S00001_003.emb
+[2025-10-22 12:24:26] INFO: ￢ﾜﾓ Saved embedding: S00001_004.emb
+[2025-10-22 12:24:27] INFO: ￢ﾜﾓ Saved embedding: S00001_005.emb
+[2025-10-22 12:24:27] INFO: ￢ﾜﾓ Saved embedding: S00001_006.emb
+[2025-10-22 12:24:28] INFO: ￢ﾜﾓ Saved embedding: S00001_007.emb
+[2025-10-22 12:24:29] INFO: ￢ﾜﾓ Saved embedding: S00001_008.emb
+[2025-10-22 12:24:30] INFO: ￢ﾜﾓ Saved embedding: S00001_009.emb
+[2025-10-22 12:24:31] INFO: ￢ﾜﾓ Saved embedding: S00001_010.emb
+[2025-10-22 12:24:31] INFO: ￢ﾜﾓ Saved embedding: S00001_011.emb
+[2025-10-22 12:24:32] INFO: ￢ﾜﾓ Saved embedding: S00001_012.emb
+[2025-10-22 12:24:33] INFO: ￢ﾜﾓ Saved embedding: S00001_013.emb
+[2025-10-22 12:24:33] INFO: ￢ﾜﾓ Saved embedding: S00001_014.emb
+[2025-10-22 12:24:34] INFO: ￢ﾜﾓ Saved embedding: S00001_015.emb
+[2025-10-22 12:24:35] INFO: ￢ﾜﾓ Saved embedding: S00001_016.emb
+[2025-10-22 12:24:36] INFO: ￢ﾜﾓ Saved embedding: S00001_017.emb
+[2025-10-22 12:24:36] INFO: ￢ﾜﾓ Saved embedding: S00001_018.emb
+[2025-10-22 12:24:37] INFO: ￢ﾜﾓ Saved embedding: S00001_019.emb
+[2025-10-22 12:24:38] INFO: ￢ﾜﾓ Saved embedding: S00001_020.emb
+[2025-10-22 12:24:38] INFO: Embedding generation complete: 20/20 successful
+[2025-10-22 12:24:38] INFO:   Outlier detected: index=2, avgSim=0.6545, threshold=0.7288
+[2025-10-22 12:24:38] INFO:   Outlier detected: index=8, avgSim=0.7127, threshold=0.7288
+[2025-10-22 12:24:38] INFO: Debug: Warning - Analyzing embedding quality...
+[2025-10-22 12:24:38] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_003.emb
+[2025-10-22 12:24:38] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_003.png
+[2025-10-22 12:24:38] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_009.emb
+[2025-10-22 12:24:38] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_009.png
+[2025-10-22 12:24:38] INFO: ￢ﾜﾓ Auto-removed 2 outlier embedding(s)
+[2025-10-22 12:24:38] INFO: Debug: Warning - Removed 2 low-quality image(s) automatically
+[2025-10-22 12:24:38] INFO: Capture result: true - Successfully captured 20 high-quality face images
+[2025-10-22 12:24:44] INFO: Debug: All images captured successfully
+[2025-10-22 12:24:48] INFO: Disposing FaceCaptureDialog...
+[2025-10-22 12:24:48] INFO: Preview timer stopped
+[2025-10-22 12:24:49] INFO: Face detection resources released

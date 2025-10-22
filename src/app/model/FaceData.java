@@ -33,7 +33,6 @@ public class FaceData {
             basePath = ".";
         }
 
-
         String folderName = buildFolderName(studentId, studentName);
         Path preferred = Paths.get(basePath).resolve(folderName).toAbsolutePath().normalize();
         this.studentFolder = preferred;
@@ -41,7 +40,7 @@ public class FaceData {
 
     private void loadExistingImages() {
         if (studentFolder == null) {
-            return; 
+            return;
         }
         File folder = studentFolder.toFile();
         if (folder.exists() && folder.isDirectory()) {
@@ -92,11 +91,11 @@ public class FaceData {
         if (existingIndex >= 0) {
             images.set(existingIndex, faceImage);
             validateImages();
-            return true; 
+            return true;
         }
 
         if (images.size() >= 30) {
-            return false; 
+            return false;
         }
         images.add(faceImage);
         validateImages();
@@ -104,7 +103,8 @@ public class FaceData {
     }
 
     private int indexOfImagePath(String path) {
-        if (path == null) return -1;
+        if (path == null)
+            return -1;
         String target = normalizePath(path);
         for (int i = 0; i < images.size(); i++) {
             FaceImage img = images.get(i);
@@ -135,7 +135,8 @@ public class FaceData {
     }
 
     public String getFolderPath() {
-        // Ensure we always return a usable path; if somehow uninitialized, fall back to base path with built folder name
+        // Ensure we always return a usable path; if somehow uninitialized, fall back to
+        // base path with built folder name
         if (studentFolder == null) {
             String basePath = AppConfig.getInstance().getDatabaseStoragePath();
             if (basePath == null || basePath.trim().isEmpty()) {
