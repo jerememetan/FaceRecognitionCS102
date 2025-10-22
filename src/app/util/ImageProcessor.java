@@ -23,45 +23,18 @@ public class ImageProcessor {
         if (faceImage.empty()) {
             return faceImage;
         }
-
-        Mat processedImage = new Mat();
-
-        if (faceImage.channels() > 1) {
-            Imgproc.cvtColor(faceImage, processedImage, Imgproc.COLOR_BGR2GRAY);
-        } else {
-            processedImage = faceImage.clone();
-        }
-
-        Mat filteredImage = new Mat();
-
-        double kernelSize = (double)AppConfig.KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE; 
-        double sigmaX = (double)AppConfig.KEY_PREPROCESSING_GAUSSIAN_SIGMA_X;
-        // --- ADDED: FIXED GAUSSIAN BLUR (Noise Reduction) in replacement of bilateralFilter--- 
-        Imgproc.GaussianBlur(processedImage, filteredImage, new Size(kernelSize, kernelSize), sigmaX);      
-        
-        // Imgproc.bilateralFilter(processedImage, filteredImage, 9, 75, 75);
-
-        double clipLimit = AppConfig.KEY_PREPROCESSING_CLAHE_CLIP_LIMIT; 
-        double gridSize = AppConfig.KEY_PREPROCESSING_CLAHE_GRID_SIZE;
-        CLAHE clahe = Imgproc.createCLAHE(clipLimit, new Size(gridSize, gridSize));
-        Mat contrastEnhanced = new Mat();
-        clahe.apply(filteredImage, contrastEnhanced);
-
+  
         Mat resized = new Mat();
         Imgproc.resize(faceImage, resized, STANDARD_SIZE, 0, 0, Imgproc.INTER_CUBIC);
 
         Mat normalized = new Mat();
         Core.normalize(resized, normalized, 0, 255, Core.NORM_MINMAX, CvType.CV_8U);
         // Release intermediate Mats
-        processedImage.release();
-        filteredImage.release();
-        contrastEnhanced.release();
         resized.release();       
 
         return normalized;
     }
 
- 
     public ImageQualityResult validateImageQualityDetailed(Mat image) {
         if (image.empty()) {
             return new ImageQualityResult(false, 0, "Image is empty");
@@ -117,6 +90,53 @@ public class ImageProcessor {
 
     public boolean validateImageQuality(Mat image) {
         return validateImageQualityDetailed(image).isGoodQuality();
+    }
+
+    /**
+     * More lenient quality validation for face capture scenarios
+     * Accepts images that meet at least 2 out of 3 quality criteria
+     */
+    public boolean validateFaceCaptureQuality(Mat image) {
+        if (image.empty()) {
+            return false;
+        }
+
+        if (image.width() < 50 || image.height() < 50) {
+            return false;
+        }
+
+        Mat grayImage = new Mat();
+        if (image.channels() > 1) {
+            Imgproc.cvtColor(image, grayImage, Imgproc.COLOR_BGR2GRAY);
+        } else {
+            grayImage = image.clone();
+        }
+
+        double sharpness = calculateSharpness(grayImage);
+        double brightness = calculateBrightness(grayImage);
+        double contrast = calculateContrast(grayImage);
+        grayImage.release();
+
+        // Count how many quality criteria pass
+        int criteriaPassed = 0;
+
+        // Sharpness check (more lenient for faces)
+        if (sharpness >= 30.0) { // Even more lenient for face capture
+            criteriaPassed++;
+        }
+
+        // Brightness check
+        if (brightness >= 25.0 && brightness <= 250.0) { // Very lenient brightness range
+            criteriaPassed++;
+        }
+
+        // Contrast check (more lenient for faces)
+        if (contrast >= 10.0) { // Much more lenient contrast
+            criteriaPassed++;
+        }
+
+        // Accept if at least 2 out of 3 criteria pass
+        return criteriaPassed >= 2;
     }
 
     private double calculateSharpness(Mat image) {

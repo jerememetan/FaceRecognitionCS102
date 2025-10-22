@@ -1,0 +1,32 @@
+[2025-10-21 00:46:40] INFO: Application Logger Initialized.
+[2025-10-21 00:46:40] INFO: Configuration and core components loaded.
+[2025-10-21 00:46:40] INFO: Configuration loaded from classpath: app.properties
+[2025-10-21 00:46:40] INFO: Configuration file loaded
+[2025-10-21 00:46:40] INFO: MyGUIProgram Started!
+[2025-10-21 00:46:41] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-21 00:46:41] INFO: === Folder debug ===
+[2025-10-21 00:46:41] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S12313_ma
+[2025-10-21 00:46:41] INFO:   Contains: 36 items
+[2025-10-21 00:46:41] INFO:   Display label: S12313 - ma
+[2025-10-21 00:46:41] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae
+[2025-10-21 00:46:41] INFO:   Contains: 37 items
+[2025-10-21 00:46:41] INFO:   Display label: S13234 - Jin_Rae
+[2025-10-21 00:46:41] INFO: ====================
+[2025-10-21 00:46:41] INFO: Person S12313 - ma: tightness=0.934, stdDev=0.015, absThresh=0.607, margin=0.107
+[2025-10-21 00:46:41] INFO:   [Glasses Mode] Detected high variation (stdDev=0.140) - relaxed thresholds by 12.0%
+[2025-10-21 00:46:41] INFO: Person S13234 - Jin_Rae: tightness=0.840, stdDev=0.140, absThresh=0.544, margin=0.101
+[2025-10-21 00:46:41] INFO: DNN face detector loaded successfully for recognition
+[2025-10-21 00:46:41] INFO: Attempting camera index 0 with DSHOW backend...
+[2025-10-21 00:46:41] WARNING: Failed to open camera: index 0 with DSHOW
+[2025-10-21 00:46:42] INFO: Attempting camera index 0 with MSMF backend...
+[2025-10-21 00:46:44] WARNING: Camera opened but cannot read frames: index 0 with MSMF
+[2025-10-21 00:46:44] INFO: Attempting camera index 0 with WINRT backend...
+[2025-10-21 00:46:44] WARNING: Failed to open camera: index 0 with WINRT
+[2025-10-21 00:46:44] INFO: Attempting camera index 0 with ANY backend...
+[2025-10-21 00:46:47] WARNING: Camera opened but cannot read frames: index 0 with ANY
+[2025-10-21 00:46:47] INFO: Attempting camera index 1 with DSHOW backend...
+[2025-10-21 00:46:48] INFO: Camera opened successfully: index 1 with DSHOW backend
+[2025-10-21 00:46:48] INFO: Camera configured: 640x480 @ 30fps (MJPEG: yes)
+[2025-10-21 00:46:48] INFO: Camera initialized successfully
+[2025-10-21 00:46:50] INFO: Exiting Face Recognition Demo...
+[2025-10-21 00:46:50] INFO: Exiting Face Recognition Demo...
