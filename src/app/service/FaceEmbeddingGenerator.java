@@ -153,7 +153,8 @@ public class FaceEmbeddingGenerator {
 
         } catch (Exception e) {
             System.err.println("❌ Feature-based embedding generation failed: " + e.getMessage());
-            return new byte[EMBEDDING_SIZE * 8];
+            e.printStackTrace();
+            return null; // ✅ Return null to signal failure
         }
     }
 
@@ -278,13 +279,36 @@ public class FaceEmbeddingGenerator {
             float[] floatArray = new float[EMBEDDING_SIZE];
             mat.get(0, 0, floatArray);
 
+            // ✅ CRITICAL: Validate neural network output BEFORE normalization
+            boolean hasInvalid = false;
+            for (float f : floatArray) {
+                if (Float.isNaN(f) || Float.isInfinite(f)) {
+                    System.err.println("❌ Neural network produced invalid output (NaN/Inf detected)");
+                    hasInvalid = true;
+                    break;
+                }
+            }
+
+            if (hasInvalid) {
+                return null; // Signal failure instead of corrupting data
+            }
+
+            // Calculate norm
             double norm = 0.0;
             for (float f : floatArray) {
                 norm += f * f;
             }
             norm = Math.sqrt(Math.max(norm, 1e-12));
+
+            // ✅ Additional safety: Check if norm is valid
+            if (Double.isNaN(norm) || Double.isInfinite(norm) || norm < 1e-10) {
+                System.err.println("❌ Invalid embedding norm: " + norm);
+                return null;
+            }
+
+            // Normalize
             for (int i = 0; i < floatArray.length; i++) {
-                floatArray[i] /= norm;
+                floatArray[i] /= (float)norm;
             }
 
             java.nio.ByteBuffer byteBuffer = java.nio.ByteBuffer.allocate(EMBEDDING_SIZE * 4);
@@ -293,9 +317,11 @@ public class FaceEmbeddingGenerator {
             }
 
             return byteBuffer.array();
+
         } catch (Exception e) {
             System.err.println("❌ Mat to byte array conversion failed: " + e.getMessage());
-            return new byte[EMBEDDING_SIZE * 4];
+            e.printStackTrace();
+            return null; // ✅ Return null instead of corrupt data
         }
     }
 
@@ -483,15 +509,22 @@ public class FaceEmbeddingGenerator {
 
                 Mat faceROI;
                 if (faceRect != null) {
-                    // Use detected face rectangle for better alignment
-                    faceROI = new Mat(image, faceRect);
+                    // ✅ Validate rect is within image bounds
+                    if (faceRect.x >= 0 && faceRect.y >= 0 && 
+                        faceRect.x + faceRect.width <= image.width() &&
+                        faceRect.y + faceRect.height <= image.height() &&
+                        faceRect.width > 0 && faceRect.height > 0) {
+                        faceROI = new Mat(image, faceRect);
+                    } else {
+                        System.err.println("⚠️ Invalid faceRect, using whole image");
+                        faceRect = new Rect(0, 0, image.width(), image.height());
+                        faceROI = image.clone();
+                    }
                 } else {
-                    // ✅ FIX: Saved image IS ALREADY the cropped face! Use whole image as face
-                    // region
-                    // Don't re-detect, use entire image as the face
+                    // Saved image IS ALREADY the cropped face
                     Rect wholeFaceRect = new Rect(0, 0, image.width(), image.height());
-                    faceROI = image.clone(); // Use whole image
-                    faceRect = wholeFaceRect; // Update faceRect for alignment
+                    faceROI = image.clone();
+                    faceRect = wholeFaceRect;
                 }
                 image.release();
 
@@ -567,23 +600,67 @@ public class FaceEmbeddingGenerator {
 
     private Mat preprocessForTraining(Mat faceImage) {
         try {
+            // ✅ CRITICAL FIX: Apply EXACT same preprocessing as live recognition!
 
-            Mat denoised = new Mat();
-            if (faceImage.channels() == 1) {
-                Photo.fastNlMeansDenoising(faceImage, denoised, 3.0f, 7, 21);
+            // Ensure 3-channel BGR
+            Mat processed;
+            if (faceImage.channels() != 3) {
+                Mat temp = new Mat();
+                if (faceImage.channels() == 1) {
+                    Imgproc.cvtColor(faceImage, temp, Imgproc.COLOR_GRAY2BGR);
+                } else {
+                    temp = faceImage.clone();
+                }
+                processed = temp;
             } else {
-                Photo.fastNlMeansDenoisingColored(faceImage, denoised, 3.0f, 3.0f, 7, 21);
+                processed = faceImage.clone();
             }
 
-            Mat resized = new Mat();
-            Imgproc.resize(denoised, resized, INPUT_SIZE, 0, 0, Imgproc.INTER_CUBIC);
-            denoised.release();
+            // Apply denoising (keep this for training quality)
+            Mat denoised = new Mat();
+            if (processed.channels() == 1) {
+                Photo.fastNlMeansDenoising(processed, denoised, 3.0f, 7, 21);
+            } else {
+                Photo.fastNlMeansDenoisingColored(processed, denoised, 3.0f, 3.0f, 7, 21);
+            }
 
-            return resized;
+            // Apply face alignment (simulate with center crop for training images)
+            Mat aligned = new Mat();
+            Imgproc.resize(denoised, aligned, INPUT_SIZE, 0, 0, Imgproc.INTER_CUBIC);
+            denoised.release();
+            processed.release();
+
+            // ✅ CRITICAL: Normalize to [0,1] range - convert to float
+            Mat normalized = new Mat();
+            aligned.convertTo(normalized, CvType.CV_32F, 1.0 / 255.0);
+            aligned.release();
+
+            // ✅ CRITICAL: Create blob for OpenFace model
+            // swapRB=true converts BGR to RGB (OpenFace expects RGB)
+            Mat blob = Dnn.blobFromImage(normalized, 1.0, INPUT_SIZE,
+                    new Scalar(0, 0, 0), true, false);
+            normalized.release();
+
+            // ✅ Return the properly formatted blob, NOT raw pixels!
+            return blob;
 
         } catch (Exception e) {
             System.err.println("❌ Training preprocessing failed: " + e.getMessage());
-            return faceImage.clone();
+            e.printStackTrace();
+
+            // Fallback with proper preprocessing
+            Mat fallback = new Mat();
+            Imgproc.resize(faceImage, fallback, INPUT_SIZE, 0, 0, Imgproc.INTER_CUBIC);
+
+            Mat normalized = new Mat();
+            fallback.convertTo(normalized, CvType.CV_32F, 1.0 / 255.0);
+            fallback.release();
+
+            Mat blob = Dnn.blobFromImage(normalized, 1.0, INPUT_SIZE,
+                    new Scalar(0, 0, 0), true, false);
+            normalized.release();
+
+            return blob;
         }
     }
 

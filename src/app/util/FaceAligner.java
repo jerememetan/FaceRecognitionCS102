@@ -89,6 +89,15 @@ public class FaceAligner {
         }
 
         try {
+            // ✅ FIX: Validate image size BEFORE attempting eye detection
+            if (faceImage.width() < 40 || faceImage.height() < 40) {
+                if (debugMode) {
+                    System.out.println("Face image too small for eye detection (" +
+                        faceImage.width() + "x" + faceImage.height() + "), using heuristic alignment");
+                }
+                return heuristicFallbackAlignment(faceImage);
+            }
+
             // Convert to grayscale for eye detection
             Mat gray = new Mat();
             if (faceImage.channels() == 3) {
@@ -97,10 +106,27 @@ public class FaceAligner {
                 gray = faceImage.clone();
             }
 
+            // ✅ FIX: Ensure grayscale conversion succeeded and has correct depth
+            if (gray.empty() || gray.depth() != CvType.CV_8U) {
+                System.err.println("⚠️ Gray conversion failed or wrong depth");
+                gray.release();
+                return heuristicFallbackAlignment(faceImage);
+            }
+
             // 1) Detect left and right eyes in constrained halves
             Rect leftHalf = new Rect(0, 0, faceImage.width() / 2, (int) (faceImage.height() * 0.7));
             Rect rightHalf = new Rect(faceImage.width() / 2, 0, faceImage.width() / 2,
                     (int) (faceImage.height() * 0.7));
+
+            // ✅ FIX: Validate half regions are large enough
+            if (leftHalf.width < 20 || leftHalf.height < 20 ||
+                rightHalf.width < 20 || rightHalf.height < 20) {
+                if (debugMode) {
+                    System.out.println("Face halves too small for eye detection, using heuristic alignment");
+                }
+                gray.release();
+                return heuristicFallbackAlignment(faceImage);
+            }
 
             Mat grayLeft = new Mat(gray, leftHalf);
             Mat grayRight = new Mat(gray, rightHalf);
@@ -108,10 +134,24 @@ public class FaceAligner {
             MatOfRect leftEyes = new MatOfRect();
             MatOfRect rightEyes = new MatOfRect();
 
-            leftEyeDetector.detectMultiScale(grayLeft, leftEyes, 1.05, 3, 0,
-                    new Size(15, 15), new Size(100, 100));
-            rightEyeDetector.detectMultiScale(grayRight, rightEyes, 1.05, 3, 0,
-                    new Size(15, 15), new Size(100, 100));
+            // ✅ FIX: Wrap detectMultiScale in try-catch to handle edge cases gracefully
+            try {
+                leftEyeDetector.detectMultiScale(grayLeft, leftEyes, 1.05, 3, 0,
+                        new Size(15, 15), new Size(100, 100));
+            } catch (Exception e) {
+                if (debugMode) {
+                    System.out.println("Left eye detection failed: " + e.getMessage());
+                }
+            }
+
+            try {
+                rightEyeDetector.detectMultiScale(grayRight, rightEyes, 1.05, 3, 0,
+                        new Size(15, 15), new Size(100, 100));
+            } catch (Exception e) {
+                if (debugMode) {
+                    System.out.println("Right eye detection failed: " + e.getMessage());
+                }
+            }
 
             // Pick the most central candidate in each half
             Point leftEye = pickBestEyeCenter(leftEyes.toArray(), leftHalf);
@@ -162,7 +202,10 @@ public class FaceAligner {
             return heuristicFallbackAlignment(faceImage);
 
         } catch (Exception e) {
-            System.err.println("Eye detection failed: " + e.getMessage());
+            
+            if (debugMode) {
+                System.err.println("Eye detection exception: " + e.getMessage());
+            }
             return heuristicFallbackAlignment(faceImage);
         }
     }

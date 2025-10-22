@@ -703,7 +703,9 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                             boolean consistencyAccept = absolutePass && discriminativePass && consistent
                                     && strongCount >= CONSISTENCY_MIN_COUNT;
 
-                            boolean accept = primaryAccept || strongMarginAccept || consistencyAccept;
+                            // TEMPORARILY COMMENTED OUT: Margin logic - now accepts any higher score
+                            // boolean accept = primaryAccept || strongMarginAccept || consistencyAccept;
+                            boolean accept = absolutePass; // Accept if best score meets absolute threshold
 
                             // --- FINAL MINIMUM CONFIDENCE THRESHOLD ---
                             if (accept && best < 0.5) {
@@ -712,16 +714,18 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                             }
 
                             if (accept) {
-                                if (primaryAccept) {
-                                    System.out.println(
-                                            "[Decision] ACCEPT: Primary thresholds met (abs + margin + relative)");
-                                } else if (strongMarginAccept) {
-                                    System.out.println("[Decision] ACCEPT: Strong margin hold (" +
-                                            String.format("%.1f%%", relativeMarginPct * 100) + ")");
-                                } else {
-                                    System.out.println("[Decision] ACCEPT: Consistency override (" + strongCount + "/"
-                                            + CONSISTENCY_WINDOW + " frames)");
-                                }
+                                // TEMPORARILY COMMENTED OUT: Detailed acceptance logging
+                                // if (primaryAccept) {
+                                //     System.out.println(
+                                //             "[Decision] ACCEPT: Primary thresholds met (abs + margin + relative)");
+                                // } else if (strongMarginAccept) {
+                                //     System.out.println("[Decision] ACCEPT: Strong margin hold (" +
+                                //             String.format("%.1f%%", relativeMarginPct * 100) + ")");
+                                // } else {
+                                //     System.out.println("[Decision] ACCEPT: Consistency override (" + strongCount + "/"
+                                //             + CONSISTENCY_WINDOW + " frames)");
+                                // }
+                                System.out.println("[Decision] ACCEPT: Best score meets absolute threshold");
                             } else {
                                 System.out.printf(
                                         "[Decision] REJECT: Abs=%s, AbsMargin=%s, RelMargin=%s(%.1f%%), StrongMargin=%s(%.1f%%), Discrim=%s, Consist=%s(%d/%d)%n",
