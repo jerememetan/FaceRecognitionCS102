@@ -79,10 +79,7 @@ public class LoginPage extends JFrame{
             }
         });
 
-        
-
     }
-
 
     // Placeholder authentication (Testing only)
     private String authenticateUser(String id, String password) {
