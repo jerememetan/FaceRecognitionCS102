@@ -9,9 +9,10 @@ public class SessionManager {
         this.sessions = new LinkedHashMap<>();
     }
     public Session createSession(String name, LocalDate date, LocalTime startTime, LocalTime endTime, String location) {
-        Session newSession = new Session(Integer.toString(nextId++), name, date, startTime, endTime, location);
+        Session newSession = new Session(Integer.toString(nextId), name, date, startTime, endTime, location);
         sessions.put(nextId, newSession);
-        System.out.println("Created session: " + name);
+        System.out.println(nextId + " Created session: " + name);
+        nextId++;
         return newSession;
     }
     public void openSession(int id) {
@@ -35,5 +36,12 @@ public class SessionManager {
     }
     public Session getSessionById(int id) {
         return sessions.get(id);
+    }
+    public boolean deleteSession(int id) {
+        if (sessions.containsKey(id) && sessions.get(id).isActive() == false) {
+            sessions.remove(id);
+            return true; // Successfully deleted
+        }
+        return false; // Session not found
     }
 }
