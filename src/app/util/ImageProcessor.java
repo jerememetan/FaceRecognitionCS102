@@ -1,27 +1,37 @@
 package app.util;
 
+import ConfigurationAndLogging.*;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.photo.Photo;
+import org.opencv.imgproc.CLAHE;
+import org.opencv.objdetect.CascadeClassifier;
+import ConfigurationAndLogging.*;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class ImageProcessor {
-    private static final double MIN_SHARPNESS_THRESHOLD = 50.0; // Was 120.0 - too strict for webcam faces
-    private static final double MIN_BRIGHTNESS = 30.0; // Was 40.0 - allow slightly darker faces
-    private static final double MAX_BRIGHTNESS = 240.0; // Was 220.0 - allow slightly brighter faces
-    private static final double MIN_CONTRAST = 15.0; // Was 25.0 - too strict for face regions
-    private static final Size STANDARD_SIZE = new Size(200, 200);
+
+    private static final double MIN_SHARPNESS_THRESHOLD = AppConfig.getInstance().getPreprocessingMinSharpnessThreshold();
+    private static final double MIN_BRIGHTNESS = AppConfig.getInstance().getPreprocessingMinBrightness();
+    private static final double MAX_BRIGHTNESS = AppConfig.getInstance().getPreprocessingMaxBrightness();
+    private static final double MIN_CONTRAST = AppConfig.getInstance().getPreprocessingMinContrast();
+    private static final int crop_size = AppConfig.KEY_RECOGNITION_CROP_SIZE_PX;
+    private static final Size STANDARD_SIZE = new Size(crop_size, crop_size);
 
     public Mat preprocessFaceImage(Mat faceImage) {
         if (faceImage.empty()) {
             return faceImage;
         }
-
+  
         Mat resized = new Mat();
         Imgproc.resize(faceImage, resized, STANDARD_SIZE, 0, 0, Imgproc.INTER_CUBIC);
 
         Mat normalized = new Mat();
         Core.normalize(resized, normalized, 0, 255, Core.NORM_MINMAX, CvType.CV_8U);
-        resized.release();
+        // Release intermediate Mats
+        resized.release();       
+
         return normalized;
     }
 

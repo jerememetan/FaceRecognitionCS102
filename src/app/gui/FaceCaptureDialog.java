@@ -18,8 +18,9 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-
-public class FaceCaptureDialog extends JDialog {
+import facecrop.*;
+import ConfigurationAndLogging.*;
+public class FaceCaptureDialog extends JDialog{
     private Student student;
     private StudentManager studentManager;
     private FaceDetection faceDetection;
@@ -73,7 +74,6 @@ public class FaceCaptureDialog extends JDialog {
         setLocationRelativeTo(getParent());
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
-
         add(createInfoPanel(), BorderLayout.NORTH);
         add(createVideoPanel(), BorderLayout.CENTER);
         add(createControlPanel(), BorderLayout.SOUTH);
@@ -658,4 +658,6 @@ public class FaceCaptureDialog extends JDialog {
     public boolean isCaptureCompleted() {
         return captureCompleted;
     }
+
+
 }

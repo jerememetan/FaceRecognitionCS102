@@ -1,0 +1,1 @@
+java -cp "compiled;lib/*" gui.LoginPage

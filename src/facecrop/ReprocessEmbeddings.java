@@ -74,7 +74,7 @@ public class ReprocessEmbeddings {
                     Mat processed = imgProc.preprocessFaceImage(image);
 
                     // Generate embedding
-                    byte[] embedding = embGen.generateEmbedding(processed);
+                    byte[] embedding = embGen.generateEmbedding(processed, rect);
 
                     if (embedding == null || embedding.length == 0) {
                         System.err.println("  FAILED: Could not generate embedding for " + imageFile.getName());

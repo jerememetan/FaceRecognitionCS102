@@ -11,6 +11,7 @@ import org.opencv.videoio.VideoCapture;
 import org.opencv.dnn.Net;
 import org.opencv.dnn.Dnn;
 
+import ConfigurationAndLogging.*;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,6 +20,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FaceDetection {
+    private static final String OPENCV_NATIVE_LIBRARY = "opencv_java480";
+    private static final String OPENCV_DLL_RELATIVE_PATH = "lib/opencv_java480.dll";
+    private static final boolean OPENCV_LOADED;
+    private String imageFormat = AppConfig.getInstance().getRecognitionImageFormat();
+
+    static {
+        boolean loaded = false;
+        try {
+            System.loadLibrary(OPENCV_NATIVE_LIBRARY);
+            loaded = true;
+        } catch (UnsatisfiedLinkError primaryError) {
+            try {
+                String absolutePath = new File(OPENCV_DLL_RELATIVE_PATH).getAbsolutePath();
+                System.load(absolutePath);
+                loaded = true;
+            } catch (UnsatisfiedLinkError fallbackError) {
+                System.err.println("Failed to load OpenCV from library path: " + primaryError.getMessage());
+                System.err.println("Also failed to load OpenCV from absolute path: " + fallbackError.getMessage());
+            }
+        }
+
+        OPENCV_LOADED = loaded;
+        if (!loaded) {
+            System.err.println("OpenCV native library could not be loaded. Face detection features will be unavailable.");
+        }
+    }
+
     private Net dnnFaceDetector;
     private VideoCapture camera;
     private ImageProcessor imageProcessor;
@@ -53,8 +81,8 @@ public class FaceDetection {
             System.loadLibrary("opencv_java480");
             logDebug("OpenCV library loaded");
 
-            String modelConfiguration = "data/resources/opencv_face_detector.pbtxt";
-            String modelWeights = "data/resources/opencv_face_detector_uint8.pb";
+            String modelConfiguration = AppConfig.getInstance().getDetectionModelConfigurationPath();
+            String modelWeights = AppConfig.getInstance().getDetectionModelWeightsPath();
 
             if (new File(modelConfiguration).exists() && new File(modelWeights).exists()) {
                 try {
