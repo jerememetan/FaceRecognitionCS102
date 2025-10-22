@@ -1,6 +1,10 @@
+package gui;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
+import gui.MainDashboard;
 
 public class LoginPage extends JFrame{
     private JTextField idField;
@@ -75,10 +79,7 @@ public class LoginPage extends JFrame{
             }
         });
 
-        
-
     }
-
 
     // Placeholder authentication (Testing only)
     private String authenticateUser(String id, String password) {
