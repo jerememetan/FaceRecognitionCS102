@@ -15,7 +15,7 @@ public class SessionViewer extends JFrame {
     private SessionManager manager;
     private JTable sessionTable;
     private DefaultTableModel tableModel;
-    private JButton refreshButton, createButton;
+    private JButton refreshButton, createButton, deleteButton;
 
     public SessionViewer(SessionManager manager) {
         this.manager = manager;
@@ -44,7 +44,7 @@ public class SessionViewer extends JFrame {
         sessionTable.getTableHeader().setReorderingAllowed(false);
 
         JScrollPane scrollPane = new JScrollPane(sessionTable);
-        TitledBorder border = BorderFactory.createTitledBorder("Double click a session to view/manage its roster");
+        TitledBorder border = BorderFactory.createTitledBorder("Double click a session to view details");
         border.setTitleFont(new Font("SansSerif", Font.BOLD, 15));
         scrollPane.setBorder(border);
         viewerPanel.add(scrollPane, BorderLayout.CENTER);
@@ -53,9 +53,11 @@ public class SessionViewer extends JFrame {
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
         refreshButton = new JButton("Refresh");
         createButton = new JButton("➕ Create Session");
+        deleteButton = new JButton("🗑️ Delete Session");
 
         topPanel.add(refreshButton);
         topPanel.add(createButton);
+        topPanel.add(deleteButton);
         viewerPanel.add(topPanel, BorderLayout.NORTH);
 
         refreshButton.addActionListener(e -> refreshTable());
@@ -65,6 +67,8 @@ public class SessionViewer extends JFrame {
             new SessionForm(manager);
             refreshTable();
         });
+
+        deleteButton.addActionListener(e -> deleteSession());
 
         // --- Double-click a row to view details ---
         sessionTable.addMouseListener(new MouseAdapter() {
@@ -100,6 +104,45 @@ public class SessionViewer extends JFrame {
         setVisible(true);
     }
 
+    private void deleteSession(){
+        int selectedRow = sessionTable.getSelectedRow();
+        if (selectedRow >= 0) {
+            Object sessionObj = tableModel.getValueAt(selectedRow, 0);
+            int sessionId;
+            if (sessionObj instanceof Number) {
+                sessionId = ((Number) sessionObj).intValue();
+            }
+            else{
+                sessionId = Integer.parseInt(sessionObj.toString());
+            }
+            System.out.println(sessionId);
+            int choice = JOptionPane.showConfirmDialog(this,
+                    "Are you sure you want to delete session?",
+                    "Delete Session",
+                    JOptionPane.YES_NO_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                boolean success = manager.deleteSession(sessionId);
+                if (success) {
+                    JOptionPane.showMessageDialog(this,
+                            "Session ID " + sessionId + " deleted successfully.",
+                            "Success",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    refreshTable();
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Failed to delete session ID " + sessionId + ".",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Please click on a session (row) before deleting.",
+                    "No Selection",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
     private void refreshTable() {
         tableModel.setRowCount(0); // Clear existing rows
         for (Session s : manager.getAllSessions()) {
@@ -119,7 +162,7 @@ public class SessionViewer extends JFrame {
     public static void main(String[] args) {
         SessionManager manager = new SessionManager();
 
-        // Example data
+        // Sample Data sessions
         manager.createSession("Math Workshop", java.time.LocalDate.now(),
                 java.time.LocalTime.of(9, 0), java.time.LocalTime.of(11, 0), "Room 101");
         manager.createSession("AI Seminar", java.time.LocalDate.now(),

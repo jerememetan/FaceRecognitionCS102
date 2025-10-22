@@ -11,7 +11,7 @@ public class Session extends Entity{
     private LocalTime endTime;
     private String location;
     private boolean active;
-    private ArrayList<Student> studentRoster;
+    private ArrayList<SessionStudent> studentRoster;
 
     public Session(String nextId, String name, LocalDate date, LocalTime startTime, LocalTime endTime, String location) {
         this.sessionId = nextId;
@@ -32,17 +32,17 @@ public class Session extends Entity{
         System.out.println("Session " + this.name + " is now closed.");
     }
     public void addStudent(Student student){
-        this.studentRoster.add(student);
+        this.studentRoster.add(new SessionStudent(student));
     }
     public void removeStudent(Student student){
-        this.studentRoster.remove(student);
-    }   
-    public ArrayList<Student> getStudentRoster(){
+        this.studentRoster.removeIf(ss -> ss.getStudent().equals(student));
+    }
+    public ArrayList<SessionStudent> getStudentRoster(){
         return this.studentRoster;
     }
     public void getStudents(){
-        for(Student s : this.studentRoster){
-            System.out.println(s.getName());
+        for(SessionStudent ss : this.studentRoster){
+            System.out.println(ss.getStudent().getName());
         }
     }
     public boolean isActive() {
