@@ -1,0 +1,258 @@
+[2025-10-21 23:09:34] INFO: Application Logger Initialized.
+[2025-10-21 23:09:34] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
+[2025-10-21 23:09:34] INFO: GUI launched successfully
+[2025-10-21 23:09:39] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-21 23:09:39] INFO: ￢ﾜﾓ SimpleHaarFaceAligner initialized successfully
+[2025-10-21 23:09:39] INFO: FaceCaptureDialog created for student: Jin Rae
+[2025-10-21 23:09:39] INFO: Dialog initialized
+[2025-10-21 23:09:39] INFO: Starting camera preview...
+[2025-10-21 23:09:39] INFO: Preview timer started at 20fps
+[2025-10-21 23:09:41] INFO: Starting capture process...
+[2025-10-21 23:09:41] INFO: Performing capture with target: 20
+[2025-10-21 23:09:41] INFO: Debug: Capture process started
+[2025-10-21 23:09:41] INFO: Debug: Image saved with confidence 0.98
+[2025-10-21 23:09:43] INFO: Debug: Image saved with confidence 0.99
+[2025-10-21 23:09:44] INFO: Debug: Image saved with confidence 0.99
+[2025-10-21 23:09:45] INFO: Debug: Image saved with confidence 0.99
+[2025-10-21 23:09:47] INFO: Debug: Image saved with confidence 0.99
+[2025-10-21 23:09:48] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:09:49] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:09:51] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:09:52] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:09:54] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:09:55] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:09:56] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:09:58] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:09:59] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:00] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:02] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:03] INFO: Debug: Image saved with confidence 0.99
+[2025-10-21 23:10:04] INFO: Debug: Image saved with confidence 0.99
+[2025-10-21 23:10:06] INFO: Debug: Image saved with confidence 0.99
+[2025-10-21 23:10:07] INFO: Debug: Image saved with confidence 0.98
+[2025-10-21 23:10:08] INFO: Debug: Capture process finished
+[2025-10-21 23:10:09] INFO: Debug: Warning - Processing captured images...
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_001.emb
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_002.emb
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_003.emb
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_004.emb
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_005.emb
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_006.emb
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_007.emb
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_008.emb
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_009.emb
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_010.emb
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_011.emb
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_012.emb
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_013.emb
+[2025-10-21 23:10:09] INFO: ￢ﾜﾓ Saved embedding: S13234_014.emb
+[2025-10-21 23:10:10] INFO: ￢ﾜﾓ Saved embedding: S13234_015.emb
+[2025-10-21 23:10:10] INFO: ￢ﾜﾓ Saved embedding: S13234_016.emb
+[2025-10-21 23:10:10] INFO: ￢ﾜﾓ Saved embedding: S13234_017.emb
+[2025-10-21 23:10:10] INFO: ￢ﾜﾓ Saved embedding: S13234_018.emb
+[2025-10-21 23:10:10] INFO: ￢ﾜﾓ Saved embedding: S13234_019.emb
+[2025-10-21 23:10:10] INFO: ￢ﾜﾓ Saved embedding: S13234_020.emb
+[2025-10-21 23:10:10] INFO: Embedding generation complete: 20/20 successful
+[2025-10-21 23:10:10] INFO: Debug: Warning - Analyzing embedding quality...
+[2025-10-21 23:10:10] INFO:   Outlier detected: index=8, avgSim=0.5327, threshold=0.7000
+[2025-10-21 23:10:10] INFO:   Outlier detected: index=10, avgSim=0.5118, threshold=0.7000
+[2025-10-21 23:10:10] INFO:   Outlier detected: index=13, avgSim=0.5118, threshold=0.7000
+[2025-10-21 23:10:10] INFO:   Outlier detected: index=15, avgSim=0.5142, threshold=0.7000
+[2025-10-21 23:10:10] INFO:   Outlier detected: index=17, avgSim=0.4896, threshold=0.7000
+[2025-10-21 23:10:10] INFO:   Outlier detected: index=18, avgSim=0.4957, threshold=0.7000
+[2025-10-21 23:10:10] INFO:   Outlier detected: index=19, avgSim=0.4836, threshold=0.7000
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_009.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_009.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_011.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_011.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_014.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_014.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_016.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_016.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_018.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_018.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_019.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_019.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_020.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_020.png
+[2025-10-21 23:10:10] INFO: ￢ﾜﾓ Auto-removed 7 outlier embedding(s)
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=0, avgSim=0.7563, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=1, avgSim=0.7614, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=2, avgSim=0.7541, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=3, avgSim=0.7595, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=4, avgSim=0.7494, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=5, avgSim=0.7650, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=6, avgSim=0.7575, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=7, avgSim=0.7625, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=8, avgSim=0.5327, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=9, avgSim=0.7555, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=10, avgSim=0.5118, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=11, avgSim=0.7632, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=12, avgSim=0.7655, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=13, avgSim=0.5118, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=14, avgSim=0.7236, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=15, avgSim=0.5142, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=16, avgSim=0.7317, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=17, avgSim=0.4896, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=18, avgSim=0.4957, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO:   Weak embedding detected: index=19, avgSim=0.4836, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:10] INFO: Debug: Warning - Removed 7 outlier image(s) automatically
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_017.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak image: S13234_017.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_015.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak image: S13234_015.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_013.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak image: S13234_013.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_012.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak image: S13234_012.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_010.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak image: S13234_010.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_008.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak image: S13234_008.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_007.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak image: S13234_007.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_006.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak image: S13234_006.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_005.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak image: S13234_005.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_004.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak image: S13234_004.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_003.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak image: S13234_003.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_002.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak image: S13234_002.png
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_001.emb
+[2025-10-21 23:10:10] INFO:   ￢ﾜﾗ Deleted weak image: S13234_001.png
+[2025-10-21 23:10:10] INFO: ￢ﾜﾓ Auto-removed 13 weak embedding(s)
+[2025-10-21 23:10:10] INFO: Debug: Warning - Removed 13 weak image(s) automatically
+[2025-10-21 23:10:10] INFO: Capture result: true - Successfully captured 20 high-quality face images
+[2025-10-21 23:10:17] INFO: Debug: All images captured successfully
+[2025-10-21 23:10:19] INFO: Disposing FaceCaptureDialog...
+[2025-10-21 23:10:19] INFO: Preview timer stopped
+[2025-10-21 23:10:19] INFO: Face detection resources released
+[2025-10-21 23:10:26] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-21 23:10:26] INFO: ￢ﾜﾓ SimpleHaarFaceAligner initialized successfully
+[2025-10-21 23:10:26] INFO: FaceCaptureDialog created for student: Jin Rae
+[2025-10-21 23:10:26] INFO: Dialog initialized
+[2025-10-21 23:10:26] INFO: Starting camera preview...
+[2025-10-21 23:10:26] INFO: Preview timer started at 20fps
+[2025-10-21 23:10:27] INFO: Starting capture process...
+[2025-10-21 23:10:27] INFO: Performing capture with target: 20
+[2025-10-21 23:10:27] INFO: Debug: Capture process started
+[2025-10-21 23:10:27] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:29] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:30] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:31] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:33] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:34] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:35] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:37] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:38] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:39] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:41] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:42] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:44] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:45] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:46] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:48] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:49] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:50] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:52] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:53] INFO: Debug: Image saved with confidence 1.00
+[2025-10-21 23:10:54] INFO: Debug: Capture process finished
+[2025-10-21 23:10:55] INFO: Debug: Warning - Processing captured images...
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_001.emb
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_002.emb
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_003.emb
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_004.emb
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_005.emb
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_006.emb
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_007.emb
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_008.emb
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_009.emb
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_010.emb
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_011.emb
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_012.emb
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_013.emb
+[2025-10-21 23:10:55] INFO: ￢ﾜﾓ Saved embedding: S13234_014.emb
+[2025-10-21 23:10:56] INFO: ￢ﾜﾓ Saved embedding: S13234_015.emb
+[2025-10-21 23:10:56] INFO: ￢ﾜﾓ Saved embedding: S13234_016.emb
+[2025-10-21 23:10:56] INFO: ￢ﾜﾓ Saved embedding: S13234_017.emb
+[2025-10-21 23:10:56] INFO: ￢ﾜﾓ Saved embedding: S13234_018.emb
+[2025-10-21 23:10:56] INFO: ￢ﾜﾓ Saved embedding: S13234_019.emb
+[2025-10-21 23:10:56] INFO: ￢ﾜﾓ Saved embedding: S13234_020.emb
+[2025-10-21 23:10:56] INFO: Embedding generation complete: 20/20 successful
+[2025-10-21 23:10:56] INFO:   Outlier detected: index=0, avgSim=0.6904, threshold=0.7000
+[2025-10-21 23:10:56] INFO:   Outlier detected: index=5, avgSim=0.4703, threshold=0.7000
+[2025-10-21 23:10:56] INFO:   Outlier detected: index=13, avgSim=0.2652, threshold=0.7000
+[2025-10-21 23:10:56] INFO:   Outlier detected: index=18, avgSim=0.2747, threshold=0.7000
+[2025-10-21 23:10:56] INFO: Debug: Warning - Analyzing embedding quality...
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_001.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_001.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_006.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_006.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_014.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_014.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_019.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_019.png
+[2025-10-21 23:10:56] INFO: ￢ﾜﾓ Auto-removed 4 outlier embedding(s)
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=0, avgSim=0.6904, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=1, avgSim=0.8075, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=2, avgSim=0.7973, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=3, avgSim=0.7752, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=4, avgSim=0.8161, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=5, avgSim=0.4703, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=6, avgSim=0.8150, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=7, avgSim=0.8183, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=8, avgSim=0.8290, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=9, avgSim=0.8120, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=10, avgSim=0.8395, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=11, avgSim=0.8171, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=12, avgSim=0.8171, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=13, avgSim=0.2652, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=14, avgSim=0.7435, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=15, avgSim=0.8237, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=16, avgSim=0.8268, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=17, avgSim=0.8289, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=18, avgSim=0.2747, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO:   Weak embedding detected: index=19, avgSim=0.7930, threshold=0.7500, absThresh=0.8500
+[2025-10-21 23:10:56] INFO: Debug: Warning - Removed 4 outlier image(s) automatically
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_020.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_020.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_018.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_018.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_017.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_017.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_016.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_016.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_015.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_015.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_013.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_013.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_012.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_012.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_011.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_011.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_010.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_010.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_009.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_009.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_008.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_008.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_007.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_007.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_005.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_005.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_004.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_004.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_003.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_003.png
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_002.emb
+[2025-10-21 23:10:56] INFO:   ￢ﾜﾗ Deleted weak image: S13234_002.png
+[2025-10-21 23:10:56] INFO: ￢ﾜﾓ Auto-removed 16 weak embedding(s)
+[2025-10-21 23:10:56] INFO: Capture result: true - Successfully captured 20 high-quality face images
+[2025-10-21 23:10:56] INFO: Debug: Warning - Removed 16 weak image(s) automatically
+[2025-10-21 23:10:59] INFO: Debug: All images captured successfully
+[2025-10-21 23:11:00] INFO: Disposing FaceCaptureDialog...
+[2025-10-21 23:11:00] INFO: Preview timer stopped
+[2025-10-21 23:11:01] INFO: Face detection resources released

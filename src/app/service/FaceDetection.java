@@ -263,27 +263,13 @@ public class FaceDetection {
                 Mat faceROI = extractFaceROI(frame, bestFace);
 
                 if (faceROI != null) {
-                    // Validate image quality (sharpness, brightness, contrast)
-                    ImageProcessor.ImageQualityResult qualityResult = imageProcessor
-                            .validateImageQualityDetailed(faceROI);
-                    String rawFeedback = qualityResult.getFeedback();
-                    String feedbackMessage = rawFeedback != null ? rawFeedback.trim() : "Unknown quality issue";
+                    // ✅ REMOVED: Quality validation during capture - now accept all detectable
+                    // faces
+                    // Quality control will be handled post-capture through embedding similarity
+                    // analysis
+                    // This allows more diverse training data while still filtering poor embeddings
 
-                    // Check if image quality passes (this is mandatory)
-                    if (!qualityResult.isGoodQuality()) {
-                        logDebug("Image quality validation failed: " + feedbackMessage);
-                        // Don't show warning during capture - causes UI glitching
-                        faceROI.release();
-                        continue; // Try next frame
-                    }
-
-                    // âœ… REMOVED: Landmark detection validation - too restrictive, causing quality
-                    // drop
-                    // Accepting all images that pass basic quality checks (sharpness, brightness,
-                    // contrast)
-                    // This allows more diverse poses and angles, improving embedding robustness
-
-                    // Image passed quality checks - save it
+                    // Image has detectable face - save it (quality filtering happens later)
                     String fileName = student.getStudentId() + "_" +
                             String.format("%03d", capturedCount + 1) + ".png";
                     Path imageFile = folderPath.resolve(fileName);
@@ -337,6 +323,11 @@ public class FaceDetection {
         if (capturedCount > 0) {
             logDebug("Processing embeddings for " + capturedCount + " captured images...");
 
+            // ✅ FIX: Don't re-detect faces in saved images - they are already cropped
+            // faces!
+            // The saved images are already the cropped face regions, so use whole image as
+            // face
+
             FaceEmbeddingGenerator.ProgressCallback progressCallback = new FaceEmbeddingGenerator.ProgressCallback() {
                 @Override
                 public void onProgress(String message) {
@@ -345,7 +336,7 @@ public class FaceDetection {
             };
 
             batchResult = embeddingGenerator
-                    .processCapturedImages(capturedImages, imageProcessor, progressCallback);
+                    .processCapturedImages(capturedImages, null, imageProcessor, progressCallback);
 
             logDebug("Embedding processing result: " + batchResult.getMessage());
         }
@@ -360,7 +351,9 @@ public class FaceDetection {
 
     private Mat extractFaceROI(Mat frame, Rect face) {
         try {
-            Rect captureRegion = buildSquareRegionWithPadding(frame.size(), face, 0.12);
+            // Increased padding from 0.12 to 0.25 to include eyebrows and forehead
+            // This stabilizes Haar eye detection by providing more facial context
+            Rect captureRegion = buildSquareRegionWithPadding(frame.size(), face, 0.25);
             return new Mat(frame, captureRegion).clone();
 
         } catch (Exception e) {
@@ -577,6 +570,69 @@ public class FaceDetection {
     private void logDebug(String message) {
         if (DEBUG_LOGS) {
             System.out.println(message);
+        }
+    }
+
+    // Helper method to detect face in saved image for embedding generation
+    private Rect detectFaceInImage(Mat image) {
+        if (dnnFaceDetector == null || image.empty()) {
+            return null;
+        }
+
+        try {
+            Size size = new Size(300, 300);
+            Mat blob = Dnn.blobFromImage(image, 1.0, size, new Scalar(104.0, 117.0, 123.0));
+
+            dnnFaceDetector.setInput(blob);
+            Mat detections = dnnFaceDetector.forward();
+
+            Mat detectionsFloat = new Mat();
+            detections.convertTo(detectionsFloat, CvType.CV_32F);
+
+            int numDetections = (int) detectionsFloat.size(2);
+            int dims = (int) detectionsFloat.size(3);
+
+            Rect bestFace = null;
+            double bestConfidence = 0.0;
+
+            for (int i = 0; i < numDetections; i++) {
+                float[] detection = new float[dims];
+                detectionsFloat.get(new int[] { 0, 0, i, 0 }, detection);
+
+                float confidence = detection[2];
+                if (confidence > MIN_CONFIDENCE_SCORE && confidence > bestConfidence) {
+                    int x1 = (int) Math.round(detection[3] * image.cols());
+                    int y1 = (int) Math.round(detection[4] * image.rows());
+                    int x2 = (int) Math.round(detection[5] * image.cols());
+                    int y2 = (int) Math.round(detection[6] * image.rows());
+
+                    x1 = Math.max(0, Math.min(x1, image.cols() - 1));
+                    y1 = Math.max(0, Math.min(y1, image.rows() - 1));
+                    x2 = Math.max(0, Math.min(x2, image.cols() - 1));
+                    y2 = Math.max(0, Math.min(y2, image.rows() - 1));
+
+                    if (x2 > x1 && y2 > y1) {
+                        int width = x2 - x1;
+                        int height = y2 - y1;
+
+                        if (width >= MIN_FACE_SIZE && width <= MAX_FACE_SIZE &&
+                                height >= MIN_FACE_SIZE && height <= MAX_FACE_SIZE) {
+                            bestFace = new Rect(x1, y1, width, height);
+                            bestConfidence = confidence;
+                        }
+                    }
+                }
+            }
+
+            blob.release();
+            detections.release();
+            detectionsFloat.release();
+
+            return bestFace;
+
+        } catch (Exception e) {
+            System.err.println("Face detection in image failed: " + e.getMessage());
+            return null;
         }
     }
 }
