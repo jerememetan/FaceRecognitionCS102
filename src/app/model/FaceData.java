@@ -15,6 +15,10 @@ public class FaceData {
     private List<FaceImage> images;
     private boolean isValid;
     private Path studentFolder;
+<<<<<<< HEAD
+=======
+    private String imageType = AppConfig.getInstance().getRecognitionImageFormat();
+>>>>>>> fc8bcaecbf3719a57729c26409dc768ad15935e9
 
     public FaceData(String studentId, String studentName) {
         this.studentId = studentId;
@@ -44,7 +48,11 @@ public class FaceData {
         File folder = studentFolder.toFile();
         if (folder.exists() && folder.isDirectory()) {
             File[] files = folder.listFiles(
+<<<<<<< HEAD
                     (dir, name) -> name.toLowerCase().endsWith(".png"));
+=======
+                    (dir, name) -> name.toLowerCase().endsWith(".jpg") || name.toLowerCase().endsWith(".png"));
+>>>>>>> fc8bcaecbf3719a57729c26409dc768ad15935e9
             if (files != null) {
                 for (File file : files) {
                     FaceImage faceImage = new FaceImage(file.getAbsolutePath(), null);
