@@ -1,0 +1,144 @@
+[2025-10-22 18:59:03] INFO: Application Logger Initialized.
+[2025-10-22 18:59:03] INFO: Configuration and core components loaded.
+[2025-10-22 18:59:03] INFO: app.properties normalized (55 entries).
+[2025-10-22 18:59:03] INFO: Configuration loaded from classpath: app.properties
+[2025-10-22 18:59:03] INFO: Configuration file loaded
+[2025-10-22 18:59:03] INFO: MyGUIProgram Started!
+[2025-10-22 18:59:04] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-22 18:59:06] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
+[2025-10-22 18:59:06] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-22 18:59:06] INFO: === Folder debug ===
+[2025-10-22 18:59:06] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae
+[2025-10-22 18:59:06] INFO:   Contains: 34 items
+[2025-10-22 18:59:06] INFO:   Display label: S13234 - Jin_Rae
+[2025-10-22 18:59:06] INFO: ====================
+[2025-10-22 18:59:06] INFO: Person S13234 - Jin_Rae: tightness=0.999, stdDev=0.000, absThresh=0.600, margin=0.100
+[2025-10-22 18:59:06] INFO: DNN face detector loaded successfully for recognition
+[2025-10-22 18:59:06] INFO: Attempting camera index 0 with DSHOW backend...
+[2025-10-22 18:59:08] INFO: Camera opened successfully: index 0 with DSHOW backend
+[2025-10-22 18:59:11] INFO: Camera configured: 640x480 @ 30fps (MJPEG: yes)
+[2025-10-22 18:59:11] INFO: Camera initialized successfully
+[2025-10-22 18:59:12] SEVERE: 5-point alignment failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1504: error: (-215:Assertion failed) (cn == 1 && (_mask.empty() || _mask.type() == CV_8U)) || (cn > 1 && _mask.empty() && !minIdx && !maxIdx) in function 'cv::minMaxIdx'
+[2025-10-22 18:59:12] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-22 18:59:12] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-22 18:59:12] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:12] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:13] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-22 18:59:13] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-22 18:59:13] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:13] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:13] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-22 18:59:13] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-22 18:59:13] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:13] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:14] SEVERE: 5-point alignment failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1504: error: (-215:Assertion failed) (cn == 1 && (_mask.empty() || _mask.type() == CV_8U)) || (cn > 1 && _mask.empty() && !minIdx && !maxIdx) in function 'cv::minMaxIdx'
+[2025-10-22 18:59:14] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-22 18:59:14] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-22 18:59:14] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:14] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:14] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-22 18:59:14] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-22 18:59:14] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:14] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:15] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-22 18:59:15] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-22 18:59:15] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:15] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:15] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-22 18:59:15] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-22 18:59:15] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:15] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:15] SEVERE: 5-point alignment failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1504: error: (-215:Assertion failed) (cn == 1 && (_mask.empty() || _mask.type() == CV_8U)) || (cn > 1 && _mask.empty() && !minIdx && !maxIdx) in function 'cv::minMaxIdx'
+[2025-10-22 18:59:15] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-22 18:59:15] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-22 18:59:15] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:15] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:16] SEVERE: 5-point alignment failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1504: error: (-215:Assertion failed) (cn == 1 && (_mask.empty() || _mask.type() == CV_8U)) || (cn > 1 && _mask.empty() && !minIdx && !maxIdx) in function 'cv::minMaxIdx'
+[2025-10-22 18:59:16] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-22 18:59:16] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-22 18:59:16] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:16] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:16] SEVERE: 5-point alignment failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1504: error: (-215:Assertion failed) (cn == 1 && (_mask.empty() || _mask.type() == CV_8U)) || (cn > 1 && _mask.empty() && !minIdx && !maxIdx) in function 'cv::minMaxIdx'
+[2025-10-22 18:59:16] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-22 18:59:16] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-22 18:59:16] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:16] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:16] SEVERE: 5-point alignment failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1504: error: (-215:Assertion failed) (cn == 1 && (_mask.empty() || _mask.type() == CV_8U)) || (cn > 1 && _mask.empty() && !minIdx && !maxIdx) in function 'cv::minMaxIdx'
+[2025-10-22 18:59:17] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-22 18:59:17] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-22 18:59:17] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:17] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:17] SEVERE: 5-point alignment failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1504: error: (-215:Assertion failed) (cn == 1 && (_mask.empty() || _mask.type() == CV_8U)) || (cn > 1 && _mask.empty() && !minIdx && !maxIdx) in function 'cv::minMaxIdx'
+[2025-10-22 18:59:17] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-22 18:59:17] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-22 18:59:17] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:17] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:17] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.994 
+[2025-10-22 18:59:17] INFO: [Decision] Best=S13234 - Jin_Rae(0.994), 2nd=0.000, Discriminative=0.994, AvgNeg=0.000
+[2025-10-22 18:59:17] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.1%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:17] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:18] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.993 
+[2025-10-22 18:59:18] INFO: [Decision] Best=S13234 - Jin_Rae(0.993), 2nd=0.000, Discriminative=0.993, AvgNeg=0.000
+[2025-10-22 18:59:18] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.1%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:18] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:18] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.994 
+[2025-10-22 18:59:18] INFO: [Decision] Best=S13234 - Jin_Rae(0.994), 2nd=0.000, Discriminative=0.994, AvgNeg=0.000
+[2025-10-22 18:59:18] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.1%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:18] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:19] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.996 
+[2025-10-22 18:59:19] INFO: [Decision] Best=S13234 - Jin_Rae(0.996), 2nd=0.000, Discriminative=0.996, AvgNeg=0.000
+[2025-10-22 18:59:19] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:19] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:19] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-22 18:59:19] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-22 18:59:19] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:19] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:22] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-22 18:59:22] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-22 18:59:22] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:22] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:22] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.995 
+[2025-10-22 18:59:22] INFO: [Decision] Best=S13234 - Jin_Rae(0.995), 2nd=0.000, Discriminative=0.995, AvgNeg=0.000
+[2025-10-22 18:59:22] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.1%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:22] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:22] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.996 
+[2025-10-22 18:59:22] INFO: [Decision] Best=S13234 - Jin_Rae(0.996), 2nd=0.000, Discriminative=0.996, AvgNeg=0.000
+[2025-10-22 18:59:22] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.1%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:22] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:23] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.995 
+[2025-10-22 18:59:23] INFO: [Decision] Best=S13234 - Jin_Rae(0.995), 2nd=0.000, Discriminative=0.995, AvgNeg=0.000
+[2025-10-22 18:59:23] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.1%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:23] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:23] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.995 
+[2025-10-22 18:59:23] INFO: [Decision] Best=S13234 - Jin_Rae(0.995), 2nd=0.000, Discriminative=0.995, AvgNeg=0.000
+[2025-10-22 18:59:23] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.1%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:23] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:23] SEVERE: 5-point alignment failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1504: error: (-215:Assertion failed) (cn == 1 && (_mask.empty() || _mask.type() == CV_8U)) || (cn > 1 && _mask.empty() && !minIdx && !maxIdx) in function 'cv::minMaxIdx'
+[2025-10-22 18:59:24] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.995 
+[2025-10-22 18:59:24] INFO: [Decision] Best=S13234 - Jin_Rae(0.995), 2nd=0.000, Discriminative=0.995, AvgNeg=0.000
+[2025-10-22 18:59:24] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.1%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:24] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:24] SEVERE: 5-point alignment failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1504: error: (-215:Assertion failed) (cn == 1 && (_mask.empty() || _mask.type() == CV_8U)) || (cn > 1 && _mask.empty() && !minIdx && !maxIdx) in function 'cv::minMaxIdx'
+[2025-10-22 18:59:24] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.996 
+[2025-10-22 18:59:24] INFO: [Decision] Best=S13234 - Jin_Rae(0.996), 2nd=0.000, Discriminative=0.996, AvgNeg=0.000
+[2025-10-22 18:59:24] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.1%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:24] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:26] SEVERE: 5-point alignment failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1504: error: (-215:Assertion failed) (cn == 1 && (_mask.empty() || _mask.type() == CV_8U)) || (cn > 1 && _mask.empty() && !minIdx && !maxIdx) in function 'cv::minMaxIdx'
+[2025-10-22 18:59:26] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.996 
+[2025-10-22 18:59:26] INFO: [Decision] Best=S13234 - Jin_Rae(0.996), 2nd=0.000, Discriminative=0.996, AvgNeg=0.000
+[2025-10-22 18:59:26] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:26] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:27] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.996 
+[2025-10-22 18:59:27] INFO: [Decision] Best=S13234 - Jin_Rae(0.996), 2nd=0.000, Discriminative=0.996, AvgNeg=0.000
+[2025-10-22 18:59:27] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:27] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:27] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.996 
+[2025-10-22 18:59:27] INFO: [Decision] Best=S13234 - Jin_Rae(0.996), 2nd=0.000, Discriminative=0.996, AvgNeg=0.000
+[2025-10-22 18:59:27] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:27] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:27] INFO: Exiting Face Recognition Demo...
+[2025-10-22 18:59:28] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.996 
+[2025-10-22 18:59:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.996), 2nd=0.000, Discriminative=0.996, AvgNeg=0.000
+[2025-10-22 18:59:28] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.1%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 18:59:28] INFO: [Decision] ACCEPT: Best score meets absolute threshold
+[2025-10-22 18:59:28] INFO: Exiting Face Recognition Demo...

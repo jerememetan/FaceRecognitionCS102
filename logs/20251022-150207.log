@@ -1,0 +1,83 @@
+[2025-10-22 15:02:07] INFO: Application Logger Initialized.
+[2025-10-22 15:02:07] INFO: app.properties normalized (55 entries).
+[2025-10-22 15:02:07] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
+[2025-10-22 15:02:08] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
+[2025-10-22 15:02:08] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-22 15:02:08] INFO: StudentManager initialized successfully
+[2025-10-22 15:02:10] INFO: GUI launched successfully
+[2025-10-22 15:02:12] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
+[2025-10-22 15:02:13] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-22 15:02:13] INFO: FaceCaptureDialog created for student: Jin Rae
+[2025-10-22 15:02:13] INFO: Dialog initialized
+[2025-10-22 15:02:13] INFO: Starting camera preview...
+[2025-10-22 15:02:13] INFO: Preview timer started at 20fps
+[2025-10-22 15:02:17] INFO: Starting capture process...
+[2025-10-22 15:02:17] INFO: Performing capture with target: 20
+[2025-10-22 15:02:17] INFO: Debug: Capture process started
+[2025-10-22 15:02:17] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:19] INFO: Debug: Image saved with confidence 0.73
+[2025-10-22 15:02:20] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:22] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:23] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:25] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:26] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:28] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:29] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:31] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:32] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:33] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:35] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:36] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:38] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:39] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:40] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:42] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:43] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:44] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:02:46] INFO: Debug: Capture process finished
+[2025-10-22 15:02:46] INFO: Debug: Warning - Processing captured images...
+[2025-10-22 15:02:47] INFO: ￢ﾜﾓ Saved embedding: S13234_001.emb
+[2025-10-22 15:02:47] INFO: ￢ﾜﾓ Saved embedding: S13234_002.emb
+[2025-10-22 15:02:47] INFO: ￢ﾜﾓ Saved embedding: S13234_003.emb
+[2025-10-22 15:02:48] INFO: ￢ﾜﾓ Saved embedding: S13234_004.emb
+[2025-10-22 15:02:48] INFO: ￢ﾜﾓ Saved embedding: S13234_005.emb
+[2025-10-22 15:02:48] INFO: ￢ﾜﾓ Saved embedding: S13234_006.emb
+[2025-10-22 15:02:48] INFO: ￢ﾜﾓ Saved embedding: S13234_007.emb
+[2025-10-22 15:02:48] INFO: ￢ﾜﾓ Saved embedding: S13234_008.emb
+[2025-10-22 15:02:49] INFO: ￢ﾜﾓ Saved embedding: S13234_009.emb
+[2025-10-22 15:02:49] INFO: ￢ﾜﾓ Saved embedding: S13234_010.emb
+[2025-10-22 15:02:49] INFO: ￢ﾜﾓ Saved embedding: S13234_011.emb
+[2025-10-22 15:02:49] INFO: ￢ﾜﾓ Saved embedding: S13234_012.emb
+[2025-10-22 15:02:50] INFO: ￢ﾜﾓ Saved embedding: S13234_013.emb
+[2025-10-22 15:02:50] INFO: ￢ﾜﾓ Saved embedding: S13234_014.emb
+[2025-10-22 15:02:50] INFO: ￢ﾜﾓ Saved embedding: S13234_015.emb
+[2025-10-22 15:02:50] INFO: ￢ﾜﾓ Saved embedding: S13234_016.emb
+[2025-10-22 15:02:50] INFO: ￢ﾜﾓ Saved embedding: S13234_017.emb
+[2025-10-22 15:02:51] INFO: ￢ﾜﾓ Saved embedding: S13234_018.emb
+[2025-10-22 15:02:51] INFO: ￢ﾜﾓ Saved embedding: S13234_019.emb
+[2025-10-22 15:02:51] INFO: ￢ﾜﾓ Saved embedding: S13234_020.emb
+[2025-10-22 15:02:51] INFO: Embedding generation complete: 20/20 successful
+[2025-10-22 15:02:51] INFO: Debug: Warning - Analyzing embedding quality...
+[2025-10-22 15:02:51] INFO:   Outlier detected: index=0, avgSim=0.9974, threshold=0.9975
+[2025-10-22 15:02:51] INFO:   Outlier detected: index=1, avgSim=0.9963, threshold=0.9975
+[2025-10-22 15:02:51] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_001.emb
+[2025-10-22 15:02:51] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_001.png
+[2025-10-22 15:02:51] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_002.emb
+[2025-10-22 15:02:51] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_002.png
+[2025-10-22 15:02:51] INFO: ￢ﾜﾓ Auto-removed 2 outlier embedding(s)
+[2025-10-22 15:02:51] INFO: Debug: Warning - Removed 2 outlier image(s) automatically
+[2025-10-22 15:02:51] INFO:   Weak embedding detected: index=0, avgSim=0.9974, threshold=0.9978, absThresh=0.6000
+[2025-10-22 15:02:51] INFO:   Weak embedding detected: index=1, avgSim=0.9963, threshold=0.9978, absThresh=0.6000
+[2025-10-22 15:02:51] INFO:   Weak embedding detected: index=2, avgSim=0.9978, threshold=0.9978, absThresh=0.6000
+[2025-10-22 15:02:51] INFO:   Weak embedding detected: index=9, avgSim=0.9976, threshold=0.9978, absThresh=0.6000
+[2025-10-22 15:02:51] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_010.emb
+[2025-10-22 15:02:51] INFO:   ￢ﾜﾗ Deleted weak image: S13234_010.png
+[2025-10-22 15:02:51] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_003.emb
+[2025-10-22 15:02:51] INFO:   ￢ﾜﾗ Deleted weak image: S13234_003.png
+[2025-10-22 15:02:51] INFO: ￢ﾜﾓ Auto-removed 2 weak embedding(s)
+[2025-10-22 15:02:51] INFO: Debug: Warning - Removed 2 weak image(s) automatically
+[2025-10-22 15:02:51] INFO: Capture result: true - Successfully captured 20 high-quality face images
+[2025-10-22 15:02:53] INFO: Debug: All images captured successfully
+[2025-10-22 15:02:55] INFO: Disposing FaceCaptureDialog...
+[2025-10-22 15:02:55] INFO: Preview timer stopped
+[2025-10-22 15:02:55] INFO: Face detection resources released

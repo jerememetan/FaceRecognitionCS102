@@ -1,0 +1,24 @@
+[2025-10-22 22:33:34] INFO: Application Logger Initialized.
+[2025-10-22 22:33:34] INFO: FaceRecognitionDemo Starting...
+[2025-10-22 22:33:34] INFO: app.properties normalized (55 entries).
+[2025-10-22 22:33:34] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
+[2025-10-22 22:33:35] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-22 22:33:36] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
+[2025-10-22 22:33:36] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-22 22:33:36] INFO: === Folder debug ===
+[2025-10-22 22:33:36] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae
+[2025-10-22 22:33:36] INFO:   Contains: 34 items
+[2025-10-22 22:33:36] INFO:   Display label: S13234 - Jin_Rae
+[2025-10-22 22:33:36] INFO: ====================
+[2025-10-22 22:33:36] INFO: Person S13234 - Jin_Rae: tightness=0.999, stdDev=0.000, absThresh=0.600, margin=0.100
+[2025-10-22 22:33:37] INFO: DNN face detector loaded successfully for recognition
+[2025-10-22 22:33:37] INFO: Attempting camera index 0 with DSHOW backend...
+[2025-10-22 22:33:38] INFO: Camera opened successfully: index 0 with DSHOW backend
+[2025-10-22 22:33:41] INFO: Camera configured: 640x480 @ 30fps (MJPEG: yes)
+[2025-10-22 22:33:41] INFO: Camera initialized successfully
+[2025-10-22 22:33:43] INFO: Exiting Face Recognition Demo...
+[2025-10-22 22:33:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.995 
+[2025-10-22 22:33:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.995), 2nd=0.000, Discriminative=0.995, AvgNeg=0.000
+[2025-10-22 22:33:43] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.1%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-22 22:33:43] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative) | Confidence: 1.000
+[2025-10-22 22:33:43] INFO: Exiting Face Recognition Demo...

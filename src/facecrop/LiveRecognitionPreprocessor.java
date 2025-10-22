@@ -7,7 +7,7 @@ import app.util.FaceAligner;
 
 public class LiveRecognitionPreprocessor {
 
-    private static final Size INPUT_SIZE = new Size(96, 96);
+    private static final Size INPUT_SIZE = new Size(112, 112);  // ✅ CHANGED for ArcFace
     private FaceAligner aligner;
 
     public LiveRecognitionPreprocessor() {
@@ -65,17 +65,11 @@ public class LiveRecognitionPreprocessor {
 
             processed.release();
 
-            // ✅ CRITICAL FIX: Apply EXACT same preprocessing as training!
-            // Normalize to [0, 1] range - convert to float
-            Mat normalized = new Mat();
-            aligned.convertTo(normalized, CvType.CV_32F, 1.0 / 255.0);
-            aligned.release();
-
-            // ✅ CRITICAL FIX: Create blob EXACTLY like training
-            // swapRB=true converts BGR to RGB (OpenFace expects RGB)
-            Mat blob = Dnn.blobFromImage(normalized, 1.0, INPUT_SIZE,
+            // ✅ CORRECT: Let blobFromImage handle ALL normalization
+            // blobFromImage will: convert to float, scale by 1.0/255.0, swap BGR→RGB, reshape to NCHW
+            Mat blob = Dnn.blobFromImage(aligned, 1.0 / 255.0, INPUT_SIZE,
                     new Scalar(0, 0, 0), true, false);
-            normalized.release();
+            aligned.release();
 
             // ✅ Return the properly formatted blob, NOT raw pixels!
             return blob;
@@ -88,13 +82,9 @@ public class LiveRecognitionPreprocessor {
             Mat fallback = new Mat();
             Imgproc.resize(faceROI, fallback, INPUT_SIZE, 0, 0, Imgproc.INTER_CUBIC);
 
-            Mat normalized = new Mat();
-            fallback.convertTo(normalized, CvType.CV_32F, 1.0 / 255.0);
-            fallback.release();
-
-            Mat blob = Dnn.blobFromImage(normalized, 1.0, INPUT_SIZE,
+            Mat blob = Dnn.blobFromImage(fallback, 1.0 / 255.0, INPUT_SIZE,
                     new Scalar(0, 0, 0), true, false);
-            normalized.release();
+            fallback.release();
 
             return blob;
         }

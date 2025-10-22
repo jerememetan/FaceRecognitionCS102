@@ -1,0 +1,205 @@
+[2025-10-22 15:00:08] INFO: Application Logger Initialized.
+[2025-10-22 15:00:08] INFO: app.properties normalized (55 entries).
+[2025-10-22 15:00:08] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
+[2025-10-22 15:00:09] INFO: ￢ﾚﾠ￯ﾸﾏ ArcFace model not found, using feature-based embeddings
+[2025-10-22 15:00:09] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-22 15:00:09] INFO: StudentManager initialized successfully
+[2025-10-22 15:00:10] INFO: GUI launched successfully
+[2025-10-22 15:00:13] INFO: ￢ﾚﾠ￯ﾸﾏ ArcFace model not found, using feature-based embeddings
+[2025-10-22 15:00:13] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-22 15:00:13] INFO: FaceCaptureDialog created for student: Jin Rae
+[2025-10-22 15:00:13] INFO: Dialog initialized
+[2025-10-22 15:00:13] INFO: Starting camera preview...
+[2025-10-22 15:00:13] INFO: Preview timer started at 20fps
+[2025-10-22 15:00:18] INFO: detection.scale_factor has been changed to 1.23
+[2025-10-22 15:00:18] INFO: Detection scale factor changed to 1.23
+[2025-10-22 15:00:18] INFO: detection.scale_factor has been changed to 1.22
+[2025-10-22 15:00:18] INFO: Detection scale factor changed to 1.22
+[2025-10-22 15:00:19] INFO: detection.scale_factor has been changed to 1.22
+[2025-10-22 15:00:19] INFO: Detection scale factor changed to 1.22
+[2025-10-22 15:00:19] INFO: detection.scale_factor has been changed to 1.22
+[2025-10-22 15:00:19] INFO: Detection scale factor changed to 1.22
+[2025-10-22 15:00:19] INFO: detection.scale_factor has been changed to 1.21
+[2025-10-22 15:00:19] INFO: Detection scale factor changed to 1.21
+[2025-10-22 15:00:19] INFO: detection.scale_factor has been changed to 1.21
+[2025-10-22 15:00:19] INFO: Detection scale factor changed to 1.21
+[2025-10-22 15:00:19] INFO: detection.scale_factor has been changed to 1.21
+[2025-10-22 15:00:19] INFO: Detection scale factor changed to 1.21
+[2025-10-22 15:00:19] INFO: detection.scale_factor has been changed to 1.2
+[2025-10-22 15:00:19] INFO: Detection scale factor changed to 1.2
+[2025-10-22 15:00:19] INFO: detection.scale_factor has been changed to 1.2
+[2025-10-22 15:00:19] INFO: Detection scale factor changed to 1.2
+[2025-10-22 15:00:19] INFO: detection.scale_factor has been changed to 1.2
+[2025-10-22 15:00:19] INFO: Detection scale factor changed to 1.2
+[2025-10-22 15:00:19] INFO: detection.scale_factor has been changed to 1.19
+[2025-10-22 15:00:19] INFO: Detection scale factor changed to 1.19
+[2025-10-22 15:00:19] INFO: detection.scale_factor has been changed to 1.19
+[2025-10-22 15:00:19] INFO: Detection scale factor changed to 1.19
+[2025-10-22 15:00:19] INFO: detection.scale_factor has been changed to 1.19
+[2025-10-22 15:00:19] INFO: Detection scale factor changed to 1.19
+[2025-10-22 15:00:19] INFO: detection.scale_factor has been changed to 1.18
+[2025-10-22 15:00:19] INFO: Detection scale factor changed to 1.18
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.18
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.18
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.18
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.18
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.17
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.17
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.17
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.17
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.17
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.17
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.16
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.16
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.16
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.16
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.16
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.16
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.15
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.15
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.15
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.15
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.15
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.15
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.14
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.14
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.14
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.14
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.14
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.14
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.13
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.13
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.13
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.13
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.13
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.13
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.12
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.12
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.12
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.12
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.12
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.12
+[2025-10-22 15:00:20] INFO: detection.scale_factor has been changed to 1.11
+[2025-10-22 15:00:20] INFO: Detection scale factor changed to 1.11
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.11
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.11
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.11
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.11
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.1
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.1
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.1
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.1
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.1
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.1
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.09
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.09
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.09
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.09
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.09
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.09
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.08
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.08
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.08
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.08
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.08
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.08
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.07
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.07
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.07
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.07
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.07
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.07
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.06
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.06
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.06
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.06
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.06
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.06
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.05
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.05
+[2025-10-22 15:00:21] INFO: detection.scale_factor has been changed to 1.05
+[2025-10-22 15:00:21] INFO: Detection scale factor changed to 1.05
+[2025-10-22 15:00:22] INFO: detection.scale_factor has been changed to 1.05
+[2025-10-22 15:00:22] INFO: Detection scale factor changed to 1.05
+[2025-10-22 15:00:22] INFO: detection.scale_factor has been changed to 1.04
+[2025-10-22 15:00:22] INFO: Detection scale factor changed to 1.04
+[2025-10-22 15:00:22] INFO: detection.scale_factor has been changed to 1.04
+[2025-10-22 15:00:22] INFO: Detection scale factor changed to 1.04
+[2025-10-22 15:00:22] INFO: detection.scale_factor has been changed to 1.04
+[2025-10-22 15:00:22] INFO: Detection scale factor changed to 1.04
+[2025-10-22 15:00:22] INFO: detection.scale_factor has been changed to 1.03
+[2025-10-22 15:00:22] INFO: Detection scale factor changed to 1.03
+[2025-10-22 15:00:22] INFO: detection.scale_factor has been changed to 1.03
+[2025-10-22 15:00:22] INFO: Detection scale factor changed to 1.03
+[2025-10-22 15:00:23] INFO: Starting capture process...
+[2025-10-22 15:00:23] INFO: Performing capture with target: 20
+[2025-10-22 15:00:23] INFO: Debug: Capture process started
+[2025-10-22 15:00:23] INFO: Debug: Image saved with confidence 0.99
+[2025-10-22 15:00:24] INFO: Debug: Image saved with confidence 0.97
+[2025-10-22 15:00:26] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:27] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:29] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:30] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:32] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:33] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:34] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:36] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:37] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:39] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:40] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:41] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:43] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:44] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:46] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:47] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:48] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:50] INFO: Debug: Image saved with confidence 1.00
+[2025-10-22 15:00:51] INFO: Debug: Capture process finished
+[2025-10-22 15:00:51] INFO: Debug: Warning - Processing captured images...
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_001.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_002.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_003.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.7% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_004.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.7% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_005.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_006.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.7% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_007.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_008.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_009.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_010.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_011.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_012.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.7% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_013.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_014.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.7% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_015.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_016.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_017.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_018.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.9% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_019.png
+[2025-10-22 15:00:51] SEVERE: Invalid embedding: too sparse (12.7% non-zero)
+[2025-10-22 15:00:51] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_020.png
+[2025-10-22 15:00:51] INFO: Embedding generation complete: 0/20 successful
+[2025-10-22 15:00:51] INFO: Debug: Warning - Warning: Only 0/20 embeddings generated successfully
+[2025-10-22 15:00:51] INFO: Capture result: true - Successfully captured 20 high-quality face images
+[2025-10-22 15:00:54] INFO: Debug: All images captured successfully
+[2025-10-22 15:00:55] INFO: Disposing FaceCaptureDialog...
+[2025-10-22 15:00:55] INFO: Preview timer stopped
+[2025-10-22 15:00:56] INFO: Face detection resources released

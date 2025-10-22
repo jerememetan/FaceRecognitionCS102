@@ -493,7 +493,7 @@ public class AppConfig {
 
     // embedding.modelPath (String)
     public String getEmbeddingModelPath() {
-        return properties.getProperty(KEY_EMBEDDING_MODEL_PATH, "data/resources/openface.nn4.small2.v1.t7");
+        return properties.getProperty(KEY_EMBEDDING_MODEL_PATH, "data/resources/arcface.onnx");
     }
 
     public void setEmbeddingModelPath(String path) {
@@ -507,12 +507,12 @@ public class AppConfig {
 
     // embedding.embedding.size (int)
     public int getEmbeddingSize() {
-        String s = properties.getProperty(KEY_EMBEDDING_SIZE, "128");
+        String s = properties.getProperty(KEY_EMBEDDING_SIZE, "512");
         try {
             return Integer.parseInt(s);
         } catch (NumberFormatException ex) {
             AppLogger.error("Config error: Invalid number format for " + KEY_EMBEDDING_SIZE, ex);
-            return 128;
+            return 512;
         }
     }
 
@@ -527,12 +527,12 @@ public class AppConfig {
 
     // embedding.input_size (int)
     public int getEmbeddingInputSize() {
-        String s = properties.getProperty(KEY_EMBEDDING_INPUT_SIZE, "96");
+        String s = properties.getProperty(KEY_EMBEDDING_INPUT_SIZE, "112");
         try {
             return Integer.parseInt(s);
         } catch (NumberFormatException ex) {
             AppLogger.error("Config error: Invalid number format for " + KEY_EMBEDDING_INPUT_SIZE, ex);
-            return 96;
+            return 112;
         }
     }
 

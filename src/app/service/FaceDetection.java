@@ -323,10 +323,28 @@ public class FaceDetection {
         if (capturedCount > 0) {
             logDebug("Processing embeddings for " + capturedCount + " captured images...");
 
-            // ✅ FIX: Don't re-detect faces in saved images - they are already cropped
-            // faces!
-            // The saved images are already the cropped face regions, so use whole image as
-            // face
+            // ✅ CRITICAL FIX: Clean up existing embeddings before generating new ones
+            // This ensures fresh captures overwrite old embeddings completely
+            try {
+                File folder = new File(folderPath.toString());
+                if (folder.exists() && folder.isDirectory()) {
+                    File[] existingEmbFiles = folder.listFiles((dir, name) -> name.toLowerCase().endsWith(".emb"));
+                    if (existingEmbFiles != null && existingEmbFiles.length > 0) {
+                        int deletedCount = 0;
+                        for (File embFile : existingEmbFiles) {
+                            if (embFile.delete()) {
+                                deletedCount++;
+                            } else {
+                                System.err.println("Failed to delete existing embedding: " + embFile.getName());
+                            }
+                        }
+                        logDebug("Cleaned up " + deletedCount + " existing embedding files");
+                    }
+                }
+            } catch (Exception e) {
+                System.err.println("Error during embedding cleanup: " + e.getMessage());
+                // Continue with embedding generation even if cleanup fails
+            }
 
             FaceEmbeddingGenerator.ProgressCallback progressCallback = new FaceEmbeddingGenerator.ProgressCallback() {
                 @Override

@@ -113,11 +113,11 @@ public class SimpleEmbeddingSimilarityTest {
             return false;
         }
 
-        boolean isFloatEmbedding = embedding.length == 128 * 4;
-        boolean isDoubleEmbedding = embedding.length == 128 * 8;
+        boolean isFloatEmbedding = embedding.length == 512 * 4;
+        boolean isDoubleEmbedding = embedding.length == 512 * 8;
 
         if (!isFloatEmbedding && !isDoubleEmbedding) {
-            System.err.println("Invalid embedding size: " + embedding.length + ", expected 512 or 1024 bytes");
+            System.err.println("Invalid embedding size: " + embedding.length + ", expected 2048 or 4096 bytes");
             return false;
         }
 
@@ -146,12 +146,12 @@ public class SimpleEmbeddingSimilarityTest {
             }
 
             magnitude = Math.sqrt(magnitude);
-            if (magnitude < 1e-6) {
+            if (magnitude < 0.5 || magnitude > 1.5) {
                 return false;
             }
 
-            double nonZeroRatio = (double) validCount / 128;
-            if (nonZeroRatio < 0.5) {
+            double nonZeroRatio = (double) validCount / 512;
+            if (nonZeroRatio < 0.05) {
                 return false;
             }
 
@@ -213,10 +213,11 @@ public class SimpleEmbeddingSimilarityTest {
         }
 
         try {
-            if (emb1.length == 128 * 4) {
+            // Always use cosine similarity for embeddings (both are unit vectors after normalization)
+            if (emb1.length == 512 * 4) { // Float32 embeddings (ArcFace)
                 return calculateCosineSimilarity(emb1, emb2);
-            } else if (emb1.length == 128 * 8) {
-                return calculateEuclideanSimilarity(emb1, emb2);
+            } else if (emb1.length == 512 * 8) { // Float64 embeddings (Legacy)
+                return calculateCosineSimilarityDouble(emb1, emb2);
             } else {
                 return 0.0;
             }
@@ -246,18 +247,25 @@ public class SimpleEmbeddingSimilarityTest {
         return dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
     }
 
-    private double calculateEuclideanSimilarity(byte[] emb1, byte[] emb2) {
+    private double calculateCosineSimilarityDouble(byte[] emb1, byte[] emb2) {
         double[] vec1 = byteArrayToDoubleArray(emb1);
         double[] vec2 = byteArrayToDoubleArray(emb2);
 
-        double sumSquaredDiff = 0.0;
+        double dotProduct = 0.0;
+        double norm1 = 0.0;
+        double norm2 = 0.0;
+
         for (int i = 0; i < vec1.length; i++) {
-            double diff = vec1[i] - vec2[i];
-            sumSquaredDiff += diff * diff;
+            dotProduct += vec1[i] * vec2[i];
+            norm1 += vec1[i] * vec1[i];
+            norm2 += vec2[i] * vec2[i];
         }
 
-        double distance = Math.sqrt(sumSquaredDiff);
-        return 1.0 / (1.0 + distance);
+        if (norm1 == 0.0 || norm2 == 0.0) {
+            return 0.0;
+        }
+
+        return dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
     }
 
     private float[] byteArrayToFloatArray(byte[] bytes) {
