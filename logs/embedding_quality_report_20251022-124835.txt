@@ -1,0 +1,139 @@
+================================================================================
+EMBEDDING QUALITY REPORT
+================================================================================
+Generated: 2025-10-22 12:48:35
+Database: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata
+
+================================================================================
+STUDENT: S00000_Nicholas
+================================================================================
+
+Embeddings found: 17
+
+--- NORMALIZATION CHECK ---
+Norm range: 1.000000 to 1.000000 (avg: 1.000000)
+✓ All embeddings properly L2-normalized
+
+--- QUALITY ANALYSIS ---
+Overall tightness: 0.8991
+Quality level: EXCELLENT
+Expected live recognition scores: 0.82-0.95
+
+--- EMBEDDING RANKING ---
+  OK    S00000_011.emb  0.9313  (dev: +0.032)
+  OK    S00000_013.emb  0.9306  (dev: +0.031)
+  OK    S00000_015.emb  0.9240  (dev: +0.025)
+  OK    S00000_014.emb  0.9238  (dev: +0.025)
+  OK    S00000_008.emb  0.9199  (dev: +0.021)
+  OK    S00000_010.emb  0.9165  (dev: +0.017)
+  OK    S00000_003.emb  0.9159  (dev: +0.017)
+  OK    S00000_002.emb  0.9152  (dev: +0.016)
+  OK    S00000_017.emb  0.9150  (dev: +0.016)
+  OK    S00000_009.emb  0.9066  (dev: +0.007)
+  OK    S00000_012.emb  0.8976  (dev: -0.002)
+  OK    S00000_016.emb  0.8933  (dev: -0.006)
+  OK    S00000_007.emb  0.8932  (dev: -0.006)
+  OK    S00000_018.emb  0.8797  (dev: -0.019)
+  OK    S00000_001.emb  0.8507  (dev: -0.048)
+⚠ WEAK  S00000_020.emb  0.8470  (dev: -0.052)
+⚠ WEAK  S00000_004.emb  0.8250  (dev: -0.074)
+
+--- WEAK EMBEDDINGS ---
+Consider removing if tightness needs improvement:
+  ⚠ C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S00000_Nicholas\S00000_020.emb
+  ⚠ C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S00000_Nicholas\S00000_004.emb
+
+--- PROJECTED IMPROVEMENT ---
+Current tightness: 0.8991
+After removing outliers: 0.8991
+Improvement: +0.0000 (+0.0%)
+New expected scores: 0.85-1.05
+
+
+================================================================================
+STUDENT: S13234_Jin_Rae
+================================================================================
+
+Embeddings found: 11
+
+--- NORMALIZATION CHECK ---
+Norm range: 1.000000 to 1.000000 (avg: 1.000000)
+✓ All embeddings properly L2-normalized
+
+--- QUALITY ANALYSIS ---
+Overall tightness: 0.9417
+Quality level: EXCELLENT
+Expected live recognition scores: 0.82-0.95
+
+--- EMBEDDING RANKING ---
+  OK    S13234_020.emb  0.9534  (dev: +0.012)
+  OK    S13234_018.emb  0.9523  (dev: +0.011)
+  OK    S13234_006.emb  0.9516  (dev: +0.010)
+  OK    S13234_002.emb  0.9463  (dev: +0.005)
+  OK    S13234_014.emb  0.9454  (dev: +0.004)
+  OK    S13234_009.emb  0.9449  (dev: +0.003)
+  OK    S13234_008.emb  0.9383  (dev: -0.003)
+  OK    S13234_013.emb  0.9379  (dev: -0.004)
+  OK    S13234_017.emb  0.9354  (dev: -0.006)
+  OK    S13234_010.emb  0.9266  (dev: -0.015)
+  OK    S13234_001.emb  0.9261  (dev: -0.016)
+
+✓ No outliers detected - all embeddings are of good quality
+
+
+================================================================================
+STUDENT: S99999_Tonald_Drump
+================================================================================
+
+Embeddings found: 4
+
+--- NORMALIZATION CHECK ---
+Norm range: 1.000000 to 1.000000 (avg: 1.000000)
+✓ All embeddings properly L2-normalized
+
+--- QUALITY ANALYSIS ---
+Overall tightness: 0.9112
+Quality level: EXCELLENT
+Expected live recognition scores: 0.82-0.95
+
+--- EMBEDDING RANKING ---
+  OK    S99999_009.emb  0.9253  (dev: +0.014)
+  OK    S99999_017.emb  0.9186  (dev: +0.007)
+  OK    S99999_020.emb  0.9065  (dev: -0.005)
+  OK    S99999_015.emb  0.8944  (dev: -0.017)
+
+✓ No outliers detected - all embeddings are of good quality
+
+
+================================================================================
+OVERALL SUMMARY
+================================================================================
+
+--- STATISTICS ---
+Total students analyzed: 3
+Total embeddings: 32
+Average embeddings per student: 10.7
+
+--- QUALITY METRICS ---
+Average tightness: 0.9173
+Students with outliers: 0 (0.0%)
+Total outliers found: 0
+
+--- QUALITY DISTRIBUTION ---
+EXCELLENT (≥0.85): 3
+GOOD (0.75-0.84): 0
+MODERATE (0.65-0.74): 0
+POOR (<0.65): 0
+
+--- TOP 5 PERFORMERS (Highest Tightness) ---
+  S13234_Jin_Rae: 0.9417 (EXCELLENT, 11 embeddings)
+  S99999_Tonald_Drump: 0.9112 (EXCELLENT, 4 embeddings)
+  S00000_Nicholas: 0.8991 (EXCELLENT, 17 embeddings)
+
+--- RECOMMENDATIONS ---
+✓ Excellent overall quality (tightness ≥0.80)
+  → Training data is in good shape
+
+================================================================================
+END OF REPORT
+================================================================================

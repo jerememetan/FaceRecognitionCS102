@@ -65,13 +65,33 @@ public class FaceEmbeddingGenerator {
 
             // *** CRITICAL FIX: Add face alignment ***
             Mat aligned = aligner.align(processed, faceRect);
-            processed.release();
 
             if (aligned == null || aligned.empty()) {
-                System.err.println("Alignment failed, using fallback");
+                System.err.println("⚠️ Alignment failed, using cropped face fallback");
                 aligned = new Mat();
-                Imgproc.resize(faceImage, aligned, INPUT_SIZE, 0, 0, Imgproc.INTER_CUBIC);
+
+                // ✅ FIX: Create proper face ROI BEFORE releasing processed
+                Mat faceROI;
+                if (faceRect != null && faceRect.width > 0 && faceRect.height > 0) {
+                    // Ensure rect is within bounds
+                    Rect safeRect = new Rect(
+                        Math.max(0, faceRect.x),
+                        Math.max(0, faceRect.y),
+                        Math.min(faceRect.width, processed.width() - Math.max(0, faceRect.x)),
+                        Math.min(faceRect.height, processed.height() - Math.max(0, faceRect.y))
+                    );
+                    faceROI = new Mat(processed, safeRect);
+                } else {
+                    // No valid rect, use whole processed image
+                    faceROI = processed.clone();
+                }
+
+                // Resize the proper face ROI, not the original full image
+                Imgproc.resize(faceROI, aligned, INPUT_SIZE, 0, 0, Imgproc.INTER_CUBIC);
+                faceROI.release();
             }
+
+            processed.release(); // ✅ Release AFTER fallback is handled
 
             // Normalize to [0, 1] range - convert to float
             Mat normalized = new Mat();
@@ -669,9 +689,6 @@ public class FaceEmbeddingGenerator {
             }
             double stdDev = Math.sqrt(variance / avgSimilarities.length);
 
-            // Define weak embedding criteria (much more lenient for training data):
-            // - Score below mean - 1.0 * stdDev (very lenient)
-            // - Absolute score below 0.6 (reasonable quality threshold for training)
             double weakThreshold = Math.max(0.5, mean - 1.0 * stdDev);
             double absoluteWeakThreshold = 0.6;
 

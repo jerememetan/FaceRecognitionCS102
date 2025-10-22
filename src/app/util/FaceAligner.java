@@ -243,7 +243,7 @@ public class FaceAligner {
                     eyeCenter.y - halfCenter.y);
 
             // Prefer larger eyes, penalize distance from center
-            double score = distanceFromCenter / halfRegion.width() +
+            double score = distanceFromCenter / halfRegion.width +
                     (100.0 - eye.width) / 100.0; // Prefer larger eyes
 
             if (score < bestScore) {
