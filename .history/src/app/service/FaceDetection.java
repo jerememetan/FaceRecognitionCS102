@@ -17,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import ConfigurationAndLogging.*;
 
 public class FaceDetection {
     private Net dnnFaceDetector;
@@ -24,11 +25,11 @@ public class FaceDetection {
     private ImageProcessor imageProcessor;
     private FaceEmbeddingGenerator embeddingGenerator;
 
-    private static final double MIN_CONFIDENCE_SCORE = 0.5;
-    private static final double MIN_FACE_SIZE = 50.0;
+    private static final double MIN_CONFIDENCE_SCORE = AppConfig.getInstance().getCaptureMinConfidenceScore();
+    private static final double MIN_FACE_SIZE = AppConfig.getInstancce().getCaptureMinFaceSize();
     private static final double MAX_FACE_SIZE = 400.0;
-    private static final int CAPTURE_INTERVAL_MS = 900;
-    private static final int CAPTURE_ATTEMPT_MULTIPLIER = 12;
+    private static final int CAPTURE_INTERVAL_MS = AppConfig.getInstance().getCaptureIntervalMs();
+    private static final int CAPTURE_ATTEMPT_MULTIPLIER = AppConfig.getInstance().getCaptureAttemptMultiplier();
     private static final boolean DEBUG_LOGS = Boolean.parseBoolean(
             System.getProperty("app.faceDetectionDebug", "false"));
 
@@ -51,8 +52,8 @@ public class FaceDetection {
             System.loadLibrary("opencv_java480");
             logDebug("OpenCV library loaded");
 
-            String modelConfiguration = "data/resources/opencv_face_detector.pbtxt";
-            String modelWeights = "data/resources/opencv_face_detector_uint8.pb";
+            String modelConfiguration = AppConfig.getInstance().getDnnConfigPath();
+            String modelWeights = AppConfig.getInstance().getDnnModelPath();
 
             if (new File(modelConfiguration).exists() && new File(modelWeights).exists()) {
                 try {

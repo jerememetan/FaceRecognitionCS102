@@ -54,11 +54,11 @@ public class FaceDetection {
 
     // EXPERIMENTAL: Stricter detection and more diverse capture timing
     // Revert to original if too restrictive: 0.5, 900, 12
-    private static final double MIN_CONFIDENCE_SCORE = 0.6; // Was 0.5 - fewer false detections
-    private static final double MIN_FACE_SIZE = 50.0;
+    private static final double MIN_CONFIDENCE_SCORE = AppConfig.getInstance().getCaptureMinConfidenceScore(); // Was 0.5 - fewer false detections
+    private static final double MIN_FACE_SIZE = AppConfig.getInstance().getCaptureMinConfidenceScore();
     private static final double MAX_FACE_SIZE = 400.0;
-    private static final int CAPTURE_INTERVAL_MS = 1200; // Was 900 - more pose variety
-    private static final int CAPTURE_ATTEMPT_MULTIPLIER = 15; // Was 12 - more attempts for quality
+    private static final int CAPTURE_INTERVAL_MS = AppConfig.getInstance().getCaptureIntervalMs(); // Was 900 - more pose variety
+    private static final int CAPTURE_ATTEMPT_MULTIPLIER = AppConfig.getInstance().getCaptureAttemptMultiplier(); // Was 12 - more attempts for quality
     private static final boolean DEBUG_LOGS = Boolean.parseBoolean(
             System.getProperty("app.faceDetectionDebug", "false"));
 
