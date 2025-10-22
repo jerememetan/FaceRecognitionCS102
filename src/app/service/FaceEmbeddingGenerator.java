@@ -11,7 +11,7 @@ public class FaceEmbeddingGenerator {
     private boolean isInitialized = false;
 
     private static final int EMBEDDING_SIZE = 128;
-    private static final Size INPUT_SIZE = new Size(96, 96); 
+    private static final Size INPUT_SIZE = new Size(96, 96);
 
     public FaceEmbeddingGenerator() {
         initializeEmbeddingNet();
@@ -46,9 +46,15 @@ public class FaceEmbeddingGenerator {
 
     private byte[] generateDeepEmbedding(Mat faceImage) {
         try {
+            Mat colorImage = new Mat();
+            if (faceImage.channels() == 1) {
+                Imgproc.cvtColor(faceImage, colorImage, Imgproc.COLOR_GRAY2BGR);
+            } else {
+                colorImage = faceImage.clone();
+            }
 
             Mat processedImage = new Mat();
-            Imgproc.resize(faceImage, processedImage, INPUT_SIZE);
+            Imgproc.resize(colorImage, processedImage, INPUT_SIZE);
 
             processedImage.convertTo(processedImage, CvType.CV_32F, 1.0 / 255.0);
 
@@ -57,6 +63,10 @@ public class FaceEmbeddingGenerator {
             embeddingNet.setInput(blob);
 
             Mat embedding = embeddingNet.forward();
+
+            colorImage.release();
+            processedImage.release();
+
             return matToByteArray(embedding);
 
         } catch (Exception e) {
@@ -134,7 +144,7 @@ public class FaceEmbeddingGenerator {
             Core.meanStdDev(regionGradY, meanY, stdY);
 
             int baseIdx = offset + i * 8;
-            if (baseIdx + 3 < features.length) { 
+            if (baseIdx + 3 < features.length) {
                 features[baseIdx] = meanX.toArray()[0] / 255.0;
                 features[baseIdx + 1] = stdX.toArray()[0] / 255.0;
                 features[baseIdx + 2] = meanY.toArray()[0] / 255.0;

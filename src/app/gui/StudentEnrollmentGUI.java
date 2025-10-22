@@ -49,7 +49,7 @@ public class StudentEnrollmentGUI extends JFrame {
     }
 
     private void initializeGUI() {
-        setTitle("Student Enrollment & Face Recognition System - Enhanced");
+        setTitle("Student Manager");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -380,16 +380,16 @@ public class StudentEnrollmentGUI extends JFrame {
         String studentName = (String) tableModel.getValueAt(modelRow, 1);
         Integer imageCount = (Integer) tableModel.getValueAt(modelRow, 4);
 
-        String message = String.format(
-                "Are you sure you want to delete student: %s (%s)?\\n\\n" +
-                        "This will permanently delete:\\n" +
-                        "• Student record\\n" +
-                        "• %d face images\\n" +
-                        "• All associated data\\n\\n" +
-                        "This action cannot be undone!",
-                studentName, studentId, imageCount);
+    String message = String.format(
+        "Are you sure you want to delete student: %s (%s)?\\n\\n" +
+            "This will permanently delete:\\n" +
+            "• Student record\\n" +
+            "• %d face images\\n" +
+            "• All associated data\\n\\n" +
+            "This action cannot be undone!",
+        studentName, studentId, imageCount);
 
-        int result = JOptionPane.showConfirmDialog(this, message, "Confirm Delete",
+    int result = JOptionPane.showConfirmDialog(this, htmlize(message), "Confirm Delete",
                 JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 
         if (result == JOptionPane.YES_OPTION) {
@@ -434,14 +434,14 @@ public class StudentEnrollmentGUI extends JFrame {
 
                 int imageCount = student.getFaceData() != null ? student.getFaceData().getImages().size() : 0;
 
-                JOptionPane.showMessageDialog(this,
-                        String.format("Face capture completed successfully!\\n\\n" +
-                                "Student: %s (%s)\\n" +
-                                "Total face images: %d\\n" +
-                                "Status: Ready for face recognition",
-                                student.getName(), student.getStudentId(), imageCount),
-                        "Capture Successful",
-                        JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this,
+            htmlize(String.format("Face capture completed successfully!\\n\\n" +
+                "Student: %s (%s)\\n" +
+                "Total face images: %d\\n" +
+                "Status: Ready for face recognition",
+                student.getName(), student.getStudentId(), imageCount)),
+            "Capture Successful",
+            JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
@@ -450,6 +450,19 @@ public class StudentEnrollmentGUI extends JFrame {
         if (studentManager != null) {
             studentManager.cleanup();
         }
+    }
+
+    private String htmlize(String text) {
+        if (text == null) return "";
+        String trimmed = text.trim();
+        if (trimmed.toLowerCase().startsWith("<html>")) return text;
+        String escaped = trimmed
+                .replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("\n", "<br/>")
+                .replace("\\n", "<br/>");
+        return "<html>" + escaped + "</html>";
     }
 
     public static void main(String[] args) {

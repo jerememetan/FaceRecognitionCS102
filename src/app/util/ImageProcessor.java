@@ -1,18 +1,23 @@
 package app.util;
 
+import ConfigurationAndLogging.*;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.photo.Photo;
 import org.opencv.imgproc.CLAHE;
 import org.opencv.objdetect.CascadeClassifier;
+import ConfigurationAndLogging.*;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class ImageProcessor {
 
-    private static final double MIN_SHARPNESS_THRESHOLD = 150.0;
-    private static final double MIN_BRIGHTNESS = 40.0;
-    private static final double MAX_BRIGHTNESS = 215.0;
-    private static final double MIN_CONTRAST = 30.0;
-    private static final Size STANDARD_SIZE = new Size(112, 112);
+    private static final double MIN_SHARPNESS_THRESHOLD = 80.0;
+    private static final double MIN_BRIGHTNESS = 30.0;
+    private static final double MAX_BRIGHTNESS = 230.0;
+    private static final double MIN_CONTRAST = 20.0;
+    private static final int crop_size = AppConfig.KEY_RECOGNITION_CROP_SIZE_PX;
+    private static final Size STANDARD_SIZE = new Size(crop_size, crop_size);
 
     public Mat preprocessFaceImage(Mat faceImage) {
         if (faceImage.empty()) {
@@ -28,9 +33,17 @@ public class ImageProcessor {
         }
 
         Mat filteredImage = new Mat();
-        Imgproc.bilateralFilter(processedImage, filteredImage, 9, 75, 75);
 
-        CLAHE clahe = Imgproc.createCLAHE(2.0, new Size(8, 8));
+        double kernelSize = (double)AppConfig.KEY_PREPROCESSING_GAUSSIAN_KERNEL_SIZE; 
+        double sigmaX = (double)AppConfig.KEY_PREPROCESSING_GAUSSIAN_SIGMA_X;
+        // --- ADDED: FIXED GAUSSIAN BLUR (Noise Reduction) in replacement of bilateralFilter--- 
+        Imgproc.GaussianBlur(processedImage, filteredImage, new Size(kernelSize, kernelSize), sigmaX);      
+        
+        // Imgproc.bilateralFilter(processedImage, filteredImage, 9, 75, 75);
+
+        double clipLimit = AppConfig.KEY_PREPROCESSING_CLAHE_CLIP_LIMIT; 
+        double gridSize = AppConfig.KEY_PREPROCESSING_CLAHE_GRID_SIZE;
+        CLAHE clahe = Imgproc.createCLAHE(clipLimit, new Size(gridSize, gridSize));
         Mat contrastEnhanced = new Mat();
         clahe.apply(filteredImage, contrastEnhanced);
 
@@ -39,6 +52,11 @@ public class ImageProcessor {
 
         Mat normalized = new Mat();
         Core.normalize(resized, normalized, 0, 255, Core.NORM_MINMAX, CvType.CV_8U);
+        // Release intermediate Mats
+        processedImage.release();
+        filteredImage.release();
+        contrastEnhanced.release();
+        resized.release();       
 
         return normalized;
     }
@@ -150,33 +168,62 @@ public class ImageProcessor {
     }
 
     public Mat correctFaceOrientation(Mat faceImage) {
+        if (faceImage == null || faceImage.empty()) {
+            return faceImage;
+        }
+
+        Mat gray = new Mat();
+        Mat equalized = new Mat();
 
         try {
+            if (faceImage.channels() > 1) {
+                Imgproc.cvtColor(faceImage, gray, Imgproc.COLOR_BGR2GRAY);
+            } else {
+                gray = faceImage.clone();
+            }
+
+            Imgproc.equalizeHist(gray, equalized);
 
             CascadeClassifier eyeDetector = new CascadeClassifier("data/resources/haarcascade_eye.xml");
+            if (eyeDetector.empty()) {
+                return faceImage;
+            }
 
-            if (!eyeDetector.empty()) {
-                MatOfRect eyes = new MatOfRect();
-                eyeDetector.detectMultiScale(faceImage, eyes, 1.1, 3, 0, new Size(20, 20));
+            MatOfRect eyes = new MatOfRect();
+            eyeDetector.detectMultiScale(equalized, eyes, 1.1, 3, 0, new Size(20, 20), new Size());
 
-                Rect[] eyeArray = eyes.toArray();
+            Rect[] eyeArray = eyes.toArray();
+            if (eyeArray.length >= 2) {
+                Arrays.sort(eyeArray, Comparator.comparingInt(rect -> rect.x));
 
-                if (eyeArray.length >= 2) {
+                Rect leftEye = eyeArray[0];
+                Rect rightEye = eyeArray[eyeArray.length - 1];
 
-                    Point eye1 = new Point(eyeArray[0].x + eyeArray[0].width / 2,
-                            eyeArray[0].y + eyeArray[0].height / 2);
-                    Point eye2 = new Point(eyeArray[1].x + eyeArray[1].width / 2,
-                            eyeArray[1].y + eyeArray[1].height / 2);
+                Point leftCenter = new Point(leftEye.x + leftEye.width / 2.0,
+                        leftEye.y + leftEye.height / 2.0);
+                Point rightCenter = new Point(rightEye.x + rightEye.width / 2.0,
+                        rightEye.y + rightEye.height / 2.0);
 
-                    double angle = Math.atan2(eye2.y - eye1.y, eye2.x - eye1.x) * 180.0 / Math.PI;
+                double dx = rightCenter.x - leftCenter.x;
+                double dy = rightCenter.y - leftCenter.y;
 
-                    if (Math.abs(angle) > 5) {
-                        return rotateImage(faceImage, -angle);
+                if (Math.abs(dx) > 1e-3) {
+                    double angle = Math.toDegrees(Math.atan2(dy, dx));
+
+                    if (Math.abs(angle) > 5.0 && Math.abs(angle) <= 20.0) {
+                        Mat rotated = rotateImage(faceImage, -angle);
+                        eyes.release();
+                        return rotated;
                     }
                 }
             }
+
+            eyes.release();
         } catch (Exception e) {
             System.err.println("Face orientation correction failed: " + e.getMessage());
+        } finally {
+            gray.release();
+            equalized.release();
         }
 
         return faceImage;
@@ -187,7 +234,8 @@ public class ImageProcessor {
         Mat rotationMatrix = Imgproc.getRotationMatrix2D(center, angle, 1.0);
 
         Mat rotated = new Mat();
-        Imgproc.warpAffine(image, rotated, rotationMatrix, image.size());
+        Imgproc.warpAffine(image, rotated, rotationMatrix, image.size(), Imgproc.INTER_LINEAR, Core.BORDER_REPLICATE);
+        rotationMatrix.release();
 
         return rotated;
     }
