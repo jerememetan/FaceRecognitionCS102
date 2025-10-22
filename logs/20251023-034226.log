@@ -1,0 +1,436 @@
+[2025-10-23 03:42:26] INFO: Application Logger Initialized.
+[2025-10-23 03:42:26] INFO: Configuration and core components loaded.
+[2025-10-23 03:42:26] INFO: app.properties normalized (55 entries).
+[2025-10-23 03:42:26] INFO: Configuration loaded from classpath: app.properties
+[2025-10-23 03:42:26] INFO: Configuration file loaded
+[2025-10-23 03:42:26] INFO: MyGUIProgram Started!
+[2025-10-23 03:42:28] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-23 03:42:28] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
+[2025-10-23 03:42:28] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-23 03:42:28] INFO: === Folder debug ===
+[2025-10-23 03:42:28] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae
+[2025-10-23 03:42:28] INFO:   Contains: 34 items
+[2025-10-23 03:42:28] INFO:   Display label: S13234 - Jin_Rae
+[2025-10-23 03:42:28] INFO: ====================
+[2025-10-23 03:42:28] INFO: Person S13234 - Jin_Rae: tightness=0.999, stdDev=0.001, absThresh=0.600, margin=0.100
+[2025-10-23 03:42:28] INFO: DNN face detector loaded successfully for recognition
+[2025-10-23 03:42:28] INFO: Attempting camera index 0 with DSHOW backend...
+[2025-10-23 03:42:29] INFO: Camera opened successfully: index 0 with DSHOW backend
+[2025-10-23 03:42:30] INFO: Camera configured: 640x480 @ 30fps (MJPEG: yes)
+[2025-10-23 03:42:30] INFO: Camera initialized successfully
+[2025-10-23 03:42:31] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_0.png
+[2025-10-23 03:42:31] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.000000037610641
+[2025-10-23 03:42:31] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:31] INFO: -0.018032 
+[2025-10-23 03:42:31] INFO: -0.018005 
+[2025-10-23 03:42:31] INFO: 0.024532 
+[2025-10-23 03:42:31] INFO: 0.018303 
+[2025-10-23 03:42:31] INFO: 0.021890 
+[2025-10-23 03:42:31] INFO: 0.043525 
+[2025-10-23 03:42:31] INFO: -0.054043 
+[2025-10-23 03:42:31] INFO: -0.012097 
+[2025-10-23 03:42:31] INFO: 0.026442 
+[2025-10-23 03:42:31] INFO: -0.030170 
+[2025-10-23 03:42:31] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:42:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:42:31] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:31] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:42:31] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_1.png
+[2025-10-23 03:42:32] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000102027569
+[2025-10-23 03:42:32] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:32] INFO: -0.013239 
+[2025-10-23 03:42:32] INFO: -0.018282 
+[2025-10-23 03:42:32] INFO: 0.026437 
+[2025-10-23 03:42:32] INFO: 0.020318 
+[2025-10-23 03:42:32] INFO: 0.029313 
+[2025-10-23 03:42:32] INFO: 0.042538 
+[2025-10-23 03:42:32] INFO: -0.060215 
+[2025-10-23 03:42:32] INFO: -0.016061 
+[2025-10-23 03:42:32] INFO: 0.025303 
+[2025-10-23 03:42:32] INFO: -0.028724 
+[2025-10-23 03:42:32] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:42:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:42:32] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:32] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:42:32] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_2.png
+[2025-10-23 03:42:32] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.000000047609466
+[2025-10-23 03:42:32] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:32] INFO: -0.015378 
+[2025-10-23 03:42:32] INFO: -0.016926 
+[2025-10-23 03:42:32] INFO: 0.024477 
+[2025-10-23 03:42:32] INFO: 0.014993 
+[2025-10-23 03:42:32] INFO: 0.022047 
+[2025-10-23 03:42:32] INFO: 0.042009 
+[2025-10-23 03:42:32] INFO: -0.054912 
+[2025-10-23 03:42:32] INFO: -0.013769 
+[2025-10-23 03:42:32] INFO: 0.027717 
+[2025-10-23 03:42:32] INFO: -0.030090 
+[2025-10-23 03:42:32] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:42:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:42:32] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:32] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:42:32] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_3.png
+[2025-10-23 03:42:32] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999803861994
+[2025-10-23 03:42:32] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:32] INFO: -0.014788 
+[2025-10-23 03:42:32] INFO: -0.017228 
+[2025-10-23 03:42:32] INFO: 0.022031 
+[2025-10-23 03:42:32] INFO: 0.015715 
+[2025-10-23 03:42:32] INFO: 0.021191 
+[2025-10-23 03:42:32] INFO: 0.040802 
+[2025-10-23 03:42:32] INFO: -0.053046 
+[2025-10-23 03:42:32] INFO: -0.013109 
+[2025-10-23 03:42:32] INFO: 0.027865 
+[2025-10-23 03:42:32] INFO: -0.031002 
+[2025-10-23 03:42:32] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:42:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:42:32] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:32] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:42:32] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_4.png
+[2025-10-23 03:42:32] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000138179865
+[2025-10-23 03:42:32] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:32] INFO: -0.014871 
+[2025-10-23 03:42:32] INFO: -0.017522 
+[2025-10-23 03:42:32] INFO: 0.026060 
+[2025-10-23 03:42:32] INFO: 0.020996 
+[2025-10-23 03:42:32] INFO: 0.030148 
+[2025-10-23 03:42:32] INFO: 0.042091 
+[2025-10-23 03:42:32] INFO: -0.059267 
+[2025-10-23 03:42:32] INFO: -0.016744 
+[2025-10-23 03:42:32] INFO: 0.026470 
+[2025-10-23 03:42:32] INFO: -0.029188 
+[2025-10-23 03:42:32] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:42:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:42:32] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:32] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:42:32] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_5.png
+[2025-10-23 03:42:32] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.00000000496064
+[2025-10-23 03:42:32] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:32] INFO: -0.014495 
+[2025-10-23 03:42:32] INFO: -0.017305 
+[2025-10-23 03:42:32] INFO: 0.025640 
+[2025-10-23 03:42:32] INFO: 0.021448 
+[2025-10-23 03:42:32] INFO: 0.029218 
+[2025-10-23 03:42:32] INFO: 0.042683 
+[2025-10-23 03:42:32] INFO: -0.059387 
+[2025-10-23 03:42:32] INFO: -0.016225 
+[2025-10-23 03:42:32] INFO: 0.025313 
+[2025-10-23 03:42:32] INFO: -0.030028 
+[2025-10-23 03:42:32] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:42:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:42:32] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:32] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:42:32] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_6.png
+[2025-10-23 03:42:32] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.000000007793202
+[2025-10-23 03:42:32] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:32] INFO: -0.014307 
+[2025-10-23 03:42:32] INFO: -0.016408 
+[2025-10-23 03:42:32] INFO: 0.025528 
+[2025-10-23 03:42:32] INFO: 0.018454 
+[2025-10-23 03:42:32] INFO: 0.025969 
+[2025-10-23 03:42:32] INFO: 0.044802 
+[2025-10-23 03:42:32] INFO: -0.057483 
+[2025-10-23 03:42:32] INFO: -0.016176 
+[2025-10-23 03:42:32] INFO: 0.026090 
+[2025-10-23 03:42:32] INFO: -0.030909 
+[2025-10-23 03:42:32] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:42:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:42:32] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:32] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:42:33] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_7.png
+[2025-10-23 03:42:33] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000472735804
+[2025-10-23 03:42:33] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:33] INFO: -0.015403 
+[2025-10-23 03:42:33] INFO: -0.017980 
+[2025-10-23 03:42:33] INFO: 0.024828 
+[2025-10-23 03:42:33] INFO: 0.018682 
+[2025-10-23 03:42:33] INFO: 0.023886 
+[2025-10-23 03:42:33] INFO: 0.044132 
+[2025-10-23 03:42:33] INFO: -0.055381 
+[2025-10-23 03:42:33] INFO: -0.014578 
+[2025-10-23 03:42:33] INFO: 0.027724 
+[2025-10-23 03:42:33] INFO: -0.033466 
+[2025-10-23 03:42:33] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:42:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:42:33] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:42:33] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_8.png
+[2025-10-23 03:42:33] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999921259644
+[2025-10-23 03:42:33] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:33] INFO: -0.017040 
+[2025-10-23 03:42:33] INFO: -0.015743 
+[2025-10-23 03:42:33] INFO: 0.028306 
+[2025-10-23 03:42:33] INFO: 0.018753 
+[2025-10-23 03:42:33] INFO: 0.022302 
+[2025-10-23 03:42:33] INFO: 0.045621 
+[2025-10-23 03:42:33] INFO: -0.055013 
+[2025-10-23 03:42:33] INFO: -0.011116 
+[2025-10-23 03:42:33] INFO: 0.027403 
+[2025-10-23 03:42:33] INFO: -0.032559 
+[2025-10-23 03:42:33] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:42:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:42:33] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:42:33] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_9.png
+[2025-10-23 03:42:33] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999750236525
+[2025-10-23 03:42:33] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:33] INFO: -0.015419 
+[2025-10-23 03:42:33] INFO: -0.020079 
+[2025-10-23 03:42:33] INFO: 0.025156 
+[2025-10-23 03:42:33] INFO: 0.018750 
+[2025-10-23 03:42:33] INFO: 0.022290 
+[2025-10-23 03:42:33] INFO: 0.043858 
+[2025-10-23 03:42:33] INFO: -0.057172 
+[2025-10-23 03:42:33] INFO: -0.013289 
+[2025-10-23 03:42:33] INFO: 0.026934 
+[2025-10-23 03:42:33] INFO: -0.032687 
+[2025-10-23 03:42:33] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:42:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:42:33] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:42:33] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_10.png
+[2025-10-23 03:42:33] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999696244966
+[2025-10-23 03:42:33] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:33] INFO: -0.014375 
+[2025-10-23 03:42:33] INFO: -0.016415 
+[2025-10-23 03:42:33] INFO: 0.024614 
+[2025-10-23 03:42:33] INFO: 0.018352 
+[2025-10-23 03:42:33] INFO: 0.024706 
+[2025-10-23 03:42:33] INFO: 0.045039 
+[2025-10-23 03:42:33] INFO: -0.056020 
+[2025-10-23 03:42:33] INFO: -0.015837 
+[2025-10-23 03:42:33] INFO: 0.026140 
+[2025-10-23 03:42:33] INFO: -0.031320 
+[2025-10-23 03:42:33] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:42:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:42:33] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:42:33] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_11.png
+[2025-10-23 03:42:33] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000270101166
+[2025-10-23 03:42:33] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:33] INFO: -0.014792 
+[2025-10-23 03:42:33] INFO: -0.017307 
+[2025-10-23 03:42:33] INFO: 0.026476 
+[2025-10-23 03:42:33] INFO: 0.019932 
+[2025-10-23 03:42:33] INFO: 0.026573 
+[2025-10-23 03:42:33] INFO: 0.043772 
+[2025-10-23 03:42:33] INFO: -0.058682 
+[2025-10-23 03:42:33] INFO: -0.016623 
+[2025-10-23 03:42:33] INFO: 0.025648 
+[2025-10-23 03:42:33] INFO: -0.030760 
+[2025-10-23 03:42:33] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:42:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:42:33] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:42:33] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_12.png
+[2025-10-23 03:42:33] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999594715964
+[2025-10-23 03:42:33] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:33] INFO: -0.014866 
+[2025-10-23 03:42:33] INFO: -0.017876 
+[2025-10-23 03:42:33] INFO: 0.026629 
+[2025-10-23 03:42:33] INFO: 0.021068 
+[2025-10-23 03:42:33] INFO: 0.030378 
+[2025-10-23 03:42:33] INFO: 0.041958 
+[2025-10-23 03:42:33] INFO: -0.059587 
+[2025-10-23 03:42:33] INFO: -0.017013 
+[2025-10-23 03:42:33] INFO: 0.026530 
+[2025-10-23 03:42:33] INFO: -0.029629 
+[2025-10-23 03:42:33] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:42:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:42:33] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:42:34] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_13.png
+[2025-10-23 03:42:34] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999637625214
+[2025-10-23 03:42:34] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:34] INFO: -0.014752 
+[2025-10-23 03:42:34] INFO: -0.018702 
+[2025-10-23 03:42:34] INFO: 0.027652 
+[2025-10-23 03:42:34] INFO: 0.021020 
+[2025-10-23 03:42:34] INFO: 0.030636 
+[2025-10-23 03:42:34] INFO: 0.041501 
+[2025-10-23 03:42:34] INFO: -0.058758 
+[2025-10-23 03:42:34] INFO: -0.016013 
+[2025-10-23 03:42:34] INFO: 0.026550 
+[2025-10-23 03:42:34] INFO: -0.029945 
+[2025-10-23 03:42:34] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=1.000 
+[2025-10-23 03:42:34] INFO: [Decision] Best=S13234 - Jin_Rae(1.000), 2nd=0.000, Discriminative=1.000, AvgNeg=0.000
+[2025-10-23 03:42:34] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:34] INFO: [Accept] S13234 - Jin_Rae | Raw=1.000, Confidence=100%, Margin=1.000 | Strong confidence match
+[2025-10-23 03:42:34] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_14.png
+[2025-10-23 03:42:34] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000008594574
+[2025-10-23 03:42:34] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:34] INFO: -0.015413 
+[2025-10-23 03:42:34] INFO: -0.019259 
+[2025-10-23 03:42:34] INFO: 0.027529 
+[2025-10-23 03:42:34] INFO: 0.019872 
+[2025-10-23 03:42:34] INFO: 0.030225 
+[2025-10-23 03:42:34] INFO: 0.041332 
+[2025-10-23 03:42:34] INFO: -0.058612 
+[2025-10-23 03:42:34] INFO: -0.017238 
+[2025-10-23 03:42:34] INFO: 0.026763 
+[2025-10-23 03:42:34] INFO: -0.030846 
+[2025-10-23 03:42:34] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:42:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:42:34] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:34] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:42:34] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_15.png
+[2025-10-23 03:42:34] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000147134975
+[2025-10-23 03:42:34] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:34] INFO: -0.014943 
+[2025-10-23 03:42:34] INFO: -0.017738 
+[2025-10-23 03:42:34] INFO: 0.026230 
+[2025-10-23 03:42:34] INFO: 0.019347 
+[2025-10-23 03:42:34] INFO: 0.027619 
+[2025-10-23 03:42:34] INFO: 0.040996 
+[2025-10-23 03:42:34] INFO: -0.055726 
+[2025-10-23 03:42:34] INFO: -0.017619 
+[2025-10-23 03:42:34] INFO: 0.027771 
+[2025-10-23 03:42:34] INFO: -0.031139 
+[2025-10-23 03:42:34] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:42:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:42:34] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:34] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:42:34] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_16.png
+[2025-10-23 03:42:34] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999638442442
+[2025-10-23 03:42:34] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:34] INFO: -0.014901 
+[2025-10-23 03:42:34] INFO: -0.018268 
+[2025-10-23 03:42:34] INFO: 0.027039 
+[2025-10-23 03:42:34] INFO: 0.019310 
+[2025-10-23 03:42:34] INFO: 0.029974 
+[2025-10-23 03:42:34] INFO: 0.041665 
+[2025-10-23 03:42:34] INFO: -0.057827 
+[2025-10-23 03:42:34] INFO: -0.017979 
+[2025-10-23 03:42:34] INFO: 0.026772 
+[2025-10-23 03:42:34] INFO: -0.030156 
+[2025-10-23 03:42:34] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=1.000 
+[2025-10-23 03:42:34] INFO: [Decision] Best=S13234 - Jin_Rae(1.000), 2nd=0.000, Discriminative=1.000, AvgNeg=0.000
+[2025-10-23 03:42:34] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:34] INFO: [Accept] S13234 - Jin_Rae | Raw=1.000, Confidence=100%, Margin=1.000 | Strong confidence match
+[2025-10-23 03:42:34] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_17.png
+[2025-10-23 03:42:34] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999600241637
+[2025-10-23 03:42:34] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:34] INFO: -0.015450 
+[2025-10-23 03:42:34] INFO: -0.018070 
+[2025-10-23 03:42:34] INFO: 0.027163 
+[2025-10-23 03:42:34] INFO: 0.019818 
+[2025-10-23 03:42:34] INFO: 0.029356 
+[2025-10-23 03:42:34] INFO: 0.041024 
+[2025-10-23 03:42:34] INFO: -0.057063 
+[2025-10-23 03:42:34] INFO: -0.017311 
+[2025-10-23 03:42:34] INFO: 0.027567 
+[2025-10-23 03:42:34] INFO: -0.030553 
+[2025-10-23 03:42:34] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=1.000 
+[2025-10-23 03:42:34] INFO: [Decision] Best=S13234 - Jin_Rae(1.000), 2nd=0.000, Discriminative=1.000, AvgNeg=0.000
+[2025-10-23 03:42:34] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:34] INFO: [Accept] S13234 - Jin_Rae | Raw=1.000, Confidence=100%, Margin=1.000 | Strong confidence match
+[2025-10-23 03:42:34] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_18.png
+[2025-10-23 03:42:35] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000126895565
+[2025-10-23 03:42:35] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:35] INFO: -0.015656 
+[2025-10-23 03:42:35] INFO: -0.019088 
+[2025-10-23 03:42:35] INFO: 0.027820 
+[2025-10-23 03:42:35] INFO: 0.020720 
+[2025-10-23 03:42:35] INFO: 0.029566 
+[2025-10-23 03:42:35] INFO: 0.040487 
+[2025-10-23 03:42:35] INFO: -0.057480 
+[2025-10-23 03:42:35] INFO: -0.016329 
+[2025-10-23 03:42:35] INFO: 0.027967 
+[2025-10-23 03:42:35] INFO: -0.030778 
+[2025-10-23 03:42:35] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:42:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:42:35] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:35] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:42:35] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_19.png
+[2025-10-23 03:42:35] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.99999995580805
+[2025-10-23 03:42:35] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:35] INFO: -0.014935 
+[2025-10-23 03:42:35] INFO: -0.018889 
+[2025-10-23 03:42:35] INFO: 0.027348 
+[2025-10-23 03:42:35] INFO: 0.020598 
+[2025-10-23 03:42:35] INFO: 0.030345 
+[2025-10-23 03:42:35] INFO: 0.041567 
+[2025-10-23 03:42:35] INFO: -0.059639 
+[2025-10-23 03:42:35] INFO: -0.016548 
+[2025-10-23 03:42:35] INFO: 0.026173 
+[2025-10-23 03:42:35] INFO: -0.029993 
+[2025-10-23 03:42:35] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:42:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:42:35] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:35] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:42:35] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_20.png
+[2025-10-23 03:42:35] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999632089278
+[2025-10-23 03:42:35] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:35] INFO: -0.015735 
+[2025-10-23 03:42:35] INFO: -0.018947 
+[2025-10-23 03:42:35] INFO: 0.022172 
+[2025-10-23 03:42:35] INFO: 0.017363 
+[2025-10-23 03:42:35] INFO: 0.020760 
+[2025-10-23 03:42:35] INFO: 0.040735 
+[2025-10-23 03:42:35] INFO: -0.052032 
+[2025-10-23 03:42:35] INFO: -0.014314 
+[2025-10-23 03:42:35] INFO: 0.028201 
+[2025-10-23 03:42:35] INFO: -0.032771 
+[2025-10-23 03:42:35] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:42:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:42:35] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:35] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:42:35] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_21.png
+[2025-10-23 03:42:35] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.000000014135594
+[2025-10-23 03:42:35] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:35] INFO: -0.015562 
+[2025-10-23 03:42:35] INFO: -0.019212 
+[2025-10-23 03:42:35] INFO: 0.022781 
+[2025-10-23 03:42:35] INFO: 0.018164 
+[2025-10-23 03:42:35] INFO: 0.019551 
+[2025-10-23 03:42:35] INFO: 0.040380 
+[2025-10-23 03:42:35] INFO: -0.051264 
+[2025-10-23 03:42:35] INFO: -0.014024 
+[2025-10-23 03:42:35] INFO: 0.029264 
+[2025-10-23 03:42:35] INFO: -0.033382 
+[2025-10-23 03:42:35] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:42:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:42:35] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:35] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:42:35] INFO: DEBUG: Saved preprocessed image to debug_preprocessed_22.png
+[2025-10-23 03:42:35] INFO: Exiting Face Recognition Demo...
+[2025-10-23 03:42:35] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.000000032626914
+[2025-10-23 03:42:35] INFO: DEBUG Generated embedding from blob first 10 values: 
+[2025-10-23 03:42:35] INFO: -0.015425 
+[2025-10-23 03:42:35] INFO: -0.017057 
+[2025-10-23 03:42:35] INFO: 0.022996 
+[2025-10-23 03:42:35] INFO: 0.015725 
+[2025-10-23 03:42:35] INFO: 0.021635 
+[2025-10-23 03:42:35] INFO: 0.040978 
+[2025-10-23 03:42:35] INFO: -0.054103 
+[2025-10-23 03:42:35] INFO: -0.013610 
+[2025-10-23 03:42:35] INFO: 0.028289 
+[2025-10-23 03:42:35] INFO: -0.030255 
+[2025-10-23 03:42:35] INFO: | Magnitude: 1.000000
+[2025-10-23 03:42:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:42:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:42:35] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:42:35] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:42:35] INFO: Exiting Face Recognition Demo...

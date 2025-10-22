@@ -1,0 +1,70 @@
+[2025-10-23 02:51:14] INFO: Application Logger Initialized.
+[2025-10-23 02:51:14] INFO: Configuration and core components loaded.
+[2025-10-23 02:51:14] INFO: app.properties normalized (55 entries).
+[2025-10-23 02:51:14] INFO: Configuration loaded from classpath: app.properties
+[2025-10-23 02:51:14] INFO: Configuration file loaded
+[2025-10-23 02:51:14] INFO: MyGUIProgram Started!
+[2025-10-23 02:51:15] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-23 02:51:16] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
+[2025-10-23 02:51:16] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-23 02:51:16] INFO: === Folder debug ===
+[2025-10-23 02:51:16] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae
+[2025-10-23 02:51:16] INFO:   Contains: 32 items
+[2025-10-23 02:51:16] INFO:   Display label: S13234 - Jin_Rae
+[2025-10-23 02:51:16] INFO: ====================
+[2025-10-23 02:51:16] INFO: Person S13234 - Jin_Rae: tightness=0.999, stdDev=0.000, absThresh=0.600, margin=0.100
+[2025-10-23 02:51:16] INFO: DNN face detector loaded successfully for recognition
+[2025-10-23 02:51:16] INFO: Attempting camera index 0 with DSHOW backend...
+[2025-10-23 02:51:17] INFO: Camera opened successfully: index 0 with DSHOW backend
+[2025-10-23 02:51:18] INFO: Camera configured: 640x480 @ 30fps (MJPEG: yes)
+[2025-10-23 02:51:18] INFO: Camera initialized successfully
+[2025-10-23 02:51:19] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 02:51:19] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 02:51:19] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-23 02:51:19] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 02:51:19] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 02:51:19] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 02:51:19] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-23 02:51:19] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 02:51:19] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 02:51:19] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 02:51:19] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-23 02:51:19] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 02:51:20] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 02:51:20] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 02:51:20] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-23 02:51:20] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 02:51:20] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 02:51:20] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 02:51:20] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-23 02:51:20] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 02:51:20] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 02:51:20] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 02:51:20] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-23 02:51:20] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 02:51:20] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 02:51:20] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 02:51:20] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-23 02:51:20] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 02:51:20] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 02:51:20] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 02:51:20] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-23 02:51:20] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 02:51:21] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 02:51:21] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 02:51:21] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-23 02:51:21] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 02:51:21] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 02:51:21] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 02:51:21] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-23 02:51:21] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 02:51:21] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 02:51:21] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 02:51:21] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-23 02:51:21] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 02:51:21] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 02:51:21] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 02:51:21] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.000
+[2025-10-23 02:51:21] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 02:51:21] INFO: Exiting Face Recognition Demo...
+[2025-10-23 02:51:21] INFO: Exiting Face Recognition Demo...

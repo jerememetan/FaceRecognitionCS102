@@ -2,13 +2,15 @@ package facecrop;
 
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.dnn.Dnn;
 import app.util.FaceAligner;
 
 public class LiveRecognitionPreprocessor {
 
-    private static final Size INPUT_SIZE = new Size(112, 112);  // ✅ CHANGED for ArcFace
+    private static final Size INPUT_SIZE = new Size(112, 112); // ✅ CHANGED for ArcFace
     private FaceAligner aligner;
+    private static int debugCounter = 0;
 
     public LiveRecognitionPreprocessor() {
         this.aligner = new FaceAligner();
@@ -18,10 +20,25 @@ public class LiveRecognitionPreprocessor {
      * ✅ FIXED: Now matches EXACTLY the training preprocessing pipeline!
      */
     public Mat preprocessForLiveRecognition(Mat faceROI, Rect faceRect) {
+        // === STAGE 1: Face Detection & Preprocessing ===
+        System.out.println("=== STAGE 1: Face Detection & Preprocessing ===");
+        System.out.println("Original frame resolution: " + (faceROI != null ? faceROI.size() : "null"));
+        System.out.println("Face ROI size: " + (faceROI != null ? faceROI.size() : "null"));
+        if (faceROI != null && !faceROI.empty()) {
+            System.out.println("Face ROI mean pixel value (BGR): " + Core.mean(faceROI));
+            // Calculate std deviation
+            MatOfDouble mean = new MatOfDouble();
+            MatOfDouble stddev = new MatOfDouble();
+            Core.meanStdDev(faceROI, mean, stddev);
+            System.out.println("Face ROI std deviation: " + stddev.get(0, 0)[0]);
+        }
+
         if (faceROI == null || faceROI.empty()) {
             System.err.println("❌ Empty face ROI provided");
             return new Mat();
         }
+
+        Scalar imageNetMean = new Scalar(123.675, 116.28, 103.53);
 
         try {
             // Ensure 3-channel BGR
@@ -49,11 +66,10 @@ public class LiveRecognitionPreprocessor {
                 Mat faceROIForResize;
                 if (faceRect != null && faceRect.width > 0 && faceRect.height > 0) {
                     Rect safeRect = new Rect(
-                        Math.max(0, faceRect.x),
-                        Math.max(0, faceRect.y),
-                        Math.min(faceRect.width, processed.width() - Math.max(0, faceRect.x)),
-                        Math.min(faceRect.height, processed.height() - Math.max(0, faceRect.y))
-                    );
+                            Math.max(0, faceRect.x),
+                            Math.max(0, faceRect.y),
+                            Math.min(faceRect.width, processed.width() - Math.max(0, faceRect.x)),
+                            Math.min(faceRect.height, processed.height() - Math.max(0, faceRect.y)));
                     faceROIForResize = new Mat(processed, safeRect);
                 } else {
                     faceROIForResize = processed.clone();
@@ -65,10 +81,8 @@ public class LiveRecognitionPreprocessor {
 
             processed.release();
 
-            // ✅ CORRECT: Let blobFromImage handle ALL normalization
-            // blobFromImage will: convert to float, scale by 1.0/255.0, swap BGR→RGB, reshape to NCHW
             Mat blob = Dnn.blobFromImage(aligned, 1.0 / 255.0, INPUT_SIZE,
-                    new Scalar(0, 0, 0), true, false);
+                    imageNetMean, true, false);
             aligned.release();
 
             // ✅ Return the properly formatted blob, NOT raw pixels!
@@ -83,7 +97,7 @@ public class LiveRecognitionPreprocessor {
             Imgproc.resize(faceROI, fallback, INPUT_SIZE, 0, 0, Imgproc.INTER_CUBIC);
 
             Mat blob = Dnn.blobFromImage(fallback, 1.0 / 255.0, INPUT_SIZE,
-                    new Scalar(0, 0, 0), true, false);
+                    imageNetMean, true, false);
             fallback.release();
 
             return blob;

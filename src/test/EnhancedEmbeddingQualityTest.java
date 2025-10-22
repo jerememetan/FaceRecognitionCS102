@@ -155,7 +155,8 @@ public class EnhancedEmbeddingQualityTest {
         System.out.println();
     }
 
-    private EmbeddingQualityMetrics analyzeEmbeddingQuality(Map<String, List<byte[]>> personEmbeddings, List<String> personNames) {
+    private EmbeddingQualityMetrics analyzeEmbeddingQuality(Map<String, List<byte[]>> personEmbeddings,
+            List<String> personNames) {
         EmbeddingQualityMetrics metrics = new EmbeddingQualityMetrics();
 
         System.out.println("🔬 ANALYZING EMBEDDING QUALITY");
@@ -203,10 +204,12 @@ public class EnhancedEmbeddingQualityTest {
         return intraSimilarities;
     }
 
-    private List<Double> calculateInterPersonSimilarities(Map<String, List<byte[]>> personEmbeddings, List<String> personNames) {
+    private List<Double> calculateInterPersonSimilarities(Map<String, List<byte[]>> personEmbeddings,
+            List<String> personNames) {
         List<Double> interSimilarities = new ArrayList<>();
 
-        // Sample embeddings from different persons (limit to avoid too many calculations)
+        // Sample embeddings from different persons (limit to avoid too many
+        // calculations)
         for (int i = 0; i < personNames.size(); i++) {
             for (int j = i + 1; j < personNames.size(); j++) {
                 String person1 = personNames.get(i);
@@ -237,7 +240,8 @@ public class EnhancedEmbeddingQualityTest {
             String personName = entry.getKey();
             List<byte[]> embeddings = entry.getValue();
 
-            if (embeddings.size() < 3) continue; // Need at least 3 for meaningful analysis
+            if (embeddings.size() < 3)
+                continue; // Need at least 3 for meaningful analysis
 
             // Calculate average similarity to other embeddings of same person
             List<Double> avgSimilarities = new ArrayList<>();
@@ -259,7 +263,8 @@ public class EnhancedEmbeddingQualityTest {
 
             // Find outliers (similarity more than 2 standard deviations below mean)
             double mean = avgSimilarities.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
-            double variance = avgSimilarities.stream().mapToDouble(sim -> Math.pow(sim - mean, 2)).average().orElse(0.0);
+            double variance = avgSimilarities.stream().mapToDouble(sim -> Math.pow(sim - mean, 2)).average()
+                    .orElse(0.0);
             double stdDev = Math.sqrt(variance);
 
             double outlierThreshold = mean - 2 * stdDev;
@@ -280,12 +285,12 @@ public class EnhancedEmbeddingQualityTest {
         }
 
         // Check expected sizes (ArcFace: 512 floats = 2048 bytes for float32)
-        boolean isFloatEmbedding = embedding.length == 512 * 4;  // 2048 bytes
+        boolean isFloatEmbedding = embedding.length == 512 * 4; // 2048 bytes
         boolean isDoubleEmbedding = embedding.length == 512 * 8; // 4096 bytes
 
         if (!isFloatEmbedding && !isDoubleEmbedding) {
             System.err.println("  ⚠️ Unexpected embedding size: " + embedding.length +
-                               " bytes (expected 2048 for float32 or 4096 for float64)");
+                    " bytes (expected 2048 for float32 or 4096 for float64)");
             return false;
         }
 
@@ -298,18 +303,24 @@ public class EnhancedEmbeddingQualityTest {
             if (isFloatEmbedding) {
                 float[] floats = byteArrayToFloatArray(embedding);
                 for (float f : floats) {
-                    if (Float.isNaN(f)) hasNaN = true;
-                    if (Float.isInfinite(f)) hasInf = true;
+                    if (Float.isNaN(f))
+                        hasNaN = true;
+                    if (Float.isInfinite(f))
+                        hasInf = true;
                     magnitude += f * f;
-                    if (Math.abs(f) > 1e-6) validCount++;
+                    if (Math.abs(f) > 1e-6)
+                        validCount++;
                 }
             } else {
                 double[] doubles = byteArrayToDoubleArray(embedding);
                 for (double d : doubles) {
-                    if (Double.isNaN(d)) hasNaN = true;
-                    if (Double.isInfinite(d)) hasInf = true;
+                    if (Double.isNaN(d))
+                        hasNaN = true;
+                    if (Double.isInfinite(d))
+                        hasInf = true;
                     magnitude += d * d;
-                    if (Math.abs(d) > 1e-6) validCount++;
+                    if (Math.abs(d) > 1e-6)
+                        validCount++;
                 }
             }
 
@@ -339,7 +350,8 @@ public class EnhancedEmbeddingQualityTest {
         }
 
         try {
-            // Always use cosine similarity for embeddings (both are unit vectors after normalization)
+            // Always use cosine similarity for embeddings (both are unit vectors after
+            // normalization)
             if (emb1.length == 512 * 4) { // Float32 embeddings (ArcFace)
                 return calculateCosineSimilarity(emb1, emb2);
             } else if (emb1.length == 512 * 8) { // Float64 embeddings (Legacy)
@@ -356,42 +368,32 @@ public class EnhancedEmbeddingQualityTest {
         float[] vec1 = byteArrayToFloatArray(emb1);
         float[] vec2 = byteArrayToFloatArray(emb2);
 
+        // ✅ CORRECT: Just dot product (embeddings already normalized!)
         double dotProduct = 0.0;
-        double norm1 = 0.0;
-        double norm2 = 0.0;
-
         for (int i = 0; i < vec1.length; i++) {
             dotProduct += vec1[i] * vec2[i];
-            norm1 += vec1[i] * vec1[i];
-            norm2 += vec2[i] * vec2[i];
         }
 
-        if (norm1 == 0.0 || norm2 == 0.0) {
-            return 0.0;
-        }
+        // ✅ Don't re-normalize - embeddings are already unit vectors!
+        return Math.max(-1.0, Math.min(1.0, dotProduct));
 
-        return dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
+        // ❌ DELETE the old code that re-normalizes with norm1/norm2!
     }
 
     private double calculateCosineSimilarityDouble(byte[] emb1, byte[] emb2) {
         double[] vec1 = byteArrayToDoubleArray(emb1);
         double[] vec2 = byteArrayToDoubleArray(emb2);
 
+        // ✅ CORRECT: Just dot product (embeddings already normalized!)
         double dotProduct = 0.0;
-        double norm1 = 0.0;
-        double norm2 = 0.0;
-
         for (int i = 0; i < vec1.length; i++) {
             dotProduct += vec1[i] * vec2[i];
-            norm1 += vec1[i] * vec1[i];
-            norm2 += vec2[i] * vec2[i];
         }
 
-        if (norm1 == 0.0 || norm2 == 0.0) {
-            return 0.0;
-        }
+        // ✅ Don't re-normalize - embeddings are already unit vectors!
+        return Math.max(-1.0, Math.min(1.0, dotProduct));
 
-        return dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
+        // ❌ DELETE the old code that re-normalizes with norm1/norm2!
     }
 
     private float[] byteArrayToFloatArray(byte[] bytes) {
@@ -431,7 +433,7 @@ public class EnhancedEmbeddingQualityTest {
 
                 String quality = getSimilarityQuality(avg, true);
                 System.out.printf("  %-15s: %.3f avg (%.3f - %.3f) %s [%d pairs]%n",
-                    person, avg, min, max, quality, sims.size());
+                        person, avg, min, max, quality, sims.size());
             }
         }
 
@@ -446,7 +448,7 @@ public class EnhancedEmbeddingQualityTest {
 
             String quality = getSimilarityQuality(avg, false);
             System.out.printf("  Overall: %.3f avg (%.3f - %.3f) %s [%d comparisons]%n",
-                avg, min, max, quality, metrics.interSimilarities.size());
+                    avg, min, max, quality, metrics.interSimilarities.size());
         }
 
         // Separation analysis
@@ -467,7 +469,7 @@ public class EnhancedEmbeddingQualityTest {
 
             for (OutlierInfo outlier : metrics.outlierAnalysis.outliers) {
                 System.out.printf("    %s embedding #%d: %.3f (threshold: %.3f)%n",
-                    outlier.personName, outlier.embeddingIndex, outlier.similarity, outlier.threshold);
+                        outlier.personName, outlier.embeddingIndex, outlier.similarity, outlier.threshold);
             }
         } else {
             System.out.println("\n✅ No outliers detected - all embeddings are well-clustered");
@@ -484,25 +486,29 @@ public class EnhancedEmbeddingQualityTest {
 
         // Check intra-person quality
         if (metrics.avgIntraSimilarity < GOOD_INTRA_SIM) {
-            recommendations.add("⚠️  Intra-person similarities are low. Consider re-capturing face data with better lighting and angles.");
+            recommendations.add(
+                    "⚠️  Intra-person similarities are low. Consider re-capturing face data with better lighting and angles.");
         }
 
         // Check separation
         if (metrics.separationMargin < GOOD_SEPARATION) {
-            recommendations.add("⚠️  Poor separation between persons. The system may have difficulty distinguishing between different people.");
+            recommendations.add(
+                    "⚠️  Poor separation between persons. The system may have difficulty distinguishing between different people.");
         }
 
         // Check for outliers
         if (!metrics.outlierAnalysis.outliers.isEmpty()) {
-            recommendations.add("⚠️  Outlier embeddings detected. Consider removing and re-capturing these problematic face images.");
+            recommendations.add(
+                    "⚠️  Outlier embeddings detected. Consider removing and re-capturing these problematic face images.");
         }
 
         // Check minimum embeddings per person
         boolean hasInsufficientData = metrics.intraSimilarities.values().stream()
-            .anyMatch(sims -> sims.size() < 3);
+                .anyMatch(sims -> sims.size() < 3);
 
         if (hasInsufficientData) {
-            recommendations.add("⚠️  Some persons have fewer than 3 embeddings. Capture more face images for better recognition accuracy.");
+            recommendations.add(
+                    "⚠️  Some persons have fewer than 3 embeddings. Capture more face images for better recognition accuracy.");
         }
 
         if (recommendations.isEmpty()) {
@@ -526,8 +532,10 @@ public class EnhancedEmbeddingQualityTest {
 
         // Detailed breakdown
         System.out.println("\n  Breakdown:");
-        System.out.printf("    Intra-person consistency: %.1f/25%n", Math.min(25, metrics.avgIntraSimilarity * 25 / EXCELLENT_INTRA_SIM));
-        System.out.printf("    Inter-person separation: %.1f/25%n", Math.min(25, Math.max(0, metrics.separationMargin * 25 / EXCELLENT_SEPARATION)));
+        System.out.printf("    Intra-person consistency: %.1f/25%n",
+                Math.min(25, metrics.avgIntraSimilarity * 25 / EXCELLENT_INTRA_SIM));
+        System.out.printf("    Inter-person separation: %.1f/25%n",
+                Math.min(25, Math.max(0, metrics.separationMargin * 25 / EXCELLENT_SEPARATION)));
         System.out.printf("    Data quality: %.1f/25%n", 25.0 - (metrics.outlierAnalysis.outliers.size() * 5.0));
         System.out.printf("    Data quantity: %.1f/25%n", Math.min(25, metrics.totalEmbeddings / 2.0));
 
@@ -564,32 +572,49 @@ public class EnhancedEmbeddingQualityTest {
     }
 
     private String getGrade(double score) {
-        if (score >= 90) return "A";
-        else if (score >= 80) return "B";
-        else if (score >= 70) return "C";
-        else if (score >= 60) return "D";
-        else return "F";
+        if (score >= 90)
+            return "A";
+        else if (score >= 80)
+            return "B";
+        else if (score >= 70)
+            return "C";
+        else if (score >= 60)
+            return "D";
+        else
+            return "F";
     }
 
     private String getSimilarityQuality(double similarity, boolean isIntra) {
         if (isIntra) {
-            if (similarity >= EXCELLENT_INTRA_SIM) return "🟢 Excellent";
-            else if (similarity >= GOOD_INTRA_SIM) return "🟡 Good";
-            else if (similarity >= POOR_INTRA_SIM) return "🟠 Fair";
-            else return "🔴 Poor";
+            if (similarity >= EXCELLENT_INTRA_SIM)
+                return "🟢 Excellent";
+            else if (similarity >= GOOD_INTRA_SIM)
+                return "🟡 Good";
+            else if (similarity >= POOR_INTRA_SIM)
+                return "🟠 Fair";
+            else
+                return "🔴 Poor";
         } else {
-            if (similarity <= 0.3) return "🟢 Excellent";
-            else if (similarity <= 0.4) return "🟡 Good";
-            else if (similarity <= 0.5) return "🟠 Fair";
-            else return "🔴 Poor";
+            if (similarity <= 0.3)
+                return "🟢 Excellent";
+            else if (similarity <= 0.4)
+                return "🟡 Good";
+            else if (similarity <= 0.5)
+                return "🟠 Fair";
+            else
+                return "🔴 Poor";
         }
     }
 
     private String getSeparationQuality(double separation) {
-        if (separation >= EXCELLENT_SEPARATION) return "🟢 Excellent separation";
-        else if (separation >= GOOD_SEPARATION) return "🟡 Good separation";
-        else if (separation >= POOR_SEPARATION) return "🟠 Moderate separation";
-        else return "🔴 Poor separation - high risk of confusion";
+        if (separation >= EXCELLENT_SEPARATION)
+            return "🟢 Excellent separation";
+        else if (separation >= GOOD_SEPARATION)
+            return "🟡 Good separation";
+        else if (separation >= POOR_SEPARATION)
+            return "🟠 Moderate separation";
+        else
+            return "🔴 Poor separation - high risk of confusion";
     }
 
     // Inner classes for data structures
@@ -606,8 +631,8 @@ public class EnhancedEmbeddingQualityTest {
         void calculateQualityMetrics() {
             // Calculate averages
             List<Double> allIntra = intraSimilarities.values().stream()
-                .flatMap(List::stream)
-                .collect(Collectors.toList());
+                    .flatMap(List::stream)
+                    .collect(Collectors.toList());
 
             if (!allIntra.isEmpty()) {
                 avgIntraSimilarity = allIntra.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
@@ -621,8 +646,8 @@ public class EnhancedEmbeddingQualityTest {
 
             // Count total embeddings
             totalEmbeddings = intraSimilarities.values().stream()
-                .mapToInt(List::size)
-                .sum();
+                    .mapToInt(List::size)
+                    .sum();
         }
     }
 

@@ -1,0 +1,68 @@
+================================================================================
+EMBEDDING QUALITY REPORT
+================================================================================
+Generated: 2025-10-23 02:26:14
+Database: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata
+
+================================================================================
+STUDENT: S13234_Jin_Rae
+================================================================================
+
+Embeddings found: 12
+
+--- NORMALIZATION CHECK ---
+Norm range: 1.000000 to 1.000000 (avg: 1.000000)
+✓ All embeddings properly L2-normalized
+
+--- QUALITY ANALYSIS ---
+Overall tightness: 0.9997
+Quality level: EXCELLENT
+Expected live recognition scores: 0.82-0.95
+
+--- EMBEDDING RANKING ---
+  OK    S13234_014.emb  0.9998  (dev: +0.000)
+  OK    S13234_016.emb  0.9998  (dev: +0.000)
+  OK    S13234_013.emb  0.9998  (dev: +0.000)
+  OK    S13234_017.emb  0.9998  (dev: +0.000)
+  OK    S13234_018.emb  0.9997  (dev: +0.000)
+  OK    S13234_006.emb  0.9997  (dev: +0.000)
+  OK    S13234_011.emb  0.9997  (dev: +0.000)
+  OK    S13234_012.emb  0.9997  (dev: -0.000)
+  OK    S13234_005.emb  0.9997  (dev: -0.000)
+  OK    S13234_004.emb  0.9997  (dev: -0.000)
+  OK    S13234_002.emb  0.9997  (dev: -0.000)
+  OK    S13234_003.emb  0.9997  (dev: -0.000)
+
+✓ No outliers detected - all embeddings are of good quality
+
+
+================================================================================
+OVERALL SUMMARY
+================================================================================
+
+--- STATISTICS ---
+Total students analyzed: 1
+Total embeddings: 12
+Average embeddings per student: 12.0
+
+--- QUALITY METRICS ---
+Average tightness: 0.9997
+Students with outliers: 0 (0.0%)
+Total outliers found: 0
+
+--- QUALITY DISTRIBUTION ---
+EXCELLENT (≥0.85): 1
+GOOD (0.75-0.84): 0
+MODERATE (0.65-0.74): 0
+POOR (<0.65): 0
+
+--- TOP 5 PERFORMERS (Highest Tightness) ---
+  S13234_Jin_Rae: 0.9997 (EXCELLENT, 12 embeddings)
+
+--- RECOMMENDATIONS ---
+✓ Excellent overall quality (tightness ≥0.80)
+  → Training data is in good shape
+
+================================================================================
+END OF REPORT
+================================================================================

@@ -77,12 +77,12 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         int personIdx;
         double rawScore;
         double confidence; // Margin-based confidence [0-1]
-        double margin;     // Absolute margin
+        double margin; // Absolute margin
         boolean accepted;
         String reason;
 
         RecognitionResult(int personIdx, double rawScore, double confidence, double margin,
-                         boolean accepted, String reason) {
+                boolean accepted, String reason) {
             this.personIdx = personIdx;
             this.rawScore = rawScore;
             this.confidence = confidence;
@@ -94,7 +94,7 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
 
     /**
      * Calculate margin-based confidence score
-     * confidence = (best - second) / max(best, 0.01)  [normalized to 0-1]
+     * confidence = (best - second) / max(best, 0.01) [normalized to 0-1]
      *
      * Higher confidence = larger margin between best and second
      */
@@ -241,6 +241,11 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                     buildDisplayLabel(new File(folder).getName()), tightness, stdDev, absoluteThreshold,
                     relativeMargin));
         }
+
+        // Debug centroids after all are computed
+        if (!personCentroids.isEmpty() && personCentroids.get(0) != null) {
+            debugCentroid();
+        }
     }
 
     private double computeTightness(List<byte[]> embList) {
@@ -278,29 +283,50 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
     private double[] computeCentroid(List<byte[]> embList) {
         if (embList == null || embList.isEmpty())
             return null;
-        double[] sum = null;
-        int count = 0;
-        for (byte[] b : embList) {
-            double[] v = decodeEmbeddingToDouble(b);
-            if (v == null)
-                continue;
 
-            if (sum == null) {
-                sum = Arrays.copyOf(v, v.length);
-            } else {
-                for (int i = 0; i < v.length; i++)
-                    sum[i] += v[i];
-            }
-            count++;
+        // Get embedding size from first valid embedding
+        double[] firstVec = null;
+        for (byte[] b : embList) {
+            firstVec = decodeEmbeddingToDouble(b);
+            if (firstVec != null)
+                break;
         }
-        if (sum == null || count == 0)
+        if (firstVec == null)
             return null;
 
-        for (int i = 0; i < sum.length; i++)
-            sum[i] /= count;
+        int EMBEDDING_SIZE = firstVec.length;
+        double[] centroid = new double[EMBEDDING_SIZE];
 
-        normalizeL2InPlace(sum);
-        return sum;
+        int validCount = 0;
+        for (byte[] emb : embList) {
+            double[] vec = decodeEmbeddingToDouble(emb);
+            if (vec == null || vec.length != EMBEDDING_SIZE)
+                continue;
+
+            for (int i = 0; i < EMBEDDING_SIZE; i++) {
+                centroid[i] += vec[i];
+            }
+            validCount++;
+        }
+
+        if (validCount == 0)
+            return null;
+
+        for (int i = 0; i < EMBEDDING_SIZE; i++) {
+            centroid[i] /= validCount;
+        }
+
+
+        double norm = 0.0;
+        for (int i = 0; i < EMBEDDING_SIZE; i++) {
+            norm += centroid[i] * centroid[i];
+        }
+        norm = Math.sqrt(Math.max(norm, 1e-12)); // Avoid division by zero
+        for (int i = 0; i < EMBEDDING_SIZE; i++) {
+            centroid[i] /= norm;
+        }
+
+        return centroid;
     }
 
     private double[] decodeEmbeddingToDouble(byte[] emb) {
@@ -621,10 +647,19 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                         }
 
                         // --- RECOGNITION ---
-                        // ✅ FIX: Use same preprocessing pipeline as training
-                        // faceColor is already cropped to face region, so pass null as faceRect
-                        byte[] queryEmbedding = embGen.generateEmbedding(faceColor, null);
+                        // ✅ INTEGRATE: Use LiveRecognitionPreprocessor for consistent preprocessing
+                        Mat preprocessedBlob = livePreprocessor.preprocessForLiveRecognition(faceColor, null);
                         faceColor.release();
+
+                        if (preprocessedBlob == null || preprocessedBlob.empty()) {
+                            lastDisplayText = "unknown";
+                            lastDisplayColor = new Scalar(0, 0, 255);
+                            AppLogger.info("[Reject] Face rejected: Preprocessing failed.");
+                            continue;
+                        }
+
+                        byte[] queryEmbedding = embGen.generateEmbeddingFromBlob(preprocessedBlob);
+                        preprocessedBlob.release();
 
                         if (queryEmbedding == null) {
                             lastDisplayText = "unknown";
@@ -740,39 +775,37 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                             boolean consistent = isConsistent(bestIdx);
                             int strongCount = 0;
                             for (Integer v : recentPredictions) {
-                                if (v != null && v == bestIdx) strongCount++;
+                                if (v != null && v == bestIdx)
+                                    strongCount++;
                             }
 
                             // === MARGIN-BASED RECOGNITION ===
                             RecognitionResult result = evaluateRecognition(
-                                bestIdx, best, second, absThresh, margin,
-                                discriminativeScore, avgNegative, relativeMarginPct,
-                                requiredMarginPct, consistent, strongCount
-                            );
+                                    bestIdx, best, second, absThresh, margin,
+                                    discriminativeScore, avgNegative, relativeMarginPct,
+                                    requiredMarginPct, consistent, strongCount);
 
                             // Display result
                             if (result.accepted) {
                                 String label = bestIdx < personLabels.size()
-                                    ? personLabels.get(bestIdx)
-                                    : new File(folder_names.get(bestIdx)).getName();
+                                        ? personLabels.get(bestIdx)
+                                        : new File(folder_names.get(bestIdx)).getName();
 
                                 // ✅ Display CONFIDENCE (not raw score)
                                 lastDisplayText = String.format("%s (%.0f%%)", label, result.confidence * 100);
                                 lastDisplayColor = new Scalar(15, 255, 15);
 
                                 AppLogger.info(String.format(
-                                    "[Accept] %s | Raw=%.3f, Confidence=%.0f%%, Margin=%.3f | %s",
-                                    label, result.rawScore, result.confidence * 100, result.margin, result.reason
-                                ));
+                                        "[Accept] %s | Raw=%.3f, Confidence=%.0f%%, Margin=%.3f | %s",
+                                        label, result.rawScore, result.confidence * 100, result.margin, result.reason));
                             } else {
                                 lastDisplayText = "unknown";
                                 lastDisplayColor = new Scalar(0, 0, 255);
 
                                 AppLogger.info(String.format(
-                                    "[Reject] Best=%s(%.3f), 2nd=%.3f, Confidence=%.0f%%, Margin=%.3f | %s",
-                                    bestIdx < personLabels.size() ? personLabels.get(bestIdx) : "P" + bestIdx,
-                                    best, second, result.confidence * 100, result.margin, result.reason
-                                ));
+                                        "[Reject] Best=%s(%.3f), 2nd=%.3f, Confidence=%.0f%%, Margin=%.3f | %s",
+                                        bestIdx < personLabels.size() ? personLabels.get(bestIdx) : "P" + bestIdx,
+                                        best, second, result.confidence * 100, result.margin, result.reason));
                             }
 
                             updateRecentPredictions(result.accepted ? bestIdx : -1);
@@ -888,7 +921,8 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                 ? (0.25 * centroidScore + 0.75 * exemplarScore)
                 : exemplarScore;
 
-        return Math.min(1.0, Math.max(fused, exemplarScore));
+        // ✅ CORRECT: Return the actual fused score (no artificial bias)
+        return Math.min(1.0, Math.max(0.0, fused));
     }
 
     private void updateRecentPredictions(int idx) {
@@ -910,22 +944,21 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
     }
 
     private RecognitionResult evaluateRecognition(
-        int bestIdx, double best, double second,
-        double absThresh, double minMargin,
-        double discriminativeScore, double avgNegative,
-        double relativeMarginPct, double requiredMarginPct,
-        boolean consistent, int strongCount
-    ) {
+            int bestIdx, double best, double second,
+            double absThresh, double minMargin,
+            double discriminativeScore, double avgNegative,
+            double relativeMarginPct, double requiredMarginPct,
+            boolean consistent, int strongCount) {
 
         // Calculate margin-based confidence
         double absoluteMargin = best - second;
         double confidence = calculateMarginConfidence(best, second);
 
         // === DECISION THRESHOLDS ===
-        final double MIN_RAW_SCORE = 0.70;          // Minimum raw similarity
-        final double MIN_ABSOLUTE_MARGIN = 0.08;    // Minimum absolute margin
-        final double MIN_CONFIDENCE = 0.15;         // Minimum margin-based confidence
-        final double STRONG_CONFIDENCE = 0.25;      // Strong confidence threshold
+        final double MIN_RAW_SCORE = 0.70; // Minimum raw similarity
+        final double MIN_ABSOLUTE_MARGIN = 0.08; // Minimum absolute margin
+        final double MIN_CONFIDENCE = 0.15; // Minimum margin-based confidence
+        final double STRONG_CONFIDENCE = 0.25; // Strong confidence threshold
 
         // === EVALUATION CRITERIA ===
         boolean rawScorePass = best >= MIN_RAW_SCORE;
@@ -940,34 +973,30 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         // 1. Strong confidence + raw score (highest confidence)
         if (rawScorePass && strongConfidencePass) {
             return new RecognitionResult(
-                bestIdx, best, confidence, absoluteMargin, true,
-                "Strong confidence match"
-            );
+                    bestIdx, best, confidence, absoluteMargin, true,
+                    "Strong confidence match");
         }
 
         // 2. Standard confidence + thresholds
         if (rawScorePass && absoluteThresholdPass && absoluteMarginPass && confidencePass) {
             return new RecognitionResult(
-                bestIdx, best, confidence, absoluteMargin, true,
-                "Standard confidence match"
-            );
+                    bestIdx, best, confidence, absoluteMargin, true,
+                    "Standard confidence match");
         }
 
         // 3. Consistency override (for stable tracking)
         if (rawScorePass && absoluteThresholdPass && consistent &&
-            strongCount >= CONSISTENCY_MIN_COUNT && confidence >= 0.10) {
+                strongCount >= CONSISTENCY_MIN_COUNT && confidence >= 0.10) {
             return new RecognitionResult(
-                bestIdx, best, confidence, absoluteMargin, true,
-                String.format("Consistency override (%d/%d frames)", strongCount, CONSISTENCY_WINDOW)
-            );
+                    bestIdx, best, confidence, absoluteMargin, true,
+                    String.format("Consistency override (%d/%d frames)", strongCount, CONSISTENCY_WINDOW));
         }
 
         // 4. Discriminative score (good separation from others)
         if (rawScorePass && discriminativePass && absoluteMarginPass) {
             return new RecognitionResult(
-                bestIdx, best, confidence, absoluteMargin, true,
-                "Discriminative match (low negative evidence)"
-            );
+                    bestIdx, best, confidence, absoluteMargin, true,
+                    "Discriminative match (low negative evidence)");
         }
 
         // === REJECTION ===
@@ -978,14 +1007,13 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
             reason = String.format("Insufficient margin (%.3f < %.2f)", absoluteMargin, MIN_ABSOLUTE_MARGIN);
         } else if (!confidencePass) {
             reason = String.format("Low confidence (%.0f%% < %.0f%%)",
-                                  confidence * 100, MIN_CONFIDENCE * 100);
+                    confidence * 100, MIN_CONFIDENCE * 100);
         } else {
             reason = "Multiple criteria failed";
         }
 
         return new RecognitionResult(
-            bestIdx, best, confidence, absoluteMargin, false, reason
-        );
+                bestIdx, best, confidence, absoluteMargin, false, reason);
     }
 
     private void stopRecognitionLoop() {
@@ -1117,5 +1145,29 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         y = Math.max(0, Math.min(y, frameHeight - paddedSize));
 
         return new Rect(x, y, paddedSize, paddedSize);
+    }
+
+    private void debugCentroid() {
+        System.out.println("DEBUG CENTROID:");
+        System.out.println("  Centroid length: " + personCentroids.get(0).length);
+        System.out.println("  Centroid first 10 values:");
+        for (int i = 0; i < Math.min(10, personCentroids.get(0).length); i++) {
+            System.out.print("  " + personCentroids.get(0)[i] + " ");
+        }
+        System.out.println();
+
+        // Check magnitude
+        double mag = 0;
+        for (double val : personCentroids.get(0)) {
+            mag += val * val;
+        }
+        mag = Math.sqrt(mag);
+        System.out.println("  Centroid magnitude: " + mag);
+
+        if (mag == 0 || Double.isNaN(mag)) {
+            System.err.println("  ❌ CENTROID IS CORRUPTED!");
+        } else if (Math.abs(mag - 1.0) > 0.1) {
+            System.err.println("  ⚠️ CENTROID NOT UNIT NORM! Magnitude: " + mag);
+        }
     }
 }
