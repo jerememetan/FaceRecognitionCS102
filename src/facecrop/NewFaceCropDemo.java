@@ -278,4 +278,4 @@ public class NewFaceCropDemo extends JFrame implements IConfigChangeListener{
             });
         }); 
     }
-}
+}                                                                                                                                                                                       
