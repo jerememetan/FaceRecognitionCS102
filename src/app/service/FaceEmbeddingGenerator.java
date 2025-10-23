@@ -6,6 +6,7 @@ import org.opencv.imgproc.Moments;
 import org.opencv.dnn.Net;
 import org.opencv.dnn.Dnn;
 import org.opencv.photo.Photo;
+import org.opencv.core.MatOfInt;
 import app.util.FaceAligner;
 import ConfigurationAndLogging.*;
 
@@ -14,6 +15,8 @@ public class FaceEmbeddingGenerator {
     private Net embeddingNet;
     private boolean isInitialized = false;
     private FaceAligner aligner;
+
+    private static final boolean DEBUG_LOGS = false;
 
     private static final int EMBEDDING_SIZE = AppConfig.getInstance().getEmbeddingSize();
     private static final int INPUT_S = AppConfig.getInstance().getEmbeddingInputSize();
@@ -62,27 +65,32 @@ public class FaceEmbeddingGenerator {
     }
 
     private void debugEmbedding(byte[] emb, String label) {
+        if (!DEBUG_LOGS) {
+            return;
+        }
         if (emb == null) {
             System.err.println("DEBUG: " + label + " is NULL!");
             return;
         }
 
-        // Decode and print
         float[] floatEmb = byteArrayToFloatArray(emb);
-        if (floatEmb != null) {
-            // Print first 10 values
-            System.out.print("DEBUG " + label + " first 10 values: ");
-            for (int i = 0; i < Math.min(10, floatEmb.length); i++) {
-                System.out.print(String.format("%.6f ", floatEmb[i]));
-            }
-
-            // Print magnitude
-            double norm = 0;
-            for (float f : floatEmb)
-                norm += f * f;
-            norm = Math.sqrt(norm);
-            System.out.println("| Magnitude: " + String.format("%.6f", norm));
+        if (floatEmb == null) {
+            System.err.println("DEBUG: " + label + " decoding failed");
+            return;
         }
+
+        System.out.print("DEBUG " + label + " first 10 values: ");
+        for (int i = 0; i < Math.min(10, floatEmb.length); i++) {
+            System.out.print(String.format("%.6f ", floatEmb[i]));
+        }
+        System.out.println();
+
+        double norm = 0;
+        for (float f : floatEmb) {
+            norm += f * f;
+        }
+        norm = Math.sqrt(norm);
+        System.out.println("| Magnitude: " + String.format("%.6f", norm));
     }
 
     private byte[] generateDeepEmbedding(Mat faceImage) {
@@ -112,63 +120,53 @@ public class FaceEmbeddingGenerator {
 
             processed.release();
 
-            // === STAGE 2: Blob Creation ===
-            System.out.println("=== STAGE 2: Blob Creation ===");
-
-            // Before blob
-            System.out.println("Aligned face stats:");
-            System.out.println("  Resolution: " + aligned.size());
-            System.out.println("  Mean: " + Core.mean(aligned));
-            double[] minMax = getMinMax(aligned);
-            System.out.println("  Min/Max: " + minMax[0] + " / " + minMax[1]);
-
-            // Create blob WITH different mean values
-            Scalar[] meanTests = {
-                    new Scalar(0, 0, 0), // No mean subtraction
-                    new Scalar(123.675, 116.28, 103.53), // ImageNet mean
-                    new Scalar(127.5, 127.5, 127.5) // Middle value
-            };
-
-            for (int i = 0; i < meanTests.length; i++) {
-                Mat blob = Dnn.blobFromImage(aligned, 1.0 / 255.0, INPUT_SIZE,
-                        meanTests[i], true, false);
-                System.out.println("With mean " + meanTests[i] + ":");
-                System.out.println("  Blob stats: mean=" + Core.mean(blob) + ", min/max="
-                        + java.util.Arrays.toString(getMinMax(blob)));
-                blob.release();
+            if (DEBUG_LOGS) {
+                System.out.println("=== STAGE 2: Blob Creation ===");
+                System.out.println("Aligned face stats:");
+                System.out.println("  Resolution: " + aligned.size());
+                System.out.println("  Mean: " + Core.mean(aligned));
+                double[] minMax = getMinMax(aligned);
+                System.out.println("  Min/Max: " + minMax[0] + " / " + minMax[1]);
             }
 
-            // ✅ ArcFace requires [0,1] normalization range
-            // blobFromImage will convert uint8 to float and scale to [0,1]
-
-            // ✅ ArcFace requires [0,1] normalization range
-            // blobFromImage will convert uint8 to float and scale to [0,1]
-            Scalar imageNetMean = new Scalar(123.675, 116.28, 103.53);
-            Mat blob = Dnn.blobFromImage(aligned, 1.0 / 255.0, INPUT_SIZE,
-                    imageNetMean, true, false);
+            // ✅ ArcFace standard preprocessing: (pixel - 127.5) / 128.0
+            // This maps [0, 255] → [-1, 1] which is what ArcFace expects
+            // IMPORTANT: OpenCV subtracts the mean BEFORE applying the scale factor.
+            // Therefore the mean must remain in the original pixel range [0, 255].
+            Scalar arcFaceMean = new Scalar(127.5, 127.5, 127.5);
+            Mat blobNCHW = Dnn.blobFromImage(aligned, 1.0 / 128.0, INPUT_SIZE,
+                    arcFaceMean, true, false);
+            printBlobStats(blobNCHW, "Aligned face blob (NCHW)");
             aligned.release();
 
-            // === STAGE 3: Model Forward Pass ===
-            System.out.println("=== STAGE 3: Model Forward Pass ===");
+            // New ArcFace ONNX expects NHWC layout, so permute before forwarding
+            Mat blobNHWC = new Mat();
+            MatOfInt nchwToNhwc = new MatOfInt(0, 2, 3, 1);
+            Core.transposeND(blobNCHW, nchwToNhwc, blobNHWC);
+            nchwToNhwc.release();
+            blobNCHW.release();
 
-            // Check input blob
-            System.out.println("Blob input stats:");
-            System.out.println("  Shape: [" + blob.dims() + "]");
-            System.out.println("  Mean: " + Core.mean(blob));
-            System.out.println("  Std: " + getStdDev(blob));
+            if (DEBUG_LOGS) {
+                System.out.println("=== STAGE 3: Model Forward Pass ===");
+                System.out.println("Blob input stats:");
+                System.out.println("  Shape: " + java.util.Arrays.toString(getShape(blobNHWC)));
+                System.out.println("  Mean: " + Core.mean(blobNHWC));
+                System.out.println("  Std: " + getStdDev(blobNHWC));
+            }
 
             // After forward pass
-            embeddingNet.setInput(blob);
-            Mat embedding = embeddingNet.forward("fc1");
-            blob.release();
-
-            System.out.println("Model output stats:");
-            System.out.println("  Shape: " + embedding.size());
-            System.out.println("  Mean: " + Core.mean(embedding));
-            double[] embMinMax = getMinMax(embedding);
-            System.out.println("  Min/Max: " + embMinMax[0] + " / " + embMinMax[1]);
-            double[] first10 = getFirstN(embedding, 10);
-            System.out.println("  First 10 values: " + java.util.Arrays.toString(first10));
+            embeddingNet.setInput(blobNHWC);
+            Mat embedding = embeddingNet.forward();
+            blobNHWC.release();
+            if (DEBUG_LOGS) {
+                System.out.println("Model output stats:");
+                System.out.println("  Shape: " + embedding.size());
+                System.out.println("  Mean: " + Core.mean(embedding));
+                double[] embMinMax = getMinMax(embedding);
+                System.out.println("  Min/Max: " + embMinMax[0] + " / " + embMinMax[1]);
+                double[] first10 = getFirstN(embedding, 10);
+                System.out.println("  First 10 values: " + java.util.Arrays.toString(first10));
+            }
 
             // Convert to byte array for storage
             byte[] result = matToByteArray(embedding);
@@ -190,9 +188,17 @@ public class FaceEmbeddingGenerator {
         try {
             // ✅ Use the preprocessed blob directly (no preprocessing needed)
             // Forward pass through network
-            embeddingNet.setInput(preprocessedBlob);
-            Mat embedding = embeddingNet.forward("fc1");
+            printBlobStats(preprocessedBlob, "External blob input (NCHW)");
+
+            Mat convertedBlob = new Mat();
+            MatOfInt nchwToNhwc = new MatOfInt(0, 2, 3, 1);
+            Core.transposeND(preprocessedBlob, nchwToNhwc, convertedBlob);
+            nchwToNhwc.release();
             preprocessedBlob.release();
+
+            embeddingNet.setInput(convertedBlob);
+            Mat embedding = embeddingNet.forward();
+            convertedBlob.release();
 
             // Convert to byte array for storage
             byte[] result = matToByteArray(embedding);
@@ -367,17 +373,17 @@ public class FaceEmbeddingGenerator {
             float[] floatArray = new float[EMBEDDING_SIZE];
             mat.get(0, 0, floatArray);
 
-            // === STAGE 4: L2 Normalization ===
-            System.out.println("=== STAGE 4: L2 Normalization ===");
-
-            System.out.println("Before normalization:");
-            double[] floatArrayDouble = new double[floatArray.length];
-            for (int i = 0; i < floatArray.length; i++) {
-                floatArrayDouble[i] = floatArray[i];
+            if (DEBUG_LOGS) {
+                System.out.println("=== STAGE 4: L2 Normalization ===");
+                System.out.println("Before normalization:");
+                double[] floatArrayDouble = new double[floatArray.length];
+                for (int i = 0; i < floatArray.length; i++) {
+                    floatArrayDouble[i] = floatArray[i];
+                }
+                System.out.println("  Magnitude: " + calculateMagnitude(floatArrayDouble));
+                double[] first10Before = getFirstN(floatArrayDouble, 10);
+                System.out.println("  First 10 values: " + java.util.Arrays.toString(first10Before));
             }
-            System.out.println("  Magnitude: " + calculateMagnitude(floatArrayDouble));
-            double[] first10Before = getFirstN(floatArrayDouble, 10);
-            System.out.println("  First 10 values: " + java.util.Arrays.toString(first10Before));
 
             // ✅ CRITICAL: Validate neural network output BEFORE normalization
             boolean hasInvalid = false;
@@ -404,14 +410,16 @@ public class FaceEmbeddingGenerator {
                 floatArray[i] /= (float) norm; // ← THIS MUST DIVIDE BY NORM!
             }
 
-            System.out.println("After normalization:");
-            double[] floatArrayDoubleAfter = new double[floatArray.length];
-            for (int i = 0; i < floatArray.length; i++) {
-                floatArrayDoubleAfter[i] = floatArray[i];
+            if (DEBUG_LOGS) {
+                System.out.println("After normalization:");
+                double[] floatArrayDoubleAfter = new double[floatArray.length];
+                for (int i = 0; i < floatArray.length; i++) {
+                    floatArrayDoubleAfter[i] = floatArray[i];
+                }
+                System.out.println("  Magnitude: " + calculateMagnitude(floatArrayDoubleAfter));
+                double[] first10After = getFirstN(floatArrayDoubleAfter, 10);
+                System.out.println("  First 10 values: " + java.util.Arrays.toString(first10After));
             }
-            System.out.println("  Magnitude: " + calculateMagnitude(floatArrayDoubleAfter));
-            double[] first10After = getFirstN(floatArrayDoubleAfter, 10);
-            System.out.println("  First 10 values: " + java.util.Arrays.toString(first10After));
 
             // Check if normalization produces identical outputs
             java.nio.ByteBuffer byteBuffer = java.nio.ByteBuffer.allocate(EMBEDDING_SIZE * 4);
@@ -420,16 +428,16 @@ public class FaceEmbeddingGenerator {
             }
             byte[] result = byteBuffer.array();
 
-            long hash = computeHash(result);
-            System.out.println("  Normalized hash: " + hash);
-
-            // Debug: Print AFTER normalization
-            double checkNorm = 0;
-            for (float f : floatArray) {
-                checkNorm += f * f;
+            if (DEBUG_LOGS) {
+                long hash = computeHash(result);
+                System.out.println("  Normalized hash: " + hash);
+                double checkNorm = 0;
+                for (float f : floatArray) {
+                    checkNorm += f * f;
+                }
+                checkNorm = Math.sqrt(checkNorm);
+                System.out.println("DEBUG After norm in matToByteArray: Magnitude = " + checkNorm);
             }
-            checkNorm = Math.sqrt(checkNorm);
-            System.out.println("DEBUG After norm in matToByteArray: Magnitude = " + checkNorm);
             // Should print ~1.0, not 4.97!
 
             return result;
@@ -453,13 +461,14 @@ public class FaceEmbeddingGenerator {
             array[i] /= norm;
         }
 
-        // Debug: Print AFTER normalization
-        double checkNorm = 0;
-        for (double d : array) {
-            checkNorm += d * d;
+        if (DEBUG_LOGS) {
+            double checkNorm = 0;
+            for (double d : array) {
+                checkNorm += d * d;
+            }
+            checkNorm = Math.sqrt(checkNorm);
+            System.out.println("DEBUG After norm in doubleArrayToByteArray: Magnitude = " + checkNorm);
         }
-        checkNorm = Math.sqrt(checkNorm);
-        System.out.println("DEBUG After norm in doubleArrayToByteArray: Magnitude = " + checkNorm);
 
         java.nio.ByteBuffer buffer = java.nio.ByteBuffer.allocate(array.length * 8);
         for (double d : array) {
@@ -491,43 +500,83 @@ public class FaceEmbeddingGenerator {
     }
 
     private double calculateCosineSimilarity(byte[] emb1, byte[] emb2) {
-        // === STAGE 5: Similarity Calculation ===
-        System.out.println("=== STAGE 5: Similarity Calculation ===");
-
         float[] vec1 = byteArrayToFloatArray(emb1);
         float[] vec2 = byteArrayToFloatArray(emb2);
 
-        double[] vec1Double = new double[vec1.length];
-        double[] vec2Double = new double[vec2.length];
-        for (int i = 0; i < vec1.length; i++) {
-            vec1Double[i] = vec1[i];
-        }
-        for (int i = 0; i < vec2.length; i++) {
-            vec2Double[i] = vec2[i];
-        }
+        // Calculate magnitudes
+        double mag1 = 0, mag2 = 0;
+        for (float f : vec1)
+            mag1 += f * f;
+        for (float f : vec2)
+            mag2 += f * f;
+        mag1 = Math.sqrt(mag1);
+        mag2 = Math.sqrt(mag2);
 
-        System.out.println("Vector 1:");
-        System.out.println("  Magnitude: " + calculateMagnitude(vec1Double));
-        System.out.println("  First 10: " + java.util.Arrays.toString(getFirstN(vec1Double, 10)));
-
-        System.out.println("Vector 2:");
-        System.out.println("  Magnitude: " + calculateMagnitude(vec2Double));
-        System.out.println("  First 10: " + java.util.Arrays.toString(getFirstN(vec2Double, 10)));
-
-        // ✅ FIX: Embeddings are already unit vectors from matToByteArray()
-        // normalization
-        // No need to recalculate norms - just compute dot product directly
+        // ✅ PROPER COSINE SIMILARITY FORMULA
         double dotProduct = 0.0;
         for (int i = 0; i < vec1.length; i++) {
             dotProduct += vec1[i] * vec2[i];
         }
 
-        System.out.println("Dot Product: " + dotProduct);
-        System.out.println("L2 Norms: " + calculateMagnitude(vec1Double) + ", " + calculateMagnitude(vec2Double));
+        // ✅ DIVIDE BY MAGNITUDES!
+        double similarity;
+        if (mag1 > 0 && mag2 > 0) {
+            similarity = dotProduct / (mag1 * mag2);
+        } else {
+            similarity = 0.0;
+        }
+        if (DEBUG_LOGS) {
+            System.out.println("=== STAGE 5: Similarity Calculation ===");
 
-        // The actual similarity
-        double similarity = dotProduct; // Already unit vectors, so dot product = cosine similarity
-        System.out.println("Calculated Similarity: " + similarity);
+            double[] vec1Double = new double[vec1.length];
+            double[] vec2Double = new double[vec2.length];
+            for (int i = 0; i < vec1.length; i++) {
+                vec1Double[i] = vec1[i];
+            }
+            for (int i = 0; i < vec2.length; i++) {
+                vec2Double[i] = vec2[i];
+            }
+
+            System.out.println("Vector 1:");
+            System.out.println("  Magnitude: " + mag1);
+            System.out.println("  First 10: " + java.util.Arrays.toString(getFirstN(vec1Double, 10)));
+
+            System.out.println("Vector 2:");
+            System.out.println("  Magnitude: " + mag2);
+            System.out.println("  First 10: " + java.util.Arrays.toString(getFirstN(vec2Double, 10)));
+
+            System.out.println("Dot Product: " + dotProduct);
+            System.out.println("L2 Norms: " + mag1 + ", " + mag2);
+            System.out.println("Calculated Similarity: " + similarity);
+
+            if (similarity > 0.97) {
+                double vec1Mean = 0;
+                for (float v : vec1) {
+                    vec1Mean += v;
+                }
+                vec1Mean /= vec1.length;
+
+                double vec2Mean = 0;
+                for (float v : vec2) {
+                    vec2Mean += v;
+                }
+                vec2Mean /= vec2.length;
+
+                System.err.println("⚠️⚠️⚠️ CRITICAL: 0.97+ similarity between different people!");
+                System.err.println("   Vec1 mean: " + vec1Mean);
+                System.err.println("   Vec2 mean: " + vec2Mean);
+
+                double maxDeviation = 0;
+                for (int i = 0; i < Math.min(vec1.length, vec2.length); i++) {
+                    maxDeviation = Math.max(maxDeviation, Math.abs(vec1[i] - vec2[i]));
+                }
+                System.err.println("   Max deviation: " + maxDeviation);
+
+                if (maxDeviation < 0.05) {
+                    System.err.println("   ❌ VECTORS ARE NEARLY IDENTICAL - INPUT DATA IS IDENTICAL!");
+                }
+            }
+        }
 
         // Clamp to [-1, 1] range to handle floating point precision issues
         return Math.max(-1.0, Math.min(1.0, similarity));
@@ -537,16 +586,60 @@ public class FaceEmbeddingGenerator {
         double[] vec1 = byteArrayToDoubleArray(emb1);
         double[] vec2 = byteArrayToDoubleArray(emb2);
 
-        // ✅ FIX: Embeddings are already unit vectors from doubleArrayToByteArray()
-        // normalization
-        // No need to recalculate norms - just compute dot product directly
+        // Calculate magnitudes
+        double mag1 = 0, mag2 = 0;
+        for (double d : vec1)
+            mag1 += d * d;
+        for (double d : vec2)
+            mag2 += d * d;
+        mag1 = Math.sqrt(mag1);
+        mag2 = Math.sqrt(mag2);
+
+        // ✅ PROPER COSINE SIMILARITY FORMULA
         double dotProduct = 0.0;
         for (int i = 0; i < vec1.length; i++) {
             dotProduct += vec1[i] * vec2[i];
         }
 
+        // ✅ DIVIDE BY MAGNITUDES!
+        double similarity;
+        if (mag1 > 0 && mag2 > 0) {
+            similarity = dotProduct / (mag1 * mag2);
+        } else {
+            similarity = 0.0;
+        }
+
+        // If similarity is > 0.97 between different people:
+        if (similarity > 0.97) {
+            // Calculate means manually for double arrays
+            double vec1Mean = 0;
+            for (double v : vec1)
+                vec1Mean += v;
+            vec1Mean /= vec1.length;
+
+            double vec2Mean = 0;
+            for (double v : vec2)
+                vec2Mean += v;
+            vec2Mean /= vec2.length;
+
+            System.err.println("⚠️⚠️⚠️ CRITICAL: 0.97+ similarity between different people!");
+            System.err.println("   Vec1 mean: " + vec1Mean);
+            System.err.println("   Vec2 mean: " + vec2Mean);
+
+            // Check if vectors are too similar in direction
+            double maxDeviation = 0;
+            for (int i = 0; i < Math.min(vec1.length, vec2.length); i++) {
+                maxDeviation = Math.max(maxDeviation, Math.abs(vec1[i] - vec2[i]));
+            }
+            System.err.println("   Max deviation: " + maxDeviation);
+
+            if (maxDeviation < 0.05) {
+                System.err.println("   ❌ VECTORS ARE NEARLY IDENTICAL - INPUT DATA IS IDENTICAL!");
+            }
+        }
+
         // Clamp to [-1, 1] range to handle floating point precision issues
-        return Math.max(-1.0, Math.min(1.0, dotProduct));
+        return Math.max(-1.0, Math.min(1.0, similarity));
     }
 
     private float[] byteArrayToFloatArray(byte[] data) {
@@ -559,25 +652,25 @@ public class FaceEmbeddingGenerator {
         java.nio.ByteBuffer buffer = java.nio.ByteBuffer.wrap(data);
         buffer.asFloatBuffer().get(floatArray);
 
-        // DEBUG: Print first 10 and last 10 values + hash
-        StringBuilder sb = new StringBuilder("DEBUG byteArrayToFloatArray: [");
-        for (int i = 0; i < Math.min(5, floatArray.length); i++) {
-            sb.append(String.format("%.6f ", floatArray[i]));
-        }
-        sb.append("....");
-        for (int i = Math.max(0, floatArray.length - 5); i < floatArray.length; i++) {
-            sb.append(String.format("%.6f ", floatArray[i]));
-        }
-        sb.append("]");
+        if (DEBUG_LOGS) {
+            StringBuilder sb = new StringBuilder("DEBUG byteArrayToFloatArray: [");
+            for (int i = 0; i < Math.min(5, floatArray.length); i++) {
+                sb.append(String.format("%.6f ", floatArray[i]));
+            }
+            sb.append("....");
+            for (int i = Math.max(0, floatArray.length - 5); i < floatArray.length; i++) {
+                sb.append(String.format("%.6f ", floatArray[i]));
+            }
+            sb.append("]");
 
-        // Print a hash of the embedding to see if they're truly identical
-        long hash = 0;
-        for (float f : floatArray) {
-            hash = hash * 31 + Float.hashCode(f);
-        }
-        sb.append(" HASH=").append(hash);
+            long hash = 0;
+            for (float f : floatArray) {
+                hash = hash * 31 + Float.hashCode(f);
+            }
+            sb.append(" HASH=").append(hash);
 
-        System.out.println(sb.toString());
+            System.out.println(sb.toString());
+        }
 
         return floatArray;
     }
@@ -1034,12 +1127,83 @@ public class FaceEmbeddingGenerator {
         return result;
     }
 
+    private int[] getShape(Mat mat) {
+        int dims = mat.dims();
+        int[] shape = new int[dims];
+        for (int i = 0; i < dims; i++) {
+            shape[i] = mat.size(i);
+        }
+        return shape;
+    }
+
     private long computeHash(byte[] data) {
         long hash = 0;
         for (byte b : data) {
             hash = 31 * hash + b;
         }
         return hash;
+    }
+
+    private void printBlobStats(Mat blob, String label) {
+        if (!DEBUG_LOGS) {
+            return;
+        }
+        if (blob == null || blob.empty()) {
+            System.out.println(label + ": blob is null or empty");
+            return;
+        }
+
+        System.out.println(label + ":");
+        System.out.println("  Dims: " + blob.dims());
+        System.out.println("  Size: " + blob.size());
+
+        int totalElements = (int) blob.total();
+        if (totalElements <= 0) {
+            System.out.println("  No data to analyze (totalElements=" + totalElements + ")");
+            return;
+        }
+
+        float[] data = new float[totalElements];
+        blob.get(0, 0, data);
+
+        int spatialSize = INPUT_S * INPUT_S;
+        int channels = (spatialSize > 0) ? Math.max(totalElements / spatialSize, 1) : 3;
+
+        System.out.println("  Total elements: " + totalElements + ", Channels (estimated): " + channels);
+
+        for (int c = 0; c < channels; c++) {
+            double sum = 0.0;
+            double sumSq = 0.0;
+            float min = Float.POSITIVE_INFINITY;
+            float max = Float.NEGATIVE_INFINITY;
+
+            int offset = c * spatialSize;
+            int limit = Math.min(offset + spatialSize, data.length);
+
+            int count = 0;
+            for (int i = offset; i < limit; i++) {
+                float val = data[i];
+                sum += val;
+                sumSq += val * val;
+                if (val < min)
+                    min = val;
+                if (val > max)
+                    max = val;
+                count++;
+            }
+
+            if (count == 0) {
+                System.out.println("    Channel " + c + ": no data");
+                continue;
+            }
+
+            double mean = sum / count;
+            double variance = Math.max((sumSq / count) - (mean * mean), 0.0);
+            double std = Math.sqrt(variance);
+
+            System.out.printf("    Channel %d: mean=%.4f std=%.4f min=%.4f max=%.4f%n",
+                    c, mean, std, min, max);
+        }
     }
 
     private double compareHistograms(Mat img1, Mat img2) {

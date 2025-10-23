@@ -368,32 +368,52 @@ public class EnhancedEmbeddingQualityTest {
         float[] vec1 = byteArrayToFloatArray(emb1);
         float[] vec2 = byteArrayToFloatArray(emb2);
 
-        // ✅ CORRECT: Just dot product (embeddings already normalized!)
+        // Calculate magnitudes
+        double mag1 = 0, mag2 = 0;
+        for (float f : vec1)
+            mag1 += f * f;
+        for (float f : vec2)
+            mag2 += f * f;
+        mag1 = Math.sqrt(mag1);
+        mag2 = Math.sqrt(mag2);
+
+        // ✅ PROPER COSINE SIMILARITY FORMULA
         double dotProduct = 0.0;
         for (int i = 0; i < vec1.length; i++) {
             dotProduct += vec1[i] * vec2[i];
         }
 
-        // ✅ Don't re-normalize - embeddings are already unit vectors!
-        return Math.max(-1.0, Math.min(1.0, dotProduct));
-
-        // ❌ DELETE the old code that re-normalizes with norm1/norm2!
+        // ✅ DIVIDE BY MAGNITUDES!
+        if (mag1 > 0 && mag2 > 0) {
+            return Math.max(-1.0, Math.min(1.0, dotProduct / (mag1 * mag2)));
+        }
+        return 0.0;
     }
 
     private double calculateCosineSimilarityDouble(byte[] emb1, byte[] emb2) {
         double[] vec1 = byteArrayToDoubleArray(emb1);
         double[] vec2 = byteArrayToDoubleArray(emb2);
 
-        // ✅ CORRECT: Just dot product (embeddings already normalized!)
+        // Calculate magnitudes
+        double mag1 = 0, mag2 = 0;
+        for (double d : vec1)
+            mag1 += d * d;
+        for (double d : vec2)
+            mag2 += d * d;
+        mag1 = Math.sqrt(mag1);
+        mag2 = Math.sqrt(mag2);
+
+        // ✅ PROPER COSINE SIMILARITY FORMULA
         double dotProduct = 0.0;
         for (int i = 0; i < vec1.length; i++) {
             dotProduct += vec1[i] * vec2[i];
         }
 
-        // ✅ Don't re-normalize - embeddings are already unit vectors!
-        return Math.max(-1.0, Math.min(1.0, dotProduct));
-
-        // ❌ DELETE the old code that re-normalizes with norm1/norm2!
+        // ✅ DIVIDE BY MAGNITUDES!
+        if (mag1 > 0 && mag2 > 0) {
+            return Math.max(-1.0, Math.min(1.0, dotProduct / (mag1 * mag2)));
+        }
+        return 0.0;
     }
 
     private float[] byteArrayToFloatArray(byte[] bytes) {

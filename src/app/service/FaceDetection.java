@@ -112,6 +112,40 @@ public class FaceDetection {
         return detectFaceWithConfidence(frame);
     }
 
+    public List<Rect> detectFaces(Mat frame) {
+        FaceDetectionResult result = detectFaceForPreview(frame);
+        List<Rect> faces = new ArrayList<>();
+
+        for (FaceCandidate candidate : result.getFaces()) {
+            faces.add(candidate.rect);
+        }
+
+        // ADD THIS DEBUG:
+        System.out.println("=== FACE DETECTION DEBUG ===");
+        System.out.println("Frame size: " + frame.size());
+        System.out.println("Detected " + faces.size() + " faces");
+
+        for (int i = 0; i < faces.size(); i++) {
+            Rect rect = faces.get(i);
+            System.out.printf("Face %d: (%d, %d, %dx%d) size=%d%%\n",
+                    i, rect.x, rect.y, rect.width, rect.height,
+                    (100 * rect.width * rect.height) / (frame.width() * frame.height()));
+
+            // NEW: Check if rect is valid
+            if (rect.width < 10 || rect.height < 10) {
+                System.err.println("  ❌ FACE TOO SMALL!");
+            }
+            if (rect.width > frame.width() * 0.9) {
+                System.err.println("  ❌ FACE TOO LARGE (whole frame)!");
+            }
+            if (rect.x + rect.width > frame.width()) {
+                System.err.println("  ❌ RECT OUT OF BOUNDS!");
+            }
+        }
+
+        return faces;
+    }
+
     private FaceDetectionResult detectFaceWithConfidence(Mat frame) {
         if (dnnFaceDetector != null) {
             return detectFaceWithDNN(frame);

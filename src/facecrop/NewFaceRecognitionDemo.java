@@ -14,7 +14,6 @@ import java.util.Arrays;
 import java.nio.ByteBuffer;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import facecrop.LiveRecognitionPreprocessor;
 
 import javax.swing.*;
 
@@ -48,7 +47,6 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
     private int frameCounter = 0;
 
     private final ImageProcessor imageProcessor = new ImageProcessor();
-    private final LiveRecognitionPreprocessor livePreprocessor = new LiveRecognitionPreprocessor();
     private final FaceEmbeddingGenerator embGen = new FaceEmbeddingGenerator();
 
     private final int TOP_K = 5;
@@ -315,7 +313,6 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
         for (int i = 0; i < EMBEDDING_SIZE; i++) {
             centroid[i] /= validCount;
         }
-
 
         double norm = 0.0;
         for (int i = 0; i < EMBEDDING_SIZE; i++) {
@@ -647,19 +644,8 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                         }
 
                         // --- RECOGNITION ---
-                        // ✅ INTEGRATE: Use LiveRecognitionPreprocessor for consistent preprocessing
-                        Mat preprocessedBlob = livePreprocessor.preprocessForLiveRecognition(faceColor, null);
+                        byte[] queryEmbedding = embGen.generateEmbedding(faceColor);
                         faceColor.release();
-
-                        if (preprocessedBlob == null || preprocessedBlob.empty()) {
-                            lastDisplayText = "unknown";
-                            lastDisplayColor = new Scalar(0, 0, 255);
-                            AppLogger.info("[Reject] Face rejected: Preprocessing failed.");
-                            continue;
-                        }
-
-                        byte[] queryEmbedding = embGen.generateEmbeddingFromBlob(preprocessedBlob);
-                        preprocessedBlob.release();
 
                         if (queryEmbedding == null) {
                             lastDisplayText = "unknown";
@@ -1037,9 +1023,6 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
             capture.release();
             webcamFrame.release();
             gray.release();
-        }
-        if (livePreprocessor != null) {
-            livePreprocessor.release();
         }
     }
 

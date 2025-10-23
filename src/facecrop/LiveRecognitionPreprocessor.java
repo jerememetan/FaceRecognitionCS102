@@ -38,7 +38,9 @@ public class LiveRecognitionPreprocessor {
             return new Mat();
         }
 
-        Scalar imageNetMean = new Scalar(123.675, 116.28, 103.53);
+        // IMPORTANT: keep the mean in pixel space. OpenCV subtracts the mean before
+        // scaling, so this results in (pixel - 127.5) / 128.0 as required by ArcFace.
+        Scalar arcFaceMean = new Scalar(127.5, 127.5, 127.5);
 
         try {
             // Ensure 3-channel BGR
@@ -81,8 +83,8 @@ public class LiveRecognitionPreprocessor {
 
             processed.release();
 
-            Mat blob = Dnn.blobFromImage(aligned, 1.0 / 255.0, INPUT_SIZE,
-                    imageNetMean, true, false);
+            Mat blob = Dnn.blobFromImage(aligned, 1.0 / 128.0, INPUT_SIZE,
+                    arcFaceMean, true, false);
             aligned.release();
 
             // ✅ Return the properly formatted blob, NOT raw pixels!
@@ -96,8 +98,8 @@ public class LiveRecognitionPreprocessor {
             Mat fallback = new Mat();
             Imgproc.resize(faceROI, fallback, INPUT_SIZE, 0, 0, Imgproc.INTER_CUBIC);
 
-            Mat blob = Dnn.blobFromImage(fallback, 1.0 / 255.0, INPUT_SIZE,
-                    imageNetMean, true, false);
+            Mat blob = Dnn.blobFromImage(fallback, 1.0 / 128.0, INPUT_SIZE,
+                    arcFaceMean, true, false);
             fallback.release();
 
             return blob;
