@@ -58,27 +58,12 @@ public class LiveRecognitionPreprocessor {
             }
 
             // *** Apply face alignment ***
-            Mat aligned = aligner.align(processed, faceRect);
+            Mat aligned = aligner.align(processed, null); // ROI already isolated; use internal fallbacks
 
             if (aligned == null || aligned.empty()) {
-                System.err.println("⚠️ Alignment failed in live preprocessing, using fallback");
+                System.err.println("⚠️ Alignment failed in live preprocessing, resizing ROI directly");
                 aligned = new Mat();
-
-                // Create proper face ROI fallback
-                Mat faceROIForResize;
-                if (faceRect != null && faceRect.width > 0 && faceRect.height > 0) {
-                    Rect safeRect = new Rect(
-                            Math.max(0, faceRect.x),
-                            Math.max(0, faceRect.y),
-                            Math.min(faceRect.width, processed.width() - Math.max(0, faceRect.x)),
-                            Math.min(faceRect.height, processed.height() - Math.max(0, faceRect.y)));
-                    faceROIForResize = new Mat(processed, safeRect);
-                } else {
-                    faceROIForResize = processed.clone();
-                }
-
-                Imgproc.resize(faceROIForResize, aligned, INPUT_SIZE, 0, 0, Imgproc.INTER_CUBIC);
-                faceROIForResize.release();
+                Imgproc.resize(processed, aligned, INPUT_SIZE, 0, 0, Imgproc.INTER_CUBIC);
             }
 
             processed.release();

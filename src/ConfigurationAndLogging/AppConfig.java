@@ -78,6 +78,7 @@ public class AppConfig {
     public final static String KEY_RECOGNITION_COHORT_ENABLED = "recognition.cohort.enabled";
     public final static String KEY_RECOGNITION_COHORT_SIZE = "recognition.cohort.size";
     public final static String KEY_RECOGNITION_COHORT_Z_MIN = "recognition.cohort.z_min";
+    public final static String KEY_RECOGNITION_MIN_FACE_WIDTH_PX = "recognition.min.face.width.px";
 
     // pruning / person thresholds
     public final static String KEY_PRUNING_ENABLED = "recognition.pruning.enabled";
@@ -538,6 +539,16 @@ public class AppConfig {
         } catch (NumberFormatException ex) {
             AppLogger.error("Config error: Invalid number format for " + KEY_EMBEDDING_INPUT_SIZE, ex);
             return 112;
+        }
+    }
+
+    public int getRecognitionMinFaceWidthPx() {
+        String s = properties.getProperty(KEY_RECOGNITION_MIN_FACE_WIDTH_PX, "96");
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_RECOGNITION_MIN_FACE_WIDTH_PX, ex);
+            return 96;
         }
     }
 
