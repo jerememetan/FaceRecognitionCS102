@@ -31,7 +31,8 @@ public class AppConfig {
     public final static String KEY_CAPTURE_MIN_CONFIDENCE_SCORE = "capture.min_confidence_score";
     public final static String KEY_CAPTURE_MIN_FACE_SIZE = "capture.min_face_size";
     public final static String KEY_CAPTURE_INTERVAL_MS = "capture.capture_interval_ms";
-    public final static String KEY_CAPTURE_ATTEMPT_MULTIPLIER = "capture.capture_attempt_mutliplier"; // keep misspelling
+    public final static String KEY_CAPTURE_ATTEMPT_MULTIPLIER = "capture.capture_attempt_mutliplier"; // keep
+                                                                                                      // misspelling
     public final static String KEY_CAPTURE_FRAME_WAIT_TIMEOUT_MS = "capture.frame_wait_timeout_ms";
     public final static String KEY_CAPTURE_FACE_PERSISTENCE_NS = "capture.face_persistence_ns";
 
@@ -131,16 +132,19 @@ public class AppConfig {
             AppLogger.error("Error reading app.properties file.", ex);
         } finally {
             if (input != null) {
-                try { input.close(); } catch (IOException ignored) {}
+                try {
+                    input.close();
+                } catch (IOException ignored) {
+                }
             }
         }
     }
 
     /**
      * Clean up loaded properties:
-     *  - Trim keys and values
-     *  - Remove trailing semicolons from values (e.g. "50;")
-     *  - Map known alias keys to canonical KEY_* names used by AppConfig
+     * - Trim keys and values
+     * - Remove trailing semicolons from values (e.g. "50;")
+     * - Map known alias keys to canonical KEY_* names used by AppConfig
      */
     private void normalizeProperties() {
         java.util.Map<String, String> aliases = new java.util.HashMap<>();
@@ -356,6 +360,7 @@ public class AppConfig {
             AppLogger.info(KEY_RECOGNITION_THRESHOLD + " has been changed to " + newIndex);
         }
     }
+
     // KEY_RECOGNITION_IMAGE_FORMAT = ".jpg";
     public String getRecognitionImageFormat() {
         return properties.getProperty(KEY_RECOGNITION_IMAGE_FORMAT, ".jpg");
@@ -716,8 +721,6 @@ public class AppConfig {
         properties.setProperty(KEY_EXPORT_PDF_FOLDER, path);
         AppLogger.info(KEY_EXPORT_PDF_FOLDER + " has been changed to " + path);
     }
-
-
 
     public boolean isDnnDetectionEnabled() {
         return Boolean.parseBoolean(properties.getProperty(KEY_DNN_ENABLED, "true"));

@@ -1,6 +1,0 @@
-[2025-10-22 13:32:57] INFO: Application Logger Initialized.
-[2025-10-22 13:32:57] INFO: Configuration and core components loaded.
-[2025-10-22 13:32:57] INFO: app.properties normalized (55 entries).
-[2025-10-22 13:32:57] INFO: Configuration loaded from classpath: app.properties
-[2025-10-22 13:32:57] INFO: Configuration file loaded
-[2025-10-22 13:32:57] INFO: MyGUIProgram Started!

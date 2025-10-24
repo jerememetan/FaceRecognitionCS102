@@ -1,0 +1,59 @@
+[2025-10-23 02:25:29] INFO: Application Logger Initialized.
+[2025-10-23 02:25:29] INFO: app.properties normalized (55 entries).
+[2025-10-23 02:25:29] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
+[2025-10-23 02:25:30] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
+[2025-10-23 02:25:30] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-23 02:25:30] INFO: ================================================================================
+[2025-10-23 02:25:30] INFO: PROCESSING STUDENT: S13234_Jin_Rae
+[2025-10-23 02:25:30] INFO: ================================================================================
+[2025-10-23 02:25:30] INFO: Found 15 images (.jpg/.png)
+[2025-10-23 02:25:30] INFO: Deleting 15 old embeddings...
+[2025-10-23 02:25:30] INFO: Generating new embeddings with latest preprocessing pipeline...
+[2025-10-23 02:25:30] INFO: (Face detection ￢ﾆﾒ Alignment ￢ﾆﾒ Quality validation ￢ﾆﾒ Embedding generation)
+[2025-10-23 02:25:30] INFO: ￢ﾜﾓ Saved embedding: S13234_001.emb
+[2025-10-23 02:25:30] INFO: ￢ﾜﾓ Saved embedding: S13234_002.emb
+[2025-10-23 02:25:30] INFO: ￢ﾜﾓ Saved embedding: S13234_003.emb
+[2025-10-23 02:25:31] INFO: ￢ﾜﾓ Saved embedding: S13234_004.emb
+[2025-10-23 02:25:31] INFO: ￢ﾜﾓ Saved embedding: S13234_005.emb
+[2025-10-23 02:25:31] INFO: ￢ﾜﾓ Saved embedding: S13234_006.emb
+[2025-10-23 02:25:31] INFO: ￢ﾜﾓ Saved embedding: S13234_008.emb
+[2025-10-23 02:25:31] INFO: ￢ﾜﾓ Saved embedding: S13234_011.emb
+[2025-10-23 02:25:31] INFO: ￢ﾜﾓ Saved embedding: S13234_012.emb
+[2025-10-23 02:25:31] INFO: ￢ﾜﾓ Saved embedding: S13234_013.emb
+[2025-10-23 02:25:31] INFO: ￢ﾜﾓ Saved embedding: S13234_014.emb
+[2025-10-23 02:25:31] INFO: ￢ﾜﾓ Saved embedding: S13234_015.emb
+[2025-10-23 02:25:31] INFO: ￢ﾜﾓ Saved embedding: S13234_016.emb
+[2025-10-23 02:25:32] INFO: ￢ﾜﾓ Saved embedding: S13234_017.emb
+[2025-10-23 02:25:32] INFO: ￢ﾜﾓ Saved embedding: S13234_018.emb
+[2025-10-23 02:25:32] INFO: Embedding generation complete: 15/15 successful
+[2025-10-23 02:25:32] INFO:   Outlier detected: index=6, avgSim=0.9995, threshold=0.9996
+[2025-10-23 02:25:32] INFO:   ￢ﾜﾗ Deleted outlier embedding: S13234_008.emb
+[2025-10-23 02:25:32] INFO:   ￢ﾜﾗ Deleted outlier image: S13234_008.png
+[2025-10-23 02:25:32] INFO: ￢ﾜﾓ Auto-removed 1 outlier embedding(s)
+[2025-10-23 02:25:32] INFO:   Weak embedding detected: index=0, avgSim=0.9996, threshold=0.9996, absThresh=0.6000
+[2025-10-23 02:25:32] INFO:   Weak embedding detected: index=6, avgSim=0.9995, threshold=0.9996, absThresh=0.6000
+[2025-10-23 02:25:32] INFO:   Weak embedding detected: index=11, avgSim=0.9996, threshold=0.9996, absThresh=0.6000
+[2025-10-23 02:25:32] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_015.emb
+[2025-10-23 02:25:32] INFO:   ￢ﾜﾗ Deleted weak image: S13234_015.png
+[2025-10-23 02:25:32] INFO:   ￢ﾜﾗ Deleted weak embedding: S13234_001.emb
+[2025-10-23 02:25:32] INFO:   ￢ﾜﾗ Deleted weak image: S13234_001.png
+[2025-10-23 02:25:32] INFO: ￢ﾜﾓ Auto-removed 2 weak embedding(s)
+[2025-10-23 02:25:32] INFO: RESULT: Successfully processed 15 embeddings
+[2025-10-23 02:25:32] INFO: Processed: 15 embeddings
+[2025-10-23 02:25:32] INFO: Removed (outliers): 1 embeddings
+[2025-10-23 02:25:32] INFO: Removed (weak): 2 embeddings
+[2025-10-23 02:25:32] INFO: Total removed: 3 embeddings
+[2025-10-23 02:25:32] INFO: Final embedding count: 12
+[2025-10-23 02:25:32] INFO: ￢ﾜﾓ Embeddings regenerated successfully for S13234_Jin_Rae
+[2025-10-23 02:25:32] INFO: =================================================================================
+[2025-10-23 02:25:32] INFO: BATCH REGENERATION COMPLETE
+[2025-10-23 02:25:32] INFO: =================================================================================
+[2025-10-23 02:25:32] INFO: Students processed: 1
+[2025-10-23 02:25:32] INFO: Total images found: 15
+[2025-10-23 02:25:32] INFO: Total embeddings generated: 15
+[2025-10-23 02:25:32] INFO: Total outliers removed: 1
+[2025-10-23 02:25:32] INFO: Total weak embeddings removed: 2
+[2025-10-23 02:25:32] INFO: Total embeddings removed: 3
+[2025-10-23 02:25:32] INFO: ￢ﾜﾓ All embeddings have been regenerated with the latest pipeline!
+[2025-10-23 02:25:32] INFO:   Run EmbeddingQualityTest to verify embedding quality and tightness scores.
+[2025-10-23 02:25:32] INFO:   Restart the recognition application to use the new embeddings.
