@@ -29,6 +29,11 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
     private static final Size DNN_INPUT_SIZE = new Size(300, 300);
     private static final Scalar DNN_MEAN_SUBTRACTION = new Scalar(104.0, 117.0, 123.0);
     private static final double MIN_ASPECT_RATIO = 0.7;
+    private static final double LIVE_THRESHOLD_RELAXATION = 0.85;
+    private static final double MIN_LIVE_ABSOLUTE_THRESHOLD = 0.48;
+    private static final double CONFIDENCE_THRESHOLD_RELAXATION = 0.92;
+    private static final double MARGIN_CONFIDENCE_WEIGHT = 0.45;
+    private static final double RAW_CONFIDENCE_WEIGHT = 1.0 - MARGIN_CONFIDENCE_WEIGHT;
 
     private final CameraPanel cameraPanel = new CameraPanel();
     private VideoCapture capture;
@@ -243,15 +248,18 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
                         + ") - relaxed thresholds by " + String.format("%.1f", (1.0 - relaxationFactor) * 100) + "%");
             }
 
-            double absoluteThreshold = baseAbsolute + ((1.0 - tightness) * 0.10);
-            double relativeMargin = baseMargin + ((1.0 - tightness) * 0.10);
+        double trainingAbsoluteThreshold = baseAbsolute + ((1.0 - tightness) * 0.10);
+        double absoluteThreshold = Math.max(MIN_LIVE_ABSOLUTE_THRESHOLD,
+            trainingAbsoluteThreshold * LIVE_THRESHOLD_RELAXATION);
+        double relativeMargin = baseMargin + ((1.0 - tightness) * 0.10);
 
-            personAbsoluteThresholds.add(absoluteThreshold);
+        personAbsoluteThresholds.add(absoluteThreshold);
             personRelativeMargins.add(relativeMargin);
 
-            AppLogger.info(String.format("Person %s: tightness=%.3f, stdDev=%.3f, absThresh=%.3f, margin=%.3f",
-                    buildDisplayLabel(new File(folder).getName()), tightness, stdDev, absoluteThreshold,
-                    relativeMargin));
+        AppLogger.info(String.format(
+            "Person %s: tightness=%.3f, stdDev=%.3f, absThresh.live=%.3f (training=%.3f), margin=%.3f",
+            buildDisplayLabel(new File(folder).getName()), tightness, stdDev, absoluteThreshold,
+            trainingAbsoluteThreshold, relativeMargin));
         }
 
         // Debug centroids after all are computed
@@ -984,17 +992,19 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
             boolean consistent, int strongCount) {
 
         // Calculate confidence components
-        double absoluteMargin = best - second;
-        double marginConfidence = calculateMarginConfidence(best, second);
-        double rawConfidence = calculateRawConfidence(best, absThresh);
-        double combinedConfidence = Math.max(0.0, Math.min(1.0,
-                (0.35 * marginConfidence) + (0.65 * rawConfidence)));
+    double absoluteMargin = best - second;
+    double marginConfidence = calculateMarginConfidence(best, second);
+    double confidenceFloor = Math.max(MIN_LIVE_ABSOLUTE_THRESHOLD,
+        Math.min(0.99, absThresh * CONFIDENCE_THRESHOLD_RELAXATION));
+    double rawConfidence = calculateRawConfidence(best, confidenceFloor);
+    double combinedConfidence = Math.max(0.0, Math.min(1.0,
+        (MARGIN_CONFIDENCE_WEIGHT * marginConfidence) + (RAW_CONFIDENCE_WEIGHT * rawConfidence)));
 
         // === DECISION THRESHOLDS ===
-        final double MIN_RAW_SCORE_BASE = 0.60; // Base minimum similarity before personalization
-        final double MIN_ABSOLUTE_MARGIN = 0.08; // Minimum absolute margin
-        final double MIN_CONFIDENCE = 0.20; // Minimum combined confidence
-        final double STRONG_CONFIDENCE = 0.55; // Strong confidence threshold
+    final double MIN_RAW_SCORE_BASE = 0.60; // Base minimum similarity before personalization
+    final double MIN_ABSOLUTE_MARGIN = 0.08; // Minimum absolute margin
+    final double MIN_CONFIDENCE = 0.25; // Minimum combined confidence
+    final double STRONG_CONFIDENCE = 0.60; // Strong confidence threshold
 
         double dynamicRawRequirement = Math.max(absThresh, MIN_RAW_SCORE_BASE);
 
