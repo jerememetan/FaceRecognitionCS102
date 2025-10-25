@@ -1,0 +1,477 @@
+[2025-10-25 22:24:29] INFO: Application Logger Initialized.
+[2025-10-25 22:24:29] INFO: app.properties normalized (54 entries).
+[2025-10-25 22:24:29] INFO: Configuration loaded from file: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\app.properties
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.23
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.23
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.24
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.24
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.25
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.25
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.26
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.26
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.27
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.27
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.28
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.28
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.29
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.29
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.3
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.3
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.31
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.31
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.32
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.32
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.33
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.33
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.34
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.34
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.35
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.35
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.36
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.36
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.37
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.37
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.38
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.38
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.39
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.39
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.4
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.4
+[2025-10-25 22:24:33] INFO: detection.scale_factor has been changed to 1.41
+[2025-10-25 22:24:33] INFO: Detection scale factor changed to 1.41
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.4
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.4
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.39
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.39
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.38
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.38
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.37
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.37
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.36
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.36
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.35
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.35
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.34
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.34
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.33
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.33
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.32
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.32
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.31
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.31
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.3
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.3
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.29
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.29
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.28
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.28
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.27
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.27
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.26
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.26
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.25
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.25
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.24
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.24
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.23
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.23
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.22
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.22
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.21
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.21
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.2
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.2
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.19
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.19
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.18
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.18
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.17
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.17
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.16
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.16
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.15
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.15
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.14
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.14
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.15
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.15
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.16
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.16
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.17
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.17
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.18
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.18
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.19
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.19
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.2
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.2
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.21
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.21
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.22
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.22
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.23
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.23
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.24
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.24
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.25
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.25
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.26
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.26
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.27
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.27
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.28
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.28
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.29
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.29
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.3
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.3
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.31
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.31
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.32
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.32
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.33
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.33
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.34
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.34
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.35
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.35
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.36
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.36
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.37
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.37
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.38
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.38
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.39
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.39
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.4
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.4
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.41
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.41
+[2025-10-25 22:24:34] INFO: detection.scale_factor has been changed to 1.42
+[2025-10-25 22:24:34] INFO: Detection scale factor changed to 1.42
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.41
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.41
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.4
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.4
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.39
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.39
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.38
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.38
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.37
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.37
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.36
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.36
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.35
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.35
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.34
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.34
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.33
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.33
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.32
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.32
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.31
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.31
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.3
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.3
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.29
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.29
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.28
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.28
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.27
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.27
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.26
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.26
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.25
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.25
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.24
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.24
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.23
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.23
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.22
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.22
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.21
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.21
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.2
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.2
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.19
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.19
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.18
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.18
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.17
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.17
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.16
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.16
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.15
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.15
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.14
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.14
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.13
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.13
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.12
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.12
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.11
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.11
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.1
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.1
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.09
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.09
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.08
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.08
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.07
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.07
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.08
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.08
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.09
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.09
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.1
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.1
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.11
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.11
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.12
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.12
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.13
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.13
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.14
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.14
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.15
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.15
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.16
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.16
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.17
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.17
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.18
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.18
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.19
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.19
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.2
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.2
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.21
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.21
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.22
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.22
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.23
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.23
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.24
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.24
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.25
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.25
+[2025-10-25 22:24:35] INFO: detection.scale_factor has been changed to 1.26
+[2025-10-25 22:24:35] INFO: Detection scale factor changed to 1.26
+[2025-10-25 22:24:36] INFO: detection.scale_factor has been changed to 1.25
+[2025-10-25 22:24:36] INFO: Detection scale factor changed to 1.25
+[2025-10-25 22:24:36] INFO: detection.scale_factor has been changed to 1.24
+[2025-10-25 22:24:36] INFO: Detection scale factor changed to 1.24
+[2025-10-25 22:24:36] INFO: detection.scale_factor has been changed to 1.23
+[2025-10-25 22:24:36] INFO: Detection scale factor changed to 1.23
+[2025-10-25 22:24:36] INFO: detection.scale_factor has been changed to 1.22
+[2025-10-25 22:24:36] INFO: Detection scale factor changed to 1.22
+[2025-10-25 22:24:36] INFO: detection.scale_factor has been changed to 1.21
+[2025-10-25 22:24:36] INFO: Detection scale factor changed to 1.21
+[2025-10-25 22:24:36] INFO: detection.scale_factor has been changed to 1.2
+[2025-10-25 22:24:36] INFO: Detection scale factor changed to 1.2
+[2025-10-25 22:24:36] INFO: detection.scale_factor has been changed to 1.19
+[2025-10-25 22:24:36] INFO: Detection scale factor changed to 1.19
+[2025-10-25 22:24:36] INFO: detection.scale_factor has been changed to 1.18
+[2025-10-25 22:24:36] INFO: Detection scale factor changed to 1.18
+[2025-10-25 22:24:36] INFO: detection.scale_factor has been changed to 1.17
+[2025-10-25 22:24:36] INFO: Detection scale factor changed to 1.17
+[2025-10-25 22:24:36] INFO: detection.scale_factor has been changed to 1.16
+[2025-10-25 22:24:36] INFO: Detection scale factor changed to 1.16
+[2025-10-25 22:24:37] INFO: detection.scale_factor has been changed to 1.16
+[2025-10-25 22:24:37] INFO: Detection scale factor changed to 1.16
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 171
+[2025-10-25 22:25:40] INFO: Min size changed to 171
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 169
+[2025-10-25 22:25:40] INFO: Min size changed to 169
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 168
+[2025-10-25 22:25:40] INFO: Min size changed to 168
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 167
+[2025-10-25 22:25:40] INFO: Min size changed to 167
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 166
+[2025-10-25 22:25:40] INFO: Min size changed to 166
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 165
+[2025-10-25 22:25:40] INFO: Min size changed to 165
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 164
+[2025-10-25 22:25:40] INFO: Min size changed to 164
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 163
+[2025-10-25 22:25:40] INFO: Min size changed to 163
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 162
+[2025-10-25 22:25:40] INFO: Min size changed to 162
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 161
+[2025-10-25 22:25:40] INFO: Min size changed to 161
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 160
+[2025-10-25 22:25:40] INFO: Min size changed to 160
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 159
+[2025-10-25 22:25:40] INFO: Min size changed to 159
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 157
+[2025-10-25 22:25:40] INFO: Min size changed to 157
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 156
+[2025-10-25 22:25:40] INFO: Min size changed to 156
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 155
+[2025-10-25 22:25:40] INFO: Min size changed to 155
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 154
+[2025-10-25 22:25:40] INFO: Min size changed to 154
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 153
+[2025-10-25 22:25:40] INFO: Min size changed to 153
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 152
+[2025-10-25 22:25:40] INFO: Min size changed to 152
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 151
+[2025-10-25 22:25:40] INFO: Min size changed to 151
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 150
+[2025-10-25 22:25:40] INFO: Min size changed to 150
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 149
+[2025-10-25 22:25:40] INFO: Min size changed to 149
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 148
+[2025-10-25 22:25:40] INFO: Min size changed to 148
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 147
+[2025-10-25 22:25:40] INFO: Min size changed to 147
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 145
+[2025-10-25 22:25:40] INFO: Min size changed to 145
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 144
+[2025-10-25 22:25:40] INFO: Min size changed to 144
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 143
+[2025-10-25 22:25:40] INFO: Min size changed to 143
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 142
+[2025-10-25 22:25:40] INFO: Min size changed to 142
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 141
+[2025-10-25 22:25:40] INFO: Min size changed to 141
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 140
+[2025-10-25 22:25:40] INFO: Min size changed to 140
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 139
+[2025-10-25 22:25:40] INFO: Min size changed to 139
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 138
+[2025-10-25 22:25:40] INFO: Min size changed to 138
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 137
+[2025-10-25 22:25:40] INFO: Min size changed to 137
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 136
+[2025-10-25 22:25:40] INFO: Min size changed to 136
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 135
+[2025-10-25 22:25:40] INFO: Min size changed to 135
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 133
+[2025-10-25 22:25:40] INFO: Min size changed to 133
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 132
+[2025-10-25 22:25:40] INFO: Min size changed to 132
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 131
+[2025-10-25 22:25:40] INFO: Min size changed to 131
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 130
+[2025-10-25 22:25:40] INFO: Min size changed to 130
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 129
+[2025-10-25 22:25:40] INFO: Min size changed to 129
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 128
+[2025-10-25 22:25:40] INFO: Min size changed to 128
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 127
+[2025-10-25 22:25:40] INFO: Min size changed to 127
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 126
+[2025-10-25 22:25:40] INFO: Min size changed to 126
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 125
+[2025-10-25 22:25:40] INFO: Min size changed to 125
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 124
+[2025-10-25 22:25:40] INFO: Min size changed to 124
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 123
+[2025-10-25 22:25:40] INFO: Min size changed to 123
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 121
+[2025-10-25 22:25:40] INFO: Min size changed to 121
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 120
+[2025-10-25 22:25:40] INFO: Min size changed to 120
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 119
+[2025-10-25 22:25:40] INFO: Min size changed to 119
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 118
+[2025-10-25 22:25:40] INFO: Min size changed to 118
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 117
+[2025-10-25 22:25:40] INFO: Min size changed to 117
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 116
+[2025-10-25 22:25:40] INFO: Min size changed to 116
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 115
+[2025-10-25 22:25:40] INFO: Min size changed to 115
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 114
+[2025-10-25 22:25:40] INFO: Min size changed to 114
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 113
+[2025-10-25 22:25:40] INFO: Min size changed to 113
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 112
+[2025-10-25 22:25:40] INFO: Min size changed to 112
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 111
+[2025-10-25 22:25:40] INFO: Min size changed to 111
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 109
+[2025-10-25 22:25:40] INFO: Min size changed to 109
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 108
+[2025-10-25 22:25:40] INFO: Min size changed to 108
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 107
+[2025-10-25 22:25:40] INFO: Min size changed to 107
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 106
+[2025-10-25 22:25:40] INFO: Min size changed to 106
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 105
+[2025-10-25 22:25:40] INFO: Min size changed to 105
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 104
+[2025-10-25 22:25:40] INFO: Min size changed to 104
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 103
+[2025-10-25 22:25:40] INFO: Min size changed to 103
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 102
+[2025-10-25 22:25:40] INFO: Min size changed to 102
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 101
+[2025-10-25 22:25:40] INFO: Min size changed to 101
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 100
+[2025-10-25 22:25:40] INFO: Min size changed to 100
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 99
+[2025-10-25 22:25:40] INFO: Min size changed to 99
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 97
+[2025-10-25 22:25:40] INFO: Min size changed to 97
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 96
+[2025-10-25 22:25:40] INFO: Min size changed to 96
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 95
+[2025-10-25 22:25:40] INFO: Min size changed to 95
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 94
+[2025-10-25 22:25:40] INFO: Min size changed to 94
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 93
+[2025-10-25 22:25:40] INFO: Min size changed to 93
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 92
+[2025-10-25 22:25:40] INFO: Min size changed to 92
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 91
+[2025-10-25 22:25:40] INFO: Min size changed to 91
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 90
+[2025-10-25 22:25:40] INFO: Min size changed to 90
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 89
+[2025-10-25 22:25:40] INFO: Min size changed to 89
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 88
+[2025-10-25 22:25:40] INFO: Min size changed to 88
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 87
+[2025-10-25 22:25:40] INFO: Min size changed to 87
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 85
+[2025-10-25 22:25:40] INFO: Min size changed to 85
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 84
+[2025-10-25 22:25:40] INFO: Min size changed to 84
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 83
+[2025-10-25 22:25:40] INFO: Min size changed to 83
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 82
+[2025-10-25 22:25:40] INFO: Min size changed to 82
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 81
+[2025-10-25 22:25:40] INFO: Min size changed to 81
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 80
+[2025-10-25 22:25:40] INFO: Min size changed to 80
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 79
+[2025-10-25 22:25:40] INFO: Min size changed to 79
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 78
+[2025-10-25 22:25:40] INFO: Min size changed to 78
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 77
+[2025-10-25 22:25:40] INFO: Min size changed to 77
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 76
+[2025-10-25 22:25:40] INFO: Min size changed to 76
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 75
+[2025-10-25 22:25:40] INFO: Min size changed to 75
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 73
+[2025-10-25 22:25:40] INFO: Min size changed to 73
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 72
+[2025-10-25 22:25:40] INFO: Min size changed to 72
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 71
+[2025-10-25 22:25:40] INFO: Min size changed to 71
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 70
+[2025-10-25 22:25:40] INFO: Min size changed to 70
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 69
+[2025-10-25 22:25:40] INFO: Min size changed to 69
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 68
+[2025-10-25 22:25:40] INFO: Min size changed to 68
+[2025-10-25 22:25:40] INFO: detection.min_size_px has been changed to 67
+[2025-10-25 22:25:40] INFO: Min size changed to 67
+[2025-10-25 22:25:41] INFO: detection.min_size_px has been changed to 67
+[2025-10-25 22:25:41] INFO: Min size changed to 67
+[2025-10-25 22:25:41] INFO: Configuration saved to file.
+[2025-10-25 22:25:41] INFO: Settings saved from SettingsGUI

@@ -1,0 +1,43 @@
+[2025-10-26 00:01:15] INFO: Application Logger Initialized.
+[2025-10-26 00:01:15] INFO: app.properties normalized (54 entries).
+[2025-10-26 00:01:15] INFO: Configuration loaded from file: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\app.properties
+[2025-10-26 00:01:15] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-26 00:01:15] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-26 00:01:15] INFO: StudentManager initialized successfully
+[2025-10-26 00:01:16] INFO: GUI launched successfully
+[2025-10-26 00:01:23] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-26 00:01:23] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-26 00:01:23] INFO: FaceCaptureDialog created for student: wyn
+[2025-10-26 00:01:23] INFO: FaceCropSettingsPanel ctor - showCapture=false showSave=true
+[2025-10-26 00:01:23] INFO: Dialog initialized
+[2025-10-26 00:01:23] INFO: Starting camera preview...
+[2025-10-26 00:01:23] INFO: Preview timer started at 20fps
+[2025-10-26 00:01:25] INFO: Disposing FaceCaptureDialog...
+[2025-10-26 00:01:25] INFO: Preview timer stopped
+[2025-10-26 00:01:25] INFO: Face detection resources released
+[2025-10-26 00:01:35] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-26 00:01:35] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-26 00:01:35] INFO: FaceCaptureDialog created for student: wyn
+[2025-10-26 00:01:35] INFO: FaceCropSettingsPanel ctor - showCapture=false showSave=true
+[2025-10-26 00:01:35] INFO: Dialog initialized
+[2025-10-26 00:01:35] INFO: Starting camera preview...
+[2025-10-26 00:01:35] INFO: Preview timer started at 20fps
+[2025-10-26 00:01:37] INFO: Disposing FaceCaptureDialog...
+[2025-10-26 00:01:37] INFO: Preview timer stopped
+[2025-10-26 00:01:37] INFO: Face detection resources released
+[2025-10-26 00:02:10] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-26 00:02:10] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-26 00:02:10] INFO: FaceCaptureDialog created for student: wyn
+[2025-10-26 00:02:10] INFO: FaceCropSettingsPanel ctor - showCapture=false showSave=true
+[2025-10-26 00:02:10] INFO: Dialog initialized
+[2025-10-26 00:02:10] INFO: Starting camera preview...
+[2025-10-26 00:02:10] INFO: Preview timer started at 20fps
+[2025-10-26 00:03:20] INFO: detection.min.neighbors has been changed to 6
+[2025-10-26 00:03:20] INFO: Min neighbors changed to 6
+[2025-10-26 00:03:20] INFO: detection.min.neighbors has been changed to 7
+[2025-10-26 00:03:20] INFO: Min neighbors changed to 7
+[2025-10-26 00:03:20] INFO: detection.min.neighbors has been changed to 7
+[2025-10-26 00:03:20] INFO: Min neighbors changed to 7
+[2025-10-26 00:03:37] INFO: Disposing FaceCaptureDialog...
+[2025-10-26 00:03:37] INFO: Preview timer stopped
+[2025-10-26 00:03:37] INFO: Face detection resources released

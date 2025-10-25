@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
+import ConfigurationAndLogging.*;
 
 public class SettingsGUI extends JFrame {
     private String role;
@@ -95,65 +96,106 @@ public class SettingsGUI extends JFrame {
     }
 
     private JPanel createSettingsContent() {
-        JPanel contentPanel = new JPanel(new GridBagLayout());
+        // Use a wrapper so the settings panel (which is self-contained) sits nicely in the center
+        JPanel contentPanel = new JPanel(new BorderLayout());
         contentPanel.setBackground(new Color(248, 250, 252));
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        JPanel textPanel = new JPanel();
-        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
-        textPanel.setBackground(Color.WHITE);
-        textPanel.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
-            BorderFactory.createEmptyBorder(30, 30, 30, 30)
+        // Inner white card to match previous style
+        JPanel card = new JPanel(new BorderLayout());
+        card.setBackground(Color.WHITE);
+        card.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
+                BorderFactory.createEmptyBorder(20, 20, 20, 20)
         ));
 
-        // Welcome label
-        JLabel welcomeLabel = new JLabel("Settings & Configuration", SwingConstants.CENTER);
-        welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
-        welcomeLabel.setForeground(new Color(30, 41, 59));
-        welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Footer label for transient feedback from the settings listener
+        JLabel footerLabel = new JLabel(" ");
+        footerLabel.setFont(footerLabel.getFont().deriveFont(12f));
+        footerLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        // Text area
-        JTextArea textArea = new JTextArea();
-        textArea.setEditable(false);
-        textArea.setOpaque(false);
-        textArea.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        textArea.setForeground(new Color(71, 85, 105));
-        textArea.setText("""
-        Welcome to the Settings & Configuration section.
+        // Listener implementation: update AppConfig, log, and write short feedback to footerLabel
+        IConfigChangeListener listener = new IConfigChangeListener() {
+            @Override
+            public void onScaleFactorChanged(double newScaleFactor) {
+                AppConfig.getInstance().setDetectionScaleFactor(newScaleFactor);
+                AppLogger.info("Detection scale factor changed to " + newScaleFactor);
+                footerLabel.setText("Scale factor set to " + String.format("%.2f", newScaleFactor));
+                // Clear feedback shortly after
+                new javax.swing.Timer(1500, ev -> footerLabel.setText(" ")).start();
+            }
 
-        Configure system preferences, camera settings, and application behavior.
+            @Override
+            public void onMinNeighborsChanged(int newMinNeighbors) {
+                AppConfig.getInstance().setDetectionMinNeighbors(newMinNeighbors);
+                AppLogger.info("Min neighbors changed to " + newMinNeighbors);
+                footerLabel.setText("Min neighbors set to " + newMinNeighbors);
+                new javax.swing.Timer(1500, ev -> footerLabel.setText(" ")).start();
+            }
 
-        Select a category from the sidebar to access specific settings.
-        """);
-        
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
-        textArea.setColumns(40); 
-        textArea.setAlignmentX(Component.CENTER_ALIGNMENT);
-        textArea.setMargin(new Insets(10, 30, 10, 30));
+            @Override
+            public void onMinSizeChanged(int newMinSize) {
+                AppConfig.getInstance().setDetectionMinSize(newMinSize);
+                AppLogger.info("Min size changed to " + newMinSize);
+                footerLabel.setText("Min face size set to " + newMinSize + " px");
+                new javax.swing.Timer(1500, ev -> footerLabel.setText(" ")).start();
+            }
 
-        // System status panel
-        JPanel statusPanel = new JPanel(new GridLayout(1, 3, 20, 0));
-        statusPanel.setBackground(Color.WHITE);
+            @Override
+            public void onCaptureFaceRequested() {
+                // No student context here — inform user how to capture
+                AppLogger.warn("Capture requested from Settings GUI - no student selected.");
+                JOptionPane.showMessageDialog(SettingsGUI.this,
+                        "Capture action requires selecting a student. Open the Student Management / Face Capture dialog.",
+                        "Capture unavailable", JOptionPane.INFORMATION_MESSAGE);
+            }
 
-        statusPanel.add(createStatusCard("System Status", "🟢 Online", new Color(34, 197, 94)));
-        statusPanel.add(createStatusCard("Camera Status", "🟢 Connected", new Color(34, 197, 94)));
-        statusPanel.add(createStatusCard("Database Status", "🟢 Active", new Color(34, 197, 94)));
+            @Override
+            public void onSaveSettingsRequested() {
+                AppConfig.getInstance().save();
+                AppLogger.info("Settings saved from SettingsGUI");
+                footerLabel.setText("Settings saved");
+                new javax.swing.Timer(1500, ev -> footerLabel.setText(" ")).start();
+            }
+        };
 
-        textPanel.add(Box.createRigidArea(new Dimension(0, 40)));
-        textPanel.add(welcomeLabel);
-        textPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        textPanel.add(textArea);
-        textPanel.add(Box.createRigidArea(new Dimension(0, 30)));
-        textPanel.add(statusPanel);
+        // Create and add the settings panel (self-contained)
+        // Pass showSaveButton = false because SettingsGUI renders its own centered Save button
+        FaceCropSettingsPanel settingsPanel = new FaceCropSettingsPanel(listener, false, false);
+        card.add(settingsPanel, BorderLayout.CENTER);
 
-        // Center the text block in the main content panel
+        // Build a small south area that contains the centered save button and the footer label
+        JPanel south = new JPanel();
+        south.setLayout(new BoxLayout(south, BoxLayout.Y_AXIS));
+        south.setOpaque(false);
+
+        JPanel btnRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 12, 8));
+        btnRow.setOpaque(false);
+        JButton saveBtn = createStyledButton("Save Detection Settings", new Color(59, 130, 246));
+        saveBtn.addActionListener(e -> {
+            // forward to listener (saves to AppConfig) and show transient feedback
+            listener.onSaveSettingsRequested();
+            footerLabel.setText("Settings saved");
+            new javax.swing.Timer(1400, ev -> footerLabel.setText(" ")).start();
+        });
+        btnRow.add(saveBtn);
+
+        south.add(btnRow);
+        south.add(footerLabel);
+        card.add(south, BorderLayout.SOUTH);
+
+        // Center the card but make it expand to fill available space
+        JPanel wrapper = new JPanel(new GridBagLayout());
+        wrapper.setBackground(new Color(248, 250, 252));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        contentPanel.add(textPanel, gbc);
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        gbc.fill = GridBagConstraints.BOTH;
+        wrapper.add(card, gbc);
 
+        contentPanel.add(wrapper, BorderLayout.CENTER);
         return contentPanel;
     }
 

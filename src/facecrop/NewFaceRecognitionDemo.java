@@ -86,7 +86,8 @@ public class NewFaceRecognitionDemo extends JFrame implements IConfigChangeListe
 
         setLayout(new BorderLayout());
 
-        FaceCropSettingsPanel settingsPanel = new FaceCropSettingsPanel(this, false);
+        // explicitly request the capture button (true) and the panel's Save button (true)
+        FaceCropSettingsPanel settingsPanel = new FaceCropSettingsPanel(this, true, true);
 
         add(cameraPanel, BorderLayout.CENTER);
         add(settingsPanel, BorderLayout.EAST);
