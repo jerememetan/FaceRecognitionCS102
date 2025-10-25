@@ -84,6 +84,7 @@ public class LoginPage extends JFrame{
     // Placeholder authentication (Testing only)
     private String authenticateUser(String id, String password) {
         // Example
+        //TODO - Merge with Database
         if(id.equals("123") && password.equals("admin123")) return "Admin";
         if(id.equals("456") && password.equals("ta123")) return "TA";
 
