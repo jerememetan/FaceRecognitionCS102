@@ -1,5 +1,5 @@
 package gui;
-
+import gui.SettingsView.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
@@ -33,13 +33,38 @@ public class SettingsGUI extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(new Color(248, 250, 252));
 
-        // Left Panel - Simple settings categories
-        JPanel leftPanel = createCategoriesPanel();
-        mainPanel.add(leftPanel, BorderLayout.WEST);
+        // Create the settings center (cards) and pass the same listener used by the pages
+        IConfigChangeListener listener = new IConfigChangeListener() {
+            @Override public void onScaleFactorChanged(double newScaleFactor) {
+                AppConfig.getInstance().setDetectionScaleFactor(newScaleFactor);
+                AppLogger.info("Detection scale factor changed to " + newScaleFactor);
+            }
+            @Override public void onMinNeighborsChanged(int newMinNeighbors) {
+                AppConfig.getInstance().setDetectionMinNeighbors(newMinNeighbors);
+                AppLogger.info("Min neighbors changed to " + newMinNeighbors);
+            }
+            @Override public void onMinSizeChanged(int newMinSize) {
+                AppConfig.getInstance().setDetectionMinSize(newMinSize);
+                AppLogger.info("Min size changed to " + newMinSize);
+            }
+            @Override public void onCaptureFaceRequested() {
+                AppLogger.warn("Capture requested from Settings GUI - no student selected.");
+                JOptionPane.showMessageDialog(SettingsGUI.this,
+                        "Capture action requires selecting a student. Open the Student Management / Face Capture dialog.",
+                        "Capture unavailable", JOptionPane.INFORMATION_MESSAGE);
+            }
+            @Override public void onSaveSettingsRequested() {
+                AppConfig.getInstance().save();
+                AppLogger.info("Settings saved from SettingsGUI");
+                JOptionPane.showMessageDialog(SettingsGUI.this, "Settings saved", "Saved", JOptionPane.INFORMATION_MESSAGE);
+            }
+        };
 
-        // Center Panel - Simple settings content
-        JPanel centerPanel = createSettingsContent();
-        mainPanel.add(centerPanel, BorderLayout.CENTER);
+        SettingsCenter center = new SettingsCenter(listener);
+        // Left Panel - categories wired to center
+        JPanel leftPanel = createCategoriesPanel(center);
+        mainPanel.add(leftPanel, BorderLayout.WEST);
+        mainPanel.add(center, BorderLayout.CENTER);
 
         add(mainPanel, BorderLayout.CENTER);
     }
@@ -64,7 +89,8 @@ public class SettingsGUI extends JFrame {
         return headerPanel;
     }
 
-    private JPanel createCategoriesPanel() {
+    // updated to accept the center so category buttons can switch views
+    private JPanel createCategoriesPanel(SettingsCenter center) {
         JPanel categoriesPanel = new JPanel();
         categoriesPanel.setLayout(new BoxLayout(categoriesPanel, BoxLayout.Y_AXIS));
         categoriesPanel.setBackground(new Color(45, 55, 72));
@@ -80,111 +106,46 @@ public class SettingsGUI extends JFrame {
         categoriesPanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
         // Category buttons
-        JButton cameraBtn = createCategoryButton("Camera");
-        JButton otherBtn = createCategoryButton("Some other Buttons");
-        
+        JButton welcomeBtn = createCategoryButton("Welcome!");
+        JButton detectionBtn = createCategoryButton("Camera Detection Settings");
+        JButton myPageBtn = createCategoryButton("My Page");
 
-        categoriesPanel.add(cameraBtn);
+        // wire buttons to the center card layout (use constants from SettingsCenter)
+        welcomeBtn.addActionListener(e -> center.showCard(SettingsCenter.WELCOME));
+        detectionBtn.addActionListener(e -> center.showCard(SettingsCenter.DETECTION));
+        myPageBtn.addActionListener(e -> center.showCard(SettingsCenter.MYPAGE));
+
+        // NOTE: MYPAGE is already registered in SettingsCenter (eager). Do NOT call center.addCard(...) here.
+
+        categoriesPanel.add(welcomeBtn);
         categoriesPanel.add(Box.createRigidArea(new Dimension(0, 8)));
-        categoriesPanel.add(otherBtn);
+        categoriesPanel.add(detectionBtn);
         categoriesPanel.add(Box.createRigidArea(new Dimension(0, 8)));
-        
+        categoriesPanel.add(myPageBtn);
+        categoriesPanel.add(Box.createRigidArea(new Dimension(0, 8)));
 
         categoriesPanel.add(Box.createVerticalGlue());
 
         return categoriesPanel;
     }
 
+    // createSettingsContent now provides the SettingsCenter wrapped in the same outer card style
     private JPanel createSettingsContent() {
-        // Use a wrapper so the settings panel (which is self-contained) sits nicely in the center
         JPanel contentPanel = new JPanel(new BorderLayout());
         contentPanel.setBackground(new Color(248, 250, 252));
-        contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
 
-        // Inner white card to match previous style
         JPanel card = new JPanel(new BorderLayout());
         card.setBackground(Color.WHITE);
         card.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
-                BorderFactory.createEmptyBorder(20, 20, 20, 20)
+                BorderFactory.createEmptyBorder(8, 8, 8, 8)
         ));
 
-        // Footer label for transient feedback from the settings listener
-        JLabel footerLabel = new JLabel(" ");
-        footerLabel.setFont(footerLabel.getFont().deriveFont(12f));
-        footerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        // The actual center is created in createUI; return an empty placeholder here to keep compatibility
+        // This method is no longer used directly in the new createUI flow, but kept for parity.
+        card.add(new JLabel(""), BorderLayout.CENTER);
 
-        // Listener implementation: update AppConfig, log, and write short feedback to footerLabel
-        IConfigChangeListener listener = new IConfigChangeListener() {
-            @Override
-            public void onScaleFactorChanged(double newScaleFactor) {
-                AppConfig.getInstance().setDetectionScaleFactor(newScaleFactor);
-                AppLogger.info("Detection scale factor changed to " + newScaleFactor);
-                footerLabel.setText("Scale factor set to " + String.format("%.2f", newScaleFactor));
-                // Clear feedback shortly after
-                new javax.swing.Timer(1500, ev -> footerLabel.setText(" ")).start();
-            }
-
-            @Override
-            public void onMinNeighborsChanged(int newMinNeighbors) {
-                AppConfig.getInstance().setDetectionMinNeighbors(newMinNeighbors);
-                AppLogger.info("Min neighbors changed to " + newMinNeighbors);
-                footerLabel.setText("Min neighbors set to " + newMinNeighbors);
-                new javax.swing.Timer(1500, ev -> footerLabel.setText(" ")).start();
-            }
-
-            @Override
-            public void onMinSizeChanged(int newMinSize) {
-                AppConfig.getInstance().setDetectionMinSize(newMinSize);
-                AppLogger.info("Min size changed to " + newMinSize);
-                footerLabel.setText("Min face size set to " + newMinSize + " px");
-                new javax.swing.Timer(1500, ev -> footerLabel.setText(" ")).start();
-            }
-
-            @Override
-            public void onCaptureFaceRequested() {
-                // No student context here — inform user how to capture
-                AppLogger.warn("Capture requested from Settings GUI - no student selected.");
-                JOptionPane.showMessageDialog(SettingsGUI.this,
-                        "Capture action requires selecting a student. Open the Student Management / Face Capture dialog.",
-                        "Capture unavailable", JOptionPane.INFORMATION_MESSAGE);
-            }
-
-            @Override
-            public void onSaveSettingsRequested() {
-                AppConfig.getInstance().save();
-                AppLogger.info("Settings saved from SettingsGUI");
-                footerLabel.setText("Settings saved");
-                new javax.swing.Timer(1500, ev -> footerLabel.setText(" ")).start();
-            }
-        };
-
-        // Create and add the settings panel (self-contained)
-        // Pass showSaveButton = false because SettingsGUI renders its own centered Save button
-        FaceCropSettingsPanel settingsPanel = new FaceCropSettingsPanel(listener, false, false);
-        card.add(settingsPanel, BorderLayout.CENTER);
-
-        // Build a small south area that contains the centered save button and the footer label
-        JPanel south = new JPanel();
-        south.setLayout(new BoxLayout(south, BoxLayout.Y_AXIS));
-        south.setOpaque(false);
-
-        JPanel btnRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 12, 8));
-        btnRow.setOpaque(false);
-        JButton saveBtn = createStyledButton("Save Detection Settings", new Color(59, 130, 246));
-        saveBtn.addActionListener(e -> {
-            // forward to listener (saves to AppConfig) and show transient feedback
-            listener.onSaveSettingsRequested();
-            footerLabel.setText("Settings saved");
-            new javax.swing.Timer(1400, ev -> footerLabel.setText(" ")).start();
-        });
-        btnRow.add(saveBtn);
-
-        south.add(btnRow);
-        south.add(footerLabel);
-        card.add(south, BorderLayout.SOUTH);
-
-        // Center the card but make it expand to fill available space
         JPanel wrapper = new JPanel(new GridBagLayout());
         wrapper.setBackground(new Color(248, 250, 252));
         GridBagConstraints gbc = new GridBagConstraints();
@@ -194,7 +155,6 @@ public class SettingsGUI extends JFrame {
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         wrapper.add(card, gbc);
-
         contentPanel.add(wrapper, BorderLayout.CENTER);
         return contentPanel;
     }
