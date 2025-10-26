@@ -189,23 +189,13 @@ public class StudentEnrollmentGUI extends JFrame {
         addButton.setBackground(new Color(76, 175, 80));
         addButton.setForeground(Color.BLACK);
         addButton.setFont(addButton.getFont().deriveFont(Font.BOLD));
-        // Ensure background color is respected by the LookAndFeel
-        addButton.setOpaque(true);
-        addButton.setContentAreaFilled(true);
-        addButton.setBorderPainted(false);
 
         captureButton.setBackground(new Color(33, 150, 243));
         captureButton.setForeground(Color.BLACK);
         captureButton.setFont(captureButton.getFont().deriveFont(Font.BOLD));
-        captureButton.setOpaque(true);
-        captureButton.setContentAreaFilled(true);
-        captureButton.setBorderPainted(false);
 
         deleteButton.setBackground(new Color(244, 67, 54));
         deleteButton.setForeground(Color.BLACK);
-        deleteButton.setOpaque(true);
-        deleteButton.setContentAreaFilled(true);
-        deleteButton.setBorderPainted(false);
 
         addButton.addActionListener(e -> showAddStudentDialog());
         editButton.addActionListener(e -> showEditStudentDialog());

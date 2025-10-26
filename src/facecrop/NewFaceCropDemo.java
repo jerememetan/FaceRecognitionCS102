@@ -48,7 +48,7 @@ public class NewFaceCropDemo extends JFrame implements IConfigChangeListener{
 
         // 2. Setup GUI Layout (BorderLayout)
         setLayout(new BorderLayout());
-        FaceCropSettingsPanel settingsPanel = new FaceCropSettingsPanel(this,true,true); 
+        FaceCropSettingsPanel settingsPanel = new FaceCropSettingsPanel(this,true); 
         
         add(cameraPanel, BorderLayout.CENTER); // Camera view
         add(settingsPanel, BorderLayout.EAST); // Sidebar

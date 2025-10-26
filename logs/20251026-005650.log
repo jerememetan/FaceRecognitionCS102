@@ -1,5 +1,0 @@
-[2025-10-26 00:56:50] INFO: Application Logger Initialized.
-[2025-10-26 00:56:50] INFO: FaceCropSettingsPanel ctor - showCapture=false showSave=false
-[2025-10-26 00:56:50] INFO: app.properties normalized (54 entries).
-[2025-10-26 00:56:50] INFO: Configuration loaded from file: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\app.properties
-[2025-10-26 01:11:37] INFO: FaceCropSettingsPanel ctor - showCapture=false showSave=false

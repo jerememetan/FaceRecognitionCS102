@@ -20,7 +20,7 @@ public class FaceEmbeddingGenerator {
     private void initializeEmbeddingNet() {
         try {
 
-            String modelPath = AppConfig.getInstance().getEmbeddingModelPath();
+            String modelPath = "data\\resources\\openface.nn4.small2.v1.t7";
 
             if (new java.io.File(modelPath).exists()) {
                 embeddingNet = Dnn.readNetFromTorch(modelPath);
