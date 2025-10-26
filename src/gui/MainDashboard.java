@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import facecrop.MyGUIProgram;
+import app.Main;
 
 public class MainDashboard extends JFrame {
     private String role;
@@ -151,9 +152,11 @@ public class MainDashboard extends JFrame {
             MainDashboard.this.setVisible(true);
         });
 
+        // open the student enrollment application
         studentBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            new StudentManagementGUI(role, id);
+            Main.main(null); // run the student management main gui
+            // show the dashboard again
             MainDashboard.this.setVisible(true);
         });
 

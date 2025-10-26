@@ -1,0 +1,5 @@
+[2025-10-22 13:13:30] INFO: Application Logger Initialized.
+[2025-10-22 13:13:30] INFO: Configuration loaded from file: C:\Users\honey\Desktop\CS102 Intro to Programming II\project\FaceRecognitionCS102\app.properties
+[2025-10-22 13:13:34] INFO: Face embedding model loaded successfully
+[2025-10-22 13:13:34] INFO: StudentManager initialized successfully
+[2025-10-22 13:13:35] INFO: GUI launched successfully
