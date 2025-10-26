@@ -1,0 +1,55 @@
+[2025-10-26 22:02:27] INFO: Application Logger Initialized.
+[2025-10-26 22:02:27] INFO: app.properties normalized (55 entries).
+[2025-10-26 22:02:27] INFO: Configuration loaded from file: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\app.properties
+[2025-10-26 22:02:28] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-26 22:02:28] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-26 22:02:28] INFO: StudentManager initialized successfully
+[2025-10-26 22:02:29] INFO: GUI launched successfully
+[2025-10-26 22:02:34] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-26 22:02:34] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-26 22:02:34] INFO: FaceCaptureDialog created for student: jereme
+[2025-10-26 22:02:34] INFO: FaceCropSettingsPanel ctor - showCapture=false showSave=true
+[2025-10-26 22:02:34] INFO: Dialog initialized
+[2025-10-26 22:02:34] INFO: Starting camera preview...
+[2025-10-26 22:02:34] INFO: Preview timer started at 20fps
+[2025-10-26 22:02:34] INFO: detection.min_size_px has been changed to 171
+[2025-10-26 22:02:34] INFO: Min size px changed to 171
+[2025-10-26 22:02:34] INFO: detection.min_size_px has been changed to 221
+[2025-10-26 22:02:34] INFO: Min size px changed to 221
+[2025-10-26 22:02:35] INFO: detection.min_size_px has been changed to 221
+[2025-10-26 22:02:35] INFO: Min size px changed to 221
+[2025-10-26 22:02:36] INFO: Configuration saved to file.
+[2025-10-26 22:02:36] INFO: Detection settings saved to app.properties
+[2025-10-26 22:02:41] INFO: Disposing FaceCaptureDialog...
+[2025-10-26 22:02:41] INFO: Preview timer stopped
+[2025-10-26 22:02:41] INFO: Face detection resources released
+[2025-10-26 22:02:46] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-26 22:02:46] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-26 22:02:46] INFO: FaceCaptureDialog created for student: jereme
+[2025-10-26 22:02:46] INFO: FaceCropSettingsPanel ctor - showCapture=false showSave=true
+[2025-10-26 22:02:46] INFO: Dialog initialized
+[2025-10-26 22:02:46] INFO: Starting camera preview...
+[2025-10-26 22:02:46] INFO: Preview timer started at 20fps
+[2025-10-26 22:02:47] INFO: detection.min.neighbors has been changed to 7
+[2025-10-26 22:02:47] INFO: Min neighbors changed to 7
+[2025-10-26 22:02:47] INFO: detection.min.neighbors has been changed to 8
+[2025-10-26 22:02:47] INFO: Min neighbors changed to 8
+[2025-10-26 22:02:48] INFO: detection.min.neighbors has been changed to 8
+[2025-10-26 22:02:48] INFO: Min neighbors changed to 8
+[2025-10-26 22:02:49] INFO: Configuration saved to file.
+[2025-10-26 22:02:49] INFO: Detection settings saved to app.properties
+[2025-10-26 22:02:51] INFO: Disposing FaceCaptureDialog...
+[2025-10-26 22:02:51] INFO: Preview timer stopped
+[2025-10-26 22:02:51] INFO: Face detection resources released
+[2025-10-26 22:02:52] INFO: Disposing FaceCaptureDialog...
+[2025-10-26 22:02:52] INFO: Preview timer stopped
+[2025-10-26 22:02:52] INFO: Face detection resources released
+[2025-10-26 22:02:52] INFO: Disposing FaceCaptureDialog...
+[2025-10-26 22:02:52] INFO: Preview timer stopped
+[2025-10-26 22:02:52] INFO: Face detection resources released
+[2025-10-26 22:02:52] INFO: Disposing FaceCaptureDialog...
+[2025-10-26 22:02:52] INFO: Preview timer stopped
+[2025-10-26 22:02:52] INFO: Face detection resources released
+[2025-10-26 22:02:52] INFO: Disposing FaceCaptureDialog...
+[2025-10-26 22:02:52] INFO: Preview timer stopped
+[2025-10-26 22:02:52] INFO: Face detection resources released

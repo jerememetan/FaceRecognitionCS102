@@ -36,7 +36,7 @@ public class MainDashboard extends JFrame {
 
         // burger menu button
         JPanel burger = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        menuButton = new JButton("☰"); // the symbol
+        menuButton = new JButton("Menu"); // the symbol
         menuButton.setFont(new Font("Arial", Font.BOLD, 20)); // font, fontstyle, fontsize
         burger.add(menuButton);
         add(burger, BorderLayout.NORTH); // put it at the top
