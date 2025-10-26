@@ -1,0 +1,6 @@
+[2025-10-26 19:57:17] INFO: Application Logger Initialized.
+[2025-10-26 19:57:17] INFO: app.properties normalized (55 entries).
+[2025-10-26 19:57:17] INFO: Configuration loaded from file: C:\Users\honey\Desktop\CS102 Intro to Programming II\project\FaceRecognitionCS102\app.properties
+[2025-10-26 19:57:20] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-26 19:57:20] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-26 19:57:20] INFO: StudentManager initialized successfully

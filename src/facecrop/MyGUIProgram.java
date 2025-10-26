@@ -15,7 +15,7 @@ public class MyGUIProgram extends JFrame {
 
         setTitle("My GUI Program");
         setSize(400, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(3, 1));
         JPanel panel = new JPanel();
         panel.setBackground(Color.yellow);

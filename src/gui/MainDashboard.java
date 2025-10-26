@@ -5,10 +5,6 @@ import javax.swing.border.Border;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
-import java.time.*;
-import java.io.*;
-import java.nio.*;
 
 import facecrop.MyGUIProgram;
 import app.Main;
@@ -155,39 +151,94 @@ public class MainDashboard extends JFrame {
         sidebar.add(Box.createVerticalGlue()); // push everything up neatly
 
         // ---------ActionListener for the buttons--------------
-        recognitionBtn.addActionListener(e ->{
+        recognitionBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            MyGUIProgram.main(null); // just run the program
-            // show the window again after MYGUIProgram close
-            MainDashboard.this.setVisible(true);
+            JFrame frame = new MyGUIProgram();
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    MainDashboard.this.setVisible(true);
+                }
+            });
         });
 
         // open the student enrollment application
         studentBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            Main.main(null); // run the student management main gui from jr
-            // show the dashboard again
-            MainDashboard.this.setVisible(true);
+            
+            // Create a timer to detect when the student window appears and attach our listener
+            Timer findWindowTimer = new Timer(100, null);
+            findWindowTimer.addActionListener(evt -> {
+                Window[] windows = Window.getWindows();
+                for (Window window : windows) {
+                    if (window.isVisible() && window instanceof JFrame && 
+                        ((JFrame)window).getTitle().contains("Student")) {
+                        JFrame studentFrame = (JFrame)window;
+                        studentFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        studentFrame.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowClosed(WindowEvent e) {
+                                SwingUtilities.invokeLater(() -> {
+                                    MainDashboard.this.setVisible(true);
+                                });
+                            }
+                        });
+                        findWindowTimer.stop();
+                        break;
+                    }
+                }
+            });
+            findWindowTimer.start();
+            
+            // Launch the student management window
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    Main.main(null);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    findWindowTimer.stop();
+                    MainDashboard.this.setVisible(true);
+                }
+            });
         });
 
         sessionBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
             //create a SessionManager and initialize SessionViewer
             sessionManager = new SessionManager();
-            new SessionViewer(sessionManager);
-            MainDashboard.this.setVisible(true);
+            JFrame sessionViewer = new SessionViewer(sessionManager);
+            sessionViewer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            sessionViewer.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    MainDashboard.this.setVisible(true);
+                }
+            });
         });
 
         reportBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            new ReportsGUI(role, id);
-            MainDashboard.this.setVisible(true);
+            JFrame reportsFrame = new ReportsGUI(role, id);
+            reportsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            reportsFrame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    MainDashboard.this.setVisible(true);
+                }
+            });
         });
 
         settingBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            new SettingsGUI(role, id);
-            MainDashboard.this.setVisible(true);
+            JFrame settingsFrame = new SettingsGUI(role, id);
+            settingsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            settingsFrame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    MainDashboard.this.setVisible(true);
+                }
+            });
         });
     }
 

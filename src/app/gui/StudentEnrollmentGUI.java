@@ -50,14 +50,14 @@ public class StudentEnrollmentGUI extends JFrame {
 
     private void initializeGUI() {
         setTitle("Student Manager");
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 cleanup();
-                System.exit(0);
+                dispose();
             }
         });
 
