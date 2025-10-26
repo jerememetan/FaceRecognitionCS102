@@ -1,10 +1,11 @@
 {
     "java.project.sourcePaths": [
-        "src"
+        "src",
+        "."
     ],
     "java.project.referencedLibraries": [
         "./lib/opencv-480.jar",
-        "./lib/opencv_java480.dll"
+        "./lib/*.jar"
     ],
     "java.configuration.updateBuildConfiguration": "interactive"
 }
