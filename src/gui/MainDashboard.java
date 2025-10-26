@@ -5,9 +5,17 @@ import javax.swing.border.Border;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
+import java.time.*;
+import java.io.*;
+import java.nio.*;
 
 import facecrop.MyGUIProgram;
 import app.Main;
+import app.gui.*;
+import app.entity.*;
+import app.test.SessionManager;
+import app.model.*;
 
 public class MainDashboard extends JFrame {
     private String role;
@@ -16,6 +24,8 @@ public class MainDashboard extends JFrame {
     private JPanel mainContent;
     private JButton menuButton; // burger button
     private boolean isSidebarVisible = true; // track if the sidebar is shown
+    private SessionManager sessionManager; // for connecting to session btn
+
 
     public MainDashboard(String role, String id) {
         this.role = role;
@@ -155,14 +165,16 @@ public class MainDashboard extends JFrame {
         // open the student enrollment application
         studentBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            Main.main(null); // run the student management main gui
+            Main.main(null); // run the student management main gui from jr
             // show the dashboard again
             MainDashboard.this.setVisible(true);
         });
 
         sessionBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            new SessionManagementGUI(role, id);
+            //create a SessionManager and initialize SessionViewer
+            sessionManager = new SessionManager();
+            new SessionViewer(sessionManager);
             MainDashboard.this.setVisible(true);
         });
 
