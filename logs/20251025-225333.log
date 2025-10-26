@@ -1,0 +1,108 @@
+[2025-10-25 22:53:33] INFO: Application Logger Initialized.
+[2025-10-25 22:53:33] INFO: app.properties normalized (54 entries).
+[2025-10-25 22:53:33] INFO: Configuration loaded from file: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\app.properties
+[2025-10-25 22:53:33] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-25 22:53:33] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-25 22:53:33] INFO: StudentManager initialized successfully
+[2025-10-25 22:53:34] INFO: GUI launched successfully
+[2025-10-25 22:53:43] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-25 22:53:43] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-25 22:53:43] INFO: FaceCaptureDialog created for student: jereme
+[2025-10-25 22:53:44] INFO: Dialog initialized
+[2025-10-25 22:53:44] INFO: Starting camera preview...
+[2025-10-25 22:53:44] INFO: Preview timer started at 20fps
+[2025-10-25 22:53:48] INFO: detection.scale_factor has been changed to 1.45
+[2025-10-25 22:53:48] INFO: Detection scale factor changed to 1.45
+[2025-10-25 22:53:48] INFO: detection.scale_factor has been changed to 1.44
+[2025-10-25 22:53:48] INFO: Detection scale factor changed to 1.44
+[2025-10-25 22:53:48] INFO: detection.scale_factor has been changed to 1.43
+[2025-10-25 22:53:48] INFO: Detection scale factor changed to 1.43
+[2025-10-25 22:53:48] INFO: detection.scale_factor has been changed to 1.42
+[2025-10-25 22:53:48] INFO: Detection scale factor changed to 1.42
+[2025-10-25 22:53:48] INFO: detection.scale_factor has been changed to 1.42
+[2025-10-25 22:53:48] INFO: Detection scale factor changed to 1.42
+[2025-10-25 22:53:55] INFO: detection.scale_factor has been changed to 1.42
+[2025-10-25 22:53:55] INFO: Detection scale factor changed to 1.42
+[2025-10-25 22:53:55] INFO: detection.scale_factor has been changed to 1.41
+[2025-10-25 22:53:55] INFO: Detection scale factor changed to 1.41
+[2025-10-25 22:53:55] INFO: detection.scale_factor has been changed to 1.41
+[2025-10-25 22:53:55] INFO: Detection scale factor changed to 1.41
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.41
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.41
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.4
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.4
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.39
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.39
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.38
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.38
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.37
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.37
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.36
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.36
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.35
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.35
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.34
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.34
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.33
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.33
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.32
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.32
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.31
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.31
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.3
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.3
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.29
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.29
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.28
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.28
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.27
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.27
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.26
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.26
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.25
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.25
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.24
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.24
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.23
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.23
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.22
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.22
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.21
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.21
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.2
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.2
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.19
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.19
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.18
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.18
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.17
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.17
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.16
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.16
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.15
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.15
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.14
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.14
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.13
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.13
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.12
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.12
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.11
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.11
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.1
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.1
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.11
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.11
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.12
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.12
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.13
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.13
+[2025-10-25 22:53:56] INFO: detection.scale_factor has been changed to 1.14
+[2025-10-25 22:53:56] INFO: Detection scale factor changed to 1.14
+[2025-10-25 22:53:57] INFO: detection.scale_factor has been changed to 1.14
+[2025-10-25 22:53:57] INFO: Detection scale factor changed to 1.14
+[2025-10-25 22:53:58] INFO: Configuration saved to file.
+[2025-10-25 22:53:58] INFO: Detection settings saved to app.properties
+[2025-10-25 22:54:01] INFO: Disposing FaceCaptureDialog...
+[2025-10-25 22:54:01] INFO: Preview timer stopped
+[2025-10-25 22:54:01] INFO: Face detection resources released

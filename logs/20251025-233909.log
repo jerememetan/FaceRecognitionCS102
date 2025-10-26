@@ -1,0 +1,16 @@
+[2025-10-25 23:39:09] INFO: Application Logger Initialized.
+[2025-10-25 23:39:09] INFO: app.properties normalized (54 entries).
+[2025-10-25 23:39:09] INFO: Configuration loaded from file: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\app.properties
+[2025-10-25 23:39:10] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-25 23:39:10] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-25 23:39:10] INFO: StudentManager initialized successfully
+[2025-10-25 23:39:10] INFO: GUI launched successfully
+[2025-10-25 23:39:13] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-25 23:39:13] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-25 23:39:13] INFO: FaceCaptureDialog created for student: renard
+[2025-10-25 23:39:13] INFO: Dialog initialized
+[2025-10-25 23:39:13] INFO: Starting camera preview...
+[2025-10-25 23:39:13] INFO: Preview timer started at 20fps
+[2025-10-25 23:39:18] INFO: Disposing FaceCaptureDialog...
+[2025-10-25 23:39:18] INFO: Preview timer stopped
+[2025-10-25 23:39:18] INFO: Face detection resources released

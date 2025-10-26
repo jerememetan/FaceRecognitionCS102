@@ -1,0 +1,647 @@
+[2025-10-25 23:05:09] INFO: Application Logger Initialized.
+[2025-10-25 23:05:09] INFO: app.properties normalized (54 entries).
+[2025-10-25 23:05:09] INFO: Configuration loaded from file: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\app.properties
+[2025-10-25 23:05:11] INFO: detection.min_size_px has been changed to 91
+[2025-10-25 23:05:11] INFO: Min size changed to 91
+[2025-10-25 23:05:11] INFO: detection.min_size_px has been changed to 92
+[2025-10-25 23:05:11] INFO: Min size changed to 92
+[2025-10-25 23:05:11] INFO: detection.min_size_px has been changed to 93
+[2025-10-25 23:05:11] INFO: Min size changed to 93
+[2025-10-25 23:05:11] INFO: detection.min_size_px has been changed to 94
+[2025-10-25 23:05:11] INFO: Min size changed to 94
+[2025-10-25 23:05:11] INFO: detection.min_size_px has been changed to 94
+[2025-10-25 23:05:11] INFO: Min size changed to 94
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 94
+[2025-10-25 23:05:12] INFO: Min size changed to 94
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 95
+[2025-10-25 23:05:12] INFO: Min size changed to 95
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 96
+[2025-10-25 23:05:12] INFO: Min size changed to 96
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 97
+[2025-10-25 23:05:12] INFO: Min size changed to 97
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 98
+[2025-10-25 23:05:12] INFO: Min size changed to 98
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 99
+[2025-10-25 23:05:12] INFO: Min size changed to 99
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 100
+[2025-10-25 23:05:12] INFO: Min size changed to 100
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 101
+[2025-10-25 23:05:12] INFO: Min size changed to 101
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 102
+[2025-10-25 23:05:12] INFO: Min size changed to 102
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 103
+[2025-10-25 23:05:12] INFO: Min size changed to 103
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 104
+[2025-10-25 23:05:12] INFO: Min size changed to 104
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 105
+[2025-10-25 23:05:12] INFO: Min size changed to 105
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 106
+[2025-10-25 23:05:12] INFO: Min size changed to 106
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 107
+[2025-10-25 23:05:12] INFO: Min size changed to 107
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 108
+[2025-10-25 23:05:12] INFO: Min size changed to 108
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 109
+[2025-10-25 23:05:12] INFO: Min size changed to 109
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 110
+[2025-10-25 23:05:12] INFO: Min size changed to 110
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 111
+[2025-10-25 23:05:12] INFO: Min size changed to 111
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 112
+[2025-10-25 23:05:12] INFO: Min size changed to 112
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 113
+[2025-10-25 23:05:12] INFO: Min size changed to 113
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 114
+[2025-10-25 23:05:12] INFO: Min size changed to 114
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 115
+[2025-10-25 23:05:12] INFO: Min size changed to 115
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 116
+[2025-10-25 23:05:12] INFO: Min size changed to 116
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 117
+[2025-10-25 23:05:12] INFO: Min size changed to 117
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 118
+[2025-10-25 23:05:12] INFO: Min size changed to 118
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 119
+[2025-10-25 23:05:12] INFO: Min size changed to 119
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 120
+[2025-10-25 23:05:12] INFO: Min size changed to 120
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 121
+[2025-10-25 23:05:12] INFO: Min size changed to 121
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 122
+[2025-10-25 23:05:12] INFO: Min size changed to 122
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 123
+[2025-10-25 23:05:12] INFO: Min size changed to 123
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 124
+[2025-10-25 23:05:12] INFO: Min size changed to 124
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 125
+[2025-10-25 23:05:12] INFO: Min size changed to 125
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 126
+[2025-10-25 23:05:12] INFO: Min size changed to 126
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 127
+[2025-10-25 23:05:12] INFO: Min size changed to 127
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 128
+[2025-10-25 23:05:12] INFO: Min size changed to 128
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 129
+[2025-10-25 23:05:12] INFO: Min size changed to 129
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 130
+[2025-10-25 23:05:12] INFO: Min size changed to 130
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 131
+[2025-10-25 23:05:12] INFO: Min size changed to 131
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 132
+[2025-10-25 23:05:12] INFO: Min size changed to 132
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 133
+[2025-10-25 23:05:12] INFO: Min size changed to 133
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 134
+[2025-10-25 23:05:12] INFO: Min size changed to 134
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 135
+[2025-10-25 23:05:12] INFO: Min size changed to 135
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 136
+[2025-10-25 23:05:12] INFO: Min size changed to 136
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 137
+[2025-10-25 23:05:12] INFO: Min size changed to 137
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 138
+[2025-10-25 23:05:12] INFO: Min size changed to 138
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 139
+[2025-10-25 23:05:12] INFO: Min size changed to 139
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 140
+[2025-10-25 23:05:12] INFO: Min size changed to 140
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 141
+[2025-10-25 23:05:12] INFO: Min size changed to 141
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 142
+[2025-10-25 23:05:12] INFO: Min size changed to 142
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 143
+[2025-10-25 23:05:12] INFO: Min size changed to 143
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 144
+[2025-10-25 23:05:12] INFO: Min size changed to 144
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 145
+[2025-10-25 23:05:12] INFO: Min size changed to 145
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 146
+[2025-10-25 23:05:12] INFO: Min size changed to 146
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 147
+[2025-10-25 23:05:12] INFO: Min size changed to 147
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 148
+[2025-10-25 23:05:12] INFO: Min size changed to 148
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 149
+[2025-10-25 23:05:12] INFO: Min size changed to 149
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 150
+[2025-10-25 23:05:12] INFO: Min size changed to 150
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 151
+[2025-10-25 23:05:12] INFO: Min size changed to 151
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 152
+[2025-10-25 23:05:12] INFO: Min size changed to 152
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 153
+[2025-10-25 23:05:12] INFO: Min size changed to 153
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 154
+[2025-10-25 23:05:12] INFO: Min size changed to 154
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 155
+[2025-10-25 23:05:12] INFO: Min size changed to 155
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 156
+[2025-10-25 23:05:12] INFO: Min size changed to 156
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 157
+[2025-10-25 23:05:12] INFO: Min size changed to 157
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 158
+[2025-10-25 23:05:12] INFO: Min size changed to 158
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 159
+[2025-10-25 23:05:12] INFO: Min size changed to 159
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 160
+[2025-10-25 23:05:12] INFO: Min size changed to 160
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 161
+[2025-10-25 23:05:12] INFO: Min size changed to 161
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 162
+[2025-10-25 23:05:12] INFO: Min size changed to 162
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 163
+[2025-10-25 23:05:12] INFO: Min size changed to 163
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 164
+[2025-10-25 23:05:12] INFO: Min size changed to 164
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 165
+[2025-10-25 23:05:12] INFO: Min size changed to 165
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 166
+[2025-10-25 23:05:12] INFO: Min size changed to 166
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 167
+[2025-10-25 23:05:12] INFO: Min size changed to 167
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 168
+[2025-10-25 23:05:12] INFO: Min size changed to 168
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 169
+[2025-10-25 23:05:12] INFO: Min size changed to 169
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 170
+[2025-10-25 23:05:12] INFO: Min size changed to 170
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 171
+[2025-10-25 23:05:12] INFO: Min size changed to 171
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 172
+[2025-10-25 23:05:12] INFO: Min size changed to 172
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 173
+[2025-10-25 23:05:12] INFO: Min size changed to 173
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 174
+[2025-10-25 23:05:12] INFO: Min size changed to 174
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 175
+[2025-10-25 23:05:12] INFO: Min size changed to 175
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 176
+[2025-10-25 23:05:12] INFO: Min size changed to 176
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 177
+[2025-10-25 23:05:12] INFO: Min size changed to 177
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 178
+[2025-10-25 23:05:12] INFO: Min size changed to 178
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 179
+[2025-10-25 23:05:12] INFO: Min size changed to 179
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 180
+[2025-10-25 23:05:12] INFO: Min size changed to 180
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 181
+[2025-10-25 23:05:12] INFO: Min size changed to 181
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 182
+[2025-10-25 23:05:12] INFO: Min size changed to 182
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 183
+[2025-10-25 23:05:12] INFO: Min size changed to 183
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 184
+[2025-10-25 23:05:12] INFO: Min size changed to 184
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 185
+[2025-10-25 23:05:12] INFO: Min size changed to 185
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 186
+[2025-10-25 23:05:12] INFO: Min size changed to 186
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 187
+[2025-10-25 23:05:12] INFO: Min size changed to 187
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 188
+[2025-10-25 23:05:12] INFO: Min size changed to 188
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 189
+[2025-10-25 23:05:12] INFO: Min size changed to 189
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 190
+[2025-10-25 23:05:12] INFO: Min size changed to 190
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 191
+[2025-10-25 23:05:12] INFO: Min size changed to 191
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 192
+[2025-10-25 23:05:12] INFO: Min size changed to 192
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 193
+[2025-10-25 23:05:12] INFO: Min size changed to 193
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 194
+[2025-10-25 23:05:12] INFO: Min size changed to 194
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 195
+[2025-10-25 23:05:12] INFO: Min size changed to 195
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 196
+[2025-10-25 23:05:12] INFO: Min size changed to 196
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 197
+[2025-10-25 23:05:12] INFO: Min size changed to 197
+[2025-10-25 23:05:12] INFO: detection.min_size_px has been changed to 198
+[2025-10-25 23:05:12] INFO: Min size changed to 198
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 199
+[2025-10-25 23:05:13] INFO: Min size changed to 199
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 200
+[2025-10-25 23:05:13] INFO: Min size changed to 200
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 201
+[2025-10-25 23:05:13] INFO: Min size changed to 201
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 203
+[2025-10-25 23:05:13] INFO: Min size changed to 203
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 204
+[2025-10-25 23:05:13] INFO: Min size changed to 204
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 205
+[2025-10-25 23:05:13] INFO: Min size changed to 205
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 206
+[2025-10-25 23:05:13] INFO: Min size changed to 206
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 207
+[2025-10-25 23:05:13] INFO: Min size changed to 207
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 208
+[2025-10-25 23:05:13] INFO: Min size changed to 208
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 209
+[2025-10-25 23:05:13] INFO: Min size changed to 209
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 211
+[2025-10-25 23:05:13] INFO: Min size changed to 211
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 212
+[2025-10-25 23:05:13] INFO: Min size changed to 212
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 213
+[2025-10-25 23:05:13] INFO: Min size changed to 213
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 214
+[2025-10-25 23:05:13] INFO: Min size changed to 214
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 215
+[2025-10-25 23:05:13] INFO: Min size changed to 215
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 216
+[2025-10-25 23:05:13] INFO: Min size changed to 216
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 217
+[2025-10-25 23:05:13] INFO: Min size changed to 217
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 219
+[2025-10-25 23:05:13] INFO: Min size changed to 219
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 220
+[2025-10-25 23:05:13] INFO: Min size changed to 220
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 222
+[2025-10-25 23:05:13] INFO: Min size changed to 222
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 223
+[2025-10-25 23:05:13] INFO: Min size changed to 223
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 224
+[2025-10-25 23:05:13] INFO: Min size changed to 224
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 226
+[2025-10-25 23:05:13] INFO: Min size changed to 226
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 227
+[2025-10-25 23:05:13] INFO: Min size changed to 227
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 228
+[2025-10-25 23:05:13] INFO: Min size changed to 228
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 230
+[2025-10-25 23:05:13] INFO: Min size changed to 230
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 231
+[2025-10-25 23:05:13] INFO: Min size changed to 231
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 233
+[2025-10-25 23:05:13] INFO: Min size changed to 233
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 234
+[2025-10-25 23:05:13] INFO: Min size changed to 234
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 235
+[2025-10-25 23:05:13] INFO: Min size changed to 235
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 236
+[2025-10-25 23:05:13] INFO: Min size changed to 236
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 237
+[2025-10-25 23:05:13] INFO: Min size changed to 237
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 238
+[2025-10-25 23:05:13] INFO: Min size changed to 238
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 239
+[2025-10-25 23:05:13] INFO: Min size changed to 239
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 241
+[2025-10-25 23:05:13] INFO: Min size changed to 241
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 243
+[2025-10-25 23:05:13] INFO: Min size changed to 243
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 245
+[2025-10-25 23:05:13] INFO: Min size changed to 245
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 246
+[2025-10-25 23:05:13] INFO: Min size changed to 246
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 247
+[2025-10-25 23:05:13] INFO: Min size changed to 247
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 249
+[2025-10-25 23:05:13] INFO: Min size changed to 249
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 250
+[2025-10-25 23:05:13] INFO: Min size changed to 250
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 251
+[2025-10-25 23:05:13] INFO: Min size changed to 251
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 253
+[2025-10-25 23:05:13] INFO: Min size changed to 253
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 254
+[2025-10-25 23:05:13] INFO: Min size changed to 254
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 255
+[2025-10-25 23:05:13] INFO: Min size changed to 255
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 257
+[2025-10-25 23:05:13] INFO: Min size changed to 257
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 258
+[2025-10-25 23:05:13] INFO: Min size changed to 258
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 259
+[2025-10-25 23:05:13] INFO: Min size changed to 259
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 260
+[2025-10-25 23:05:13] INFO: Min size changed to 260
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 261
+[2025-10-25 23:05:13] INFO: Min size changed to 261
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 263
+[2025-10-25 23:05:13] INFO: Min size changed to 263
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 264
+[2025-10-25 23:05:13] INFO: Min size changed to 264
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 265
+[2025-10-25 23:05:13] INFO: Min size changed to 265
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 266
+[2025-10-25 23:05:13] INFO: Min size changed to 266
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 268
+[2025-10-25 23:05:13] INFO: Min size changed to 268
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 269
+[2025-10-25 23:05:13] INFO: Min size changed to 269
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 270
+[2025-10-25 23:05:13] INFO: Min size changed to 270
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 272
+[2025-10-25 23:05:13] INFO: Min size changed to 272
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 273
+[2025-10-25 23:05:13] INFO: Min size changed to 273
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 274
+[2025-10-25 23:05:13] INFO: Min size changed to 274
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 276
+[2025-10-25 23:05:13] INFO: Min size changed to 276
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 277
+[2025-10-25 23:05:13] INFO: Min size changed to 277
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 278
+[2025-10-25 23:05:13] INFO: Min size changed to 278
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 279
+[2025-10-25 23:05:13] INFO: Min size changed to 279
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 280
+[2025-10-25 23:05:13] INFO: Min size changed to 280
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 281
+[2025-10-25 23:05:13] INFO: Min size changed to 281
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 283
+[2025-10-25 23:05:13] INFO: Min size changed to 283
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 284
+[2025-10-25 23:05:13] INFO: Min size changed to 284
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 285
+[2025-10-25 23:05:13] INFO: Min size changed to 285
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 286
+[2025-10-25 23:05:13] INFO: Min size changed to 286
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 287
+[2025-10-25 23:05:13] INFO: Min size changed to 287
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 288
+[2025-10-25 23:05:13] INFO: Min size changed to 288
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 289
+[2025-10-25 23:05:13] INFO: Min size changed to 289
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 290
+[2025-10-25 23:05:13] INFO: Min size changed to 290
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 291
+[2025-10-25 23:05:13] INFO: Min size changed to 291
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 292
+[2025-10-25 23:05:13] INFO: Min size changed to 292
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 293
+[2025-10-25 23:05:13] INFO: Min size changed to 293
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 294
+[2025-10-25 23:05:13] INFO: Min size changed to 294
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 295
+[2025-10-25 23:05:13] INFO: Min size changed to 295
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 296
+[2025-10-25 23:05:13] INFO: Min size changed to 296
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 298
+[2025-10-25 23:05:13] INFO: Min size changed to 298
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 299
+[2025-10-25 23:05:13] INFO: Min size changed to 299
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 300
+[2025-10-25 23:05:13] INFO: Min size changed to 300
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 302
+[2025-10-25 23:05:13] INFO: Min size changed to 302
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 303
+[2025-10-25 23:05:13] INFO: Min size changed to 303
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 304
+[2025-10-25 23:05:13] INFO: Min size changed to 304
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 305
+[2025-10-25 23:05:13] INFO: Min size changed to 305
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 306
+[2025-10-25 23:05:13] INFO: Min size changed to 306
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 307
+[2025-10-25 23:05:13] INFO: Min size changed to 307
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 308
+[2025-10-25 23:05:13] INFO: Min size changed to 308
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 309
+[2025-10-25 23:05:13] INFO: Min size changed to 309
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 310
+[2025-10-25 23:05:13] INFO: Min size changed to 310
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 311
+[2025-10-25 23:05:13] INFO: Min size changed to 311
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 312
+[2025-10-25 23:05:13] INFO: Min size changed to 312
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 313
+[2025-10-25 23:05:13] INFO: Min size changed to 313
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 314
+[2025-10-25 23:05:13] INFO: Min size changed to 314
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 315
+[2025-10-25 23:05:13] INFO: Min size changed to 315
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 316
+[2025-10-25 23:05:13] INFO: Min size changed to 316
+[2025-10-25 23:05:13] INFO: detection.min_size_px has been changed to 317
+[2025-10-25 23:05:13] INFO: Min size changed to 317
+[2025-10-25 23:05:14] INFO: detection.min_size_px has been changed to 317
+[2025-10-25 23:05:14] INFO: Min size changed to 317
+[2025-10-25 23:05:15] INFO: Configuration saved to file.
+[2025-10-25 23:05:15] INFO: Settings saved from SettingsGUI
+[2025-10-25 23:05:17] INFO: Configuration saved to file.
+[2025-10-25 23:05:17] INFO: Settings saved from SettingsGUI
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 317
+[2025-10-25 23:05:22] INFO: Min size changed to 317
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 316
+[2025-10-25 23:05:22] INFO: Min size changed to 316
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 315
+[2025-10-25 23:05:22] INFO: Min size changed to 315
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 314
+[2025-10-25 23:05:22] INFO: Min size changed to 314
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 312
+[2025-10-25 23:05:22] INFO: Min size changed to 312
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 311
+[2025-10-25 23:05:22] INFO: Min size changed to 311
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 310
+[2025-10-25 23:05:22] INFO: Min size changed to 310
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 309
+[2025-10-25 23:05:22] INFO: Min size changed to 309
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 308
+[2025-10-25 23:05:22] INFO: Min size changed to 308
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 307
+[2025-10-25 23:05:22] INFO: Min size changed to 307
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 306
+[2025-10-25 23:05:22] INFO: Min size changed to 306
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 305
+[2025-10-25 23:05:22] INFO: Min size changed to 305
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 304
+[2025-10-25 23:05:22] INFO: Min size changed to 304
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 303
+[2025-10-25 23:05:22] INFO: Min size changed to 303
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 302
+[2025-10-25 23:05:22] INFO: Min size changed to 302
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 300
+[2025-10-25 23:05:22] INFO: Min size changed to 300
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 299
+[2025-10-25 23:05:22] INFO: Min size changed to 299
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 298
+[2025-10-25 23:05:22] INFO: Min size changed to 298
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 296
+[2025-10-25 23:05:22] INFO: Min size changed to 296
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 295
+[2025-10-25 23:05:22] INFO: Min size changed to 295
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 293
+[2025-10-25 23:05:22] INFO: Min size changed to 293
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 292
+[2025-10-25 23:05:22] INFO: Min size changed to 292
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 290
+[2025-10-25 23:05:22] INFO: Min size changed to 290
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 289
+[2025-10-25 23:05:22] INFO: Min size changed to 289
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 288
+[2025-10-25 23:05:22] INFO: Min size changed to 288
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 287
+[2025-10-25 23:05:22] INFO: Min size changed to 287
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 286
+[2025-10-25 23:05:22] INFO: Min size changed to 286
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 285
+[2025-10-25 23:05:22] INFO: Min size changed to 285
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 284
+[2025-10-25 23:05:22] INFO: Min size changed to 284
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 283
+[2025-10-25 23:05:22] INFO: Min size changed to 283
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 282
+[2025-10-25 23:05:22] INFO: Min size changed to 282
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 281
+[2025-10-25 23:05:22] INFO: Min size changed to 281
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 280
+[2025-10-25 23:05:22] INFO: Min size changed to 280
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 279
+[2025-10-25 23:05:22] INFO: Min size changed to 279
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 277
+[2025-10-25 23:05:22] INFO: Min size changed to 277
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 276
+[2025-10-25 23:05:22] INFO: Min size changed to 276
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 275
+[2025-10-25 23:05:22] INFO: Min size changed to 275
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 274
+[2025-10-25 23:05:22] INFO: Min size changed to 274
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 273
+[2025-10-25 23:05:22] INFO: Min size changed to 273
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 272
+[2025-10-25 23:05:22] INFO: Min size changed to 272
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 270
+[2025-10-25 23:05:22] INFO: Min size changed to 270
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 269
+[2025-10-25 23:05:22] INFO: Min size changed to 269
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 268
+[2025-10-25 23:05:22] INFO: Min size changed to 268
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 266
+[2025-10-25 23:05:22] INFO: Min size changed to 266
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 265
+[2025-10-25 23:05:22] INFO: Min size changed to 265
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 264
+[2025-10-25 23:05:22] INFO: Min size changed to 264
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 263
+[2025-10-25 23:05:22] INFO: Min size changed to 263
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 262
+[2025-10-25 23:05:22] INFO: Min size changed to 262
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 261
+[2025-10-25 23:05:22] INFO: Min size changed to 261
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 260
+[2025-10-25 23:05:22] INFO: Min size changed to 260
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 259
+[2025-10-25 23:05:22] INFO: Min size changed to 259
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 258
+[2025-10-25 23:05:22] INFO: Min size changed to 258
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 257
+[2025-10-25 23:05:22] INFO: Min size changed to 257
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 256
+[2025-10-25 23:05:22] INFO: Min size changed to 256
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 255
+[2025-10-25 23:05:22] INFO: Min size changed to 255
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 254
+[2025-10-25 23:05:22] INFO: Min size changed to 254
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 253
+[2025-10-25 23:05:22] INFO: Min size changed to 253
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 252
+[2025-10-25 23:05:22] INFO: Min size changed to 252
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 251
+[2025-10-25 23:05:22] INFO: Min size changed to 251
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 250
+[2025-10-25 23:05:22] INFO: Min size changed to 250
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 249
+[2025-10-25 23:05:22] INFO: Min size changed to 249
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 248
+[2025-10-25 23:05:22] INFO: Min size changed to 248
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 247
+[2025-10-25 23:05:22] INFO: Min size changed to 247
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 246
+[2025-10-25 23:05:22] INFO: Min size changed to 246
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 245
+[2025-10-25 23:05:22] INFO: Min size changed to 245
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 244
+[2025-10-25 23:05:22] INFO: Min size changed to 244
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 243
+[2025-10-25 23:05:22] INFO: Min size changed to 243
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 242
+[2025-10-25 23:05:22] INFO: Min size changed to 242
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 241
+[2025-10-25 23:05:22] INFO: Min size changed to 241
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 240
+[2025-10-25 23:05:22] INFO: Min size changed to 240
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 239
+[2025-10-25 23:05:22] INFO: Min size changed to 239
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 238
+[2025-10-25 23:05:22] INFO: Min size changed to 238
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 236
+[2025-10-25 23:05:22] INFO: Min size changed to 236
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 235
+[2025-10-25 23:05:22] INFO: Min size changed to 235
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 234
+[2025-10-25 23:05:22] INFO: Min size changed to 234
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 233
+[2025-10-25 23:05:22] INFO: Min size changed to 233
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 232
+[2025-10-25 23:05:22] INFO: Min size changed to 232
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 231
+[2025-10-25 23:05:22] INFO: Min size changed to 231
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 230
+[2025-10-25 23:05:22] INFO: Min size changed to 230
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 229
+[2025-10-25 23:05:22] INFO: Min size changed to 229
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 228
+[2025-10-25 23:05:22] INFO: Min size changed to 228
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 227
+[2025-10-25 23:05:22] INFO: Min size changed to 227
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 226
+[2025-10-25 23:05:22] INFO: Min size changed to 226
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 225
+[2025-10-25 23:05:22] INFO: Min size changed to 225
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 224
+[2025-10-25 23:05:22] INFO: Min size changed to 224
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 223
+[2025-10-25 23:05:22] INFO: Min size changed to 223
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 222
+[2025-10-25 23:05:22] INFO: Min size changed to 222
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 220
+[2025-10-25 23:05:22] INFO: Min size changed to 220
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 219
+[2025-10-25 23:05:22] INFO: Min size changed to 219
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 218
+[2025-10-25 23:05:22] INFO: Min size changed to 218
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 217
+[2025-10-25 23:05:22] INFO: Min size changed to 217
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 216
+[2025-10-25 23:05:22] INFO: Min size changed to 216
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 215
+[2025-10-25 23:05:22] INFO: Min size changed to 215
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 213
+[2025-10-25 23:05:22] INFO: Min size changed to 213
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 212
+[2025-10-25 23:05:22] INFO: Min size changed to 212
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 211
+[2025-10-25 23:05:22] INFO: Min size changed to 211
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 210
+[2025-10-25 23:05:22] INFO: Min size changed to 210
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 209
+[2025-10-25 23:05:22] INFO: Min size changed to 209
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 208
+[2025-10-25 23:05:22] INFO: Min size changed to 208
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 207
+[2025-10-25 23:05:22] INFO: Min size changed to 207
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 206
+[2025-10-25 23:05:22] INFO: Min size changed to 206
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 205
+[2025-10-25 23:05:22] INFO: Min size changed to 205
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 204
+[2025-10-25 23:05:22] INFO: Min size changed to 204
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 203
+[2025-10-25 23:05:22] INFO: Min size changed to 203
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 202
+[2025-10-25 23:05:22] INFO: Min size changed to 202
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 201
+[2025-10-25 23:05:22] INFO: Min size changed to 201
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 200
+[2025-10-25 23:05:22] INFO: Min size changed to 200
+[2025-10-25 23:05:22] INFO: detection.min_size_px has been changed to 200
+[2025-10-25 23:05:22] INFO: Min size changed to 200
+[2025-10-25 23:05:23] INFO: Configuration saved to file.
+[2025-10-25 23:05:23] INFO: Settings saved from SettingsGUI
+[2025-10-25 23:05:50] INFO: Configuration saved to file.
+[2025-10-25 23:05:50] INFO: Settings saved from SettingsGUI

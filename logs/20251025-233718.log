@@ -1,0 +1,73 @@
+[2025-10-25 23:37:18] INFO: Application Logger Initialized.
+[2025-10-25 23:37:18] INFO: Configuration and core components loaded.
+[2025-10-25 23:37:18] INFO: app.properties normalized (54 entries).
+[2025-10-25 23:37:18] INFO: Configuration loaded from classpath: app.properties
+[2025-10-25 23:37:18] INFO: Configuration file loaded
+[2025-10-25 23:37:18] INFO: MyGUIProgram Started!
+[2025-10-25 23:37:19] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-25 23:37:19] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-10-25 23:37:19] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-10-25 23:37:19] INFO: === Folder debug ===
+[2025-10-25 23:37:19] INFO: Found folder: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\data\facedata\S00000_Nicholas
+[2025-10-25 23:37:19] INFO:   Contains: 16 items
+[2025-10-25 23:37:19] INFO:   Display label: S00000 - Nicholas
+[2025-10-25 23:37:19] INFO: Found folder: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\data\facedata\S00001_jereme
+[2025-10-25 23:37:19] INFO:   Contains: 36 items
+[2025-10-25 23:37:19] INFO:   Display label: S00001 - jereme
+[2025-10-25 23:37:19] INFO: Found folder: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\data\facedata\S11111
+[2025-10-25 23:37:19] INFO:   Contains: 2 items
+[2025-10-25 23:37:19] INFO:   Display label: S11111
+[2025-10-25 23:37:19] INFO: Found folder: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\data\facedata\S11234_PY
+[2025-10-25 23:37:19] INFO:   Contains: 0 items
+[2025-10-25 23:37:19] INFO:   Display label: S11234 - PY
+[2025-10-25 23:37:19] INFO: Found folder: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\data\facedata\S12127_Jin_Rae
+[2025-10-25 23:37:19] INFO:   Contains: 0 items
+[2025-10-25 23:37:19] INFO:   Display label: S12127 - Jin_Rae
+[2025-10-25 23:37:19] INFO: Found folder: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\data\facedata\S12313_ma
+[2025-10-25 23:37:19] INFO:   Contains: 0 items
+[2025-10-25 23:37:19] INFO:   Display label: S12313 - ma
+[2025-10-25 23:37:19] INFO: Found folder: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\data\facedata\S12342_wyn
+[2025-10-25 23:37:19] INFO:   Contains: 0 items
+[2025-10-25 23:37:19] INFO:   Display label: S12342 - wyn
+[2025-10-25 23:37:19] INFO: Found folder: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\data\facedata\S12345_Jereme
+[2025-10-25 23:37:19] INFO:   Contains: 15 items
+[2025-10-25 23:37:19] INFO:   Display label: S12345 - Jereme
+[2025-10-25 23:37:19] INFO: Found folder: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae
+[2025-10-25 23:37:19] INFO:   Contains: 22 items
+[2025-10-25 23:37:19] INFO:   Display label: S13234 - Jin_Rae
+[2025-10-25 23:37:19] INFO: Found folder: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\data\facedata\S55555_Tiffany
+[2025-10-25 23:37:19] INFO:   Contains: 26 items
+[2025-10-25 23:37:19] INFO:   Display label: S55555 - Tiffany
+[2025-10-25 23:37:19] INFO: Found folder: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\data\facedata\S88888_Cavin
+[2025-10-25 23:37:19] INFO:   Contains: 22 items
+[2025-10-25 23:37:19] INFO:   Display label: S88888 - Cavin
+[2025-10-25 23:37:19] INFO: Found folder: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\data\facedata\S99998_Kim_Jun_Un
+[2025-10-25 23:37:19] INFO:   Contains: 30 items
+[2025-10-25 23:37:19] INFO:   Display label: S99998 - Kim_Jun_Un
+[2025-10-25 23:37:19] INFO: Found folder: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\data\facedata\S99999_Tonald_Drump
+[2025-10-25 23:37:19] INFO:   Contains: 36 items
+[2025-10-25 23:37:19] INFO:   Display label: S99999 - Tonald_Drump
+[2025-10-25 23:37:19] INFO: ====================
+[2025-10-25 23:37:19] INFO: Person S00000 - Nicholas: tightness=0.903, stdDev=0.062, absThresh=0.610, margin=0.110
+[2025-10-25 23:37:19] INFO: Person S00001 - jereme: tightness=0.831, stdDev=0.033, absThresh=0.617, margin=0.117
+[2025-10-25 23:37:19] INFO: Person S11111: tightness=1.000, stdDev=0.000, absThresh=0.600, margin=0.100
+[2025-10-25 23:37:19] INFO: Person S11234 - PY: tightness=1.000, stdDev=0.000, absThresh=0.600, margin=0.100
+[2025-10-25 23:37:19] INFO: Person S12127 - Jin_Rae: tightness=1.000, stdDev=0.000, absThresh=0.600, margin=0.100
+[2025-10-25 23:37:19] INFO: Person S12313 - ma: tightness=1.000, stdDev=0.000, absThresh=0.600, margin=0.100
+[2025-10-25 23:37:19] INFO: Person S12342 - wyn: tightness=1.000, stdDev=0.000, absThresh=0.600, margin=0.100
+[2025-10-25 23:37:19] INFO:   [Glasses Mode] Detected high variation (stdDev=0.181) - relaxed thresholds by 12.0%
+[2025-10-25 23:37:19] INFO: Person S12345 - Jereme: tightness=0.663, stdDev=0.181, absThresh=0.562, margin=0.119
+[2025-10-25 23:37:19] INFO: Person S13234 - Jin_Rae: tightness=0.942, stdDev=0.009, absThresh=0.606, margin=0.106
+[2025-10-25 23:37:19] INFO: Person S55555 - Tiffany: tightness=0.864, stdDev=0.039, absThresh=0.614, margin=0.114
+[2025-10-25 23:37:19] INFO:   [Glasses Mode] Detected high variation (stdDev=0.122) - relaxed thresholds by 11.1%
+[2025-10-25 23:37:19] INFO: Person S88888 - Cavin: tightness=0.800, stdDev=0.122, absThresh=0.554, margin=0.105
+[2025-10-25 23:37:19] INFO:   [Glasses Mode] Detected high variation (stdDev=0.188) - relaxed thresholds by 12.0%
+[2025-10-25 23:37:19] INFO: Person S99998 - Kim_Jun_Un: tightness=0.641, stdDev=0.188, absThresh=0.564, margin=0.121
+[2025-10-25 23:37:19] INFO: Person S99999 - Tonald_Drump: tightness=0.632, stdDev=0.102, absThresh=0.637, margin=0.137
+[2025-10-25 23:37:20] INFO: DNN face detector loaded successfully for recognition
+[2025-10-25 23:37:20] INFO: Attempting camera index 0 with DSHOW backend...
+[2025-10-25 23:37:20] INFO: Camera opened successfully: index 0 with DSHOW backend
+[2025-10-25 23:37:22] INFO: Camera configured: 640x480 @ 30fps (MJPEG: yes)
+[2025-10-25 23:37:22] INFO: Camera initialized successfully
+[2025-10-25 23:37:24] INFO: Exiting Face Recognition Demo...
+[2025-10-25 23:37:24] INFO: Exiting Face Recognition Demo...

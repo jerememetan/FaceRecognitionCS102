@@ -30,7 +30,7 @@ public class MainDashboard extends JFrame {
 
         // burger menu button
         JPanel burger = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        menuButton = new JButton("☰"); // the symbol
+        menuButton = new JButton("Menu"); // the symbol
         menuButton.setFont(new Font("Arial", Font.BOLD, 20)); // font, fontstyle, fontsize
         burger.add(menuButton);
         add(burger, BorderLayout.NORTH); // put it at the top
@@ -146,36 +146,75 @@ public class MainDashboard extends JFrame {
 
         // ---------ActionListener for the buttons--------------
         recognitionBtn.addActionListener(e ->{
+            System.out.println("Hiding MainDashboard!");
             MainDashboard.this.setVisible(false);
             MyGUIProgram.main(null); // just run the program
             // show the window again after MYGUIProgram close
+            System.out.println("Showing MainDashboard!");
             MainDashboard.this.setVisible(true);
         });
 
         // open the student enrollment application
         studentBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            Main.main(null); // run the student management main gui
-            // show the dashboard again
-            MainDashboard.this.setVisible(true);
+            StudentManagementGUI child = new StudentManagementGUI(role, id);
+            // Re-show dashboard when child is closed/disposed
+            child.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent ev) {
+                    MainDashboard.this.setVisible(true);
+                }
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent ev) {
+                    MainDashboard.this.setVisible(true);
+                }
+            });
         });
 
         sessionBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            new SessionManagementGUI(role, id);
-            MainDashboard.this.setVisible(true);
+            SessionManagementGUI child = new SessionManagementGUI(role, id);
+            child.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent ev) {
+                    MainDashboard.this.setVisible(true);
+                }
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent ev) {
+                    MainDashboard.this.setVisible(true);
+                }
+            });
+            
         });
 
         reportBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            new ReportsGUI(role, id);
-            MainDashboard.this.setVisible(true);
+            ReportsGUI child = new ReportsGUI(role, id);
+            child.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent ev) {
+                    MainDashboard.this.setVisible(true);
+                }
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent ev) {
+                    MainDashboard.this.setVisible(true);
+                }
+            });
         });
 
         settingBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            new SettingsGUI(role, id);
-            MainDashboard.this.setVisible(true);
+            SettingsGUI child = new SettingsGUI(role, id);
+            child.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent ev) {
+                    MainDashboard.this.setVisible(true);
+                }
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent ev) {
+                    MainDashboard.this.setVisible(true);
+                }
+            });
         });
     }
 
