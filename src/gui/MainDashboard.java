@@ -224,7 +224,7 @@ public class MainDashboard extends JFrame {
         int targetWidth = isSidebarVisible ? 0 : 220; // 0 to hide, 220 to show
         int step = (targetWidth > startWidth) ? 10 : -10; // slide direction, how much to change the width
 
-        Timer timer = new Timer(5, null); // runs every 5 milliseconds
+        javax.swing.Timer timer = new javax.swing.Timer(5, null); // runs every 5 milliseconds
         timer.addActionListener(new ActionListener() {
             int width = startWidth;
 
