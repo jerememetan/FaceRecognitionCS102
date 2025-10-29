@@ -397,54 +397,7 @@ public class FaceAligner {
         }
     }
 
-<<<<<<< HEAD
-    /**
-     * Pick the most central eye candidate in a face half
-     */
-    private Point pickBestEyeCenter(Rect[] eyes, Rect halfRegion) {
-        if (eyes == null || eyes.length == 0) {
-            return null;
-        }
-
-        Point bestCenter = null;
-        double bestScore = Double.MAX_VALUE;
-
-        // Calculate center of the half region
-        Point halfCenter = new Point(
-                halfRegion.x + halfRegion.width / 2.0,
-                halfRegion.y + halfRegion.height / 2.0);
-
-        for (Rect eye : eyes) {
-            // Calculate eye center (adjust for half-region offset)
-            Point eyeCenter = new Point(
-                    halfRegion.x + eye.x + eye.width / 2.0,
-                    halfRegion.y + eye.y + eye.height / 2.0);
-
-            // Score based on distance from half center and size preference
-            double distanceFromCenter = Math.hypot(
-                    eyeCenter.x - halfCenter.x,
-                    eyeCenter.y - halfCenter.y);
-
-            // Prefer larger eyes, penalize distance from center
-            double score = distanceFromCenter / halfRegion.width +
-                    (100.0 - eye.width) / 100.0; // Prefer larger eyes
-
-            if (score < bestScore) {
-                bestScore = score;
-                bestCenter = eyeCenter;
-            }
-        }
-
-        return bestCenter;
-    }
-
-    /**
-     * Fallback when eye detection fails - just center crop and resize
-     */
-    private Mat fallbackAlignment(Mat faceImage) {
-=======
     private Mat heuristicFallbackAlignment(Mat faceImage) {
->>>>>>> origin/JR-StudentManager
         if (faceImage == null || faceImage.empty()) {
             return new Mat();
         }

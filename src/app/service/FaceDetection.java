@@ -43,12 +43,8 @@ public class FaceDetection {
 
         OPENCV_LOADED = loaded;
         if (!loaded) {
-<<<<<<< HEAD
-            System.err.println("OpenCV native library could not be loaded. Face detection features will be unavailable.");
-=======
             System.err
                     .println("OpenCV native library could not be loaded. Face detection features will be unavailable.");
->>>>>>> origin/JR-StudentManager
         }
     }
 

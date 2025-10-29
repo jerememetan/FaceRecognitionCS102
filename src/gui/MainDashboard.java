@@ -7,14 +7,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 import facecrop.MyGUIProgram;
-<<<<<<< HEAD
-import app.Main;
-import app.gui.*;
-import app.entity.*;
-import app.test.SessionManager;
-import app.model.*;
-=======
->>>>>>> origin/JR-StudentManager
 
 public class MainDashboard extends JFrame {
     private String role;
@@ -23,11 +15,6 @@ public class MainDashboard extends JFrame {
     private JPanel mainContent;
     private JButton menuButton; // burger button
     private boolean isSidebarVisible = true; // track if the sidebar is shown
-<<<<<<< HEAD
-    private SessionManager sessionManager; // for connecting to session btn
-
-=======
->>>>>>> origin/JR-StudentManager
 
     public MainDashboard(String role, String id) {
         this.role = role;
@@ -42,11 +29,7 @@ public class MainDashboard extends JFrame {
 
         // burger menu button
         JPanel burger = new JPanel(new FlowLayout(FlowLayout.LEFT));
-<<<<<<< HEAD
-        menuButton = new JButton("Menu"); // the symbol
-=======
         menuButton = new JButton("☰"); // the symbol
->>>>>>> origin/JR-StudentManager
         menuButton.setFont(new Font("Arial", Font.BOLD, 20)); // font, fontstyle, fontsize
         burger.add(menuButton);
         add(burger, BorderLayout.NORTH); // put it at the top
@@ -161,58 +144,6 @@ public class MainDashboard extends JFrame {
         sidebar.add(Box.createVerticalGlue()); // push everything up neatly
 
         // ---------ActionListener for the buttons--------------
-<<<<<<< HEAD
-        recognitionBtn.addActionListener(e -> {
-            MainDashboard.this.setVisible(false);
-            JFrame frame = new MyGUIProgram();
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    MainDashboard.this.setVisible(true);
-                }
-            });
-        });
-
-        // open the student enrollment application
-        studentBtn.addActionListener(e -> {
-            MainDashboard.this.setVisible(false);
-            
-            // Create a timer to detect when the student window appears and attach our listener
-            Timer findWindowTimer = new Timer(100, null);
-            findWindowTimer.addActionListener(evt -> {
-                Window[] windows = Window.getWindows();
-                for (Window window : windows) {
-                    if (window.isVisible() && window instanceof JFrame && 
-                        ((JFrame)window).getTitle().contains("Student")) {
-                        JFrame studentFrame = (JFrame)window;
-                        studentFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                        studentFrame.addWindowListener(new WindowAdapter() {
-                            @Override
-                            public void windowClosed(WindowEvent e) {
-                                SwingUtilities.invokeLater(() -> {
-                                    MainDashboard.this.setVisible(true);
-                                });
-                            }
-                        });
-                        findWindowTimer.stop();
-                        break;
-                    }
-                }
-            });
-            findWindowTimer.start();
-            
-            // Launch the student management window
-            SwingUtilities.invokeLater(() -> {
-                try {
-                    Main.main(null);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    findWindowTimer.stop();
-                    MainDashboard.this.setVisible(true);
-                }
-            });
-=======
         recognitionBtn.addActionListener(e ->{
             MainDashboard.this.setVisible(false);
             MyGUIProgram.main(null); // just run the program
@@ -224,60 +155,24 @@ public class MainDashboard extends JFrame {
             MainDashboard.this.setVisible(false);
             new StudentManagementGUI(role, id);
             MainDashboard.this.setVisible(true);
->>>>>>> origin/JR-StudentManager
         });
 
         sessionBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-<<<<<<< HEAD
-            //create a SessionManager and initialize SessionViewer
-            sessionManager = new SessionManager();
-            JFrame sessionViewer = new SessionViewer(sessionManager);
-            sessionViewer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            sessionViewer.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    MainDashboard.this.setVisible(true);
-                }
-            });
-=======
             new SessionManagementGUI(role, id);
             MainDashboard.this.setVisible(true);
->>>>>>> origin/JR-StudentManager
         });
 
         reportBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-<<<<<<< HEAD
-            JFrame reportsFrame = new ReportsGUI(role, id);
-            reportsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            reportsFrame.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    MainDashboard.this.setVisible(true);
-                }
-            });
-=======
             new ReportsGUI(role, id);
             MainDashboard.this.setVisible(true);
->>>>>>> origin/JR-StudentManager
         });
 
         settingBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-<<<<<<< HEAD
-            JFrame settingsFrame = new SettingsGUI(role, id);
-            settingsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            settingsFrame.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    MainDashboard.this.setVisible(true);
-                }
-            });
-=======
             new SettingsGUI(role, id);
             MainDashboard.this.setVisible(true);
->>>>>>> origin/JR-StudentManager
         });
     }
 
@@ -314,11 +209,7 @@ public class MainDashboard extends JFrame {
         int targetWidth = isSidebarVisible ? 0 : 220; // 0 to hide, 220 to show
         int step = (targetWidth > startWidth) ? 10 : -10; // slide direction, how much to change the width
 
-<<<<<<< HEAD
-        javax.swing.Timer timer = new javax.swing.Timer(5, null); // runs every 5 milliseconds
-=======
         Timer timer = new Timer(5, null); // runs every 5 milliseconds
->>>>>>> origin/JR-StudentManager
         timer.addActionListener(new ActionListener() {
             int width = startWidth;
 

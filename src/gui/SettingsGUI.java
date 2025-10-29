@@ -1,17 +1,11 @@
 package gui;
 
-<<<<<<< HEAD
 import gui.SettingsView.*;
-=======
->>>>>>> origin/JR-StudentManager
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
-<<<<<<< HEAD
 import ConfigurationAndLogging.*;
-=======
->>>>>>> origin/JR-StudentManager
 
 public class SettingsGUI extends JFrame {
     private String role;
@@ -40,7 +34,6 @@ public class SettingsGUI extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(new Color(248, 250, 252));
 
-<<<<<<< HEAD
         // Create the settings center (cards) and pass the same listener used by the pages
         IConfigChangeListener listener = new IConfigChangeListener() {
             @Override public void onScaleFactorChanged(double newScaleFactor) {
@@ -74,15 +67,6 @@ public class SettingsGUI extends JFrame {
         JPanel leftPanel = createCategoriesPanel(center);
         mainPanel.add(leftPanel, BorderLayout.WEST);
         mainPanel.add(center, BorderLayout.CENTER);
-=======
-        // Left Panel - Simple settings categories
-        JPanel leftPanel = createCategoriesPanel();
-        mainPanel.add(leftPanel, BorderLayout.WEST);
-
-        // Center Panel - Simple settings content
-        JPanel centerPanel = createSettingsContent();
-        mainPanel.add(centerPanel, BorderLayout.CENTER);
->>>>>>> origin/JR-StudentManager
 
         add(mainPanel, BorderLayout.CENTER);
     }
@@ -107,12 +91,8 @@ public class SettingsGUI extends JFrame {
         return headerPanel;
     }
 
-<<<<<<< HEAD
     // updated to accept the center so category buttons can switch views
     private JPanel createCategoriesPanel(SettingsCenter center) {
-=======
-    private JPanel createCategoriesPanel() {
->>>>>>> origin/JR-StudentManager
         JPanel categoriesPanel = new JPanel();
         categoriesPanel.setLayout(new BoxLayout(categoriesPanel, BoxLayout.Y_AXIS));
         categoriesPanel.setBackground(new Color(45, 55, 72));
@@ -128,16 +108,13 @@ public class SettingsGUI extends JFrame {
         categoriesPanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
         // Category buttons
-<<<<<<< HEAD
         
         JButton welcomeBtn = createCategoryButton("Welcome!");
         JButton detectionBtn = createCategoryButton("Camera Detection Settings");
-        JButton myPageBtn = createCategoryButton("My Page");
 
         // wire buttons to the center card layout (use constants from SettingsCenter)
         welcomeBtn.addActionListener(e -> center.showCard(SettingsCenter.WELCOME));
         detectionBtn.addActionListener(e -> center.showCard(SettingsCenter.DETECTION));
-        myPageBtn.addActionListener(e -> center.showCard(SettingsCenter.MYPAGE));
 
         // NOTE: MYPAGE is already registered in SettingsCenter (eager). Do NOT call center.addCard(...) here.
 
@@ -145,26 +122,14 @@ public class SettingsGUI extends JFrame {
         categoriesPanel.add(Box.createRigidArea(new Dimension(0, 8)));
         categoriesPanel.add(detectionBtn);
         categoriesPanel.add(Box.createRigidArea(new Dimension(0, 8)));
-        categoriesPanel.add(myPageBtn);
-=======
+
         JButton cameraBtn = createCategoryButton("Camera");
         JButton otherBtn = createCategoryButton("Some other Buttons");
         
 
-        categoriesPanel.add(cameraBtn);
-        categoriesPanel.add(Box.createRigidArea(new Dimension(0, 8)));
-        categoriesPanel.add(otherBtn);
->>>>>>> origin/JR-StudentManager
-        categoriesPanel.add(Box.createRigidArea(new Dimension(0, 8)));
-        
-
-        categoriesPanel.add(Box.createVerticalGlue());
-
         return categoriesPanel;
     }
 
-<<<<<<< HEAD
-    // createSettingsContent now provides the SettingsCenter wrapped in the same outer card style
     private JPanel createSettingsContent() {
         JPanel contentPanel = new JPanel(new BorderLayout());
         contentPanel.setBackground(new Color(248, 250, 252));
@@ -193,69 +158,9 @@ public class SettingsGUI extends JFrame {
         wrapper.add(card, gbc);
 
         contentPanel.add(wrapper, BorderLayout.CENTER);
-=======
-    private JPanel createSettingsContent() {
-        JPanel contentPanel = new JPanel(new GridBagLayout());
-        contentPanel.setBackground(new Color(248, 250, 252));
-
-        JPanel textPanel = new JPanel();
-        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
-        textPanel.setBackground(Color.WHITE);
-        textPanel.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
-            BorderFactory.createEmptyBorder(30, 30, 30, 30)
-        ));
-
-        // Welcome label
-        JLabel welcomeLabel = new JLabel("Settings & Configuration", SwingConstants.CENTER);
-        welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
-        welcomeLabel.setForeground(new Color(30, 41, 59));
-        welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        // Text area
-        JTextArea textArea = new JTextArea();
-        textArea.setEditable(false);
-        textArea.setOpaque(false);
-        textArea.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        textArea.setForeground(new Color(71, 85, 105));
-        textArea.setText("""
-        Welcome to the Settings & Configuration section.
-
-        Configure system preferences, camera settings, and application behavior.
-
-        Select a category from the sidebar to access specific settings.
-        """);
-        
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
-        textArea.setColumns(40); 
-        textArea.setAlignmentX(Component.CENTER_ALIGNMENT);
-        textArea.setMargin(new Insets(10, 30, 10, 30));
-
-        // System status panel
-        JPanel statusPanel = new JPanel(new GridLayout(1, 3, 20, 0));
-        statusPanel.setBackground(Color.WHITE);
-
-        statusPanel.add(createStatusCard("System Status", "🟢 Online", new Color(34, 197, 94)));
-        statusPanel.add(createStatusCard("Camera Status", "🟢 Connected", new Color(34, 197, 94)));
-        statusPanel.add(createStatusCard("Database Status", "🟢 Active", new Color(34, 197, 94)));
-
-        textPanel.add(Box.createRigidArea(new Dimension(0, 40)));
-        textPanel.add(welcomeLabel);
-        textPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        textPanel.add(textArea);
-        textPanel.add(Box.createRigidArea(new Dimension(0, 30)));
-        textPanel.add(statusPanel);
-
-        // Center the text block in the main content panel
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        contentPanel.add(textPanel, gbc);
-
->>>>>>> origin/JR-StudentManager
         return contentPanel;
+
+
     }
 
     // status card style at the buttom

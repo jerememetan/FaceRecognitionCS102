@@ -31,12 +31,7 @@ public class AppConfig {
     public final static String KEY_CAPTURE_MIN_CONFIDENCE_SCORE = "capture.min_confidence_score";
     public final static String KEY_CAPTURE_MIN_FACE_SIZE = "capture.min_face_size";
     public final static String KEY_CAPTURE_INTERVAL_MS = "capture.capture_interval_ms";
-<<<<<<< HEAD
-    public final static String KEY_CAPTURE_ATTEMPT_MULTIPLIER = "capture.capture_attempt_mutliplier"; // keep misspelling
-=======
-    public final static String KEY_CAPTURE_ATTEMPT_MULTIPLIER = "capture.capture_attempt_mutliplier"; // keep
-                                                                                                      // misspelling
->>>>>>> origin/JR-StudentManager
+    public final static String KEY_CAPTURE_ATTEMPT_MULTIPLIER = "capture.capture_attempt_mutliplier";
     public final static String KEY_CAPTURE_FRAME_WAIT_TIMEOUT_MS = "capture.frame_wait_timeout_ms";
     public final static String KEY_CAPTURE_FACE_PERSISTENCE_NS = "capture.face_persistence_ns";
 
@@ -82,10 +77,7 @@ public class AppConfig {
     public final static String KEY_RECOGNITION_COHORT_ENABLED = "recognition.cohort.enabled";
     public final static String KEY_RECOGNITION_COHORT_SIZE = "recognition.cohort.size";
     public final static String KEY_RECOGNITION_COHORT_Z_MIN = "recognition.cohort.z_min";
-<<<<<<< HEAD
-=======
     public final static String KEY_RECOGNITION_MIN_FACE_WIDTH_PX = "recognition.min.face.width.px";
->>>>>>> origin/JR-StudentManager
 
     // pruning / person thresholds
     public final static String KEY_PRUNING_ENABLED = "recognition.pruning.enabled";
@@ -150,15 +142,9 @@ public class AppConfig {
 
     /**
      * Clean up loaded properties:
-<<<<<<< HEAD
-     *  - Trim keys and values
-     *  - Remove trailing semicolons from values (e.g. "50;")
-     *  - Map known alias keys to canonical KEY_* names used by AppConfig
-=======
      * - Trim keys and values
      * - Remove trailing semicolons from values (e.g. "50;")
      * - Map known alias keys to canonical KEY_* names used by AppConfig
->>>>>>> origin/JR-StudentManager
      */
     private void normalizeProperties() {
         java.util.Map<String, String> aliases = new java.util.HashMap<>();
@@ -374,19 +360,10 @@ public class AppConfig {
             AppLogger.info(KEY_RECOGNITION_THRESHOLD + " has been changed to " + newIndex);
         }
     }
-    // KEY_RECOGNITION_IMAGE_FORMAT = ".jpg";
     public String getRecognitionImageFormat() {
-        return properties.getProperty(KEY_RECOGNITION_IMAGE_FORMAT, ".jpg");
+        return properties.getProperty(KEY_RECOGNITION_IMAGE_FORMAT, "jpg");
     }
 
-<<<<<<< HEAD
-=======
-    // KEY_RECOGNITION_IMAGE_FORMAT = ".jpg";
-    public String getRecognitionImageFormat() {
-        return properties.getProperty(KEY_RECOGNITION_IMAGE_FORMAT, ".jpg");
-    }
-
->>>>>>> origin/JR-StudentManager
     public void setRecognitionImageFormat(String Path) {
         if (Path == null) {
             AppLogger.error("Failed to change " + KEY_RECOGNITION_IMAGE_FORMAT + ".Name is null");
@@ -519,33 +496,13 @@ public class AppConfig {
 
     // embedding.modelPath (String)
     public String getEmbeddingModelPath() {
-<<<<<<< HEAD
-        return properties.getProperty(KEY_EMBEDDING_MODEL_PATH, "data/resources/openface.nn4.small2.v1.t7");
-=======
         return properties.getProperty(KEY_EMBEDDING_MODEL_PATH, "data/resources/arcface.onnx");
->>>>>>> origin/JR-StudentManager
     }
 
     public void setEmbeddingModelPath(String path) {
         if (path == null) {
             AppLogger.error("Failed to change " + KEY_EMBEDDING_MODEL_PATH + ".Path is null");
             return;
-<<<<<<< HEAD
-        }
-        properties.setProperty(KEY_EMBEDDING_MODEL_PATH, path);
-        AppLogger.info(KEY_EMBEDDING_MODEL_PATH + " has been changed to " + path);
-    }
-
-    // embedding.embedding.size (int)
-    public int getEmbeddingSize() {
-        String s = properties.getProperty(KEY_EMBEDDING_SIZE, "128");
-        try {
-            return Integer.parseInt(s);
-        } catch (NumberFormatException ex) {
-            AppLogger.error("Config error: Invalid number format for " + KEY_EMBEDDING_SIZE, ex);
-            return 128;
-=======
->>>>>>> origin/JR-StudentManager
         }
         properties.setProperty(KEY_EMBEDDING_MODEL_PATH, path);
         AppLogger.info(KEY_EMBEDDING_MODEL_PATH + " has been changed to " + path);
@@ -773,206 +730,8 @@ public class AppConfig {
         AppLogger.info(KEY_EXPORT_PDF_FOLDER + " has been changed to " + path);
     }
 
-    public void setEmbeddingSize(int value) {
-        if (value <= 0) {
-            AppLogger.error("Failed to change " + KEY_EMBEDDING_SIZE + ".Value is invalid");
-            return;
-        }
-        properties.setProperty(KEY_EMBEDDING_SIZE, String.valueOf(value));
-        AppLogger.info(KEY_EMBEDDING_SIZE + " has been changed to " + value);
-    }
-
-    // embedding.input_size (int)
-    public int getEmbeddingInputSize() {
-        String s = properties.getProperty(KEY_EMBEDDING_INPUT_SIZE, "96");
-        try {
-            return Integer.parseInt(s);
-        } catch (NumberFormatException ex) {
-            AppLogger.error("Config error: Invalid number format for " + KEY_EMBEDDING_INPUT_SIZE, ex);
-            return 96;
-        }
-    }
-
-    public void setEmbeddingInputSize(int value) {
-        if (value <= 0) {
-            AppLogger.error("Failed to change " + KEY_EMBEDDING_INPUT_SIZE + ".Value is invalid");
-            return;
-        }
-        properties.setProperty(KEY_EMBEDDING_INPUT_SIZE, String.valueOf(value));
-        AppLogger.info(KEY_EMBEDDING_INPUT_SIZE + " has been changed to " + value);
-    }
-
-    // database.URL, database.user, database.password (String)
-    public String getDatabaseURL() {
-        return properties.getProperty(KEY_DATABASE_URL, "");
-    }
-
-    public void setDatabaseURL(String url) {
-        if (url == null) {
-            AppLogger.error("Failed to change " + KEY_DATABASE_URL + ".Value is null");
-            return;
-        }
-        properties.setProperty(KEY_DATABASE_URL, url);
-        AppLogger.info(KEY_DATABASE_URL + " has been changed to " + url);
-    }
-
-    public String getDatabaseUser() {
-        return properties.getProperty(KEY_DATABASE_USER, "");
-    }
-
-    public void setDatabaseUser(String user) {
-        if (user == null) {
-            AppLogger.error("Failed to change " + KEY_DATABASE_USER + ".Value is null");
-            return;
-        }
-        properties.setProperty(KEY_DATABASE_USER, user);
-        AppLogger.info(KEY_DATABASE_USER + " has been changed to " + user);
-    }
-
-    public String getDatabasePassword() {
-        return properties.getProperty(KEY_DATABASE_PASSWORD, "");
-    }
-
-    public void setDatabasePassword(String password) {
-        if (password == null) {
-            AppLogger.error("Failed to change " + KEY_DATABASE_PASSWORD + ".Value is null");
-            return;
-        }
-        properties.setProperty(KEY_DATABASE_PASSWORD, password);
-        AppLogger.info(KEY_DATABASE_PASSWORD + " has been changed.");
-    }
-
-    // detection.model_configuration_path & detection.model_weights
-    public String getDetectionModelConfigurationPath() {
-        return properties.getProperty(KEY_DETECTION_MODEL_CONFIG, "data/resources/opencv_face_detector.pbtxt");
-    }
-
-    public void setDetectionModelConfigurationPath(String path) {
-        if (path == null) {
-            AppLogger.error("Failed to change " + KEY_DETECTION_MODEL_CONFIG + ".Path is null");
-            return;
-        }
-        properties.setProperty(KEY_DETECTION_MODEL_CONFIG, path);
-        AppLogger.info(KEY_DETECTION_MODEL_CONFIG + " has been changed to " + path);
-    }
-
-    public String getDetectionModelWeightsPath() {
-        return properties.getProperty(KEY_DETECTION_MODEL_WEIGHTS, "data/resources/opencv_face_detector_uint8.pb");
-    }
-
-    public void setDetectionModelWeightsPath(String path) {
-        if (path == null) {
-            AppLogger.error("Failed to change " + KEY_DETECTION_MODEL_WEIGHTS + ".Path is null");
-            return;
-        }
-        properties.setProperty(KEY_DETECTION_MODEL_WEIGHTS, path);
-        AppLogger.info(KEY_DETECTION_MODEL_WEIGHTS + " has been changed to " + path);
-    }
-
-    // preprocessing.* numeric thresholds
-    public double getPreprocessingMinSharpnessThreshold() {
-        String s = properties.getProperty(KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, "80.0");
-        try {
-            return Double.parseDouble(s);
-        } catch (NumberFormatException ex) {
-            AppLogger.error("Config error: Invalid number format for " + KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, ex);
-            return 80.0;
-        }
-    }
-
-    public void setPreprocessingMinSharpnessThreshold(Double value) {
-        if (value == null) {
-            AppLogger.error("Failed to change " + KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD + ".Value is null");
-            return;
-        }
-        properties.setProperty(KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, String.valueOf(value));
-        AppLogger.info(KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD + " has been changed to " + value);
-    }
-
-    public int getPreprocessingMinBrightness() {
-        String s = properties.getProperty(KEY_PREPROCESSING_MIN_BRIGHTNESS, "30");
-        try {
-            return Integer.parseInt(s);
-        } catch (NumberFormatException ex) {
-            AppLogger.error("Config error: Invalid number format for " + KEY_PREPROCESSING_MIN_BRIGHTNESS, ex);
-            return 30;
-        }
-    }
-
-    public void setPreprocessingMinBrightness(int value) {
-        properties.setProperty(KEY_PREPROCESSING_MIN_BRIGHTNESS, String.valueOf(value));
-        AppLogger.info(KEY_PREPROCESSING_MIN_BRIGHTNESS + " has been changed to " + value);
-    }
-
-    public int getPreprocessingMaxBrightness() {
-        String s = properties.getProperty(KEY_PREPROCESSING_MAX_BRIGHTNESS, "230");
-        try {
-            return Integer.parseInt(s);
-        } catch (NumberFormatException ex) {
-            AppLogger.error("Config error: Invalid number format for " + KEY_PREPROCESSING_MAX_BRIGHTNESS, ex);
-            return 230;
-        }
-    }
-
-    public void setPreprocessingMaxBrightness(int value) {
-        properties.setProperty(KEY_PREPROCESSING_MAX_BRIGHTNESS, String.valueOf(value));
-        AppLogger.info(KEY_PREPROCESSING_MAX_BRIGHTNESS + " has been changed to " + value);
-    }
-
-    public int getPreprocessingMinContrast() {
-        String s = properties.getProperty(KEY_PREPROCESSING_MIN_CONTRAST, "20");
-        try {
-            return Integer.parseInt(s);
-        } catch (NumberFormatException ex) {
-            AppLogger.error("Config error: Invalid number format for " + KEY_PREPROCESSING_MIN_CONTRAST, ex);
-            return 20;
-        }
-    }
-
-    public void setPreprocessingMinContrast(int value) {
-        properties.setProperty(KEY_PREPROCESSING_MIN_CONTRAST, String.valueOf(value));
-        AppLogger.info(KEY_PREPROCESSING_MIN_CONTRAST + " has been changed to " + value);
-    }
-
     // export.* folder paths
-    public String getExportCsvFolderPath() {
-        return properties.getProperty(KEY_EXPORT_CSV_FOLDER, "./data/export/CSV/");
-    }
 
-    public void setExportCsvFolderPath(String path) {
-        if (path == null) {
-            AppLogger.error("Failed to change " + KEY_EXPORT_CSV_FOLDER + ".Path is null");
-            return;
-        }
-        properties.setProperty(KEY_EXPORT_CSV_FOLDER, path);
-        AppLogger.info(KEY_EXPORT_CSV_FOLDER + " has been changed to " + path);
-    }
-
-    public String getExportExcelFolderPath() {
-        return properties.getProperty(KEY_EXPORT_EXCEL_FOLDER, "./data/export/Excel/");
-    }
-
-    public void setExportExcelFolderPath(String path) {
-        if (path == null) {
-            AppLogger.error("Failed to change " + KEY_EXPORT_EXCEL_FOLDER + ".Path is null");
-            return;
-        }
-        properties.setProperty(KEY_EXPORT_EXCEL_FOLDER, path);
-        AppLogger.info(KEY_EXPORT_EXCEL_FOLDER + " has been changed to " + path);
-    }
-
-    public String getExportPdfFolderPath() {
-        return properties.getProperty(KEY_EXPORT_PDF_FOLDER, "./data/export/PDF/");
-    }
-
-    public void setExportPdfFolderPath(String path) {
-        if (path == null) {
-            AppLogger.error("Failed to change " + KEY_EXPORT_PDF_FOLDER + ".Path is null");
-            return;
-        }
-        properties.setProperty(KEY_EXPORT_PDF_FOLDER, path);
-        AppLogger.info(KEY_EXPORT_PDF_FOLDER + " has been changed to " + path);
-    }
 
 
 

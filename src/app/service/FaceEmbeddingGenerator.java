@@ -16,10 +16,7 @@ public class FaceEmbeddingGenerator {
     private boolean isInitialized = false;
     private FaceAligner aligner;
 
-<<<<<<< HEAD
-=======
     private static final boolean DEBUG_LOGS = false;
->>>>>>> origin/JR-StudentManager
 
     private static final int EMBEDDING_SIZE = AppConfig.getInstance().getEmbeddingSize();
     private static final int INPUT_S = AppConfig.getInstance().getEmbeddingInputSize();

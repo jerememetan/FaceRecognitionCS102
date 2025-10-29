@@ -86,13 +86,12 @@ public class SessionManager {
             System.out.println("Session not found.");
         }
     }
-    public List<Session> getAllSessions() {
-        // TODO: Implement
-        return java.util.Collections.emptyList();
-    }
 
-    public void openSession(int sessionId) {
-        // TODO: Implement
+    public List<Session> getAllSessions() {
+        return new ArrayList<>(sessions.values());
+    }
+    public Session getSessionById(int id) {
+        return sessions.get(id);
     }
     public boolean deleteSession(int id) {
         if (sessions.containsKey(id) && sessions.get(id).isActive() == false) {
@@ -104,4 +103,3 @@ public class SessionManager {
         return false; // Session not found
     }
 }
->>>>>>> origin/JR-StudentManager
