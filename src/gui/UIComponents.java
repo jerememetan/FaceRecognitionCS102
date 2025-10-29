@@ -62,7 +62,6 @@ public final class UIComponents {
 			public void mouseEntered(MouseEvent e) {
 				button.setBackground(new Color(37, 99, 235));
 			}
-
 			@Override
 			public void mouseExited(MouseEvent e) {
 				button.setBackground(new Color(59, 130, 246));
