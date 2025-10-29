@@ -12,7 +12,8 @@ import java.util.Comparator;
 
 public class ImageProcessor {
 
-    private static final double MIN_SHARPNESS_THRESHOLD = AppConfig.getInstance().getPreprocessingMinSharpnessThreshold();
+    private static final double MIN_SHARPNESS_THRESHOLD = AppConfig.getInstance()
+            .getPreprocessingMinSharpnessThreshold();
     private static final double MIN_BRIGHTNESS = AppConfig.getInstance().getPreprocessingMinBrightness();
     private static final double MAX_BRIGHTNESS = AppConfig.getInstance().getPreprocessingMaxBrightness();
     private static final double MIN_CONTRAST = AppConfig.getInstance().getPreprocessingMinContrast();
@@ -27,12 +28,10 @@ public class ImageProcessor {
         Mat resized = new Mat();
         Imgproc.resize(faceImage, resized, STANDARD_SIZE, 0, 0, Imgproc.INTER_CUBIC);
 
-        Mat normalized = new Mat();
-        Core.normalize(resized, normalized, 0, 255, Core.NORM_MINMAX, CvType.CV_8U);
-        // Release intermediate Mats
-        resized.release();       
+        // ✅ REMOVE Core.normalize() - it destroys identity information!
+        // Just return the resized image with natural contrast/brightness preserved
 
-        return normalized;
+        return resized;
     }
 
     public ImageQualityResult validateImageQualityDetailed(Mat image) {

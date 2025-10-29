@@ -1,0 +1,6 @@
+[2025-10-23 03:35:56] INFO: Application Logger Initialized.
+[2025-10-23 03:35:56] INFO: app.properties normalized (55 entries).
+[2025-10-23 03:35:56] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
+[2025-10-23 03:35:56] INFO: CSV file [ 
+[2025-10-23 03:35:56] INFO: StudentFaceRecognitionData4.csv
+[2025-10-23 03:35:56] INFO:  ] created successfully!

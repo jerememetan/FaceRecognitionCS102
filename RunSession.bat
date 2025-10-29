@@ -1,1 +1,1 @@
-java -cp "./compiled;./lib/*" app.gui.SessionViewer
+java -cp "compiled;lib/*" app.gui.SessionViewer

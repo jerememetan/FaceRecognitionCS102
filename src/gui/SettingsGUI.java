@@ -1,9 +1,11 @@
 package gui;
 
+import gui.SettingsView.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
+import ConfigurationAndLogging.*;
 
 public class SettingsGUI extends JFrame {
     private String role;
@@ -32,13 +34,39 @@ public class SettingsGUI extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(new Color(248, 250, 252));
 
-        // Left Panel - Simple settings categories
-        JPanel leftPanel = createCategoriesPanel();
-        mainPanel.add(leftPanel, BorderLayout.WEST);
+        // Create the settings center (cards) and pass the same listener used by the pages
+        IConfigChangeListener listener = new IConfigChangeListener() {
+            @Override public void onScaleFactorChanged(double newScaleFactor) {
+                AppConfig.getInstance().setDetectionScaleFactor(newScaleFactor);
+                AppLogger.info("Detection scale factor changed to " + newScaleFactor);
+            }
+            @Override public void onMinNeighborsChanged(int newMinNeighbors) {
+                AppConfig.getInstance().setDetectionMinNeighbors(newMinNeighbors);
+                AppLogger.info("Min neighbors changed to " + newMinNeighbors);
+            }
+            @Override public void onMinSizeChanged(int newMinSize) {
+                AppConfig.getInstance().setDetectionMinSize(newMinSize);
+                AppLogger.info("Min size changed to " + newMinSize);
+            }
+            @Override public void onCaptureFaceRequested() {
+                AppLogger.warn("Capture requested from Settings GUI - no student selected.");
+                JOptionPane.showMessageDialog(SettingsGUI.this,
+                        "Capture action requires selecting a student. Open the Student Management / Face Capture dialog.",
+                        "Capture unavailable", JOptionPane.INFORMATION_MESSAGE);
+            }
+            @Override public void onSaveSettingsRequested() {
+                AppConfig.getInstance().save();
+                AppLogger.info("Settings saved from SettingsGUI");
+                JOptionPane.showMessageDialog(SettingsGUI.this, "Settings saved", "Saved", JOptionPane.INFORMATION_MESSAGE);
+            }
+        };
 
         // Center Panel - Simple settings content
-        JPanel centerPanel = createSettingsContent();
-        mainPanel.add(centerPanel, BorderLayout.CENTER);
+        SettingsCenter center = new SettingsCenter(listener);
+        // Left Panel - categories wired to center
+        JPanel leftPanel = createCategoriesPanel(center);
+        mainPanel.add(leftPanel, BorderLayout.WEST);
+        mainPanel.add(center, BorderLayout.CENTER);
 
         add(mainPanel, BorderLayout.CENTER);
     }
@@ -63,7 +91,8 @@ public class SettingsGUI extends JFrame {
         return headerPanel;
     }
 
-    private JPanel createCategoriesPanel() {
+    // updated to accept the center so category buttons can switch views
+    private JPanel createCategoriesPanel(SettingsCenter center) {
         JPanel categoriesPanel = new JPanel();
         categoriesPanel.setLayout(new BoxLayout(categoriesPanel, BoxLayout.Y_AXIS));
         categoriesPanel.setBackground(new Color(45, 55, 72));
@@ -79,82 +108,59 @@ public class SettingsGUI extends JFrame {
         categoriesPanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
         // Category buttons
+        
+        JButton welcomeBtn = createCategoryButton("Welcome!");
+        JButton detectionBtn = createCategoryButton("Camera Detection Settings");
+
+        // wire buttons to the center card layout (use constants from SettingsCenter)
+        welcomeBtn.addActionListener(e -> center.showCard(SettingsCenter.WELCOME));
+        detectionBtn.addActionListener(e -> center.showCard(SettingsCenter.DETECTION));
+
+        // NOTE: MYPAGE is already registered in SettingsCenter (eager). Do NOT call center.addCard(...) here.
+
+        categoriesPanel.add(welcomeBtn);
+        categoriesPanel.add(Box.createRigidArea(new Dimension(0, 8)));
+        categoriesPanel.add(detectionBtn);
+        categoriesPanel.add(Box.createRigidArea(new Dimension(0, 8)));
+
         JButton cameraBtn = createCategoryButton("Camera");
         JButton otherBtn = createCategoryButton("Some other Buttons");
         
-
-        categoriesPanel.add(cameraBtn);
-        categoriesPanel.add(Box.createRigidArea(new Dimension(0, 8)));
-        categoriesPanel.add(otherBtn);
-        categoriesPanel.add(Box.createRigidArea(new Dimension(0, 8)));
-        
-
-        categoriesPanel.add(Box.createVerticalGlue());
 
         return categoriesPanel;
     }
 
     private JPanel createSettingsContent() {
-        JPanel contentPanel = new JPanel(new GridBagLayout());
+        JPanel contentPanel = new JPanel(new BorderLayout());
         contentPanel.setBackground(new Color(248, 250, 252));
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
 
-        JPanel textPanel = new JPanel();
-        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
-        textPanel.setBackground(Color.WHITE);
-        textPanel.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
-            BorderFactory.createEmptyBorder(30, 30, 30, 30)
+        // Inner white card to match previous style
+        JPanel card = new JPanel(new BorderLayout());
+        card.setBackground(Color.WHITE);
+        card.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
+                BorderFactory.createEmptyBorder(8, 8, 8, 8)
         ));
 
-        // Welcome label
-        JLabel welcomeLabel = new JLabel("Settings & Configuration", SwingConstants.CENTER);
-        welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
-        welcomeLabel.setForeground(new Color(30, 41, 59));
-        welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // The actual center is created in createUI; return an empty placeholder here to keep compatibility
+        // This method is no longer used directly in the new createUI flow, but kept for parity.
+        card.add(new JLabel(""), BorderLayout.CENTER);
 
-        // Text area
-        JTextArea textArea = new JTextArea();
-        textArea.setEditable(false);
-        textArea.setOpaque(false);
-        textArea.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        textArea.setForeground(new Color(71, 85, 105));
-        textArea.setText("""
-        Welcome to the Settings & Configuration section.
-
-        Configure system preferences, camera settings, and application behavior.
-
-        Select a category from the sidebar to access specific settings.
-        """);
-        
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
-        textArea.setColumns(40); 
-        textArea.setAlignmentX(Component.CENTER_ALIGNMENT);
-        textArea.setMargin(new Insets(10, 30, 10, 30));
-
-        // System status panel
-        JPanel statusPanel = new JPanel(new GridLayout(1, 3, 20, 0));
-        statusPanel.setBackground(Color.WHITE);
-
-        statusPanel.add(createStatusCard("System Status", "🟢 Online", new Color(34, 197, 94)));
-        statusPanel.add(createStatusCard("Camera Status", "🟢 Connected", new Color(34, 197, 94)));
-        statusPanel.add(createStatusCard("Database Status", "🟢 Active", new Color(34, 197, 94)));
-
-        textPanel.add(Box.createRigidArea(new Dimension(0, 40)));
-        textPanel.add(welcomeLabel);
-        textPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        textPanel.add(textArea);
-        textPanel.add(Box.createRigidArea(new Dimension(0, 30)));
-        textPanel.add(statusPanel);
-
-        // Center the text block in the main content panel
+        JPanel wrapper = new JPanel(new GridBagLayout());
+        wrapper.setBackground(new Color(248, 250, 252));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        contentPanel.add(textPanel, gbc);
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        gbc.fill = GridBagConstraints.BOTH;
+        wrapper.add(card, gbc);
 
+        contentPanel.add(wrapper, BorderLayout.CENTER);
         return contentPanel;
+
+
     }
 
     // status card style at the buttom

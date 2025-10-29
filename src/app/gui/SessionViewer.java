@@ -1,27 +1,33 @@
 package app.gui;
 
+import java.util.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import app.entity.Session;
 import app.test.SessionManager;
-
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 public class SessionViewer extends JFrame {
 
     private SessionManager manager;
     private JTable sessionTable;
     private DefaultTableModel tableModel;
+    private JTextField searchField;
     private JButton refreshButton, createButton, deleteButton;
+    private TableRowSorter<DefaultTableModel> sorter; // For filtering
 
     public SessionViewer(SessionManager manager) {
         this.manager = manager;
 
         setTitle("Sessions List");
-        setSize(1000, 600);
+        setSize(1100, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel viewerPanel = new JPanel(new BorderLayout(10, 10));
         viewerPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
@@ -40,8 +46,23 @@ public class SessionViewer extends JFrame {
 
         sessionTable = new JTable(tableModel);
         sessionTable.setRowHeight(30);
+        sessionTable.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        sessionTable.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 16));
+        sessionTable.getColumnModel().getColumn(0).setPreferredWidth(50);  // ID
+        sessionTable.getColumnModel().getColumn(1).setPreferredWidth(200); // Session Name
+        sessionTable.getColumnModel().getColumn(2).setPreferredWidth(100); // Date
+        sessionTable.getColumnModel().getColumn(3).setPreferredWidth(80);  // Start
+        sessionTable.getColumnModel().getColumn(4).setPreferredWidth(80);  // End
+        sessionTable.getColumnModel().getColumn(5).setPreferredWidth(120); // Location
+        sessionTable.getColumnModel().getColumn(6).setPreferredWidth(80);  // Status
+
         sessionTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         sessionTable.getTableHeader().setReorderingAllowed(false);
+        sessionTable.getTableHeader().setResizingAllowed(false);
+
+        sorter = new TableRowSorter<>(tableModel);
+        sessionTable.setRowSorter(sorter);
+
 
         JScrollPane scrollPane = new JScrollPane(sessionTable);
         TitledBorder border = BorderFactory.createTitledBorder("Double click a session to view details");
@@ -51,6 +72,21 @@ public class SessionViewer extends JFrame {
 
         // Top panel (Refresh + Create)
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+
+        JPanel searchPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        JLabel searchLabel = new JLabel("Search for session by name:");
+        searchLabel.setFont(new Font("SansSerif", Font.BOLD, 15));
+        searchField = new JTextField(30);
+        searchField.setFont(new Font("SansSerif", Font.PLAIN, 15));
+        searchField.setPreferredSize(new Dimension(100, 35));
+        searchPanel.add(searchLabel);
+        searchField.setBorder(BorderFactory.createCompoundBorder(
+            searchField.getBorder(), 
+            BorderFactory.createEmptyBorder(5, 5, 5, 5)
+        ));
+
+        searchPanel.add(searchField);
+        topPanel.add(searchPanel, BorderLayout.WEST);
         refreshButton = new JButton("Refresh");
         createButton = new JButton("➕ Create Session");
         deleteButton = new JButton("🗑️ Delete Session");
@@ -60,6 +96,21 @@ public class SessionViewer extends JFrame {
         topPanel.add(deleteButton);
         viewerPanel.add(topPanel, BorderLayout.NORTH);
 
+        searchField.getDocument().addDocumentListener(new DocumentListener() {
+            private void update() {
+                String text = searchField.getText().trim().toLowerCase();
+                if (text.isEmpty()) {
+                    sorter.setRowFilter(null); // show all
+                } else {
+                    sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text, 1)); // filter by session name
+                }
+            }
+            public void insertUpdate(DocumentEvent e) { update(); }
+            public void removeUpdate(DocumentEvent e) { update(); }
+            public void changedUpdate(DocumentEvent e) { update(); }
+        });
+
+
         refreshButton.addActionListener(e -> refreshTable());
 
         createButton.addActionListener(e -> {
@@ -68,13 +119,15 @@ public class SessionViewer extends JFrame {
             refreshTable();
         });
 
+
+
         deleteButton.addActionListener(e -> deleteSession());
 
         // --- Double-click a row to view details ---
         sessionTable.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
+            public void mousePressed(MouseEvent e) {
+                if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
                     int selectedRow = sessionTable.getSelectedRow();
                     System.out.println("Double-clicked row: " + selectedRow);
                     if (selectedRow >= 0) {
@@ -94,7 +147,8 @@ public class SessionViewer extends JFrame {
                                 .findFirst()
                                 .orElse(null);
                         if (session != null) {
-                            new SessionRosterManagement(manager, session);
+                            SessionRosterManagement rosterManagement = new SessionRosterManagement(SessionViewer.this, manager, session);
+                            rosterManagement.setVisible(true);
                         }
                     }
                 }
@@ -153,21 +207,16 @@ public class SessionViewer extends JFrame {
                     s.getStartTime(),
                     s.getEndTime(),
                     s.getLocation(),
-                    s.isActive() ? "Open" : "Closed"
+                    s.isActive() ? "Opened" : "Closed"
             });
         }
     }
 
     // Demo main method
     public static void main(String[] args) {
+        System.out.println("Launching Session Viewer...");
         SessionManager manager = new SessionManager();
-
-        // Sample Data sessions
-        manager.createSession("Math Workshop", java.time.LocalDate.now(),
-                java.time.LocalTime.of(9, 0), java.time.LocalTime.of(11, 0), "Room 101");
-        manager.createSession("AI Seminar", java.time.LocalDate.now(),
-                java.time.LocalTime.of(13, 0), java.time.LocalTime.of(15, 0), "Lab A");
-
+        manager.populateSessions();
         new SessionViewer(manager);
     }
 }

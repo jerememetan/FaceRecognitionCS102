@@ -31,7 +31,7 @@ public class AppConfig {
     public final static String KEY_CAPTURE_MIN_CONFIDENCE_SCORE = "capture.min_confidence_score";
     public final static String KEY_CAPTURE_MIN_FACE_SIZE = "capture.min_face_size";
     public final static String KEY_CAPTURE_INTERVAL_MS = "capture.capture_interval_ms";
-    public final static String KEY_CAPTURE_ATTEMPT_MULTIPLIER = "capture.capture_attempt_mutliplier"; // keep misspelling
+    public final static String KEY_CAPTURE_ATTEMPT_MULTIPLIER = "capture.capture_attempt_mutliplier";
     public final static String KEY_CAPTURE_FRAME_WAIT_TIMEOUT_MS = "capture.frame_wait_timeout_ms";
     public final static String KEY_CAPTURE_FACE_PERSISTENCE_NS = "capture.face_persistence_ns";
 
@@ -77,6 +77,7 @@ public class AppConfig {
     public final static String KEY_RECOGNITION_COHORT_ENABLED = "recognition.cohort.enabled";
     public final static String KEY_RECOGNITION_COHORT_SIZE = "recognition.cohort.size";
     public final static String KEY_RECOGNITION_COHORT_Z_MIN = "recognition.cohort.z_min";
+    public final static String KEY_RECOGNITION_MIN_FACE_WIDTH_PX = "recognition.min.face.width.px";
 
     // pruning / person thresholds
     public final static String KEY_PRUNING_ENABLED = "recognition.pruning.enabled";
@@ -131,16 +132,19 @@ public class AppConfig {
             AppLogger.error("Error reading app.properties file.", ex);
         } finally {
             if (input != null) {
-                try { input.close(); } catch (IOException ignored) {}
+                try {
+                    input.close();
+                } catch (IOException ignored) {
+                }
             }
         }
     }
 
     /**
      * Clean up loaded properties:
-     *  - Trim keys and values
-     *  - Remove trailing semicolons from values (e.g. "50;")
-     *  - Map known alias keys to canonical KEY_* names used by AppConfig
+     * - Trim keys and values
+     * - Remove trailing semicolons from values (e.g. "50;")
+     * - Map known alias keys to canonical KEY_* names used by AppConfig
      */
     private void normalizeProperties() {
         java.util.Map<String, String> aliases = new java.util.HashMap<>();
@@ -356,9 +360,8 @@ public class AppConfig {
             AppLogger.info(KEY_RECOGNITION_THRESHOLD + " has been changed to " + newIndex);
         }
     }
-    // KEY_RECOGNITION_IMAGE_FORMAT = ".jpg";
     public String getRecognitionImageFormat() {
-        return properties.getProperty(KEY_RECOGNITION_IMAGE_FORMAT, ".jpg");
+        return properties.getProperty(KEY_RECOGNITION_IMAGE_FORMAT, "jpg");
     }
 
     public void setRecognitionImageFormat(String Path) {
@@ -493,7 +496,7 @@ public class AppConfig {
 
     // embedding.modelPath (String)
     public String getEmbeddingModelPath() {
-        return properties.getProperty(KEY_EMBEDDING_MODEL_PATH, "data/resources/openface.nn4.small2.v1.t7");
+        return properties.getProperty(KEY_EMBEDDING_MODEL_PATH, "data/resources/arcface.onnx");
     }
 
     public void setEmbeddingModelPath(String path) {
@@ -507,12 +510,12 @@ public class AppConfig {
 
     // embedding.embedding.size (int)
     public int getEmbeddingSize() {
-        String s = properties.getProperty(KEY_EMBEDDING_SIZE, "128");
+        String s = properties.getProperty(KEY_EMBEDDING_SIZE, "512");
         try {
             return Integer.parseInt(s);
         } catch (NumberFormatException ex) {
             AppLogger.error("Config error: Invalid number format for " + KEY_EMBEDDING_SIZE, ex);
-            return 128;
+            return 512;
         }
     }
 
@@ -527,11 +530,21 @@ public class AppConfig {
 
     // embedding.input_size (int)
     public int getEmbeddingInputSize() {
-        String s = properties.getProperty(KEY_EMBEDDING_INPUT_SIZE, "96");
+        String s = properties.getProperty(KEY_EMBEDDING_INPUT_SIZE, "112");
         try {
             return Integer.parseInt(s);
         } catch (NumberFormatException ex) {
             AppLogger.error("Config error: Invalid number format for " + KEY_EMBEDDING_INPUT_SIZE, ex);
+            return 112;
+        }
+    }
+
+    public int getRecognitionMinFaceWidthPx() {
+        String s = properties.getProperty(KEY_RECOGNITION_MIN_FACE_WIDTH_PX, "96");
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            AppLogger.error("Config error: Invalid number format for " + KEY_RECOGNITION_MIN_FACE_WIDTH_PX, ex);
             return 96;
         }
     }
@@ -716,6 +729,9 @@ public class AppConfig {
         properties.setProperty(KEY_EXPORT_PDF_FOLDER, path);
         AppLogger.info(KEY_EXPORT_PDF_FOLDER + " has been changed to " + path);
     }
+
+    // export.* folder paths
+
 
 
 

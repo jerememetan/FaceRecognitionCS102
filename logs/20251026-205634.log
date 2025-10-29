@@ -1,0 +1,23 @@
+[2025-10-26 20:56:34] INFO: Application Logger Initialized.
+[2025-10-26 20:56:34] INFO: app.properties normalized (55 entries).
+[2025-10-26 20:56:34] INFO: Configuration loaded from file: C:\Users\Jereme\OneDrive\Pictures\Documents\GITHUB SHIT\FaceRecognitionCS102\app.properties
+[2025-10-26 20:56:34] SEVERE: Exception in thread "AWT-EventQueue-0" 
+[2025-10-26 20:56:34] SEVERE: java.lang.UnsatisfiedLinkError: no opencv_java480 in java.library.path: C:\Program Files\Eclipse Adoptium\jdk-25.0.0.36-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Eclipse Adoptium\jdk-25.0.0.36-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Eclipse Adoptium\jdk-17.0.12.7-hotspot\bin;C:\Python312\Scripts\;C:\Python312\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\Go\bin;C:\Program Files\nodejs\;C:\Users\Jereme\AppData\Local\Microsoft\WindowsApps;C:\Users\Jereme\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Jereme\AppData\Local\GitHubDesktop\bin;C:\Users\Jereme\AppData\Roaming\npm;c:\Users\Jereme\.vscode\extensions\ms-python.debugpy-2025.14.1-win32-x64\bundled\scripts\noConfigScripts;c:\Users\Jereme\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;.
+[2025-10-26 20:56:34] SEVERE: 	at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2285)
+[2025-10-26 20:56:34] SEVERE: 	at java.base/java.lang.Runtime.loadLibrary0(Runtime.java:822)
+[2025-10-26 20:56:34] SEVERE: 	at java.base/java.lang.System.loadLibrary(System.java:1685)
+[2025-10-26 20:56:34] SEVERE: 	at app.service.FaceDetection.initializeDetectors(FaceDetection.java:81)
+[2025-10-26 20:56:34] SEVERE: 	at app.service.FaceDetection.<init>(FaceDetection.java:67)
+[2025-10-26 20:56:34] SEVERE: 	at app.service.StudentManager.<init>(StudentManager.java:17)
+[2025-10-26 20:56:34] SEVERE: 	at app.gui.StudentEnrollmentGUI.initializeServices(StudentEnrollmentGUI.java:40)
+[2025-10-26 20:56:34] SEVERE: 	at app.gui.StudentEnrollmentGUI.<init>(StudentEnrollmentGUI.java:33)
+[2025-10-26 20:56:34] SEVERE: 	at app.Main.lambda$main$0(Main.java:19)
+[2025-10-26 20:56:34] SEVERE: 	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:323)
+[2025-10-26 20:56:34] SEVERE: 	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:723)
+[2025-10-26 20:56:34] SEVERE: 	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+[2025-10-26 20:56:34] SEVERE: 	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+[2025-10-26 20:56:34] SEVERE: 	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+[2025-10-26 20:56:34] SEVERE: 	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+[2025-10-26 20:56:34] SEVERE: 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+[2025-10-26 20:56:34] SEVERE: 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+[2025-10-26 20:56:34] SEVERE: 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)

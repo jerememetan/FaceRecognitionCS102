@@ -1,0 +1,203 @@
+[2025-10-24 17:00:13] INFO: Application Logger Initialized.
+[2025-10-24 17:00:13] INFO: app.properties normalized (56 entries).
+[2025-10-24 17:00:13] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
+[2025-10-24 17:00:16] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
+[2025-10-24 17:00:16] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-24 17:00:16] INFO: StudentManager initialized successfully
+[2025-10-24 17:00:18] INFO: GUI launched successfully
+[2025-10-24 17:00:23] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
+[2025-10-24 17:00:23] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-24 17:00:23] INFO: FaceCaptureDialog created for student: jereme
+[2025-10-24 17:00:23] INFO: Dialog initialized
+[2025-10-24 17:00:23] INFO: Starting camera preview...
+[2025-10-24 17:00:23] INFO: Preview timer started at 20fps
+[2025-10-24 17:00:36] INFO: Starting capture process...
+[2025-10-24 17:00:36] INFO: Performing capture with target: 20
+[2025-10-24 17:00:36] INFO: Debug: Capture process started
+[2025-10-24 17:00:36] INFO: Debug: Image saved with confidence 0.99
+[2025-10-24 17:00:37] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:00:39] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:00:40] INFO: Debug: Image saved with confidence 0.98
+[2025-10-24 17:00:41] INFO: Debug: Image saved with confidence 0.61
+[2025-10-24 17:00:43] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:00:44] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:00:46] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:00:47] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:00:49] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:00:50] INFO: Debug: Image saved with confidence 0.93
+[2025-10-24 17:00:51] INFO: Debug: Image saved with confidence 2.33
+[2025-10-24 17:00:53] INFO: Debug: Image saved with confidence 0.99
+[2025-10-24 17:00:54] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:00:56] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:00:57] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:00:59] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:01:00] INFO: Debug: Image saved with confidence 0.99
+[2025-10-24 17:01:01] INFO: Debug: Image saved with confidence 0.99
+[2025-10-24 17:01:03] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:01:04] INFO: Debug: Capture process finished
+[2025-10-24 17:01:04] INFO: Debug: Warning - Processing captured images...
+[2025-10-24 17:01:05] INFO: ￢ﾜﾓ Saved embedding: S00001_001.emb
+[2025-10-24 17:01:05] INFO: ￢ﾜﾓ Saved embedding: S00001_002.emb
+[2025-10-24 17:01:05] INFO: ￢ﾜﾓ Saved embedding: S00001_003.emb
+[2025-10-24 17:01:05] INFO: ￢ﾜﾓ Saved embedding: S00001_004.emb
+[2025-10-24 17:01:05] INFO: ￢ﾜﾓ Saved embedding: S00001_005.emb
+[2025-10-24 17:01:05] INFO: ￢ﾜﾓ Saved embedding: S00001_006.emb
+[2025-10-24 17:01:05] INFO: ￢ﾜﾓ Saved embedding: S00001_007.emb
+[2025-10-24 17:01:05] INFO: ￢ﾜﾓ Saved embedding: S00001_008.emb
+[2025-10-24 17:01:06] INFO: ￢ﾜﾓ Saved embedding: S00001_009.emb
+[2025-10-24 17:01:06] INFO: ￢ﾜﾓ Saved embedding: S00001_010.emb
+[2025-10-24 17:01:06] INFO: ￢ﾜﾓ Saved embedding: S00001_011.emb
+[2025-10-24 17:01:06] INFO: ￢ﾜﾓ Saved embedding: S00001_012.emb
+[2025-10-24 17:01:06] INFO: ￢ﾜﾓ Saved embedding: S00001_013.emb
+[2025-10-24 17:01:06] INFO: ￢ﾜﾓ Saved embedding: S00001_014.emb
+[2025-10-24 17:01:06] INFO: ￢ﾜﾓ Saved embedding: S00001_015.emb
+[2025-10-24 17:01:06] INFO: ￢ﾜﾓ Saved embedding: S00001_016.emb
+[2025-10-24 17:01:06] INFO: ￢ﾜﾓ Saved embedding: S00001_017.emb
+[2025-10-24 17:01:07] INFO: ￢ﾜﾓ Saved embedding: S00001_018.emb
+[2025-10-24 17:01:07] INFO: ￢ﾜﾓ Saved embedding: S00001_019.emb
+[2025-10-24 17:01:07] INFO: ￢ﾜﾓ Saved embedding: S00001_020.emb
+[2025-10-24 17:01:07] INFO: Embedding generation complete: 20/20 successful
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=0, avgSim=0.6802, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=1, avgSim=0.5236, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=2, avgSim=0.6698, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=3, avgSim=0.6291, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=4, avgSim=0.0690, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=5, avgSim=0.5219, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=7, avgSim=0.6991, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=8, avgSim=0.5378, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=9, avgSim=0.6533, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=10, avgSim=0.6294, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=11, avgSim=0.0723, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=12, avgSim=0.6798, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=14, avgSim=0.6854, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=15, avgSim=0.6891, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=16, avgSim=0.4833, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=17, avgSim=0.6141, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=18, avgSim=0.5931, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   Outlier detected: index=19, avgSim=0.6945, threshold=0.7000
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_001.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_001.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_002.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_002.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_003.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_003.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_004.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_004.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_005.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_005.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_006.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_006.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_008.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_008.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_009.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_009.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_010.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_010.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_011.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_011.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_012.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_012.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_013.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_013.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_015.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_015.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_016.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_016.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_017.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_017.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_018.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_018.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_019.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_019.png
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_020.emb
+[2025-10-24 17:01:07] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_020.png
+[2025-10-24 17:01:07] INFO: ￢ﾜﾓ Auto-removed 18 outlier embedding(s)
+[2025-10-24 17:01:07] INFO:   Weak embedding detected: index=1, avgSim=0.5236, threshold=0.5000, absThresh=0.6000
+[2025-10-24 17:01:07] INFO:   Weak embedding detected: index=4, avgSim=0.0690, threshold=0.5000, absThresh=0.6000
+[2025-10-24 17:01:07] INFO:   Weak embedding detected: index=5, avgSim=0.5219, threshold=0.5000, absThresh=0.6000
+[2025-10-24 17:01:07] INFO:   Weak embedding detected: index=8, avgSim=0.5378, threshold=0.5000, absThresh=0.6000
+[2025-10-24 17:01:07] INFO:   Weak embedding detected: index=11, avgSim=0.0723, threshold=0.5000, absThresh=0.6000
+[2025-10-24 17:01:07] INFO:   Weak embedding detected: index=16, avgSim=0.4833, threshold=0.5000, absThresh=0.6000
+[2025-10-24 17:01:07] INFO:   Weak embedding detected: index=18, avgSim=0.5931, threshold=0.5000, absThresh=0.6000
+[2025-10-24 17:01:07] INFO: ￢ﾜﾓ All embeddings passed weakness check
+[2025-10-24 17:01:07] INFO: Capture result: true - Successfully captured 20 high-quality face images
+[2025-10-24 17:01:07] INFO: Debug: Warning - Analyzing embedding quality...
+[2025-10-24 17:01:07] INFO: Debug: Warning - Removed 18 outlier image(s) automatically
+[2025-10-24 17:01:15] INFO: Debug: All images captured successfully
+[2025-10-24 17:01:17] INFO: Starting capture process...
+[2025-10-24 17:01:17] INFO: Performing capture with target: 20
+[2025-10-24 17:01:18] INFO: Debug: Capture process started
+[2025-10-24 17:01:18] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:01:19] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:01:20] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:01:22] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:01:23] INFO: Debug: Image saved with confidence 0.99
+[2025-10-24 17:01:25] INFO: Debug: Image saved with confidence 0.73
+[2025-10-24 17:01:26] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:01:28] INFO: Debug: Image saved with confidence 0.99
+[2025-10-24 17:01:29] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:01:31] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:01:32] INFO: Debug: Image saved with confidence 0.99
+[2025-10-24 17:01:33] INFO: Debug: Image saved with confidence 0.90
+[2025-10-24 17:01:35] INFO: Debug: Image saved with confidence 1.00
+[2025-10-24 17:01:36] INFO: Debug: Image saved with confidence 2.53
+[2025-10-24 17:01:38] INFO: Debug: Image saved with confidence 0.86
+[2025-10-24 17:01:39] INFO: Debug: Image saved with confidence 0.99
+[2025-10-24 17:01:41] INFO: Debug: Image saved with confidence 0.99
+[2025-10-24 17:01:42] INFO: Debug: Image saved with confidence 0.99
+[2025-10-24 17:01:43] INFO: Debug: Image saved with confidence 0.99
+[2025-10-24 17:01:45] INFO: Debug: Image saved with confidence 0.99
+[2025-10-24 17:01:46] INFO: Debug: Capture process finished
+[2025-10-24 17:01:46] INFO: Debug: Warning - Processing captured images...
+[2025-10-24 17:01:46] INFO: ￢ﾜﾓ Saved embedding: S00001_001.emb
+[2025-10-24 17:01:46] INFO: ￢ﾜﾓ Saved embedding: S00001_002.emb
+[2025-10-24 17:01:47] INFO: ￢ﾜﾓ Saved embedding: S00001_003.emb
+[2025-10-24 17:01:47] INFO: ￢ﾜﾓ Saved embedding: S00001_004.emb
+[2025-10-24 17:01:47] INFO: ￢ﾜﾓ Saved embedding: S00001_005.emb
+[2025-10-24 17:01:47] INFO: ￢ﾜﾓ Saved embedding: S00001_006.emb
+[2025-10-24 17:01:47] INFO: ￢ﾜﾓ Saved embedding: S00001_007.emb
+[2025-10-24 17:01:47] INFO: ￢ﾜﾓ Saved embedding: S00001_008.emb
+[2025-10-24 17:01:47] INFO: ￢ﾜﾓ Saved embedding: S00001_009.emb
+[2025-10-24 17:01:47] INFO: ￢ﾜﾓ Saved embedding: S00001_010.emb
+[2025-10-24 17:01:47] INFO: ￢ﾜﾓ Saved embedding: S00001_011.emb
+[2025-10-24 17:01:48] INFO: ￢ﾜﾓ Saved embedding: S00001_012.emb
+[2025-10-24 17:01:48] INFO: ￢ﾜﾓ Saved embedding: S00001_013.emb
+[2025-10-24 17:01:48] INFO: ￢ﾜﾓ Saved embedding: S00001_014.emb
+[2025-10-24 17:01:48] INFO: ￢ﾜﾓ Saved embedding: S00001_015.emb
+[2025-10-24 17:01:48] INFO: ￢ﾜﾓ Saved embedding: S00001_016.emb
+[2025-10-24 17:01:48] INFO: ￢ﾜﾓ Saved embedding: S00001_017.emb
+[2025-10-24 17:01:48] INFO: ￢ﾜﾓ Saved embedding: S00001_018.emb
+[2025-10-24 17:01:48] INFO: ￢ﾜﾓ Saved embedding: S00001_019.emb
+[2025-10-24 17:01:48] INFO: ￢ﾜﾓ Saved embedding: S00001_020.emb
+[2025-10-24 17:01:48] INFO: Embedding generation complete: 20/20 successful
+[2025-10-24 17:01:48] INFO: Debug: Warning - Analyzing embedding quality...
+[2025-10-24 17:01:48] INFO:   Outlier detected: index=0, avgSim=0.4364, threshold=0.7000
+[2025-10-24 17:01:48] INFO:   Outlier detected: index=11, avgSim=0.6881, threshold=0.7000
+[2025-10-24 17:01:48] INFO:   Outlier detected: index=12, avgSim=0.2195, threshold=0.7000
+[2025-10-24 17:01:48] INFO:   Outlier detected: index=13, avgSim=0.1258, threshold=0.7000
+[2025-10-24 17:01:48] INFO:   Outlier detected: index=14, avgSim=0.1332, threshold=0.7000
+[2025-10-24 17:01:48] INFO:   Outlier detected: index=16, avgSim=0.6384, threshold=0.7000
+[2025-10-24 17:01:48] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_001.emb
+[2025-10-24 17:01:48] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_001.png
+[2025-10-24 17:01:48] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_012.emb
+[2025-10-24 17:01:48] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_012.png
+[2025-10-24 17:01:48] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_013.emb
+[2025-10-24 17:01:48] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_013.png
+[2025-10-24 17:01:48] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_014.emb
+[2025-10-24 17:01:48] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_014.png
+[2025-10-24 17:01:48] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_015.emb
+[2025-10-24 17:01:48] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_015.png
+[2025-10-24 17:01:48] INFO:   ￢ﾜﾗ Deleted outlier embedding: S00001_017.emb
+[2025-10-24 17:01:48] INFO:   ￢ﾜﾗ Deleted outlier image: S00001_017.png
+[2025-10-24 17:01:48] INFO: ￢ﾜﾓ Auto-removed 6 outlier embedding(s)
+[2025-10-24 17:01:48] INFO: Debug: Warning - Removed 6 outlier image(s) automatically
+[2025-10-24 17:01:48] INFO:   Weak embedding detected: index=0, avgSim=0.4364, threshold=0.5000, absThresh=0.6000
+[2025-10-24 17:01:48] INFO:   Weak embedding detected: index=12, avgSim=0.2195, threshold=0.5000, absThresh=0.6000
+[2025-10-24 17:01:48] INFO:   Weak embedding detected: index=13, avgSim=0.1258, threshold=0.5000, absThresh=0.6000
+[2025-10-24 17:01:48] INFO:   Weak embedding detected: index=14, avgSim=0.1332, threshold=0.5000, absThresh=0.6000
+[2025-10-24 17:01:48] INFO: ￢ﾜﾓ All embeddings passed weakness check
+[2025-10-24 17:01:48] INFO: Capture result: true - Successfully captured 20 high-quality face images
+[2025-10-24 17:01:53] INFO: Debug: All images captured successfully
+[2025-10-24 17:01:54] INFO: Disposing FaceCaptureDialog...
+[2025-10-24 17:01:54] INFO: Preview timer stopped
+[2025-10-24 17:01:55] INFO: Face detection resources released

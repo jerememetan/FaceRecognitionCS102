@@ -148,7 +148,10 @@ public class FaceCaptureDialog extends JDialog{
 
         // We already have capture controls in this dialog; hide capture button in
         // settings panel
-        FaceCropSettingsPanel settings = new FaceCropSettingsPanel(listener, false);
+        FaceCropSettingsPanel settings = new FaceCropSettingsPanel(listener, false, true);
+        // ensure panel has enough width to show south controls and force save visible
+        settings.setPreferredSize(new Dimension(340, 0)); // give the EAST column a reasonable width
+        settings.setSaveButtonVisible(true); // defensive: force visible at runtime
         return settings;
     }
 
