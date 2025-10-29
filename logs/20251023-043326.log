@@ -1,0 +1,745 @@
+[2025-10-23 04:33:26] INFO: Application Logger Initialized.
+[2025-10-23 04:33:26] INFO: app.properties normalized (55 entries).
+[2025-10-23 04:33:26] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
+[2025-10-23 04:33:27] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
+[2025-10-23 04:33:28] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-23 04:33:28] INFO: StudentManager initialized successfully
+[2025-10-23 04:33:28] INFO: GUI launched successfully
+[2025-10-23 04:33:32] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
+[2025-10-23 04:33:32] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-23 04:33:32] INFO: FaceCaptureDialog created for student: Jin Rae
+[2025-10-23 04:33:32] INFO: Dialog initialized
+[2025-10-23 04:33:32] INFO: Starting camera preview...
+[2025-10-23 04:33:32] INFO: Preview timer started at 20fps
+[2025-10-23 04:33:33] INFO: Starting capture process...
+[2025-10-23 04:33:33] INFO: Performing capture with target: 20
+[2025-10-23 04:33:33] INFO: Debug: Capture process started
+[2025-10-23 04:33:33] INFO: Debug: Image saved with confidence 0.98
+[2025-10-23 04:33:35] INFO: Debug: Image saved with confidence 0.97
+[2025-10-23 04:33:36] INFO: Debug: Image saved with confidence 0.98
+[2025-10-23 04:33:37] INFO: Debug: Image saved with confidence 0.98
+[2025-10-23 04:33:39] INFO: Debug: Image saved with confidence 0.99
+[2025-10-23 04:33:40] INFO: Debug: Image saved with confidence 0.99
+[2025-10-23 04:33:42] INFO: Debug: Image saved with confidence 0.99
+[2025-10-23 04:33:43] INFO: Debug: Image saved with confidence 0.99
+[2025-10-23 04:33:44] INFO: Debug: Image saved with confidence 0.99
+[2025-10-23 04:33:46] INFO: Debug: Image saved with confidence 1.00
+[2025-10-23 04:33:47] INFO: Debug: Image saved with confidence 1.00
+[2025-10-23 04:33:48] INFO: Debug: Image saved with confidence 1.00
+[2025-10-23 04:33:50] INFO: Debug: Image saved with confidence 0.98
+[2025-10-23 04:33:51] INFO: Debug: Image saved with confidence 0.95
+[2025-10-23 04:33:52] INFO: Debug: Image saved with confidence 0.91
+[2025-10-23 04:33:54] INFO: Debug: Image saved with confidence 0.99
+[2025-10-23 04:33:55] INFO: Debug: Image saved with confidence 1.00
+[2025-10-23 04:33:56] INFO: Debug: Image saved with confidence 0.99
+[2025-10-23 04:33:58] INFO: Debug: Image saved with confidence 0.99
+[2025-10-23 04:33:59] INFO: Debug: Image saved with confidence 1.00
+[2025-10-23 04:34:00] INFO: Debug: Capture process finished
+[2025-10-23 04:34:00] INFO: Debug: Warning - Processing captured images...
+[2025-10-23 04:34:00] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:00] INFO: Aligned face stats:
+[2025-10-23 04:34:00] INFO:   Resolution: 112x112
+[2025-10-23 04:34:00] INFO:   Mean: [109.91780931122449, 110.50964604591836, 134.15832270408163, 0.0]
+[2025-10-23 04:34:00] INFO:   Min/Max: 35.0 / 228.0
+[2025-10-23 04:34:00] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:00] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:00] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:00] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:00] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:00] SEVERE: >     '2' is 2
+[2025-10-23 04:34:00] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:00] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:00] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:00] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:00] SEVERE: >     '2' is 2
+[2025-10-23 04:34:00] SEVERE: ]
+[2025-10-23 04:34:00] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:00] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:00] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:00] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:00] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:00] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:00] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:00] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:00] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:00] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:00] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:00] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:00] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_001.png
+[2025-10-23 04:34:00] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:00] INFO: Aligned face stats:
+[2025-10-23 04:34:00] INFO:   Resolution: 112x112
+[2025-10-23 04:34:00] INFO:   Mean: [109.30978954081631, 110.85738201530611, 137.24824617346937, 0.0]
+[2025-10-23 04:34:00] INFO:   Min/Max: 32.0 / 217.0
+[2025-10-23 04:34:00] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:00] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:00] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:00] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:00] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:00] SEVERE: >     '2' is 2
+[2025-10-23 04:34:00] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:00] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:00] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:00] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:00] SEVERE: >     '2' is 2
+[2025-10-23 04:34:00] SEVERE: ]
+[2025-10-23 04:34:00] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:00] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:00] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:00] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:00] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:00] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:00] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:00] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:00] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:00] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:00] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:00] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:00] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_002.png
+[2025-10-23 04:34:00] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:00] INFO: Aligned face stats:
+[2025-10-23 04:34:00] INFO:   Resolution: 112x112
+[2025-10-23 04:34:00] INFO:   Mean: [96.20471938775509, 97.54049744897958, 121.43909438775509, 0.0]
+[2025-10-23 04:34:00] INFO:   Min/Max: 0.0 / 235.0
+[2025-10-23 04:34:00] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:00] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:00] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:00] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:00] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:00] SEVERE: >     '2' is 2
+[2025-10-23 04:34:00] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:00] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:00] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:00] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:00] SEVERE: >     '2' is 2
+[2025-10-23 04:34:00] SEVERE: ]
+[2025-10-23 04:34:00] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:00] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:00] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:00] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:00] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:00] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:00] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:00] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:00] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:00] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:00] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:00] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:00] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:00] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_003.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [110.69427614795917, 111.47425063775509, 135.0594706632653, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 32.0 / 237.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_004.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [108.03085140306122, 109.47775829081631, 135.08027742346937, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 34.0 / 235.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_005.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [94.41470025510203, 96.53101084183673, 121.19236288265306, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 0.0 / 238.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_006.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [99.9767219387755, 102.27503188775509, 127.92617984693877, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 0.0 / 227.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_007.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [107.56042729591836, 109.11208545918366, 134.48086734693877, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 33.0 / 233.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_008.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [110.74744897959182, 112.87651466836734, 138.6293845663265, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 35.0 / 238.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_009.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [116.3884725765306, 119.53013392857142, 143.94260204081633, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 40.0 / 239.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_010.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [113.0296556122449, 116.34917091836734, 140.64692283163265, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 45.0 / 248.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_011.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [112.55436862244898, 115.7174744897959, 140.37507971938774, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 42.0 / 236.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_012.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [110.80755739795917, 113.02654655612244, 136.74449936224488, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 37.0 / 240.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_013.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [115.98317920918366, 118.27774234693877, 143.89724170918367, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 38.0 / 245.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_014.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [114.34127869897958, 116.83195153061223, 142.13209502551018, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 38.0 / 255.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_015.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [100.51060267857142, 102.62619579081633, 128.22720025510202, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 0.0 / 228.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_016.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [108.01442920918366, 109.83585778061223, 136.67410714285714, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 36.0 / 235.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_017.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [93.14413265306122, 96.83346619897958, 122.9437181122449, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 0.0 / 232.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_018.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [104.39357461734693, 108.99896364795917, 135.62404336734693, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 32.0 / 243.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_019.png
+[2025-10-23 04:34:01] INFO: === STAGE 2: Blob Creation ===
+[2025-10-23 04:34:01] INFO: Aligned face stats:
+[2025-10-23 04:34:01] INFO:   Resolution: 112x112
+[2025-10-23 04:34:01] INFO:   Mean: [109.72114158163265, 115.03132971938774, 142.0088488520408, 0.0]
+[2025-10-23 04:34:01] INFO:   Min/Max: 38.0 / 241.0
+[2025-10-23 04:34:01] INFO: With mean [0.0, 0.0, 0.0, 0.0]:
+[2025-10-23 04:34:01] SEVERE: Deep embedding generation failed: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: CvException [org.opencv.core.CvException: OpenCV(4.8.0) C:\GHA-OCV-1\_work\ci-gha-workflow\ci-gha-workflow\opencv\modules\core\src\minmax.cpp:1575: error: (-2:Unspecified error) in function 'void __cdecl cv::minMaxLoc(const class cv::_InputArray &,double *,double *,class cv::Point_<int> *,class cv::Point_<int> *,const class cv::_InputArray &)'
+[2025-10-23 04:34:01] SEVERE: >  (expected: 'dims <= 2'), where
+[2025-10-23 04:34:01] SEVERE: >     'dims' is 4
+[2025-10-23 04:34:01] SEVERE: > must be less than or equal to
+[2025-10-23 04:34:01] SEVERE: >     '2' is 2
+[2025-10-23 04:34:01] SEVERE: ]
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.n_minMaxLocManual(Native Method)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5907)
+[2025-10-23 04:34:01] SEVERE: 	at org.opencv.core.Core.minMaxLoc(Core.java:5920)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.getMinMax(FaceEmbeddingGenerator.java:1002)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateDeepEmbedding(FaceEmbeddingGenerator.java:137)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.generateEmbedding(FaceEmbeddingGenerator.java:48)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceEmbeddingGenerator.processCapturedImages(FaceEmbeddingGenerator.java:708)
+[2025-10-23 04:34:01] SEVERE: 	at app.service.FaceDetection.captureAndStoreFaceImages(FaceDetection.java:355)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog.performCapture(FaceCaptureDialog.java:519)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:433)
+[2025-10-23 04:34:01] SEVERE: 	at app.gui.FaceCaptureDialog$3.doInBackground(FaceCaptureDialog.java:430)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:305)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+[2025-10-23 04:34:01] SEVERE: 	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:342)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+[2025-10-23 04:34:01] SEVERE: 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-10-23 04:34:01] SEVERE: ￢ﾝﾌ Invalid embedding generated for: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae\S13234_020.png
+[2025-10-23 04:34:01] INFO: Embedding generation complete: 0/20 successful
+[2025-10-23 04:34:01] INFO: Debug: Warning - Warning: Only 0/20 embeddings generated successfully
+[2025-10-23 04:34:01] INFO: Capture result: true - Successfully captured 20 high-quality face images
+[2025-10-23 04:34:03] INFO: Debug: All images captured successfully
+[2025-10-23 04:34:04] INFO: Disposing FaceCaptureDialog...
+[2025-10-23 04:34:04] INFO: Preview timer stopped
+[2025-10-23 04:34:04] INFO: Face detection resources released

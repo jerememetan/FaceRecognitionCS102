@@ -1,0 +1,1017 @@
+[2025-10-24 13:01:21] INFO: Application Logger Initialized.
+[2025-10-24 13:01:21] INFO: Configuration and core components loaded.
+[2025-10-24 13:01:21] INFO: app.properties normalized (56 entries).
+[2025-10-24 13:01:21] INFO: Configuration loaded from classpath: app.properties
+[2025-10-24 13:01:21] INFO: Configuration file loaded
+[2025-10-24 13:01:21] INFO: MyGUIProgram Started!
+[2025-10-24 13:01:24] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
+[2025-10-24 13:01:24] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-24 13:01:24] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-24 13:01:24] INFO: === Folder debug ===
+[2025-10-24 13:01:24] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae
+[2025-10-24 13:01:24] INFO:   Contains: 28 items
+[2025-10-24 13:01:24] INFO:   Display label: S13234 - Jin_Rae
+[2025-10-24 13:01:24] INFO: ====================
+[2025-10-24 13:01:24] INFO: Person S13234 - Jin_Rae: tightness=0.950, stdDev=0.015, absThresh.live=0.514 (training=0.605), margin=0.105
+[2025-10-24 13:01:24] INFO: DEBUG CENTROID:
+[2025-10-24 13:01:24] INFO:   Centroid length: 512
+[2025-10-24 13:01:24] INFO:   Centroid first 10 values:
+[2025-10-24 13:01:24] INFO:   -0.027781682085688805 
+[2025-10-24 13:01:24] INFO:   -0.08100870587446535 
+[2025-10-24 13:01:24] INFO:   -0.053811779607973495 
+[2025-10-24 13:01:24] INFO:   -0.01839140530470309 
+[2025-10-24 13:01:24] INFO:   -0.05148287065427371 
+[2025-10-24 13:01:24] INFO:   0.004225639783550115 
+[2025-10-24 13:01:24] INFO:   -0.029486857238694267 
+[2025-10-24 13:01:24] INFO:   0.011982290430374971 
+[2025-10-24 13:01:24] INFO:   0.08362239463266465 
+[2025-10-24 13:01:24] INFO:   0.003745714471877661 
+[2025-10-24 13:01:24] INFO:   Centroid magnitude: 1.0000000000000004
+[2025-10-24 13:01:25] INFO: DNN face detector loaded successfully for recognition
+[2025-10-24 13:01:25] INFO: Attempting camera index 0 with DSHOW backend...
+[2025-10-24 13:01:26] INFO: Camera opened successfully: index 0 with DSHOW backend
+[2025-10-24 13:01:30] INFO: Camera configured: 640x480 @ 30fps (MJPEG: yes)
+[2025-10-24 13:01:30] INFO: Camera initialized successfully
+[2025-10-24 13:01:31] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:31] INFO: Original frame resolution: 239x338
+[2025-10-24 13:01:31] INFO: Face ROI size: 239x338
+[2025-10-24 13:01:31] INFO: Face ROI mean pixel value (BGR): [108.54202668911391, 123.06539823227946, 132.59056472976653, 0.0]
+[2025-10-24 13:01:31] INFO: Face ROI std deviation: 38.01883824945096
+[2025-10-24 13:01:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.734 
+[2025-10-24 13:01:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.734), 2nd=0.000, Discriminative=0.734, AvgNeg=0.000
+[2025-10-24 13:01:31] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:31] INFO: [Accept] S13234 - Jin_Rae | Raw=0.734, Confidence=0.72, Margin=0.734 | Strong confidence match
+[2025-10-24 13:01:32] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:32] INFO: Original frame resolution: 236x335
+[2025-10-24 13:01:32] INFO: Face ROI size: 236x335
+[2025-10-24 13:01:32] INFO: Face ROI mean pixel value (BGR): [115.18489754616746, 132.57154060207438, 140.16419175309892, 0.0]
+[2025-10-24 13:01:32] INFO: Face ROI std deviation: 39.19637380291223
+[2025-10-24 13:01:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.771 
+[2025-10-24 13:01:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.771), 2nd=0.000, Discriminative=0.771, AvgNeg=0.000
+[2025-10-24 13:01:32] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.6%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:32] INFO: [Accept] S13234 - Jin_Rae | Raw=0.771, Confidence=0.76, Margin=0.771 | Strong confidence match
+[2025-10-24 13:01:32] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:32] INFO: Original frame resolution: 235x332
+[2025-10-24 13:01:32] INFO: Face ROI size: 235x332
+[2025-10-24 13:01:32] INFO: Face ROI mean pixel value (BGR): [119.8612919764163, 137.72563445270444, 145.72603178672134, 0.0]
+[2025-10-24 13:01:32] INFO: Face ROI std deviation: 40.20990153893619
+[2025-10-24 13:01:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.789 
+[2025-10-24 13:01:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.789), 2nd=0.000, Discriminative=0.789, AvgNeg=0.000
+[2025-10-24 13:01:32] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:32] INFO: [Accept] S13234 - Jin_Rae | Raw=0.789, Confidence=0.78, Margin=0.789 | Strong confidence match
+[2025-10-24 13:01:32] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:32] INFO: Original frame resolution: 230x320
+[2025-10-24 13:01:32] INFO: Face ROI size: 230x320
+[2025-10-24 13:01:32] INFO: Face ROI mean pixel value (BGR): [123.29002717391305, 141.0121875, 149.44188858695654, 0.0]
+[2025-10-24 13:01:32] INFO: Face ROI std deviation: 40.63332875826841
+[2025-10-24 13:01:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.779 
+[2025-10-24 13:01:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.779), 2nd=0.000, Discriminative=0.779, AvgNeg=0.000
+[2025-10-24 13:01:32] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:32] INFO: [Accept] S13234 - Jin_Rae | Raw=0.779, Confidence=0.77, Margin=0.779 | Strong confidence match
+[2025-10-24 13:01:32] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:32] INFO: Original frame resolution: 229x306
+[2025-10-24 13:01:32] INFO: Face ROI size: 229x306
+[2025-10-24 13:01:32] INFO: Face ROI mean pixel value (BGR): [127.87556012215657, 145.65001284356538, 154.02714273482317, 0.0]
+[2025-10-24 13:01:32] INFO: Face ROI std deviation: 41.598345713874494
+[2025-10-24 13:01:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.810 
+[2025-10-24 13:01:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.810), 2nd=0.000, Discriminative=0.810, AvgNeg=0.000
+[2025-10-24 13:01:33] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.0%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.810, Confidence=0.80, Margin=0.810 | Strong confidence match
+[2025-10-24 13:01:33] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:33] INFO: Original frame resolution: 223x299
+[2025-10-24 13:01:33] INFO: Face ROI size: 223x299
+[2025-10-24 13:01:33] INFO: Face ROI mean pixel value (BGR): [129.2946593278042, 147.25446555783853, 155.56263779114238, 0.0]
+[2025-10-24 13:01:33] INFO: Face ROI std deviation: 42.134354573534445
+[2025-10-24 13:01:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.795 
+[2025-10-24 13:01:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.795), 2nd=0.000, Discriminative=0.795, AvgNeg=0.000
+[2025-10-24 13:01:33] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.2%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.795, Confidence=0.78, Margin=0.795 | Strong confidence match
+[2025-10-24 13:01:33] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:33] INFO: Original frame resolution: 220x297
+[2025-10-24 13:01:33] INFO: Face ROI size: 220x297
+[2025-10-24 13:01:33] INFO: Face ROI mean pixel value (BGR): [129.32535965717784, 147.28607284970923, 155.46369758187942, 0.0]
+[2025-10-24 13:01:33] INFO: Face ROI std deviation: 42.17746156589027
+[2025-10-24 13:01:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.789 
+[2025-10-24 13:01:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.789), 2nd=0.000, Discriminative=0.789, AvgNeg=0.000
+[2025-10-24 13:01:33] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.789, Confidence=0.78, Margin=0.789 | Strong confidence match
+[2025-10-24 13:01:33] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:33] INFO: Original frame resolution: 217x293
+[2025-10-24 13:01:33] INFO: Face ROI size: 217x293
+[2025-10-24 13:01:33] INFO: Face ROI mean pixel value (BGR): [128.8626004624023, 147.04830059294443, 155.39978924521478, 0.0]
+[2025-10-24 13:01:33] INFO: Face ROI std deviation: 42.07510835454259
+[2025-10-24 13:01:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.785 
+[2025-10-24 13:01:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.785), 2nd=0.000, Discriminative=0.785, AvgNeg=0.000
+[2025-10-24 13:01:33] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.785, Confidence=0.77, Margin=0.785 | Strong confidence match
+[2025-10-24 13:01:34] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:34] INFO: Original frame resolution: 218x296
+[2025-10-24 13:01:34] INFO: Face ROI size: 218x296
+[2025-10-24 13:01:34] INFO: Face ROI mean pixel value (BGR): [128.46327175799652, 146.7665664517729, 155.1254184230102, 0.0]
+[2025-10-24 13:01:34] INFO: Face ROI std deviation: 41.62458277633582
+[2025-10-24 13:01:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.785 
+[2025-10-24 13:01:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.785), 2nd=0.000, Discriminative=0.785, AvgNeg=0.000
+[2025-10-24 13:01:34] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:34] INFO: [Accept] S13234 - Jin_Rae | Raw=0.785, Confidence=0.77, Margin=0.785 | Strong confidence match
+[2025-10-24 13:01:34] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:34] INFO: Original frame resolution: 217x296
+[2025-10-24 13:01:34] INFO: Face ROI size: 217x296
+[2025-10-24 13:01:34] INFO: Face ROI mean pixel value (BGR): [127.93484555984556, 146.3893542159671, 154.862358326068, 0.0]
+[2025-10-24 13:01:34] INFO: Face ROI std deviation: 41.314991775484245
+[2025-10-24 13:01:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.785 
+[2025-10-24 13:01:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.785), 2nd=0.000, Discriminative=0.785, AvgNeg=0.000
+[2025-10-24 13:01:34] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:34] INFO: [Accept] S13234 - Jin_Rae | Raw=0.785, Confidence=0.77, Margin=0.785 | Strong confidence match
+[2025-10-24 13:01:34] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:34] INFO: Original frame resolution: 223x304
+[2025-10-24 13:01:34] INFO: Face ROI size: 223x304
+[2025-10-24 13:01:34] INFO: Face ROI mean pixel value (BGR): [127.06235248996931, 145.21374203445833, 153.65740795374086, 0.0]
+[2025-10-24 13:01:34] INFO: Face ROI std deviation: 41.382968194478465
+[2025-10-24 13:01:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.786 
+[2025-10-24 13:01:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.786), 2nd=0.000, Discriminative=0.786, AvgNeg=0.000
+[2025-10-24 13:01:34] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:34] INFO: [Accept] S13234 - Jin_Rae | Raw=0.786, Confidence=0.77, Margin=0.786 | Strong confidence match
+[2025-10-24 13:01:35] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:35] INFO: Original frame resolution: 224x312
+[2025-10-24 13:01:35] INFO: Face ROI size: 224x312
+[2025-10-24 13:01:35] INFO: Face ROI mean pixel value (BGR): [126.40456158424908, 144.5303914835165, 152.81697859432234, 0.0]
+[2025-10-24 13:01:35] INFO: Face ROI std deviation: 41.13073651249245
+[2025-10-24 13:01:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.781 
+[2025-10-24 13:01:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.781), 2nd=0.000, Discriminative=0.781, AvgNeg=0.000
+[2025-10-24 13:01:35] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:35] INFO: [Accept] S13234 - Jin_Rae | Raw=0.781, Confidence=0.77, Margin=0.781 | Strong confidence match
+[2025-10-24 13:01:35] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:35] INFO: Original frame resolution: 225x309
+[2025-10-24 13:01:35] INFO: Face ROI size: 225x309
+[2025-10-24 13:01:35] INFO: Face ROI mean pixel value (BGR): [127.81119021934556, 145.56407047824524, 153.4509600862999, 0.0]
+[2025-10-24 13:01:35] INFO: Face ROI std deviation: 41.63266366496959
+[2025-10-24 13:01:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.785 
+[2025-10-24 13:01:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.785), 2nd=0.000, Discriminative=0.785, AvgNeg=0.000
+[2025-10-24 13:01:35] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:35] INFO: [Accept] S13234 - Jin_Rae | Raw=0.785, Confidence=0.77, Margin=0.785 | Strong confidence match
+[2025-10-24 13:01:35] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:35] INFO: Original frame resolution: 217x309
+[2025-10-24 13:01:35] INFO: Face ROI size: 217x309
+[2025-10-24 13:01:35] INFO: Face ROI mean pixel value (BGR): [126.63135131910579, 145.7233531683892, 154.5906670842468, 0.0]
+[2025-10-24 13:01:35] INFO: Face ROI std deviation: 38.94276125415804
+[2025-10-24 13:01:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.776 
+[2025-10-24 13:01:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.776), 2nd=0.000, Discriminative=0.776, AvgNeg=0.000
+[2025-10-24 13:01:35] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:35] INFO: [Accept] S13234 - Jin_Rae | Raw=0.776, Confidence=0.76, Margin=0.776 | Strong confidence match
+[2025-10-24 13:01:36] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:36] INFO: Original frame resolution: 222x309
+[2025-10-24 13:01:36] INFO: Face ROI size: 222x309
+[2025-10-24 13:01:36] INFO: Face ROI mean pixel value (BGR): [132.68500539374324, 151.5162249628269, 160.88160004664857, 0.0]
+[2025-10-24 13:01:36] INFO: Face ROI std deviation: 39.528028312243734
+[2025-10-24 13:01:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.747 
+[2025-10-24 13:01:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.747), 2nd=0.000, Discriminative=0.747, AvgNeg=0.000
+[2025-10-24 13:01:36] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.1%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:36] INFO: [Accept] S13234 - Jin_Rae | Raw=0.747, Confidence=0.73, Margin=0.747 | Strong confidence match
+[2025-10-24 13:01:36] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:36] INFO: Original frame resolution: 221x308
+[2025-10-24 13:01:36] INFO: Face ROI size: 221x308
+[2025-10-24 13:01:36] INFO: Face ROI mean pixel value (BGR): [136.66671563730387, 155.02335899394723, 161.81656578715402, 0.0]
+[2025-10-24 13:01:36] INFO: Face ROI std deviation: 40.50364363437442
+[2025-10-24 13:01:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.714 
+[2025-10-24 13:01:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.714), 2nd=0.000, Discriminative=0.714, AvgNeg=0.000
+[2025-10-24 13:01:36] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.7%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:36] INFO: [Accept] S13234 - Jin_Rae | Raw=0.714, Confidence=0.70, Margin=0.714 | Strong confidence match
+[2025-10-24 13:01:36] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:36] INFO: Original frame resolution: 220x311
+[2025-10-24 13:01:36] INFO: Face ROI size: 220x311
+[2025-10-24 13:01:36] INFO: Face ROI mean pixel value (BGR): [138.6335135925168, 155.85023384975153, 162.27645425314236, 0.0]
+[2025-10-24 13:01:36] INFO: Face ROI std deviation: 41.394350743872714
+[2025-10-24 13:01:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.732 
+[2025-10-24 13:01:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.732), 2nd=0.000, Discriminative=0.732, AvgNeg=0.000
+[2025-10-24 13:01:36] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:36] INFO: [Accept] S13234 - Jin_Rae | Raw=0.732, Confidence=0.72, Margin=0.732 | Strong confidence match
+[2025-10-24 13:01:37] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:37] INFO: Original frame resolution: 228x308
+[2025-10-24 13:01:37] INFO: Face ROI size: 228x308
+[2025-10-24 13:01:37] INFO: Face ROI mean pixel value (BGR): [140.19798074732284, 156.63734620642515, 162.22752904989747, 0.0]
+[2025-10-24 13:01:37] INFO: Face ROI std deviation: 42.34033416439891
+[2025-10-24 13:01:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.757 
+[2025-10-24 13:01:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.757), 2nd=0.000, Discriminative=0.757, AvgNeg=0.000
+[2025-10-24 13:01:37] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.9%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:37] INFO: [Accept] S13234 - Jin_Rae | Raw=0.757, Confidence=0.74, Margin=0.757 | Strong confidence match
+[2025-10-24 13:01:37] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:37] INFO: Original frame resolution: 222x300
+[2025-10-24 13:01:37] INFO: Face ROI size: 222x300
+[2025-10-24 13:01:37] INFO: Face ROI mean pixel value (BGR): [141.38794294294294, 157.29318318318317, 162.56558558558558, 0.0]
+[2025-10-24 13:01:37] INFO: Face ROI std deviation: 42.822052308789274
+[2025-10-24 13:01:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.774 
+[2025-10-24 13:01:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.774), 2nd=0.000, Discriminative=0.774, AvgNeg=0.000
+[2025-10-24 13:01:37] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.6%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:37] INFO: [Accept] S13234 - Jin_Rae | Raw=0.774, Confidence=0.76, Margin=0.774 | Strong confidence match
+[2025-10-24 13:01:37] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:37] INFO: Original frame resolution: 227x307
+[2025-10-24 13:01:37] INFO: Face ROI size: 227x307
+[2025-10-24 13:01:37] INFO: Face ROI mean pixel value (BGR): [135.81015655268408, 151.8673104794157, 156.652441561796, 0.0]
+[2025-10-24 13:01:37] INFO: Face ROI std deviation: 42.39723251535153
+[2025-10-24 13:01:37] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.744 
+[2025-10-24 13:01:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.744), 2nd=0.000, Discriminative=0.744, AvgNeg=0.000
+[2025-10-24 13:01:37] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.1%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:37] INFO: [Accept] S13234 - Jin_Rae | Raw=0.744, Confidence=0.73, Margin=0.744 | Strong confidence match
+[2025-10-24 13:01:38] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:38] INFO: Original frame resolution: 232x327
+[2025-10-24 13:01:38] INFO: Face ROI size: 232x327
+[2025-10-24 13:01:38] INFO: Face ROI mean pixel value (BGR): [121.21497680059053, 137.93381577559845, 145.98437994305598, 0.0]
+[2025-10-24 13:01:38] INFO: Face ROI std deviation: 38.50416802340379
+[2025-10-24 13:01:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.746 
+[2025-10-24 13:01:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.746), 2nd=0.000, Discriminative=0.746, AvgNeg=0.000
+[2025-10-24 13:01:38] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.1%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:38] INFO: [Accept] S13234 - Jin_Rae | Raw=0.746, Confidence=0.73, Margin=0.746 | Strong confidence match
+[2025-10-24 13:01:38] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:38] INFO: Original frame resolution: 237x335
+[2025-10-24 13:01:38] INFO: Face ROI size: 237x335
+[2025-10-24 13:01:38] INFO: Face ROI mean pixel value (BGR): [125.0806851816865, 141.58142200390452, 148.85375653378676, 0.0]
+[2025-10-24 13:01:38] INFO: Face ROI std deviation: 37.612175548478874
+[2025-10-24 13:01:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.744 
+[2025-10-24 13:01:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.744), 2nd=0.000, Discriminative=0.744, AvgNeg=0.000
+[2025-10-24 13:01:38] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.1%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:38] INFO: [Accept] S13234 - Jin_Rae | Raw=0.744, Confidence=0.73, Margin=0.744 | Strong confidence match
+[2025-10-24 13:01:38] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:38] INFO: Original frame resolution: 243x335
+[2025-10-24 13:01:38] INFO: Face ROI size: 243x335
+[2025-10-24 13:01:38] INFO: Face ROI mean pixel value (BGR): [131.4036238560285, 147.70386339905411, 155.24864566058596, 0.0]
+[2025-10-24 13:01:38] INFO: Face ROI std deviation: 39.0113638232716
+[2025-10-24 13:01:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.726 
+[2025-10-24 13:01:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.726), 2nd=0.000, Discriminative=0.726, AvgNeg=0.000
+[2025-10-24 13:01:39] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:39] INFO: [Accept] S13234 - Jin_Rae | Raw=0.726, Confidence=0.71, Margin=0.726 | Strong confidence match
+[2025-10-24 13:01:39] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:39] INFO: Original frame resolution: 243x334
+[2025-10-24 13:01:39] INFO: Face ROI size: 243x334
+[2025-10-24 13:01:39] INFO: Face ROI mean pixel value (BGR): [132.15920011828197, 148.1904093048471, 155.59940612601957, 0.0]
+[2025-10-24 13:01:39] INFO: Face ROI std deviation: 39.00206166178192
+[2025-10-24 13:01:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.698 
+[2025-10-24 13:01:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.698), 2nd=0.000, Discriminative=0.698, AvgNeg=0.000
+[2025-10-24 13:01:39] INFO: [Thresholds] Abs=0.514, Margin=0.105(15.0%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:39] INFO: [Accept] S13234 - Jin_Rae | Raw=0.698, Confidence=0.68, Margin=0.698 | Strong confidence match
+[2025-10-24 13:01:39] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:39] INFO: Original frame resolution: 244x340
+[2025-10-24 13:01:39] INFO: Face ROI size: 244x340
+[2025-10-24 13:01:39] INFO: Face ROI mean pixel value (BGR): [133.04375602700097, 148.66958775313404, 155.65646094503376, 0.0]
+[2025-10-24 13:01:39] INFO: Face ROI std deviation: 38.72045505794307
+[2025-10-24 13:01:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.688 
+[2025-10-24 13:01:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.688), 2nd=0.000, Discriminative=0.688, AvgNeg=0.000
+[2025-10-24 13:01:39] INFO: [Thresholds] Abs=0.514, Margin=0.105(15.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:39] INFO: [Accept] S13234 - Jin_Rae | Raw=0.688, Confidence=0.67, Margin=0.688 | Strong confidence match
+[2025-10-24 13:01:40] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:40] INFO: Original frame resolution: 236x335
+[2025-10-24 13:01:40] INFO: Face ROI size: 236x335
+[2025-10-24 13:01:40] INFO: Face ROI mean pixel value (BGR): [132.23912218568177, 148.2013281052365, 155.40404755881607, 0.0]
+[2025-10-24 13:01:40] INFO: Face ROI std deviation: 38.04149650780042
+[2025-10-24 13:01:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.679 
+[2025-10-24 13:01:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.679), 2nd=0.000, Discriminative=0.679, AvgNeg=0.000
+[2025-10-24 13:01:40] INFO: [Thresholds] Abs=0.514, Margin=0.105(15.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:40] INFO: [Accept] S13234 - Jin_Rae | Raw=0.679, Confidence=0.66, Margin=0.679 | Strong confidence match
+[2025-10-24 13:01:40] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:40] INFO: Original frame resolution: 238x323
+[2025-10-24 13:01:40] INFO: Face ROI size: 238x323
+[2025-10-24 13:01:40] INFO: Face ROI mean pixel value (BGR): [135.90356947732653, 150.81820901735307, 155.9335405989021, 0.0]
+[2025-10-24 13:01:40] INFO: Face ROI std deviation: 41.26356338209228
+[2025-10-24 13:01:40] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.710 
+[2025-10-24 13:01:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.710), 2nd=0.000, Discriminative=0.710, AvgNeg=0.000
+[2025-10-24 13:01:40] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.8%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:40] INFO: [Accept] S13234 - Jin_Rae | Raw=0.710, Confidence=0.69, Margin=0.710 | Strong confidence match
+[2025-10-24 13:01:41] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:41] INFO: Original frame resolution: 235x320
+[2025-10-24 13:01:41] INFO: Face ROI size: 235x320
+[2025-10-24 13:01:41] INFO: Face ROI mean pixel value (BGR): [129.55501329787234, 144.98480053191489, 150.08990691489362, 0.0]
+[2025-10-24 13:01:41] INFO: Face ROI std deviation: 40.748586062466636
+[2025-10-24 13:01:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.698 
+[2025-10-24 13:01:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.698), 2nd=0.000, Discriminative=0.698, AvgNeg=0.000
+[2025-10-24 13:01:41] INFO: [Thresholds] Abs=0.514, Margin=0.105(15.0%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:41] INFO: [Accept] S13234 - Jin_Rae | Raw=0.698, Confidence=0.68, Margin=0.698 | Strong confidence match
+[2025-10-24 13:01:41] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:41] INFO: Original frame resolution: 228x321
+[2025-10-24 13:01:41] INFO: Face ROI size: 228x321
+[2025-10-24 13:01:41] INFO: Face ROI mean pixel value (BGR): [125.62763021260317, 141.0848363119637, 147.45057932994482, 0.0]
+[2025-10-24 13:01:41] INFO: Face ROI std deviation: 39.42132534598491
+[2025-10-24 13:01:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.650 
+[2025-10-24 13:01:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.650), 2nd=0.000, Discriminative=0.650, AvgNeg=0.000
+[2025-10-24 13:01:41] INFO: [Thresholds] Abs=0.514, Margin=0.105(16.2%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:41] INFO: [Accept] S13234 - Jin_Rae | Raw=0.650, Confidence=0.63, Margin=0.650 | Strong confidence match
+[2025-10-24 13:01:41] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:41] INFO: Original frame resolution: 227x321
+[2025-10-24 13:01:41] INFO: Face ROI size: 227x321
+[2025-10-24 13:01:41] INFO: Face ROI mean pixel value (BGR): [124.39430743683698, 138.98534315945489, 147.2768056870737, 0.0]
+[2025-10-24 13:01:41] INFO: Face ROI std deviation: 38.92980373893077
+[2025-10-24 13:01:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.601 
+[2025-10-24 13:01:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.601), 2nd=0.000, Discriminative=0.601, AvgNeg=0.000
+[2025-10-24 13:01:41] INFO: [Thresholds] Abs=0.514, Margin=0.105(17.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:41] INFO: [Accept] S13234 - Jin_Rae | Raw=0.601, Confidence=0.58, Margin=0.601 | Standard confidence match
+[2025-10-24 13:01:41] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:41] INFO: Original frame resolution: 230x322
+[2025-10-24 13:01:41] INFO: Face ROI size: 230x322
+[2025-10-24 13:01:41] INFO: Face ROI mean pixel value (BGR): [127.33637591142316, 141.87714015662976, 150.33948150148527, 0.0]
+[2025-10-24 13:01:41] INFO: Face ROI std deviation: 39.62576866178707
+[2025-10-24 13:01:41] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.566 
+[2025-10-24 13:01:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.566), 2nd=0.000, Discriminative=0.566, AvgNeg=0.000
+[2025-10-24 13:01:41] INFO: [Thresholds] Abs=0.514, Margin=0.105(18.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:41] INFO: [Reject] Best=S13234 - Jin_Rae(0.566), 2nd=0.000, Confidence=0.54, Margin=0.566 | Raw score too low (0.566 < 0.60)
+[2025-10-24 13:01:42] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:42] INFO: Original frame resolution: 230x319
+[2025-10-24 13:01:42] INFO: Face ROI size: 230x319
+[2025-10-24 13:01:42] INFO: Face ROI mean pixel value (BGR): [130.66200081777293, 142.67778383535506, 156.1848166825678, 0.0]
+[2025-10-24 13:01:42] INFO: Face ROI std deviation: 40.246352759354764
+[2025-10-24 13:01:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.550 
+[2025-10-24 13:01:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.550), 2nd=0.000, Discriminative=0.550, AvgNeg=0.000
+[2025-10-24 13:01:42] INFO: [Thresholds] Abs=0.514, Margin=0.105(19.1%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:42] INFO: [Reject] Best=S13234 - Jin_Rae(0.550), 2nd=0.000, Confidence=0.52, Margin=0.550 | Raw score too low (0.550 < 0.60)
+[2025-10-24 13:01:42] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:42] INFO: Original frame resolution: 227x317
+[2025-10-24 13:01:42] INFO: Face ROI size: 227x317
+[2025-10-24 13:01:42] INFO: Face ROI mean pixel value (BGR): [131.15845134034657, 143.41804360816576, 157.07532066871414, 0.0]
+[2025-10-24 13:01:42] INFO: Face ROI std deviation: 39.975520820503604
+[2025-10-24 13:01:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.593 
+[2025-10-24 13:01:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.593), 2nd=0.000, Discriminative=0.593, AvgNeg=0.000
+[2025-10-24 13:01:42] INFO: [Thresholds] Abs=0.514, Margin=0.105(17.7%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:42] INFO: [Reject] Best=S13234 - Jin_Rae(0.593), 2nd=0.000, Confidence=0.57, Margin=0.593 | Raw score too low (0.593 < 0.60)
+[2025-10-24 13:01:42] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:42] INFO: Original frame resolution: 227x313
+[2025-10-24 13:01:42] INFO: Face ROI size: 227x313
+[2025-10-24 13:01:42] INFO: Face ROI mean pixel value (BGR): [133.51675556994272, 145.62964631039677, 159.499598879678, 0.0]
+[2025-10-24 13:01:42] INFO: Face ROI std deviation: 40.31163994316677
+[2025-10-24 13:01:42] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.603 
+[2025-10-24 13:01:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.603), 2nd=0.000, Discriminative=0.603, AvgNeg=0.000
+[2025-10-24 13:01:42] INFO: [Thresholds] Abs=0.514, Margin=0.105(17.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:42] INFO: [Accept] S13234 - Jin_Rae | Raw=0.603, Confidence=0.58, Margin=0.603 | Standard confidence match
+[2025-10-24 13:01:43] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:43] INFO: Original frame resolution: 227x322
+[2025-10-24 13:01:43] INFO: Face ROI size: 227x322
+[2025-10-24 13:01:43] INFO: Face ROI mean pixel value (BGR): [130.95193859961145, 148.28587845787615, 155.35258707965085, 0.0]
+[2025-10-24 13:01:43] INFO: Face ROI std deviation: 39.85984354290543
+[2025-10-24 13:01:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.725 
+[2025-10-24 13:01:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.725), 2nd=0.000, Discriminative=0.725, AvgNeg=0.000
+[2025-10-24 13:01:43] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:43] INFO: [Accept] S13234 - Jin_Rae | Raw=0.725, Confidence=0.71, Margin=0.725 | Strong confidence match
+[2025-10-24 13:01:43] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:43] INFO: Original frame resolution: 229x320
+[2025-10-24 13:01:43] INFO: Face ROI size: 229x320
+[2025-10-24 13:01:43] INFO: Face ROI mean pixel value (BGR): [132.69612445414847, 149.93703602620087, 157.18576692139737, 0.0]
+[2025-10-24 13:01:43] INFO: Face ROI std deviation: 40.449017607021794
+[2025-10-24 13:01:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.749 
+[2025-10-24 13:01:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.749), 2nd=0.000, Discriminative=0.749, AvgNeg=0.000
+[2025-10-24 13:01:43] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.0%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:43] INFO: [Accept] S13234 - Jin_Rae | Raw=0.749, Confidence=0.73, Margin=0.749 | Strong confidence match
+[2025-10-24 13:01:43] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:43] INFO: Original frame resolution: 230x321
+[2025-10-24 13:01:43] INFO: Face ROI size: 230x321
+[2025-10-24 13:01:43] INFO: Face ROI mean pixel value (BGR): [132.07682513883245, 149.6607205742923, 156.75782202356766, 0.0]
+[2025-10-24 13:01:43] INFO: Face ROI std deviation: 40.41993911878998
+[2025-10-24 13:01:43] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.749 
+[2025-10-24 13:01:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.749), 2nd=0.000, Discriminative=0.749, AvgNeg=0.000
+[2025-10-24 13:01:43] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.0%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:43] INFO: [Accept] S13234 - Jin_Rae | Raw=0.749, Confidence=0.73, Margin=0.749 | Strong confidence match
+[2025-10-24 13:01:44] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:44] INFO: Original frame resolution: 224x314
+[2025-10-24 13:01:44] INFO: Face ROI size: 224x314
+[2025-10-24 13:01:44] INFO: Face ROI mean pixel value (BGR): [132.16367151956325, 150.51637852593268, 158.09872611464968, 0.0]
+[2025-10-24 13:01:44] INFO: Face ROI std deviation: 41.44325058937196
+[2025-10-24 13:01:44] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.754 
+[2025-10-24 13:01:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.754), 2nd=0.000, Discriminative=0.754, AvgNeg=0.000
+[2025-10-24 13:01:44] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.9%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:44] INFO: [Accept] S13234 - Jin_Rae | Raw=0.754, Confidence=0.74, Margin=0.754 | Strong confidence match
+[2025-10-24 13:01:44] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:44] INFO: Original frame resolution: 225x306
+[2025-10-24 13:01:44] INFO: Face ROI size: 225x306
+[2025-10-24 13:01:44] INFO: Face ROI mean pixel value (BGR): [131.87420479302833, 150.23304284676834, 157.53321713870736, 0.0]
+[2025-10-24 13:01:44] INFO: Face ROI std deviation: 41.25968550937815
+[2025-10-24 13:01:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.777 
+[2025-10-24 13:01:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.777), 2nd=0.000, Discriminative=0.777, AvgNeg=0.000
+[2025-10-24 13:01:45] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:45] INFO: [Accept] S13234 - Jin_Rae | Raw=0.777, Confidence=0.76, Margin=0.777 | Strong confidence match
+[2025-10-24 13:01:45] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:45] INFO: Original frame resolution: 224x302
+[2025-10-24 13:01:45] INFO: Face ROI size: 224x302
+[2025-10-24 13:01:45] INFO: Face ROI mean pixel value (BGR): [130.2603476821192, 148.09216828287606, 155.11948616367076, 0.0]
+[2025-10-24 13:01:45] INFO: Face ROI std deviation: 39.72976001636106
+[2025-10-24 13:01:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.779 
+[2025-10-24 13:01:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.779), 2nd=0.000, Discriminative=0.779, AvgNeg=0.000
+[2025-10-24 13:01:45] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:45] INFO: [Accept] S13234 - Jin_Rae | Raw=0.779, Confidence=0.77, Margin=0.779 | Strong confidence match
+[2025-10-24 13:01:45] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:45] INFO: Original frame resolution: 225x306
+[2025-10-24 13:01:45] INFO: Face ROI size: 225x306
+[2025-10-24 13:01:45] INFO: Face ROI mean pixel value (BGR): [131.11816993464052, 148.79604938271606, 155.44803195352216, 0.0]
+[2025-10-24 13:01:45] INFO: Face ROI std deviation: 40.11015163145738
+[2025-10-24 13:01:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.786 
+[2025-10-24 13:01:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.786), 2nd=0.000, Discriminative=0.786, AvgNeg=0.000
+[2025-10-24 13:01:45] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:45] INFO: [Accept] S13234 - Jin_Rae | Raw=0.786, Confidence=0.77, Margin=0.786 | Strong confidence match
+[2025-10-24 13:01:45] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:45] INFO: Original frame resolution: 228x307
+[2025-10-24 13:01:45] INFO: Face ROI size: 228x307
+[2025-10-24 13:01:45] INFO: Face ROI mean pixel value (BGR): [132.6064489399394, 149.11053488770787, 156.73992799588547, 0.0]
+[2025-10-24 13:01:45] INFO: Face ROI std deviation: 40.49863038340227
+[2025-10-24 13:01:45] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.783 
+[2025-10-24 13:01:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.783), 2nd=0.000, Discriminative=0.783, AvgNeg=0.000
+[2025-10-24 13:01:45] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:45] INFO: [Accept] S13234 - Jin_Rae | Raw=0.783, Confidence=0.77, Margin=0.783 | Strong confidence match
+[2025-10-24 13:01:46] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:46] INFO: Original frame resolution: 228x308
+[2025-10-24 13:01:46] INFO: Face ROI size: 228x308
+[2025-10-24 13:01:46] INFO: Face ROI mean pixel value (BGR): [134.28246753246754, 149.00706311232625, 157.82612781954887, 0.0]
+[2025-10-24 13:01:46] INFO: Face ROI std deviation: 40.75066779167485
+[2025-10-24 13:01:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.777 
+[2025-10-24 13:01:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.777), 2nd=0.000, Discriminative=0.777, AvgNeg=0.000
+[2025-10-24 13:01:46] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:46] INFO: [Accept] S13234 - Jin_Rae | Raw=0.777, Confidence=0.76, Margin=0.777 | Strong confidence match
+[2025-10-24 13:01:46] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:46] INFO: Original frame resolution: 229x308
+[2025-10-24 13:01:46] INFO: Face ROI size: 229x308
+[2025-10-24 13:01:46] INFO: Face ROI mean pixel value (BGR): [135.27435773833153, 149.81353144671922, 158.7161997391255, 0.0]
+[2025-10-24 13:01:46] INFO: Face ROI std deviation: 41.150001607881684
+[2025-10-24 13:01:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.770 
+[2025-10-24 13:01:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.770), 2nd=0.000, Discriminative=0.770, AvgNeg=0.000
+[2025-10-24 13:01:46] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.6%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:46] INFO: [Accept] S13234 - Jin_Rae | Raw=0.770, Confidence=0.76, Margin=0.770 | Strong confidence match
+[2025-10-24 13:01:46] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:46] INFO: Original frame resolution: 229x312
+[2025-10-24 13:01:46] INFO: Face ROI size: 229x312
+[2025-10-24 13:01:46] INFO: Face ROI mean pixel value (BGR): [135.38511924756466, 150.0931026760721, 158.6356091143209, 0.0]
+[2025-10-24 13:01:46] INFO: Face ROI std deviation: 41.41593450307996
+[2025-10-24 13:01:46] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.786 
+[2025-10-24 13:01:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.786), 2nd=0.000, Discriminative=0.786, AvgNeg=0.000
+[2025-10-24 13:01:46] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:46] INFO: [Accept] S13234 - Jin_Rae | Raw=0.786, Confidence=0.77, Margin=0.786 | Strong confidence match
+[2025-10-24 13:01:46] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:46] INFO: Original frame resolution: 228x312
+[2025-10-24 13:01:46] INFO: Face ROI size: 228x312
+[2025-10-24 13:01:46] INFO: Face ROI mean pixel value (BGR): [135.2907529239766, 149.8084092442645, 158.59577429149797, 0.0]
+[2025-10-24 13:01:46] INFO: Face ROI std deviation: 41.18018215259512
+[2025-10-24 13:01:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.777 
+[2025-10-24 13:01:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.777), 2nd=0.000, Discriminative=0.777, AvgNeg=0.000
+[2025-10-24 13:01:47] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:47] INFO: [Accept] S13234 - Jin_Rae | Raw=0.777, Confidence=0.76, Margin=0.777 | Strong confidence match
+[2025-10-24 13:01:47] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:47] INFO: Original frame resolution: 228x312
+[2025-10-24 13:01:47] INFO: Face ROI size: 228x312
+[2025-10-24 13:01:47] INFO: Face ROI mean pixel value (BGR): [135.33267262708054, 149.90543466036888, 158.6668494152047, 0.0]
+[2025-10-24 13:01:47] INFO: Face ROI std deviation: 41.15589538173326
+[2025-10-24 13:01:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.779 
+[2025-10-24 13:01:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.779), 2nd=0.000, Discriminative=0.779, AvgNeg=0.000
+[2025-10-24 13:01:47] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:47] INFO: [Accept] S13234 - Jin_Rae | Raw=0.779, Confidence=0.77, Margin=0.779 | Strong confidence match
+[2025-10-24 13:01:47] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:47] INFO: Original frame resolution: 229x313
+[2025-10-24 13:01:47] INFO: Face ROI size: 229x313
+[2025-10-24 13:01:47] INFO: Face ROI mean pixel value (BGR): [135.190856202129, 149.45233477963643, 158.47894024582502, 0.0]
+[2025-10-24 13:01:47] INFO: Face ROI std deviation: 40.98362485692137
+[2025-10-24 13:01:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.781 
+[2025-10-24 13:01:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.781), 2nd=0.000, Discriminative=0.781, AvgNeg=0.000
+[2025-10-24 13:01:47] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:47] INFO: [Accept] S13234 - Jin_Rae | Raw=0.781, Confidence=0.77, Margin=0.781 | Strong confidence match
+[2025-10-24 13:01:47] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:47] INFO: Original frame resolution: 228x313
+[2025-10-24 13:01:47] INFO: Face ROI size: 228x313
+[2025-10-24 13:01:47] INFO: Face ROI mean pixel value (BGR): [135.22961156885825, 149.55603665713804, 158.53133232442127, 0.0]
+[2025-10-24 13:01:47] INFO: Face ROI std deviation: 41.031050495574306
+[2025-10-24 13:01:47] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.781 
+[2025-10-24 13:01:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.781), 2nd=0.000, Discriminative=0.781, AvgNeg=0.000
+[2025-10-24 13:01:47] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:47] INFO: [Accept] S13234 - Jin_Rae | Raw=0.781, Confidence=0.77, Margin=0.781 | Strong confidence match
+[2025-10-24 13:01:48] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:48] INFO: Original frame resolution: 227x312
+[2025-10-24 13:01:48] INFO: Face ROI size: 227x312
+[2025-10-24 13:01:48] INFO: Face ROI mean pixel value (BGR): [135.11446684739636, 149.66566418163336, 158.52372077261947, 0.0]
+[2025-10-24 13:01:48] INFO: Face ROI std deviation: 41.176047527642915
+[2025-10-24 13:01:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.777 
+[2025-10-24 13:01:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.777), 2nd=0.000, Discriminative=0.777, AvgNeg=0.000
+[2025-10-24 13:01:48] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:48] INFO: [Accept] S13234 - Jin_Rae | Raw=0.777, Confidence=0.76, Margin=0.777 | Strong confidence match
+[2025-10-24 13:01:48] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:48] INFO: Original frame resolution: 228x312
+[2025-10-24 13:01:48] INFO: Face ROI size: 228x312
+[2025-10-24 13:01:48] INFO: Face ROI mean pixel value (BGR): [135.35813090418355, 150.0142543859649, 158.76497132253712, 0.0]
+[2025-10-24 13:01:48] INFO: Face ROI std deviation: 41.272183244612016
+[2025-10-24 13:01:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.788 
+[2025-10-24 13:01:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.788), 2nd=0.000, Discriminative=0.788, AvgNeg=0.000
+[2025-10-24 13:01:48] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:48] INFO: [Accept] S13234 - Jin_Rae | Raw=0.788, Confidence=0.78, Margin=0.788 | Strong confidence match
+[2025-10-24 13:01:48] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:48] INFO: Original frame resolution: 228x314
+[2025-10-24 13:01:48] INFO: Face ROI size: 228x314
+[2025-10-24 13:01:48] INFO: Face ROI mean pixel value (BGR): [135.52145491116326, 150.19041233657393, 158.74451055983909, 0.0]
+[2025-10-24 13:01:48] INFO: Face ROI std deviation: 41.29806819929653
+[2025-10-24 13:01:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.785 
+[2025-10-24 13:01:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.785), 2nd=0.000, Discriminative=0.785, AvgNeg=0.000
+[2025-10-24 13:01:48] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:48] INFO: [Accept] S13234 - Jin_Rae | Raw=0.785, Confidence=0.77, Margin=0.785 | Strong confidence match
+[2025-10-24 13:01:48] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:48] INFO: Original frame resolution: 223x306
+[2025-10-24 13:01:48] INFO: Face ROI size: 223x306
+[2025-10-24 13:01:48] INFO: Face ROI mean pixel value (BGR): [135.05458835253086, 150.18035405492543, 159.2801371669744, 0.0]
+[2025-10-24 13:01:48] INFO: Face ROI std deviation: 41.679957725136994
+[2025-10-24 13:01:48] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.788 
+[2025-10-24 13:01:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.788), 2nd=0.000, Discriminative=0.788, AvgNeg=0.000
+[2025-10-24 13:01:48] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:48] INFO: [Accept] S13234 - Jin_Rae | Raw=0.788, Confidence=0.78, Margin=0.788 | Strong confidence match
+[2025-10-24 13:01:49] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:49] INFO: Original frame resolution: 220x299
+[2025-10-24 13:01:49] INFO: Face ROI size: 220x299
+[2025-10-24 13:01:49] INFO: Face ROI mean pixel value (BGR): [135.50775311644875, 151.37020370933413, 160.1685770750988, 0.0]
+[2025-10-24 13:01:49] INFO: Face ROI std deviation: 42.95151144900715
+[2025-10-24 13:01:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.791 
+[2025-10-24 13:01:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.791), 2nd=0.000, Discriminative=0.791, AvgNeg=0.000
+[2025-10-24 13:01:49] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:49] INFO: [Accept] S13234 - Jin_Rae | Raw=0.791, Confidence=0.78, Margin=0.791 | Strong confidence match
+[2025-10-24 13:01:49] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:49] INFO: Original frame resolution: 208x282
+[2025-10-24 13:01:49] INFO: Face ROI size: 208x282
+[2025-10-24 13:01:49] INFO: Face ROI mean pixel value (BGR): [138.03077264048008, 155.50637615930168, 164.06275572831422, 0.0]
+[2025-10-24 13:01:49] INFO: Face ROI std deviation: 44.69926511648139
+[2025-10-24 13:01:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.784 
+[2025-10-24 13:01:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.784), 2nd=0.000, Discriminative=0.784, AvgNeg=0.000
+[2025-10-24 13:01:49] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:49] INFO: [Accept] S13234 - Jin_Rae | Raw=0.784, Confidence=0.77, Margin=0.784 | Strong confidence match
+[2025-10-24 13:01:49] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:49] INFO: Original frame resolution: 201x262
+[2025-10-24 13:01:49] INFO: Face ROI size: 201x262
+[2025-10-24 13:01:49] INFO: Face ROI mean pixel value (BGR): [136.28193004443432, 156.7067904751054, 161.654095932551, 0.0]
+[2025-10-24 13:01:49] INFO: Face ROI std deviation: 45.0983942335432
+[2025-10-24 13:01:49] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.734 
+[2025-10-24 13:01:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.734), 2nd=0.000, Discriminative=0.734, AvgNeg=0.000
+[2025-10-24 13:01:49] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:49] INFO: [Accept] S13234 - Jin_Rae | Raw=0.734, Confidence=0.72, Margin=0.734 | Strong confidence match
+[2025-10-24 13:01:49] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:49] INFO: Original frame resolution: 197x250
+[2025-10-24 13:01:49] INFO: Face ROI size: 197x250
+[2025-10-24 13:01:49] INFO: Face ROI mean pixel value (BGR): [128.32936040609135, 149.71429441624366, 155.11687309644668, 0.0]
+[2025-10-24 13:01:49] INFO: Face ROI std deviation: 45.010139059656375
+[2025-10-24 13:01:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.656 
+[2025-10-24 13:01:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.656), 2nd=0.000, Discriminative=0.656, AvgNeg=0.000
+[2025-10-24 13:01:50] INFO: [Thresholds] Abs=0.514, Margin=0.105(16.0%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:50] INFO: [Accept] S13234 - Jin_Rae | Raw=0.656, Confidence=0.64, Margin=0.656 | Strong confidence match
+[2025-10-24 13:01:50] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:50] INFO: Original frame resolution: 197x248
+[2025-10-24 13:01:50] INFO: Face ROI size: 197x248
+[2025-10-24 13:01:50] INFO: Face ROI mean pixel value (BGR): [121.77190109710169, 145.74412559358115, 152.75785983297857, 0.0]
+[2025-10-24 13:01:50] INFO: Face ROI std deviation: 43.92680538031385
+[2025-10-24 13:01:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.589 
+[2025-10-24 13:01:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.589), 2nd=0.000, Discriminative=0.589, AvgNeg=0.000
+[2025-10-24 13:01:50] INFO: [Thresholds] Abs=0.514, Margin=0.105(17.8%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:50] INFO: [Reject] Best=S13234 - Jin_Rae(0.589), 2nd=0.000, Confidence=0.57, Margin=0.589 | Raw score too low (0.589 < 0.60)
+[2025-10-24 13:01:50] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:50] INFO: Original frame resolution: 197x243
+[2025-10-24 13:01:50] INFO: Face ROI size: 197x243
+[2025-10-24 13:01:50] INFO: Face ROI mean pixel value (BGR): [123.39600175471581, 145.09880721104636, 156.85049403605524, 0.0]
+[2025-10-24 13:01:50] INFO: Face ROI std deviation: 45.684716406797044
+[2025-10-24 13:01:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.554 
+[2025-10-24 13:01:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.554), 2nd=0.000, Discriminative=0.554, AvgNeg=0.000
+[2025-10-24 13:01:50] INFO: [Thresholds] Abs=0.514, Margin=0.105(18.9%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:50] INFO: [Reject] Best=S13234 - Jin_Rae(0.554), 2nd=0.000, Confidence=0.53, Margin=0.554 | Raw score too low (0.554 < 0.60)
+[2025-10-24 13:01:50] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:50] INFO: Original frame resolution: 195x250
+[2025-10-24 13:01:50] INFO: Face ROI size: 195x250
+[2025-10-24 13:01:50] INFO: Face ROI mean pixel value (BGR): [124.92244102564102, 145.5758358974359, 157.6985641025641, 0.0]
+[2025-10-24 13:01:50] INFO: Face ROI std deviation: 47.882689500865204
+[2025-10-24 13:01:50] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.548 
+[2025-10-24 13:01:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.548), 2nd=0.000, Discriminative=0.548, AvgNeg=0.000
+[2025-10-24 13:01:50] INFO: [Thresholds] Abs=0.514, Margin=0.105(19.1%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:50] INFO: [Reject] Best=S13234 - Jin_Rae(0.548), 2nd=0.000, Confidence=0.52, Margin=0.548 | Raw score too low (0.548 < 0.60)
+[2025-10-24 13:01:51] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:51] INFO: Original frame resolution: 193x246
+[2025-10-24 13:01:51] INFO: Face ROI size: 193x246
+[2025-10-24 13:01:51] INFO: Face ROI mean pixel value (BGR): [122.30401449092211, 142.3646531024896, 154.48521420447366, 0.0]
+[2025-10-24 13:01:51] INFO: Face ROI std deviation: 46.511905372676544
+[2025-10-24 13:01:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.504 
+[2025-10-24 13:01:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.504), 2nd=0.000, Discriminative=0.504, AvgNeg=0.000
+[2025-10-24 13:01:51] INFO: [Thresholds] Abs=0.514, Margin=0.105(20.8%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:51] INFO: [Reject] Best=S13234 - Jin_Rae(0.504), 2nd=0.000, Confidence=0.48, Margin=0.504 | Raw score too low (0.504 < 0.60)
+[2025-10-24 13:01:51] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:51] INFO: Original frame resolution: 191x253
+[2025-10-24 13:01:51] INFO: Face ROI size: 191x253
+[2025-10-24 13:01:51] INFO: Face ROI mean pixel value (BGR): [119.17240237568032, 137.8107940318275, 148.1735198559692, 0.0]
+[2025-10-24 13:01:51] INFO: Face ROI std deviation: 46.34909511035516
+[2025-10-24 13:01:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.463 
+[2025-10-24 13:01:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.463), 2nd=0.000, Discriminative=0.463, AvgNeg=0.000
+[2025-10-24 13:01:51] INFO: [Thresholds] Abs=0.514, Margin=0.105(22.7%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:51] INFO: [Reject] Best=S13234 - Jin_Rae(0.463), 2nd=0.000, Confidence=0.45, Margin=0.463 | Raw score too low (0.463 < 0.60)
+[2025-10-24 13:01:51] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:51] INFO: Original frame resolution: 190x255
+[2025-10-24 13:01:51] INFO: Face ROI size: 190x255
+[2025-10-24 13:01:51] INFO: Face ROI mean pixel value (BGR): [117.27729618163056, 137.01808049535606, 146.8236738906089, 0.0]
+[2025-10-24 13:01:51] INFO: Face ROI std deviation: 44.90791300747899
+[2025-10-24 13:01:51] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.432 
+[2025-10-24 13:01:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.432), 2nd=0.000, Discriminative=0.432, AvgNeg=0.000
+[2025-10-24 13:01:51] INFO: [Thresholds] Abs=0.514, Margin=0.105(24.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:51] INFO: [Reject] Best=S13234 - Jin_Rae(0.432), 2nd=0.000, Confidence=0.45, Margin=0.432 | Raw score too low (0.432 < 0.60)
+[2025-10-24 13:01:51] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:51] INFO: Original frame resolution: 185x251
+[2025-10-24 13:01:51] INFO: Face ROI size: 185x251
+[2025-10-24 13:01:51] INFO: Face ROI mean pixel value (BGR): [120.86234521373963, 141.0316356196834, 151.3148702487348, 0.0]
+[2025-10-24 13:01:51] INFO: Face ROI std deviation: 45.93414326640164
+[2025-10-24 13:01:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.402 
+[2025-10-24 13:01:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.402), 2nd=0.000, Discriminative=0.402, AvgNeg=0.000
+[2025-10-24 13:01:52] INFO: [Thresholds] Abs=0.514, Margin=0.105(26.1%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:52] INFO: [Reject] Best=S13234 - Jin_Rae(0.402), 2nd=0.000, Confidence=0.45, Margin=0.402 | Raw score too low (0.402 < 0.60)
+[2025-10-24 13:01:52] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:52] INFO: Original frame resolution: 177x246
+[2025-10-24 13:01:52] INFO: Face ROI size: 177x246
+[2025-10-24 13:01:52] INFO: Face ROI mean pixel value (BGR): [123.20449221441366, 143.97324422396767, 154.7266776905057, 0.0]
+[2025-10-24 13:01:52] INFO: Face ROI std deviation: 45.90797802565472
+[2025-10-24 13:01:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.379 
+[2025-10-24 13:01:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.379), 2nd=0.000, Discriminative=0.379, AvgNeg=0.000
+[2025-10-24 13:01:52] INFO: [Thresholds] Abs=0.514, Margin=0.105(27.7%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:52] INFO: [Reject] Best=S13234 - Jin_Rae(0.379), 2nd=0.000, Confidence=0.45, Margin=0.379 | Raw score too low (0.379 < 0.60)
+[2025-10-24 13:01:52] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:52] INFO: Original frame resolution: 185x246
+[2025-10-24 13:01:52] INFO: Face ROI size: 185x246
+[2025-10-24 13:01:52] INFO: Face ROI mean pixel value (BGR): [126.56130520764667, 146.38354207866402, 156.7156449132059, 0.0]
+[2025-10-24 13:01:52] INFO: Face ROI std deviation: 46.43726815651701
+[2025-10-24 13:01:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.374 
+[2025-10-24 13:01:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.374), 2nd=0.000, Discriminative=0.374, AvgNeg=0.000
+[2025-10-24 13:01:52] INFO: [Thresholds] Abs=0.514, Margin=0.105(28.1%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:52] INFO: [Reject] Best=S13234 - Jin_Rae(0.374), 2nd=0.000, Confidence=0.45, Margin=0.374 | Raw score too low (0.374 < 0.60)
+[2025-10-24 13:01:52] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:52] INFO: Original frame resolution: 197x245
+[2025-10-24 13:01:52] INFO: Face ROI size: 197x245
+[2025-10-24 13:01:52] INFO: Face ROI mean pixel value (BGR): [128.1740805967057, 145.5266134880348, 152.48888428467833, 0.0]
+[2025-10-24 13:01:52] INFO: Face ROI std deviation: 47.08713681935804
+[2025-10-24 13:01:52] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.471 
+[2025-10-24 13:01:52] INFO: [Decision] Best=S13234 - Jin_Rae(0.471), 2nd=0.000, Discriminative=0.471, AvgNeg=0.000
+[2025-10-24 13:01:52] INFO: [Thresholds] Abs=0.514, Margin=0.105(22.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:52] INFO: [Reject] Best=S13234 - Jin_Rae(0.471), 2nd=0.000, Confidence=0.45, Margin=0.471 | Raw score too low (0.471 < 0.60)
+[2025-10-24 13:01:52] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:52] INFO: Original frame resolution: 207x248
+[2025-10-24 13:01:52] INFO: Face ROI size: 207x248
+[2025-10-24 13:01:52] INFO: Face ROI mean pixel value (BGR): [128.0625486987689, 143.48990961508494, 145.87287673367618, 0.0]
+[2025-10-24 13:01:52] INFO: Face ROI std deviation: 46.61865270176977
+[2025-10-24 13:01:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.546 
+[2025-10-24 13:01:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.546), 2nd=0.000, Discriminative=0.546, AvgNeg=0.000
+[2025-10-24 13:01:53] INFO: [Thresholds] Abs=0.514, Margin=0.105(19.2%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:53] INFO: [Reject] Best=S13234 - Jin_Rae(0.546), 2nd=0.000, Confidence=0.52, Margin=0.546 | Raw score too low (0.546 < 0.60)
+[2025-10-24 13:01:53] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:53] INFO: Original frame resolution: 197x270
+[2025-10-24 13:01:53] INFO: Face ROI size: 197x270
+[2025-10-24 13:01:53] INFO: Face ROI mean pixel value (BGR): [126.73017484489564, 140.16909193457417, 141.4298552359466, 0.0]
+[2025-10-24 13:01:53] INFO: Face ROI std deviation: 47.19498769463139
+[2025-10-24 13:01:53] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.713 
+[2025-10-24 13:01:53] INFO: [Decision] Best=S13234 - Jin_Rae(0.713), 2nd=0.000, Discriminative=0.713, AvgNeg=0.000
+[2025-10-24 13:01:53] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.7%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:53] INFO: [Accept] S13234 - Jin_Rae | Raw=0.713, Confidence=0.70, Margin=0.713 | Strong confidence match
+[2025-10-24 13:01:54] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:54] INFO: Original frame resolution: 146x207
+[2025-10-24 13:01:54] INFO: Face ROI size: 146x207
+[2025-10-24 13:01:54] INFO: Face ROI mean pixel value (BGR): [95.30494341870161, 116.7320164118854, 106.7877704983125, 0.0]
+[2025-10-24 13:01:54] INFO: Face ROI std deviation: 37.50174356410468
+[2025-10-24 13:01:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.599 
+[2025-10-24 13:01:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.599), 2nd=0.000, Discriminative=0.599, AvgNeg=0.000
+[2025-10-24 13:01:54] INFO: [Thresholds] Abs=0.514, Margin=0.105(17.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:54] INFO: [Reject] Best=S13234 - Jin_Rae(0.599), 2nd=0.000, Confidence=0.58, Margin=0.599 | Raw score too low (0.599 < 0.60)
+[2025-10-24 13:01:54] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:54] INFO: Original frame resolution: 190x207
+[2025-10-24 13:01:54] INFO: Face ROI size: 190x207
+[2025-10-24 13:01:54] INFO: Face ROI mean pixel value (BGR): [95.45962369692346, 116.23633358759217, 116.24584286803966, 0.0]
+[2025-10-24 13:01:54] INFO: Face ROI std deviation: 36.271273734284804
+[2025-10-24 13:01:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.440 
+[2025-10-24 13:01:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.440), 2nd=0.000, Discriminative=0.440, AvgNeg=0.000
+[2025-10-24 13:01:54] INFO: [Thresholds] Abs=0.514, Margin=0.105(23.9%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:54] INFO: [Reject] Best=S13234 - Jin_Rae(0.440), 2nd=0.000, Confidence=0.45, Margin=0.440 | Raw score too low (0.440 < 0.60)
+[2025-10-24 13:01:54] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:54] INFO: Original frame resolution: 178x216
+[2025-10-24 13:01:54] INFO: Face ROI size: 178x216
+[2025-10-24 13:01:54] INFO: Face ROI mean pixel value (BGR): [100.29541198501873, 121.44077715355806, 122.65561277569705, 0.0]
+[2025-10-24 13:01:54] INFO: Face ROI std deviation: 36.93398565643689
+[2025-10-24 13:01:54] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.342 
+[2025-10-24 13:01:54] INFO: [Decision] Best=S13234 - Jin_Rae(0.342), 2nd=0.000, Discriminative=0.342, AvgNeg=0.000
+[2025-10-24 13:01:54] INFO: [Thresholds] Abs=0.514, Margin=0.105(30.7%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:54] INFO: [Reject] Best=S13234 - Jin_Rae(0.342), 2nd=0.000, Confidence=0.45, Margin=0.342 | Raw score too low (0.342 < 0.60)
+[2025-10-24 13:01:54] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:54] INFO: Original frame resolution: 175x204
+[2025-10-24 13:01:54] INFO: Face ROI size: 175x204
+[2025-10-24 13:01:54] INFO: Face ROI mean pixel value (BGR): [106.10540616246499, 127.50521008403362, 130.12047619047618, 0.0]
+[2025-10-24 13:01:54] INFO: Face ROI std deviation: 38.50176552269317
+[2025-10-24 13:01:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.334 
+[2025-10-24 13:01:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.334), 2nd=0.000, Discriminative=0.334, AvgNeg=0.000
+[2025-10-24 13:01:55] INFO: [Thresholds] Abs=0.514, Margin=0.105(31.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:55] INFO: [Reject] Best=S13234 - Jin_Rae(0.334), 2nd=0.000, Confidence=0.45, Margin=0.334 | Raw score too low (0.334 < 0.60)
+[2025-10-24 13:01:55] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:55] INFO: Original frame resolution: 171x199
+[2025-10-24 13:01:55] INFO: Face ROI size: 171x199
+[2025-10-24 13:01:55] INFO: Face ROI mean pixel value (BGR): [110.79067853889329, 132.73187575303416, 134.6377207675806, 0.0]
+[2025-10-24 13:01:55] INFO: Face ROI std deviation: 39.70429651500236
+[2025-10-24 13:01:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.249 
+[2025-10-24 13:01:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.249), 2nd=0.000, Discriminative=0.249, AvgNeg=0.000
+[2025-10-24 13:01:55] INFO: [Thresholds] Abs=0.514, Margin=0.105(42.2%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:55] INFO: [Reject] Best=S13234 - Jin_Rae(0.249), 2nd=0.000, Confidence=0.45, Margin=0.249 | Raw score too low (0.249 < 0.60)
+[2025-10-24 13:01:55] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:55] INFO: Original frame resolution: 177x202
+[2025-10-24 13:01:55] INFO: Face ROI size: 177x202
+[2025-10-24 13:01:55] INFO: Face ROI mean pixel value (BGR): [116.6010516305868, 136.63458633998994, 138.23541421938805, 0.0]
+[2025-10-24 13:01:55] INFO: Face ROI std deviation: 41.32119510176059
+[2025-10-24 13:01:55] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.197 
+[2025-10-24 13:01:55] INFO: [Decision] Best=S13234 - Jin_Rae(0.197), 2nd=0.000, Discriminative=0.197, AvgNeg=0.000
+[2025-10-24 13:01:55] INFO: [Thresholds] Abs=0.514, Margin=0.105(53.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:55] INFO: [Reject] Best=S13234 - Jin_Rae(0.197), 2nd=0.000, Confidence=0.45, Margin=0.197 | Raw score too low (0.197 < 0.60)
+[2025-10-24 13:01:55] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:55] INFO: Original frame resolution: 156x182
+[2025-10-24 13:01:55] INFO: Face ROI size: 156x182
+[2025-10-24 13:01:55] INFO: Face ROI mean pixel value (BGR): [125.15057058326289, 146.7000563539025, 145.97407720484642, 0.0]
+[2025-10-24 13:01:55] INFO: Face ROI std deviation: 45.1160424643261
+[2025-10-24 13:01:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.187 
+[2025-10-24 13:01:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.187), 2nd=0.000, Discriminative=0.187, AvgNeg=0.000
+[2025-10-24 13:01:56] INFO: [Thresholds] Abs=0.514, Margin=0.105(56.1%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:56] INFO: [Reject] Best=S13234 - Jin_Rae(0.187), 2nd=0.000, Confidence=0.45, Margin=0.187 | Raw score too low (0.187 < 0.60)
+[2025-10-24 13:01:56] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:56] INFO: Original frame resolution: 144x164
+[2025-10-24 13:01:56] INFO: Face ROI size: 144x164
+[2025-10-24 13:01:56] INFO: Face ROI mean pixel value (BGR): [126.02134146341463, 149.51960535230353, 145.89769647696477, 0.0]
+[2025-10-24 13:01:56] INFO: Face ROI std deviation: 47.10600093061109
+[2025-10-24 13:01:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.176 
+[2025-10-24 13:01:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.176), 2nd=0.000, Discriminative=0.176, AvgNeg=0.000
+[2025-10-24 13:01:56] INFO: [Thresholds] Abs=0.514, Margin=0.105(59.6%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:56] INFO: [Reject] Best=S13234 - Jin_Rae(0.176), 2nd=0.000, Confidence=0.45, Margin=0.176 | Raw score too low (0.176 < 0.60)
+[2025-10-24 13:01:56] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:56] INFO: Original frame resolution: 140x161
+[2025-10-24 13:01:56] INFO: Face ROI size: 140x161
+[2025-10-24 13:01:56] INFO: Face ROI mean pixel value (BGR): [124.15159716060337, 147.87923691215616, 141.05439219165928, 0.0]
+[2025-10-24 13:01:56] INFO: Face ROI std deviation: 46.24580030454172
+[2025-10-24 13:01:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.461 
+[2025-10-24 13:01:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.461), 2nd=0.000, Discriminative=0.461, AvgNeg=0.000
+[2025-10-24 13:01:56] INFO: [Thresholds] Abs=0.514, Margin=0.105(22.8%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:56] INFO: [Reject] Best=S13234 - Jin_Rae(0.461), 2nd=0.000, Confidence=0.45, Margin=0.461 | Raw score too low (0.461 < 0.60)
+[2025-10-24 13:01:56] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:56] INFO: Original frame resolution: 202x286
+[2025-10-24 13:01:56] INFO: Face ROI size: 202x286
+[2025-10-24 13:01:56] INFO: Face ROI mean pixel value (BGR): [145.71501765561172, 159.39214498372914, 159.66660319878142, 0.0]
+[2025-10-24 13:01:56] INFO: Face ROI std deviation: 44.11298971785959
+[2025-10-24 13:01:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.693 
+[2025-10-24 13:01:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.693), 2nd=0.000, Discriminative=0.693, AvgNeg=0.000
+[2025-10-24 13:01:56] INFO: [Thresholds] Abs=0.514, Margin=0.105(15.1%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:56] INFO: [Accept] S13234 - Jin_Rae | Raw=0.693, Confidence=0.68, Margin=0.693 | Strong confidence match
+[2025-10-24 13:01:56] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:56] INFO: Original frame resolution: 143x159
+[2025-10-24 13:01:56] INFO: Face ROI size: 143x159
+[2025-10-24 13:01:56] INFO: Face ROI mean pixel value (BGR): [124.71957602146281, 149.15740862910673, 139.91348902669657, 0.0]
+[2025-10-24 13:01:56] INFO: Face ROI std deviation: 46.343241177610196
+[2025-10-24 13:01:56] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.499 
+[2025-10-24 13:01:56] INFO: [Decision] Best=S13234 - Jin_Rae(0.499), 2nd=0.000, Discriminative=0.499, AvgNeg=0.000
+[2025-10-24 13:01:56] INFO: [Thresholds] Abs=0.514, Margin=0.105(21.0%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:56] INFO: [Reject] Best=S13234 - Jin_Rae(0.499), 2nd=0.000, Confidence=0.47, Margin=0.499 | Raw score too low (0.499 < 0.60)
+[2025-10-24 13:01:57] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:57] INFO: Original frame resolution: 215x283
+[2025-10-24 13:01:57] INFO: Face ROI size: 215x283
+[2025-10-24 13:01:57] INFO: Face ROI mean pixel value (BGR): [145.85106417947242, 159.65753964993013, 160.20550579340946, 0.0]
+[2025-10-24 13:01:57] INFO: Face ROI std deviation: 43.90996479756281
+[2025-10-24 13:01:57] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.678 
+[2025-10-24 13:01:57] INFO: [Decision] Best=S13234 - Jin_Rae(0.678), 2nd=0.000, Discriminative=0.678, AvgNeg=0.000
+[2025-10-24 13:01:57] INFO: [Thresholds] Abs=0.514, Margin=0.105(15.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:57] INFO: [Accept] S13234 - Jin_Rae | Raw=0.678, Confidence=0.66, Margin=0.678 | Strong confidence match
+[2025-10-24 13:01:57] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:57] INFO: Original frame resolution: 146x164
+[2025-10-24 13:01:57] INFO: Face ROI size: 146x164
+[2025-10-24 13:01:57] INFO: Face ROI mean pixel value (BGR): [123.0496157701303, 148.18484797861677, 139.00459405278986, 0.0]
+[2025-10-24 13:01:57] INFO: Face ROI std deviation: 45.80593271750936
+[2025-10-24 13:01:57] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.544 
+[2025-10-24 13:01:57] INFO: [Decision] Best=S13234 - Jin_Rae(0.544), 2nd=0.000, Discriminative=0.544, AvgNeg=0.000
+[2025-10-24 13:01:57] INFO: [Thresholds] Abs=0.514, Margin=0.105(19.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:57] INFO: [Reject] Best=S13234 - Jin_Rae(0.544), 2nd=0.000, Confidence=0.52, Margin=0.544 | Raw score too low (0.544 < 0.60)
+[2025-10-24 13:01:57] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:57] INFO: Original frame resolution: 220x284
+[2025-10-24 13:01:57] INFO: Face ROI size: 220x284
+[2025-10-24 13:01:57] INFO: Face ROI mean pixel value (BGR): [148.0036651728553, 162.6690781049936, 162.58854033290652, 0.0]
+[2025-10-24 13:01:57] INFO: Face ROI std deviation: 44.95222000343747
+[2025-10-24 13:01:57] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.708 
+[2025-10-24 13:01:57] INFO: [Decision] Best=S13234 - Jin_Rae(0.708), 2nd=0.000, Discriminative=0.708, AvgNeg=0.000
+[2025-10-24 13:01:57] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.8%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:57] INFO: [Accept] S13234 - Jin_Rae | Raw=0.708, Confidence=0.69, Margin=0.708 | Strong confidence match
+[2025-10-24 13:01:57] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:57] INFO: Original frame resolution: 161x199
+[2025-10-24 13:01:57] INFO: Face ROI size: 161x199
+[2025-10-24 13:01:57] INFO: Face ROI mean pixel value (BGR): [117.03239801491932, 140.32516620368926, 134.98970005306035, 0.0]
+[2025-10-24 13:01:57] INFO: Face ROI std deviation: 42.74171595680345
+[2025-10-24 13:01:57] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.523 
+[2025-10-24 13:01:57] INFO: [Decision] Best=S13234 - Jin_Rae(0.523), 2nd=0.000, Discriminative=0.523, AvgNeg=0.000
+[2025-10-24 13:01:57] INFO: [Thresholds] Abs=0.514, Margin=0.105(20.1%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:57] INFO: [Reject] Best=S13234 - Jin_Rae(0.523), 2nd=0.000, Confidence=0.50, Margin=0.523 | Raw score too low (0.523 < 0.60)
+[2025-10-24 13:01:58] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:58] INFO: Original frame resolution: 171x204
+[2025-10-24 13:01:58] INFO: Face ROI size: 171x204
+[2025-10-24 13:01:58] INFO: Face ROI mean pixel value (BGR): [122.87381034285059, 144.3365726407522, 144.22904483430798, 0.0]
+[2025-10-24 13:01:58] INFO: Face ROI std deviation: 44.43178263259203
+[2025-10-24 13:01:58] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.551 
+[2025-10-24 13:01:58] INFO: [Decision] Best=S13234 - Jin_Rae(0.551), 2nd=0.000, Discriminative=0.551, AvgNeg=0.000
+[2025-10-24 13:01:58] INFO: [Thresholds] Abs=0.514, Margin=0.105(19.1%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:58] INFO: [Reject] Best=S13234 - Jin_Rae(0.551), 2nd=0.000, Confidence=0.52, Margin=0.551 | Raw score too low (0.551 < 0.60)
+[2025-10-24 13:01:58] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:58] INFO: Original frame resolution: 175x206
+[2025-10-24 13:01:58] INFO: Face ROI size: 175x206
+[2025-10-24 13:01:58] INFO: Face ROI mean pixel value (BGR): [125.45395284327324, 146.6712898751734, 146.24049930651873, 0.0]
+[2025-10-24 13:01:58] INFO: Face ROI std deviation: 44.996316095694176
+[2025-10-24 13:01:58] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.538 
+[2025-10-24 13:01:58] INFO: [Decision] Best=S13234 - Jin_Rae(0.538), 2nd=0.000, Discriminative=0.538, AvgNeg=0.000
+[2025-10-24 13:01:58] INFO: [Thresholds] Abs=0.514, Margin=0.105(19.5%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:58] INFO: [Reject] Best=S13234 - Jin_Rae(0.538), 2nd=0.000, Confidence=0.51, Margin=0.538 | Raw score too low (0.538 < 0.60)
+[2025-10-24 13:01:58] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:58] INFO: Original frame resolution: 174x208
+[2025-10-24 13:01:58] INFO: Face ROI size: 174x208
+[2025-10-24 13:01:58] INFO: Face ROI mean pixel value (BGR): [126.55318854995579, 148.30357537577365, 147.6009891688771, 0.0]
+[2025-10-24 13:01:58] INFO: Face ROI std deviation: 45.67344275893639
+[2025-10-24 13:01:58] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.528 
+[2025-10-24 13:01:58] INFO: [Decision] Best=S13234 - Jin_Rae(0.528), 2nd=0.000, Discriminative=0.528, AvgNeg=0.000
+[2025-10-24 13:01:58] INFO: [Thresholds] Abs=0.514, Margin=0.105(19.9%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:58] INFO: [Reject] Best=S13234 - Jin_Rae(0.528), 2nd=0.000, Confidence=0.50, Margin=0.528 | Raw score too low (0.528 < 0.60)
+[2025-10-24 13:01:58] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:58] INFO: Original frame resolution: 170x218
+[2025-10-24 13:01:58] INFO: Face ROI size: 170x218
+[2025-10-24 13:01:58] INFO: Face ROI mean pixel value (BGR): [125.06872638963843, 146.7501079330815, 145.8084997301673, 0.0]
+[2025-10-24 13:01:58] INFO: Face ROI std deviation: 45.39731358555068
+[2025-10-24 13:01:59] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.516 
+[2025-10-24 13:01:59] INFO: [Decision] Best=S13234 - Jin_Rae(0.516), 2nd=0.000, Discriminative=0.516, AvgNeg=0.000
+[2025-10-24 13:01:59] INFO: [Thresholds] Abs=0.514, Margin=0.105(20.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:59] INFO: [Reject] Best=S13234 - Jin_Rae(0.516), 2nd=0.000, Confidence=0.49, Margin=0.516 | Raw score too low (0.516 < 0.60)
+[2025-10-24 13:01:59] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:59] INFO: Original frame resolution: 184x213
+[2025-10-24 13:01:59] INFO: Face ROI size: 184x213
+[2025-10-24 13:01:59] INFO: Face ROI mean pixel value (BGR): [124.99351908552767, 145.938533374158, 142.82751581955503, 0.0]
+[2025-10-24 13:01:59] INFO: Face ROI std deviation: 46.312070543017384
+[2025-10-24 13:01:59] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.508 
+[2025-10-24 13:01:59] INFO: [Decision] Best=S13234 - Jin_Rae(0.508), 2nd=0.000, Discriminative=0.508, AvgNeg=0.000
+[2025-10-24 13:01:59] INFO: [Thresholds] Abs=0.514, Margin=0.105(20.7%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:59] INFO: [Reject] Best=S13234 - Jin_Rae(0.508), 2nd=0.000, Confidence=0.48, Margin=0.508 | Raw score too low (0.508 < 0.60)
+[2025-10-24 13:01:59] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:59] INFO: Original frame resolution: 164x220
+[2025-10-24 13:01:59] INFO: Face ROI size: 164x220
+[2025-10-24 13:01:59] INFO: Face ROI mean pixel value (BGR): [126.08511640798226, 146.71014412416852, 142.73082039911307, 0.0]
+[2025-10-24 13:01:59] INFO: Face ROI std deviation: 46.5341563296033
+[2025-10-24 13:01:59] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.430 
+[2025-10-24 13:01:59] INFO: [Decision] Best=S13234 - Jin_Rae(0.430), 2nd=0.000, Discriminative=0.430, AvgNeg=0.000
+[2025-10-24 13:01:59] INFO: [Thresholds] Abs=0.514, Margin=0.105(24.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:01:59] INFO: [Reject] Best=S13234 - Jin_Rae(0.430), 2nd=0.000, Confidence=0.45, Margin=0.430 | Raw score too low (0.430 < 0.60)
+[2025-10-24 13:01:59] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:01:59] INFO: Original frame resolution: 178x229
+[2025-10-24 13:01:59] INFO: Face ROI size: 178x229
+[2025-10-24 13:01:59] INFO: Face ROI mean pixel value (BGR): [121.39926892694176, 141.60171237917666, 136.59921004857463, 0.0]
+[2025-10-24 13:01:59] INFO: Face ROI std deviation: 45.25446940452056
+[2025-10-24 13:02:00] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.468 
+[2025-10-24 13:02:00] INFO: [Decision] Best=S13234 - Jin_Rae(0.468), 2nd=0.000, Discriminative=0.468, AvgNeg=0.000
+[2025-10-24 13:02:00] INFO: [Thresholds] Abs=0.514, Margin=0.105(22.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:00] INFO: [Reject] Best=S13234 - Jin_Rae(0.468), 2nd=0.000, Confidence=0.45, Margin=0.468 | Raw score too low (0.468 < 0.60)
+[2025-10-24 13:02:00] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:00] INFO: Original frame resolution: 185x216
+[2025-10-24 13:02:00] INFO: Face ROI size: 185x216
+[2025-10-24 13:02:00] INFO: Face ROI mean pixel value (BGR): [122.87062062062063, 143.3418918918919, 141.98756256256257, 0.0]
+[2025-10-24 13:02:00] INFO: Face ROI std deviation: 44.871093063440334
+[2025-10-24 13:02:00] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.484 
+[2025-10-24 13:02:00] INFO: [Decision] Best=S13234 - Jin_Rae(0.484), 2nd=0.000, Discriminative=0.484, AvgNeg=0.000
+[2025-10-24 13:02:00] INFO: [Thresholds] Abs=0.514, Margin=0.105(21.7%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:00] INFO: [Reject] Best=S13234 - Jin_Rae(0.484), 2nd=0.000, Confidence=0.45, Margin=0.484 | Raw score too low (0.484 < 0.60)
+[2025-10-24 13:02:00] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:00] INFO: Original frame resolution: 177x212
+[2025-10-24 13:02:00] INFO: Face ROI size: 177x212
+[2025-10-24 13:02:00] INFO: Face ROI mean pixel value (BGR): [127.40659311374054, 147.83517215648652, 150.30564438759194, 0.0]
+[2025-10-24 13:02:00] INFO: Face ROI std deviation: 43.693024212142745
+[2025-10-24 13:02:00] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.523 
+[2025-10-24 13:02:00] INFO: [Decision] Best=S13234 - Jin_Rae(0.523), 2nd=0.000, Discriminative=0.523, AvgNeg=0.000
+[2025-10-24 13:02:00] INFO: [Thresholds] Abs=0.514, Margin=0.105(20.1%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:00] INFO: [Reject] Best=S13234 - Jin_Rae(0.523), 2nd=0.000, Confidence=0.50, Margin=0.523 | Raw score too low (0.523 < 0.60)
+[2025-10-24 13:02:00] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:00] INFO: Original frame resolution: 179x220
+[2025-10-24 13:02:00] INFO: Face ROI size: 179x220
+[2025-10-24 13:02:00] INFO: Face ROI mean pixel value (BGR): [130.64499746063993, 151.91076688674454, 154.14182326053836, 0.0]
+[2025-10-24 13:02:00] INFO: Face ROI std deviation: 43.86676034182653
+[2025-10-24 13:02:01] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.566 
+[2025-10-24 13:02:01] INFO: [Decision] Best=S13234 - Jin_Rae(0.566), 2nd=0.000, Discriminative=0.566, AvgNeg=0.000
+[2025-10-24 13:02:01] INFO: [Thresholds] Abs=0.514, Margin=0.105(18.6%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:01] INFO: [Reject] Best=S13234 - Jin_Rae(0.566), 2nd=0.000, Confidence=0.54, Margin=0.566 | Raw score too low (0.566 < 0.60)
+[2025-10-24 13:02:01] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:01] INFO: Original frame resolution: 191x223
+[2025-10-24 13:02:01] INFO: Face ROI size: 191x223
+[2025-10-24 13:02:01] INFO: Face ROI mean pixel value (BGR): [125.03146056863802, 146.25109759819688, 144.8617143662104, 0.0]
+[2025-10-24 13:02:01] INFO: Face ROI std deviation: 41.29170046838898
+[2025-10-24 13:02:01] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.544 
+[2025-10-24 13:02:01] INFO: [Decision] Best=S13234 - Jin_Rae(0.544), 2nd=0.000, Discriminative=0.544, AvgNeg=0.000
+[2025-10-24 13:02:01] INFO: [Thresholds] Abs=0.514, Margin=0.105(19.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:01] INFO: [Reject] Best=S13234 - Jin_Rae(0.544), 2nd=0.000, Confidence=0.52, Margin=0.544 | Raw score too low (0.544 < 0.60)
+[2025-10-24 13:02:01] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:01] INFO: Original frame resolution: 210x270
+[2025-10-24 13:02:01] INFO: Face ROI size: 210x270
+[2025-10-24 13:02:01] INFO: Face ROI mean pixel value (BGR): [161.05573192239856, 173.80435626102292, 171.42924162257495, 0.0]
+[2025-10-24 13:02:01] INFO: Face ROI std deviation: 46.087979642177935
+[2025-10-24 13:02:01] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.727 
+[2025-10-24 13:02:01] INFO: [Decision] Best=S13234 - Jin_Rae(0.727), 2nd=0.000, Discriminative=0.727, AvgNeg=0.000
+[2025-10-24 13:02:01] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:01] INFO: [Accept] S13234 - Jin_Rae | Raw=0.727, Confidence=0.71, Margin=0.727 | Strong confidence match
+[2025-10-24 13:02:01] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:01] INFO: Original frame resolution: 197x262
+[2025-10-24 13:02:01] INFO: Face ROI size: 197x262
+[2025-10-24 13:02:01] INFO: Face ROI mean pixel value (BGR): [153.36627659162244, 168.25543457201536, 169.8818731351959, 0.0]
+[2025-10-24 13:02:01] INFO: Face ROI std deviation: 46.08863054803119
+[2025-10-24 13:02:01] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.761 
+[2025-10-24 13:02:01] INFO: [Decision] Best=S13234 - Jin_Rae(0.761), 2nd=0.000, Discriminative=0.761, AvgNeg=0.000
+[2025-10-24 13:02:01] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.8%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:01] INFO: [Accept] S13234 - Jin_Rae | Raw=0.761, Confidence=0.75, Margin=0.761 | Strong confidence match
+[2025-10-24 13:02:01] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:01] INFO: Original frame resolution: 199x273
+[2025-10-24 13:02:01] INFO: Face ROI size: 199x273
+[2025-10-24 13:02:01] INFO: Face ROI mean pixel value (BGR): [146.41892613249397, 163.16752259465827, 168.32900767574134, 0.0]
+[2025-10-24 13:02:01] INFO: Face ROI std deviation: 45.642533142163074
+[2025-10-24 13:02:02] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.782 
+[2025-10-24 13:02:02] INFO: [Decision] Best=S13234 - Jin_Rae(0.782), 2nd=0.000, Discriminative=0.782, AvgNeg=0.000
+[2025-10-24 13:02:02] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:02] INFO: [Accept] S13234 - Jin_Rae | Raw=0.782, Confidence=0.77, Margin=0.782 | Strong confidence match
+[2025-10-24 13:02:02] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:02] INFO: Original frame resolution: 198x260
+[2025-10-24 13:02:02] INFO: Face ROI size: 198x260
+[2025-10-24 13:02:02] INFO: Face ROI mean pixel value (BGR): [141.8746891996892, 159.76583139083138, 165.56029526029525, 0.0]
+[2025-10-24 13:02:02] INFO: Face ROI std deviation: 46.14132386555247
+[2025-10-24 13:02:02] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.775 
+[2025-10-24 13:02:02] INFO: [Decision] Best=S13234 - Jin_Rae(0.775), 2nd=0.000, Discriminative=0.775, AvgNeg=0.000
+[2025-10-24 13:02:02] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.6%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:02] INFO: [Accept] S13234 - Jin_Rae | Raw=0.775, Confidence=0.76, Margin=0.775 | Strong confidence match
+[2025-10-24 13:02:02] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:02] INFO: Original frame resolution: 200x259
+[2025-10-24 13:02:02] INFO: Face ROI size: 200x259
+[2025-10-24 13:02:02] INFO: Face ROI mean pixel value (BGR): [137.82449806949808, 155.82600386100387, 161.41324324324324, 0.0]
+[2025-10-24 13:02:02] INFO: Face ROI std deviation: 46.084700329695075
+[2025-10-24 13:02:02] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.768 
+[2025-10-24 13:02:02] INFO: [Decision] Best=S13234 - Jin_Rae(0.768), 2nd=0.000, Discriminative=0.768, AvgNeg=0.000
+[2025-10-24 13:02:02] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.7%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:02] INFO: [Accept] S13234 - Jin_Rae | Raw=0.768, Confidence=0.75, Margin=0.768 | Strong confidence match
+[2025-10-24 13:02:02] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:02] INFO: Original frame resolution: 218x277
+[2025-10-24 13:02:02] INFO: Face ROI size: 218x277
+[2025-10-24 13:02:02] INFO: Face ROI mean pixel value (BGR): [128.06390554101944, 145.45806975126686, 151.7726625376743, 0.0]
+[2025-10-24 13:02:02] INFO: Face ROI std deviation: 45.08016396962108
+[2025-10-24 13:02:03] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.767 
+[2025-10-24 13:02:03] INFO: [Decision] Best=S13234 - Jin_Rae(0.767), 2nd=0.000, Discriminative=0.767, AvgNeg=0.000
+[2025-10-24 13:02:03] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.7%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:03] INFO: [Accept] S13234 - Jin_Rae | Raw=0.767, Confidence=0.75, Margin=0.767 | Strong confidence match
+[2025-10-24 13:02:03] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:03] INFO: Original frame resolution: 217x307
+[2025-10-24 13:02:03] INFO: Face ROI size: 217x307
+[2025-10-24 13:02:03] INFO: Face ROI mean pixel value (BGR): [127.95219081643374, 144.0385925937045, 150.285083834942, 0.0]
+[2025-10-24 13:02:03] INFO: Face ROI std deviation: 41.20961328329266
+[2025-10-24 13:02:03] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.767 
+[2025-10-24 13:02:03] INFO: [Decision] Best=S13234 - Jin_Rae(0.767), 2nd=0.000, Discriminative=0.767, AvgNeg=0.000
+[2025-10-24 13:02:03] INFO: [Thresholds] Abs=0.514, Margin=0.105(13.7%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:03] INFO: [Accept] S13234 - Jin_Rae | Raw=0.767, Confidence=0.75, Margin=0.767 | Strong confidence match
+[2025-10-24 13:02:03] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:03] INFO: Original frame resolution: 202x288
+[2025-10-24 13:02:03] INFO: Face ROI size: 202x288
+[2025-10-24 13:02:03] INFO: Face ROI mean pixel value (BGR): [120.25594746974697, 138.18581545654564, 144.85604029152915, 0.0]
+[2025-10-24 13:02:03] INFO: Face ROI std deviation: 39.69594173020241
+[2025-10-24 13:02:03] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.721 
+[2025-10-24 13:02:03] INFO: [Decision] Best=S13234 - Jin_Rae(0.721), 2nd=0.000, Discriminative=0.721, AvgNeg=0.000
+[2025-10-24 13:02:03] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.6%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:03] INFO: [Accept] S13234 - Jin_Rae | Raw=0.721, Confidence=0.70, Margin=0.721 | Strong confidence match
+[2025-10-24 13:02:03] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:03] INFO: Original frame resolution: 204x269
+[2025-10-24 13:02:03] INFO: Face ROI size: 204x269
+[2025-10-24 13:02:03] INFO: Face ROI mean pixel value (BGR): [124.12650338945988, 142.89315912238501, 150.7730701946206, 0.0]
+[2025-10-24 13:02:03] INFO: Face ROI std deviation: 40.69278330871081
+[2025-10-24 13:02:04] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.632 
+[2025-10-24 13:02:04] INFO: [Decision] Best=S13234 - Jin_Rae(0.632), 2nd=0.000, Discriminative=0.632, AvgNeg=0.000
+[2025-10-24 13:02:04] INFO: [Thresholds] Abs=0.514, Margin=0.105(16.6%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:04] INFO: [Accept] S13234 - Jin_Rae | Raw=0.632, Confidence=0.61, Margin=0.632 | Strong confidence match
+[2025-10-24 13:02:04] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:04] INFO: Original frame resolution: 215x284
+[2025-10-24 13:02:04] INFO: Face ROI size: 215x284
+[2025-10-24 13:02:04] INFO: Face ROI mean pixel value (BGR): [130.08838847035702, 148.3550933508025, 155.91970193252538, 0.0]
+[2025-10-24 13:02:04] INFO: Face ROI std deviation: 43.56053687536148
+[2025-10-24 13:02:04] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.682 
+[2025-10-24 13:02:04] INFO: [Decision] Best=S13234 - Jin_Rae(0.682), 2nd=0.000, Discriminative=0.682, AvgNeg=0.000
+[2025-10-24 13:02:04] INFO: [Thresholds] Abs=0.514, Margin=0.105(15.4%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:04] INFO: [Accept] S13234 - Jin_Rae | Raw=0.682, Confidence=0.66, Margin=0.682 | Strong confidence match
+[2025-10-24 13:02:04] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:04] INFO: Original frame resolution: 232x307
+[2025-10-24 13:02:04] INFO: Face ROI size: 232x307
+[2025-10-24 13:02:04] INFO: Face ROI mean pixel value (BGR): [130.11425923845894, 147.5151072672133, 155.84776199034033, 0.0]
+[2025-10-24 13:02:04] INFO: Face ROI std deviation: 42.865407912773186
+[2025-10-24 13:02:04] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.711 
+[2025-10-24 13:02:04] INFO: [Decision] Best=S13234 - Jin_Rae(0.711), 2nd=0.000, Discriminative=0.711, AvgNeg=0.000
+[2025-10-24 13:02:04] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.8%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:04] INFO: [Accept] S13234 - Jin_Rae | Raw=0.711, Confidence=0.69, Margin=0.711 | Strong confidence match
+[2025-10-24 13:02:04] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:04] INFO: Original frame resolution: 232x316
+[2025-10-24 13:02:04] INFO: Face ROI size: 232x316
+[2025-10-24 13:02:04] INFO: Face ROI mean pixel value (BGR): [129.67549650807507, 146.74840408118726, 154.80022370144042, 0.0]
+[2025-10-24 13:02:04] INFO: Face ROI std deviation: 41.63818021856997
+[2025-10-24 13:02:05] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.735 
+[2025-10-24 13:02:05] INFO: [Decision] Best=S13234 - Jin_Rae(0.735), 2nd=0.000, Discriminative=0.735, AvgNeg=0.000
+[2025-10-24 13:02:05] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.3%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:05] INFO: [Accept] S13234 - Jin_Rae | Raw=0.735, Confidence=0.72, Margin=0.735 | Strong confidence match
+[2025-10-24 13:02:05] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:05] INFO: Original frame resolution: 231x307
+[2025-10-24 13:02:05] INFO: Face ROI size: 231x307
+[2025-10-24 13:02:05] INFO: Face ROI mean pixel value (BGR): [129.4745265592171, 147.16430475062396, 155.38973729853208, 0.0]
+[2025-10-24 13:02:05] INFO: Face ROI std deviation: 42.38840389283828
+[2025-10-24 13:02:05] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.718 
+[2025-10-24 13:02:05] INFO: [Decision] Best=S13234 - Jin_Rae(0.718), 2nd=0.000, Discriminative=0.718, AvgNeg=0.000
+[2025-10-24 13:02:05] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.6%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:05] INFO: [Accept] S13234 - Jin_Rae | Raw=0.718, Confidence=0.70, Margin=0.718 | Strong confidence match
+[2025-10-24 13:02:05] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-10-24 13:02:05] INFO: Original frame resolution: 237x306
+[2025-10-24 13:02:05] INFO: Face ROI size: 237x306
+[2025-10-24 13:02:05] INFO: Face ROI mean pixel value (BGR): [128.24912440362925, 146.88989547999228, 155.33749758693915, 0.0]
+[2025-10-24 13:02:05] INFO: Face ROI std deviation: 42.92840381405091
+[2025-10-24 13:02:05] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.717 
+[2025-10-24 13:02:05] INFO: [Decision] Best=S13234 - Jin_Rae(0.717), 2nd=0.000, Discriminative=0.717, AvgNeg=0.000
+[2025-10-24 13:02:05] INFO: [Thresholds] Abs=0.514, Margin=0.105(14.6%), RelMargin=100.0%, Tightness=0.950, StdDev=0.015
+[2025-10-24 13:02:05] INFO: [Accept] S13234 - Jin_Rae | Raw=0.717, Confidence=0.70, Margin=0.717 | Strong confidence match
+[2025-10-24 13:02:05] INFO: Exiting Face Recognition Demo...
+[2025-10-24 13:02:05] INFO: Exiting Face Recognition Demo...

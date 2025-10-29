@@ -2,6 +2,19 @@ plugins {
     id 'java-library'
 }
 
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+
 repositories {
     mavenCentral()
     maven { url 'https://repo.gradle.org/gradle/libs-releases' }

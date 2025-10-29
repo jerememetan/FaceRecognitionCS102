@@ -1,0 +1,906 @@
+[2025-10-23 03:31:23] INFO: Application Logger Initialized.
+[2025-10-23 03:31:23] INFO: Configuration and core components loaded.
+[2025-10-23 03:31:23] INFO: app.properties normalized (55 entries).
+[2025-10-23 03:31:23] INFO: Configuration loaded from classpath: app.properties
+[2025-10-23 03:31:23] INFO: Configuration file loaded
+[2025-10-23 03:31:23] INFO: MyGUIProgram Started!
+[2025-10-23 03:31:24] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-23 03:31:24] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
+[2025-10-23 03:31:24] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
+[2025-10-23 03:31:24] INFO: === Folder debug ===
+[2025-10-23 03:31:24] INFO: Found folder: C:\SMU\CS102 Project\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae
+[2025-10-23 03:31:24] INFO:   Contains: 34 items
+[2025-10-23 03:31:24] INFO:   Display label: S13234 - Jin_Rae
+[2025-10-23 03:31:24] INFO: ====================
+[2025-10-23 03:31:24] INFO: Person S13234 - Jin_Rae: tightness=0.999, stdDev=0.001, absThresh=0.600, margin=0.100
+[2025-10-23 03:31:24] INFO: DNN face detector loaded successfully for recognition
+[2025-10-23 03:31:24] INFO: Attempting camera index 0 with DSHOW backend...
+[2025-10-23 03:31:25] INFO: Camera opened successfully: index 0 with DSHOW backend
+[2025-10-23 03:31:26] INFO: Camera configured: 640x480 @ 30fps (MJPEG: yes)
+[2025-10-23 03:31:26] INFO: Camera initialized successfully
+[2025-10-23 03:31:27] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000464541312
+[2025-10-23 03:31:27] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:27] INFO: -0.014301 
+[2025-10-23 03:31:27] INFO: -0.018370 
+[2025-10-23 03:31:27] INFO: 0.022322 
+[2025-10-23 03:31:27] INFO: 0.017561 
+[2025-10-23 03:31:27] INFO: 0.019530 
+[2025-10-23 03:31:27] INFO: 0.040385 
+[2025-10-23 03:31:27] INFO: -0.052493 
+[2025-10-23 03:31:27] INFO: -0.013862 
+[2025-10-23 03:31:27] INFO: 0.027298 
+[2025-10-23 03:31:27] INFO: -0.033176 
+[2025-10-23 03:31:27] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:27] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:27] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:27] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:27] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:27] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000318198978
+[2025-10-23 03:31:27] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:27] INFO: -0.014090 
+[2025-10-23 03:31:27] INFO: -0.019158 
+[2025-10-23 03:31:27] INFO: 0.023041 
+[2025-10-23 03:31:27] INFO: 0.018588 
+[2025-10-23 03:31:27] INFO: 0.018755 
+[2025-10-23 03:31:27] INFO: 0.039957 
+[2025-10-23 03:31:27] INFO: -0.053007 
+[2025-10-23 03:31:27] INFO: -0.014224 
+[2025-10-23 03:31:27] INFO: 0.028405 
+[2025-10-23 03:31:27] INFO: -0.034429 
+[2025-10-23 03:31:27] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:27] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:27] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:27] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:27] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:28] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.999999975741758
+[2025-10-23 03:31:28] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:28] INFO: -0.014448 
+[2025-10-23 03:31:28] INFO: -0.020456 
+[2025-10-23 03:31:28] INFO: 0.028629 
+[2025-10-23 03:31:28] INFO: 0.019148 
+[2025-10-23 03:31:28] INFO: 0.028217 
+[2025-10-23 03:31:28] INFO: 0.041157 
+[2025-10-23 03:31:28] INFO: -0.060289 
+[2025-10-23 03:31:28] INFO: -0.011813 
+[2025-10-23 03:31:28] INFO: 0.023445 
+[2025-10-23 03:31:28] INFO: -0.030540 
+[2025-10-23 03:31:28] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:28] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:28] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:28] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:28] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000084305807
+[2025-10-23 03:31:28] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:28] INFO: -0.015084 
+[2025-10-23 03:31:28] INFO: -0.020170 
+[2025-10-23 03:31:28] INFO: 0.026187 
+[2025-10-23 03:31:28] INFO: 0.018554 
+[2025-10-23 03:31:28] INFO: 0.020579 
+[2025-10-23 03:31:28] INFO: 0.038392 
+[2025-10-23 03:31:28] INFO: -0.053931 
+[2025-10-23 03:31:28] INFO: -0.010629 
+[2025-10-23 03:31:28] INFO: 0.031900 
+[2025-10-23 03:31:28] INFO: -0.037197 
+[2025-10-23 03:31:28] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:28] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:28] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:28] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:28] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.000000013415324
+[2025-10-23 03:31:28] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:28] INFO: -0.014390 
+[2025-10-23 03:31:28] INFO: -0.019333 
+[2025-10-23 03:31:28] INFO: 0.022507 
+[2025-10-23 03:31:28] INFO: 0.015398 
+[2025-10-23 03:31:28] INFO: 0.020351 
+[2025-10-23 03:31:28] INFO: 0.039649 
+[2025-10-23 03:31:28] INFO: -0.051704 
+[2025-10-23 03:31:28] INFO: -0.013370 
+[2025-10-23 03:31:28] INFO: 0.029988 
+[2025-10-23 03:31:28] INFO: -0.033348 
+[2025-10-23 03:31:28] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:28] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:28] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:28] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:28] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999784718836
+[2025-10-23 03:31:28] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:28] INFO: -0.014910 
+[2025-10-23 03:31:28] INFO: -0.019598 
+[2025-10-23 03:31:28] INFO: 0.021940 
+[2025-10-23 03:31:28] INFO: 0.022740 
+[2025-10-23 03:31:28] INFO: 0.029744 
+[2025-10-23 03:31:28] INFO: 0.042194 
+[2025-10-23 03:31:28] INFO: -0.057848 
+[2025-10-23 03:31:28] INFO: -0.017916 
+[2025-10-23 03:31:28] INFO: 0.026915 
+[2025-10-23 03:31:28] INFO: -0.028866 
+[2025-10-23 03:31:28] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:28] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:28] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:28] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:28] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000289674138
+[2025-10-23 03:31:28] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:28] INFO: -0.013537 
+[2025-10-23 03:31:28] INFO: -0.019271 
+[2025-10-23 03:31:28] INFO: 0.023672 
+[2025-10-23 03:31:28] INFO: 0.022950 
+[2025-10-23 03:31:28] INFO: 0.030778 
+[2025-10-23 03:31:28] INFO: 0.041742 
+[2025-10-23 03:31:28] INFO: -0.059075 
+[2025-10-23 03:31:28] INFO: -0.016469 
+[2025-10-23 03:31:28] INFO: 0.024687 
+[2025-10-23 03:31:28] INFO: -0.027409 
+[2025-10-23 03:31:28] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:28] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:28] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:28] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:28] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:29] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000262289024
+[2025-10-23 03:31:29] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:29] INFO: -0.013993 
+[2025-10-23 03:31:29] INFO: -0.018329 
+[2025-10-23 03:31:29] INFO: 0.020499 
+[2025-10-23 03:31:29] INFO: 0.021633 
+[2025-10-23 03:31:29] INFO: 0.026391 
+[2025-10-23 03:31:29] INFO: 0.043386 
+[2025-10-23 03:31:29] INFO: -0.057529 
+[2025-10-23 03:31:29] INFO: -0.018159 
+[2025-10-23 03:31:29] INFO: 0.025886 
+[2025-10-23 03:31:29] INFO: -0.026993 
+[2025-10-23 03:31:29] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:29] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:29] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:29] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:29] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:29] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999729275585
+[2025-10-23 03:31:29] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:29] INFO: -0.015940 
+[2025-10-23 03:31:29] INFO: -0.019432 
+[2025-10-23 03:31:29] INFO: 0.022231 
+[2025-10-23 03:31:29] INFO: 0.021710 
+[2025-10-23 03:31:29] INFO: 0.023483 
+[2025-10-23 03:31:29] INFO: 0.041809 
+[2025-10-23 03:31:29] INFO: -0.056128 
+[2025-10-23 03:31:29] INFO: -0.018400 
+[2025-10-23 03:31:29] INFO: 0.033411 
+[2025-10-23 03:31:29] INFO: -0.031542 
+[2025-10-23 03:31:29] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:29] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:29] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:29] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:29] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:29] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999843720667
+[2025-10-23 03:31:29] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:29] INFO: -0.016846 
+[2025-10-23 03:31:29] INFO: -0.018142 
+[2025-10-23 03:31:29] INFO: 0.021890 
+[2025-10-23 03:31:29] INFO: 0.021673 
+[2025-10-23 03:31:29] INFO: 0.021591 
+[2025-10-23 03:31:29] INFO: 0.041237 
+[2025-10-23 03:31:29] INFO: -0.055289 
+[2025-10-23 03:31:29] INFO: -0.019068 
+[2025-10-23 03:31:29] INFO: 0.035724 
+[2025-10-23 03:31:29] INFO: -0.031787 
+[2025-10-23 03:31:29] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:29] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.996 
+[2025-10-23 03:31:29] INFO: [Decision] Best=S13234 - Jin_Rae(0.996), 2nd=0.000, Discriminative=0.996, AvgNeg=0.000
+[2025-10-23 03:31:29] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:29] INFO: [Accept] S13234 - Jin_Rae | Raw=0.996, Confidence=100%, Margin=0.996 | Strong confidence match
+[2025-10-23 03:31:29] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999697312894
+[2025-10-23 03:31:29] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:29] INFO: -0.016077 
+[2025-10-23 03:31:29] INFO: -0.018441 
+[2025-10-23 03:31:29] INFO: 0.023671 
+[2025-10-23 03:31:29] INFO: 0.022482 
+[2025-10-23 03:31:29] INFO: 0.025200 
+[2025-10-23 03:31:29] INFO: 0.041115 
+[2025-10-23 03:31:29] INFO: -0.056648 
+[2025-10-23 03:31:29] INFO: -0.017893 
+[2025-10-23 03:31:29] INFO: 0.031350 
+[2025-10-23 03:31:29] INFO: -0.030494 
+[2025-10-23 03:31:29] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:29] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:29] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:29] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:29] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:29] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.000000044597103
+[2025-10-23 03:31:29] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:29] INFO: -0.016028 
+[2025-10-23 03:31:29] INFO: -0.020656 
+[2025-10-23 03:31:29] INFO: 0.028227 
+[2025-10-23 03:31:29] INFO: 0.021999 
+[2025-10-23 03:31:29] INFO: 0.031321 
+[2025-10-23 03:31:29] INFO: 0.039781 
+[2025-10-23 03:31:29] INFO: -0.059620 
+[2025-10-23 03:31:29] INFO: -0.016781 
+[2025-10-23 03:31:29] INFO: 0.026397 
+[2025-10-23 03:31:29] INFO: -0.028069 
+[2025-10-23 03:31:29] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:29] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:29] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:29] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:29] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:29] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999923052023
+[2025-10-23 03:31:29] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:29] INFO: -0.017148 
+[2025-10-23 03:31:29] INFO: -0.019166 
+[2025-10-23 03:31:29] INFO: 0.026094 
+[2025-10-23 03:31:29] INFO: 0.018992 
+[2025-10-23 03:31:29] INFO: 0.027310 
+[2025-10-23 03:31:29] INFO: 0.042414 
+[2025-10-23 03:31:29] INFO: -0.060149 
+[2025-10-23 03:31:29] INFO: -0.018737 
+[2025-10-23 03:31:29] INFO: 0.027381 
+[2025-10-23 03:31:29] INFO: -0.031609 
+[2025-10-23 03:31:29] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:29] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:29] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:29] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:29] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:30] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000477361524
+[2025-10-23 03:31:30] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:30] INFO: -0.017288 
+[2025-10-23 03:31:30] INFO: -0.019498 
+[2025-10-23 03:31:30] INFO: 0.026517 
+[2025-10-23 03:31:30] INFO: 0.018217 
+[2025-10-23 03:31:30] INFO: 0.026380 
+[2025-10-23 03:31:30] INFO: 0.042262 
+[2025-10-23 03:31:30] INFO: -0.058768 
+[2025-10-23 03:31:30] INFO: -0.016732 
+[2025-10-23 03:31:30] INFO: 0.028569 
+[2025-10-23 03:31:30] INFO: -0.032236 
+[2025-10-23 03:31:30] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:30] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:30] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:30] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999708646037
+[2025-10-23 03:31:30] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:30] INFO: -0.016755 
+[2025-10-23 03:31:30] INFO: -0.018055 
+[2025-10-23 03:31:30] INFO: 0.026581 
+[2025-10-23 03:31:30] INFO: 0.018747 
+[2025-10-23 03:31:30] INFO: 0.026812 
+[2025-10-23 03:31:30] INFO: 0.042457 
+[2025-10-23 03:31:30] INFO: -0.060064 
+[2025-10-23 03:31:30] INFO: -0.018258 
+[2025-10-23 03:31:30] INFO: 0.029009 
+[2025-10-23 03:31:30] INFO: -0.031553 
+[2025-10-23 03:31:30] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:30] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:30] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:30] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999661696298
+[2025-10-23 03:31:30] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:30] INFO: -0.017011 
+[2025-10-23 03:31:30] INFO: -0.018988 
+[2025-10-23 03:31:30] INFO: 0.027599 
+[2025-10-23 03:31:30] INFO: 0.018809 
+[2025-10-23 03:31:30] INFO: 0.027366 
+[2025-10-23 03:31:30] INFO: 0.041900 
+[2025-10-23 03:31:30] INFO: -0.059734 
+[2025-10-23 03:31:30] INFO: -0.019078 
+[2025-10-23 03:31:30] INFO: 0.029124 
+[2025-10-23 03:31:30] INFO: -0.030682 
+[2025-10-23 03:31:30] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:30] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:30] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:30] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999728367387
+[2025-10-23 03:31:30] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:30] INFO: -0.015069 
+[2025-10-23 03:31:30] INFO: -0.017139 
+[2025-10-23 03:31:30] INFO: 0.022565 
+[2025-10-23 03:31:30] INFO: 0.020108 
+[2025-10-23 03:31:30] INFO: 0.020797 
+[2025-10-23 03:31:30] INFO: 0.041275 
+[2025-10-23 03:31:30] INFO: -0.054818 
+[2025-10-23 03:31:30] INFO: -0.017219 
+[2025-10-23 03:31:30] INFO: 0.032517 
+[2025-10-23 03:31:30] INFO: -0.030999 
+[2025-10-23 03:31:30] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:30] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:30] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:30] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999746488145
+[2025-10-23 03:31:30] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:30] INFO: -0.014256 
+[2025-10-23 03:31:30] INFO: -0.017428 
+[2025-10-23 03:31:30] INFO: 0.023509 
+[2025-10-23 03:31:30] INFO: 0.019533 
+[2025-10-23 03:31:30] INFO: 0.023743 
+[2025-10-23 03:31:30] INFO: 0.042021 
+[2025-10-23 03:31:30] INFO: -0.056342 
+[2025-10-23 03:31:30] INFO: -0.019074 
+[2025-10-23 03:31:30] INFO: 0.030643 
+[2025-10-23 03:31:30] INFO: -0.029783 
+[2025-10-23 03:31:30] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:30] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:30] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:30] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999615071992
+[2025-10-23 03:31:30] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:30] INFO: -0.014701 
+[2025-10-23 03:31:30] INFO: -0.016926 
+[2025-10-23 03:31:30] INFO: 0.019884 
+[2025-10-23 03:31:30] INFO: 0.022061 
+[2025-10-23 03:31:30] INFO: 0.019971 
+[2025-10-23 03:31:30] INFO: 0.041481 
+[2025-10-23 03:31:30] INFO: -0.055908 
+[2025-10-23 03:31:30] INFO: -0.018207 
+[2025-10-23 03:31:30] INFO: 0.034362 
+[2025-10-23 03:31:30] INFO: -0.031286 
+[2025-10-23 03:31:30] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:30] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:30] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:30] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:30] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:31] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999860647398
+[2025-10-23 03:31:31] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:31] INFO: -0.014256 
+[2025-10-23 03:31:31] INFO: -0.018826 
+[2025-10-23 03:31:31] INFO: 0.027953 
+[2025-10-23 03:31:31] INFO: 0.017247 
+[2025-10-23 03:31:31] INFO: 0.019924 
+[2025-10-23 03:31:31] INFO: 0.039815 
+[2025-10-23 03:31:31] INFO: -0.054800 
+[2025-10-23 03:31:31] INFO: -0.012027 
+[2025-10-23 03:31:31] INFO: 0.023746 
+[2025-10-23 03:31:31] INFO: -0.030831 
+[2025-10-23 03:31:31] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:31] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:31] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:31] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999610833091
+[2025-10-23 03:31:31] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:31] INFO: -0.017117 
+[2025-10-23 03:31:31] INFO: -0.016506 
+[2025-10-23 03:31:31] INFO: 0.021973 
+[2025-10-23 03:31:31] INFO: 0.017472 
+[2025-10-23 03:31:31] INFO: 0.021315 
+[2025-10-23 03:31:31] INFO: 0.042140 
+[2025-10-23 03:31:31] INFO: -0.058218 
+[2025-10-23 03:31:31] INFO: -0.017308 
+[2025-10-23 03:31:31] INFO: 0.029363 
+[2025-10-23 03:31:31] INFO: -0.031002 
+[2025-10-23 03:31:31] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:31] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:31] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:31] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000390807948
+[2025-10-23 03:31:31] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:31] INFO: -0.015863 
+[2025-10-23 03:31:31] INFO: -0.016046 
+[2025-10-23 03:31:31] INFO: 0.025017 
+[2025-10-23 03:31:31] INFO: 0.016996 
+[2025-10-23 03:31:31] INFO: 0.024928 
+[2025-10-23 03:31:31] INFO: 0.041071 
+[2025-10-23 03:31:31] INFO: -0.054448 
+[2025-10-23 03:31:31] INFO: -0.010814 
+[2025-10-23 03:31:31] INFO: 0.025680 
+[2025-10-23 03:31:31] INFO: -0.032969 
+[2025-10-23 03:31:31] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.996 
+[2025-10-23 03:31:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.996), 2nd=0.000, Discriminative=0.996, AvgNeg=0.000
+[2025-10-23 03:31:31] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.1%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:31] INFO: [Accept] S13234 - Jin_Rae | Raw=0.996, Confidence=100%, Margin=0.996 | Strong confidence match
+[2025-10-23 03:31:31] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999590940145
+[2025-10-23 03:31:31] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:31] INFO: -0.017690 
+[2025-10-23 03:31:31] INFO: -0.013081 
+[2025-10-23 03:31:31] INFO: 0.023162 
+[2025-10-23 03:31:31] INFO: 0.022151 
+[2025-10-23 03:31:31] INFO: 0.020668 
+[2025-10-23 03:31:31] INFO: 0.039888 
+[2025-10-23 03:31:31] INFO: -0.053491 
+[2025-10-23 03:31:31] INFO: -0.011588 
+[2025-10-23 03:31:31] INFO: 0.035127 
+[2025-10-23 03:31:31] INFO: -0.031185 
+[2025-10-23 03:31:31] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.996 
+[2025-10-23 03:31:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.996), 2nd=0.000, Discriminative=0.996, AvgNeg=0.000
+[2025-10-23 03:31:31] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.1%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:31] INFO: [Accept] S13234 - Jin_Rae | Raw=0.996, Confidence=100%, Margin=0.996 | Strong confidence match
+[2025-10-23 03:31:31] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999979792005
+[2025-10-23 03:31:31] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:31] INFO: -0.012938 
+[2025-10-23 03:31:31] INFO: -0.016299 
+[2025-10-23 03:31:31] INFO: 0.031585 
+[2025-10-23 03:31:31] INFO: 0.022187 
+[2025-10-23 03:31:31] INFO: 0.025192 
+[2025-10-23 03:31:31] INFO: 0.043411 
+[2025-10-23 03:31:31] INFO: -0.053844 
+[2025-10-23 03:31:31] INFO: -0.003768 
+[2025-10-23 03:31:31] INFO: 0.025948 
+[2025-10-23 03:31:31] INFO: -0.031012 
+[2025-10-23 03:31:31] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:31] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:31] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:31] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999887120409
+[2025-10-23 03:31:31] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:31] INFO: -0.017465 
+[2025-10-23 03:31:31] INFO: -0.014400 
+[2025-10-23 03:31:31] INFO: 0.025791 
+[2025-10-23 03:31:31] INFO: 0.018858 
+[2025-10-23 03:31:31] INFO: 0.022864 
+[2025-10-23 03:31:31] INFO: 0.042001 
+[2025-10-23 03:31:31] INFO: -0.055372 
+[2025-10-23 03:31:31] INFO: -0.008294 
+[2025-10-23 03:31:31] INFO: 0.028253 
+[2025-10-23 03:31:31] INFO: -0.030287 
+[2025-10-23 03:31:31] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:31] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:31] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:31] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:31] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:32] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000048690216
+[2025-10-23 03:31:32] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:32] INFO: -0.014560 
+[2025-10-23 03:31:32] INFO: -0.016347 
+[2025-10-23 03:31:32] INFO: 0.025677 
+[2025-10-23 03:31:32] INFO: 0.017425 
+[2025-10-23 03:31:32] INFO: 0.025142 
+[2025-10-23 03:31:32] INFO: 0.043296 
+[2025-10-23 03:31:32] INFO: -0.057144 
+[2025-10-23 03:31:32] INFO: -0.012765 
+[2025-10-23 03:31:32] INFO: 0.027904 
+[2025-10-23 03:31:32] INFO: -0.033820 
+[2025-10-23 03:31:32] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:32] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:32] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:32] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:32] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:33] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000106516609
+[2025-10-23 03:31:33] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:33] INFO: -0.011984 
+[2025-10-23 03:31:33] INFO: -0.013672 
+[2025-10-23 03:31:33] INFO: 0.026605 
+[2025-10-23 03:31:33] INFO: 0.018880 
+[2025-10-23 03:31:33] INFO: 0.025260 
+[2025-10-23 03:31:33] INFO: 0.044514 
+[2025-10-23 03:31:33] INFO: -0.056416 
+[2025-10-23 03:31:33] INFO: -0.011432 
+[2025-10-23 03:31:33] INFO: 0.027452 
+[2025-10-23 03:31:33] INFO: -0.030804 
+[2025-10-23 03:31:33] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:33] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:33] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999690184391
+[2025-10-23 03:31:33] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:33] INFO: -0.014956 
+[2025-10-23 03:31:33] INFO: -0.016828 
+[2025-10-23 03:31:33] INFO: 0.028254 
+[2025-10-23 03:31:33] INFO: 0.020958 
+[2025-10-23 03:31:33] INFO: 0.024940 
+[2025-10-23 03:31:33] INFO: 0.040981 
+[2025-10-23 03:31:33] INFO: -0.055304 
+[2025-10-23 03:31:33] INFO: -0.006747 
+[2025-10-23 03:31:33] INFO: 0.029715 
+[2025-10-23 03:31:33] INFO: -0.031015 
+[2025-10-23 03:31:33] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:33] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:33] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999680860915
+[2025-10-23 03:31:33] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:33] INFO: -0.016290 
+[2025-10-23 03:31:33] INFO: -0.019351 
+[2025-10-23 03:31:33] INFO: 0.030623 
+[2025-10-23 03:31:33] INFO: 0.025617 
+[2025-10-23 03:31:33] INFO: 0.023174 
+[2025-10-23 03:31:33] INFO: 0.039470 
+[2025-10-23 03:31:33] INFO: -0.056202 
+[2025-10-23 03:31:33] INFO: -0.008166 
+[2025-10-23 03:31:33] INFO: 0.026863 
+[2025-10-23 03:31:33] INFO: -0.031360 
+[2025-10-23 03:31:33] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:33] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:33] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000063091485
+[2025-10-23 03:31:33] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:33] INFO: -0.015031 
+[2025-10-23 03:31:33] INFO: -0.015781 
+[2025-10-23 03:31:33] INFO: 0.028296 
+[2025-10-23 03:31:33] INFO: 0.025484 
+[2025-10-23 03:31:33] INFO: 0.024338 
+[2025-10-23 03:31:33] INFO: 0.039689 
+[2025-10-23 03:31:33] INFO: -0.056115 
+[2025-10-23 03:31:33] INFO: -0.009763 
+[2025-10-23 03:31:33] INFO: 0.029973 
+[2025-10-23 03:31:33] INFO: -0.028311 
+[2025-10-23 03:31:33] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:33] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:33] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000291970816
+[2025-10-23 03:31:33] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:33] INFO: -0.017080 
+[2025-10-23 03:31:33] INFO: -0.016312 
+[2025-10-23 03:31:33] INFO: 0.025749 
+[2025-10-23 03:31:33] INFO: 0.024281 
+[2025-10-23 03:31:33] INFO: 0.025516 
+[2025-10-23 03:31:33] INFO: 0.040598 
+[2025-10-23 03:31:33] INFO: -0.056356 
+[2025-10-23 03:31:33] INFO: -0.011320 
+[2025-10-23 03:31:33] INFO: 0.029927 
+[2025-10-23 03:31:33] INFO: -0.027625 
+[2025-10-23 03:31:33] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:33] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:33] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:33] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:33] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:34] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000357759575
+[2025-10-23 03:31:34] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:34] INFO: -0.013759 
+[2025-10-23 03:31:34] INFO: -0.015891 
+[2025-10-23 03:31:34] INFO: 0.030430 
+[2025-10-23 03:31:34] INFO: 0.027165 
+[2025-10-23 03:31:34] INFO: 0.024122 
+[2025-10-23 03:31:34] INFO: 0.038946 
+[2025-10-23 03:31:34] INFO: -0.056122 
+[2025-10-23 03:31:34] INFO: -0.007153 
+[2025-10-23 03:31:34] INFO: 0.030598 
+[2025-10-23 03:31:34] INFO: -0.029929 
+[2025-10-23 03:31:34] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:34] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:34] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:34] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.000000007014224
+[2025-10-23 03:31:34] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:34] INFO: -0.016453 
+[2025-10-23 03:31:34] INFO: -0.014201 
+[2025-10-23 03:31:34] INFO: 0.025904 
+[2025-10-23 03:31:34] INFO: 0.022865 
+[2025-10-23 03:31:34] INFO: 0.025410 
+[2025-10-23 03:31:34] INFO: 0.041844 
+[2025-10-23 03:31:34] INFO: -0.054638 
+[2025-10-23 03:31:34] INFO: -0.012117 
+[2025-10-23 03:31:34] INFO: 0.028127 
+[2025-10-23 03:31:34] INFO: -0.026405 
+[2025-10-23 03:31:34] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.997 
+[2025-10-23 03:31:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.997), 2nd=0.000, Discriminative=0.997, AvgNeg=0.000
+[2025-10-23 03:31:34] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:34] INFO: [Accept] S13234 - Jin_Rae | Raw=0.997, Confidence=100%, Margin=0.997 | Strong confidence match
+[2025-10-23 03:31:34] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000420138262
+[2025-10-23 03:31:34] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:34] INFO: -0.018498 
+[2025-10-23 03:31:34] INFO: -0.018043 
+[2025-10-23 03:31:34] INFO: 0.025706 
+[2025-10-23 03:31:34] INFO: 0.022076 
+[2025-10-23 03:31:34] INFO: 0.026258 
+[2025-10-23 03:31:34] INFO: 0.042413 
+[2025-10-23 03:31:34] INFO: -0.055875 
+[2025-10-23 03:31:34] INFO: -0.012054 
+[2025-10-23 03:31:34] INFO: 0.030819 
+[2025-10-23 03:31:34] INFO: -0.028743 
+[2025-10-23 03:31:34] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:34] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:34] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:34] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000268885514
+[2025-10-23 03:31:34] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:34] INFO: -0.017284 
+[2025-10-23 03:31:34] INFO: -0.020346 
+[2025-10-23 03:31:34] INFO: 0.028058 
+[2025-10-23 03:31:34] INFO: 0.025097 
+[2025-10-23 03:31:34] INFO: 0.026103 
+[2025-10-23 03:31:34] INFO: 0.041226 
+[2025-10-23 03:31:34] INFO: -0.058636 
+[2025-10-23 03:31:34] INFO: -0.011068 
+[2025-10-23 03:31:34] INFO: 0.030066 
+[2025-10-23 03:31:34] INFO: -0.029554 
+[2025-10-23 03:31:34] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:34] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:34] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:34] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999653646953
+[2025-10-23 03:31:34] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:34] INFO: -0.016150 
+[2025-10-23 03:31:34] INFO: -0.016622 
+[2025-10-23 03:31:34] INFO: 0.026115 
+[2025-10-23 03:31:34] INFO: 0.024321 
+[2025-10-23 03:31:34] INFO: 0.026177 
+[2025-10-23 03:31:34] INFO: 0.041411 
+[2025-10-23 03:31:34] INFO: -0.057694 
+[2025-10-23 03:31:34] INFO: -0.012090 
+[2025-10-23 03:31:34] INFO: 0.028589 
+[2025-10-23 03:31:34] INFO: -0.028022 
+[2025-10-23 03:31:34] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:34] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:34] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:34] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:34] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:35] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999961966779
+[2025-10-23 03:31:35] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:35] INFO: -0.013023 
+[2025-10-23 03:31:35] INFO: -0.016177 
+[2025-10-23 03:31:35] INFO: 0.020796 
+[2025-10-23 03:31:35] INFO: 0.017811 
+[2025-10-23 03:31:35] INFO: 0.023450 
+[2025-10-23 03:31:35] INFO: 0.043352 
+[2025-10-23 03:31:35] INFO: -0.058743 
+[2025-10-23 03:31:35] INFO: -0.014630 
+[2025-10-23 03:31:35] INFO: 0.025781 
+[2025-10-23 03:31:35] INFO: -0.031377 
+[2025-10-23 03:31:35] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:35] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:35] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:35] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000430383806
+[2025-10-23 03:31:35] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:35] INFO: -0.014141 
+[2025-10-23 03:31:35] INFO: -0.017822 
+[2025-10-23 03:31:35] INFO: 0.028743 
+[2025-10-23 03:31:35] INFO: 0.018304 
+[2025-10-23 03:31:35] INFO: 0.026068 
+[2025-10-23 03:31:35] INFO: 0.039612 
+[2025-10-23 03:31:35] INFO: -0.058129 
+[2025-10-23 03:31:35] INFO: -0.014503 
+[2025-10-23 03:31:35] INFO: 0.028707 
+[2025-10-23 03:31:35] INFO: -0.031985 
+[2025-10-23 03:31:35] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:35] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:35] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:35] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000171857335
+[2025-10-23 03:31:35] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:35] INFO: -0.016688 
+[2025-10-23 03:31:35] INFO: -0.018662 
+[2025-10-23 03:31:35] INFO: 0.023804 
+[2025-10-23 03:31:35] INFO: 0.017568 
+[2025-10-23 03:31:35] INFO: 0.024924 
+[2025-10-23 03:31:35] INFO: 0.043432 
+[2025-10-23 03:31:35] INFO: -0.063642 
+[2025-10-23 03:31:35] INFO: -0.016226 
+[2025-10-23 03:31:35] INFO: 0.031723 
+[2025-10-23 03:31:35] INFO: -0.028203 
+[2025-10-23 03:31:35] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:35] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:35] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:35] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000415058243
+[2025-10-23 03:31:35] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:35] INFO: -0.014744 
+[2025-10-23 03:31:35] INFO: -0.019865 
+[2025-10-23 03:31:35] INFO: 0.021984 
+[2025-10-23 03:31:35] INFO: 0.021699 
+[2025-10-23 03:31:35] INFO: 0.025561 
+[2025-10-23 03:31:35] INFO: 0.042116 
+[2025-10-23 03:31:35] INFO: -0.059136 
+[2025-10-23 03:31:35] INFO: -0.014888 
+[2025-10-23 03:31:35] INFO: 0.024192 
+[2025-10-23 03:31:35] INFO: -0.026350 
+[2025-10-23 03:31:35] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:35] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:35] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:35] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:35] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:36] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.999999960326939
+[2025-10-23 03:31:36] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:36] INFO: -0.016552 
+[2025-10-23 03:31:36] INFO: -0.020228 
+[2025-10-23 03:31:36] INFO: 0.022266 
+[2025-10-23 03:31:36] INFO: 0.022286 
+[2025-10-23 03:31:36] INFO: 0.025547 
+[2025-10-23 03:31:36] INFO: 0.040897 
+[2025-10-23 03:31:36] INFO: -0.058462 
+[2025-10-23 03:31:36] INFO: -0.015605 
+[2025-10-23 03:31:36] INFO: 0.026959 
+[2025-10-23 03:31:36] INFO: -0.027969 
+[2025-10-23 03:31:36] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:36] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:36] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:36] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000452740232
+[2025-10-23 03:31:36] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:36] INFO: -0.016153 
+[2025-10-23 03:31:36] INFO: -0.019614 
+[2025-10-23 03:31:36] INFO: 0.025321 
+[2025-10-23 03:31:36] INFO: 0.021161 
+[2025-10-23 03:31:36] INFO: 0.026745 
+[2025-10-23 03:31:36] INFO: 0.040810 
+[2025-10-23 03:31:36] INFO: -0.058733 
+[2025-10-23 03:31:36] INFO: -0.014094 
+[2025-10-23 03:31:36] INFO: 0.025758 
+[2025-10-23 03:31:36] INFO: -0.028335 
+[2025-10-23 03:31:36] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:36] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:36] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:36] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.000000026176279
+[2025-10-23 03:31:36] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:36] INFO: -0.017020 
+[2025-10-23 03:31:36] INFO: -0.020322 
+[2025-10-23 03:31:36] INFO: 0.025728 
+[2025-10-23 03:31:36] INFO: 0.021889 
+[2025-10-23 03:31:36] INFO: 0.027349 
+[2025-10-23 03:31:36] INFO: 0.041734 
+[2025-10-23 03:31:36] INFO: -0.058471 
+[2025-10-23 03:31:36] INFO: -0.015569 
+[2025-10-23 03:31:36] INFO: 0.032139 
+[2025-10-23 03:31:36] INFO: -0.030054 
+[2025-10-23 03:31:36] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:36] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:36] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:36] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000168872771
+[2025-10-23 03:31:36] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:36] INFO: -0.017365 
+[2025-10-23 03:31:36] INFO: -0.020492 
+[2025-10-23 03:31:36] INFO: 0.025288 
+[2025-10-23 03:31:36] INFO: 0.020790 
+[2025-10-23 03:31:36] INFO: 0.026422 
+[2025-10-23 03:31:36] INFO: 0.041587 
+[2025-10-23 03:31:36] INFO: -0.058265 
+[2025-10-23 03:31:36] INFO: -0.014476 
+[2025-10-23 03:31:36] INFO: 0.025345 
+[2025-10-23 03:31:36] INFO: -0.030119 
+[2025-10-23 03:31:36] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:36] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:36] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:36] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000262554365
+[2025-10-23 03:31:36] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:36] INFO: -0.014936 
+[2025-10-23 03:31:36] INFO: -0.021908 
+[2025-10-23 03:31:36] INFO: 0.027209 
+[2025-10-23 03:31:36] INFO: 0.020041 
+[2025-10-23 03:31:36] INFO: 0.026350 
+[2025-10-23 03:31:36] INFO: 0.041485 
+[2025-10-23 03:31:36] INFO: -0.061082 
+[2025-10-23 03:31:36] INFO: -0.012431 
+[2025-10-23 03:31:36] INFO: 0.022548 
+[2025-10-23 03:31:36] INFO: -0.028919 
+[2025-10-23 03:31:36] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:36] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:36] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:36] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000377943181
+[2025-10-23 03:31:36] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:36] INFO: -0.015362 
+[2025-10-23 03:31:36] INFO: -0.017335 
+[2025-10-23 03:31:36] INFO: 0.024102 
+[2025-10-23 03:31:36] INFO: 0.019014 
+[2025-10-23 03:31:36] INFO: 0.026044 
+[2025-10-23 03:31:36] INFO: 0.041211 
+[2025-10-23 03:31:36] INFO: -0.058090 
+[2025-10-23 03:31:36] INFO: -0.016253 
+[2025-10-23 03:31:36] INFO: 0.030140 
+[2025-10-23 03:31:36] INFO: -0.032064 
+[2025-10-23 03:31:36] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:36] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.999 
+[2025-10-23 03:31:36] INFO: [Decision] Best=S13234 - Jin_Rae(0.999), 2nd=0.000, Discriminative=0.999, AvgNeg=0.000
+[2025-10-23 03:31:36] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:36] INFO: [Accept] S13234 - Jin_Rae | Raw=0.999, Confidence=100%, Margin=0.999 | Strong confidence match
+[2025-10-23 03:31:38] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000205346777
+[2025-10-23 03:31:38] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:38] INFO: -0.014384 
+[2025-10-23 03:31:38] INFO: -0.016375 
+[2025-10-23 03:31:38] INFO: 0.028535 
+[2025-10-23 03:31:38] INFO: 0.019648 
+[2025-10-23 03:31:38] INFO: 0.024426 
+[2025-10-23 03:31:38] INFO: 0.043245 
+[2025-10-23 03:31:38] INFO: -0.056402 
+[2025-10-23 03:31:38] INFO: -0.011800 
+[2025-10-23 03:31:38] INFO: 0.030685 
+[2025-10-23 03:31:38] INFO: -0.032068 
+[2025-10-23 03:31:38] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:38] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:38] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:38] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000421293178
+[2025-10-23 03:31:38] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:38] INFO: -0.014480 
+[2025-10-23 03:31:38] INFO: -0.018152 
+[2025-10-23 03:31:38] INFO: 0.030026 
+[2025-10-23 03:31:38] INFO: 0.020192 
+[2025-10-23 03:31:38] INFO: 0.026172 
+[2025-10-23 03:31:38] INFO: 0.043158 
+[2025-10-23 03:31:38] INFO: -0.058298 
+[2025-10-23 03:31:38] INFO: -0.009700 
+[2025-10-23 03:31:38] INFO: 0.028279 
+[2025-10-23 03:31:38] INFO: -0.031897 
+[2025-10-23 03:31:38] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:38] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:38] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:38] INFO: DEBUG After norm in matToByteArray: Magnitude = 1.0000000130485693
+[2025-10-23 03:31:38] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:38] INFO: -0.014556 
+[2025-10-23 03:31:38] INFO: -0.017533 
+[2025-10-23 03:31:38] INFO: 0.025912 
+[2025-10-23 03:31:38] INFO: 0.018442 
+[2025-10-23 03:31:38] INFO: 0.025196 
+[2025-10-23 03:31:38] INFO: 0.041302 
+[2025-10-23 03:31:38] INFO: -0.055584 
+[2025-10-23 03:31:38] INFO: -0.012285 
+[2025-10-23 03:31:38] INFO: 0.027106 
+[2025-10-23 03:31:38] INFO: -0.031285 
+[2025-10-23 03:31:38] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:38] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:38] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:38] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:39] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999855143891
+[2025-10-23 03:31:39] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:39] INFO: -0.015897 
+[2025-10-23 03:31:39] INFO: -0.021367 
+[2025-10-23 03:31:39] INFO: 0.025163 
+[2025-10-23 03:31:39] INFO: 0.017381 
+[2025-10-23 03:31:39] INFO: 0.022914 
+[2025-10-23 03:31:39] INFO: 0.040940 
+[2025-10-23 03:31:39] INFO: -0.054627 
+[2025-10-23 03:31:39] INFO: -0.013780 
+[2025-10-23 03:31:39] INFO: 0.030377 
+[2025-10-23 03:31:39] INFO: -0.033992 
+[2025-10-23 03:31:39] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:39] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:39] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:39] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999806227604
+[2025-10-23 03:31:39] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:39] INFO: -0.015892 
+[2025-10-23 03:31:39] INFO: -0.020893 
+[2025-10-23 03:31:39] INFO: 0.030423 
+[2025-10-23 03:31:39] INFO: 0.020794 
+[2025-10-23 03:31:39] INFO: 0.023143 
+[2025-10-23 03:31:39] INFO: 0.042339 
+[2025-10-23 03:31:39] INFO: -0.056941 
+[2025-10-23 03:31:39] INFO: -0.011113 
+[2025-10-23 03:31:39] INFO: 0.029847 
+[2025-10-23 03:31:39] INFO: -0.034153 
+[2025-10-23 03:31:39] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:39] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:39] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:39] INFO: Exiting Face Recognition Demo...
+[2025-10-23 03:31:39] INFO: DEBUG After norm in matToByteArray: Magnitude = 0.9999999964696585
+[2025-10-23 03:31:39] INFO: DEBUG Generated embedding first 10 values: 
+[2025-10-23 03:31:39] INFO: -0.014674 
+[2025-10-23 03:31:39] INFO: -0.016803 
+[2025-10-23 03:31:39] INFO: 0.025689 
+[2025-10-23 03:31:39] INFO: 0.017367 
+[2025-10-23 03:31:39] INFO: 0.025349 
+[2025-10-23 03:31:39] INFO: 0.040485 
+[2025-10-23 03:31:39] INFO: -0.055999 
+[2025-10-23 03:31:39] INFO: -0.014912 
+[2025-10-23 03:31:39] INFO: 0.033935 
+[2025-10-23 03:31:39] INFO: -0.032859 
+[2025-10-23 03:31:39] INFO: | Magnitude: 1.000000
+[2025-10-23 03:31:39] INFO: [Recognition] Scores: S13234 - Jin_Rae=0.998 
+[2025-10-23 03:31:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.998), 2nd=0.000, Discriminative=0.998, AvgNeg=0.000
+[2025-10-23 03:31:39] INFO: [Thresholds] Abs=0.600, Margin=0.100(10.0%), RelMargin=100.0%, Tightness=0.999, StdDev=0.001
+[2025-10-23 03:31:39] INFO: [Accept] S13234 - Jin_Rae | Raw=0.998, Confidence=100%, Margin=0.998 | Strong confidence match
+[2025-10-23 03:31:39] INFO: Exiting Face Recognition Demo...
