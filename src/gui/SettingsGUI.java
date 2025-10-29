@@ -6,6 +6,7 @@ import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 import ConfigurationAndLogging.*;
+import gui.*;
 
 public class SettingsGUI extends JFrame {
     private String role;
@@ -110,7 +111,7 @@ public class SettingsGUI extends JFrame {
         // Category buttons
         
         JButton welcomeBtn = createCategoryButton("Welcome!");
-        JButton detectionBtn = createCategoryButton("Camera Detection Settings");
+        JButton detectionBtn = createCategoryButton("Camera Settings");
 
         // wire buttons to the center card layout (use constants from SettingsCenter)
         welcomeBtn.addActionListener(e -> center.showCard(SettingsCenter.WELCOME));
@@ -190,28 +191,9 @@ public class SettingsGUI extends JFrame {
 
     private JButton createCategoryButton(String text) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        button.setForeground(Color.WHITE);
-        button.setBackground(new Color(59, 130, 246));
-        button.setBorder(BorderFactory.createEmptyBorder(10, 12, 10, 12));
-        button.setFocusPainted(false);
-        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        UIComponents.styleSidebarButton(button);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setMaximumSize(new Dimension(180, 35));
-        
-        // hover effects
-        button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                button.setBackground(new Color(37, 99, 235));
-            }
-            
-            @Override
-            public void mouseExited(MouseEvent e) {
-                button.setBackground(new Color(59, 130, 246));
-            }
-        });
-        
         return button;
     }
 
