@@ -7,6 +7,11 @@ import java.awt.*;
 import java.awt.event.*;
 
 import facecrop.MyGUIProgram;
+import app.Main;
+import app.gui.*;
+import app.entity.*;
+import app.test.SessionManager;
+import app.model.*;
 
 public class MainDashboard extends JFrame {
     private String role;
@@ -15,6 +20,8 @@ public class MainDashboard extends JFrame {
     private JPanel mainContent;
     private JButton menuButton; // burger button
     private boolean isSidebarVisible = true; // track if the sidebar is shown
+    private SessionManager sessionManager; // for connecting to session btn
+
 
     public MainDashboard(String role, String id) {
         this.role = role;
@@ -36,23 +43,16 @@ public class MainDashboard extends JFrame {
 
         // sidebar panel
         sidebar = new JPanel();
-        sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS)); // put it at the side along the yaxis
-        sidebar.setBackground(new Color(45, 55, 72)); // Modern dark blue-gray
-        sidebar.setPreferredSize(new Dimension(220, 600)); // slightly wider for better buttons
+        UIComponents.applySidebarStyle(sidebar); // call from UIComponents.java
 
         addSideBarButtons();
 
         // Main content panel
-        mainContent = new JPanel(new GridBagLayout());
-        mainContent.setBackground(new Color(248, 250, 252)); // Light gray background
+        mainContent = new JPanel();
+        UIComponents.applyMainContentStyle(mainContent); // call from UIComponents.java
 
         JPanel textPanel = new JPanel();
-        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
-        textPanel.setBackground(new Color(255, 255, 255));
-        textPanel.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
-            BorderFactory.createEmptyBorder(30, 30, 30, 30)
-        ));
+        UIComponents.applyTextPanelStyle(textPanel);
 
         // Welcome label
         JLabel welcomeLabel = new JLabel("Welcome to Face Recognition System!", SwingConstants.CENTER);
@@ -62,10 +62,7 @@ public class MainDashboard extends JFrame {
 
         // Text area
         JTextArea textArea = new JTextArea();
-        textArea.setEditable(false);
-        textArea.setOpaque(false); // make it blend with background
-        textArea.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        textArea.setForeground(new Color(71, 85, 105)); // Muted text color
+        UIComponents.styleInfoTextArea(textArea); // call from UIComponents.java
         textArea.setText("""
          Live Recognition - Start real-time face detection and attendance marking
         
@@ -134,7 +131,7 @@ public class MainDashboard extends JFrame {
         // put them in an array
         JButton[] buttons = { recognitionBtn, studentBtn, sessionBtn, reportBtn, settingBtn };
         for (JButton btn : buttons) {
-            styleSidebarButton(btn);
+            UIComponents.styleSidebarButton(btn);
             btn.setMaximumSize(buttonSize);
             btn.setPreferredSize(buttonSize);
             btn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -144,63 +141,98 @@ public class MainDashboard extends JFrame {
         sidebar.add(Box.createVerticalGlue()); // push everything up neatly
 
         // ---------ActionListener for the buttons--------------
-        recognitionBtn.addActionListener(e ->{
+        recognitionBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            MyGUIProgram.main(null); // just run the program
-            // show the window again after MYGUIProgram close
-            MainDashboard.this.setVisible(true);
+            JFrame frame = new MyGUIProgram();
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    MainDashboard.this.setVisible(true);
+                }
+            });
         });
 
+        // open the student enrollment application
         studentBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            new StudentManagementGUI(role, id);
-            MainDashboard.this.setVisible(true);
+            
+            // Create a timer to detect when the student window appears and attach our listener
+            Timer findWindowTimer = new Timer(100, null);
+            findWindowTimer.addActionListener(evt -> {
+                Window[] windows = Window.getWindows();
+                for (Window window : windows) {
+                    if (window.isVisible() && window instanceof JFrame && 
+                        ((JFrame)window).getTitle().contains("Student")) {
+                        JFrame studentFrame = (JFrame)window;
+                        studentFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        studentFrame.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowClosed(WindowEvent e) {
+                                SwingUtilities.invokeLater(() -> {
+                                    MainDashboard.this.setVisible(true);
+                                });
+                            }
+                        });
+                        findWindowTimer.stop();
+                        break;
+                    }
+                }
+            });
+            findWindowTimer.start();
+            
+            // Launch the student management window
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    Main.main(null);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    findWindowTimer.stop();
+                    MainDashboard.this.setVisible(true);
+                }
+            });
         });
 
         sessionBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            new SessionManagementGUI(role, id);
-            MainDashboard.this.setVisible(true);
+            //create a SessionManager and initialize SessionViewer
+            sessionManager = new SessionManager();
+            JFrame sessionViewer = new SessionViewer(sessionManager);
+            sessionViewer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            sessionViewer.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    MainDashboard.this.setVisible(true);
+                }
+            });
         });
 
         reportBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            new ReportsGUI(role, id);
-            MainDashboard.this.setVisible(true);
+            JFrame reportsFrame = new ReportsGUI(role, id);
+            reportsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            reportsFrame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    MainDashboard.this.setVisible(true);
+                }
+            });
         });
 
         settingBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            new SettingsGUI(role, id);
-            MainDashboard.this.setVisible(true);
+            JFrame settingsFrame = new SettingsGUI(role, id);
+            settingsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            settingsFrame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    MainDashboard.this.setVisible(true);
+                }
+            });
         });
     }
 
-    // Method to style sidebar buttons
-    private void styleSidebarButton(JButton button) {
-        button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        button.setForeground(Color.WHITE);
-        button.setBackground(new Color(59, 130, 246)); // Blue color
-        button.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(37, 99, 235), 1),
-            BorderFactory.createEmptyBorder(8, 16, 8, 16)
-        ));
-        button.setFocusPainted(false);
-        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        
-        // Hover effects will change color when mouse enter and exit
-        button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                button.setBackground(new Color(37, 99, 235)); // Darker blue on hover
-            }
-            
-            @Override
-            public void mouseExited(MouseEvent e) {
-                button.setBackground(new Color(59, 130, 246)); // Original blue
-            }
-        });
-    }
+    
 
     // function of toggle sidebar
     private void toggleSidebar() {
@@ -209,7 +241,7 @@ public class MainDashboard extends JFrame {
         int targetWidth = isSidebarVisible ? 0 : 220; // 0 to hide, 220 to show
         int step = (targetWidth > startWidth) ? 10 : -10; // slide direction, how much to change the width
 
-        Timer timer = new Timer(5, null); // runs every 5 milliseconds
+        javax.swing.Timer timer = new javax.swing.Timer(5, null); // runs every 5 milliseconds
         timer.addActionListener(new ActionListener() {
             int width = startWidth;
 
