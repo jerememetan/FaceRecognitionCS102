@@ -5,6 +5,8 @@ import java.awt.event.*;
 import java.io.File;
 import javax.swing.*;
 
+import app.gui.LiveRecognitionViewer;
+
 public class MyGUIProgram extends JFrame {
     static {
         // Load OpenCV native library
@@ -34,7 +36,7 @@ public class MyGUIProgram extends JFrame {
         public void actionPerformed(ActionEvent evt){
             MyGUIProgram.this.setVisible(false);
             SwingUtilities.invokeLater(()->{
-                NewFaceRecognitionDemo demoWindow = new NewFaceRecognitionDemo();
+                LiveRecognitionViewer demoWindow = new LiveRecognitionViewer();
                 demoWindow.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosed(java.awt.event.WindowEvent windowEvent) {

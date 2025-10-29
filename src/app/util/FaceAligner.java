@@ -1,5 +1,6 @@
 package app.util;
 
+import app.util.ModuleLoader;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
@@ -25,6 +26,9 @@ public class FaceAligner {
 
     private void initialize() {
         try {
+            // Ensure OpenCV is loaded before creating classifiers
+            ModuleLoader.ensureOpenCVLoaded();
+
             String eyeCascadePath = "data/resources/haarcascade_eye.xml";
             String noseCascadePath = "data/resources/haarcascade_mcs_nose.xml";
             String mouthCascadePath = "data/resources/haarcascade_mcs_mouth.xml";
