@@ -442,7 +442,10 @@ public class StudentEnrollmentGUI extends JFrame {
             if (captureDialog.isCaptureCompleted()) {
                 loadStudentData();
 
-                int imageCount = student.getFaceData() != null ? student.getFaceData().getImages().size() : 0;
+                // Refresh the student object to get updated face data
+                Student updatedStudent = studentManager.findStudentById(student.getStudentId());
+                int imageCount = updatedStudent != null && updatedStudent.getFaceData() != null ? 
+                    updatedStudent.getFaceData().getImages().size() : 0;
 
         JOptionPane.showMessageDialog(this,
             htmlize(String.format("Face capture completed successfully!\\n\\n" +

@@ -35,9 +35,6 @@ public class FaceCaptureDialog extends JDialog{
     private JButton stopButton;
     private JButton closeButton;
 
-    private JButton cameraSettingsButton;
-    private JComboBox<String> fpsCombo;
-
     private AtomicBoolean isCapturing = new AtomicBoolean(false);
     private AtomicInteger capturedCount = new AtomicInteger(0);
     private Timer previewTimer;
@@ -210,9 +207,6 @@ public class FaceCaptureDialog extends JDialog{
         startButton = new JButton("Start Capture");
         stopButton = new JButton("Stop Capture");
         closeButton = new JButton("Close");
-        cameraSettingsButton = new JButton("Camera Settingsâ€¦");
-        fpsCombo = new JComboBox<>(new String[] { "15 fps", "24 fps", "30 fps" });
-        fpsCombo.setSelectedItem("30 fps");
 
         stopButton.setEnabled(false);
 
@@ -224,29 +218,9 @@ public class FaceCaptureDialog extends JDialog{
         stopButton.addActionListener(e -> stopCapture());
         closeButton.addActionListener(e -> dispose());
 
-        cameraSettingsButton.addActionListener(e -> {
-            // Camera settings dialog not implemented in FaceDetection class
-            statusLabel.setText("Camera settings feature not available");
-            statusLabel.setForeground(WARNING_COLOR);
-            JOptionPane.showMessageDialog(this,
-                    "Camera settings dialog is not currently implemented.\nAdjust camera settings in your system camera app.",
-                    "Feature Not Available", JOptionPane.INFORMATION_MESSAGE);
-        });
-
-        fpsCombo.addActionListener(e -> {
-            // FPS setting not implemented in FaceDetection class
-            String sel = (String) fpsCombo.getSelectedItem();
-            statusLabel.setText("FPS adjustment not available: " + sel);
-            statusLabel.setForeground(WARNING_COLOR);
-        });
-
         panel.add(targetLabel);
         panel.add(targetCombo);
         panel.add(Box.createHorizontalStrut(20));
-        panel.add(new JLabel("FPS:"));
-        panel.add(fpsCombo);
-        panel.add(Box.createHorizontalStrut(10));
-        panel.add(cameraSettingsButton);
         panel.add(startButton);
         panel.add(stopButton);
         panel.add(closeButton);
