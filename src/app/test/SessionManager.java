@@ -1,11 +1,10 @@
 package app.test;
-
-<<<<<<< HEAD
 import app.entity.Session;
 import app.entity.Student;
 import app.entity.SessionStudent;
 import app.repository.SessionRepositoryInstance;
 import app.repository.SessStuRepositoryInstance;
+
 public class SessionManager {
     private final List<Session> sessions = new ArrayList<>();
     private int nextId = 1;
