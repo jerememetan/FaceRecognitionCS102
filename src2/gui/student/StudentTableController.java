@@ -1,0 +1,85 @@
+package app.gui;
+
+import app.entity.Student;
+import app.service.StudentManager;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.util.List;
+
+public class StudentTableController {
+    private StudentManager studentManager;
+    private DefaultTableModel tableModel;
+
+    public StudentTableController(StudentManager studentManager) {
+        this.studentManager = studentManager;
+    }
+
+    public void loadStudentData(DefaultTableModel tableModel, JLabel statusLabel) {
+        this.tableModel = tableModel;
+        try {
+            statusLabel.setText("Loading student data...");
+            statusLabel.setForeground(new Color(255, 152, 0));
+
+            tableModel.setRowCount(0);
+            List<Student> students = studentManager.getAllStudents();
+            System.out.println("DEBUG StudentTableController.loadStudentData(): Loaded " + students.size() + " students from database");
+
+            for (Student student : students) {
+                int imageCount = student.getFaceData() != null ? student.getFaceData().getImages().size() : 0;
+                double avgQuality = calculateAverageQuality(student);
+                Object[] rowData = {
+                        student.getStudentId(),
+                        student.getName(),
+                        student.getEmail() != null ? student.getEmail() : "",
+                        student.getPhone() != null ? student.getPhone() : "",
+                        imageCount,
+                        avgQuality > 0 ? (int) (avgQuality * 100) : 0
+                };
+                tableModel.addRow(rowData);
+            }
+
+            System.out.println("DEBUG StudentTableController.loadStudentData(): Added " + tableModel.getRowCount() + " rows to table model");
+
+        } catch (Exception e) {
+            statusLabel.setText("Error loading data");
+            statusLabel.setForeground(new Color(211, 47, 47));
+            JOptionPane.showMessageDialog(null,
+                    "Error loading student data: " + e.getMessage(),
+                    "Load Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void refreshTable() {
+        System.out.println("DEBUG StudentTableController.refreshTable(): Refreshing table");
+        if (tableModel != null) {
+            System.out.println("DEBUG StudentTableController.refreshTable(): tableModel is not null, calling loadStudentData");
+            loadStudentData(tableModel, new JLabel()); // Simplified refresh
+            System.out.println("DEBUG StudentTableController.refreshTable(): loadStudentData completed");
+        } else {
+            System.out.println("DEBUG StudentTableController.refreshTable(): tableModel is null!");
+        }
+    }
+
+    public Student getStudentAt(int rowIndex) {
+        if (tableModel == null || rowIndex < 0 || rowIndex >= tableModel.getRowCount()) {
+            return null;
+        }
+        String studentId = (String) tableModel.getValueAt(rowIndex, 0);
+        return studentManager.findStudentById(studentId);
+    }
+
+    private double calculateAverageQuality(Student student) {
+        if (student.getFaceData() == null || student.getFaceData().getImages().isEmpty()) {
+            return 0.0;
+        }
+        double totalQuality = 0.0;
+        int count = 0;
+        for (app.model.FaceImage faceImage : student.getFaceData().getImages()) {
+            totalQuality += faceImage.getQualityScore();
+            count++;
+        }
+        return count > 0 ? totalQuality / count : 0.0;
+    }
+}
