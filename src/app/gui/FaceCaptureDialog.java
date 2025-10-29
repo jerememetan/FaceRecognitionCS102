@@ -234,7 +234,9 @@ public class FaceCaptureDialog extends JDialog{
     public void dispose() {
         AppLogger.info("Disposing FaceCaptureDialog...");
 
-        cameraPreviewManager.stopPreview();
+        if (cameraPreviewManager != null) {
+            cameraPreviewManager.stopPreview();
+        }
         isCapturing.set(false);
 
         if (faceDetection != null) {
