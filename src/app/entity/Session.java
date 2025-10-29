@@ -31,8 +31,11 @@ public class Session extends Entity{
         this.active = false;
         System.out.println("Session " + this.name + " is now closed.");
     }
-    public void addStudent(Student student){
-        this.studentRoster.add(new SessionStudent(student));
+    public void addNewStudent(Student student){
+        this.studentRoster.add(new SessionStudent(this, student));
+    }
+    public void addExistingStudent(SessionStudent sessStu){
+        this.studentRoster.add(sessStu);
     }
     public void removeStudent(Student student){
         this.studentRoster.removeIf(ss -> ss.getStudent().equals(student));
@@ -40,10 +43,8 @@ public class Session extends Entity{
     public ArrayList<SessionStudent> getStudentRoster(){
         return this.studentRoster;
     }
-    public void getStudents(){
-        for(SessionStudent ss : this.studentRoster){
-            System.out.println(ss.getStudent().getName());
-        }
+    public void setStudentRoster(ArrayList<SessionStudent> roster){
+        this.studentRoster = roster;
     }
     public boolean isActive() {
         return active;

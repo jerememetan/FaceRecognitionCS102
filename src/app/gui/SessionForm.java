@@ -78,6 +78,10 @@ public class SessionForm extends JFrame {
                         throw new IllegalArgumentException("All fields must be filled in.");
                     }
 
+                    if (name.length() > 50) {
+                        throw new IllegalArgumentException("Session name cannot exceed 50 characters.");
+                    }
+
                     // Parse with strict format
                     LocalDate date;
                     LocalTime start, end;
@@ -87,6 +91,7 @@ public class SessionForm extends JFrame {
                     } catch (DateTimeParseException ex) {
                         throw new IllegalArgumentException("Date must be in format DD-MM-YYYY.");
                     }
+
 
                     try {
                         start = LocalTime.parse(startStr, DateTimeFormatter.ofPattern("HH:mm"));
@@ -109,7 +114,7 @@ public class SessionForm extends JFrame {
                     }
 
                     // Delegate creation to SessionManager
-                    Session session = manager.createSession(name, date, start, end, location);
+                    Session session = manager.createNewSession(name, date, start, end, location);
 
                     JOptionPane.showMessageDialog(SessionForm.this,
                             "Session created successfully!\n\n" +
@@ -118,8 +123,8 @@ public class SessionForm extends JFrame {
                             "Date: " + session.getDate() + "\n" +
                             "Start: " + session.getStartTime() + "\n" +
                             "End: " + session.getEndTime() + "\n" +
-                            "Location: " + session.getLocation() + "\n" +
-                            "Students: " + session.getStudentRoster().size());
+                            "Location: " + session.getLocation() + "\n"
+                    );
                     dispose();  // close form
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(SessionForm.this,
