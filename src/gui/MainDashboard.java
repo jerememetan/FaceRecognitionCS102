@@ -43,23 +43,16 @@ public class MainDashboard extends JFrame {
 
         // sidebar panel
         sidebar = new JPanel();
-        sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS)); // put it at the side along the yaxis
-        sidebar.setBackground(new Color(45, 55, 72)); // Modern dark blue-gray
-        sidebar.setPreferredSize(new Dimension(220, 600)); // slightly wider for better buttons
+        UIComponents.applySidebarStyle(sidebar); // call from UIComponents.java
 
         addSideBarButtons();
 
         // Main content panel
-        mainContent = new JPanel(new GridBagLayout());
-        mainContent.setBackground(new Color(248, 250, 252)); // Light gray background
+        mainContent = new JPanel();
+        UIComponents.applyMainContentStyle(mainContent); // call from UIComponents.java
 
         JPanel textPanel = new JPanel();
-        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
-        textPanel.setBackground(new Color(255, 255, 255));
-        textPanel.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
-            BorderFactory.createEmptyBorder(30, 30, 30, 30)
-        ));
+        UIComponents.applyTextPanelStyle(textPanel);
 
         // Welcome label
         JLabel welcomeLabel = new JLabel("Welcome to Face Recognition System!", SwingConstants.CENTER);
@@ -69,10 +62,7 @@ public class MainDashboard extends JFrame {
 
         // Text area
         JTextArea textArea = new JTextArea();
-        textArea.setEditable(false);
-        textArea.setOpaque(false); // make it blend with background
-        textArea.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        textArea.setForeground(new Color(71, 85, 105)); // Muted text color
+        UIComponents.styleInfoTextArea(textArea); // call from UIComponents.java
         textArea.setText("""
          Live Recognition - Start real-time face detection and attendance marking
         
@@ -141,7 +131,7 @@ public class MainDashboard extends JFrame {
         // put them in an array
         JButton[] buttons = { recognitionBtn, studentBtn, sessionBtn, reportBtn, settingBtn };
         for (JButton btn : buttons) {
-            styleSidebarButton(btn);
+            UIComponents.styleSidebarButton(btn);
             btn.setMaximumSize(buttonSize);
             btn.setPreferredSize(buttonSize);
             btn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -242,31 +232,7 @@ public class MainDashboard extends JFrame {
         });
     }
 
-    // Method to style sidebar buttons
-    private void styleSidebarButton(JButton button) {
-        button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        button.setForeground(Color.WHITE);
-        button.setBackground(new Color(59, 130, 246)); // Blue color
-        button.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(37, 99, 235), 1),
-            BorderFactory.createEmptyBorder(8, 16, 8, 16)
-        ));
-        button.setFocusPainted(false);
-        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        
-        // Hover effects will change color when mouse enter and exit
-        button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                button.setBackground(new Color(37, 99, 235)); // Darker blue on hover
-            }
-            
-            @Override
-            public void mouseExited(MouseEvent e) {
-                button.setBackground(new Color(59, 130, 246)); // Original blue
-            }
-        });
-    }
+    
 
     // function of toggle sidebar
     private void toggleSidebar() {
