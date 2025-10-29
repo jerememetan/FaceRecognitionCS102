@@ -10,3 +10,4 @@ data/resources/arcface.onnx
 
 # Ignore VS Code Local History backups
 .history
+logs
