@@ -2,10 +2,13 @@
 package reportingandexport;
 
 import java.io.FileWriter;
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import ConfigurationAndLogging.*;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 
 public class CSVGenerator implements ReportGenerator {
     @Override
@@ -25,36 +28,44 @@ public class CSVGenerator implements ReportGenerator {
         // Get both Headers and Data -> fullData
         List<List<String>> fullData = ReportBuilder.getFullData();
 
-
-        // Export Path
-        String exportedFolderPath = AppConfig.getInstance().getExportCsvFolderPath();
-
-        // Get the count of .*** files in export folder
-        // Error Handling to access export files
-        int newCSVCount = 0;
         try {
-            long csvCount = util.countFilesInFolder(exportedFolderPath, "csv");
-            newCSVCount = (int)csvCount + 1;
-        } catch (IOException e) {
-            System.err.println("\nCSVReport: Error accessing the exportedDataFiles folder: " + e.getMessage());
-        }
+            // New Exported File Name with incremented count
+            String fileName = "StudentFaceRecognitionData.csv";
 
-        // New Exported File Name with incremented count
-        String fileName = String.format("StudentFaceRecognitionData%d.csv", newCSVCount);
+            // Prompt user to save the file using JFileChooser
+            JFrame frame = new JFrame("CSV Export");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(400, 300);
+            frame.setVisible(true);
+                
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Choose where to save your file");
+            fileChooser.setSelectedFile(new File(fileName));
 
-        // Exported File Name with full path to export folder
-        String exportedFileName = exportedFolderPath + fileName;
+            int userSelection = fileChooser.showSaveDialog(frame);
 
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                File fileToSave = fileChooser.getSelectedFile();
 
-        // Fill the exported file with data
-        try (FileWriter writer = new FileWriter(exportedFileName)) {
-            for (List<String> row : fullData) {
-                writer.append(String.join(",", row));
-                writer.append("\n");
+                if (!fileToSave.getName().toLowerCase().endsWith(".csv")) {
+                    fileToSave = new File(fileToSave.getAbsolutePath() + ".csv");
+                }
+
+                // Fill the exported file with data
+                try (FileWriter writer = new FileWriter(fileToSave)) {
+                    for (List<String> row : fullData) {
+                        writer.append(String.join(",", row));
+                        writer.append("\n");
+                    }
+                    System.out.println("CSV file saved successfully to: " + fileToSave.getAbsolutePath());
+                } catch (IOException e) {
+                    System.err.println("CSVReport: Error writing to CSV file: " + e.getMessage());
+                }
             }
-            System.out.printf("CSV file [ %s ] created successfully!", fileName);
-        } catch (IOException e) {
-            System.err.println("CSVReport: Error writing to CSV file: " + e.getMessage());
+
+            frame.dispose();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

@@ -102,7 +102,7 @@ public class ExcelGenerator implements ReportGenerator {
                     }
 
                     for (int i = 0; i < fullData.get(0).size(); i++) {
-                        sheet.autoSizeColumn(i);
+                        sheet.setColumnWidth(i, 17 * 256);
                     }
 
                     sheet.setAutoFilter(new CellRangeAddress(0, fullData.size(), 0, 5));
