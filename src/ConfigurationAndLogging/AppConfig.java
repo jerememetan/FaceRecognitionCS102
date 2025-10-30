@@ -549,6 +549,16 @@ public class AppConfig {
         }
     }
 
+    public void setRecognitionMinFaceWidthPx(int value) {
+        if (value <= 0) {
+            AppLogger.error("Failed to change " + KEY_RECOGNITION_MIN_FACE_WIDTH_PX + ".Value is invalid");
+            return;
+        }
+        int clamped = Math.max(32, value);
+        properties.setProperty(KEY_RECOGNITION_MIN_FACE_WIDTH_PX, String.valueOf(clamped));
+        AppLogger.info(KEY_RECOGNITION_MIN_FACE_WIDTH_PX + " has been changed to " + clamped);
+    }
+
     public void setEmbeddingInputSize(int value) {
         if (value <= 0) {
             AppLogger.error("Failed to change " + KEY_EMBEDDING_INPUT_SIZE + ".Value is invalid");
@@ -756,6 +766,12 @@ public class AppConfig {
         }
     }
 
+    public void setDnnConfidence(double value) {
+        double clamped = Math.max(0.0, Math.min(0.99, value));
+        properties.setProperty(KEY_DNN_CONFIDENCE, String.valueOf(clamped));
+        AppLogger.info(KEY_DNN_CONFIDENCE + " has been changed to " + clamped);
+    }
+
     public int getRecognitionTopK() {
         try {
             return Integer.parseInt(properties.getProperty(KEY_RECOGNITION_TOP_K, "5"));
@@ -810,6 +826,16 @@ public class AppConfig {
         }
     }
 
+    public void setConsistencyWindow(int value) {
+        if (value <= 0) {
+            AppLogger.error("Failed to change " + KEY_RECOGNITION_CONSISTENCY_WINDOW + ".Value is invalid");
+            return;
+        }
+        int clamped = Math.max(1, Math.min(20, value));
+        properties.setProperty(KEY_RECOGNITION_CONSISTENCY_WINDOW, String.valueOf(clamped));
+        AppLogger.info(KEY_RECOGNITION_CONSISTENCY_WINDOW + " has been changed to " + clamped);
+    }
+
     public int getConsistencyMinCount() {
         try {
             return Integer.parseInt(properties.getProperty(KEY_RECOGNITION_CONSISTENCY_MIN_COUNT, "3"));
@@ -817,6 +843,16 @@ public class AppConfig {
             AppLogger.error("Config error: invalid number for " + KEY_RECOGNITION_CONSISTENCY_MIN_COUNT, ex);
             return 3;
         }
+    }
+
+    public void setConsistencyMinCount(int value) {
+        if (value <= 0) {
+            AppLogger.error("Failed to change " + KEY_RECOGNITION_CONSISTENCY_MIN_COUNT + ".Value is invalid");
+            return;
+        }
+        int clamped = Math.max(1, Math.min(20, value));
+        properties.setProperty(KEY_RECOGNITION_CONSISTENCY_MIN_COUNT, String.valueOf(clamped));
+        AppLogger.info(KEY_RECOGNITION_CONSISTENCY_MIN_COUNT + " has been changed to " + clamped);
     }
 
     public boolean isCohortEnabled() {

@@ -32,15 +32,14 @@ import app.service.recognition.LiveRecognitionService.RecognitionOutcome;
  * logic to {@link LiveRecognitionService}.
  */
 public class LiveRecognitionViewer extends JFrame implements IConfigChangeListener {
-
-    private static final double DNN_CONFIDENCE_THRESHOLD = 0.60;
     private static final Size DNN_INPUT_SIZE = new Size(300, 300);
     private static final Scalar DNN_MEAN_SUBTRACTION = new Scalar(104.0, 117.0, 123.0);
     private static final double MIN_ASPECT_RATIO = 0.7;
 
     private final CameraPanel cameraPanel = new CameraPanel();
     private final LiveRecognitionService recognitionService = new LiveRecognitionService();
-    private final int minRecognitionWidthPx = AppConfig.getInstance().getRecognitionMinFaceWidthPx();
+    private volatile double dnnConfidenceThreshold = AppConfig.getInstance().getDnnConfidence();
+    private volatile int minRecognitionWidthPx = AppConfig.getInstance().getRecognitionMinFaceWidthPx();
 
     private VideoCapture capture;
     private Net dnnFaceDetector;
@@ -97,7 +96,8 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
                 detectionsFloat.get(new int[] { 0, 0, i, 0 }, detection);
 
                 float confidence = detection[2];
-                if (confidence < DNN_CONFIDENCE_THRESHOLD) {
+                double threshold = Math.max(0.05, Math.min(0.99, dnnConfidenceThreshold));
+                if (confidence < threshold) {
                     continue;
                 }
 
@@ -353,18 +353,33 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
     }
 
     @Override
-    public void onScaleFactorChanged(double newScaleFactor) {
-        AppConfig.getInstance().setDetectionScaleFactor(newScaleFactor);
-    }
-
-    @Override
-    public void onMinNeighborsChanged(int newMinNeighbors) {
-        AppConfig.getInstance().setDetectionMinNeighbors(newMinNeighbors);
+    public void onDnnConfidenceChanged(double newConfidence) {
+        double clamped = Math.max(0.05, Math.min(0.99, newConfidence));
+        dnnConfidenceThreshold = clamped;
+        AppConfig.getInstance().setDnnConfidence(clamped);
     }
 
     @Override
     public void onMinSizeChanged(int newMinSize) {
-        AppConfig.getInstance().setDetectionMinSize(newMinSize);
+        int clamped = Math.max(20, newMinSize);
+        AppConfig.getInstance().setDetectionMinSize(clamped);
+    }
+
+    @Override
+    public void onRecognitionMinFaceWidthChanged(int newMinWidth) {
+        int clamped = Math.max(32, newMinWidth);
+        minRecognitionWidthPx = clamped;
+        AppConfig.getInstance().setRecognitionMinFaceWidthPx(clamped);
+    }
+
+    @Override
+    public void onConsistencyWindowChanged(int newWindowSize) {
+        AppConfig.getInstance().setConsistencyWindow(newWindowSize);
+    }
+
+    @Override
+    public void onConsistencyMinCountChanged(int newMinCount) {
+        AppConfig.getInstance().setConsistencyMinCount(newMinCount);
     }
 
     @Override

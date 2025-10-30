@@ -1,13 +1,34 @@
 package ConfigurationAndLogging;
 
 public interface IConfigChangeListener {
-    // These are the adjustable parameters in the AppConfig class
-    // Each method corresponds to a parameter change event
-    void onScaleFactorChanged(double newScaleFactor);
-    void onMinNeighborsChanged(int newMinNeighbors);
-    void onMinSizeChanged(int newMinSize);
-    void onCaptureFaceRequested();
-    // On save settings button clicked function
-    void onSaveSettingsRequested();
 
+    // --- Detection tuning ---
+    default void onDnnConfidenceChanged(double newConfidence) {
+    }
+
+    default void onMinSizeChanged(int newMinSize) {
+    }
+
+    default void onScaleFactorChanged(double newScaleFactor) {
+    }
+
+    default void onMinNeighborsChanged(int newMinNeighbors) {
+    }
+
+    // --- Recognition tuning ---
+    default void onRecognitionMinFaceWidthChanged(int newMinWidth) {
+    }
+
+    default void onConsistencyWindowChanged(int newWindowSize) {
+    }
+
+    default void onConsistencyMinCountChanged(int newMinCount) {
+    }
+
+    // --- Actions ---
+    default void onCaptureFaceRequested() {
+    }
+
+    default void onSaveSettingsRequested() {
+    }
 }

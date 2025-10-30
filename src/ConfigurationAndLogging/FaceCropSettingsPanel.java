@@ -66,112 +66,210 @@ public class FaceCropSettingsPanel extends JPanel {
         controls.setOpaque(false);
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
-        gbc.insets = new Insets(8, 8, 8, 8);
+        gbc.insets = new Insets(8, 8, 6, 8);
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 1.0;
 
         int row = 0;
 
-        JLabel scaleLabel = new JLabel("Scale Factor: " + String.format("%.2f", AppConfig.getInstance().getDetectionScaleFactor()), SwingConstants.CENTER);
+        // --- Detection section ---
+        JLabel detectionHeader = new JLabel("Detection (ArcFace DNN)", SwingConstants.CENTER);
+        detectionHeader.setFont(new Font("Segoe UI", Font.BOLD, 14));
         gbc.gridy = row++;
-        controls.add(scaleLabel, gbc);
+        controls.add(detectionHeader, gbc);
 
-        JSlider scaleSlider = new JSlider(JSlider.HORIZONTAL, 101, 150, (int) (AppConfig.getInstance().getDetectionScaleFactor() * 100));
-        scaleSlider.addChangeListener((ChangeEvent e) -> {
-            double v = scaleSlider.getValue() / 100.0;
-            scaleLabel.setText("Scale Factor: " + String.format("%.2f", v));
-            if (listener != null) listener.onScaleFactorChanged(v);
-            else AppConfig.getInstance().setDetectionScaleFactor(v);
+        double initialConfidence = AppConfig.getInstance().getDnnConfidence();
+    int confidenceSliderValue = (int) Math.round(initialConfidence * 100);
+    confidenceSliderValue = Math.max(20, Math.min(90, confidenceSliderValue));
+
+        JLabel confidenceLabel = new JLabel(
+                "Confidence Threshold: " + String.format("%.2f", confidenceSliderValue / 100.0),
+                SwingConstants.CENTER);
+        gbc.gridy = row++;
+        controls.add(confidenceLabel, gbc);
+
+    JSlider confidenceSlider = new JSlider(JSlider.HORIZONTAL, 20, 90, confidenceSliderValue);
+        confidenceSlider.addChangeListener(e -> {
+            double value = confidenceSlider.getValue() / 100.0;
+            confidenceLabel.setText("Confidence Threshold: " + String.format("%.2f", value));
+            if (!confidenceSlider.getValueIsAdjusting()) {
+                if (listener != null) {
+                    listener.onDnnConfidenceChanged(value);
+                } else {
+                    AppConfig.getInstance().setDnnConfidence(value);
+                }
+            }
         });
         gbc.gridy = row++;
-        controls.add(wrapFullWidth(scaleSlider), gbc);
+        controls.add(wrapFullWidth(confidenceSlider), gbc);
 
-        JLabel scaleHint = new JLabel("(Lower = more accurate, slower)", SwingConstants.CENTER);
-        scaleHint.setFont(scaleHint.getFont().deriveFont(11f));
+        JLabel confidenceHint = new JLabel("Higher = stricter detection, lower = more candidates", SwingConstants.CENTER);
+        confidenceHint.setFont(confidenceHint.getFont().deriveFont(11f));
         gbc.gridy = row++;
-        controls.add(scaleHint, gbc);
+        controls.add(confidenceHint, gbc);
 
-        JLabel neighLabel = new JLabel("Min Neighbors: " + AppConfig.getInstance().getDetectionMinNeighbors(), SwingConstants.CENTER);
+    int initialMinSize = AppConfig.getInstance().getDetectionMinSize();
+    initialMinSize = Math.max(24, Math.min(400, initialMinSize));
+
+        JLabel minSizeLabel = new JLabel("Minimum Face Size: " + initialMinSize + " px", SwingConstants.CENTER);
         gbc.gridy = row++;
-        controls.add(neighLabel, gbc);
+        controls.add(minSizeLabel, gbc);
 
-        JSlider neighSlider = new JSlider(JSlider.HORIZONTAL, 3, 10, AppConfig.getInstance().getDetectionMinNeighbors());
-        neighSlider.addChangeListener(e -> {
-            int v = neighSlider.getValue();
-            neighLabel.setText("Min Neighbors: " + v);
-            if (listener != null) listener.onMinNeighborsChanged(v);
-            else AppConfig.getInstance().setDetectionMinNeighbors(v);
+    JSlider minSizeSlider = new JSlider(JSlider.HORIZONTAL, 24, 400, initialMinSize);
+        minSizeSlider.setPaintTicks(true);
+        minSizeSlider.setMajorTickSpacing(50);
+        minSizeSlider.addChangeListener(e -> {
+            int value = minSizeSlider.getValue();
+            minSizeLabel.setText("Minimum Face Size: " + value + " px");
+            if (!minSizeSlider.getValueIsAdjusting()) {
+                if (listener != null) {
+                    listener.onMinSizeChanged(value);
+                } else {
+                    AppConfig.getInstance().setDetectionMinSize(value);
+                }
+            }
         });
-        neighSlider.setPaintTicks(true);
-        neighSlider.setMajorTickSpacing(1);
         gbc.gridy = row++;
-        controls.add(wrapFullWidth(neighSlider), gbc);
+        controls.add(wrapFullWidth(minSizeSlider), gbc);
 
-        JLabel neighHint = new JLabel("(Higher = fewer false positives)", SwingConstants.CENTER);
-        neighHint.setFont(neighHint.getFont().deriveFont(11f));
+        JLabel minSizeHint = new JLabel("Lower = detect smaller faces, Higher = ignore distant faces", SwingConstants.CENTER);
+        minSizeHint.setFont(minSizeHint.getFont().deriveFont(11f));
         gbc.gridy = row++;
-        controls.add(neighHint, gbc);
+        controls.add(minSizeHint, gbc);
 
-        JLabel sizeLabel = new JLabel("Min Size (px): " + AppConfig.getInstance().getDetectionMinSize(), SwingConstants.CENTER);
+        // --- Recognition section ---
+        JLabel recognitionHeader = new JLabel("Recognition Stability", SwingConstants.CENTER);
+        recognitionHeader.setFont(new Font("Segoe UI", Font.BOLD, 14));
         gbc.gridy = row++;
-        controls.add(sizeLabel, gbc);
+        controls.add(recognitionHeader, gbc);
 
-        JSlider sizeSlider = new JSlider(JSlider.HORIZONTAL, 20, 400, AppConfig.getInstance().getDetectionMinSize());
-        sizeSlider.addChangeListener(e -> {
-            int v = sizeSlider.getValue();
-            sizeLabel.setText("Min Size (px): " + v);
-            if (listener != null) listener.onMinSizeChanged(v);
-            else AppConfig.getInstance().setDetectionMinSize(v);
+        int initialMinWidth = AppConfig.getInstance().getRecognitionMinFaceWidthPx();
+        initialMinWidth = Math.max(48, Math.min(220, initialMinWidth));
+
+        JLabel minWidthLabel = new JLabel("Min Face Width for Recognition: " + initialMinWidth + " px",
+                SwingConstants.CENTER);
+        gbc.gridy = row++;
+        controls.add(minWidthLabel, gbc);
+
+        JSlider minWidthSlider = new JSlider(JSlider.HORIZONTAL, 48, 220, initialMinWidth);
+        minWidthSlider.setPaintTicks(true);
+        minWidthSlider.setMajorTickSpacing(20);
+        minWidthSlider.addChangeListener(e -> {
+            int value = minWidthSlider.getValue();
+            minWidthLabel.setText("Min Face Width for Recognition: " + value + " px");
+            if (!minWidthSlider.getValueIsAdjusting()) {
+                if (listener != null) {
+                    listener.onRecognitionMinFaceWidthChanged(value);
+                } else {
+                    AppConfig.getInstance().setRecognitionMinFaceWidthPx(value);
+                }
+            }
         });
-        sizeSlider.setPaintTicks(true);
-        sizeSlider.setMajorTickSpacing(50);
         gbc.gridy = row++;
-        controls.add(wrapFullWidth(sizeSlider), gbc);
+        controls.add(wrapFullWidth(minWidthSlider), gbc);
 
-        JLabel sizeHint = new JLabel("(Adjust to ignore distant faces)", SwingConstants.CENTER);
-        sizeHint.setFont(sizeHint.getFont().deriveFont(11f));
+        JLabel minWidthHint = new JLabel("Avoids scoring faces that are too small to be reliable", SwingConstants.CENTER);
+        minWidthHint.setFont(minWidthHint.getFont().deriveFont(11f));
         gbc.gridy = row++;
-        controls.add(sizeHint, gbc);
+        controls.add(minWidthHint, gbc);
 
-        // Buttons row is now part of the controls grid (so it will always be visible)
+        int initialWindow = Math.max(3, Math.min(20, AppConfig.getInstance().getConsistencyWindow()));
+        JLabel windowLabel = new JLabel("Consistency Window: " + initialWindow + " frames", SwingConstants.CENTER);
+        gbc.gridy = row++;
+        controls.add(windowLabel, gbc);
+
+        JSlider windowSlider = new JSlider(JSlider.HORIZONTAL, 3, 20, initialWindow);
+        gbc.gridy = row++;
+        controls.add(wrapFullWidth(windowSlider), gbc);
+
+        JLabel windowHint = new JLabel("Frames considered when smoothing live predictions", SwingConstants.CENTER);
+        windowHint.setFont(windowHint.getFont().deriveFont(11f));
+        gbc.gridy = row++;
+        controls.add(windowHint, gbc);
+
+        int initialMinCount = Math.max(1,
+                Math.min(initialWindow, AppConfig.getInstance().getConsistencyMinCount()));
+        JLabel minCountLabel = new JLabel("Frames Needed for Confirmation: " + initialMinCount,
+                SwingConstants.CENTER);
+        gbc.gridy = row++;
+        controls.add(minCountLabel, gbc);
+
+        JSlider minCountSlider = new JSlider(JSlider.HORIZONTAL, 1, initialWindow, initialMinCount);
+        gbc.gridy = row++;
+        controls.add(wrapFullWidth(minCountSlider), gbc);
+
+        JLabel minCountHint = new JLabel("Higher values reduce false accepts, but need more frames", SwingConstants.CENTER);
+        minCountHint.setFont(minCountHint.getFont().deriveFont(11f));
+        gbc.gridy = row++;
+        controls.add(minCountHint, gbc);
+
+        windowSlider.addChangeListener(e -> {
+            int value = windowSlider.getValue();
+            windowLabel.setText("Consistency Window: " + value + " frames");
+            minCountSlider.setMaximum(value);
+            if (minCountSlider.getValue() > value) {
+                minCountSlider.setValue(value);
+            }
+            if (!windowSlider.getValueIsAdjusting()) {
+                if (listener != null) {
+                    listener.onConsistencyWindowChanged(value);
+                } else {
+                    AppConfig.getInstance().setConsistencyWindow(value);
+                }
+            }
+        });
+
+        minCountSlider.addChangeListener(e -> {
+            int value = minCountSlider.getValue();
+            minCountLabel.setText("Frames Needed for Confirmation: " + value);
+            if (!minCountSlider.getValueIsAdjusting()) {
+                if (listener != null) {
+                    listener.onConsistencyMinCountChanged(value);
+                } else {
+                    AppConfig.getInstance().setConsistencyMinCount(value);
+                }
+            }
+        });
+
+        // --- Buttons ---
         JPanel btnRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 12, 0));
         btnRow.setOpaque(false);
 
         if (Boolean.TRUE.equals(showCaptureButton)) {
             JButton capture = createStyledButton("Capture Face (Save to DB)", DANGER, DANGER_HOVER);
             capture.addActionListener(a -> {
-                if (listener != null) listener.onCaptureFaceRequested();
-                else JOptionPane.showMessageDialog(this, "No listener attached for capture.", "Capture", JOptionPane.INFORMATION_MESSAGE);
+                if (listener != null) {
+                    listener.onCaptureFaceRequested();
+                } else {
+                    JOptionPane.showMessageDialog(this, "No listener attached for capture.", "Capture",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
             });
             btnRow.add(capture);
         }
 
-        // create the save button (always created; visibility controlled by flag)
         JButton saveButton = createStyledButton("Save Detection Settings", PRIMARY, PRIMARY_HOVER);
         saveButton.addActionListener(a -> {
             if (listener != null) {
-                // let the caller handle confirmation/dialogs so we don't duplicate messages
                 listener.onSaveSettingsRequested();
             } else {
                 AppConfig.getInstance().save();
-                JOptionPane.showMessageDialog(this, "Detection settings saved.", "Configuration Saved", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Detection settings saved.", "Configuration Saved",
+                        JOptionPane.INFORMATION_MESSAGE);
             }
-            // always show non-modal footer feedback
             showFooter("Settings saved");
-         });
+        });
 
-        // honor caller flag, expose the button to callers and add to row
         saveButton.setVisible(Boolean.TRUE.equals(showSaveButton));
         thisSaveButton = saveButton;
         btnRow.add(saveButton);
 
-        // add buttons row into the controls grid so it is rendered
         gbc.gridy = row++;
         controls.add(btnRow, gbc);
 
-         return controls;
-     }
+        return controls;
+    }
     
     private JComponent wrapFullWidth(JSlider slider) {
         JPanel p = new JPanel(new BorderLayout());

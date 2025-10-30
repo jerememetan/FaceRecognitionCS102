@@ -105,18 +105,10 @@ public class FaceCaptureDialog extends JDialog{
         // Integrate configuration and logging settings panel as a sidebar
         IConfigChangeListener listener = new IConfigChangeListener() {
             @Override
-            public void onScaleFactorChanged(double newScaleFactor) {
-                AppConfig.getInstance().setDetectionScaleFactor(newScaleFactor);
-                AppLogger.info("Detection scale factor changed to " + newScaleFactor);
-                statusLabel.setText("Scale Factor: " + String.format("%.2f", newScaleFactor));
-                statusLabel.setForeground(SUCCESS_COLOR);
-            }
-
-            @Override
-            public void onMinNeighborsChanged(int newMinNeighbors) {
-                AppConfig.getInstance().setDetectionMinNeighbors(newMinNeighbors);
-                AppLogger.info("Min neighbors changed to " + newMinNeighbors);
-                statusLabel.setText("Min Neighbors: " + newMinNeighbors);
+            public void onDnnConfidenceChanged(double newConfidence) {
+                AppConfig.getInstance().setDnnConfidence(newConfidence);
+                AppLogger.info("DNN confidence threshold changed to " + String.format("%.2f", newConfidence));
+                statusLabel.setText(String.format("DNN Confidence: %.2f", newConfidence));
                 statusLabel.setForeground(SUCCESS_COLOR);
             }
 
@@ -129,10 +121,33 @@ public class FaceCaptureDialog extends JDialog{
             }
 
             @Override
+            public void onRecognitionMinFaceWidthChanged(int newMinWidth) {
+                AppConfig.getInstance().setRecognitionMinFaceWidthPx(newMinWidth);
+                AppLogger.info("Recognition min face width changed to " + newMinWidth);
+                statusLabel.setText("Recognition Min Width: " + newMinWidth + " px");
+                statusLabel.setForeground(SUCCESS_COLOR);
+            }
+
+            @Override
+            public void onConsistencyWindowChanged(int newWindowSize) {
+                AppConfig.getInstance().setConsistencyWindow(newWindowSize);
+                AppLogger.info("Consistency window changed to " + newWindowSize + " frames");
+                statusLabel.setText("Consistency Window: " + newWindowSize + " frames");
+                statusLabel.setForeground(SUCCESS_COLOR);
+            }
+
+            @Override
+            public void onConsistencyMinCountChanged(int newMinCount) {
+                AppConfig.getInstance().setConsistencyMinCount(newMinCount);
+                AppLogger.info("Consistency min count changed to " + newMinCount);
+                statusLabel.setText("Frames Needed: " + newMinCount);
+                statusLabel.setForeground(SUCCESS_COLOR);
+            }
+
+            @Override
             public void onCaptureFaceRequested() {
-                // The settings panel can request a capture; reuse startCapture
                 if (!isCapturing.get()) {
-                    targetImages = 10; // default
+                    targetImages = 10;
                     captureManager.setTargetImages(targetImages);
                     captureManager.startCapture();
                 }

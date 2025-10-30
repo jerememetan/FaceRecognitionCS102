@@ -14,11 +14,9 @@ import app.service.FaceEmbeddingGenerator;
  */
 final class RecognitionHistory {
 
-    private static final int CONSISTENCY_WINDOW = 7;
-    private static final int CONSISTENCY_MIN_COUNT = 5;
     private static final int Q_EMB_WINDOW = 5;
 
-    private final Deque<Integer> recentPredictions = new ArrayDeque<>(CONSISTENCY_WINDOW);
+    private final Deque<Integer> recentPredictions = new ArrayDeque<>(20);
     private final Deque<byte[]> recentEmbeddings = new ArrayDeque<>(Q_EMB_WINDOW);
 
     void reset() {
@@ -76,7 +74,8 @@ final class RecognitionHistory {
     }
 
     void recordPrediction(int predictionIndex) {
-        if (recentPredictions.size() == CONSISTENCY_WINDOW) {
+        int window = configuredConsistencyWindow();
+        while (recentPredictions.size() >= window) {
             recentPredictions.pollFirst();
         }
         recentPredictions.offerLast(predictionIndex);
@@ -92,7 +91,7 @@ final class RecognitionHistory {
                 count++;
             }
         }
-        return count >= CONSISTENCY_MIN_COUNT;
+        return count >= configuredMinimumCount();
     }
 
     int countMatches(int index) {
@@ -109,10 +108,21 @@ final class RecognitionHistory {
     }
 
     int consistencyWindowSize() {
-        return CONSISTENCY_WINDOW;
+        return configuredConsistencyWindow();
     }
 
     int minimumConsistencyCount() {
-        return CONSISTENCY_MIN_COUNT;
+        return configuredMinimumCount();
+    }
+
+    private int configuredConsistencyWindow() {
+        int window = AppConfig.getInstance().getConsistencyWindow();
+        return Math.max(1, Math.min(20, window));
+    }
+
+    private int configuredMinimumCount() {
+        int minCount = AppConfig.getInstance().getConsistencyMinCount();
+        int window = configuredConsistencyWindow();
+        return Math.max(1, Math.min(window, minCount));
     }
 }

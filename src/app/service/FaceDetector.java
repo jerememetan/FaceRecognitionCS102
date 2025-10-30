@@ -105,47 +105,12 @@ public class FaceDetector {
             int numDetections = (int) detectionsFloat.size(2);
             int dims = (int) detectionsFloat.size(3);
 
-            List<FaceCandidate> faces = new ArrayList<>();
+            double configuredMinConfidence = Math.max(0.05,
+                    Math.min(0.99, AppConfig.getInstance().getDnnConfidence()));
+            double configuredMinSize = Math.max(20.0, AppConfig.getInstance().getDetectionMinSize());
 
-            for (int i = 0; i < numDetections; i++) {
-                float[] detection = new float[dims];
-                detectionsFloat.get(new int[] { 0, 0, i, 0 }, detection);
-
-                float confidence = detection[2];
-                if (confidence > MIN_CONFIDENCE_SCORE) {
-                    int x1 = (int) Math.round(detection[3] * frame.cols());
-                    int y1 = (int) Math.round(detection[4] * frame.rows());
-                    int x2 = (int) Math.round(detection[5] * frame.cols());
-                    int y2 = (int) Math.round(detection[6] * frame.rows());
-
-                    x1 = Math.max(0, Math.min(x1, frame.cols() - 1));
-                    y1 = Math.max(0, Math.min(y1, frame.rows() - 1));
-                    x2 = Math.max(0, Math.min(x2, frame.cols() - 1));
-                    y2 = Math.max(0, Math.min(y2, frame.rows() - 1));
-
-                    if (x2 <= x1 || y2 <= y1) {
-                        continue;
-                    }
-
-                    int width = x2 - x1;
-                    int height = y2 - y1;
-
-                    if (width >= MIN_FACE_SIZE && width <= MAX_FACE_SIZE &&
-                            height >= MIN_FACE_SIZE && height <= MAX_FACE_SIZE) {
-
-                        Rect face = new Rect(x1, y1, width, height);
-                        logDebug(String.format("DNN candidate accepted: conf=%.2f rect=[%d,%d,%d,%d]",
-                                confidence, face.x, face.y, face.width, face.height));
-                        faces.add(new FaceCandidate(face, confidence));
-                    } else {
-                        logDebug(String.format(
-                                "DNN candidate rejected (size out of bounds): conf=%.2f width=%d height=%d",
-                                confidence, width, height));
-                    }
-                } else {
-                    logDebug(String.format("DNN candidate rejected due to confidence %.2f", confidence));
-                }
-            }
+            List<FaceCandidate> faces = selectCandidatesWithFallback(frame, detectionsFloat, numDetections, dims,
+                    configuredMinConfidence, configuredMinSize);
 
             blob.release();
             detections.release();
@@ -212,35 +177,19 @@ public class FaceDetector {
             int numDetections = (int) detectionsFloat.size(2);
             int dims = (int) detectionsFloat.size(3);
 
+            double configuredMinConfidence = Math.max(0.05,
+                    Math.min(0.99, AppConfig.getInstance().getDnnConfidence()));
+            double configuredMinSize = Math.max(20.0, AppConfig.getInstance().getDetectionMinSize());
+
+            List<FaceCandidate> faces = selectCandidatesWithFallback(image, detectionsFloat, numDetections, dims,
+                    configuredMinConfidence, configuredMinSize);
+
             Rect bestFace = null;
             double bestConfidence = 0.0;
-
-            for (int i = 0; i < numDetections; i++) {
-                float[] detection = new float[dims];
-                detectionsFloat.get(new int[] { 0, 0, i, 0 }, detection);
-
-                float confidence = detection[2];
-                if (confidence > MIN_CONFIDENCE_SCORE && confidence > bestConfidence) {
-                    int x1 = (int) Math.round(detection[3] * image.cols());
-                    int y1 = (int) Math.round(detection[4] * image.rows());
-                    int x2 = (int) Math.round(detection[5] * image.cols());
-                    int y2 = (int) Math.round(detection[6] * image.rows());
-
-                    x1 = Math.max(0, Math.min(x1, image.cols() - 1));
-                    y1 = Math.max(0, Math.min(y1, image.rows() - 1));
-                    x2 = Math.max(0, Math.min(x2, image.cols() - 1));
-                    y2 = Math.max(0, Math.min(y2, image.rows() - 1));
-
-                    if (x2 > x1 && y2 > y1) {
-                        int width = x2 - x1;
-                        int height = y2 - y1;
-
-                        if (width >= MIN_FACE_SIZE && width <= MAX_FACE_SIZE &&
-                                height >= MIN_FACE_SIZE && height <= MAX_FACE_SIZE) {
-                            bestFace = new Rect(x1, y1, width, height);
-                            bestConfidence = confidence;
-                        }
-                    }
+            for (FaceCandidate candidate : faces) {
+                if (candidate.confidence > bestConfidence) {
+                    bestConfidence = candidate.confidence;
+                    bestFace = candidate.rect;
                 }
             }
 
@@ -254,6 +203,88 @@ public class FaceDetector {
             AppLogger.error("Face detection in image failed: " + e.getMessage());
             return null;
         }
+    }
+
+    private List<FaceCandidate> selectCandidatesWithFallback(Mat frame, Mat detectionsFloat, int numDetections,
+            int dims, double configuredMinConfidence, double configuredMinSize) {
+        double maxFaceSize = Math.max(MAX_FACE_SIZE, configuredMinSize * 6.0);
+        List<FaceCandidate> faces = filterDetections(frame, detectionsFloat, numDetections, dims,
+                configuredMinConfidence, configuredMinSize, maxFaceSize);
+
+        if (!faces.isEmpty()) {
+            return faces;
+        }
+
+        double fallbackConfidence = Math.max(0.20, configuredMinConfidence - 0.15);
+        double fallbackMinSize = Math.max(24.0, configuredMinSize * 0.75);
+
+        boolean canRelaxConfidence = fallbackConfidence < configuredMinConfidence - 1e-6;
+        boolean canRelaxSize = fallbackMinSize < configuredMinSize - 1e-6;
+
+        if (!canRelaxConfidence && !canRelaxSize) {
+            return faces;
+        }
+
+        double fallbackMaxFaceSize = Math.max(MAX_FACE_SIZE, fallbackMinSize * 6.0);
+        List<FaceCandidate> relaxedFaces = filterDetections(frame, detectionsFloat, numDetections, dims,
+                canRelaxConfidence ? fallbackConfidence : configuredMinConfidence,
+                canRelaxSize ? fallbackMinSize : configuredMinSize, fallbackMaxFaceSize);
+
+        if (!relaxedFaces.isEmpty()) {
+            AppLogger.warn(String.format(
+                    "DNN detection fallback applied (confidence %.2f -> %.2f, minSize %.1f -> %.1f)",
+                    configuredMinConfidence, canRelaxConfidence ? fallbackConfidence : configuredMinConfidence,
+                    configuredMinSize, canRelaxSize ? fallbackMinSize : configuredMinSize));
+            return relaxedFaces;
+        }
+
+        return faces;
+    }
+
+    private List<FaceCandidate> filterDetections(Mat frame, Mat detectionsFloat, int numDetections, int dims,
+            double minConfidence, double minSize, double maxFaceSize) {
+        List<FaceCandidate> faces = new ArrayList<>();
+
+        for (int i = 0; i < numDetections; i++) {
+            float[] detection = new float[dims];
+            detectionsFloat.get(new int[] { 0, 0, i, 0 }, detection);
+
+            float confidence = detection[2];
+            if (confidence < minConfidence) {
+                continue;
+            }
+
+            int x1 = (int) Math.round(detection[3] * frame.cols());
+            int y1 = (int) Math.round(detection[4] * frame.rows());
+            int x2 = (int) Math.round(detection[5] * frame.cols());
+            int y2 = (int) Math.round(detection[6] * frame.rows());
+
+            x1 = Math.max(0, Math.min(x1, frame.cols() - 1));
+            y1 = Math.max(0, Math.min(y1, frame.rows() - 1));
+            x2 = Math.max(0, Math.min(x2, frame.cols() - 1));
+            y2 = Math.max(0, Math.min(y2, frame.rows() - 1));
+
+            if (x2 <= x1 || y2 <= y1) {
+                continue;
+            }
+
+            int width = x2 - x1;
+            int height = y2 - y1;
+
+            if (width < minSize || height < minSize || width > maxFaceSize || height > maxFaceSize) {
+                logDebug(String.format(
+                        "DNN candidate rejected (size out of bounds): conf=%.2f width=%d height=%d", confidence,
+                        width, height));
+                continue;
+            }
+
+            Rect face = new Rect(x1, y1, width, height);
+            logDebug(String.format("DNN candidate accepted: conf=%.2f rect=[%d,%d,%d,%d]", confidence, face.x,
+                    face.y, face.width, face.height));
+            faces.add(new FaceCandidate(face, confidence));
+        }
+
+        return faces;
     }
 
     private void logDebug(String message) {
