@@ -1,1 +1,1 @@
-javac -proc:none -Xlint:-options -d compiled -cp "src;lib/*" src/gui/LoginPage.java src/gui/MainDashboard.java
+javac -proc:none -Xlint:-options -d compiled -cp "srb;lib/*" srb/gui/homepage/LoginPage.java srb/gui/homepage/MainDashboard.java

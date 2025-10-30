@@ -21,7 +21,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import app.gui.*;
 import app.service.*;
 import ConfigurationAndLogging.*;
-public class FaceCaptureDialog extends JDialog{
+
+public class FaceCaptureDialog extends JDialog {
     private Student student;
     private StudentManager studentManager;
     private FaceDetection faceDetection;
@@ -57,7 +58,8 @@ public class FaceCaptureDialog extends JDialog{
         AppLogger.info("FaceCaptureDialog created for student: " + student.getName());
 
         cameraPreviewManager = new CameraPreviewManager(faceDetection, null, null, null);
-        captureManager = new CaptureManager(faceDetection, student, studentManager, isCapturing, capturedCount, targetImages, captureCompleted, null, null, null, null, this);
+        captureManager = new CaptureManager(faceDetection, student, studentManager, isCapturing, capturedCount,
+                targetImages, captureCompleted, null, null, null, null, this);
 
         initializeDialog();
         cameraPreviewManager.startPreview();
@@ -266,6 +268,5 @@ public class FaceCaptureDialog extends JDialog{
     public boolean isCaptureCompleted() {
         return captureManager.isCaptureCompleted();
     }
-
 
 }

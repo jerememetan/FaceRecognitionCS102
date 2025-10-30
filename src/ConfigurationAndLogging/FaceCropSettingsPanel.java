@@ -1,7 +1,9 @@
 package ConfigurationAndLogging;
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
+
 public class FaceCropSettingsPanel extends JPanel {
 
     private final IConfigChangeListener listener;
@@ -12,17 +14,16 @@ public class FaceCropSettingsPanel extends JPanel {
     private final Color DANGER = new Color(239, 68, 68);
     private final Color DANGER_HOVER = new Color(220, 38, 38);
 
-    private static final int FOOTER_DURATION_MS = 3000;   
+    private static final int FOOTER_DURATION_MS = 3000;
+
     // Pass the listener into the constructor
     public FaceCropSettingsPanel(IConfigChangeListener listener, Boolean showCaptureButton) {
-                this(listener, showCaptureButton, true);
+        this(listener, showCaptureButton, true);
     }
 
     // Primary constructor
     public FaceCropSettingsPanel(IConfigChangeListener listener, Boolean showCaptureButton, Boolean showSaveButton) {
         this.listener = listener;
-
-
 
         // Debug log to confirm runtime flag (helps detect stale-class problems)
         AppLogger.info("FaceCropSettingsPanel ctor - showCapture=" + showCaptureButton + " showSave=" + showSaveButton);
@@ -36,7 +37,8 @@ public class FaceCropSettingsPanel extends JPanel {
         title.setFont(new Font("Segoe UI", Font.BOLD, 16));
         add(title, BorderLayout.NORTH);
 
-        // Build controls (now includes the save / capture buttons inside the grid so they won't be clipped)
+        // Build controls (now includes the save / capture buttons inside the grid so
+        // they won't be clipped)
         JPanel controls = buildControls(showCaptureButton, showSaveButton);
         add(controls, BorderLayout.CENTER);
 
@@ -54,13 +56,12 @@ public class FaceCropSettingsPanel extends JPanel {
             thisSaveButton.setVisible(visible);
             // ensure layout recalculation so parent displays button
             revalidate();
-            repaint(); 
+            repaint();
         }
     }
-    
+
     // --- Implementations for Controls ---
 
-    
     private JPanel buildControls(Boolean showCaptureButton, Boolean showSaveButton) {
         JPanel controls = new JPanel(new GridBagLayout());
         controls.setOpaque(false);
@@ -80,8 +81,8 @@ public class FaceCropSettingsPanel extends JPanel {
         controls.add(detectionHeader, gbc);
 
         double initialConfidence = AppConfig.getInstance().getDnnConfidence();
-    int confidenceSliderValue = (int) Math.round(initialConfidence * 100);
-    confidenceSliderValue = Math.max(20, Math.min(90, confidenceSliderValue));
+        int confidenceSliderValue = (int) Math.round(initialConfidence * 100);
+        confidenceSliderValue = Math.max(20, Math.min(90, confidenceSliderValue));
 
         JLabel confidenceLabel = new JLabel(
                 "Confidence Threshold: " + String.format("%.2f", confidenceSliderValue / 100.0),
@@ -89,7 +90,7 @@ public class FaceCropSettingsPanel extends JPanel {
         gbc.gridy = row++;
         controls.add(confidenceLabel, gbc);
 
-    JSlider confidenceSlider = new JSlider(JSlider.HORIZONTAL, 20, 90, confidenceSliderValue);
+        JSlider confidenceSlider = new JSlider(JSlider.HORIZONTAL, 20, 90, confidenceSliderValue);
         confidenceSlider.addChangeListener(e -> {
             double value = confidenceSlider.getValue() / 100.0;
             confidenceLabel.setText("Confidence Threshold: " + String.format("%.2f", value));
@@ -104,19 +105,20 @@ public class FaceCropSettingsPanel extends JPanel {
         gbc.gridy = row++;
         controls.add(wrapFullWidth(confidenceSlider), gbc);
 
-        JLabel confidenceHint = new JLabel("Higher = stricter detection, lower = more candidates", SwingConstants.CENTER);
+        JLabel confidenceHint = new JLabel("Higher = stricter detection, lower = more candidates",
+                SwingConstants.CENTER);
         confidenceHint.setFont(confidenceHint.getFont().deriveFont(11f));
         gbc.gridy = row++;
         controls.add(confidenceHint, gbc);
 
-    int initialMinSize = AppConfig.getInstance().getDetectionMinSize();
-    initialMinSize = Math.max(24, Math.min(400, initialMinSize));
+        int initialMinSize = AppConfig.getInstance().getDetectionMinSize();
+        initialMinSize = Math.max(24, Math.min(400, initialMinSize));
 
         JLabel minSizeLabel = new JLabel("Minimum Face Size: " + initialMinSize + " px", SwingConstants.CENTER);
         gbc.gridy = row++;
         controls.add(minSizeLabel, gbc);
 
-    JSlider minSizeSlider = new JSlider(JSlider.HORIZONTAL, 24, 400, initialMinSize);
+        JSlider minSizeSlider = new JSlider(JSlider.HORIZONTAL, 24, 400, initialMinSize);
         minSizeSlider.setPaintTicks(true);
         minSizeSlider.setMajorTickSpacing(50);
         minSizeSlider.addChangeListener(e -> {
@@ -133,7 +135,8 @@ public class FaceCropSettingsPanel extends JPanel {
         gbc.gridy = row++;
         controls.add(wrapFullWidth(minSizeSlider), gbc);
 
-        JLabel minSizeHint = new JLabel("Lower = detect smaller faces, Higher = ignore distant faces", SwingConstants.CENTER);
+        JLabel minSizeHint = new JLabel("Lower = detect smaller faces, Higher = ignore distant faces",
+                SwingConstants.CENTER);
         minSizeHint.setFont(minSizeHint.getFont().deriveFont(11f));
         gbc.gridy = row++;
         controls.add(minSizeHint, gbc);
@@ -169,7 +172,8 @@ public class FaceCropSettingsPanel extends JPanel {
         gbc.gridy = row++;
         controls.add(wrapFullWidth(minWidthSlider), gbc);
 
-        JLabel minWidthHint = new JLabel("Avoids scoring faces that are too small to be reliable", SwingConstants.CENTER);
+        JLabel minWidthHint = new JLabel("Avoids scoring faces that are too small to be reliable",
+                SwingConstants.CENTER);
         minWidthHint.setFont(minWidthHint.getFont().deriveFont(11f));
         gbc.gridy = row++;
         controls.add(minWidthHint, gbc);
@@ -199,7 +203,8 @@ public class FaceCropSettingsPanel extends JPanel {
         gbc.gridy = row++;
         controls.add(wrapFullWidth(minCountSlider), gbc);
 
-        JLabel minCountHint = new JLabel("Higher values reduce false accepts, but need more frames", SwingConstants.CENTER);
+        JLabel minCountHint = new JLabel("Higher values reduce false accepts, but need more frames",
+                SwingConstants.CENTER);
         minCountHint.setFont(minCountHint.getFont().deriveFont(11f));
         gbc.gridy = row++;
         controls.add(minCountHint, gbc);
@@ -270,7 +275,7 @@ public class FaceCropSettingsPanel extends JPanel {
 
         return controls;
     }
-    
+
     private JComponent wrapFullWidth(JSlider slider) {
         JPanel p = new JPanel(new BorderLayout());
         p.setOpaque(false);
@@ -293,10 +298,17 @@ public class FaceCropSettingsPanel extends JPanel {
         btn.setFocusPainted(false);
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override public void mouseEntered(java.awt.event.MouseEvent e) { btn.setBackground(hover); }
-            @Override public void mouseExited(java.awt.event.MouseEvent e)  { btn.setBackground(base);  }
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent e) {
+                btn.setBackground(hover);
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent e) {
+                btn.setBackground(base);
+            }
         });
-        
+
         return btn;
     }
 

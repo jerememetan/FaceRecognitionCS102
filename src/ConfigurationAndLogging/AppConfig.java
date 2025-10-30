@@ -360,6 +360,7 @@ public class AppConfig {
             AppLogger.info(KEY_RECOGNITION_THRESHOLD + " has been changed to " + newIndex);
         }
     }
+
     public String getRecognitionImageFormat() {
         return properties.getProperty(KEY_RECOGNITION_IMAGE_FORMAT, "jpg");
     }
@@ -741,9 +742,6 @@ public class AppConfig {
     }
 
     // export.* folder paths
-
-
-
 
     public boolean isDnnDetectionEnabled() {
         return Boolean.parseBoolean(properties.getProperty(KEY_DNN_ENABLED, "true"));
