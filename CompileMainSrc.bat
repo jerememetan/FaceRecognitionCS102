@@ -1,1 +1,1 @@
-javac -proc:none -Xlint:-options -d "compiled" -cp "./src;./lib/*" src/facecrop/Name_ID_GUI.java src/facecrop/NewFaceRecognitionDemo.java src/facecrop/NewFaceCropDemo.java src/facecrop/MyGUIProgram.java
+javac -proc:none -Xlint:-options -d "compiled" -cp "./src;./lib/*" src/app/FaceRecognitionApp.java src/app/StudentManagerApp.java

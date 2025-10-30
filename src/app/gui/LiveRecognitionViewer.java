@@ -23,7 +23,7 @@ import ConfigurationAndLogging.AppConfig;
 import ConfigurationAndLogging.AppLogger;
 import ConfigurationAndLogging.FaceCropSettingsPanel;
 import ConfigurationAndLogging.IConfigChangeListener;
-import facecrop.CameraPanel;
+import app.gui.CameraPanel;
 import app.service.recognition.LiveRecognitionService;
 import app.service.recognition.LiveRecognitionService.RecognitionOutcome;
 

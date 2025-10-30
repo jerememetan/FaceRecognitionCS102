@@ -18,7 +18,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-import facecrop.*;
+import app.gui.*;
+import app.service.*;
 import ConfigurationAndLogging.*;
 public class FaceCaptureDialog extends JDialog{
     private Student student;

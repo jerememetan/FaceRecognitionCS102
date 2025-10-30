@@ -6,8 +6,8 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 
-import facecrop.MyGUIProgram;
-import app.Main;
+import app.FaceRecognitionApp;
+import app.StudentManagerApp;
 import app.gui.*;
 import app.entity.*;
 import app.test.SessionManager;
@@ -143,11 +143,38 @@ public class MainDashboard extends JFrame {
         // ---------ActionListener for the buttons--------------
         recognitionBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
-            JFrame frame = new MyGUIProgram();
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
+            
+            // Create a timer to detect when the recognition window appears and attach our listener
+            Timer findWindowTimer = new Timer(100, null);
+            findWindowTimer.addActionListener(evt -> {
+                Window[] windows = Window.getWindows();
+                for (Window window : windows) {
+                    if (window.isVisible() && window instanceof JFrame && 
+                        ((JFrame)window).getTitle().contains("Real-Time")) {
+                        JFrame recognitionFrame = (JFrame)window;
+                        recognitionFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        recognitionFrame.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowClosed(WindowEvent e) {
+                                SwingUtilities.invokeLater(() -> {
+                                    MainDashboard.this.setVisible(true);
+                                });
+                            }
+                        });
+                        findWindowTimer.stop();
+                        break;
+                    }
+                }
+            });
+            findWindowTimer.start();
+            
+            // Launch the recognition window
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    FaceRecognitionApp.main(null);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    findWindowTimer.stop();
                     MainDashboard.this.setVisible(true);
                 }
             });
@@ -184,7 +211,7 @@ public class MainDashboard extends JFrame {
             // Launch the student management window
             SwingUtilities.invokeLater(() -> {
                 try {
-                    Main.main(null);
+                    StudentManagerApp.main(null);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     findWindowTimer.stop();

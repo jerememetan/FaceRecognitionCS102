@@ -1,4 +1,4 @@
-package facecrop;
+package app.gui;
 
 import org.opencv.core.Mat;
 import org.opencv.highgui.HighGui; // Assuming HighGui.toBufferedImage is available (common in modern OpenCV)
