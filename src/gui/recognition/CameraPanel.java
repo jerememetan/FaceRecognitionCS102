@@ -10,8 +10,8 @@ import org.opencv.highgui.HighGui;
 public class CameraPanel extends JPanel {
 
     // The image that will be drawn onto the panel
-    private BufferedImage image;
-
+    private BufferedImage image; 
+    
     // --- CONSTRUCTOR ---
     public CameraPanel() {
         // Set a default size for the video feed area (e.g., 640x480)
@@ -30,11 +30,10 @@ public class CameraPanel extends JPanel {
         }
 
         // Convert the Mat to a BufferedImage using OpenCV's utility.
-        // NOTE: This utility often requires the Mat to be BGR, which your camera frame
-        // 'frame' is.
-        image = (BufferedImage) HighGui.toBufferedImage(mat);
+        // NOTE: This utility often requires the Mat to be BGR, which your camera frame 'frame' is.
+    image = (BufferedImage) HighGui.toBufferedImage(mat);
 
-        // Schedule a repaint call on the Event Dispatch Thread (EDT)
+        // Schedule a repaint call on the Event Dispatch Thread (EDT) 
         // as all Swing drawing must happen on the EDT.
         if (image != null) {
             SwingUtilities.invokeLater(this::repaint);
@@ -47,14 +46,13 @@ public class CameraPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
+        
         if (image != null) {
-            // Calculate scale to fit the image into the panel while maintaining aspect
-            // ratio
+            // Calculate scale to fit the image into the panel while maintaining aspect ratio
             double scaleX = (double) getWidth() / image.getWidth();
             double scaleY = (double) getHeight() / image.getHeight();
             double scale = Math.min(scaleX, scaleY);
-
+            
             int width = (int) (scale * image.getWidth());
             int height = (int) (scale * image.getHeight());
             int x = (getWidth() - width) / 2;
@@ -69,3 +67,10 @@ public class CameraPanel extends JPanel {
         }
     }
 }
+
+
+
+
+
+
+

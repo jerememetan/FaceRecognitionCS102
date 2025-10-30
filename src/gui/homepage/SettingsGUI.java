@@ -37,41 +37,30 @@ public class SettingsGUI extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(new Color(248, 250, 252));
 
-        // Create the settings center (cards) and pass the same listener used by the
-        // pages
+        // Create the settings center (cards) and pass the same listener used by the pages
         IConfigChangeListener listener = new IConfigChangeListener() {
-            @Override
-            public void onScaleFactorChanged(double newScaleFactor) {
+            @Override public void onScaleFactorChanged(double newScaleFactor) {
                 AppConfig.getInstance().setDetectionScaleFactor(newScaleFactor);
                 AppLogger.info("Detection scale factor changed to " + newScaleFactor);
             }
-
-            @Override
-            public void onMinNeighborsChanged(int newMinNeighbors) {
+            @Override public void onMinNeighborsChanged(int newMinNeighbors) {
                 AppConfig.getInstance().setDetectionMinNeighbors(newMinNeighbors);
                 AppLogger.info("Min neighbors changed to " + newMinNeighbors);
             }
-
-            @Override
-            public void onMinSizeChanged(int newMinSize) {
+            @Override public void onMinSizeChanged(int newMinSize) {
                 AppConfig.getInstance().setDetectionMinSize(newMinSize);
                 AppLogger.info("Min size changed to " + newMinSize);
             }
-
-            @Override
-            public void onCaptureFaceRequested() {
+            @Override public void onCaptureFaceRequested() {
                 AppLogger.warn("Capture requested from Settings GUI - no student selected.");
                 JOptionPane.showMessageDialog(SettingsGUI.this,
                         "Capture action requires selecting a student. Open the Student Management / Face Capture dialog.",
                         "Capture unavailable", JOptionPane.INFORMATION_MESSAGE);
             }
-
-            @Override
-            public void onSaveSettingsRequested() {
+            @Override public void onSaveSettingsRequested() {
                 AppConfig.getInstance().save();
                 AppLogger.info("Settings saved from SettingsGUI");
-                JOptionPane.showMessageDialog(SettingsGUI.this, "Settings saved", "Saved",
-                        JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(SettingsGUI.this, "Settings saved", "Saved", JOptionPane.INFORMATION_MESSAGE);
             }
         };
 
@@ -122,7 +111,7 @@ public class SettingsGUI extends JFrame {
         categoriesPanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
         // Category buttons
-
+        
         JButton welcomeBtn = createCategoryButton("Welcome!");
         JButton detectionBtn = createCategoryButton("Camera Settings");
 
@@ -130,8 +119,7 @@ public class SettingsGUI extends JFrame {
         welcomeBtn.addActionListener(e -> center.showCard(SettingsCenter.WELCOME));
         detectionBtn.addActionListener(e -> center.showCard(SettingsCenter.DETECTION));
 
-        // NOTE: MYPAGE is already registered in SettingsCenter (eager). Do NOT call
-        // center.addCard(...) here.
+        // NOTE: MYPAGE is already registered in SettingsCenter (eager). Do NOT call center.addCard(...) here.
 
         categoriesPanel.add(welcomeBtn);
         categoriesPanel.add(Box.createRigidArea(new Dimension(0, 8)));
@@ -140,6 +128,7 @@ public class SettingsGUI extends JFrame {
 
         JButton cameraBtn = createCategoryButton("Camera");
         JButton otherBtn = createCategoryButton("Some other Buttons");
+        
 
         return categoriesPanel;
     }
@@ -154,12 +143,11 @@ public class SettingsGUI extends JFrame {
         card.setBackground(Color.WHITE);
         card.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
-                BorderFactory.createEmptyBorder(8, 8, 8, 8)));
+                BorderFactory.createEmptyBorder(8, 8, 8, 8)
+        ));
 
-        // The actual center is created in createUI; return an empty placeholder here to
-        // keep compatibility
-        // This method is no longer used directly in the new createUI flow, but kept for
-        // parity.
+        // The actual center is created in createUI; return an empty placeholder here to keep compatibility
+        // This method is no longer used directly in the new createUI flow, but kept for parity.
         card.add(new JLabel(""), BorderLayout.CENTER);
 
         JPanel wrapper = new JPanel(new GridBagLayout());
@@ -175,6 +163,7 @@ public class SettingsGUI extends JFrame {
         contentPanel.add(wrapper, BorderLayout.CENTER);
         return contentPanel;
 
+
     }
 
     // status card style at the buttom
@@ -182,8 +171,9 @@ public class SettingsGUI extends JFrame {
         JPanel card = new JPanel(new BorderLayout());
         card.setBackground(Color.WHITE);
         card.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
-                BorderFactory.createEmptyBorder(15, 15, 15, 15)));
+            BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
+            BorderFactory.createEmptyBorder(15, 15, 15, 15)
+        ));
 
         JLabel titleLabel = new JLabel(title);
         titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
@@ -217,7 +207,13 @@ public class SettingsGUI extends JFrame {
         button.setBorder(BorderFactory.createEmptyBorder(8, 16, 8, 16));
         button.setFocusPainted(false);
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
+        
         return button;
     }
 }
+
+
+
+
+
+

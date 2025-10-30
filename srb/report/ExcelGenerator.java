@@ -15,12 +15,13 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 // ExcelGenerator: creates a new .xls file in export folder
 public class ExcelGenerator implements ReportGenerator {
     @Override
-    public void generate(){
+    public void generate() {
         // Create a ReportBuilder class
         ReportBuilder ReportBuilder = new ReportBuilder();
 
         // Initialize Headers in ReportBuilder
-        List<String> headers = Arrays.asList("StudentID", "Name", "Status", "Timestamp", "Confidence", "Method", "Notes");
+        List<String> headers = Arrays.asList("StudentID", "Name", "Status", "Timestamp", "Confidence", "Method",
+                "Notes");
         ReportBuilder.initializeFieldHeaders(headers);
 
         // Initialize Sample Student Data in ReportBuilder
@@ -31,21 +32,22 @@ public class ExcelGenerator implements ReportGenerator {
         // Get both Headers and Data -> fullData
         List<List<String>> fullData = ReportBuilder.getFullData();
 
-
         // Export Path
 
         // // Get the count of .*** files in export folder
         // // Error Handling to access export files
         // int newPDFCount = 0;
         // try {
-        //     long pdfCount = util.countFilesInFolder(exportedFolderPath, "xlsx");
-        //     newPDFCount = (int)pdfCount + 1;
+        // long pdfCount = util.countFilesInFolder(exportedFolderPath, "xlsx");
+        // newPDFCount = (int)pdfCount + 1;
         // } catch (IOException e) {
-        //     System.err.println("ExcelReport: Error accessing the exportedDataFiles folder: " + e.getMessage());
+        // System.err.println("ExcelReport: Error accessing the exportedDataFiles
+        // folder: " + e.getMessage());
         // }
 
         // // New Exported File Name with incremented count
-        // String fileName = String.format("StudentFaceRecognitionData%d.xlsx", newPDFCount);
+        // String fileName = String.format("StudentFaceRecognitionData%d.xlsx",
+        // newPDFCount);
 
         String fileName = "StudentFaceRecognitionData.xlsx";
 
@@ -55,7 +57,7 @@ public class ExcelGenerator implements ReportGenerator {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(400, 300);
             frame.setVisible(true);
-            
+
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setDialogTitle("Choose where to save your file");
             fileChooser.setSelectedFile(new File(fileName));
@@ -63,62 +65,62 @@ public class ExcelGenerator implements ReportGenerator {
             int userSelection = fileChooser.showSaveDialog(frame);
 
             if (userSelection == JFileChooser.APPROVE_OPTION) {
-                    File fileToSave = fileChooser.getSelectedFile();
+                File fileToSave = fileChooser.getSelectedFile();
 
-                    Workbook workbook = new XSSFWorkbook();
-                    Sheet sheet = workbook.createSheet("Report");
-                    int rowNum = 0;
+                Workbook workbook = new XSSFWorkbook();
+                Sheet sheet = workbook.createSheet("Report");
+                int rowNum = 0;
 
-                    // Create header cell style
-                    CellStyle style = workbook.createCellStyle();
-                    Font font = workbook.createFont();
-                    font.setBold(true);
-                    style.setFont(font);
-                    style.setAlignment(HorizontalAlignment.CENTER);
-                    style.setVerticalAlignment(VerticalAlignment.CENTER);
-                    style.setBorderBottom(BorderStyle.THIN);
-                    style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-                    style.setBorderLeft(BorderStyle.THIN);
-                    style.setLeftBorderColor(IndexedColors.BLACK.getIndex());
-                    style.setBorderRight(BorderStyle.THIN);
-                    style.setRightBorderColor(IndexedColors.BLACK.getIndex());
-                    style.setBorderTop(BorderStyle.THIN);
-                    style.setTopBorderColor(IndexedColors.BLACK.getIndex());
-                    style.setFillForegroundColor(IndexedColors.LIGHT_YELLOW.getIndex());
-                    style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                // Create header cell style
+                CellStyle style = workbook.createCellStyle();
+                Font font = workbook.createFont();
+                font.setBold(true);
+                style.setFont(font);
+                style.setAlignment(HorizontalAlignment.CENTER);
+                style.setVerticalAlignment(VerticalAlignment.CENTER);
+                style.setBorderBottom(BorderStyle.THIN);
+                style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style.setBorderLeft(BorderStyle.THIN);
+                style.setLeftBorderColor(IndexedColors.BLACK.getIndex());
+                style.setBorderRight(BorderStyle.THIN);
+                style.setRightBorderColor(IndexedColors.BLACK.getIndex());
+                style.setBorderTop(BorderStyle.THIN);
+                style.setTopBorderColor(IndexedColors.BLACK.getIndex());
+                style.setFillForegroundColor(IndexedColors.LIGHT_YELLOW.getIndex());
+                style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
-                    for (List<String> rowData : fullData) {
-                        Row row = sheet.createRow(rowNum);
-                        for (int i = 0; i < rowData.size(); i++) {
-                            Cell cell = row.createCell(i);
-                            cell.setCellValue(rowData.get(i));
-                            if (rowNum == 0) {
-                                cell.setCellStyle(style);
-                            }
+                for (List<String> rowData : fullData) {
+                    Row row = sheet.createRow(rowNum);
+                    for (int i = 0; i < rowData.size(); i++) {
+                        Cell cell = row.createCell(i);
+                        cell.setCellValue(rowData.get(i));
+                        if (rowNum == 0) {
+                            cell.setCellStyle(style);
                         }
-                        rowNum++;
                     }
-
-                    for (int i = 0; i < fullData.get(0).size(); i++) {
-                        sheet.autoSizeColumn(i);
-                    }
-
-                    sheet.setAutoFilter(new CellRangeAddress(0, fullData.size(), 0, 5));
-
-                    try (FileOutputStream out = new FileOutputStream(fileToSave)) {
-                        workbook.write(out);
-                    }
-
-                    workbook.close();
-                    System.out.println("Excel file saved successfully to: " + fileToSave.getAbsolutePath());
-                } else {
-                    System.out.println("File save cancelled by user.");
+                    rowNum++;
                 }
 
-                frame.dispose(); // Close the frame
-            } catch (IOException e) {
-                e.printStackTrace();
+                for (int i = 0; i < fullData.get(0).size(); i++) {
+                    sheet.autoSizeColumn(i);
+                }
+
+                sheet.setAutoFilter(new CellRangeAddress(0, fullData.size(), 0, 5));
+
+                try (FileOutputStream out = new FileOutputStream(fileToSave)) {
+                    workbook.write(out);
+                }
+
+                workbook.close();
+                System.out.println("Excel file saved successfully to: " + fileToSave.getAbsolutePath());
+            } else {
+                System.out.println("File save cancelled by user.");
             }
+
+            frame.dispose(); // Close the frame
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
@@ -126,10 +128,3 @@ public class ExcelGenerator implements ReportGenerator {
         generator.generate();
     }
 }
-
-
-
-
-
-
-

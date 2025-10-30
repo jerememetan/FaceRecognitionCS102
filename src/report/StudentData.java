@@ -33,33 +33,13 @@ public class StudentData {
     }
 
     // Getters for fields
-    public Integer getStudentID() {
-        return StudentID;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public String getTimestamp() {
-        return Timestamp;
-    }
-
-    public double getConfidence() {
-        return Confidence;
-    }
-
-    public String getMethod() {
-        return Method;
-    }
-
-    public String getNotes() {
-        return Notes;
-    }
+    public Integer getStudentID() { return StudentID; }
+    public String getName() { return Name; }
+    public String getStatus() { return Status; }
+    public String getTimestamp() { return Timestamp; }
+    public double getConfidence() { return Confidence; }
+    public String getMethod() { return Method; }
+    public String getNotes() { return Notes; }
 
     // Builder to construct the initial values for Student Data
     public static class Builder {
@@ -90,7 +70,7 @@ public class StudentData {
             this.Timestamp = Timestamp;
             return this;
         }
-
+        
         public Builder setConfidence(double Confidence) {
             this.Confidence = Confidence;
             return this;
@@ -130,14 +110,14 @@ public class StudentData {
                 String Method = scData.next();
                 String Notes = scData.next();
                 StudentData data = new StudentData.Builder()
-                        .setStudentID(StudentID)
-                        .setName(Name)
-                        .setStatus(Status)
-                        .setTimestamp(Timestamp)
-                        .setConfidence(Confidence)
-                        .setMethod(Method)
-                        .setNotes(Notes)
-                        .build();
+                                                    .setStudentID(StudentID)
+                                                    .setName(Name)
+                                                    .setStatus(Status)
+                                                    .setTimestamp(Timestamp)
+                                                    .setConfidence(Confidence)
+                                                    .setMethod(Method)
+                                                    .setNotes(Notes)
+                                                    .build();
                 StudentData.SampleStudentData.add(data);
                 scData.close();
             }
@@ -147,3 +127,10 @@ public class StudentData {
         }
     }
 }
+
+
+
+
+
+
+

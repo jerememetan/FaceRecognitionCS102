@@ -10,13 +10,12 @@ import java.util.List;
 // CSVGenerator: creates a new .csv file in export folder
 public class CSVGenerator implements ReportGenerator {
     @Override
-    public void generate() {
+    public void generate(){
         // Create a ReportBuilder class
         ReportBuilder ReportBuilder = new ReportBuilder();
 
         // Initialize Headers in ReportBuilder
-        List<String> headers = Arrays.asList("StudentID", "Name", "Status", "Timestamp", "Confidence", "Method",
-                "Notes");
+        List<String> headers = Arrays.asList("StudentID", "Name", "Status", "Timestamp", "Confidence", "Method", "Notes");
         ReportBuilder.initializeFieldHeaders(headers);
 
         // Initialize Sample Student Data in ReportBuilder
@@ -27,6 +26,7 @@ public class CSVGenerator implements ReportGenerator {
         // Get both Headers and Data -> fullData
         List<List<String>> fullData = ReportBuilder.getFullData();
 
+
         // Export Path
         String exportedFolderPath = AppConfig.getInstance().getExportCsvFolderPath();
 
@@ -35,7 +35,7 @@ public class CSVGenerator implements ReportGenerator {
         int newCSVCount = 0;
         try {
             long csvCount = util.countFilesInFolder(exportedFolderPath, "csv");
-            newCSVCount = (int) csvCount + 1;
+            newCSVCount = (int)csvCount + 1;
         } catch (IOException e) {
             System.err.println("\nCSVReport: Error accessing the exportedDataFiles folder: " + e.getMessage());
         }
@@ -45,6 +45,7 @@ public class CSVGenerator implements ReportGenerator {
 
         // Exported File Name with full path to export folder
         String exportedFileName = exportedFolderPath + fileName;
+
 
         // Fill the exported file with data
         try (FileWriter writer = new FileWriter(exportedFileName)) {
@@ -63,3 +64,10 @@ public class CSVGenerator implements ReportGenerator {
         generator.generate();
     }
 }
+
+
+
+
+
+
+

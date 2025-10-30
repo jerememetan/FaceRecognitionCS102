@@ -1,10 +1,10 @@
 package app;
 
-import app.gui.LiveRecognitionViewer;
-import ConfigurationAndLogging.AppConfig;
-import ConfigurationAndLogging.AppLogger;
-import javax.swing.*;
+import config.AppConfig;
+import config.AppLogger;
+import gui.recognition.LiveRecognitionViewer;
 import java.io.File;
+import javax.swing.*;
 
 /**
  * Entry point for the Face Recognition system.
@@ -42,3 +42,9 @@ public class FaceRecognitionApp {
         });
     }
 }
+
+
+
+
+
+

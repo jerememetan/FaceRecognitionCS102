@@ -23,9 +23,9 @@ public class EmbeddingQualityAnalyzer {
     }
 
     public int removeOutliers(List<byte[]> embeddings,
-            List<String> embeddingPaths,
-            List<String> imagePaths,
-            ProgressCallback progressCallback) {
+                              List<String> embeddingPaths,
+                              List<String> imagePaths,
+                              ProgressCallback progressCallback) {
         if (embeddings == null || embeddings.size() < 5) {
             return 0;
         }
@@ -75,9 +75,9 @@ public class EmbeddingQualityAnalyzer {
     }
 
     public int removeWeakEmbeddings(List<byte[]> embeddings,
-            List<String> embeddingPaths,
-            List<String> imagePaths,
-            ProgressCallback progressCallback) {
+                                    List<String> embeddingPaths,
+                                    List<String> imagePaths,
+                                    ProgressCallback progressCallback) {
         if (embeddings == null || embeddings.size() < 3) {
             return 0;
         }
@@ -157,8 +157,8 @@ public class EmbeddingQualityAnalyzer {
     }
 
     private boolean deleteFilesAtIndex(int index,
-            List<String> embeddingPaths,
-            List<String> imagePaths) {
+                                       List<String> embeddingPaths,
+                                       List<String> imagePaths) {
         boolean deletedEmbedding = deleteFile(embeddingPaths, index, "embedding");
         deleteFile(imagePaths, index, "image");
         return deletedEmbedding;
@@ -187,3 +187,10 @@ public class EmbeddingQualityAnalyzer {
         }
     }
 }
+
+
+
+
+
+
+

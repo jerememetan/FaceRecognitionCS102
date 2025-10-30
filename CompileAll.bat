@@ -1,5 +1,5 @@
-javac -proc:none -Xlint:-options -d compiled -cp ".\srb" srb\config\*.java
-javac -proc:none -Xlint:-options -d compiled -cp ".\srb;.\lib\*" srb\report\*.java
-javac -proc:none -Xlint:-options -d "compiled" -cp ".\srb;.\lib\*" srb\entity\*.java srb\model\*.java srb\repository\*.java srb\service\embedding\*.java srb\service\recognition\*.java srb\service\session\*.java srb\service\student\*.java srb\util\*.java srb\gui\config\*.java srb\gui\detection\*.java srb\gui\homepage\*.java srb\gui\recognition\*.java srb\gui\settings\*.java
-javac -proc:none -Xlint:-options -d compiled -cp "srb;lib/*" srb/gui/homepage/LoginPage.java srb/gui/homepage/MainDashboard.java
+javac -proc:none -Xlint:-options -d compiled -cp ".\src" src\config\*.java
+javac -proc:none -Xlint:-options -d compiled -cp ".\src;.\lib\*" src\report\*.java
+javac -proc:none -Xlint:-options -d "compiled" -cp ".\src;.\lib\*" src\entity\*.java src\model\*.java src\repository\*.java src\service\embedding\*.java src\service\recognition\*.java src\service\session\*.java src\service\student\*.java src\util\*.java src\gui\config\*.java src\gui\detection\*.java src\gui\homepage\*.java src\gui\recognition\*.java src\gui\settings\*.java
+javac -proc:none -Xlint:-options -d compiled -cp "src;lib/*" src/gui/homepage/LoginPage.java src/gui/homepage/MainDashboard.java
 

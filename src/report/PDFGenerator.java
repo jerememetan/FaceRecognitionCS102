@@ -19,13 +19,12 @@ import javax.swing.JFrame;
 // CSVGenerator: creates a new .pdf file in export folder
 public class PDFGenerator implements ReportGenerator {
     @Override
-    public void generate() {
+    public void generate(){
         // Create a ReportBuilder class
         ReportBuilder ReportBuilder = new ReportBuilder();
 
         // Initialize Headers in ReportBuilder
-        List<String> headers = Arrays.asList("StudentID", "Name", "Status", "Timestamp", "Confidence", "Method",
-                "Notes");
+        List<String> headers = Arrays.asList("StudentID", "Name", "Status", "Timestamp", "Confidence", "Method", "Notes");
         ReportBuilder.initializeFieldHeaders(headers);
 
         // Initialize Sample Student Data in ReportBuilder
@@ -46,19 +45,18 @@ public class PDFGenerator implements ReportGenerator {
         // // Error Handling to access export files
         // int newPDFCount = 0;
         // try {
-        // long pdfCount = util.countFilesInFolder(exportedFolderPath, "pdf");
-        // newPDFCount = (int)pdfCount + 1;
+        //     long pdfCount = util.countFilesInFolder(exportedFolderPath, "pdf");
+        //     newPDFCount = (int)pdfCount + 1;
         // } catch (IOException e) {
-        // System.err.println("PDFReport: Error accessing the exportedDataFiles folder:
-        // " + e.getMessage());
+        //     System.err.println("PDFReport: Error accessing the exportedDataFiles folder: " + e.getMessage());
         // }
 
         // // New Exported File Name with incremented count
-        // String fileName = String.format("StudentFaceRecognitionData%d.pdf",
-        // newPDFCount);
+        // String fileName = String.format("StudentFaceRecognitionData%d.pdf", newPDFCount);
 
         // // Exported File Name with full path to export folder
         // String exportedFileName = exportedFolderPath + fileName;
+
 
         String fileName = "StudentFaceRecognitionData.pdf";
 
@@ -68,7 +66,7 @@ public class PDFGenerator implements ReportGenerator {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(400, 300);
             frame.setVisible(true);
-
+            
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setDialogTitle("Choose where to save your file");
             fileChooser.setSelectedFile(new File(fileName));
@@ -76,30 +74,30 @@ public class PDFGenerator implements ReportGenerator {
             int userSelection = fileChooser.showSaveDialog(frame);
 
             if (userSelection == JFileChooser.APPROVE_OPTION) {
-                File fileToSave = fileChooser.getSelectedFile();
+                    File fileToSave = fileChooser.getSelectedFile();
 
-                PdfWriter writer = new PdfWriter(fileToSave.getAbsolutePath());
-                PdfDocument pdf = new PdfDocument(writer);
-                Document document = new Document(pdf);
+                    PdfWriter writer = new PdfWriter(fileToSave.getAbsolutePath());
+                    PdfDocument pdf = new PdfDocument(writer);
+                    Document document = new Document(pdf);
 
-                Table table = new Table(headers.size());
-                for (List<String> row : fullData) {
-                    for (String cellData : row) {
-                        table.addCell(new Cell().add(new Paragraph(cellData)));
+                    Table table = new Table(headers.size());
+                    for (List<String> row : fullData) {
+                        for (String cellData : row) {
+                            table.addCell(new Cell().add(new Paragraph(cellData)));
+                        }
                     }
+                    document.add(table);
+
+                    document.close();
+                    System.out.println("PDF file saved successfully to: " + fileToSave.getAbsolutePath());
+                } else {
+                    System.out.println("File save cancelled by user.");
                 }
-                document.add(table);
 
-                document.close();
-                System.out.println("PDF file saved successfully to: " + fileToSave.getAbsolutePath());
-            } else {
-                System.out.println("File save cancelled by user.");
+                frame.dispose(); // Close the frame
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-            frame.dispose(); // Close the frame
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public static void main(String[] args) {
@@ -107,3 +105,9 @@ public class PDFGenerator implements ReportGenerator {
         generator.generate();
     }
 }
+
+
+
+
+
+

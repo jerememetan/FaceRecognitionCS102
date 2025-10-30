@@ -1,11 +1,12 @@
 package app;
 
-import app.gui.StudentEnrollmentGUI;
+import entity.Student;
+import gui.student.StudentEnrollmentGUI;
 import javax.swing.*;
 
 /**
  * Entry point for the Student Management system.
- * Launches the Student Enrollment GUI.
+ * Launches the Student Enrollment gui.
  */
 public class StudentManagerApp {
 
@@ -34,3 +35,9 @@ public class StudentManagerApp {
         });
     }
 }
+
+
+
+
+
+

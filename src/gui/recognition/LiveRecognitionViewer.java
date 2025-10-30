@@ -405,3 +405,10 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
         });
     }
 }
+
+
+
+
+
+
+

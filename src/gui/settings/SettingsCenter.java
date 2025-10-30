@@ -18,6 +18,7 @@ public class SettingsCenter extends JPanel {
     private final CardLayout cardLayout = new CardLayout();
     private final JPanel cards = new JPanel(cardLayout);
 
+
     public SettingsCenter(IConfigChangeListener listener) {
         setLayout(new BorderLayout());
         setBackground(new Color(248, 250, 252));
@@ -25,8 +26,7 @@ public class SettingsCenter extends JPanel {
         // register cards
         cards.add(new WelcomeView(), WELCOME);
 
-        // Detection uses the FaceCropSettingsPanel (no internal save; SettingsGUI keeps
-        // the centered save button)
+        // Detection uses the FaceCropSettingsPanel (no internal save; SettingsGUI keeps the centered save button)
         cards.add(new FaceCropSettingsPanel(listener, false, true), DETECTION);
 
         // register MYPAGE here so callers can just call showCard(MYPAGE)
@@ -38,9 +38,16 @@ public class SettingsCenter extends JPanel {
     public void addCard(String key, JPanel panel) {
         cards.add(panel, key);
     }
-
+    
     public void showCard(String key) {
         cardLayout.show(cards, key);
     }
 
+
 }
+
+
+
+
+
+

@@ -198,3 +198,10 @@ public class LiveRecognitionService {
         }
     }
 }
+
+
+
+
+
+
+
