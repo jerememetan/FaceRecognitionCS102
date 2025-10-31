@@ -1,7 +1,0 @@
-[2025-10-26 19:42:02] INFO: Application Logger Initialized.
-[2025-10-26 19:42:02] INFO: Configuration and core components loaded.
-[2025-10-26 19:42:02] INFO: app.properties normalized (55 entries).
-[2025-10-26 19:42:02] INFO: Configuration loaded from file: C:\Users\honey\Desktop\CS102 Intro to Programming II\project\FaceRecognitionCS102\app.properties
-[2025-10-26 19:42:02] INFO: Configuration file loaded
-[2025-10-26 19:42:02] INFO: MyGUIProgram Started!
-[2025-10-26 19:42:02] INFO: Showing MainDashboard!

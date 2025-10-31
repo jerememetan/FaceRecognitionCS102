@@ -1,7 +1,0 @@
-[2025-10-23 21:31:26] INFO: Application Logger Initialized.
-[2025-10-23 21:31:26] INFO: app.properties normalized (55 entries).
-[2025-10-23 21:31:26] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
-[2025-10-23 21:31:27] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
-[2025-10-23 21:31:27] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
-[2025-10-23 21:31:27] INFO: StudentManager initialized successfully
-[2025-10-23 21:31:28] INFO: GUI launched successfully

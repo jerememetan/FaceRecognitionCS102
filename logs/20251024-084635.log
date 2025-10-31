@@ -1,7 +1,0 @@
-[2025-10-24 08:46:35] INFO: Application Logger Initialized.
-[2025-10-24 08:46:35] INFO: app.properties normalized (55 entries).
-[2025-10-24 08:46:35] INFO: Configuration loaded from file: C:\SMU\CS102 Project\FaceRecognitionCS102\app.properties
-[2025-10-24 08:46:37] INFO: ￢ﾜﾅ ArcFace ResNet100 model loaded successfully
-[2025-10-24 08:46:37] INFO: ￢ﾜﾓ FaceAligner initialized with 5-point alignment support
-[2025-10-24 08:46:38] INFO: Similarity between regenerated and stored embedding: 
-[2025-10-24 08:46:38] INFO: 1.0000
