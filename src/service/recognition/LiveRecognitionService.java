@@ -22,6 +22,7 @@ public class LiveRecognitionService {
     private static final Scalar REJECT_COLOR = new Scalar(0, 0, 255);
 
     private static final long SESSION_TIMEOUT_MILLIS = 5_000;
+    private static final long FRAME_LAG_RESET_MS = 450;
 
     private final ImageProcessor imageProcessor = new ImageProcessor();
     private final FaceEmbeddingGenerator embeddingGenerator = new FaceEmbeddingGenerator();
@@ -47,8 +48,14 @@ public class LiveRecognitionService {
 
         String key = (sessionId == null || sessionId.isBlank()) ? "default" : sessionId;
         RecognitionSession session = sessionFor(key);
+        long frameTimestamp = System.currentTimeMillis();
         session.touch();
         cleanupStaleSessions();
+
+        if (session.registerFrame(frameTimestamp, FRAME_LAG_RESET_MS)) {
+            AppLogger.info("Frame cadence gap detected; resetting recognition history for session " + key);
+            session.history.reset();
+        }
 
         Rect paddedRect = RecognitionGeometry.paddedFaceRect(frame.size(), faceRect, 0.15);
         Mat faceColor = new Mat(frame, paddedRect).clone();
@@ -57,6 +64,10 @@ public class LiveRecognitionService {
             if (!qualityResult.isGoodQuality()) {
                 AppLogger.info("[Reject] Face rejected: Poor image quality. " + qualityResult.getFeedback());
                 return RecognitionOutcome.rejected();
+            }
+
+            if (qualityResult.isBorderline()) {
+                AppLogger.info("[Warn] Borderline image quality accepted: " + qualityResult.getFeedback());
             }
 
             Mat preprocessedBlob = livePreprocessor.preprocessForLiveRecognition(faceColor, paddedRect);
@@ -228,9 +239,19 @@ public class LiveRecognitionService {
     private static final class RecognitionSession {
         private final RecognitionHistory history = new RecognitionHistory();
         private volatile long lastUpdated = System.currentTimeMillis();
+        private volatile long lastFrameTimestamp = 0L;
 
         void touch() {
             lastUpdated = System.currentTimeMillis();
+        }
+
+        boolean registerFrame(long frameTimestamp, long lagThresholdMs) {
+            long previous = lastFrameTimestamp;
+            lastFrameTimestamp = frameTimestamp;
+            if (previous == 0L) {
+                return false;
+            }
+            return (frameTimestamp - previous) > lagThresholdMs;
         }
     }
 }
