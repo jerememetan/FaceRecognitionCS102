@@ -6,7 +6,7 @@ Package Structure and Key Classes
 The application follows a modular package structure organized as follows:
 
 ### config
-- **AppConfig**: Manages application configuration settings, including detection parameters and system preferences.
+- **AppConfig**: Manages application configuration settings, including detection parameters and system preferences. All config is always stored and saved into app.properties
 - **AppLogger**: Handles logging throughout the application.
 - **IConfigChangeListener**: Interface for listening to configuration changes.
 
