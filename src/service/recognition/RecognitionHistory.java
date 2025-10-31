@@ -13,7 +13,7 @@ import service.embedding.FaceEmbeddingGenerator;
  */
 final class RecognitionHistory {
 
-    private static final int Q_EMB_WINDOW = 5;
+    private static final int Q_EMB_WINDOW = 3;
 
     private final Deque<Integer> recentPredictions = new ArrayDeque<>(20);
     private final Deque<byte[]> recentEmbeddings = new ArrayDeque<>(Q_EMB_WINDOW);
