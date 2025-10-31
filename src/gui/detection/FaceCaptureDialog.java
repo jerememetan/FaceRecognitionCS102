@@ -53,8 +53,8 @@ public class FaceCaptureDialog extends JDialog {
         AppLogger.info("FaceCaptureDialog created for student: " + student.getName());
 
         cameraPreviewManager = new CameraPreviewManager(faceDetection, null, null, null);
-        captureManager = new CaptureManager(faceDetection, student, studentManager, isCapturing, capturedCount,
-                targetImages, captureCompleted, null, null, null, null, this);
+    captureManager = new CaptureManager(faceDetection, student, studentManager, isCapturing, capturedCount,
+        targetImages, captureCompleted, null, null, null, null, cameraPreviewManager, this);
 
         initializeDialog();
         cameraPreviewManager.startPreview();

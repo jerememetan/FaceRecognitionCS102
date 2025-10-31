@@ -638,12 +638,20 @@ public class AppConfig {
 
     // preprocessing.* numeric thresholds
     public double getPreprocessingMinSharpnessThreshold() {
-        String s = properties.getProperty(KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, "80.0");
+        String s = properties.getProperty(KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, "45.0");
         try {
-            return Double.parseDouble(s);
+            double value = Double.parseDouble(s);
+            double clamped = Math.max(30.0, Math.min(120.0, value));
+            if (clamped > 60.0) {
+                AppLogger.warn(String.format(
+                        "Configured %s %.1f is too strict; using 60.0 instead for better tolerance.",
+                        KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, clamped));
+                clamped = 60.0;
+            }
+            return clamped;
         } catch (NumberFormatException ex) {
             AppLogger.error("Config error: Invalid number format for " + KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, ex);
-            return 80.0;
+            return 45.0;
         }
     }
 
@@ -652,8 +660,18 @@ public class AppConfig {
             AppLogger.error("Failed to change " + KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD + ".Value is null");
             return;
         }
-        properties.setProperty(KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, String.valueOf(value));
-        AppLogger.info(KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD + " has been changed to " + value);
+        double clamped = Math.max(30.0, Math.min(120.0, value));
+        if (!clampedEquals(clamped, value)) {
+            AppLogger.warn(String.format(
+                    "Requested %s %.1f outside supported range; clamped to %.1f.",
+                    KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, value, clamped));
+        }
+        properties.setProperty(KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, String.valueOf(clamped));
+        AppLogger.info(KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD + " has been changed to " + clamped);
+    }
+
+    private boolean clampedEquals(double a, double b) {
+        return Math.abs(a - b) < 1e-6;
     }
 
     public int getPreprocessingMinBrightness() {

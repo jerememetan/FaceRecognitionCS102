@@ -6,7 +6,11 @@ import config.IConfigChangeListener;
 import gui.config.FaceCropSettingsPanel;
 import java.awt.BorderLayout;
 import java.io.File;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -31,11 +35,15 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
     private static final Size DNN_INPUT_SIZE = new Size(300, 300);
     private static final Scalar DNN_MEAN_SUBTRACTION = new Scalar(104.0, 117.0, 123.0);
     private static final double MIN_ASPECT_RATIO = 0.7;
+    private static final double TRACKING_DISTANCE_THRESHOLD = 80.0;
+    private static final int TRACK_MISS_TOLERANCE = 10;
 
     private final CameraPanel cameraPanel = new CameraPanel();
     private final LiveRecognitionService recognitionService = new LiveRecognitionService();
     private volatile double dnnConfidenceThreshold = AppConfig.getInstance().getDnnConfidence();
     private volatile int minRecognitionWidthPx = AppConfig.getInstance().getRecognitionMinFaceWidthPx();
+    private final Map<String, TrackedFace> activeTracks = new HashMap<>();
+    private int nextTrackId = 0;
 
     private VideoCapture capture;
     private Net dnnFaceDetector;
@@ -43,9 +51,6 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
     private volatile boolean running = true;
     private Thread recognitionThread;
     private int frameCounter = 0;
-
-    private String lastDisplayText = "";
-    private Scalar lastDisplayColor = new Scalar(0, 0, 255);
 
     static {
         System.load(new File("lib/opencv_java480.dll").getAbsolutePath());
@@ -292,22 +297,33 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
 
                 List<Rect> detectedFaces = detectFacesWithDNN(webcamFrame);
 
+                incrementTrackMissCounters();
+                Set<String> matchedTrackIds = new HashSet<>();
+
                 for (Rect rect : detectedFaces) {
-                    Imgproc.rectangle(webcamFrame, new Point(rect.x, rect.y),
-                            new Point(rect.x + rect.width, rect.y + rect.height),
-                            new Scalar(0, 255, 0), 2);
+                    TrackedFace track = findOrCreateTrack(rect, matchedTrackIds);
+                    matchedTrackIds.add(track.id);
 
-                    Imgproc.putText(webcamFrame, lastDisplayText, new Point(rect.x, rect.y - 10),
-                            Imgproc.FONT_HERSHEY_SIMPLEX, 0.9, lastDisplayColor, 2);
-
-                    if (!shouldProcess) {
-                        continue;
+                    if (shouldProcess) {
+                        RecognitionOutcome outcome = recognitionService.analyzeFace(webcamFrame, rect, track.id);
+                        track.lastOutcome = outcome;
                     }
 
-                    RecognitionOutcome outcome = recognitionService.analyzeFace(webcamFrame, rect);
-                    lastDisplayText = outcome.displayText();
-                    lastDisplayColor = outcome.displayColor();
+                    if (track.lastOutcome == null) {
+                        track.lastOutcome = LiveRecognitionService.RecognitionOutcome.rejected();
+                    }
+
+                    Scalar color = track.lastOutcome.displayColor();
+                    Imgproc.rectangle(webcamFrame, new Point(rect.x, rect.y),
+                            new Point(rect.x + rect.width, rect.y + rect.height),
+                            color, 2);
+
+                    Imgproc.putText(webcamFrame, track.lastOutcome.displayText(),
+                            new Point(rect.x, Math.max(20, rect.y - 10)),
+                            Imgproc.FONT_HERSHEY_SIMPLEX, 0.9, color, 2);
                 }
+
+                cleanupStaleTracks();
                 cameraPanel.displayMat(webcamFrame);
                 try {
                     Thread.sleep(30);
@@ -343,6 +359,7 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
 
         webcamFrame.release();
         recognitionService.release();
+        activeTracks.clear();
 
         recognitionThread = null;
         capture = null;
@@ -403,6 +420,97 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
                         "Startup Error", JOptionPane.ERROR_MESSAGE);
             }
         });
+    }
+
+    private void incrementTrackMissCounters() {
+        for (TrackedFace track : activeTracks.values()) {
+            track.framesSinceSeen++;
+        }
+    }
+
+    private TrackedFace findOrCreateTrack(Rect rect, Set<String> matchedTrackIds) {
+        TrackedFace bestMatch = null;
+        double bestDistance = Double.MAX_VALUE;
+
+        double rectCenterX = rect.x + rect.width / 2.0;
+        double rectCenterY = rect.y + rect.height / 2.0;
+
+        for (TrackedFace candidate : activeTracks.values()) {
+            if (matchedTrackIds.contains(candidate.id)) {
+                continue;
+            }
+
+            double distance = candidate.distanceTo(rectCenterX, rectCenterY);
+            double dynamicThreshold = Math.max(TRACKING_DISTANCE_THRESHOLD, candidate.averageSize() * 0.6);
+
+            if (distance < dynamicThreshold && distance < bestDistance) {
+                bestDistance = distance;
+                bestMatch = candidate;
+            }
+        }
+
+        if (bestMatch == null) {
+            bestMatch = new TrackedFace(generateTrackId(), rect);
+            activeTracks.put(bestMatch.id, bestMatch);
+        } else {
+            bestMatch.updateRect(rect);
+        }
+
+        bestMatch.framesSinceSeen = 0;
+        return bestMatch;
+    }
+
+    private void cleanupStaleTracks() {
+        Set<String> toRemove = new HashSet<>();
+        for (Map.Entry<String, TrackedFace> entry : activeTracks.entrySet()) {
+            if (entry.getValue().framesSinceSeen > TRACK_MISS_TOLERANCE) {
+                toRemove.add(entry.getKey());
+            }
+        }
+
+        for (String trackId : toRemove) {
+            activeTracks.remove(trackId);
+            recognitionService.discardSession(trackId);
+        }
+    }
+
+    private String generateTrackId() {
+        nextTrackId++;
+        return "track-" + nextTrackId;
+    }
+
+    private static final class TrackedFace {
+        private final String id;
+        private Rect lastRect;
+        private int framesSinceSeen = 0;
+        private RecognitionOutcome lastOutcome = LiveRecognitionService.RecognitionOutcome.rejected();
+
+        private TrackedFace(String id, Rect rect) {
+            this.id = id;
+            this.lastRect = new Rect(rect.x, rect.y, rect.width, rect.height);
+        }
+
+        private void updateRect(Rect rect) {
+            this.lastRect = new Rect(rect.x, rect.y, rect.width, rect.height);
+        }
+
+        private double centerX() {
+            return lastRect.x + lastRect.width / 2.0;
+        }
+
+        private double centerY() {
+            return lastRect.y + lastRect.height / 2.0;
+        }
+
+        private double distanceTo(double x, double y) {
+            double dx = centerX() - x;
+            double dy = centerY() - y;
+            return Math.hypot(dx, dy);
+        }
+
+        private double averageSize() {
+            return (lastRect.width + lastRect.height) / 2.0;
+        }
     }
 }
 

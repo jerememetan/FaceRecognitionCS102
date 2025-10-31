@@ -14,6 +14,12 @@ import service.embedding.FaceEmbeddingGenerator.ProgressCallback;
  */
 public class EmbeddingQualityAnalyzer {
 
+    private static final double MIN_OUTLIER_THRESHOLD = 0.50;
+    private static final double MIN_WEAK_THRESHOLD = 0.40;
+    private static final double ABSOLUTE_WEAK_THRESHOLD = 0.58;
+    private static final double RETENTION_FRACTION = 0.70; // keep at least 70% of the samples
+    private static final int MIN_RETAIN_COUNT = 6;
+
     private final SimilarityCalculator similarityCalculator;
     private final boolean debugLogs;
 
@@ -34,7 +40,12 @@ public class EmbeddingQualityAnalyzer {
             double[] avgSimilarities = computeAverageSimilarities(embeddings);
             double mean = mean(avgSimilarities);
             double stdDev = standardDeviation(avgSimilarities, mean);
-            double threshold = Math.max(0.75, mean - 2.0 * stdDev);
+            double threshold = Math.max(MIN_OUTLIER_THRESHOLD, mean - 2.0 * stdDev);
+            if (progressCallback != null) {
+                progressCallback.onProgress(String.format(
+                        "Embedding similarity stats: mean=%.3f, std=%.3f, min=%.3f",
+                        mean, stdDev, min(avgSimilarities)));
+            }
 
             List<Integer> outlierIndices = new ArrayList<>();
             for (int i = 0; i < avgSimilarities.length; i++) {
@@ -47,8 +58,15 @@ public class EmbeddingQualityAnalyzer {
 
             int removedCount = 0;
             outlierIndices.sort(Integer::compareTo);
+            int minRetained = Math.max(MIN_RETAIN_COUNT,
+                    (int) Math.ceil(avgSimilarities.length * RETENTION_FRACTION));
             for (int i = outlierIndices.size() - 1; i >= 0; i--) {
                 int idx = outlierIndices.get(i);
+                int projectedSize = embeddings.size() - (removedCount + 1);
+                if (projectedSize < minRetained) {
+                    log(String.format("  Skipping outlier removal at index=%d to preserve minimum retention", idx));
+                    continue;
+                }
                 if (deleteFilesAtIndex(idx, embeddingPaths, imagePaths)) {
                     removedCount++;
                 }
@@ -86,17 +104,21 @@ public class EmbeddingQualityAnalyzer {
             double[] avgSimilarities = computeAverageSimilarities(embeddings);
             double mean = mean(avgSimilarities);
             double stdDev = standardDeviation(avgSimilarities, mean);
-            double weakThreshold = Math.max(0.55, mean - 0.7 * stdDev);
-            double absoluteWeakThreshold = 0.7;
+            double weakThreshold = Math.max(MIN_WEAK_THRESHOLD, mean - 0.5 * stdDev);
+            if (progressCallback != null) {
+                progressCallback.onProgress(String.format(
+                        "Weak check threshold: %.3f (absolute %.3f)",
+                        weakThreshold, ABSOLUTE_WEAK_THRESHOLD));
+            }
 
             List<Integer> weakIndices = new ArrayList<>();
             for (int i = 0; i < avgSimilarities.length; i++) {
-                boolean isWeak = avgSimilarities[i] < weakThreshold || avgSimilarities[i] < absoluteWeakThreshold;
+                boolean isWeak = avgSimilarities[i] < weakThreshold || avgSimilarities[i] < ABSOLUTE_WEAK_THRESHOLD;
                 if (isWeak) {
                     weakIndices.add(i);
                     log(String.format(
                             "  Weak embedding detected: index=%d, avgSim=%.4f, threshold=%.4f, absThresh=%.4f",
-                            i, avgSimilarities[i], weakThreshold, absoluteWeakThreshold));
+                            i, avgSimilarities[i], weakThreshold, ABSOLUTE_WEAK_THRESHOLD));
                 }
             }
 
@@ -104,6 +126,12 @@ public class EmbeddingQualityAnalyzer {
             Collections.sort(weakIndices);
             for (int i = weakIndices.size() - 1; i >= 0; i--) {
                 int idx = weakIndices.get(i);
+                int projectedSize = embeddings.size() - (removedCount + 1);
+                if (projectedSize < Math.max(MIN_RETAIN_COUNT,
+                        (int) Math.ceil(avgSimilarities.length * RETENTION_FRACTION))) {
+                    log(String.format("  Skipping weak removal at index=%d to preserve minimum retention", idx));
+                    continue;
+                }
                 if (deleteFilesAtIndex(idx, embeddingPaths, imagePaths)) {
                     removedCount++;
                 }
@@ -154,6 +182,16 @@ public class EmbeddingQualityAnalyzer {
             variance += Math.pow(v - mean, 2);
         }
         return values.length > 0 ? Math.sqrt(variance / values.length) : 0.0;
+    }
+
+    private double min(double[] values) {
+        double result = Double.POSITIVE_INFINITY;
+        for (double v : values) {
+            if (v < result) {
+                result = v;
+            }
+        }
+        return values.length > 0 ? result : 0.0;
     }
 
     private boolean deleteFilesAtIndex(int index,

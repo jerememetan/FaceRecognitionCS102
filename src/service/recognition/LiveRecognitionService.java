@@ -2,6 +2,8 @@ package service.recognition;
 
 import config.AppLogger;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import org.opencv.core.Mat;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
@@ -19,13 +21,15 @@ public class LiveRecognitionService {
     private static final Scalar ACCEPT_COLOR = new Scalar(15, 255, 15);
     private static final Scalar REJECT_COLOR = new Scalar(0, 0, 255);
 
+    private static final long SESSION_TIMEOUT_MILLIS = 5_000;
+
     private final ImageProcessor imageProcessor = new ImageProcessor();
     private final FaceEmbeddingGenerator embeddingGenerator = new FaceEmbeddingGenerator();
     private final LiveRecognitionPreprocessor livePreprocessor = new LiveRecognitionPreprocessor();
     private final RecognitionDatasetRepository datasetRepository = new RecognitionDatasetRepository(embeddingGenerator);
-    private final RecognitionHistory history = new RecognitionHistory();
     private final RecognitionScorer scorer = new RecognitionScorer(datasetRepository, embeddingGenerator);
     private final RecognitionDecisionEngine decisionEngine = new RecognitionDecisionEngine();
+    private final Map<String, RecognitionSession> sessions = new ConcurrentHashMap<>();
 
     public LiveRecognitionService() {
         reloadDataset();
@@ -33,13 +37,18 @@ public class LiveRecognitionService {
 
     public void reloadDataset() {
         datasetRepository.reload();
-        history.reset();
+        sessions.clear();
     }
 
-    public RecognitionOutcome analyzeFace(Mat frame, Rect faceRect) {
+    public RecognitionOutcome analyzeFace(Mat frame, Rect faceRect, String sessionId) {
         if (frame == null || frame.empty() || faceRect == null) {
             return RecognitionOutcome.rejected();
         }
+
+        String key = (sessionId == null || sessionId.isBlank()) ? "default" : sessionId;
+        RecognitionSession session = sessionFor(key);
+        session.touch();
+        cleanupStaleSessions();
 
         Rect paddedRect = RecognitionGeometry.paddedFaceRect(frame.size(), faceRect, 0.15);
         Mat faceColor = new Mat(frame, paddedRect).clone();
@@ -63,6 +72,8 @@ public class LiveRecognitionService {
                 AppLogger.info("[Reject] Face rejected: Embedding generation failed.");
                 return RecognitionOutcome.rejected();
             }
+
+            RecognitionHistory history = session.history;
 
             history.recordEmbedding(queryEmbedding);
             byte[] smoothedEmbedding = history.buildSmoothedEmbedding(embeddingGenerator);
@@ -126,6 +137,13 @@ public class LiveRecognitionService {
 
     public void release() {
         livePreprocessor.release();
+        sessions.clear();
+    }
+
+    public void discardSession(String sessionId) {
+        if (sessionId != null) {
+            sessions.remove(sessionId);
+        }
     }
 
     private void logScores(RecognitionScorer.ScoreResult scoreResult) {
@@ -195,6 +213,24 @@ public class LiveRecognitionService {
 
         public boolean accepted() {
             return accepted;
+        }
+    }
+
+    private RecognitionSession sessionFor(String sessionId) {
+        return sessions.computeIfAbsent(sessionId, key -> new RecognitionSession());
+    }
+
+    private void cleanupStaleSessions() {
+        long cutoff = System.currentTimeMillis() - SESSION_TIMEOUT_MILLIS;
+        sessions.entrySet().removeIf(entry -> entry.getValue().lastUpdated < cutoff);
+    }
+
+    private static final class RecognitionSession {
+        private final RecognitionHistory history = new RecognitionHistory();
+        private volatile long lastUpdated = System.currentTimeMillis();
+
+        void touch() {
+            lastUpdated = System.currentTimeMillis();
         }
     }
 }

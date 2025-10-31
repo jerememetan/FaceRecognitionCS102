@@ -20,6 +20,7 @@ public class CaptureManager {
     private AtomicInteger capturedCount;
     private int targetImages;
     private boolean captureCompleted = false;
+    private final CameraPreviewManager previewManager;
     private JLabel statusLabel;
     private JProgressBar progressBar;
     private JLabel progressLabel;
@@ -29,7 +30,9 @@ public class CaptureManager {
     private static final Color WARNING_COLOR = new Color(255, 152, 0);
     private static final Color ERROR_COLOR = new Color(211, 47, 47);
 
-    public CaptureManager(FaceDetection fd, Student s, StudentManager sm, AtomicBoolean ic, AtomicInteger cc, int ti, boolean cc2, JLabel sl, JProgressBar pb, JLabel pl, JLabel il, FaceCaptureDialog d) {
+    public CaptureManager(FaceDetection fd, Student s, StudentManager sm, AtomicBoolean ic, AtomicInteger cc, int ti,
+                          boolean cc2, JLabel sl, JProgressBar pb, JLabel pl, JLabel il,
+                          CameraPreviewManager previewManager, FaceCaptureDialog d) {
         this.faceDetection = fd;
         this.student = s;
         this.studentManager = sm;
@@ -37,6 +40,7 @@ public class CaptureManager {
         this.capturedCount = cc;
         this.targetImages = ti;
         this.captureCompleted = cc2;
+        this.previewManager = previewManager;
         setLabels(sl, pb, pl, il);
         this.dialog = d;
     }
@@ -56,6 +60,9 @@ public class CaptureManager {
         if (isCapturing.get()) return;
         AppLogger.info("Starting capture process...");
         isCapturing.set(true);
+        if (previewManager != null) {
+            previewManager.setCapturing(true);
+        }
         capturedCount.set(0);
         statusLabel.setText("Capturing...");
         statusLabel.setForeground(WARNING_COLOR);
@@ -167,6 +174,9 @@ public class CaptureManager {
     public void stopCapture() {
         AppLogger.info("Stopping capture...");
         isCapturing.set(false);
+        if (previewManager != null) {
+            previewManager.setCapturing(false);
+        }
         statusLabel.setText("Capture stopped");
         statusLabel.setForeground(WARNING_COLOR);
         AppLogger.info("Debug: Capture manually stopped");
@@ -176,6 +186,9 @@ public class CaptureManager {
 
     private void onCaptureCompleted(boolean success) {
         isCapturing.set(false);
+        if (previewManager != null) {
+            previewManager.setCapturing(false);
+        }
         captureCompleted = success;
         if (success) {
             statusLabel.setText("Capture successful!");

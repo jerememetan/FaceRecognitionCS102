@@ -56,7 +56,6 @@ public class FaceCaptureService {
             return new FaceCaptureResult(false, "Cannot create storage directory", new ArrayList<>(), null);
         }
 
-        Mat frame = new Mat();
         List<String> capturedImages = new ArrayList<>();
         int capturedCount = 0;
         int attemptCount = 0;
@@ -65,55 +64,63 @@ public class FaceCaptureService {
         callback.onCaptureStarted();
 
         while (capturedCount < numberOfImages && attemptCount < maxAttempts) {
-            frame = cameraManager.getCurrentFrame();
-            if (frame.empty()) {
-                AppLogger.error("Failed to read camera frame");
-                callback.onError("Failed to capture frame from camera");
-                break;
-            }
+            Mat frame = cameraManager.getCurrentFrame();
+            Mat faceROI = null;
+            try {
+                if (frame.empty()) {
+                    AppLogger.error("Failed to read camera frame");
+                    callback.onError("Failed to capture frame from camera");
+                    break;
+                }
 
-            attemptCount++;
-            logDebug(String.format("Capture attempt %d/%d", attemptCount, maxAttempts));
+                attemptCount++;
+                logDebug(String.format("Capture attempt %d/%d", attemptCount, maxAttempts));
 
-            FaceDetectionResult detectionResult = faceDetector.detectFaceForPreview(frame);
+                FaceDetectionResult detectionResult = faceDetector.detectFaceForPreview(frame);
 
-            if (detectionResult.hasValidFace()) {
-                Rect bestFace = detectionResult.getBestFace();
-                Mat faceROI = faceRegionProcessor.extractFaceROI(frame, bestFace);
+                if (detectionResult.hasValidFace()) {
+                    Rect bestFace = detectionResult.getBestFace();
+                    faceROI = faceRegionProcessor.extractFaceROI(frame, bestFace);
 
-                if (faceROI != null) {
-                    String fileName = student.getStudentId() + "_" +
-                            String.format("%03d", capturedCount + 1) + ".png";
-                    Path imageFile = folderPath.resolve(fileName);
+                    if (faceROI != null && !faceROI.empty()) {
+                        String fileName = student.getStudentId() + "_" +
+                                String.format("%03d", capturedCount + 1) + ".png";
+                        Path imageFile = folderPath.resolve(fileName);
 
-                    if (Imgcodecs.imwrite(imageFile.toString(), faceROI)) {
-                        capturedImages.add(imageFile.toString());
-                        capturedCount++;
+                        if (Imgcodecs.imwrite(imageFile.toString(), faceROI)) {
+                            capturedImages.add(imageFile.toString());
+                            capturedCount++;
 
-                        callback.onImageCaptured(capturedCount, numberOfImages, detectionResult.getConfidence());
+                            callback.onImageCaptured(capturedCount, numberOfImages, detectionResult.getConfidence());
 
-                        try {
-                            Thread.sleep(CAPTURE_INTERVAL_MS);
-                        } catch (InterruptedException e) {
-                            Thread.currentThread().interrupt();
-                            break;
+                            try {
+                                Thread.sleep(CAPTURE_INTERVAL_MS);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                break;
+                            }
+                        } else {
+                            AppLogger.error("Failed to save image: " + imageFile);
                         }
                     } else {
-                        AppLogger.error("Failed to save image: " + imageFile);
+                        logDebug("Face ROI extraction failed");
                     }
-                    faceROI.release();
-                } else {
-                    logDebug("Face ROI extraction failed");
-                }
-            } else {
-                logDebug("Detection feedback: " + getDetectionFeedback(detectionResult));
-            }
 
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                break;
+                } else {
+                    logDebug("Detection feedback: " + getDetectionFeedback(detectionResult));
+                }
+
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+            } finally {
+                frame.release();
+                if (faceROI != null) {
+                    faceROI.release();
+                }
             }
         }
 

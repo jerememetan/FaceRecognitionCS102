@@ -15,7 +15,9 @@ public class CameraPreviewManager {
     private Timer previewTimer;
     private int frameCounter = 0;
     private static final int DETECTION_INTERVAL = 5;
+    private static final int CAPTURE_DETECTION_INTERVAL = 8;
     private FaceDetection.FaceDetectionResult lastDetectionResult = null;
+    private long lastDetectionTimestampMs = 0L;
     private volatile Mat sharedFrame = null;
     private final Object frameLock = new Object();
     private JLabel videoLabel;
@@ -62,15 +64,22 @@ public class CameraPreviewManager {
     }
 
     private void updatePreview() {
+        Mat frame = faceDetection.getCurrentFrame();
         try {
-            Mat frame = faceDetection.getCurrentFrame();
             if (frame != null && !frame.empty()) {
                 frameCounter++;
-                if (frameCounter >= DETECTION_INTERVAL) {
+                int detectionInterval = isCapturing ? CAPTURE_DETECTION_INTERVAL : DETECTION_INTERVAL;
+                if (frameCounter >= detectionInterval) {
                     frameCounter = 0;
                     lastDetectionResult = faceDetection.detectFaceForPreview(frame);
+                    lastDetectionTimestampMs = System.currentTimeMillis();
                 }
-                Mat displayFrame = (lastDetectionResult != null) ? faceDetection.drawFaceOverlay(frame, lastDetectionResult) : frame.clone();
+                Mat displayFrame;
+                if (lastDetectionResult != null && isDetectionFresh()) {
+                    displayFrame = faceDetection.drawFaceOverlay(frame, lastDetectionResult);
+                } else {
+                    displayFrame = frame.clone();
+                }
                 BufferedImage bufferedImage = matToBufferedImage(displayFrame);
                 if (bufferedImage != null) {
                     int displayWidth = videoLabel.getWidth();
@@ -86,7 +95,6 @@ public class CameraPreviewManager {
                     updateQualityFeedback(lastDetectionResult);
                 }
                 displayFrame.release();
-                frame.release();
             } else {
                 if (!isCapturing) {
                     AppLogger.warn("Debug: Empty frame received");
@@ -94,6 +102,10 @@ public class CameraPreviewManager {
             }
         } catch (Exception e) {
             AppLogger.error("Preview update failed: " + e.getMessage(), e);
+        } finally {
+            if (frame != null) {
+                frame.release();
+            }
         }
     }
 
@@ -146,6 +158,14 @@ public class CameraPreviewManager {
             e.printStackTrace();
             return null;
         }
+    }
+
+    private boolean isDetectionFresh() {
+        if (lastDetectionTimestampMs <= 0) {
+            return false;
+        }
+        long age = System.currentTimeMillis() - lastDetectionTimestampMs;
+        return age <= 1000;
     }
 
     private void showError(String message) {
