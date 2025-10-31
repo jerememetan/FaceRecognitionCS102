@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -18,9 +19,8 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import gui.StatusCard;
 import gui.StatusMonitor;
-import ConfigurationAndLogging.*;
+import config.*;
 import javax.swing.SwingUtilities;
-import java.awt.Color;
 
 /**
  * Welcome/placeholder view used in the Settings center.
@@ -70,7 +70,7 @@ public class WelcomeView extends JPanel {
         statusPanel.setBackground(Color.WHITE);
         statusPanel.setOpaque(false);
         // TODO: Add a check whether the system is online, the camera status is connected and the Database status is active
-        
+
         systemCard = new StatusCard("System Status", "• Ready");
         cameraCard = new StatusCard("Camera Status", "• Unknown");
         dbCard = new StatusCard("Database Status", "• Unknown");
@@ -94,10 +94,27 @@ public class WelcomeView extends JPanel {
             }
         });
 
+        // assemble textPanel content so it's visible
+        textPanel.add(Box.createRigidArea(new Dimension(0, 40)));
+        textPanel.add(welcomeLabel);
+        textPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+        textPanel.add(textArea);
+        textPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+        textPanel.add(statusPanel);
+
+        // add assembled content to this panel using GridBagConstraints
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        gbc.fill = GridBagConstraints.BOTH;
+        add(textPanel, gbc);
+
         // trigger checks off-EDT; if AppConfig doesn't provide getters use defaults
         try {
-            AppConfig cfg = AppConfig.getInstance(); 
-            monitor.checkCamera(cfg.getCameraIndex()); 
+            AppConfig cfg = AppConfig.getInstance();
+            monitor.checkCamera(cfg.getCameraIndex());
             monitor.checkDatabase(cfg.getDatabaseURL(), cfg.getDatabaseUser(), cfg.getDatabasePassword());
             AppLogger.info("database check: Active!");
         } catch (Throwable t) {

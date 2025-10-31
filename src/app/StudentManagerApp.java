@@ -11,12 +11,6 @@ import javax.swing.*;
 public class StudentManagerApp {
 
     public static void main(String[] args) {
-        try {
-            // Set system look and feel
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
-            System.err.println("Could not set look and feel: " + e.getMessage());
-        }
 
         SwingUtilities.invokeLater(() -> {
             try {
