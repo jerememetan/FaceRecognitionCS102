@@ -1,10 +1,11 @@
 package util;
 
-import config.AppConfig;
-import config.AppLogger;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import config.AppConfig;
+import config.AppLogger;
 
 /**
  * ModuleLoader - Comprehensive dependency loader for all external libraries
@@ -13,7 +14,7 @@ import java.util.List;
 public class ModuleLoader {
     // OpenCV dependencies
     private static final String OPENCV_NATIVE_LIBRARY = "opencv_java480";
-    private static final String OPENCV_DLL_RELATIVE_PATH = "lib/opencv_java480.dll";
+    private static final String OPENCV_DLL_RELATIVE_PATH = AppConfig.getInstance().getOpenCvLibPath();
     private static final boolean OPENCV_LOADED;
 
     // PostgreSQL JDBC driver

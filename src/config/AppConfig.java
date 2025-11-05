@@ -1,8 +1,8 @@
 package config;
 
 import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
@@ -676,7 +676,7 @@ public class AppConfig {
         }
 
         // compute default
-        String os = getOperatingSystem();
+    String os = getOperatingSystem();
         String defaultPath;
         // Use library names commonly produced by OpenCV builds
         if (os.contains("win")) {
