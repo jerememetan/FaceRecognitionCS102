@@ -12,6 +12,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+
+import service.roster.RosterManager;
 import service.session.SessionManager;
 import config.*;
 public class SessionViewer extends JFrame {
@@ -28,7 +30,8 @@ public class SessionViewer extends JFrame {
         manager.populateSessions();
         setTitle("Sessions List");
         setSize(1100, 700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
         JPanel viewerPanel = new JPanel(new BorderLayout(10, 10));
         viewerPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
         add(viewerPanel);
@@ -115,7 +118,8 @@ public class SessionViewer extends JFrame {
 
         createButton.addActionListener(e -> {
             // Open the popup form (SessionForm)
-            new SessionForm(manager);
+            SessionForm sessionForm = new SessionForm(this, manager, new RosterManager());  //RosterManager required in SessionForm
+            sessionForm.setVisible(true);
             refreshTable();
         });
 

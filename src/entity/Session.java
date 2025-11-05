@@ -36,9 +36,6 @@ public class Session extends Entity{
     public void addNewStudent(Student student){
         this.studentRoster.add(new SessionStudent(this, student));
     }
-    public void addExistingStudent(SessionStudent sessStu){
-        this.studentRoster.add(sessStu);
-    }
     public void removeStudent(Student student){
         this.studentRoster.removeIf(ss -> ss.getStudent().equals(student));
     }

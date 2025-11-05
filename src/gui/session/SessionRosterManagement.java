@@ -9,12 +9,13 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import repository.StudentRepositoryInstance;
+import service.roster.RosterManager;
 import service.session.SessionManager;
 import config.*;
+
+//View further details of a selected session
 public class SessionRosterManagement extends JDialog {
 
     private JFrame parent;
@@ -22,9 +23,9 @@ public class SessionRosterManagement extends JDialog {
     private Session session;
     private DefaultTableModel tableModel;
     private JTable studentTable;
-    private JButton addButton, removeButton, openButton, closeButton;
+    private JButton addButton, removeButton, openButton, closeButton, editButton;
     private ArrayList<Student> allStudents; // required to add students to a session
-
+    private JLabel nameLabel, dateLabel, timeLabel, locationLabel;
 
     public SessionRosterManagement(JFrame parent, SessionManager manager, Session session) {
         super(parent, "Session Roster Management", true);
@@ -49,14 +50,23 @@ public class SessionRosterManagement extends JDialog {
         infoPanel.add(new JLabel("Session ID:"));
         infoPanel.add(new JLabel(String.valueOf(session.getSessionId())));
         infoPanel.add(new JLabel("Name:"));
-        infoPanel.add(new JLabel(session.getName()));
+        nameLabel = new JLabel(session.getName());
+        infoPanel.add(nameLabel);
         infoPanel.add(new JLabel("Date:"));
-        infoPanel.add(new JLabel(session.getDate().toString()));
+        dateLabel = new JLabel(session.getDate().toString());
+        infoPanel.add(dateLabel);
         infoPanel.add(new JLabel("Time:"));
-        infoPanel.add(new JLabel(session.getStartTime() + " - " + session.getEndTime()));
+        timeLabel = new JLabel(session.getStartTime() + " - " + session.getEndTime());
+        infoPanel.add(timeLabel);
         infoPanel.add(new JLabel("Location:"));
-        infoPanel.add(new JLabel(session.getLocation()));
+        locationLabel = new JLabel(session.getLocation());
+        infoPanel.add(locationLabel);
         
+        editButton = new JButton("Edit Session Details");
+        editButton.setFocusPainted(false);
+        editButton.addActionListener(e -> editSessionDetails());
+        infoPanel.add(editButton);
+
         // Open a session
         if (session.isActive()){
             closeButton = UIComponents.createAccentButton("Close Session", new Color(239, 68, 68));
@@ -107,7 +117,7 @@ public class SessionRosterManagement extends JDialog {
         refreshTable();
 
     }
-
+    
 
     private void refreshTable() {
         AppLogger.info("Refreshing roster table");
@@ -168,6 +178,21 @@ public class SessionRosterManagement extends JDialog {
             dispose();
         }
     }
+    private void editSessionDetails(){
+        SessionForm sessionForm = new SessionForm(this, manager, new RosterManager(), session);
+        sessionForm.setVisible(true);
+        refreshSessionDetails();
+        refreshTable();
+    }
+    private void refreshSessionDetails() {
+        nameLabel.setText(session.getName());
+        dateLabel.setText(session.getDate().toString());
+        timeLabel.setText(session.getStartTime() + " - " + session.getEndTime());
+        locationLabel.setText(session.getLocation());
+        revalidate();
+        repaint();
+    }
+
     //open a gui dialog 'AddStudentDialog' to add students from a table of existing students.
     private void addStudent() {
         new AddStudentDialog(parent, manager, session, allStudents).setVisible(true);
