@@ -1,38 +1,72 @@
 package gui.session;
 
 import entity.Session;
-import java.awt.*;
-import java.awt.event.*;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import entity.Student;
+import entity.Roster;
+import entity.RosterStudent;
+import service.session.SessionManager;
+import service.roster.RosterManager;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import service.session.SessionManager;
+import java.awt.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
-public class SessionForm extends JFrame {
+public class SessionForm extends JDialog {
+    private JComboBox<Roster> rosterDropdown;
     private JTextField nameField;
-    private JTextField dateField;      // Format: DD-MM-YYYY
-    private JTextField startField;     // Format: HH:MM
-    private JTextField endField;       // Format: HH:MM
+    private JTextField dateField;
+    private JTextField startField;
+    private JTextField endField;
     private JTextField locationField;
     private JButton submitButton;
     private JButton cancelButton;
 
-    private SessionManager manager;  // facade
+    private SessionManager manager;
+    private RosterManager rosterManager;
 
-    public SessionForm(SessionManager manager) {
+    private Session editingSession; // null = creating mode, not null = editing mode
+
+    // === CREATE MODE ===
+    public SessionForm(Window parent, SessionManager manager, RosterManager rosterManager) {
+        this(parent, manager, rosterManager, null);
+    }
+
+    // === EDIT MODE ===
+    public SessionForm(Window parent, SessionManager manager, RosterManager rosterManager, Session sessionToEdit) {
+        super(parent, "Session Form", ModalityType.APPLICATION_MODAL);
         this.manager = manager;
+        this.rosterManager = rosterManager;
+        this.editingSession = sessionToEdit;
+        rosterManager.populateRosters();
 
-        setTitle("Create a Session");
-        setSize(400, 300);
+        setTitle(sessionToEdit == null ? "Create a Session" : "Edit Session");
+        setSize(420, 330);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        JPanel formPanel = new JPanel(new GridLayout(6, 2, 5, 5));
-        formPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
         setLocationRelativeTo(null);
 
-        // Labels and input fields
+        JPanel formPanel = new JPanel(new GridLayout(7, 2, 5, 5));
+        formPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
+
+        // Roster selection
+        formPanel.add(new JLabel("Select Roster (optional):"));
+        rosterDropdown = new JComboBox<>();
+        loadRosters();
+        rosterDropdown.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                                                          boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value == null) setText("— No Roster —");
+                else if (value instanceof Roster)
+                    setText(((Roster) value).getCourseCode());
+                return this;
+            }
+        });
+        formPanel.add(rosterDropdown);
+
         formPanel.add(new JLabel("Name:"));
         nameField = new JTextField();
         formPanel.add(nameField);
@@ -53,101 +87,119 @@ public class SessionForm extends JFrame {
         locationField = new JTextField();
         formPanel.add(locationField);
 
-        // Submit button
-        submitButton = new JButton("Create Session");
-        formPanel.add(submitButton);
-
-        // Cancel button
+        submitButton = new JButton(sessionToEdit == null ? "Create Session" : "Save Changes");
         cancelButton = new JButton("Cancel");
+        formPanel.add(submitButton);
         formPanel.add(cancelButton);
-        cancelButton.addActionListener(e -> dispose());
 
         add(formPanel);
+        cancelButton.addActionListener(e -> dispose());
 
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    String name = nameField.getText().trim();
-                    String dateStr = dateField.getText().trim();
-                    String startStr = startField.getText().trim();
-                    String endStr = endField.getText().trim();
-                    String location = locationField.getText().trim();
-
-                    // Validation
-                    if (name.isEmpty() || dateStr.isEmpty() || startStr.isEmpty() || endStr.isEmpty() || location.isEmpty()) {
-                        throw new IllegalArgumentException("All fields must be filled in.");
-                    }
-
-                    if (name.length() > 50) {
-                        throw new IllegalArgumentException("Session name cannot exceed 50 characters.");
-                    }
-
-                    // Parse with strict format
-                    LocalDate date;
-                    LocalTime start, end;
-                    try {
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                        date = LocalDate.parse(dateStr, formatter);
-                    } catch (DateTimeParseException ex) {
-                        throw new IllegalArgumentException("Date must be in format DD-MM-YYYY.");
-                    }
-
-
-                    try {
-                        start = LocalTime.parse(startStr, DateTimeFormatter.ofPattern("HH:mm"));
-                    } catch (DateTimeParseException ex) {
-                        throw new IllegalArgumentException("Start Time must be in format HH:MM (24-hour).");
-                    }
-
-                    try {
-                        end = LocalTime.parse(endStr, DateTimeFormatter.ofPattern("HH:mm"));
-                    } catch (DateTimeParseException ex) {
-                        throw new IllegalArgumentException("End Time must be in format HH:MM (24-hour).");
-                    }
-
-                    if (date.isBefore(LocalDate.now())) {
-                        throw new IllegalArgumentException("Date cannot be in the past.");
-                    }
-
-                    if (!end.isAfter(start)) {
-                        throw new IllegalArgumentException("End Time must be after Start Time.");
-                    }
-
-                    // Delegate creation to SessionManager
-                    Session session = manager.createNewSession(name, date, start, end, location);
-
-                    JOptionPane.showMessageDialog(SessionForm.this,
-                            "Session created successfully!\n\n" +
-                            "ID: " + session.getSessionId() + "\n" +
-                            "Name: " + session.getName() + "\n" +
-                            "Date: " + session.getDate() + "\n" +
-                            "Start: " + session.getStartTime() + "\n" +
-                            "End: " + session.getEndTime() + "\n" +
-                            "Location: " + session.getLocation() + "\n"
-                    );
-                    dispose();  // close form
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(SessionForm.this,
-                            "Error: " + ex.getMessage(),
-                            "Validation Error",
-                            JOptionPane.ERROR_MESSAGE);
-                }
-            }
+        rosterDropdown.addActionListener(e -> {
+            Roster selected = (Roster) rosterDropdown.getSelectedItem();
+            if (selected != null) populateFromRoster(selected);
+            else clearForm();
         });
 
-        setVisible(true);
+        submitButton.addActionListener(e -> handleSubmit());
+        if (editingSession != null) populateForm(editingSession);
+
     }
 
-    public static void main(String[] args) {
-        SessionManager manager = new SessionManager();  // shared facade
-        new SessionForm(manager);
+    // === UTILITIES ===
+    private void clearForm() {
+        nameField.setText("");
+        dateField.setText("");
+        startField.setText("");
+        endField.setText("");
+        locationField.setText("");
+    }
+    //For JComboBox options
+    private void loadRosters() {
+        rosterDropdown.addItem(null);
+        for (Roster roster : rosterManager.getAllRosters()) {
+            rosterDropdown.addItem(roster);
+        }
+    }
+    //Auto Fill details from Roster into input fields
+    private void populateFromRoster(Roster roster) {
+        if (roster == null) return;
+        nameField.setText(roster.getCourseCode());
+        startField.setText(roster.getStartTime().toString());
+        endField.setText(roster.getEndTime().toString());
+        locationField.setText(roster.getLocation());
+    }
+    // Editing mode -> AutoFill Session details
+    private void populateForm(Session session) {
+        nameField.setText(session.getName());
+        dateField.setText(session.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        startField.setText(session.getStartTime().toString());
+        endField.setText(session.getEndTime().toString());
+        locationField.setText(session.getLocation());
+    }
+
+    private void handleSubmit() {
+        try {
+            String name = nameField.getText().trim();
+            String dateStr = dateField.getText().trim();
+            String startStr = startField.getText().trim();
+            String endStr = endField.getText().trim();
+            String location = locationField.getText().trim();
+
+            if (name.isEmpty() || dateStr.isEmpty() || startStr.isEmpty() || endStr.isEmpty() || location.isEmpty())
+                throw new IllegalArgumentException("All fields must be filled in.");
+
+            DateTimeFormatter dateFmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            LocalDate date = LocalDate.parse(dateStr, dateFmt);
+            LocalTime start = LocalTime.parse(startStr);
+            LocalTime end = LocalTime.parse(endStr);
+
+            if (!end.isAfter(start)) throw new IllegalArgumentException("End time must be after start time.");
+
+            if (editingSession == null) {
+                // === CREATE MODE ===
+                Session session = manager.createNewSession(name, date, start, end, location);
+
+                Roster selectedRoster = (Roster) rosterDropdown.getSelectedItem();
+                if (selectedRoster != null) {
+                    rosterManager.loadRosterStudent(selectedRoster);
+                    for (RosterStudent rs : selectedRoster.getStudents()) {
+                        Student s = rs.getStudent();
+                        boolean success = manager.addStudentToSession(session, s);
+                        System.out.println("Added " + s.getName() + ": " + success);
+                    }
+                }
+
+                JOptionPane.showMessageDialog(this, "Session created successfully!", "Success",
+                        JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                // === EDIT MODE ===
+                boolean success = manager.updateSession(editingSession);
+                if (!success) throw new IllegalStateException("Failed to update session in database.");
+                editingSession.setName(name);
+                editingSession.setDate(date);
+                editingSession.setStartTime(start);
+                editingSession.setEndTime(end);
+                editingSession.setLocation(location);
+                Roster selectedRoster = (Roster) rosterDropdown.getSelectedItem();
+                if (selectedRoster != null) {
+                    rosterManager.loadRosterStudent(selectedRoster);
+                    for (RosterStudent rs : selectedRoster.getStudents()) {
+                        Student s = rs.getStudent();
+                        success = manager.addStudentToSession(editingSession, s);
+                        System.out.println("Added " + s.getName() + ": " + success);
+                    }
+                }
+                JOptionPane.showMessageDialog(this, "Session updated successfully!", "Updated",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            dispose();
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Validation Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
-
-
-
-
-
-
-

@@ -7,10 +7,11 @@ import java.time.*;
 import java.util.*;
 import repository.SessionRepositoryInstance;
 import repository.SessStuRepositoryInstance;
-
+//utility class with helper functions for Session + SessionStudent entities
+//acts as a facade manager to implement lifecycle methods to sessions
 public class SessionManager {
     private final Map<Integer,Session> sessions;
-    private int nextId = 1;
+    private static int nextId = 1;
     private SessionRepositoryInstance sessionDB;
     private SessStuRepositoryInstance sessStuDB;
     public SessionManager() {
@@ -29,11 +30,21 @@ public class SessionManager {
     //helper function to populate sessions from db
     public void populateSessions() {
         List<Session> allSessions = sessionDB.findAll();
-        for(Session s : allSessions){
+        sessions.clear();
+
+        int maxId = 0;
+        for (Session s : allSessions) {
             sessions.put(Integer.parseInt(s.getSessionId()), s);
+            int currentId = Integer.parseInt(s.getSessionId());
+            if (currentId > maxId) {
+                maxId = currentId;
+            }
         }
-        nextId = Integer.parseInt(allSessions.get(allSessions.size() - 1).getSessionId()) + 1;
+
+        nextId = maxId + 1; // works even if list is empty (remains 1)
+        System.out.println("Next Session ID: " + nextId);
     }
+
     public boolean addStudentToSession(Session session, Student student) {
         try {
             SessionStudent ss = new SessionStudent(session, student);
@@ -51,11 +62,11 @@ public class SessionManager {
         } 
     }
     public boolean removeStudentFromSession(Session session, Student student) {
-        session.removeStudent(student);
         SessionStudent ss = new SessionStudent(session, student);
         boolean deleted = sessStuDB.delete(ss); //deletes that student-session relation from db
         if (deleted) {
             System.out.println("Removed student " + student.getName() + " from session " + session.getName());
+            session.removeStudent(student);
         } else {
             System.out.println("Failed to remove student " + student.getName() + " from session " + session.getName());
         }
@@ -105,6 +116,18 @@ public class SessionManager {
         }
         return false; // Session not found
     }
+    public boolean updateSession(Session session){
+        try{
+            boolean success = sessionDB.update(session);
+            System.out.println("Session DB update: " +  success);
+            return success;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
 }
 
 

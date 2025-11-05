@@ -3,13 +3,14 @@ package gui.homepage;
 import app.FaceRecognitionApp;
 import app.StudentManagerApp;
 import entity.Student;
+import gui.roster.RosterSessionMenu;
 import gui.session.SessionViewer;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import service.session.SessionManager;
-
+import service.roster.RosterManager;
 public class MainDashboard extends JFrame {
     private String role;
     private String id;
@@ -18,6 +19,7 @@ public class MainDashboard extends JFrame {
     private JButton menuButton; // burger button
     private boolean isSidebarVisible = true; // track if the sidebar is shown
     private SessionManager sessionManager; // for connecting to session btn
+    private RosterManager rosterManager; // for connecting to roster btn
 
 
     public MainDashboard(String role, String id) {
@@ -221,7 +223,8 @@ public class MainDashboard extends JFrame {
             MainDashboard.this.setVisible(false);
             //create a SessionManager and initialize SessionViewer
             sessionManager = new SessionManager();
-            JFrame sessionViewer = new SessionViewer(sessionManager);
+            rosterManager = new RosterManager();
+            RosterSessionMenu sessionViewer = new RosterSessionMenu(rosterManager, sessionManager);
             sessionViewer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             sessionViewer.addWindowListener(new WindowAdapter() {
                 @Override

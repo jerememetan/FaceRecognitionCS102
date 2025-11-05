@@ -1,32 +1,52 @@
 package gui.student;
 
-import entity.Session;
-import entity.SessionStudent;
-import entity.Student;
-import gui.session.SessionRosterManagement;
-import java.awt.*;
-import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+import entity.Student;
+import entity.Session;
+import entity.SessionStudent;
+import entity.Roster;
 import service.session.SessionManager;
+import service.roster.RosterManager;
 
-//GUI class used in SessionRosterManagement to add students to a session
+//GUI class to handle addition of students from both Roster and Session entities
 public class AddStudentDialog extends JDialog {
 
-    private SessionManager manager;
+    private SessionManager sessionManager;
+    private RosterManager rosterManager;
     private Session session;
+    private Roster roster;
     private ArrayList<Student> allStudents;
     private JTable studentTable;
     private DefaultTableModel tableModel;
 
+    // === Constructor for Session ===
     public AddStudentDialog(JFrame parent, SessionManager manager, Session session, ArrayList<Student> allStudents) {
         super(parent, "Add Student", ModalityType.APPLICATION_MODAL);
-        this.manager = manager;
+        this.sessionManager = manager;
         this.session = session;
         this.allStudents = allStudents;
+        initDialogUI(parent, false); // false = single select
+        populateSessionTable();
+    }
 
+    // === Constructor for Roster (multi-select mode) ===
+    public AddStudentDialog(JFrame parent, RosterManager manager, Roster roster, ArrayList<Student> allStudents) {
+        super(parent, "Add Students to Roster", ModalityType.APPLICATION_MODAL);
+        this.rosterManager = manager;
+        this.roster = roster;
+        this.allStudents = allStudents;
+        initDialogUI(parent, true); // true = multi-select
+        populateRosterTable();
+    }
+
+    // === Shared GUI builder ===
+    private void initDialogUI(JFrame parent, boolean multiSelect) {
         setLayout(new BorderLayout(10, 10));
         setSize(700, 500);
         setLocationRelativeTo(parent);
@@ -37,12 +57,13 @@ public class AddStudentDialog extends JDialog {
 
         // Search bar
         JTextField searchField = new JTextField();
-        JPanel inputPanel = new JPanel(new BorderLayout(5, 5));
         searchField.setFont(new Font("SansSerif", Font.PLAIN, 15));
         searchField.setBorder(BorderFactory.createCompoundBorder(
-            searchField.getBorder(), 
+            searchField.getBorder(),
             BorderFactory.createEmptyBorder(5, 5, 5, 5)
         ));
+
+        JPanel inputPanel = new JPanel(new BorderLayout(5, 5));
         inputPanel.add(new JLabel("Search for student by name:"), BorderLayout.NORTH);
         inputPanel.add(searchField, BorderLayout.CENTER);
         paddingPanel.add(inputPanel, BorderLayout.NORTH);
@@ -54,84 +75,106 @@ public class AddStudentDialog extends JDialog {
         };
 
         studentTable = new JTable(tableModel);
-        studentTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        studentTable.setRowHeight(28);
+        studentTable.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        studentTable.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 15));
+        studentTable.setSelectionMode(
+            multiSelect ? ListSelectionModel.MULTIPLE_INTERVAL_SELECTION
+                        : ListSelectionModel.SINGLE_SELECTION
+        );
+
         JScrollPane scrollPane = new JScrollPane(studentTable);
         paddingPanel.add(scrollPane, BorderLayout.CENTER);
 
-        // Populate Student Table
-        ArrayList<String> rosterStudents = new ArrayList<>();   // to exclude students already in the session roster
-        for (SessionStudent ss : session.getStudentRoster()) {
-            rosterStudents.add(ss.getStudent().getStudentId());
-        }
-        for (Student s : allStudents) {
-            if (!rosterStudents.contains(s.getStudentId())) {   //check if student is not already in roster
-                tableModel.addRow(new Object[]{s.getStudentId(), s.getName(), s.getPhone()});
-            }
-        }
-
-        // Live search functionality
+        // Search functionality
         searchField.getDocument().addDocumentListener(new DocumentListener() {
             void update() {
                 String text = searchField.getText().trim().toLowerCase();
-                tableModel.setRowCount(0);
-                for (Student s : allStudents)
-                    if (s.getName().toLowerCase().contains(text))
-                        tableModel.addRow(new Object[]{s.getStudentId(), s.getName(), s.getPhone()});
+                filterStudents(text);
             }
             public void insertUpdate(DocumentEvent e) { update(); }
             public void removeUpdate(DocumentEvent e) { update(); }
             public void changedUpdate(DocumentEvent e) { update(); }
         });
 
-        JButton addButton = new JButton("Add Student");
-        addButton.addActionListener(e -> onAddStudent());
+        // Button
+        JButton addButton = new JButton(multiSelect ? "Add Selected Students" : "Add Student");
+        addButton.addActionListener(e -> onAddStudent(multiSelect));
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         buttonPanel.add(addButton);
         paddingPanel.add(buttonPanel, BorderLayout.SOUTH);
     }
 
-    private void onAddStudent() {
-        int selectedRow = studentTable.getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a student.");
+    // === Populate Session-based table ===
+    private void populateSessionTable() {
+        ArrayList<String> existing = new ArrayList<>();
+        for (SessionStudent ss : session.getStudentRoster())
+            existing.add(ss.getStudent().getStudentId());
+
+        tableModel.setRowCount(0);
+        for (Student s : allStudents)
+            if (!existing.contains(s.getStudentId()))
+                tableModel.addRow(new Object[]{s.getStudentId(), s.getName(), s.getPhone()});
+    }
+
+    // === Populate Roster-based table ===
+    private void populateRosterTable() {
+        ArrayList<String> existing = new ArrayList<>();
+        roster.getStudents().forEach(s -> existing.add(s.getStudent().getStudentId()));
+
+        tableModel.setRowCount(0);
+        for (Student s : allStudents)
+            if (!existing.contains(s.getStudentId()))
+                tableModel.addRow(new Object[]{s.getStudentId(), s.getName(), s.getPhone()});
+    }
+
+    // === Search filter ===
+    private void filterStudents(String text) {
+        tableModel.setRowCount(0);
+        for (Student s : allStudents)
+            if (s.getName().toLowerCase().contains(text))
+                tableModel.addRow(new Object[]{s.getStudentId(), s.getName(), s.getPhone()});
+    }
+
+    // === Add Student(s) handler ===
+    private void onAddStudent(boolean multiSelect) {
+        int[] selectedRows = studentTable.getSelectedRows();
+        if (selectedRows.length == 0) {
+            JOptionPane.showMessageDialog(this, "Please select at least one student.");
             return;
         }
 
-        String id = (String) tableModel.getValueAt(selectedRow, 0);
-        Student selected = allStudents.stream()
-            .filter(s -> s.getStudentId().equals(id))
-            .findFirst()
-            .orElse(null);
-
-        if (selected == null) return;
-
-        boolean exists = session.getStudentRoster().stream()
-            .anyMatch(s -> s.getStudent().getStudentId().equals(selected.getStudentId()));
-
-        if (exists) {
-            JOptionPane.showMessageDialog(this, "This student is already in the roster.");
-            return;
+        List<Student> selectedStudents = new ArrayList<>();
+        for (int row : selectedRows) {
+            String id = (String) tableModel.getValueAt(row, 0);
+            Student s = allStudents.stream()
+                .filter(st -> st.getStudentId().equals(id))
+                .findFirst()
+                .orElse(null);
+            if (s != null) selectedStudents.add(s);
         }
 
         try {
-            boolean added = manager.addStudentToSession(session, selected);
-            JOptionPane.showMessageDialog(rootPane,"added: " + added);
-            if (added) {
-                JOptionPane.showMessageDialog(this, "Student added successfully.");
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Failed to add student (database error).", "Error", JOptionPane.ERROR_MESSAGE);
+            int addedCount = 0;
+            for (Student s : selectedStudents) {
+                boolean added = (session != null)
+                    ? sessionManager.addStudentToSession(session, s)
+                    : rosterManager.addStudentToRoster(roster, s);
+                if (added) addedCount++;
             }
+
+            JOptionPane.showMessageDialog(this,
+                "Successfully added " + addedCount + " student(s).",
+                "Success", JOptionPane.INFORMATION_MESSAGE
+            );
+            dispose();
+
         } catch (Exception ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Unexpected error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,
+                "Unexpected error: " + ex.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE
+            );
         }
     }
 }
-
-
-
-
-
-
-
