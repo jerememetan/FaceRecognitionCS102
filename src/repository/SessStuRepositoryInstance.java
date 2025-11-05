@@ -5,6 +5,7 @@ import entity.SessionStudent;
 import entity.Student;
 import java.sql.*;
 import java.util.*;
+import config.*;
 
 public class SessStuRepositoryInstance implements SessStuRepository {
 
@@ -28,7 +29,7 @@ public class SessStuRepositoryInstance implements SessStuRepository {
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Error while deleting from sessionstudents: " + e.getMessage());
+            AppLogger.error("Error while deleting from sessionstudents: " + e.getMessage());
             return false;
         }
         return true; 
@@ -48,7 +49,7 @@ public class SessStuRepositoryInstance implements SessStuRepository {
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            System.out.println("Error while updating sessionstudents: " + e.getMessage());
+            AppLogger.error("Error while updating sessionstudents: " + e.getMessage());
             return false;
         }
     }
@@ -99,7 +100,7 @@ public class SessStuRepositoryInstance implements SessStuRepository {
                 return new SessionStudent(session, student);
             }
         } catch (SQLException e) {
-            System.out.println("Error while finding sessionstudent by ID: " + e.getMessage());
+            AppLogger.error("Error while finding sessionstudent by ID: " + e.getMessage());
         }
         return null;
     }
@@ -121,7 +122,7 @@ public class SessStuRepositoryInstance implements SessStuRepository {
                 sessStuList.add(sessStu);
             }
         } catch (SQLException e) {
-            System.out.println("Error while retrieving sessionstudents by session ID: " + e.getMessage());
+            AppLogger.error("Error while retrieving sessionstudents by session ID: " + e.getMessage());
         }
         return sessStuList;
     }
@@ -142,7 +143,7 @@ public class SessStuRepositoryInstance implements SessStuRepository {
                 sessStuList.add(sessStu);
             }
         } catch (SQLException e) {
-            System.out.println("Error while retrieving all sessionstudents: " + e.getMessage());
+            AppLogger.error("Error while retrieving all sessionstudents: " + e.getMessage());
         }
         return sessStuList;
     }

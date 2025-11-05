@@ -14,7 +14,7 @@ public class FaceRecognitionApp {
 
     static {
         // Load OpenCV native library
-        System.load(new File("lib/opencv_java480.dll").getAbsolutePath());
+        System.load(new File(AppConfig.getInstance().getOpenCvLibPath()).getAbsolutePath());
     }
 
     public static void main(String[] args) {

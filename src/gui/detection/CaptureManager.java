@@ -97,7 +97,7 @@ public class CaptureManager {
             public void onCaptureStarted() {
                 SwingUtilities.invokeLater(() -> {
                     statusLabel.setText("Starting capture...");
-                    System.out.println("Debug: Capture process started");
+                    AppLogger.info("Debug: Capture process started");
                 });
             }
             @Override
@@ -119,7 +119,7 @@ public class CaptureManager {
                 SwingUtilities.invokeLater(() -> {
                     statusLabel.setText(htmlize(message));
                     statusLabel.setForeground(WARNING_COLOR);
-                    System.out.println("Debug: Warning - " + message);
+                    AppLogger.info("Debug: Warning - " + message);
                 });
             }
             @Override
@@ -127,7 +127,7 @@ public class CaptureManager {
                 SwingUtilities.invokeLater(() -> {
                     statusLabel.setText(htmlize("Error: " + message));
                     statusLabel.setForeground(ERROR_COLOR);
-                    System.out.println("Debug: Error - " + message);
+                    AppLogger.info("Debug: Error - " + message);
                 });
             }
             @Override

@@ -16,6 +16,7 @@ import javax.swing.*;
 import org.opencv.core.*;
 import service.detection.FaceDetection;
 import service.student.StudentManager;
+import gui.homepage.UIComponents;
 
 public class FaceCaptureDialog extends JDialog {
     private Student student;
@@ -218,9 +219,9 @@ public class FaceCaptureDialog extends JDialog {
         JComboBox<String> targetCombo = new JComboBox<>(options);
         targetCombo.setSelectedItem("20"); // Was "15" - more training data recommended
 
-        startButton = new JButton("Start Capture");
-        stopButton = new JButton("Stop Capture");
-        closeButton = new JButton("Close");
+    startButton = UIComponents.createAccentButton("Start Capture", new Color(59, 130, 246));
+    stopButton = UIComponents.createAccentButton("Stop Capture", new Color(239, 68, 68));
+    closeButton = UIComponents.createAccentButton("Close", new Color(107, 114, 128));
 
         stopButton.setEnabled(false);
 

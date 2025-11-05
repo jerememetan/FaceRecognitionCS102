@@ -1,8 +1,8 @@
 package config;
 
 import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
@@ -79,14 +79,18 @@ public class AppConfig {
     public final static String KEY_RECOGNITION_COHORT_Z_MIN = "recognition.cohort.z_min";
     public final static String KEY_RECOGNITION_MIN_FACE_WIDTH_PX = "recognition.min.face.width.px";
 
+    // platform / native libs
+    public final static String KEY_OPERATING_SYSTEM = "operating.system";
+    public final static String KEY_OPENCV_LIBPATH = "opencv.libpath";
+
     // pruning / person thresholds
     public final static String KEY_PRUNING_ENABLED = "recognition.pruning.enabled";
     public final static String KEY_PRUNING_STD_FACTOR = "recognition.pruning.std_factor";
     public final static String KEY_PRUNING_MIN_KEEP = "recognition.pruning.min_keep";
     public final static String KEY_PERSON_THRESHOLDS_ENABLED = "recognition.thresholds.person.enabled";
     public final static String KEY_PERSON_THRESHOLDS_BETA = "recognition.thresholds.person.beta";
-    // --- end added keys ---
-
+    
+   
     // --- Singleton Implementation ---
     private static AppConfig instance = null;
     private final Properties properties = new Properties();
@@ -636,6 +640,71 @@ public class AppConfig {
         AppLogger.info(KEY_DETECTION_MODEL_WEIGHTS + " has been changed to " + path);
     }
 
+    // --- Operating system & native library helpers ---
+    /**
+     * Return the configured operating system name (from properties) or detect from JVM.
+     * Stores a normalized short name into properties for later use (windows/mac/linux).
+     */
+    public String getOperatingSystem() {
+        String configured = properties.getProperty(KEY_OPERATING_SYSTEM, "").trim();
+        if (!configured.isEmpty()) {
+            return configured.toLowerCase();
+        }
+        String osName = System.getProperty("os.name", "").toLowerCase();
+        String normalized;
+        if (osName.contains("win")) normalized = "windows";
+        else if (osName.contains("mac") || osName.contains("darwin")) normalized = "mac";
+        else normalized = "linux";
+        properties.setProperty(KEY_OPERATING_SYSTEM, normalized);
+        AppLogger.info("Operating system auto-detected as: " + normalized);
+        return normalized;
+    }
+
+    /**
+     * Get the OpenCV native library path. If the property is set it is returned (quotes stripped).
+     * Otherwise a sensible default path is computed based on OS and stored into properties.
+     */
+    public String getOpenCvLibPath() {
+        String raw = properties.getProperty(KEY_OPENCV_LIBPATH, "").trim();
+        if (!raw.isEmpty()) {
+            // Remove surrounding quotes if present
+            String cleaned = raw;
+            if ((cleaned.startsWith("\"") && cleaned.endsWith("\"")) || (cleaned.startsWith("'") && cleaned.endsWith("'"))) {
+                cleaned = cleaned.substring(1, cleaned.length() - 1);
+            }
+            return cleaned;
+        }
+
+        // compute default
+    String os = getOperatingSystem();
+        String defaultPath;
+        // Use library names commonly produced by OpenCV builds
+        if (os.contains("win")) {
+            defaultPath = "lib/opencv_java480.dll";
+        } else if (os.contains("mac")) {
+            defaultPath = "lib/libopencv_java480.dylib";
+        } else {
+            defaultPath = "lib/libopencv_java480.dll";
+        }
+        properties.setProperty(KEY_OPENCV_LIBPATH, defaultPath);
+        AppLogger.info("Set default OpenCV native lib path to: " + defaultPath);
+        return defaultPath;
+    }
+
+    public void setOpenCvLibPath(String path) {
+        if (path == null || path.trim().isEmpty()) {
+            AppLogger.error("Failed to change " + KEY_OPENCV_LIBPATH + ". Path is null or empty");
+            return;
+        }
+        String cleaned = path.trim();
+        // strip quotes if provided
+        if ((cleaned.startsWith("\"") && cleaned.endsWith("\"")) || (cleaned.startsWith("'") && cleaned.endsWith("'"))) {
+            cleaned = cleaned.substring(1, cleaned.length() - 1);
+        }
+        properties.setProperty(KEY_OPENCV_LIBPATH, cleaned);
+        AppLogger.info(KEY_OPENCV_LIBPATH + " has been changed to " + cleaned);
+    }
+
     // preprocessing.* numeric thresholds
     public double getPreprocessingMinSharpnessThreshold() {
         String s = properties.getProperty(KEY_PREPROCESSING_MIN_SHARPNESS_THRESHOLD, "45.0");
@@ -927,6 +996,7 @@ public class AppConfig {
             return 0.15;
         }
     }
+
 }
 
 

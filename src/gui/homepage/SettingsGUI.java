@@ -1,14 +1,28 @@
 package gui.homepage;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 import config.AppConfig;
 import config.AppLogger;
 import config.IConfigChangeListener;
-import entity.Student;
 import gui.settings.SettingsCenter;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.border.*;
 
 public class SettingsGUI extends JFrame {
     private String role;
@@ -84,9 +98,9 @@ public class SettingsGUI extends JFrame {
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
         titleLabel.setForeground(Color.WHITE);
 
-        // Back Button
-        JButton backButton = createStyledButton("← Back to Dashboard", new Color(239, 68, 68));
-        backButton.addActionListener(e -> dispose());
+    // Back Button (use shared UIComponents styling)
+    JButton backButton = UIComponents.createAccentButton("← Back to Dashboard", new Color(239, 68, 68));
+    backButton.addActionListener(e -> dispose());
 
         headerPanel.add(titleLabel, BorderLayout.WEST);
         headerPanel.add(backButton, BorderLayout.EAST);
@@ -126,8 +140,7 @@ public class SettingsGUI extends JFrame {
         categoriesPanel.add(detectionBtn);
         categoriesPanel.add(Box.createRigidArea(new Dimension(0, 8)));
 
-        JButton cameraBtn = createCategoryButton("Camera");
-        JButton otherBtn = createCategoryButton("Some other Buttons");
+        
         
 
         return categoriesPanel;
@@ -139,16 +152,10 @@ public class SettingsGUI extends JFrame {
         contentPanel.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
 
         // Inner white card to match previous style
-        JPanel card = new JPanel(new BorderLayout());
-        card.setBackground(Color.WHITE);
-        card.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
-                BorderFactory.createEmptyBorder(8, 8, 8, 8)
-        ));
-
-        // The actual center is created in createUI; return an empty placeholder here to keep compatibility
-        // This method is no longer used directly in the new createUI flow, but kept for parity.
-        card.add(new JLabel(""), BorderLayout.CENTER);
+    JPanel card = UIComponents.createContentCard();
+    // The actual center is created in createUI; return an empty placeholder here to keep compatibility
+    // This method is no longer used directly in the new createUI flow, but kept for parity.
+    card.add(new JLabel(""), BorderLayout.CENTER);
 
         JPanel wrapper = new JPanel(new GridBagLayout());
         wrapper.setBackground(new Color(248, 250, 252));
@@ -165,49 +172,11 @@ public class SettingsGUI extends JFrame {
 
 
     }
-
-    // status card style at the buttom
-    private JPanel createStatusCard(String title, String value, Color color) {
-        JPanel card = new JPanel(new BorderLayout());
-        card.setBackground(Color.WHITE);
-        card.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
-            BorderFactory.createEmptyBorder(15, 15, 15, 15)
-        ));
-
-        JLabel titleLabel = new JLabel(title);
-        titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        titleLabel.setForeground(new Color(71, 85, 105));
-        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-
-        JLabel valueLabel = new JLabel(value);
-        valueLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        valueLabel.setForeground(color);
-        valueLabel.setHorizontalAlignment(SwingConstants.CENTER);
-
-        card.add(titleLabel, BorderLayout.NORTH);
-        card.add(valueLabel, BorderLayout.CENTER);
-
-        return card;
-    }
-
     private JButton createCategoryButton(String text) {
         JButton button = new JButton(text);
         UIComponents.styleSidebarButton(button);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setMaximumSize(new Dimension(180, 35));
-        return button;
-    }
-
-    private JButton createStyledButton(String text, Color color) {
-        JButton button = new JButton(text);
-        button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        button.setForeground(Color.WHITE);
-        button.setBackground(color);
-        button.setBorder(BorderFactory.createEmptyBorder(8, 16, 8, 16));
-        button.setFocusPainted(false);
-        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        
         return button;
     }
 }

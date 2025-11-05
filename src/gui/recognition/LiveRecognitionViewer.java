@@ -53,7 +53,7 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
     private int frameCounter = 0;
 
     static {
-        System.load(new File("lib/opencv_java480.dll").getAbsolutePath());
+        System.load(new File(AppConfig.getInstance().getOpenCvLibPath()).getAbsolutePath());
     }
 
     public LiveRecognitionViewer() {

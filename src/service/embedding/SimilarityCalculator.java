@@ -2,7 +2,7 @@ package service.embedding;
 
 import config.AppConfig;
 import java.util.Arrays;
-
+import config.*;
 /**
  * Calculates similarity scores between embeddings.
  */
@@ -73,20 +73,20 @@ public class SimilarityCalculator {
     }
 
     private void debugSimilarity(float[] vec1, float[] vec2, double dot, double mag1, double mag2, double similarity) {
-        System.out.println("=== STAGE 5: Similarity Calculation (float) ===");
-        System.out.println("Vector 1: magnitude=" + mag1 + " first10=" + Arrays.toString(firstN(vec1, 10)));
-        System.out.println("Vector 2: magnitude=" + mag2 + " first10=" + Arrays.toString(firstN(vec2, 10)));
-        System.out.println("Dot Product: " + dot);
-        System.out.println("Calculated Similarity: " + similarity);
+        AppLogger.info("=== STAGE 5: Similarity Calculation (float) ===");
+        AppLogger.info("Vector 1: magnitude=" + mag1 + " first10=" + Arrays.toString(firstN(vec1, 10)));
+        AppLogger.info("Vector 2: magnitude=" + mag2 + " first10=" + Arrays.toString(firstN(vec2, 10)));
+        AppLogger.info("Dot Product: " + dot);
+        AppLogger.info("Calculated Similarity: " + similarity);
         flagHighSimilarity(similarity, vec1, vec2);
     }
 
     private void debugSimilarity(double[] vec1, double[] vec2, double dot, double mag1, double mag2, double similarity) {
-        System.out.println("=== STAGE 5: Similarity Calculation (double) ===");
-        System.out.println("Vector 1: magnitude=" + mag1 + " first10=" + Arrays.toString(firstN(vec1, 10)));
-        System.out.println("Vector 2: magnitude=" + mag2 + " first10=" + Arrays.toString(firstN(vec2, 10)));
-        System.out.println("Dot Product: " + dot);
-        System.out.println("Calculated Similarity: " + similarity);
+        AppLogger.info("=== STAGE 5: Similarity Calculation (double) ===");
+        AppLogger.info("Vector 1: magnitude=" + mag1 + " first10=" + Arrays.toString(firstN(vec1, 10)));
+        AppLogger.info("Vector 2: magnitude=" + mag2 + " first10=" + Arrays.toString(firstN(vec2, 10)));
+        AppLogger.info("Dot Product: " + dot);
+        AppLogger.info("Calculated Similarity: " + similarity);
         flagHighSimilarity(similarity, vec1, vec2);
     }
 

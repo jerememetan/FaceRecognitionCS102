@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-
+import config.*;
 // CSVGenerator: creates a new .pdf file in export folder
 public class PDFGenerator implements ReportGenerator {
     @Override
@@ -89,9 +89,9 @@ public class PDFGenerator implements ReportGenerator {
                     document.add(table);
 
                     document.close();
-                    System.out.println("PDF file saved successfully to: " + fileToSave.getAbsolutePath());
+                    AppLogger.info("PDF file saved successfully to: " + fileToSave.getAbsolutePath());
                 } else {
-                    System.out.println("File save cancelled by user.");
+                    AppLogger.info("File save cancelled by user.");
                 }
 
                 frame.dispose(); // Close the frame

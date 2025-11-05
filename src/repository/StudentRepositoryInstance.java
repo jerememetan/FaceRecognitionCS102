@@ -4,7 +4,7 @@ import config.AppLogger;
 import entity.Student;
 import java.sql.*;
 import java.util.*;
-
+import config.*;
 public class StudentRepositoryInstance implements StudentRepository {
 
     @Override
@@ -21,7 +21,7 @@ public class StudentRepositoryInstance implements StudentRepository {
             return true;
 
         } catch (SQLException e) {
-            System.out.println("Error while inserting into students: " + e.getMessage());
+            AppLogger.error("Error while inserting into students: " + e.getMessage());
             return false;
         }
     }
@@ -40,7 +40,7 @@ public class StudentRepositoryInstance implements StudentRepository {
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            System.out.println("Error while updating students: " + e.getMessage());
+            AppLogger.error("Error while updating students: " + e.getMessage());
             return false;
         }
     }
@@ -80,7 +80,7 @@ public class StudentRepositoryInstance implements StudentRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error while finding from students: " + e.getMessage());
+            AppLogger.error("Error while finding from students: " + e.getMessage());
         }
         return null;
     }
@@ -104,7 +104,7 @@ public class StudentRepositoryInstance implements StudentRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error while searching from students: " + e.getMessage());
+            AppLogger.error("Error while searching from students: " + e.getMessage());
         }
         return results;
     }
@@ -122,7 +122,7 @@ public class StudentRepositoryInstance implements StudentRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error while checking student existence: " + e.getMessage());
+            AppLogger.error("Error while checking student existence: " + e.getMessage());
         }
         return false;
     }
@@ -145,7 +145,7 @@ public class StudentRepositoryInstance implements StudentRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error while getting all students: " + e.getMessage());
+            AppLogger.error("Error while getting all students: " + e.getMessage());
         }
         return results;
     }

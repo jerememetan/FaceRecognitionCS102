@@ -7,10 +7,11 @@ import java.time.*;
 import java.util.*;
 import repository.SessionRepositoryInstance;
 import repository.SessStuRepositoryInstance;
+import config.*;
 
 public class SessionManager {
     private final Map<Integer,Session> sessions;
-    private int nextId = 1;
+    private static int nextId = 1;
     private SessionRepositoryInstance sessionDB;
     private SessStuRepositoryInstance sessStuDB;
     public SessionManager() {
@@ -22,22 +23,33 @@ public class SessionManager {
         Session newSession = new Session(Integer.toString(nextId), name, date, startTime, endTime, location);
         sessions.put(nextId, newSession);
         sessionDB.save(newSession);
-        System.out.println(nextId + " Created session: " + name);
+        AppLogger.info(nextId + " Created session: " + name);
         nextId++;
         return newSession;
     }
     //helper function to populate sessions from db
     public void populateSessions() {
         List<Session> allSessions = sessionDB.findAll();
-        for(Session s : allSessions){
+        sessions.clear();
+
+        int maxId = 0;
+        for (Session s : allSessions) {
             sessions.put(Integer.parseInt(s.getSessionId()), s);
+            int currentId = Integer.parseInt(s.getSessionId());
+            if (currentId > maxId) {
+                maxId = currentId;
+            }
         }
+
+        nextId = maxId + 1; // works even if list is empty (remains 1)
+        System.out.println("Next Session ID: " + nextId);
     }
+
     public boolean addStudentToSession(Session session, Student student) {
         try {
             SessionStudent ss = new SessionStudent(session, student);
             boolean success = sessStuDB.save(ss);
-            System.out.println("DB insert success: " + success);
+            AppLogger.info("DB insert success: " + success);
             if (!success) {
                 return false; // Failed to add to database
             }
@@ -50,13 +62,13 @@ public class SessionManager {
         } 
     }
     public boolean removeStudentFromSession(Session session, Student student) {
-        session.removeStudent(student);
         SessionStudent ss = new SessionStudent(session, student);
         boolean deleted = sessStuDB.delete(ss); //deletes that student-session relation from db
         if (deleted) {
-            System.out.println("Removed student " + student.getName() + " from session " + session.getName());
+            AppLogger.info("Removed student " + student.getName() + " from session " + session.getName());
+            session.removeStudent(student);
         } else {
-            System.out.println("Failed to remove student " + student.getName() + " from session " + session.getName());
+            AppLogger.error("Failed to remove student " + student.getName() + " from session " + session.getName());
         }
         return deleted;
     }
@@ -64,11 +76,11 @@ public class SessionManager {
     public boolean loadSessionRoster(Session session){
         ArrayList<SessionStudent> sessStuList = sessStuDB.findBySessionId(Integer.parseInt(session.getSessionId()));
         if(sessStuList == null){
-            System.out.println("No students found for session ID " + session.getSessionId());
+            AppLogger.info("No students found for session ID " + session.getSessionId());
             return false;
         }
         session.setStudentRoster(sessStuList);
-        System.out.println("Loaded " + sessStuList.size() + " students into session " + session.getName());
+        AppLogger.info("Loaded " + sessStuList.size() + " students into session " + session.getName());
         return true;
     }
 
@@ -77,7 +89,7 @@ public class SessionManager {
             session.open();
             sessionDB.update(session); //sets active status in db to "True"
         } else {
-            System.out.println("Session not found.");
+            AppLogger.info("Session not found.");
         }
     }
     public void closeSession(Session session) {
@@ -85,7 +97,7 @@ public class SessionManager {
             session.close();
             sessionDB.update(session); //sets active status in db to "False"
         } else {
-            System.out.println("Session not found.");
+            AppLogger.info("Session not found.");
         }
     }
 
@@ -99,11 +111,23 @@ public class SessionManager {
         if (sessions.containsKey(id) && sessions.get(id).isActive() == false) {
             sessions.remove(id);
             sessionDB.delete(Integer.toString(id));
-            System.out.println("Deleted session ID " + id);
+            AppLogger.info("Deleted session ID " + id);
             return true; // Successfully deleted
         }
         return false; // Session not found
     }
+    public boolean updateSession(Session session){
+        try{
+            boolean success = sessionDB.update(session);
+            System.out.println("Session DB update: " +  success);
+            return success;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
 }
 
 

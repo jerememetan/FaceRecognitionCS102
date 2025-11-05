@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import service.embedding.FaceEmbeddingGenerator.ProgressCallback;
-
+import config.*;
 /**
  * Performs quality analysis on generated embeddings by identifying outliers
  * and weak samples.
@@ -221,7 +221,7 @@ public class EmbeddingQualityAnalyzer {
 
     private void log(String message) {
         if (debugLogs) {
-            System.out.println(message);
+            AppLogger.info(message);
         }
     }
 }

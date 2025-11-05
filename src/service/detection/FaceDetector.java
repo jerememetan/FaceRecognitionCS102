@@ -289,7 +289,7 @@ public class FaceDetector {
 
     private void logDebug(String message) {
         if (DEBUG_LOGS) {
-            System.out.println(message);
+            AppLogger.info(message);
         }
     }
 }

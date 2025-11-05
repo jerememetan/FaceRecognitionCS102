@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import config.*;
 
 // ExcelGenerator: creates a new .xls file in export folder
 public class ExcelGenerator implements ReportGenerator {
@@ -110,9 +111,9 @@ public class ExcelGenerator implements ReportGenerator {
                     }
 
                     workbook.close();
-                    System.out.println("Excel file saved successfully to: " + fileToSave.getAbsolutePath());
+                    AppLogger.info("Excel file saved successfully to: " + fileToSave.getAbsolutePath());
                 } else {
-                    System.out.println("File save cancelled by user.");
+                    AppLogger.info("File save cancelled by user.");
                 }
 
                 frame.dispose(); // Close the frame

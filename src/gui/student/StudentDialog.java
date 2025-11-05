@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import service.student.StudentManager;
+import gui.homepage.*;
 
 public class StudentDialog extends JDialog {
     private StudentManager studentManager;
@@ -89,9 +90,9 @@ public class StudentDialog extends JDialog {
     private JPanel createButtonPanel() {
         JPanel panel = new JPanel(new FlowLayout());
 
-        saveButton = new JButton((student == null || student.getStudentId() == null || student.getStudentId().trim().isEmpty())
-                                ? "Add Student" : "Save Changes");
-        cancelButton = new JButton("Cancel");
+        saveButton = UIComponents.createAccentButton((student == null || student.getStudentId() == null || student.getStudentId().trim().isEmpty() )
+                                ? "Add Student" : "Save Changes", new Color(59, 130, 246));
+        cancelButton = UIComponents.createAccentButton("Cancel", new Color(239, 68, 68) );
 
         saveButton.addActionListener(new ActionListener() {
             @Override

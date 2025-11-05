@@ -12,8 +12,10 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import gui.homepage.*;
+import service.roster.RosterManager;
 import service.session.SessionManager;
-
+import config.*;
 public class SessionViewer extends JFrame {
 
     private SessionManager manager;
@@ -25,10 +27,11 @@ public class SessionViewer extends JFrame {
 
     public SessionViewer(SessionManager manager) {
         this.manager = manager;
-
+        manager.populateSessions();
         setTitle("Sessions List");
         setSize(1100, 700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
         JPanel viewerPanel = new JPanel(new BorderLayout(10, 10));
         viewerPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
         add(viewerPanel);
@@ -87,9 +90,9 @@ public class SessionViewer extends JFrame {
 
         searchPanel.add(searchField);
         topPanel.add(searchPanel, BorderLayout.WEST);
-        refreshButton = new JButton("Refresh");
-        createButton = new JButton("➕ Create Session");
-        deleteButton = new JButton("🗑️ Delete Session");
+        refreshButton = UIComponents.createAccentButton("Refresh", new Color(59, 130, 246) );
+        createButton = UIComponents.createAccentButton("➕ Create Session", new Color(59, 130, 246)) ;
+        deleteButton = UIComponents.createAccentButton("🗑️ Delete Session", new Color(239, 68, 68));
 
         topPanel.add(refreshButton);
         topPanel.add(createButton);
@@ -115,7 +118,8 @@ public class SessionViewer extends JFrame {
 
         createButton.addActionListener(e -> {
             // Open the popup form (SessionForm)
-            new SessionForm(manager);
+            SessionForm sessionForm = new SessionForm(this, manager, new RosterManager());  //RosterManager required in SessionForm
+            sessionForm.setVisible(true);
             refreshTable();
         });
 
@@ -129,17 +133,17 @@ public class SessionViewer extends JFrame {
             public void mousePressed(MouseEvent e) {
                 if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
                     int selectedRow = sessionTable.getSelectedRow();
-                    System.out.println("Double-clicked row: " + selectedRow);
+                    AppLogger.info("Double-clicked row: " + selectedRow);
                     if (selectedRow >= 0) {
                         Object sessionObj = tableModel.getValueAt(selectedRow, 0);
                         int sessionId;
                         if (sessionObj instanceof Number) {
                             sessionId = ((Number) sessionObj).intValue();
-                            System.out.println("Selected session ID: " + sessionId);
+                            AppLogger.info("Selected session ID: " + sessionId);
                         }
                         else{
                             sessionId = Integer.parseInt(sessionObj.toString());
-                            System.out.println("Selected session ID: " + sessionId);
+                            AppLogger.info("Selected session ID: " + sessionId);
                         }
                         Session session = manager.getAllSessions()
                                 .stream()
@@ -169,6 +173,7 @@ public class SessionViewer extends JFrame {
             else{
                 sessionId = Integer.parseInt(sessionObj.toString());
             }
+            
             System.out.println(sessionId);
             int choice = JOptionPane.showConfirmDialog(this,
                     "Are you sure you want to delete session?",
@@ -214,7 +219,7 @@ public class SessionViewer extends JFrame {
 
     // Demo main method
     public static void main(String[] args) {
-        System.out.println("Launching Session Viewer...");
+        AppLogger.info("Launching Session Viewer...");
         SessionManager manager = new SessionManager();
         manager.populateSessions();
         new SessionViewer(manager);
