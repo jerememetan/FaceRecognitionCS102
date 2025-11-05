@@ -11,6 +11,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import service.session.SessionManager;
+import gui.homepage.UIComponents;
 
 //GUI class used in SessionRosterManagement to add students to a session
 public class AddStudentDialog extends JDialog {
@@ -83,8 +84,8 @@ public class AddStudentDialog extends JDialog {
             public void changedUpdate(DocumentEvent e) { update(); }
         });
 
-        JButton addButton = new JButton("Add Student");
-        addButton.addActionListener(e -> onAddStudent());
+    JButton addButton = UIComponents.createAccentButton("Add Student", new Color(34, 197, 94));
+    addButton.addActionListener(e -> onAddStudent());
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         buttonPanel.add(addButton);
         paddingPanel.add(buttonPanel, BorderLayout.SOUTH);

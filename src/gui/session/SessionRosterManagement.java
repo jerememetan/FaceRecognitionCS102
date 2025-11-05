@@ -1,5 +1,5 @@
 package gui.session;
-
+import gui.homepage.UIComponents;
 import entity.Session;
 import entity.SessionStudent;
 import entity.Student;
@@ -59,15 +59,13 @@ public class SessionRosterManagement extends JDialog {
         
         // Open a session
         if (session.isActive()){
-            closeButton = new JButton("Close Session");
-            closeButton.setFocusPainted(false);
+            closeButton = UIComponents.createAccentButton("Close Session", new Color(239, 68, 68));
             closeButton.addActionListener(e -> { closeSession(); } );
             infoPanel.add(closeButton);
 
         }
         else{
-            openButton = new JButton("Open Session");
-            openButton.setFocusPainted(false);
+            openButton = UIComponents.createAccentButton("Open Session", new Color(59, 130, 246));
             openButton.addActionListener(e -> { openSession(); });
             infoPanel.add(openButton);
         }
@@ -95,8 +93,8 @@ public class SessionRosterManagement extends JDialog {
 
         //Buttons Panel
         JPanel buttonPanel = new JPanel();
-        addButton = new JButton("Add Student");
-        removeButton = new JButton("Remove Student");
+        addButton = UIComponents.createAccentButton("Add Student", new Color(34, 197, 94));
+        removeButton = UIComponents.createAccentButton("Remove Student", new Color(239, 68, 68));
 
         addButton.addActionListener(e -> { addStudent(); refreshTable(); });
         removeButton.addActionListener(e -> { removeStudent(); refreshTable(); });
