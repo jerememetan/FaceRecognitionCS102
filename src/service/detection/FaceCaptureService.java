@@ -178,7 +178,7 @@ public class FaceCaptureService {
             public void onFrameUpdate(Mat frame) {}
             public void onImageCaptured(int current, int total, double confidence) {}
             public void onWarning(String message) {
-                System.out.println(" Warning: " + message);
+                AppLogger.warn(" Warning: " + message);
             }
             public void onError(String message) {
                 AppLogger.error(" Error: " + message);
@@ -207,7 +207,7 @@ public class FaceCaptureService {
 
     private void logDebug(String message) {
         if (DEBUG_LOGS) {
-            System.out.println(message);
+            AppLogger.info(message);
         }
     }
 

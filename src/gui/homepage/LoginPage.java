@@ -3,6 +3,7 @@ package gui.homepage;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import config.*;
 
 public class LoginPage extends JFrame{
     private JTextField idField;
@@ -64,7 +65,7 @@ public class LoginPage extends JFrame{
                     return;
                 }
 
-                System.out.println("Logging in as " + role + " with ID: " + id);
+                AppLogger.info("Logging in as " + role + " with ID: " + id);
                 
                 // show the GUI of the main dashboard if login success
                 SwingUtilities.invokeLater(new Runnable(){

@@ -6,7 +6,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
-
+import config.*;
 public class SessionRepositoryInstance implements SessionRepository {
     @Override
     public boolean save(Session session) {
@@ -22,11 +22,11 @@ public class SessionRepositoryInstance implements SessionRepository {
             ps.setString(6, session.getLocation());
             ps.setBoolean(7, false);
             ps.executeUpdate();
-            System.out.println("Inserted session ID " + session.getSessionId() + " into database.");
+            AppLogger.info("Inserted session ID " + session.getSessionId() + " into database.");
             return true;
 
         } catch (SQLException e) {
-            System.out.println("Error while inserting into sessions: " + e.getMessage());
+            AppLogger.error("Error while inserting into sessions: " + e.getMessage());
             return false;
         }
     }
@@ -47,7 +47,7 @@ public class SessionRepositoryInstance implements SessionRepository {
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            System.out.println("Error while updating sessions: " + e.getMessage());
+            AppLogger.error("Error while updating sessions: " + e.getMessage());
             return false;
         }
     }
@@ -62,7 +62,7 @@ public class SessionRepositoryInstance implements SessionRepository {
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            System.out.println("Error while deleting from sessions: " + e.getMessage());
+            AppLogger.error("Error while deleting from sessions: " + e.getMessage());
             return false;
         }
     }
@@ -96,7 +96,7 @@ public class SessionRepositoryInstance implements SessionRepository {
             return sessions;
 
         } catch (SQLException e) {
-            System.out.println("Error while querying sessions: " + e.getMessage());
+            AppLogger.error("Error while querying sessions: " + e.getMessage());
             return sessions;
         }
     }
@@ -129,7 +129,7 @@ public class SessionRepositoryInstance implements SessionRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error while querying sessions: " + e.getMessage());
+            AppLogger.error("Error while querying sessions: " + e.getMessage());
             return null;
         }
     }

@@ -10,7 +10,7 @@ import org.opencv.dnn.Dnn;
 import org.opencv.imgproc.Imgproc;
 import util.FaceAligner;
 import util.ModuleLoader;
-
+import config.*;
 /**
  * Performs the same preprocessing pipeline used for ArcFace training so that
  * live recognition inputs are compatible with the ONNX model expectations.
@@ -34,15 +34,15 @@ public class LiveRecognitionPreprocessor {
      * @return a blob ready to be fed to the ArcFace ONNX model
      */
     public Mat preprocessForLiveRecognition(Mat faceROI, Rect faceRect) {
-        System.out.println("=== STAGE 1: Face Detection & Preprocessing ===");
-        System.out.println("Original frame resolution: " + (faceROI != null ? faceROI.size() : "null"));
-        System.out.println("Face ROI size: " + (faceROI != null ? faceROI.size() : "null"));
+        AppLogger.info("=== STAGE 1: Face Detection & Preprocessing ===");
+        AppLogger.info("Original frame resolution: " + (faceROI != null ? faceROI.size() : "null"));
+        AppLogger.info("Face ROI size: " + (faceROI != null ? faceROI.size() : "null"));
         if (faceROI != null && !faceROI.empty()) {
-            System.out.println("Face ROI mean pixel value (BGR): " + Core.mean(faceROI));
+            AppLogger.info("Face ROI mean pixel value (BGR): " + Core.mean(faceROI));
             MatOfDouble mean = new MatOfDouble();
             MatOfDouble stddev = new MatOfDouble();
             Core.meanStdDev(faceROI, mean, stddev);
-            System.out.println("Face ROI std deviation: " + stddev.get(0, 0)[0]);
+            AppLogger.info("Face ROI std deviation: " + stddev.get(0, 0)[0]);
         }
 
         if (faceROI == null || faceROI.empty()) {

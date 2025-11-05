@@ -13,7 +13,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import service.session.SessionManager;
-
+import config.*;
 public class SessionViewer extends JFrame {
 
     private SessionManager manager;
@@ -129,17 +129,17 @@ public class SessionViewer extends JFrame {
             public void mousePressed(MouseEvent e) {
                 if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
                     int selectedRow = sessionTable.getSelectedRow();
-                    System.out.println("Double-clicked row: " + selectedRow);
+                    AppLogger.info("Double-clicked row: " + selectedRow);
                     if (selectedRow >= 0) {
                         Object sessionObj = tableModel.getValueAt(selectedRow, 0);
                         int sessionId;
                         if (sessionObj instanceof Number) {
                             sessionId = ((Number) sessionObj).intValue();
-                            System.out.println("Selected session ID: " + sessionId);
+                            AppLogger.info("Selected session ID: " + sessionId);
                         }
                         else{
                             sessionId = Integer.parseInt(sessionObj.toString());
-                            System.out.println("Selected session ID: " + sessionId);
+                            AppLogger.info("Selected session ID: " + sessionId);
                         }
                         Session session = manager.getAllSessions()
                                 .stream()
@@ -169,6 +169,7 @@ public class SessionViewer extends JFrame {
             else{
                 sessionId = Integer.parseInt(sessionObj.toString());
             }
+            
             System.out.println(sessionId);
             int choice = JOptionPane.showConfirmDialog(this,
                     "Are you sure you want to delete session?",
@@ -214,7 +215,7 @@ public class SessionViewer extends JFrame {
 
     // Demo main method
     public static void main(String[] args) {
-        System.out.println("Launching Session Viewer...");
+        AppLogger.info("Launching Session Viewer...");
         SessionManager manager = new SessionManager();
         manager.populateSessions();
         new SessionViewer(manager);

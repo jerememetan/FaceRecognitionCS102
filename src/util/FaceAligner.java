@@ -1,5 +1,5 @@
 package util;
-
+import config.*;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
@@ -43,13 +43,13 @@ public class FaceAligner {
             }
 
             if (noseDetector.empty()) {
-                System.out.println("⚠ Nose cascade not found at: " + noseCascadePath + " - will use heuristics");
+                AppLogger.error("⚠ Nose cascade not found at: " + noseCascadePath + " - will use heuristics");
             }
             if (mouthDetector.empty()) {
-                System.out.println("⚠ Mouth cascade not found at: " + mouthCascadePath + " - will use heuristics");
+                AppLogger.error("⚠ Mouth cascade not found at: " + mouthCascadePath + " - will use heuristics");
             }
 
-            System.out.println("✓ FaceAligner initialized with 5-point alignment support");
+            AppLogger.info("✓ FaceAligner initialized with 5-point alignment support");
             isInitialized = true;
 
         } catch (Exception e) {
@@ -86,12 +86,12 @@ public class FaceAligner {
 
             if (landmarks != null && isValidLandmarkConfiguration(landmarks, faceImage.width(), faceImage.height())) {
                 if (debugMode) {
-                    System.out.println("✓ Detected valid 5 landmarks");
+                    AppLogger.info("✓ Detected valid 5 landmarks");
                 }
                 return alignUsing5Points(faceImage, landmarks);
             } else {
                 if (debugMode) {
-                    System.out.println("⚠ 5-point detection failed or invalid, using heuristics");
+                    AppLogger.info("⚠ 5-point detection failed or invalid, using heuristics");
                 }
                 return heuristicFallbackAlignment(faceImage);
             }
@@ -345,7 +345,7 @@ public class FaceAligner {
 
             if (scaleX < 0.5 || scaleX > 2.0 || scaleY < 0.5 || scaleY > 2.0) {
                 if (debugMode) {
-                    System.out.println("⚠ Extreme transform detected (scaleX=" + String.format("%.2f", scaleX) +
+                    AppLogger.info("⚠ Extreme transform detected (scaleX=" + String.format("%.2f", scaleX) +
                                      ", scaleY=" + String.format("%.2f", scaleY) + "), using fallback");
                 }
                 transform.release();
@@ -376,7 +376,7 @@ public class FaceAligner {
 
                 if (minMax.minVal < -1.0 || minMax.maxVal > 256.0) {
                     if (debugMode) {
-                        System.out.println("⚠ Invalid aligned pixel values (min=" + minMax.minVal +
+                        AppLogger.error("⚠ Invalid aligned pixel values (min=" + minMax.minVal +
                                          ", max=" + minMax.maxVal + "), using fallback");
                     }
                     aligned.release();
@@ -384,7 +384,7 @@ public class FaceAligner {
                 }
             } else {
                 if (debugMode) {
-                    System.out.println("⚠ Empty aligned image, using fallback");
+                    AppLogger.error("⚠ Empty aligned image, using fallback");
                 }
                 return heuristicFallbackAlignment(faceImage);
             }

@@ -7,6 +7,7 @@ import java.time.*;
 import java.util.*;
 import repository.SessionRepositoryInstance;
 import repository.SessStuRepositoryInstance;
+import config.*;
 
 public class SessionManager {
     private final Map<Integer,Session> sessions;
@@ -22,7 +23,7 @@ public class SessionManager {
         Session newSession = new Session(Integer.toString(nextId), name, date, startTime, endTime, location);
         sessions.put(nextId, newSession);
         sessionDB.save(newSession);
-        System.out.println(nextId + " Created session: " + name);
+        AppLogger.info(nextId + " Created session: " + name);
         nextId++;
         return newSession;
     }
@@ -37,7 +38,7 @@ public class SessionManager {
         try {
             SessionStudent ss = new SessionStudent(session, student);
             boolean success = sessStuDB.save(ss);
-            System.out.println("DB insert success: " + success);
+            AppLogger.info("DB insert success: " + success);
             if (!success) {
                 return false; // Failed to add to database
             }
@@ -54,9 +55,9 @@ public class SessionManager {
         SessionStudent ss = new SessionStudent(session, student);
         boolean deleted = sessStuDB.delete(ss); //deletes that student-session relation from db
         if (deleted) {
-            System.out.println("Removed student " + student.getName() + " from session " + session.getName());
+            AppLogger.info("Removed student " + student.getName() + " from session " + session.getName());
         } else {
-            System.out.println("Failed to remove student " + student.getName() + " from session " + session.getName());
+            AppLogger.error("Failed to remove student " + student.getName() + " from session " + session.getName());
         }
         return deleted;
     }
@@ -64,11 +65,11 @@ public class SessionManager {
     public boolean loadSessionRoster(Session session){
         ArrayList<SessionStudent> sessStuList = sessStuDB.findBySessionId(Integer.parseInt(session.getSessionId()));
         if(sessStuList == null){
-            System.out.println("No students found for session ID " + session.getSessionId());
+            AppLogger.info("No students found for session ID " + session.getSessionId());
             return false;
         }
         session.setStudentRoster(sessStuList);
-        System.out.println("Loaded " + sessStuList.size() + " students into session " + session.getName());
+        AppLogger.info("Loaded " + sessStuList.size() + " students into session " + session.getName());
         return true;
     }
 
@@ -77,7 +78,7 @@ public class SessionManager {
             session.open();
             sessionDB.update(session); //sets active status in db to "True"
         } else {
-            System.out.println("Session not found.");
+            AppLogger.info("Session not found.");
         }
     }
     public void closeSession(Session session) {
@@ -85,7 +86,7 @@ public class SessionManager {
             session.close();
             sessionDB.update(session); //sets active status in db to "False"
         } else {
-            System.out.println("Session not found.");
+            AppLogger.info("Session not found.");
         }
     }
 
@@ -99,7 +100,7 @@ public class SessionManager {
         if (sessions.containsKey(id) && sessions.get(id).isActive() == false) {
             sessions.remove(id);
             sessionDB.delete(Integer.toString(id));
-            System.out.println("Deleted session ID " + id);
+            AppLogger.info("Deleted session ID " + id);
             return true; // Successfully deleted
         }
         return false; // Session not found

@@ -9,6 +9,7 @@ import org.opencv.core.Mat;
 import org.opencv.core.Rect;
 import org.opencv.imgcodecs.Imgcodecs;
 import util.ImageProcessor;
+import config.*;
 
 /**
  * Coordinates batch processing of captured face images into embeddings.
@@ -71,7 +72,7 @@ public class EmbeddingBatchProcessor {
                         embeddingPaths.add(embPath);
                         successfulImagePaths.add(imagePath);
                         processedCount++;
-                        System.out.println("✓ Saved embedding: " + new File(embPath).getName());
+                        AppLogger.info("✓ Saved embedding: " + new File(embPath).getName());
                     } catch (Exception e) {
                         System.err.println("❌ Failed to save embedding for " + imagePath + ": " + e.getMessage());
                     }
@@ -83,7 +84,7 @@ public class EmbeddingBatchProcessor {
             }
         }
 
-        System.out.println("Embedding generation complete: " + processedCount + "/" + imagePaths.size() + " successful");
+        AppLogger.info("Embedding generation complete: " + processedCount + "/" + imagePaths.size() + " successful");
 
         if (processedCount < imagePaths.size() && progressCallback != null) {
             progressCallback.onProgress(
@@ -100,18 +101,18 @@ public class EmbeddingBatchProcessor {
             outlierRemoved = qualityAnalyzer.removeOutliers(generatedEmbeddings, embeddingPaths,
                     successfulImagePaths, progressCallback);
             if (outlierRemoved > 0) {
-                System.out.println("✓ Auto-removed " + outlierRemoved + " outlier embedding(s)");
+                AppLogger.info("✓ Auto-removed " + outlierRemoved + " outlier embedding(s)");
             } else {
-                System.out.println("✓ All embeddings passed outlier check");
+                AppLogger.info("✓ All embeddings passed outlier check");
             }
 
             if (generatedEmbeddings.size() >= 3) {
                 weakRemoved = qualityAnalyzer.removeWeakEmbeddings(generatedEmbeddings, embeddingPaths,
                         successfulImagePaths, progressCallback);
                 if (weakRemoved > 0) {
-                    System.out.println("✓ Auto-removed " + weakRemoved + " weak embedding(s)");
+                    AppLogger.info("✓ Auto-removed " + weakRemoved + " weak embedding(s)");
                 } else {
-                    System.out.println("✓ All embeddings passed weakness check");
+                    AppLogger.info("✓ All embeddings passed weakness check");
                 }
             }
         }

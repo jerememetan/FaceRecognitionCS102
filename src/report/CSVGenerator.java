@@ -1,11 +1,12 @@
 package report;
 
-import config.AppConfig;
+import config.*;
 import entity.Student;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
 
 // CSVGenerator: creates a new .csv file in export folder
 public class CSVGenerator implements ReportGenerator {
@@ -55,7 +56,7 @@ public class CSVGenerator implements ReportGenerator {
             }
             System.out.printf("CSV file [ %s ] created successfully!", fileName);
         } catch (IOException e) {
-            System.err.println("CSVReport: Error writing to CSV file: " + e.getMessage());
+            AppLogger.warn("CSVReport: Error writing to CSV file: " + e.getMessage());
         }
     }
 

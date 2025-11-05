@@ -14,7 +14,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import repository.StudentRepositoryInstance;
 import service.session.SessionManager;
-
+import config.*;
 public class SessionRosterManagement extends JDialog {
 
     private JFrame parent;
@@ -112,7 +112,7 @@ public class SessionRosterManagement extends JDialog {
 
 
     private void refreshTable() {
-        System.out.println("Refreshing roster table");
+        AppLogger.info("Refreshing roster table");
         tableModel.setRowCount(0);
         manager.loadSessionRoster(session);
         for (SessionStudent ss : session.getStudentRoster()) {

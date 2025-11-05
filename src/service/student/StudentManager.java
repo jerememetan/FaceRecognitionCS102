@@ -20,7 +20,7 @@ public class StudentManager {
 
     private boolean validateStudentData(Student student) {
         if (student == null) {
-            System.out.println("Student cannot be null");
+            AppLogger.info("Student cannot be null");
             return false;
         }
         if (student.getStudentId() == null || student.getStudentId().trim().isEmpty()) {
@@ -48,7 +48,7 @@ public class StudentManager {
             }
 
             if (studentRepository.existsByStudentId(student.getStudentId())) {
-                System.out.println("Student ID already exists: " + student.getStudentId());
+                AppLogger.info("Student ID already exists: " + student.getStudentId());
                 return false;
             }
 
@@ -56,7 +56,7 @@ public class StudentManager {
             return success;
 
         } catch (Exception e) {
-            System.out.println("Error enrolling student: " + e.getMessage());
+            AppLogger.info("Error enrolling student: " + e.getMessage());
         }
         return false;
     }
@@ -148,7 +148,7 @@ public class StudentManager {
             if (success) {
                 if (student.getFaceData().validateImages()) {
                     updateStudent(student);
-                    System.out.println("Face images captured and validated for student: " + student.getName());
+                    AppLogger.info("Face images captured and validated for student: " + student.getName());
                     return true;
                 } else {
                     System.err.println("Face validation failed - insufficient valid images");

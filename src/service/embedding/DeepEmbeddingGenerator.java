@@ -12,6 +12,7 @@ import org.opencv.dnn.Net;
 import org.opencv.imgproc.Imgproc;
 import util.FaceAligner;
 import util.ModuleLoader;
+import config.*;
 
 /**
  * Handles deep-learning based embedding generation using ArcFace.
@@ -42,9 +43,9 @@ public class DeepEmbeddingGenerator {
             if (new java.io.File(modelPath).exists()) {
                 embeddingNet = Dnn.readNetFromONNX(modelPath);
                 initialized = true;
-                System.out.println("✅ ArcFace ResNet100 model loaded successfully");
+                AppLogger.info("✅ ArcFace ResNet100 model loaded successfully");
             } else {
-                System.out.println("⚠️ ArcFace model not found, using feature-based embeddings");
+                AppLogger.info("⚠️ ArcFace model not found, using feature-based embeddings");
                 initialized = false;
             }
         } catch (Exception e) {
@@ -156,15 +157,15 @@ public class DeepEmbeddingGenerator {
         mat.get(0, 0, floatArray);
 
         if (debugLogs) {
-            System.out.println("=== STAGE 4: L2 Normalization ===");
-            System.out.println("Before normalization:");
+            AppLogger.info("=== STAGE 4: L2 Normalization ===");
+            AppLogger.info("Before normalization:");
             double[] floatArrayDouble = new double[floatArray.length];
             for (int i = 0; i < floatArray.length; i++) {
                 floatArrayDouble[i] = floatArray[i];
             }
-            System.out.println("  Magnitude: " + EmbeddingVectorUtils.magnitude(floatArrayDouble));
+            AppLogger.info("  Magnitude: " + EmbeddingVectorUtils.magnitude(floatArrayDouble));
             double[] first10Before = getFirstN(floatArrayDouble, 10);
-            System.out.println("  First 10 values: " + java.util.Arrays.toString(first10Before));
+            AppLogger.info("  First 10 values: " + java.util.Arrays.toString(first10Before));
         }
 
         for (float f : floatArray) {
@@ -186,18 +187,18 @@ public class DeepEmbeddingGenerator {
             for (int i = 0; i < floatArray.length; i++) {
                 floatArrayDoubleAfter[i] = floatArray[i];
             }
-            System.out.println("After normalization:");
-            System.out.println("  Magnitude: " + EmbeddingVectorUtils.magnitude(floatArrayDoubleAfter));
+            AppLogger.info("After normalization:");
+            AppLogger.info("  Magnitude: " + EmbeddingVectorUtils.magnitude(floatArrayDoubleAfter));
             double[] first10After = getFirstN(floatArrayDoubleAfter, 10);
-            System.out.println("  First 10 values: " + java.util.Arrays.toString(first10After));
+            AppLogger.info("  First 10 values: " + java.util.Arrays.toString(first10After));
         }
 
         byte[] result = EmbeddingVectorUtils.floatsToBytes(floatArray);
         if (debugLogs) {
             long hash = computeHash(result);
-            System.out.println("  Normalized hash: " + hash);
+            AppLogger.info("  Normalized hash: " + hash);
             double checkNorm = EmbeddingVectorUtils.magnitude(floatArray);
-            System.out.println("DEBUG After norm in matToByteArray: Magnitude = " + checkNorm);
+            AppLogger.info("DEBUG After norm in matToByteArray: Magnitude = " + checkNorm);
         }
         return result;
     }
@@ -215,38 +216,37 @@ public class DeepEmbeddingGenerator {
             System.err.println("DEBUG: " + label + " decoding failed");
             return;
         }
-        System.out.print("DEBUG " + label + " first 10 values: ");
+        AppLogger.info("DEBUG " + label + " first 10 values: ");
         for (int i = 0; i < Math.min(10, floatEmb.length); i++) {
-            System.out.print(String.format("%.6f ", floatEmb[i]));
+            AppLogger.info(String.format("%.6f ", floatEmb[i]));
         }
-        System.out.println();
-        System.out.println("| Magnitude: " + String.format("%.6f", EmbeddingVectorUtils.magnitude(floatEmb)));
+        AppLogger.info("| Magnitude: " + String.format("%.6f", EmbeddingVectorUtils.magnitude(floatEmb)));
     }
 
     private void logAlignedStats(Mat aligned) {
         if (!debugLogs) {
             return;
         }
-        System.out.println("=== STAGE 2: Blob Creation ===");
-        System.out.println("Aligned face stats:");
-        System.out.println("  Resolution: " + aligned.size());
-        System.out.println("  Mean: " + Core.mean(aligned));
+        AppLogger.info("=== STAGE 2: Blob Creation ===");
+        AppLogger.info("Aligned face stats:");
+        AppLogger.info("  Resolution: " + aligned.size());
+        AppLogger.info("  Mean: " + Core.mean(aligned));
         double[] minMax = getMinMax(aligned);
-        System.out.println("  Min/Max: " + minMax[0] + " / " + minMax[1]);
+        AppLogger.info("  Min/Max: " + minMax[0] + " / " + minMax[1]);
     }
 
     private void logEmbeddingStats(Mat embedding) {
         if (!debugLogs) {
             return;
         }
-        System.out.println("=== STAGE 3: Model Forward Pass ===");
-        System.out.println("Model output stats:");
-        System.out.println("  Shape: " + embedding.size());
-        System.out.println("  Mean: " + Core.mean(embedding));
+        AppLogger.info("=== STAGE 3: Model Forward Pass ===");
+        AppLogger.info("Model output stats:");
+        AppLogger.info("  Shape: " + embedding.size());
+        AppLogger.info("  Mean: " + Core.mean(embedding));
         double[] embMinMax = getMinMax(embedding);
-        System.out.println("  Min/Max: " + embMinMax[0] + " / " + embMinMax[1]);
+        AppLogger.info("  Min/Max: " + embMinMax[0] + " / " + embMinMax[1]);
         double[] first10 = getFirstN(embedding, 10);
-        System.out.println("  First 10 values: " + java.util.Arrays.toString(first10));
+        AppLogger.info("  First 10 values: " + java.util.Arrays.toString(first10));
     }
 
     private void printBlobStats(Mat blob, String label) {
@@ -254,16 +254,16 @@ public class DeepEmbeddingGenerator {
             return;
         }
         if (blob == null || blob.empty()) {
-            System.out.println(label + ": blob is null or empty");
+            AppLogger.info(label + ": blob is null or empty");
             return;
         }
-        System.out.println(label + ":");
-        System.out.println("  Dims: " + blob.dims());
-        System.out.println("  Size: " + blob.size());
+        AppLogger.info(label + ":");
+        AppLogger.info("  Dims: " + blob.dims());
+        AppLogger.info("  Size: " + blob.size());
 
         int totalElements = (int) blob.total();
         if (totalElements <= 0) {
-            System.out.println("  No data to analyze (totalElements=" + totalElements + ")");
+            AppLogger.info("  No data to analyze (totalElements=" + totalElements + ")");
             return;
         }
 
@@ -273,7 +273,7 @@ public class DeepEmbeddingGenerator {
         int spatialSize = (int) (inputSize.width * inputSize.height);
         int channels = (spatialSize > 0) ? Math.max(totalElements / spatialSize, 1) : 3;
 
-        System.out.println("  Total elements: " + totalElements + ", Channels (estimated): " + channels);
+        AppLogger.info("  Total elements: " + totalElements + ", Channels (estimated): " + channels);
 
         for (int c = 0; c < channels; c++) {
             double sum = 0.0;
@@ -299,7 +299,7 @@ public class DeepEmbeddingGenerator {
             }
 
             if (count == 0) {
-                System.out.println("    Channel " + c + ": no data");
+                AppLogger.info("    Channel " + c + ": no data");
                 continue;
             }
 

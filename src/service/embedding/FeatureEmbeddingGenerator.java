@@ -12,7 +12,7 @@ import org.opencv.core.Rect;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgproc.Moments;
-
+import config.*;
 /**
  * Provides the hand-crafted feature embedding fallback when deep learning model is unavailable.
  */
@@ -68,7 +68,7 @@ public class FeatureEmbeddingGenerator {
             features[i] /= norm;
         }
         if (debugLogs) {
-            System.out.println("DEBUG After norm in doubleArrayToByteArray: Magnitude = " + EmbeddingVectorUtils.magnitude(features));
+            AppLogger.info("DEBUG After norm in doubleArrayToByteArray: Magnitude = " + EmbeddingVectorUtils.magnitude(features));
         }
         return EmbeddingVectorUtils.doublesToBytes(features);
     }
@@ -204,12 +204,11 @@ public class FeatureEmbeddingGenerator {
             System.err.println("DEBUG: " + label + " decoding failed");
             return;
         }
-        System.out.print("DEBUG " + label + " first 10 values: ");
+        AppLogger.info("DEBUG " + label + " first 10 values: ");
         for (int i = 0; i < Math.min(10, doubleEmb.length); i++) {
             System.out.print(String.format("%.6f ", doubleEmb[i]));
         }
-        System.out.println();
-        System.out.println("| Magnitude: " + String.format("%.6f", EmbeddingVectorUtils.magnitude(doubleEmb)));
+        AppLogger.info("| Magnitude: " + String.format("%.6f", EmbeddingVectorUtils.magnitude(doubleEmb)));
     }
 }
 

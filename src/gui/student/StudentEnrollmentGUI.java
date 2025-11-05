@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import service.student.StudentManager;
 import gui.homepage.UIComponents;
-
+import config.*;
 public class StudentEnrollmentGUI extends JFrame {
     private StudentManager studentManager;
     private JTable studentTable;
@@ -49,7 +49,7 @@ public class StudentEnrollmentGUI extends JFrame {
             this.searchFilter = new StudentSearchFilter();
             this.statistics = new StudentStatistics(studentManager);
             this.actionHandler = new StudentActionHandler(this, studentManager, tableController, searchFilter);
-            System.out.println("All services initialized successfully");
+            AppLogger.info("All services initialized successfully");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
                     "Error initializing services: " + e.getMessage(),

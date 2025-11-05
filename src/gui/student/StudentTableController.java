@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import model.FaceImage;
 import service.student.StudentManager;
-
+import config.*;
 public class StudentTableController {
     private StudentManager studentManager;
     private DefaultTableModel tableModel;
@@ -24,7 +24,7 @@ public class StudentTableController {
 
             tableModel.setRowCount(0);
             List<Student> students = studentManager.getAllStudents();
-            System.out.println("DEBUG StudentTableController.loadStudentData(): Loaded " + students.size() + " students from database");
+            AppLogger.info("DEBUG StudentTableController.loadStudentData(): Loaded " + students.size() + " students from database");
 
             for (Student student : students) {
                 int imageCount = student.getFaceData() != null ? student.getFaceData().getImages().size() : 0;
@@ -40,7 +40,7 @@ public class StudentTableController {
                 tableModel.addRow(rowData);
             }
 
-            System.out.println("DEBUG StudentTableController.loadStudentData(): Added " + tableModel.getRowCount() + " rows to table model");
+            AppLogger.info("DEBUG StudentTableController.loadStudentData(): Added " + tableModel.getRowCount() + " rows to table model");
 
         } catch (Exception e) {
             statusLabel.setText("Error loading data");
@@ -53,13 +53,13 @@ public class StudentTableController {
     }
 
     public void refreshTable() {
-        System.out.println("DEBUG StudentTableController.refreshTable(): Refreshing table");
+        AppLogger.info("DEBUG StudentTableController.refreshTable(): Refreshing table");
         if (tableModel != null) {
-            System.out.println("DEBUG StudentTableController.refreshTable(): tableModel is not null, calling loadStudentData");
+            AppLogger.info("DEBUG StudentTableController.refreshTable(): tableModel is not null, calling loadStudentData");
             loadStudentData(tableModel, new JLabel()); // Simplified refresh
-            System.out.println("DEBUG StudentTableController.refreshTable(): loadStudentData completed");
+            AppLogger.info("DEBUG StudentTableController.refreshTable(): loadStudentData completed");
         } else {
-            System.out.println("DEBUG StudentTableController.refreshTable(): tableModel is null!");
+            AppLogger.info("DEBUG StudentTableController.refreshTable(): tableModel is null!");
         }
     }
 

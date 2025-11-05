@@ -3,6 +3,7 @@ package entity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import config.*;
 
 public class Session extends Entity{
     private String sessionId;
@@ -26,11 +27,11 @@ public class Session extends Entity{
     }
     public void open(){
         this.active = true;
-        System.out.println("Session " + this.name + " is now open.");
+        AppLogger.info("Session " + this.name + " is now open.");
     }
     public void close(){
         this.active = false;
-        System.out.println("Session " + this.name + " is now closed.");
+        AppLogger.info("Session " + this.name + " is now closed.");
     }
     public void addNewStudent(Student student){
         this.studentRoster.add(new SessionStudent(this, student));
