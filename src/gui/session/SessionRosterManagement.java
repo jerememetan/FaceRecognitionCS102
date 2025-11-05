@@ -62,7 +62,7 @@ public class SessionRosterManagement extends JDialog {
         locationLabel = new JLabel(session.getLocation());
         infoPanel.add(locationLabel);
         
-        editButton = new JButton("Edit Session Details");
+        editButton = UIComponents.createAccentButton("Edit Session Details", new Color(59, 130, 246));
         editButton.setFocusPainted(false);
         editButton.addActionListener(e -> editSessionDetails());
         infoPanel.add(editButton);

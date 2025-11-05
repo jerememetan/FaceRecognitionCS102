@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import config.*;
-
+import gui.*;
 public class LoginPage extends JFrame{
     private JTextField idField;
     private JPasswordField passwordField;
@@ -34,7 +34,7 @@ public class LoginPage extends JFrame{
         add(formPanel);
         
         //login button
-        loginButton = new JButton("Login");
+        loginButton = UIComponents.createAccentButton("Login", new Color(59, 130, 246));
         // create the button panel
         JPanel buttonPanel = new JPanel(new BorderLayout());
         buttonPanel.add(loginButton, BorderLayout.CENTER);

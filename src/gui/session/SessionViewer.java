@@ -12,7 +12,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-
+import gui.homepage.*;
 import service.roster.RosterManager;
 import service.session.SessionManager;
 import config.*;
@@ -90,9 +90,9 @@ public class SessionViewer extends JFrame {
 
         searchPanel.add(searchField);
         topPanel.add(searchPanel, BorderLayout.WEST);
-        refreshButton = new JButton("Refresh");
-        createButton = new JButton("➕ Create Session");
-        deleteButton = new JButton("🗑️ Delete Session");
+        refreshButton = UIComponents.createAccentButton("Refresh", new Color(59, 130, 246) );
+        createButton = UIComponents.createAccentButton("➕ Create Session", new Color(59, 130, 246)) ;
+        deleteButton = UIComponents.createAccentButton("🗑️ Delete Session", new Color(239, 68, 68));
 
         topPanel.add(refreshButton);
         topPanel.add(createButton);

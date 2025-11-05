@@ -90,7 +90,7 @@ public class StudentEnrollmentGUI extends JFrame {
         searchField = new JTextField(20);
         searchField.addActionListener(e -> searchFilter.performSearch(searchField.getText().trim(), rowSorter, statusLabel));
 
-        JButton searchButton = new JButton("Search");
+        JButton searchButton = UIComponents.createAccentButton("Search", new Color(59, 130, 246));
         searchButton.addActionListener(e -> searchFilter.performSearch(searchField.getText().trim(), rowSorter, statusLabel));
 
         JButton clearButton = new JButton("Clear");
@@ -255,8 +255,7 @@ public class StudentEnrollmentGUI extends JFrame {
     exportPanel.add(exportCsvButton);
     exportPanel.add(exportExcelButton);
     exportPanel.add(exportPdfButton);
-
-        JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+    JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         statusLabel = new JLabel("Ready");
         statusLabel.setFont(statusLabel.getFont().deriveFont(Font.BOLD));
         statusPanel.add(new JLabel("Status: "));

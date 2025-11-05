@@ -5,7 +5,8 @@ import config.AppLogger;
 import config.IConfigChangeListener;
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
+import gui.homepage.UIComponents;
+// import javax.swing.event.ChangeEvent; (not needed)
 
 public class FaceCropSettingsPanel extends JPanel {
 
@@ -13,9 +14,8 @@ public class FaceCropSettingsPanel extends JPanel {
     private final JLabel footerLabel;
 
     private final Color PRIMARY = new Color(59, 130, 246);
-    private final Color PRIMARY_HOVER = new Color(37, 99, 235);
+    // hover variants no longer required; UIComponents handles hover internally
     private final Color DANGER = new Color(239, 68, 68);
-    private final Color DANGER_HOVER = new Color(220, 38, 38);
 
     private static final int FOOTER_DURATION_MS = 3000;
 
@@ -245,7 +245,7 @@ public class FaceCropSettingsPanel extends JPanel {
         btnRow.setOpaque(false);
 
         if (Boolean.TRUE.equals(showCaptureButton)) {
-            JButton capture = createStyledButton("Capture Face (Save to DB)", DANGER, DANGER_HOVER);
+            JButton capture = UIComponents.createAccentButton("Capture Face (Save to DB)", DANGER);
             capture.addActionListener(a -> {
                 if (listener != null) {
                     listener.onCaptureFaceRequested();
@@ -257,7 +257,7 @@ public class FaceCropSettingsPanel extends JPanel {
             btnRow.add(capture);
         }
 
-        JButton saveButton = createStyledButton("Save Detection Settings", PRIMARY, PRIMARY_HOVER);
+        JButton saveButton = UIComponents.createAccentButton("Save Detection Settings", PRIMARY);
         saveButton.addActionListener(a -> {
             if (listener != null) {
                 listener.onSaveSettingsRequested();
@@ -287,33 +287,7 @@ public class FaceCropSettingsPanel extends JPanel {
         return p;
     }
 
-    private JButton createStyledButton(String text, Color base, Color hover) {
-        JButton btn = new JButton(text);
-        btn.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-        btn.setForeground(Color.WHITE);
-        btn.setBackground(base);
-        btn.setOpaque(true);
-        // Ensure LAF paints the background
-        btn.setContentAreaFilled(true);
-        // optional: keep border minimal — adjust as needed
-        btn.setBorderPainted(false);
-        btn.setBorder(BorderFactory.createEmptyBorder(8, 14, 8, 14));
-        btn.setFocusPainted(false);
-        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseEntered(java.awt.event.MouseEvent e) {
-                btn.setBackground(hover);
-            }
-
-            @Override
-            public void mouseExited(java.awt.event.MouseEvent e) {
-                btn.setBackground(base);
-            }
-        });
-
-        return btn;
-    }
+    // createStyledButton removed: use UIComponents.createAccentButton(...) instead
 
     private void showFooter(String text) {
         footerLabel.setText(text);

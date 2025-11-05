@@ -12,7 +12,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
-
+import gui.homepage.*;
 //GUI class to view/modify details in a Roster entity
 public class RosterDetailsManagement extends JDialog {
 
@@ -57,7 +57,7 @@ public class RosterDetailsManagement extends JDialog {
         infoPanel.add(locationLabel);
 
         // Edit button to modify roster details
-        editButton = new JButton("Edit Roster Details");
+        editButton = UIComponents.createAccentButton("Edit Roster Details", new Color(59, 130, 246));
         editButton.setFocusPainted(false);
         editButton.addActionListener(e -> editRosterDetails());
         infoPanel.add(editButton);
@@ -87,8 +87,8 @@ public class RosterDetailsManagement extends JDialog {
 
         // Buttons Panel
         JPanel buttonPanel = new JPanel();
-        addButton = new JButton("Add Student");
-        removeButton = new JButton("Remove Student");
+        addButton = UIComponents.createAccentButton("Add Student", new Color(59, 130, 246));
+        removeButton = UIComponents.createAccentButton("Remove Student", new Color(59, 130, 246));
 
         addButton.addActionListener(e -> {
             addStudent();

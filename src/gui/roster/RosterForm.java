@@ -7,7 +7,7 @@ import java.awt.event.*;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-
+import gui.homepage.*;
 import service.roster.RosterManager;
 import entity.Roster;
 
@@ -48,8 +48,8 @@ public class RosterForm extends JDialog {
         locationField = new JTextField();
         formPanel.add(locationField);
 
-        submitButton = new JButton("Save Roster");
-        cancelButton = new JButton("Cancel");
+        submitButton = UIComponents.createAccentButton("Save Roster", new Color(59, 246, 59));
+        cancelButton = UIComponents.createAccentButton("Cancel", new Color(239, 68, 68) );
         formPanel.add(submitButton);
         formPanel.add(cancelButton);
 

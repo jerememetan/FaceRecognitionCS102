@@ -10,13 +10,14 @@ import javax.swing.SwingUtilities;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import gui.session.SessionViewer;
-
+import javax.swing.*;
+import java.awt.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Font;
 import service.roster.RosterManager;
 import service.session.SessionManager;
-
+import gui.homepage.*;
 //Landing Page upon selecting "Sessions" from "MainDashboard.java"
 //Users choose to either manage rosters or manage sessions
 public class RosterSessionMenu extends JFrame{
@@ -45,8 +46,8 @@ public class RosterSessionMenu extends JFrame{
         buttonPanel.setLayout(new GridLayout(2, 1, 20, 30));
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(40, 200, 40, 200)); // side margins
 
-        JButton manageRosterButton = new JButton("Manage Roster");
-        JButton viewSessionsButton = new JButton("View Sessions");
+        JButton manageRosterButton = UIComponents.createAccentButton("Manage Roster", new Color(59, 130, 246));
+        JButton viewSessionsButton = UIComponents.createAccentButton("View Sessions", new Color(59, 130, 246));
 
         manageRosterButton.setFont(new Font("SansSerif", Font.BOLD, 22));
         viewSessionsButton.setFont(new Font("SansSerif", Font.BOLD, 22));

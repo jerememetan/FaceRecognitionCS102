@@ -6,7 +6,7 @@ import entity.Roster;
 import entity.RosterStudent;
 import service.session.SessionManager;
 import service.roster.RosterManager;
-
+import gui.homepage.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -87,8 +87,8 @@ public class SessionForm extends JDialog {
         locationField = new JTextField();
         formPanel.add(locationField);
 
-        submitButton = new JButton(sessionToEdit == null ? "Create Session" : "Save Changes");
-        cancelButton = new JButton("Cancel");
+        submitButton = UIComponents.createAccentButton(sessionToEdit == null ? "Create Session" : "Save Changes", new Color(59, 130, 246));
+        cancelButton = UIComponents.createAccentButton("Cancel",  new Color(239, 68, 68));
         formPanel.add(submitButton);
         formPanel.add(cancelButton);
 

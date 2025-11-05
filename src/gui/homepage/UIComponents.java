@@ -71,7 +71,6 @@ public final class UIComponents {
 	// Create an accent (action) button used in headers and dialogs
 	public static JButton createAccentButton(String text, Color color) {
 		JButton button = new JButton(text);
-
 		// Try to pick an emoji-capable font if available on the system.
 		String[] preferredEmojiFonts = {"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Apple Color Emoji", "EmojiOne Color", "Segoe UI"};
 		String chosenFamily = null;
