@@ -1,0 +1,3919 @@
+[2025-11-04 12:55:07] INFO: Application Logger Initialized.
+[2025-11-04 12:55:07] INFO: Configuration and core components loaded.
+[2025-11-04 12:55:07] INFO: app.properties normalized (55 entries).
+[2025-11-04 12:55:07] INFO: Configuration loaded from file: C:\Users\nicho\Projects\FaceRecognitionCS102\app.properties
+[2025-11-04 12:55:07] INFO: Configuration file loaded
+[2025-11-04 12:55:07] INFO: MyGUIProgram Started!
+[2025-11-04 12:55:29] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-11-04 12:55:29] INFO: ￢ﾜﾅ OpenFace nn4.small2.v1 model loaded successfully
+[2025-11-04 12:55:29] INFO: ￢ﾜﾓ FaceAligner initialized with fallback eye detector
+[2025-11-04 12:55:29] INFO: === Folder debug ===
+[2025-11-04 12:55:29] INFO: Found folder: C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S00000_Nicholas
+[2025-11-04 12:55:29] INFO:   Contains: 16 items
+[2025-11-04 12:55:29] INFO:   Display label: S00000 - Nicholas
+[2025-11-04 12:55:29] INFO: Found folder: C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S00001_jereme
+[2025-11-04 12:55:29] INFO:   Contains: 36 items
+[2025-11-04 12:55:29] INFO:   Display label: S00001 - jereme
+[2025-11-04 12:55:29] INFO: Found folder: C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S13234_Jin_Rae
+[2025-11-04 12:55:29] INFO:   Contains: 22 items
+[2025-11-04 12:55:29] INFO:   Display label: S13234 - Jin_Rae
+[2025-11-04 12:55:29] INFO: Found folder: C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S55555_Tiffany
+[2025-11-04 12:55:29] INFO:   Contains: 26 items
+[2025-11-04 12:55:29] INFO:   Display label: S55555 - Tiffany
+[2025-11-04 12:55:29] INFO: Found folder: C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S88888_Cavin
+[2025-11-04 12:55:29] INFO:   Contains: 22 items
+[2025-11-04 12:55:29] INFO:   Display label: S88888 - Cavin
+[2025-11-04 12:55:29] INFO: Found folder: C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S99998_Kim_Jun_Un
+[2025-11-04 12:55:29] INFO:   Contains: 30 items
+[2025-11-04 12:55:29] INFO:   Display label: S99998 - Kim_Jun_Un
+[2025-11-04 12:55:29] INFO: Found folder: C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S99999_Tonald_Drump
+[2025-11-04 12:55:29] INFO:   Contains: 36 items
+[2025-11-04 12:55:29] INFO:   Display label: S99999 - Tonald_Drump
+[2025-11-04 12:55:29] INFO: ====================
+[2025-11-04 12:55:29] INFO: Person S00000 - Nicholas: tightness=0.903, stdDev=0.062, absThresh=0.610, margin=0.110
+[2025-11-04 12:55:29] INFO: Person S00001 - jereme: tightness=0.831, stdDev=0.033, absThresh=0.617, margin=0.117
+[2025-11-04 12:55:29] INFO: Person S13234 - Jin_Rae: tightness=0.942, stdDev=0.009, absThresh=0.606, margin=0.106
+[2025-11-04 12:55:29] INFO: Person S55555 - Tiffany: tightness=0.864, stdDev=0.039, absThresh=0.614, margin=0.114
+[2025-11-04 12:55:29] INFO:   [Glasses Mode] Detected high variation (stdDev=0.122) - relaxed thresholds by 11.1%
+[2025-11-04 12:55:29] INFO: Person S88888 - Cavin: tightness=0.800, stdDev=0.122, absThresh=0.554, margin=0.105
+[2025-11-04 12:55:29] INFO:   [Glasses Mode] Detected high variation (stdDev=0.188) - relaxed thresholds by 12.0%
+[2025-11-04 12:55:29] INFO: Person S99998 - Kim_Jun_Un: tightness=0.641, stdDev=0.188, absThresh=0.564, margin=0.121
+[2025-11-04 12:55:29] INFO: Person S99999 - Tonald_Drump: tightness=0.632, stdDev=0.102, absThresh=0.637, margin=0.137
+[2025-11-04 12:55:29] INFO: DNN face detector loaded successfully for recognition
+[2025-11-04 12:55:29] INFO: Attempting camera index 0 with DSHOW backend...
+[2025-11-04 12:55:31] INFO: Camera opened successfully: index 0 with DSHOW backend
+[2025-11-04 12:55:33] INFO: Camera configured: 640x480 @ 30fps (MJPEG: yes)
+[2025-11-04 12:55:33] INFO: Camera initialized successfully
+[2025-11-04 12:55:36] INFO: [Recognition] Scores: S00000 - Nicholas=0.525 S00001 - jereme=0.511 S13234 - Jin_Rae=0.714 S55555 - Tiffany=0.581 S88888 - Cavin=0.722 S99998 - Kim_Jun_Un=0.779 S99999 - Tonald_Drump=0.692 
+[2025-11-04 12:55:36] INFO: [Decision] Best=S99998 - Kim_Jun_Un(0.779), 2nd=0.722, Discriminative=0.654, AvgNeg=0.624
+[2025-11-04 12:55:36] INFO: [Thresholds] Abs=0.564, Margin=0.121(15.5%), RelMargin=7.3%, Tightness=0.641, StdDev=0.188
+[2025-11-04 12:55:36] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:36] INFO: true
+[2025-11-04 12:55:36] INFO: , AbsMargin=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: , RelMargin=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: (
+[2025-11-04 12:55:36] INFO: 7.3
+[2025-11-04 12:55:36] INFO: %
+[2025-11-04 12:55:36] INFO: ), StrongMargin=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: (
+[2025-11-04 12:55:36] INFO: 12.0
+[2025-11-04 12:55:36] INFO: %
+[2025-11-04 12:55:36] INFO: ), Discrim=
+[2025-11-04 12:55:36] INFO: true
+[2025-11-04 12:55:36] INFO: , Consist=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: (
+[2025-11-04 12:55:36] INFO: 0
+[2025-11-04 12:55:36] INFO: /
+[2025-11-04 12:55:36] INFO: 7
+[2025-11-04 12:55:36] INFO: )
+[2025-11-04 12:55:36] INFO: [Recognition] Scores: S00000 - Nicholas=0.369 S00001 - jereme=0.392 S13234 - Jin_Rae=0.811 S55555 - Tiffany=0.639 S88888 - Cavin=0.656 S99998 - Kim_Jun_Un=0.731 S99999 - Tonald_Drump=0.811 
+[2025-11-04 12:55:36] INFO: [Decision] Best=S99999 - Tonald_Drump(0.811), 2nd=0.811, Discriminative=0.691, AvgNeg=0.600
+[2025-11-04 12:55:36] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.9%), RelMargin=0.1%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:36] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:36] INFO: true
+[2025-11-04 12:55:36] INFO: , AbsMargin=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: , RelMargin=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: (
+[2025-11-04 12:55:36] INFO: 0.1
+[2025-11-04 12:55:36] INFO: %
+[2025-11-04 12:55:36] INFO: ), StrongMargin=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: (
+[2025-11-04 12:55:36] INFO: 12.0
+[2025-11-04 12:55:36] INFO: %
+[2025-11-04 12:55:36] INFO: ), Discrim=
+[2025-11-04 12:55:36] INFO: true
+[2025-11-04 12:55:36] INFO: , Consist=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: (
+[2025-11-04 12:55:36] INFO: 0
+[2025-11-04 12:55:36] INFO: /
+[2025-11-04 12:55:36] INFO: 7
+[2025-11-04 12:55:36] INFO: )
+[2025-11-04 12:55:36] INFO: [Recognition] Scores: S00000 - Nicholas=0.322 S00001 - jereme=0.332 S13234 - Jin_Rae=0.739 S55555 - Tiffany=0.564 S88888 - Cavin=0.647 S99998 - Kim_Jun_Un=0.667 S99999 - Tonald_Drump=0.767 
+[2025-11-04 12:55:36] INFO: [Decision] Best=S99999 - Tonald_Drump(0.767), 2nd=0.739, Discriminative=0.658, AvgNeg=0.545
+[2025-11-04 12:55:36] INFO: [Thresholds] Abs=0.637, Margin=0.137(17.8%), RelMargin=3.7%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:36] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:36] INFO: true
+[2025-11-04 12:55:36] INFO: , AbsMargin=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: , RelMargin=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: (
+[2025-11-04 12:55:36] INFO: 3.7
+[2025-11-04 12:55:36] INFO: %
+[2025-11-04 12:55:36] INFO: ), StrongMargin=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: (
+[2025-11-04 12:55:36] INFO: 12.0
+[2025-11-04 12:55:36] INFO: %
+[2025-11-04 12:55:36] INFO: ), Discrim=
+[2025-11-04 12:55:36] INFO: true
+[2025-11-04 12:55:36] INFO: , Consist=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: (
+[2025-11-04 12:55:36] INFO: 0
+[2025-11-04 12:55:36] INFO: /
+[2025-11-04 12:55:36] INFO: 7
+[2025-11-04 12:55:36] INFO: )
+[2025-11-04 12:55:36] INFO: [Recognition] Scores: S00000 - Nicholas=0.331 S00001 - jereme=0.357 S13234 - Jin_Rae=0.830 S55555 - Tiffany=0.584 S88888 - Cavin=0.613 S99998 - Kim_Jun_Un=0.669 S99999 - Tonald_Drump=0.833 
+[2025-11-04 12:55:36] INFO: [Decision] Best=S99999 - Tonald_Drump(0.833), 2nd=0.830, Discriminative=0.720, AvgNeg=0.564
+[2025-11-04 12:55:36] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.4%), RelMargin=0.4%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:36] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:36] INFO: true
+[2025-11-04 12:55:36] INFO: , AbsMargin=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: , RelMargin=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: (
+[2025-11-04 12:55:36] INFO: 0.4
+[2025-11-04 12:55:36] INFO: %
+[2025-11-04 12:55:36] INFO: ), StrongMargin=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: (
+[2025-11-04 12:55:36] INFO: 12.0
+[2025-11-04 12:55:36] INFO: %
+[2025-11-04 12:55:36] INFO: ), Discrim=
+[2025-11-04 12:55:36] INFO: true
+[2025-11-04 12:55:36] INFO: , Consist=
+[2025-11-04 12:55:36] INFO: false
+[2025-11-04 12:55:36] INFO: (
+[2025-11-04 12:55:36] INFO: 0
+[2025-11-04 12:55:36] INFO: /
+[2025-11-04 12:55:36] INFO: 7
+[2025-11-04 12:55:36] INFO: )
+[2025-11-04 12:55:37] INFO: [Recognition] Scores: S00000 - Nicholas=0.328 S00001 - jereme=0.327 S13234 - Jin_Rae=0.754 S55555 - Tiffany=0.542 S88888 - Cavin=0.631 S99998 - Kim_Jun_Un=0.661 S99999 - Tonald_Drump=0.776 
+[2025-11-04 12:55:37] INFO: [Decision] Best=S99999 - Tonald_Drump(0.776), 2nd=0.754, Discriminative=0.667, AvgNeg=0.541
+[2025-11-04 12:55:37] INFO: [Thresholds] Abs=0.637, Margin=0.137(17.6%), RelMargin=2.8%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:37] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , AbsMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: , RelMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 2.8
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), StrongMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 12.0
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), Discrim=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , Consist=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 0
+[2025-11-04 12:55:37] INFO: /
+[2025-11-04 12:55:37] INFO: 7
+[2025-11-04 12:55:37] INFO: )
+[2025-11-04 12:55:37] INFO: [Recognition] Scores: S00000 - Nicholas=0.323 S00001 - jereme=0.322 S13234 - Jin_Rae=0.764 S55555 - Tiffany=0.612 S88888 - Cavin=0.647 S99998 - Kim_Jun_Un=0.657 S99999 - Tonald_Drump=0.803 
+[2025-11-04 12:55:37] INFO: [Decision] Best=S99999 - Tonald_Drump(0.803), 2nd=0.764, Discriminative=0.692, AvgNeg=0.554
+[2025-11-04 12:55:37] INFO: [Thresholds] Abs=0.637, Margin=0.137(17.0%), RelMargin=4.8%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:37] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , AbsMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: , RelMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 4.8
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), StrongMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 12.0
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), Discrim=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , Consist=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 0
+[2025-11-04 12:55:37] INFO: /
+[2025-11-04 12:55:37] INFO: 7
+[2025-11-04 12:55:37] INFO: )
+[2025-11-04 12:55:37] INFO: [Recognition] Scores: S00000 - Nicholas=0.305 S00001 - jereme=0.322 S13234 - Jin_Rae=0.771 S55555 - Tiffany=0.595 S88888 - Cavin=0.637 S99998 - Kim_Jun_Un=0.694 S99999 - Tonald_Drump=0.830 
+[2025-11-04 12:55:37] INFO: [Decision] Best=S99999 - Tonald_Drump(0.830), 2nd=0.771, Discriminative=0.720, AvgNeg=0.554
+[2025-11-04 12:55:37] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.5%), RelMargin=7.2%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:37] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , AbsMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: , RelMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 7.2
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), StrongMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 12.0
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), Discrim=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , Consist=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 0
+[2025-11-04 12:55:37] INFO: /
+[2025-11-04 12:55:37] INFO: 7
+[2025-11-04 12:55:37] INFO: )
+[2025-11-04 12:55:37] INFO: [Recognition] Scores: S00000 - Nicholas=0.425 S00001 - jereme=0.351 S13234 - Jin_Rae=0.813 S55555 - Tiffany=0.639 S88888 - Cavin=0.640 S99998 - Kim_Jun_Un=0.667 S99999 - Tonald_Drump=0.818 
+[2025-11-04 12:55:37] INFO: [Decision] Best=S99999 - Tonald_Drump(0.818), 2nd=0.813, Discriminative=0.700, AvgNeg=0.589
+[2025-11-04 12:55:37] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.7%), RelMargin=0.6%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:37] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , AbsMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: , RelMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 0.6
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), StrongMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 12.0
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), Discrim=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , Consist=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 0
+[2025-11-04 12:55:37] INFO: /
+[2025-11-04 12:55:37] INFO: 7
+[2025-11-04 12:55:37] INFO: )
+[2025-11-04 12:55:37] INFO: [Recognition] Scores: S00000 - Nicholas=0.319 S00001 - jereme=0.330 S13234 - Jin_Rae=0.804 S55555 - Tiffany=0.602 S88888 - Cavin=0.624 S99998 - Kim_Jun_Un=0.674 S99999 - Tonald_Drump=0.825 
+[2025-11-04 12:55:37] INFO: [Decision] Best=S99999 - Tonald_Drump(0.825), 2nd=0.804, Discriminative=0.714, AvgNeg=0.559
+[2025-11-04 12:55:37] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.6%), RelMargin=2.6%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:37] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , AbsMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: , RelMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 2.6
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), StrongMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 12.0
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), Discrim=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , Consist=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 0
+[2025-11-04 12:55:37] INFO: /
+[2025-11-04 12:55:37] INFO: 7
+[2025-11-04 12:55:37] INFO: )
+[2025-11-04 12:55:37] INFO: [Recognition] Scores: S00000 - Nicholas=0.315 S00001 - jereme=0.327 S13234 - Jin_Rae=0.817 S55555 - Tiffany=0.695 S88888 - Cavin=0.597 S99998 - Kim_Jun_Un=0.655 S99999 - Tonald_Drump=0.830 
+[2025-11-04 12:55:37] INFO: [Decision] Best=S99999 - Tonald_Drump(0.830), 2nd=0.817, Discriminative=0.717, AvgNeg=0.568
+[2025-11-04 12:55:37] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.5%), RelMargin=1.5%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:37] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , AbsMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: , RelMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 1.5
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), StrongMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 12.0
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), Discrim=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , Consist=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 0
+[2025-11-04 12:55:37] INFO: /
+[2025-11-04 12:55:37] INFO: 7
+[2025-11-04 12:55:37] INFO: )
+[2025-11-04 12:55:37] INFO: [Recognition] Scores: S00000 - Nicholas=0.293 S00001 - jereme=0.320 S13234 - Jin_Rae=0.832 S55555 - Tiffany=0.685 S88888 - Cavin=0.576 S99998 - Kim_Jun_Un=0.657 S99999 - Tonald_Drump=0.808 
+[2025-11-04 12:55:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.832), 2nd=0.808, Discriminative=0.721, AvgNeg=0.557
+[2025-11-04 12:55:37] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=2.9%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:37] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , AbsMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: , RelMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 2.9
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), StrongMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 12.0
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), Discrim=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , Consist=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 0
+[2025-11-04 12:55:37] INFO: /
+[2025-11-04 12:55:37] INFO: 7
+[2025-11-04 12:55:37] INFO: )
+[2025-11-04 12:55:37] INFO: [Recognition] Scores: S00000 - Nicholas=0.304 S00001 - jereme=0.322 S13234 - Jin_Rae=0.873 S55555 - Tiffany=0.738 S88888 - Cavin=0.571 S99998 - Kim_Jun_Un=0.624 S99999 - Tonald_Drump=0.779 
+[2025-11-04 12:55:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.873), 2nd=0.779, Discriminative=0.761, AvgNeg=0.556
+[2025-11-04 12:55:37] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.1%), RelMargin=10.7%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:37] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , AbsMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: , RelMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 10.7
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), StrongMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 12.0
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), Discrim=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , Consist=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 0
+[2025-11-04 12:55:37] INFO: /
+[2025-11-04 12:55:37] INFO: 7
+[2025-11-04 12:55:37] INFO: )
+[2025-11-04 12:55:37] INFO: [Recognition] Scores: S00000 - Nicholas=0.302 S00001 - jereme=0.323 S13234 - Jin_Rae=0.827 S55555 - Tiffany=0.678 S88888 - Cavin=0.589 S99998 - Kim_Jun_Un=0.623 S99999 - Tonald_Drump=0.751 
+[2025-11-04 12:55:37] INFO: [Decision] Best=S13234 - Jin_Rae(0.827), 2nd=0.751, Discriminative=0.718, AvgNeg=0.544
+[2025-11-04 12:55:37] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.8%), RelMargin=9.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:37] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , AbsMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: , RelMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 9.1
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), StrongMargin=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 12.0
+[2025-11-04 12:55:37] INFO: %
+[2025-11-04 12:55:37] INFO: ), Discrim=
+[2025-11-04 12:55:37] INFO: true
+[2025-11-04 12:55:37] INFO: , Consist=
+[2025-11-04 12:55:37] INFO: false
+[2025-11-04 12:55:37] INFO: (
+[2025-11-04 12:55:37] INFO: 0
+[2025-11-04 12:55:37] INFO: /
+[2025-11-04 12:55:37] INFO: 7
+[2025-11-04 12:55:37] INFO: )
+[2025-11-04 12:55:38] INFO: [Recognition] Scores: S00000 - Nicholas=0.279 S00001 - jereme=0.316 S13234 - Jin_Rae=0.837 S55555 - Tiffany=0.640 S88888 - Cavin=0.558 S99998 - Kim_Jun_Un=0.649 S99999 - Tonald_Drump=0.823 
+[2025-11-04 12:55:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.837), 2nd=0.823, Discriminative=0.728, AvgNeg=0.544
+[2025-11-04 12:55:38] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.6%), RelMargin=1.6%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:38] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , AbsMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: , RelMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 1.6
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), StrongMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 12.0
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), Discrim=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , Consist=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0
+[2025-11-04 12:55:38] INFO: /
+[2025-11-04 12:55:38] INFO: 7
+[2025-11-04 12:55:38] INFO: )
+[2025-11-04 12:55:38] INFO: [Recognition] Scores: S00000 - Nicholas=0.374 S00001 - jereme=0.382 S13234 - Jin_Rae=0.831 S55555 - Tiffany=0.635 S88888 - Cavin=0.641 S99998 - Kim_Jun_Un=0.709 S99999 - Tonald_Drump=0.822 
+[2025-11-04 12:55:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.831), 2nd=0.822, Discriminative=0.712, AvgNeg=0.594
+[2025-11-04 12:55:38] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=1.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:38] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , AbsMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: , RelMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 1.1
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), StrongMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 12.0
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), Discrim=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , Consist=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0
+[2025-11-04 12:55:38] INFO: /
+[2025-11-04 12:55:38] INFO: 7
+[2025-11-04 12:55:38] INFO: )
+[2025-11-04 12:55:38] INFO: [Recognition] Scores: S00000 - Nicholas=0.386 S00001 - jereme=0.354 S13234 - Jin_Rae=0.784 S55555 - Tiffany=0.606 S88888 - Cavin=0.691 S99998 - Kim_Jun_Un=0.678 S99999 - Tonald_Drump=0.809 
+[2025-11-04 12:55:38] INFO: [Decision] Best=S99999 - Tonald_Drump(0.809), 2nd=0.784, Discriminative=0.692, AvgNeg=0.583
+[2025-11-04 12:55:38] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.9%), RelMargin=3.1%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:38] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , AbsMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: , RelMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 3.1
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), StrongMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 12.0
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), Discrim=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , Consist=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0
+[2025-11-04 12:55:38] INFO: /
+[2025-11-04 12:55:38] INFO: 7
+[2025-11-04 12:55:38] INFO: )
+[2025-11-04 12:55:38] INFO: [Recognition] Scores: S00000 - Nicholas=0.301 S00001 - jereme=0.337 S13234 - Jin_Rae=0.793 S55555 - Tiffany=0.654 S88888 - Cavin=0.590 S99998 - Kim_Jun_Un=0.671 S99999 - Tonald_Drump=0.809 
+[2025-11-04 12:55:38] INFO: [Decision] Best=S99999 - Tonald_Drump(0.809), 2nd=0.793, Discriminative=0.698, AvgNeg=0.558
+[2025-11-04 12:55:38] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.9%), RelMargin=2.0%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:38] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , AbsMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: , RelMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 2.0
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), StrongMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 12.0
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), Discrim=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , Consist=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0
+[2025-11-04 12:55:38] INFO: /
+[2025-11-04 12:55:38] INFO: 7
+[2025-11-04 12:55:38] INFO: )
+[2025-11-04 12:55:38] INFO: [Recognition] Scores: S00000 - Nicholas=0.274 S00001 - jereme=0.296 S13234 - Jin_Rae=0.816 S55555 - Tiffany=0.627 S88888 - Cavin=0.569 S99998 - Kim_Jun_Un=0.651 S99999 - Tonald_Drump=0.827 
+[2025-11-04 12:55:38] INFO: [Decision] Best=S99999 - Tonald_Drump(0.827), 2nd=0.816, Discriminative=0.719, AvgNeg=0.539
+[2025-11-04 12:55:38] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.5%), RelMargin=1.3%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:38] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , AbsMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: , RelMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 1.3
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), StrongMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 12.0
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), Discrim=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , Consist=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0
+[2025-11-04 12:55:38] INFO: /
+[2025-11-04 12:55:38] INFO: 7
+[2025-11-04 12:55:38] INFO: )
+[2025-11-04 12:55:38] INFO: [Recognition] Scores: S00000 - Nicholas=0.237 S00001 - jereme=0.273 S13234 - Jin_Rae=0.835 S55555 - Tiffany=0.668 S88888 - Cavin=0.553 S99998 - Kim_Jun_Un=0.649 S99999 - Tonald_Drump=0.826 
+[2025-11-04 12:55:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.835), 2nd=0.826, Discriminative=0.728, AvgNeg=0.534
+[2025-11-04 12:55:38] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=1.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:38] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , AbsMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: , RelMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 1.1
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), StrongMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 12.0
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), Discrim=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , Consist=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0
+[2025-11-04 12:55:38] INFO: /
+[2025-11-04 12:55:38] INFO: 7
+[2025-11-04 12:55:38] INFO: )
+[2025-11-04 12:55:38] INFO: [Recognition] Scores: S00000 - Nicholas=0.432 S00001 - jereme=0.412 S13234 - Jin_Rae=0.798 S55555 - Tiffany=0.634 S88888 - Cavin=0.655 S99998 - Kim_Jun_Un=0.676 S99999 - Tonald_Drump=0.824 
+[2025-11-04 12:55:38] INFO: [Decision] Best=S99999 - Tonald_Drump(0.824), 2nd=0.798, Discriminative=0.704, AvgNeg=0.601
+[2025-11-04 12:55:38] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.6%), RelMargin=3.1%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:38] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , AbsMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: , RelMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 3.1
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), StrongMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 12.0
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), Discrim=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , Consist=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0
+[2025-11-04 12:55:38] INFO: /
+[2025-11-04 12:55:38] INFO: 7
+[2025-11-04 12:55:38] INFO: )
+[2025-11-04 12:55:38] INFO: [Recognition] Scores: S00000 - Nicholas=0.257 S00001 - jereme=0.270 S13234 - Jin_Rae=0.810 S55555 - Tiffany=0.685 S88888 - Cavin=0.565 S99998 - Kim_Jun_Un=0.000 S99999 - Tonald_Drump=0.808 
+[2025-11-04 12:55:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.810), 2nd=0.808, Discriminative=0.723, AvgNeg=0.431
+[2025-11-04 12:55:38] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.1%), RelMargin=0.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:38] INFO: [Performance] Pre-filter skipped 1/7 persons (14.3% speedup)
+[2025-11-04 12:55:38] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , AbsMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: , RelMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0.2
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), StrongMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 12.0
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), Discrim=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , Consist=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0
+[2025-11-04 12:55:38] INFO: /
+[2025-11-04 12:55:38] INFO: 7
+[2025-11-04 12:55:38] INFO: )
+[2025-11-04 12:55:38] INFO: [Recognition] Scores: S00000 - Nicholas=0.220 S00001 - jereme=0.235 S13234 - Jin_Rae=0.773 S55555 - Tiffany=0.641 S88888 - Cavin=0.549 S99998 - Kim_Jun_Un=0.609 S99999 - Tonald_Drump=0.775 
+[2025-11-04 12:55:38] INFO: [Decision] Best=S99999 - Tonald_Drump(0.775), 2nd=0.773, Discriminative=0.674, AvgNeg=0.505
+[2025-11-04 12:55:38] INFO: [Thresholds] Abs=0.637, Margin=0.137(17.7%), RelMargin=0.3%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:38] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , AbsMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: , RelMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0.3
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), StrongMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 12.0
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), Discrim=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , Consist=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0
+[2025-11-04 12:55:38] INFO: /
+[2025-11-04 12:55:38] INFO: 7
+[2025-11-04 12:55:38] INFO: )
+[2025-11-04 12:55:38] INFO: [Recognition] Scores: S00000 - Nicholas=0.336 S00001 - jereme=0.322 S13234 - Jin_Rae=0.765 S55555 - Tiffany=0.634 S88888 - Cavin=0.552 S99998 - Kim_Jun_Un=0.656 S99999 - Tonald_Drump=0.769 
+[2025-11-04 12:55:38] INFO: [Decision] Best=S99999 - Tonald_Drump(0.769), 2nd=0.765, Discriminative=0.660, AvgNeg=0.544
+[2025-11-04 12:55:38] INFO: [Thresholds] Abs=0.637, Margin=0.137(17.8%), RelMargin=0.6%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:38] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , AbsMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: , RelMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0.6
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), StrongMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 12.0
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), Discrim=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , Consist=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0
+[2025-11-04 12:55:38] INFO: /
+[2025-11-04 12:55:38] INFO: 7
+[2025-11-04 12:55:38] INFO: )
+[2025-11-04 12:55:38] INFO: [Recognition] Scores: S00000 - Nicholas=0.222 S00001 - jereme=0.228 S13234 - Jin_Rae=0.736 S55555 - Tiffany=0.654 S88888 - Cavin=0.537 S99998 - Kim_Jun_Un=0.000 S99999 - Tonald_Drump=0.728 
+[2025-11-04 12:55:38] INFO: [Decision] Best=S13234 - Jin_Rae(0.736), 2nd=0.728, Discriminative=0.657, AvgNeg=0.395
+[2025-11-04 12:55:38] INFO: [Thresholds] Abs=0.606, Margin=0.106(14.4%), RelMargin=1.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:38] INFO: [Performance] Pre-filter skipped 1/7 persons (14.3% speedup)
+[2025-11-04 12:55:38] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , AbsMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: , RelMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 1.1
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), StrongMargin=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 12.0
+[2025-11-04 12:55:38] INFO: %
+[2025-11-04 12:55:38] INFO: ), Discrim=
+[2025-11-04 12:55:38] INFO: true
+[2025-11-04 12:55:38] INFO: , Consist=
+[2025-11-04 12:55:38] INFO: false
+[2025-11-04 12:55:38] INFO: (
+[2025-11-04 12:55:38] INFO: 0
+[2025-11-04 12:55:38] INFO: /
+[2025-11-04 12:55:38] INFO: 7
+[2025-11-04 12:55:38] INFO: )
+[2025-11-04 12:55:39] INFO: [Recognition] Scores: S00000 - Nicholas=0.185 S00001 - jereme=0.212 S13234 - Jin_Rae=0.793 S55555 - Tiffany=0.636 S88888 - Cavin=0.513 S99998 - Kim_Jun_Un=0.638 S99999 - Tonald_Drump=0.778 
+[2025-11-04 12:55:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.793), 2nd=0.778, Discriminative=0.694, AvgNeg=0.494
+[2025-11-04 12:55:39] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.4%), RelMargin=1.8%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:39] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , AbsMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: , RelMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 1.8
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), StrongMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 12.0
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), Discrim=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , Consist=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 0
+[2025-11-04 12:55:39] INFO: /
+[2025-11-04 12:55:39] INFO: 7
+[2025-11-04 12:55:39] INFO: )
+[2025-11-04 12:55:39] INFO: [Recognition] Scores: S00000 - Nicholas=0.223 S00001 - jereme=0.273 S13234 - Jin_Rae=0.783 S55555 - Tiffany=0.669 S88888 - Cavin=0.513 S99998 - Kim_Jun_Un=0.604 S99999 - Tonald_Drump=0.768 
+[2025-11-04 12:55:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.783), 2nd=0.768, Discriminative=0.681, AvgNeg=0.508
+[2025-11-04 12:55:39] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.5%), RelMargin=1.8%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:39] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , AbsMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: , RelMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 1.8
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), StrongMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 12.0
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), Discrim=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , Consist=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 0
+[2025-11-04 12:55:39] INFO: /
+[2025-11-04 12:55:39] INFO: 7
+[2025-11-04 12:55:39] INFO: )
+[2025-11-04 12:55:39] INFO: [Recognition] Scores: S00000 - Nicholas=0.265 S00001 - jereme=0.302 S13234 - Jin_Rae=0.814 S55555 - Tiffany=0.645 S88888 - Cavin=0.518 S99998 - Kim_Jun_Un=0.632 S99999 - Tonald_Drump=0.821 
+[2025-11-04 12:55:39] INFO: [Decision] Best=S99999 - Tonald_Drump(0.821), 2nd=0.814, Discriminative=0.715, AvgNeg=0.529
+[2025-11-04 12:55:39] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.7%), RelMargin=0.9%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:39] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , AbsMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: , RelMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 0.9
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), StrongMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 12.0
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), Discrim=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , Consist=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 0
+[2025-11-04 12:55:39] INFO: /
+[2025-11-04 12:55:39] INFO: 7
+[2025-11-04 12:55:39] INFO: )
+[2025-11-04 12:55:39] INFO: [Recognition] Scores: S00000 - Nicholas=0.212 S00001 - jereme=0.268 S13234 - Jin_Rae=0.804 S55555 - Tiffany=0.601 S88888 - Cavin=0.498 S99998 - Kim_Jun_Un=0.655 S99999 - Tonald_Drump=0.790 
+[2025-11-04 12:55:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.804), 2nd=0.790, Discriminative=0.703, AvgNeg=0.504
+[2025-11-04 12:55:39] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.2%), RelMargin=1.7%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:39] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , AbsMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: , RelMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 1.7
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), StrongMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 12.0
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), Discrim=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , Consist=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 0
+[2025-11-04 12:55:39] INFO: /
+[2025-11-04 12:55:39] INFO: 7
+[2025-11-04 12:55:39] INFO: )
+[2025-11-04 12:55:39] INFO: [Recognition] Scores: S00000 - Nicholas=0.247 S00001 - jereme=0.271 S13234 - Jin_Rae=0.788 S55555 - Tiffany=0.609 S88888 - Cavin=0.589 S99998 - Kim_Jun_Un=0.655 S99999 - Tonald_Drump=0.767 
+[2025-11-04 12:55:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.788), 2nd=0.767, Discriminative=0.683, AvgNeg=0.523
+[2025-11-04 12:55:39] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.4%), RelMargin=2.6%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:39] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , AbsMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: , RelMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 2.6
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), StrongMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 12.0
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), Discrim=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , Consist=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 0
+[2025-11-04 12:55:39] INFO: /
+[2025-11-04 12:55:39] INFO: 7
+[2025-11-04 12:55:39] INFO: )
+[2025-11-04 12:55:39] INFO: [Recognition] Scores: S00000 - Nicholas=0.241 S00001 - jereme=0.317 S13234 - Jin_Rae=0.780 S55555 - Tiffany=0.550 S88888 - Cavin=0.574 S99998 - Kim_Jun_Un=0.718 S99999 - Tonald_Drump=0.786 
+[2025-11-04 12:55:39] INFO: [Decision] Best=S99999 - Tonald_Drump(0.786), 2nd=0.780, Discriminative=0.680, AvgNeg=0.530
+[2025-11-04 12:55:39] INFO: [Thresholds] Abs=0.637, Margin=0.137(17.4%), RelMargin=0.7%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:39] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , AbsMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: , RelMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 0.7
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), StrongMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 12.0
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), Discrim=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , Consist=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 0
+[2025-11-04 12:55:39] INFO: /
+[2025-11-04 12:55:39] INFO: 7
+[2025-11-04 12:55:39] INFO: )
+[2025-11-04 12:55:39] INFO: [Recognition] Scores: S00000 - Nicholas=0.241 S00001 - jereme=0.326 S13234 - Jin_Rae=0.768 S55555 - Tiffany=0.510 S88888 - Cavin=0.575 S99998 - Kim_Jun_Un=0.717 S99999 - Tonald_Drump=0.783 
+[2025-11-04 12:55:39] INFO: [Decision] Best=S99999 - Tonald_Drump(0.783), 2nd=0.768, Discriminative=0.678, AvgNeg=0.523
+[2025-11-04 12:55:39] INFO: [Thresholds] Abs=0.637, Margin=0.137(17.5%), RelMargin=1.9%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:39] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , AbsMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: , RelMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 1.9
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), StrongMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 12.0
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), Discrim=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , Consist=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 0
+[2025-11-04 12:55:39] INFO: /
+[2025-11-04 12:55:39] INFO: 7
+[2025-11-04 12:55:39] INFO: )
+[2025-11-04 12:55:39] INFO: [Recognition] Scores: S00000 - Nicholas=0.348 S00001 - jereme=0.396 S13234 - Jin_Rae=0.760 S55555 - Tiffany=0.557 S88888 - Cavin=0.673 S99998 - Kim_Jun_Un=0.727 S99999 - Tonald_Drump=0.789 
+[2025-11-04 12:55:39] INFO: [Decision] Best=S99999 - Tonald_Drump(0.789), 2nd=0.760, Discriminative=0.674, AvgNeg=0.577
+[2025-11-04 12:55:39] INFO: [Thresholds] Abs=0.637, Margin=0.137(17.3%), RelMargin=3.7%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:39] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , AbsMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: , RelMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 3.7
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), StrongMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 12.0
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), Discrim=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , Consist=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 0
+[2025-11-04 12:55:39] INFO: /
+[2025-11-04 12:55:39] INFO: 7
+[2025-11-04 12:55:39] INFO: )
+[2025-11-04 12:55:39] INFO: [Recognition] Scores: S00000 - Nicholas=0.243 S00001 - jereme=0.340 S13234 - Jin_Rae=0.831 S55555 - Tiffany=0.611 S88888 - Cavin=0.573 S99998 - Kim_Jun_Un=0.700 S99999 - Tonald_Drump=0.768 
+[2025-11-04 12:55:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.831), 2nd=0.768, Discriminative=0.723, AvgNeg=0.539
+[2025-11-04 12:55:39] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=7.6%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:39] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , AbsMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: , RelMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 7.6
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), StrongMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 12.0
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), Discrim=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , Consist=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 0
+[2025-11-04 12:55:39] INFO: /
+[2025-11-04 12:55:39] INFO: 7
+[2025-11-04 12:55:39] INFO: )
+[2025-11-04 12:55:39] INFO: [Recognition] Scores: S00000 - Nicholas=0.465 S00001 - jereme=0.361 S13234 - Jin_Rae=0.818 S55555 - Tiffany=0.627 S88888 - Cavin=0.697 S99998 - Kim_Jun_Un=0.698 S99999 - Tonald_Drump=0.781 
+[2025-11-04 12:55:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.818), 2nd=0.781, Discriminative=0.697, AvgNeg=0.605
+[2025-11-04 12:55:39] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.9%), RelMargin=4.5%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:39] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , AbsMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: , RelMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 4.5
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), StrongMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 12.0
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), Discrim=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , Consist=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 0
+[2025-11-04 12:55:39] INFO: /
+[2025-11-04 12:55:39] INFO: 7
+[2025-11-04 12:55:39] INFO: )
+[2025-11-04 12:55:39] INFO: [Recognition] Scores: S00000 - Nicholas=0.357 S00001 - jereme=0.412 S13234 - Jin_Rae=0.832 S55555 - Tiffany=0.626 S88888 - Cavin=0.635 S99998 - Kim_Jun_Un=0.766 S99999 - Tonald_Drump=0.822 
+[2025-11-04 12:55:39] INFO: [Decision] Best=S13234 - Jin_Rae(0.832), 2nd=0.822, Discriminative=0.711, AvgNeg=0.603
+[2025-11-04 12:55:39] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=1.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:39] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , AbsMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: , RelMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 1.2
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), StrongMargin=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 12.0
+[2025-11-04 12:55:39] INFO: %
+[2025-11-04 12:55:39] INFO: ), Discrim=
+[2025-11-04 12:55:39] INFO: true
+[2025-11-04 12:55:39] INFO: , Consist=
+[2025-11-04 12:55:39] INFO: false
+[2025-11-04 12:55:39] INFO: (
+[2025-11-04 12:55:39] INFO: 0
+[2025-11-04 12:55:39] INFO: /
+[2025-11-04 12:55:39] INFO: 7
+[2025-11-04 12:55:39] INFO: )
+[2025-11-04 12:55:40] INFO: [Recognition] Scores: S00000 - Nicholas=0.281 S00001 - jereme=0.303 S13234 - Jin_Rae=0.856 S55555 - Tiffany=0.722 S88888 - Cavin=0.575 S99998 - Kim_Jun_Un=0.689 S99999 - Tonald_Drump=0.786 
+[2025-11-04 12:55:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.856), 2nd=0.786, Discriminative=0.744, AvgNeg=0.559
+[2025-11-04 12:55:40] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.4%), RelMargin=8.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:40] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , AbsMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: , RelMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 8.2
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), StrongMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 12.0
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), Discrim=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , Consist=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 0
+[2025-11-04 12:55:40] INFO: /
+[2025-11-04 12:55:40] INFO: 7
+[2025-11-04 12:55:40] INFO: )
+[2025-11-04 12:55:40] INFO: [Recognition] Scores: S00000 - Nicholas=0.345 S00001 - jereme=0.289 S13234 - Jin_Rae=0.868 S55555 - Tiffany=0.700 S88888 - Cavin=0.553 S99998 - Kim_Jun_Un=0.657 S99999 - Tonald_Drump=0.800 
+[2025-11-04 12:55:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.868), 2nd=0.800, Discriminative=0.757, AvgNeg=0.557
+[2025-11-04 12:55:40] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.2%), RelMargin=7.9%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:40] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , AbsMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: , RelMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 7.9
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), StrongMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 12.0
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), Discrim=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , Consist=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 0
+[2025-11-04 12:55:40] INFO: /
+[2025-11-04 12:55:40] INFO: 7
+[2025-11-04 12:55:40] INFO: )
+[2025-11-04 12:55:40] INFO: [Recognition] Scores: S00000 - Nicholas=0.275 S00001 - jereme=0.279 S13234 - Jin_Rae=0.866 S55555 - Tiffany=0.699 S88888 - Cavin=0.552 S99998 - Kim_Jun_Un=0.652 S99999 - Tonald_Drump=0.794 
+[2025-11-04 12:55:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.866), 2nd=0.794, Discriminative=0.758, AvgNeg=0.542
+[2025-11-04 12:55:40] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.2%), RelMargin=8.4%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:40] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , AbsMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: , RelMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 8.4
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), StrongMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 12.0
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), Discrim=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , Consist=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 0
+[2025-11-04 12:55:40] INFO: /
+[2025-11-04 12:55:40] INFO: 7
+[2025-11-04 12:55:40] INFO: )
+[2025-11-04 12:55:40] INFO: [Recognition] Scores: S00000 - Nicholas=0.192 S00001 - jereme=0.000 S13234 - Jin_Rae=0.859 S55555 - Tiffany=0.684 S88888 - Cavin=0.475 S99998 - Kim_Jun_Un=0.615 S99999 - Tonald_Drump=0.758 
+[2025-11-04 12:55:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.859), 2nd=0.758, Discriminative=0.768, AvgNeg=0.454
+[2025-11-04 12:55:40] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.3%), RelMargin=11.8%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:40] INFO: [Performance] Pre-filter skipped 1/7 persons (14.3% speedup)
+[2025-11-04 12:55:40] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , AbsMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: , RelMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 11.8
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), StrongMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 12.0
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), Discrim=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , Consist=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 0
+[2025-11-04 12:55:40] INFO: /
+[2025-11-04 12:55:40] INFO: 7
+[2025-11-04 12:55:40] INFO: )
+[2025-11-04 12:55:40] INFO: [Recognition] Scores: S00000 - Nicholas=0.437 S00001 - jereme=0.334 S13234 - Jin_Rae=0.860 S55555 - Tiffany=0.665 S88888 - Cavin=0.633 S99998 - Kim_Jun_Un=0.619 S99999 - Tonald_Drump=0.790 
+[2025-11-04 12:55:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.860), 2nd=0.790, Discriminative=0.744, AvgNeg=0.580
+[2025-11-04 12:55:40] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.3%), RelMargin=8.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:40] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , AbsMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: , RelMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 8.2
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), StrongMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 12.0
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), Discrim=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , Consist=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 0
+[2025-11-04 12:55:40] INFO: /
+[2025-11-04 12:55:40] INFO: 7
+[2025-11-04 12:55:40] INFO: )
+[2025-11-04 12:55:40] INFO: [Recognition] Scores: S00000 - Nicholas=0.242 S00001 - jereme=0.245 S13234 - Jin_Rae=0.862 S55555 - Tiffany=0.660 S88888 - Cavin=0.510 S99998 - Kim_Jun_Un=0.630 S99999 - Tonald_Drump=0.774 
+[2025-11-04 12:55:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.862), 2nd=0.774, Discriminative=0.760, AvgNeg=0.510
+[2025-11-04 12:55:40] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.3%), RelMargin=10.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:40] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , AbsMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: , RelMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 10.2
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), StrongMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 12.0
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), Discrim=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , Consist=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 0
+[2025-11-04 12:55:40] INFO: /
+[2025-11-04 12:55:40] INFO: 7
+[2025-11-04 12:55:40] INFO: )
+[2025-11-04 12:55:40] INFO: [Recognition] Scores: S00000 - Nicholas=0.369 S00001 - jereme=0.328 S13234 - Jin_Rae=0.864 S55555 - Tiffany=0.674 S88888 - Cavin=0.560 S99998 - Kim_Jun_Un=0.632 S99999 - Tonald_Drump=0.784 
+[2025-11-04 12:55:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.864), 2nd=0.784, Discriminative=0.753, AvgNeg=0.558
+[2025-11-04 12:55:40] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.2%), RelMargin=9.3%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:40] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , AbsMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: , RelMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 9.3
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), StrongMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 12.0
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), Discrim=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , Consist=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 0
+[2025-11-04 12:55:40] INFO: /
+[2025-11-04 12:55:40] INFO: 7
+[2025-11-04 12:55:40] INFO: )
+[2025-11-04 12:55:40] INFO: [Recognition] Scores: S00000 - Nicholas=0.247 S00001 - jereme=0.259 S13234 - Jin_Rae=0.865 S55555 - Tiffany=0.663 S88888 - Cavin=0.501 S99998 - Kim_Jun_Un=0.637 S99999 - Tonald_Drump=0.776 
+[2025-11-04 12:55:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.865), 2nd=0.776, Discriminative=0.762, AvgNeg=0.514
+[2025-11-04 12:55:40] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.2%), RelMargin=10.4%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:40] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , AbsMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: , RelMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 10.4
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), StrongMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 12.0
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), Discrim=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , Consist=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 0
+[2025-11-04 12:55:40] INFO: /
+[2025-11-04 12:55:40] INFO: 7
+[2025-11-04 12:55:40] INFO: )
+[2025-11-04 12:55:40] INFO: [Recognition] Scores: S00000 - Nicholas=0.249 S00001 - jereme=0.259 S13234 - Jin_Rae=0.861 S55555 - Tiffany=0.697 S88888 - Cavin=0.509 S99998 - Kim_Jun_Un=0.616 S99999 - Tonald_Drump=0.779 
+[2025-11-04 12:55:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.861), 2nd=0.779, Discriminative=0.757, AvgNeg=0.518
+[2025-11-04 12:55:40] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.3%), RelMargin=9.5%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:40] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , AbsMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: , RelMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 9.5
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), StrongMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 12.0
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), Discrim=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , Consist=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 0
+[2025-11-04 12:55:40] INFO: /
+[2025-11-04 12:55:40] INFO: 7
+[2025-11-04 12:55:40] INFO: )
+[2025-11-04 12:55:40] INFO: [Recognition] Scores: S00000 - Nicholas=0.228 S00001 - jereme=0.249 S13234 - Jin_Rae=0.850 S55555 - Tiffany=0.688 S88888 - Cavin=0.515 S99998 - Kim_Jun_Un=0.623 S99999 - Tonald_Drump=0.778 
+[2025-11-04 12:55:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.850), 2nd=0.778, Discriminative=0.748, AvgNeg=0.513
+[2025-11-04 12:55:40] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.4%), RelMargin=8.6%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:40] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , AbsMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: , RelMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 8.6
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), StrongMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 12.0
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), Discrim=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , Consist=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 0
+[2025-11-04 12:55:40] INFO: /
+[2025-11-04 12:55:40] INFO: 7
+[2025-11-04 12:55:40] INFO: )
+[2025-11-04 12:55:40] INFO: [Recognition] Scores: S00000 - Nicholas=0.316 S00001 - jereme=0.315 S13234 - Jin_Rae=0.830 S55555 - Tiffany=0.652 S88888 - Cavin=0.560 S99998 - Kim_Jun_Un=0.683 S99999 - Tonald_Drump=0.772 
+[2025-11-04 12:55:40] INFO: [Decision] Best=S13234 - Jin_Rae(0.830), 2nd=0.772, Discriminative=0.720, AvgNeg=0.550
+[2025-11-04 12:55:40] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=7.0%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:40] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , AbsMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: , RelMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 7.0
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), StrongMargin=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 12.0
+[2025-11-04 12:55:40] INFO: %
+[2025-11-04 12:55:40] INFO: ), Discrim=
+[2025-11-04 12:55:40] INFO: true
+[2025-11-04 12:55:40] INFO: , Consist=
+[2025-11-04 12:55:40] INFO: false
+[2025-11-04 12:55:40] INFO: (
+[2025-11-04 12:55:40] INFO: 0
+[2025-11-04 12:55:40] INFO: /
+[2025-11-04 12:55:40] INFO: 7
+[2025-11-04 12:55:40] INFO: )
+[2025-11-04 12:55:41] INFO: [Recognition] Scores: S00000 - Nicholas=0.328 S00001 - jereme=0.271 S13234 - Jin_Rae=0.798 S55555 - Tiffany=0.755 S88888 - Cavin=0.577 S99998 - Kim_Jun_Un=0.627 S99999 - Tonald_Drump=0.763 
+[2025-11-04 12:55:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.798), 2nd=0.763, Discriminative=0.687, AvgNeg=0.554
+[2025-11-04 12:55:41] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.3%), RelMargin=4.4%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:41] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , AbsMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: , RelMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 4.4
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), StrongMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 12.0
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), Discrim=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , Consist=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 0
+[2025-11-04 12:55:41] INFO: /
+[2025-11-04 12:55:41] INFO: 7
+[2025-11-04 12:55:41] INFO: )
+[2025-11-04 12:55:41] INFO: [Recognition] Scores: S00000 - Nicholas=0.279 S00001 - jereme=0.263 S13234 - Jin_Rae=0.797 S55555 - Tiffany=0.771 S88888 - Cavin=0.535 S99998 - Kim_Jun_Un=0.565 S99999 - Tonald_Drump=0.747 
+[2025-11-04 12:55:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.797), 2nd=0.771, Discriminative=0.692, AvgNeg=0.527
+[2025-11-04 12:55:41] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.3%), RelMargin=3.3%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:41] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , AbsMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: , RelMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 3.3
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), StrongMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 12.0
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), Discrim=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , Consist=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 0
+[2025-11-04 12:55:41] INFO: /
+[2025-11-04 12:55:41] INFO: 7
+[2025-11-04 12:55:41] INFO: )
+[2025-11-04 12:55:41] INFO: [Recognition] Scores: S00000 - Nicholas=0.283 S00001 - jereme=0.260 S13234 - Jin_Rae=0.764 S55555 - Tiffany=0.739 S88888 - Cavin=0.536 S99998 - Kim_Jun_Un=0.538 S99999 - Tonald_Drump=0.703 
+[2025-11-04 12:55:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.764), 2nd=0.739, Discriminative=0.662, AvgNeg=0.510
+[2025-11-04 12:55:41] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.9%), RelMargin=3.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:41] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , AbsMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: , RelMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 3.2
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), StrongMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 12.0
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), Discrim=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , Consist=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 0
+[2025-11-04 12:55:41] INFO: /
+[2025-11-04 12:55:41] INFO: 7
+[2025-11-04 12:55:41] INFO: )
+[2025-11-04 12:55:41] INFO: [Recognition] Scores: S00000 - Nicholas=0.384 S00001 - jereme=0.263 S13234 - Jin_Rae=0.800 S55555 - Tiffany=0.739 S88888 - Cavin=0.640 S99998 - Kim_Jun_Un=0.604 S99999 - Tonald_Drump=0.794 
+[2025-11-04 12:55:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.800), 2nd=0.794, Discriminative=0.686, AvgNeg=0.571
+[2025-11-04 12:55:41] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.2%), RelMargin=0.8%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:41] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , AbsMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: , RelMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 0.8
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), StrongMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 12.0
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), Discrim=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , Consist=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 0
+[2025-11-04 12:55:41] INFO: /
+[2025-11-04 12:55:41] INFO: 7
+[2025-11-04 12:55:41] INFO: )
+[2025-11-04 12:55:41] INFO: [Recognition] Scores: S00000 - Nicholas=0.327 S00001 - jereme=0.239 S13234 - Jin_Rae=0.766 S55555 - Tiffany=0.728 S88888 - Cavin=0.593 S99998 - Kim_Jun_Un=0.000 S99999 - Tonald_Drump=0.735 
+[2025-11-04 12:55:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.766), 2nd=0.735, Discriminative=0.679, AvgNeg=0.437
+[2025-11-04 12:55:41] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.8%), RelMargin=4.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:41] INFO: [Performance] Pre-filter skipped 1/7 persons (14.3% speedup)
+[2025-11-04 12:55:41] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , AbsMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: , RelMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 4.1
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), StrongMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 12.0
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), Discrim=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , Consist=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 0
+[2025-11-04 12:55:41] INFO: /
+[2025-11-04 12:55:41] INFO: 7
+[2025-11-04 12:55:41] INFO: )
+[2025-11-04 12:55:41] INFO: [Recognition] Scores: S00000 - Nicholas=0.533 S00001 - jereme=0.443 S13234 - Jin_Rae=0.785 S55555 - Tiffany=0.700 S88888 - Cavin=0.753 S99998 - Kim_Jun_Un=0.660 S99999 - Tonald_Drump=0.762 
+[2025-11-04 12:55:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.785), 2nd=0.762, Discriminative=0.656, AvgNeg=0.642
+[2025-11-04 12:55:41] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.5%), RelMargin=2.9%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:41] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , AbsMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: , RelMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 2.9
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), StrongMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 12.0
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), Discrim=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , Consist=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 0
+[2025-11-04 12:55:41] INFO: /
+[2025-11-04 12:55:41] INFO: 7
+[2025-11-04 12:55:41] INFO: )
+[2025-11-04 12:55:41] INFO: [Recognition] Scores: S00000 - Nicholas=0.337 S00001 - jereme=0.278 S13234 - Jin_Rae=0.804 S55555 - Tiffany=0.680 S88888 - Cavin=0.639 S99998 - Kim_Jun_Un=0.623 S99999 - Tonald_Drump=0.774 
+[2025-11-04 12:55:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.804), 2nd=0.774, Discriminative=0.693, AvgNeg=0.555
+[2025-11-04 12:55:41] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.2%), RelMargin=3.8%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:41] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , AbsMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: , RelMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 3.8
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), StrongMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 12.0
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), Discrim=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , Consist=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 0
+[2025-11-04 12:55:41] INFO: /
+[2025-11-04 12:55:41] INFO: 7
+[2025-11-04 12:55:41] INFO: )
+[2025-11-04 12:55:41] INFO: [Recognition] Scores: S00000 - Nicholas=0.342 S00001 - jereme=0.334 S13234 - Jin_Rae=0.807 S55555 - Tiffany=0.690 S88888 - Cavin=0.625 S99998 - Kim_Jun_Un=0.587 S99999 - Tonald_Drump=0.777 
+[2025-11-04 12:55:41] INFO: [Decision] Best=S13234 - Jin_Rae(0.807), 2nd=0.777, Discriminative=0.696, AvgNeg=0.559
+[2025-11-04 12:55:41] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.1%), RelMargin=3.8%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:41] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , AbsMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: , RelMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 3.8
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), StrongMargin=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 12.0
+[2025-11-04 12:55:41] INFO: %
+[2025-11-04 12:55:41] INFO: ), Discrim=
+[2025-11-04 12:55:41] INFO: true
+[2025-11-04 12:55:41] INFO: , Consist=
+[2025-11-04 12:55:41] INFO: false
+[2025-11-04 12:55:41] INFO: (
+[2025-11-04 12:55:41] INFO: 0
+[2025-11-04 12:55:41] INFO: /
+[2025-11-04 12:55:41] INFO: 7
+[2025-11-04 12:55:41] INFO: )
+[2025-11-04 12:55:42] INFO: [Recognition] Scores: S00000 - Nicholas=0.286 S00001 - jereme=0.290 S13234 - Jin_Rae=0.823 S55555 - Tiffany=0.668 S88888 - Cavin=0.580 S99998 - Kim_Jun_Un=0.653 S99999 - Tonald_Drump=0.786 
+[2025-11-04 12:55:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.823), 2nd=0.786, Discriminative=0.715, AvgNeg=0.544
+[2025-11-04 12:55:42] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.9%), RelMargin=4.5%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:42] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:42] INFO: true
+[2025-11-04 12:55:42] INFO: , AbsMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: , RelMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 4.5
+[2025-11-04 12:55:42] INFO: %
+[2025-11-04 12:55:42] INFO: ), StrongMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 12.0
+[2025-11-04 12:55:42] INFO: %
+[2025-11-04 12:55:42] INFO: ), Discrim=
+[2025-11-04 12:55:42] INFO: true
+[2025-11-04 12:55:42] INFO: , Consist=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 0
+[2025-11-04 12:55:42] INFO: /
+[2025-11-04 12:55:42] INFO: 7
+[2025-11-04 12:55:42] INFO: )
+[2025-11-04 12:55:42] INFO: [Recognition] Scores: S00000 - Nicholas=0.459 S00001 - jereme=0.393 S13234 - Jin_Rae=0.805 S55555 - Tiffany=0.624 S88888 - Cavin=0.669 S99998 - Kim_Jun_Un=0.671 S99999 - Tonald_Drump=0.778 
+[2025-11-04 12:55:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.805), 2nd=0.778, Discriminative=0.685, AvgNeg=0.599
+[2025-11-04 12:55:42] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.1%), RelMargin=3.4%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:42] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:42] INFO: true
+[2025-11-04 12:55:42] INFO: , AbsMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: , RelMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 3.4
+[2025-11-04 12:55:42] INFO: %
+[2025-11-04 12:55:42] INFO: ), StrongMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 12.0
+[2025-11-04 12:55:42] INFO: %
+[2025-11-04 12:55:42] INFO: ), Discrim=
+[2025-11-04 12:55:42] INFO: true
+[2025-11-04 12:55:42] INFO: , Consist=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 0
+[2025-11-04 12:55:42] INFO: /
+[2025-11-04 12:55:42] INFO: 7
+[2025-11-04 12:55:42] INFO: )
+[2025-11-04 12:55:42] INFO: [Recognition] Scores: S00000 - Nicholas=0.463 S00001 - jereme=0.432 S13234 - Jin_Rae=0.769 S55555 - Tiffany=0.572 S88888 - Cavin=0.697 S99998 - Kim_Jun_Un=0.705 S99999 - Tonald_Drump=0.729 
+[2025-11-04 12:55:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.769), 2nd=0.729, Discriminative=0.649, AvgNeg=0.600
+[2025-11-04 12:55:42] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.8%), RelMargin=5.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:42] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:42] INFO: true
+[2025-11-04 12:55:42] INFO: , AbsMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: , RelMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 5.2
+[2025-11-04 12:55:42] INFO: %
+[2025-11-04 12:55:42] INFO: ), StrongMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 12.0
+[2025-11-04 12:55:42] INFO: %
+[2025-11-04 12:55:42] INFO: ), Discrim=
+[2025-11-04 12:55:42] INFO: true
+[2025-11-04 12:55:42] INFO: , Consist=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 0
+[2025-11-04 12:55:42] INFO: /
+[2025-11-04 12:55:42] INFO: 7
+[2025-11-04 12:55:42] INFO: )
+[2025-11-04 12:55:42] INFO: [Recognition] Scores: S00000 - Nicholas=0.380 S00001 - jereme=0.409 S13234 - Jin_Rae=0.794 S55555 - Tiffany=0.563 S88888 - Cavin=0.658 S99998 - Kim_Jun_Un=0.698 S99999 - Tonald_Drump=0.686 
+[2025-11-04 12:55:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.794), 2nd=0.698, Discriminative=0.681, AvgNeg=0.566
+[2025-11-04 12:55:42] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.3%), RelMargin=12.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:42] INFO: [Decision] ACCEPT: Strong margin hold (12.1%)
+[2025-11-04 12:55:42] INFO: [Recognition] Scores: S00000 - Nicholas=0.444 S00001 - jereme=0.427 S13234 - Jin_Rae=0.718 S55555 - Tiffany=0.505 S88888 - Cavin=0.670 S99998 - Kim_Jun_Un=0.710 S99999 - Tonald_Drump=0.613 
+[2025-11-04 12:55:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.718), 2nd=0.710, Discriminative=0.606, AvgNeg=0.562
+[2025-11-04 12:55:42] INFO: [Thresholds] Abs=0.606, Margin=0.106(14.7%), RelMargin=1.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:42] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:42] INFO: true
+[2025-11-04 12:55:42] INFO: , AbsMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: , RelMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 1.2
+[2025-11-04 12:55:42] INFO: %
+[2025-11-04 12:55:42] INFO: ), StrongMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 12.0
+[2025-11-04 12:55:42] INFO: %
+[2025-11-04 12:55:42] INFO: ), Discrim=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: , Consist=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 1
+[2025-11-04 12:55:42] INFO: /
+[2025-11-04 12:55:42] INFO: 7
+[2025-11-04 12:55:42] INFO: )
+[2025-11-04 12:55:42] INFO: [Recognition] Scores: S00000 - Nicholas=0.336 S00001 - jereme=0.374 S13234 - Jin_Rae=0.753 S55555 - Tiffany=0.608 S88888 - Cavin=0.618 S99998 - Kim_Jun_Un=0.673 S99999 - Tonald_Drump=0.627 
+[2025-11-04 12:55:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.753), 2nd=0.673, Discriminative=0.645, AvgNeg=0.539
+[2025-11-04 12:55:42] INFO: [Thresholds] Abs=0.606, Margin=0.106(14.1%), RelMargin=10.6%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:42] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:42] INFO: true
+[2025-11-04 12:55:42] INFO: , AbsMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: , RelMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 10.6
+[2025-11-04 12:55:42] INFO: %
+[2025-11-04 12:55:42] INFO: ), StrongMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 12.0
+[2025-11-04 12:55:42] INFO: %
+[2025-11-04 12:55:42] INFO: ), Discrim=
+[2025-11-04 12:55:42] INFO: true
+[2025-11-04 12:55:42] INFO: , Consist=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 1
+[2025-11-04 12:55:42] INFO: /
+[2025-11-04 12:55:42] INFO: 7
+[2025-11-04 12:55:42] INFO: )
+[2025-11-04 12:55:42] INFO: [Recognition] Scores: S00000 - Nicholas=0.237 S00001 - jereme=0.301 S13234 - Jin_Rae=0.835 S55555 - Tiffany=0.683 S88888 - Cavin=0.534 S99998 - Kim_Jun_Un=0.672 S99999 - Tonald_Drump=0.692 
+[2025-11-04 12:55:42] INFO: [Decision] Best=S13234 - Jin_Rae(0.835), 2nd=0.692, Discriminative=0.731, AvgNeg=0.520
+[2025-11-04 12:55:42] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=17.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:42] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-11-04 12:55:42] INFO: [Recognition] Scores: S00000 - Nicholas=0.407 S00001 - jereme=0.386 S13234 - Jin_Rae=0.835 S55555 - Tiffany=0.623 S88888 - Cavin=0.648 S99998 - Kim_Jun_Un=0.754 S99999 - Tonald_Drump=0.840 
+[2025-11-04 12:55:42] INFO: [Decision] Best=S99999 - Tonald_Drump(0.840), 2nd=0.835, Discriminative=0.718, AvgNeg=0.609
+[2025-11-04 12:55:42] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.3%), RelMargin=0.6%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:42] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:42] INFO: true
+[2025-11-04 12:55:42] INFO: , AbsMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: , RelMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 0.6
+[2025-11-04 12:55:42] INFO: %
+[2025-11-04 12:55:42] INFO: ), StrongMargin=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 12.0
+[2025-11-04 12:55:42] INFO: %
+[2025-11-04 12:55:42] INFO: ), Discrim=
+[2025-11-04 12:55:42] INFO: true
+[2025-11-04 12:55:42] INFO: , Consist=
+[2025-11-04 12:55:42] INFO: false
+[2025-11-04 12:55:42] INFO: (
+[2025-11-04 12:55:42] INFO: 0
+[2025-11-04 12:55:42] INFO: /
+[2025-11-04 12:55:42] INFO: 7
+[2025-11-04 12:55:42] INFO: )
+[2025-11-04 12:55:43] INFO: [Recognition] Scores: S00000 - Nicholas=0.285 S00001 - jereme=0.358 S13234 - Jin_Rae=0.870 S55555 - Tiffany=0.667 S88888 - Cavin=0.553 S99998 - Kim_Jun_Un=0.728 S99999 - Tonald_Drump=0.787 
+[2025-11-04 12:55:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.870), 2nd=0.787, Discriminative=0.758, AvgNeg=0.563
+[2025-11-04 12:55:43] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.2%), RelMargin=9.6%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:43] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , AbsMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: , RelMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 9.6
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), StrongMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 12.0
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), Discrim=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , Consist=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 2
+[2025-11-04 12:55:43] INFO: /
+[2025-11-04 12:55:43] INFO: 7
+[2025-11-04 12:55:43] INFO: )
+[2025-11-04 12:55:43] INFO: [Recognition] Scores: S00000 - Nicholas=0.350 S00001 - jereme=0.313 S13234 - Jin_Rae=0.847 S55555 - Tiffany=0.639 S88888 - Cavin=0.643 S99998 - Kim_Jun_Un=0.707 S99999 - Tonald_Drump=0.816 
+[2025-11-04 12:55:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.847), 2nd=0.816, Discriminative=0.732, AvgNeg=0.578
+[2025-11-04 12:55:43] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.5%), RelMargin=3.6%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:43] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , AbsMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: , RelMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 3.6
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), StrongMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 12.0
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), Discrim=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , Consist=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 2
+[2025-11-04 12:55:43] INFO: /
+[2025-11-04 12:55:43] INFO: 7
+[2025-11-04 12:55:43] INFO: )
+[2025-11-04 12:55:43] INFO: [Recognition] Scores: S00000 - Nicholas=0.421 S00001 - jereme=0.479 S13234 - Jin_Rae=0.845 S55555 - Tiffany=0.651 S88888 - Cavin=0.652 S99998 - Kim_Jun_Un=0.725 S99999 - Tonald_Drump=0.809 
+[2025-11-04 12:55:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.845), 2nd=0.809, Discriminative=0.720, AvgNeg=0.623
+[2025-11-04 12:55:43] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.5%), RelMargin=4.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:43] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , AbsMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: , RelMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 4.2
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), StrongMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 12.0
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), Discrim=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , Consist=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 2
+[2025-11-04 12:55:43] INFO: /
+[2025-11-04 12:55:43] INFO: 7
+[2025-11-04 12:55:43] INFO: )
+[2025-11-04 12:55:43] INFO: [Recognition] Scores: S00000 - Nicholas=0.344 S00001 - jereme=0.389 S13234 - Jin_Rae=0.834 S55555 - Tiffany=0.634 S88888 - Cavin=0.597 S99998 - Kim_Jun_Un=0.714 S99999 - Tonald_Drump=0.797 
+[2025-11-04 12:55:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.834), 2nd=0.797, Discriminative=0.718, AvgNeg=0.579
+[2025-11-04 12:55:43] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=4.4%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:43] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , AbsMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: , RelMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 4.4
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), StrongMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 12.0
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), Discrim=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , Consist=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 1
+[2025-11-04 12:55:43] INFO: /
+[2025-11-04 12:55:43] INFO: 7
+[2025-11-04 12:55:43] INFO: )
+[2025-11-04 12:55:43] INFO: [Recognition] Scores: S00000 - Nicholas=0.267 S00001 - jereme=0.000 S13234 - Jin_Rae=0.817 S55555 - Tiffany=0.637 S88888 - Cavin=0.526 S99998 - Kim_Jun_Un=0.649 S99999 - Tonald_Drump=0.785 
+[2025-11-04 12:55:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.817), 2nd=0.785, Discriminative=0.722, AvgNeg=0.477
+[2025-11-04 12:55:43] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.9%), RelMargin=4.0%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:43] INFO: [Performance] Pre-filter skipped 1/7 persons (14.3% speedup)
+[2025-11-04 12:55:43] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , AbsMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: , RelMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 4.0
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), StrongMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 12.0
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), Discrim=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , Consist=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 1
+[2025-11-04 12:55:43] INFO: /
+[2025-11-04 12:55:43] INFO: 7
+[2025-11-04 12:55:43] INFO: )
+[2025-11-04 12:55:43] INFO: [Recognition] Scores: S00000 - Nicholas=0.229 S00001 - jereme=0.292 S13234 - Jin_Rae=0.888 S55555 - Tiffany=0.680 S88888 - Cavin=0.485 S99998 - Kim_Jun_Un=0.638 S99999 - Tonald_Drump=0.781 
+[2025-11-04 12:55:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.888), 2nd=0.781, Discriminative=0.785, AvgNeg=0.518
+[2025-11-04 12:55:43] INFO: [Thresholds] Abs=0.606, Margin=0.106(11.9%), RelMargin=12.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:43] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-11-04 12:55:43] INFO: [Recognition] Scores: S00000 - Nicholas=0.206 S00001 - jereme=0.278 S13234 - Jin_Rae=0.836 S55555 - Tiffany=0.646 S88888 - Cavin=0.422 S99998 - Kim_Jun_Un=0.619 S99999 - Tonald_Drump=0.760 
+[2025-11-04 12:55:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.836), 2nd=0.760, Discriminative=0.738, AvgNeg=0.488
+[2025-11-04 12:55:43] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=9.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:43] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , AbsMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: , RelMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 9.1
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), StrongMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 12.0
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), Discrim=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , Consist=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 1
+[2025-11-04 12:55:43] INFO: /
+[2025-11-04 12:55:43] INFO: 7
+[2025-11-04 12:55:43] INFO: )
+[2025-11-04 12:55:43] INFO: [Recognition] Scores: S00000 - Nicholas=0.292 S00001 - jereme=0.301 S13234 - Jin_Rae=0.858 S55555 - Tiffany=0.735 S88888 - Cavin=0.527 S99998 - Kim_Jun_Un=0.596 S99999 - Tonald_Drump=0.760 
+[2025-11-04 12:55:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.858), 2nd=0.760, Discriminative=0.751, AvgNeg=0.535
+[2025-11-04 12:55:43] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.3%), RelMargin=11.4%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:43] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , AbsMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: , RelMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 11.4
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), StrongMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 12.0
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), Discrim=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , Consist=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 1
+[2025-11-04 12:55:43] INFO: /
+[2025-11-04 12:55:43] INFO: 7
+[2025-11-04 12:55:43] INFO: )
+[2025-11-04 12:55:43] INFO: [Recognition] Scores: S00000 - Nicholas=0.224 S00001 - jereme=0.285 S13234 - Jin_Rae=0.832 S55555 - Tiffany=0.684 S88888 - Cavin=0.519 S99998 - Kim_Jun_Un=0.595 S99999 - Tonald_Drump=0.773 
+[2025-11-04 12:55:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.832), 2nd=0.773, Discriminative=0.730, AvgNeg=0.513
+[2025-11-04 12:55:43] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=7.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:43] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , AbsMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: , RelMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 7.2
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), StrongMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 12.0
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), Discrim=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , Consist=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 1
+[2025-11-04 12:55:43] INFO: /
+[2025-11-04 12:55:43] INFO: 7
+[2025-11-04 12:55:43] INFO: )
+[2025-11-04 12:55:43] INFO: [Recognition] Scores: S00000 - Nicholas=0.232 S00001 - jereme=0.302 S13234 - Jin_Rae=0.852 S55555 - Tiffany=0.664 S88888 - Cavin=0.514 S99998 - Kim_Jun_Un=0.725 S99999 - Tonald_Drump=0.795 
+[2025-11-04 12:55:43] INFO: [Decision] Best=S13234 - Jin_Rae(0.852), 2nd=0.795, Discriminative=0.745, AvgNeg=0.539
+[2025-11-04 12:55:43] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.4%), RelMargin=6.7%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:43] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , AbsMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: , RelMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 6.7
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), StrongMargin=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 12.0
+[2025-11-04 12:55:43] INFO: %
+[2025-11-04 12:55:43] INFO: ), Discrim=
+[2025-11-04 12:55:43] INFO: true
+[2025-11-04 12:55:43] INFO: , Consist=
+[2025-11-04 12:55:43] INFO: false
+[2025-11-04 12:55:43] INFO: (
+[2025-11-04 12:55:43] INFO: 1
+[2025-11-04 12:55:43] INFO: /
+[2025-11-04 12:55:43] INFO: 7
+[2025-11-04 12:55:43] INFO: )
+[2025-11-04 12:55:44] INFO: [Recognition] Scores: S00000 - Nicholas=0.272 S00001 - jereme=0.301 S13234 - Jin_Rae=0.833 S55555 - Tiffany=0.651 S88888 - Cavin=0.563 S99998 - Kim_Jun_Un=0.657 S99999 - Tonald_Drump=0.791 
+[2025-11-04 12:55:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.833), 2nd=0.791, Discriminative=0.725, AvgNeg=0.539
+[2025-11-04 12:55:44] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=5.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:44] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , AbsMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: , RelMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 5.1
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), StrongMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 12.0
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), Discrim=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , Consist=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 1
+[2025-11-04 12:55:44] INFO: /
+[2025-11-04 12:55:44] INFO: 7
+[2025-11-04 12:55:44] INFO: )
+[2025-11-04 12:55:44] INFO: [Recognition] Scores: S00000 - Nicholas=0.221 S00001 - jereme=0.283 S13234 - Jin_Rae=0.877 S55555 - Tiffany=0.699 S88888 - Cavin=0.513 S99998 - Kim_Jun_Un=0.656 S99999 - Tonald_Drump=0.787 
+[2025-11-04 12:55:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.877), 2nd=0.787, Discriminative=0.771, AvgNeg=0.527
+[2025-11-04 12:55:44] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.1%), RelMargin=10.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:44] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , AbsMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: , RelMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 10.2
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), StrongMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 12.0
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), Discrim=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , Consist=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 1
+[2025-11-04 12:55:44] INFO: /
+[2025-11-04 12:55:44] INFO: 7
+[2025-11-04 12:55:44] INFO: )
+[2025-11-04 12:55:44] INFO: [Recognition] Scores: S00000 - Nicholas=0.230 S00001 - jereme=0.322 S13234 - Jin_Rae=0.846 S55555 - Tiffany=0.648 S88888 - Cavin=0.518 S99998 - Kim_Jun_Un=0.644 S99999 - Tonald_Drump=0.784 
+[2025-11-04 12:55:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.846), 2nd=0.784, Discriminative=0.741, AvgNeg=0.524
+[2025-11-04 12:55:44] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.5%), RelMargin=7.4%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:44] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , AbsMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: , RelMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 7.4
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), StrongMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 12.0
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), Discrim=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , Consist=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 1
+[2025-11-04 12:55:44] INFO: /
+[2025-11-04 12:55:44] INFO: 7
+[2025-11-04 12:55:44] INFO: )
+[2025-11-04 12:55:44] INFO: [Recognition] Scores: S00000 - Nicholas=0.351 S00001 - jereme=0.405 S13234 - Jin_Rae=0.840 S55555 - Tiffany=0.653 S88888 - Cavin=0.587 S99998 - Kim_Jun_Un=0.686 S99999 - Tonald_Drump=0.766 
+[2025-11-04 12:55:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.840), 2nd=0.766, Discriminative=0.725, AvgNeg=0.575
+[2025-11-04 12:55:44] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.6%), RelMargin=8.8%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:44] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , AbsMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: , RelMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 8.8
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), StrongMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 12.0
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), Discrim=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , Consist=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 0
+[2025-11-04 12:55:44] INFO: /
+[2025-11-04 12:55:44] INFO: 7
+[2025-11-04 12:55:44] INFO: )
+[2025-11-04 12:55:44] INFO: [Recognition] Scores: S00000 - Nicholas=0.250 S00001 - jereme=0.315 S13234 - Jin_Rae=0.811 S55555 - Tiffany=0.649 S88888 - Cavin=0.547 S99998 - Kim_Jun_Un=0.648 S99999 - Tonald_Drump=0.779 
+[2025-11-04 12:55:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.811), 2nd=0.779, Discriminative=0.705, AvgNeg=0.531
+[2025-11-04 12:55:44] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.0%), RelMargin=4.0%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:44] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , AbsMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: , RelMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 4.0
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), StrongMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 12.0
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), Discrim=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , Consist=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 0
+[2025-11-04 12:55:44] INFO: /
+[2025-11-04 12:55:44] INFO: 7
+[2025-11-04 12:55:44] INFO: )
+[2025-11-04 12:55:44] INFO: [Recognition] Scores: S00000 - Nicholas=0.234 S00001 - jereme=0.287 S13234 - Jin_Rae=0.821 S55555 - Tiffany=0.660 S88888 - Cavin=0.524 S99998 - Kim_Jun_Un=0.662 S99999 - Tonald_Drump=0.810 
+[2025-11-04 12:55:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.821), 2nd=0.810, Discriminative=0.715, AvgNeg=0.529
+[2025-11-04 12:55:44] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.9%), RelMargin=1.3%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:44] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , AbsMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: , RelMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 1.3
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), StrongMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 12.0
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), Discrim=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , Consist=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 0
+[2025-11-04 12:55:44] INFO: /
+[2025-11-04 12:55:44] INFO: 7
+[2025-11-04 12:55:44] INFO: )
+[2025-11-04 12:55:44] INFO: [Recognition] Scores: S00000 - Nicholas=0.229 S00001 - jereme=0.284 S13234 - Jin_Rae=0.848 S55555 - Tiffany=0.637 S88888 - Cavin=0.506 S99998 - Kim_Jun_Un=0.691 S99999 - Tonald_Drump=0.806 
+[2025-11-04 12:55:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.848), 2nd=0.806, Discriminative=0.742, AvgNeg=0.525
+[2025-11-04 12:55:44] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.5%), RelMargin=4.9%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:44] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , AbsMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: , RelMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 4.9
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), StrongMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 12.0
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), Discrim=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , Consist=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 0
+[2025-11-04 12:55:44] INFO: /
+[2025-11-04 12:55:44] INFO: 7
+[2025-11-04 12:55:44] INFO: )
+[2025-11-04 12:55:44] INFO: [Recognition] Scores: S00000 - Nicholas=0.237 S00001 - jereme=0.315 S13234 - Jin_Rae=0.845 S55555 - Tiffany=0.613 S88888 - Cavin=0.546 S99998 - Kim_Jun_Un=0.672 S99999 - Tonald_Drump=0.814 
+[2025-11-04 12:55:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.845), 2nd=0.814, Discriminative=0.738, AvgNeg=0.533
+[2025-11-04 12:55:44] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.5%), RelMargin=3.6%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:44] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , AbsMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: , RelMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 3.6
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), StrongMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 12.0
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), Discrim=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , Consist=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 0
+[2025-11-04 12:55:44] INFO: /
+[2025-11-04 12:55:44] INFO: 7
+[2025-11-04 12:55:44] INFO: )
+[2025-11-04 12:55:44] INFO: [Recognition] Scores: S00000 - Nicholas=0.169 S00001 - jereme=0.233 S13234 - Jin_Rae=0.844 S55555 - Tiffany=0.614 S88888 - Cavin=0.468 S99998 - Kim_Jun_Un=0.644 S99999 - Tonald_Drump=0.816 
+[2025-11-04 12:55:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.844), 2nd=0.816, Discriminative=0.746, AvgNeg=0.491
+[2025-11-04 12:55:44] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.5%), RelMargin=3.3%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:44] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , AbsMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: , RelMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 3.3
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), StrongMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 12.0
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), Discrim=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , Consist=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 0
+[2025-11-04 12:55:44] INFO: /
+[2025-11-04 12:55:44] INFO: 7
+[2025-11-04 12:55:44] INFO: )
+[2025-11-04 12:55:44] INFO: [Recognition] Scores: S00000 - Nicholas=0.244 S00001 - jereme=0.338 S13234 - Jin_Rae=0.857 S55555 - Tiffany=0.598 S88888 - Cavin=0.478 S99998 - Kim_Jun_Un=0.692 S99999 - Tonald_Drump=0.799 
+[2025-11-04 12:55:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.857), 2nd=0.799, Discriminative=0.752, AvgNeg=0.525
+[2025-11-04 12:55:44] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.3%), RelMargin=6.8%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:44] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , AbsMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: , RelMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 6.8
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), StrongMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 12.0
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), Discrim=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , Consist=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 0
+[2025-11-04 12:55:44] INFO: /
+[2025-11-04 12:55:44] INFO: 7
+[2025-11-04 12:55:44] INFO: )
+[2025-11-04 12:55:44] INFO: [Recognition] Scores: S00000 - Nicholas=0.225 S00001 - jereme=0.267 S13234 - Jin_Rae=0.840 S55555 - Tiffany=0.622 S88888 - Cavin=0.462 S99998 - Kim_Jun_Un=0.648 S99999 - Tonald_Drump=0.768 
+[2025-11-04 12:55:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.840), 2nd=0.768, Discriminative=0.740, AvgNeg=0.499
+[2025-11-04 12:55:44] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.6%), RelMargin=8.5%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:44] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , AbsMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: , RelMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 8.5
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), StrongMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 12.0
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), Discrim=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , Consist=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 0
+[2025-11-04 12:55:44] INFO: /
+[2025-11-04 12:55:44] INFO: 7
+[2025-11-04 12:55:44] INFO: )
+[2025-11-04 12:55:44] INFO: [Recognition] Scores: S00000 - Nicholas=0.196 S00001 - jereme=0.253 S13234 - Jin_Rae=0.814 S55555 - Tiffany=0.621 S88888 - Cavin=0.475 S99998 - Kim_Jun_Un=0.620 S99999 - Tonald_Drump=0.750 
+[2025-11-04 12:55:44] INFO: [Decision] Best=S13234 - Jin_Rae(0.814), 2nd=0.750, Discriminative=0.717, AvgNeg=0.486
+[2025-11-04 12:55:44] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.0%), RelMargin=7.9%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:44] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , AbsMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: , RelMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 7.9
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), StrongMargin=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 12.0
+[2025-11-04 12:55:44] INFO: %
+[2025-11-04 12:55:44] INFO: ), Discrim=
+[2025-11-04 12:55:44] INFO: true
+[2025-11-04 12:55:44] INFO: , Consist=
+[2025-11-04 12:55:44] INFO: false
+[2025-11-04 12:55:44] INFO: (
+[2025-11-04 12:55:44] INFO: 0
+[2025-11-04 12:55:44] INFO: /
+[2025-11-04 12:55:44] INFO: 7
+[2025-11-04 12:55:44] INFO: )
+[2025-11-04 12:55:45] INFO: [Recognition] Scores: S00000 - Nicholas=0.270 S00001 - jereme=0.296 S13234 - Jin_Rae=0.816 S55555 - Tiffany=0.629 S88888 - Cavin=0.526 S99998 - Kim_Jun_Un=0.713 S99999 - Tonald_Drump=0.763 
+[2025-11-04 12:55:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.816), 2nd=0.763, Discriminative=0.710, AvgNeg=0.533
+[2025-11-04 12:55:45] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.0%), RelMargin=6.5%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:45] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , AbsMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: , RelMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 6.5
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), StrongMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 12.0
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), Discrim=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , Consist=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 0
+[2025-11-04 12:55:45] INFO: /
+[2025-11-04 12:55:45] INFO: 7
+[2025-11-04 12:55:45] INFO: )
+[2025-11-04 12:55:45] INFO: [Recognition] Scores: S00000 - Nicholas=0.199 S00001 - jereme=0.251 S13234 - Jin_Rae=0.810 S55555 - Tiffany=0.631 S88888 - Cavin=0.481 S99998 - Kim_Jun_Un=0.635 S99999 - Tonald_Drump=0.744 
+[2025-11-04 12:55:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.810), 2nd=0.744, Discriminative=0.712, AvgNeg=0.490
+[2025-11-04 12:55:45] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.1%), RelMargin=8.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:45] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , AbsMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: , RelMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 8.1
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), StrongMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 12.0
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), Discrim=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , Consist=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 0
+[2025-11-04 12:55:45] INFO: /
+[2025-11-04 12:55:45] INFO: 7
+[2025-11-04 12:55:45] INFO: )
+[2025-11-04 12:55:45] INFO: [Recognition] Scores: S00000 - Nicholas=0.194 S00001 - jereme=0.254 S13234 - Jin_Rae=0.824 S55555 - Tiffany=0.621 S88888 - Cavin=0.483 S99998 - Kim_Jun_Un=0.658 S99999 - Tonald_Drump=0.809 
+[2025-11-04 12:55:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.824), 2nd=0.809, Discriminative=0.724, AvgNeg=0.503
+[2025-11-04 12:55:45] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.8%), RelMargin=1.9%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:45] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , AbsMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: , RelMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 1.9
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), StrongMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 12.0
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), Discrim=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , Consist=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 0
+[2025-11-04 12:55:45] INFO: /
+[2025-11-04 12:55:45] INFO: 7
+[2025-11-04 12:55:45] INFO: )
+[2025-11-04 12:55:45] INFO: [Recognition] Scores: S00000 - Nicholas=0.287 S00001 - jereme=0.330 S13234 - Jin_Rae=0.843 S55555 - Tiffany=0.615 S88888 - Cavin=0.548 S99998 - Kim_Jun_Un=0.719 S99999 - Tonald_Drump=0.837 
+[2025-11-04 12:55:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.843), 2nd=0.837, Discriminative=0.731, AvgNeg=0.556
+[2025-11-04 12:55:45] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.6%), RelMargin=0.6%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:45] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , AbsMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: , RelMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 0.6
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), StrongMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 12.0
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), Discrim=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , Consist=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 0
+[2025-11-04 12:55:45] INFO: /
+[2025-11-04 12:55:45] INFO: 7
+[2025-11-04 12:55:45] INFO: )
+[2025-11-04 12:55:45] INFO: [Recognition] Scores: S00000 - Nicholas=0.262 S00001 - jereme=0.326 S13234 - Jin_Rae=0.869 S55555 - Tiffany=0.726 S88888 - Cavin=0.513 S99998 - Kim_Jun_Un=0.669 S99999 - Tonald_Drump=0.779 
+[2025-11-04 12:55:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.869), 2nd=0.779, Discriminative=0.760, AvgNeg=0.546
+[2025-11-04 12:55:45] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.2%), RelMargin=10.4%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:45] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , AbsMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: , RelMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 10.4
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), StrongMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 12.0
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), Discrim=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , Consist=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 0
+[2025-11-04 12:55:45] INFO: /
+[2025-11-04 12:55:45] INFO: 7
+[2025-11-04 12:55:45] INFO: )
+[2025-11-04 12:55:45] INFO: [Recognition] Scores: S00000 - Nicholas=0.330 S00001 - jereme=0.350 S13234 - Jin_Rae=0.851 S55555 - Tiffany=0.618 S88888 - Cavin=0.640 S99998 - Kim_Jun_Un=0.683 S99999 - Tonald_Drump=0.792 
+[2025-11-04 12:55:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.851), 2nd=0.792, Discriminative=0.737, AvgNeg=0.569
+[2025-11-04 12:55:45] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.4%), RelMargin=6.9%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:45] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , AbsMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: , RelMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 6.9
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), StrongMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 12.0
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), Discrim=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , Consist=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 0
+[2025-11-04 12:55:45] INFO: /
+[2025-11-04 12:55:45] INFO: 7
+[2025-11-04 12:55:45] INFO: )
+[2025-11-04 12:55:45] INFO: [Recognition] Scores: S00000 - Nicholas=0.231 S00001 - jereme=0.000 S13234 - Jin_Rae=0.829 S55555 - Tiffany=0.631 S88888 - Cavin=0.557 S99998 - Kim_Jun_Un=0.000 S99999 - Tonald_Drump=0.765 
+[2025-11-04 12:55:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.829), 2nd=0.765, Discriminative=0.756, AvgNeg=0.364
+[2025-11-04 12:55:45] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.8%), RelMargin=7.8%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:45] INFO: [Performance] Pre-filter skipped 2/7 persons (28.6% speedup)
+[2025-11-04 12:55:45] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , AbsMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: , RelMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 7.8
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), StrongMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 12.0
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), Discrim=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , Consist=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 0
+[2025-11-04 12:55:45] INFO: /
+[2025-11-04 12:55:45] INFO: 7
+[2025-11-04 12:55:45] INFO: )
+[2025-11-04 12:55:45] INFO: [Recognition] Scores: S00000 - Nicholas=0.200 S00001 - jereme=0.244 S13234 - Jin_Rae=0.832 S55555 - Tiffany=0.622 S88888 - Cavin=0.525 S99998 - Kim_Jun_Un=0.641 S99999 - Tonald_Drump=0.771 
+[2025-11-04 12:55:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.832), 2nd=0.771, Discriminative=0.732, AvgNeg=0.500
+[2025-11-04 12:55:45] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=7.3%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:45] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , AbsMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: , RelMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 7.3
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), StrongMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 12.0
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), Discrim=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , Consist=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 0
+[2025-11-04 12:55:45] INFO: /
+[2025-11-04 12:55:45] INFO: 7
+[2025-11-04 12:55:45] INFO: )
+[2025-11-04 12:55:45] INFO: [Recognition] Scores: S00000 - Nicholas=0.181 S00001 - jereme=0.231 S13234 - Jin_Rae=0.861 S55555 - Tiffany=0.669 S88888 - Cavin=0.478 S99998 - Kim_Jun_Un=0.642 S99999 - Tonald_Drump=0.758 
+[2025-11-04 12:55:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.861), 2nd=0.758, Discriminative=0.763, AvgNeg=0.493
+[2025-11-04 12:55:45] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.3%), RelMargin=12.0%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:45] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , AbsMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: , RelMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 12.0
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), StrongMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 12.0
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), Discrim=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , Consist=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 0
+[2025-11-04 12:55:45] INFO: /
+[2025-11-04 12:55:45] INFO: 7
+[2025-11-04 12:55:45] INFO: )
+[2025-11-04 12:55:45] INFO: [Recognition] Scores: S00000 - Nicholas=0.178 S00001 - jereme=0.231 S13234 - Jin_Rae=0.854 S55555 - Tiffany=0.716 S88888 - Cavin=0.438 S99998 - Kim_Jun_Un=0.621 S99999 - Tonald_Drump=0.731 
+[2025-11-04 12:55:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.854), 2nd=0.731, Discriminative=0.757, AvgNeg=0.486
+[2025-11-04 12:55:45] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.4%), RelMargin=14.4%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:45] INFO: [Decision] ACCEPT: Primary thresholds met (abs + margin + relative)
+[2025-11-04 12:55:45] INFO: [Recognition] Scores: S00000 - Nicholas=0.229 S00001 - jereme=0.284 S13234 - Jin_Rae=0.853 S55555 - Tiffany=0.667 S88888 - Cavin=0.482 S99998 - Kim_Jun_Un=0.612 S99999 - Tonald_Drump=0.780 
+[2025-11-04 12:55:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.853), 2nd=0.780, Discriminative=0.751, AvgNeg=0.509
+[2025-11-04 12:55:45] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.4%), RelMargin=8.5%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:45] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , AbsMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: , RelMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 8.5
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), StrongMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 12.0
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), Discrim=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , Consist=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 1
+[2025-11-04 12:55:45] INFO: /
+[2025-11-04 12:55:45] INFO: 7
+[2025-11-04 12:55:45] INFO: )
+[2025-11-04 12:55:45] INFO: [Recognition] Scores: S00000 - Nicholas=0.206 S00001 - jereme=0.245 S13234 - Jin_Rae=0.849 S55555 - Tiffany=0.640 S88888 - Cavin=0.508 S99998 - Kim_Jun_Un=0.643 S99999 - Tonald_Drump=0.776 
+[2025-11-04 12:55:45] INFO: [Decision] Best=S13234 - Jin_Rae(0.849), 2nd=0.776, Discriminative=0.748, AvgNeg=0.503
+[2025-11-04 12:55:45] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.5%), RelMargin=8.6%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:45] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , AbsMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: , RelMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 8.6
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), StrongMargin=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 12.0
+[2025-11-04 12:55:45] INFO: %
+[2025-11-04 12:55:45] INFO: ), Discrim=
+[2025-11-04 12:55:45] INFO: true
+[2025-11-04 12:55:45] INFO: , Consist=
+[2025-11-04 12:55:45] INFO: false
+[2025-11-04 12:55:45] INFO: (
+[2025-11-04 12:55:45] INFO: 1
+[2025-11-04 12:55:45] INFO: /
+[2025-11-04 12:55:45] INFO: 7
+[2025-11-04 12:55:45] INFO: )
+[2025-11-04 12:55:46] INFO: [Recognition] Scores: S00000 - Nicholas=0.258 S00001 - jereme=0.284 S13234 - Jin_Rae=0.855 S55555 - Tiffany=0.678 S88888 - Cavin=0.485 S99998 - Kim_Jun_Un=0.671 S99999 - Tonald_Drump=0.783 
+[2025-11-04 12:55:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.855), 2nd=0.783, Discriminative=0.750, AvgNeg=0.527
+[2025-11-04 12:55:46] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.4%), RelMargin=8.5%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:46] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , AbsMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: , RelMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 8.5
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), StrongMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 12.0
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), Discrim=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , Consist=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 1
+[2025-11-04 12:55:46] INFO: /
+[2025-11-04 12:55:46] INFO: 7
+[2025-11-04 12:55:46] INFO: )
+[2025-11-04 12:55:46] INFO: [Recognition] Scores: S00000 - Nicholas=0.337 S00001 - jereme=0.388 S13234 - Jin_Rae=0.839 S55555 - Tiffany=0.581 S88888 - Cavin=0.547 S99998 - Kim_Jun_Un=0.710 S99999 - Tonald_Drump=0.813 
+[2025-11-04 12:55:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.839), 2nd=0.813, Discriminative=0.727, AvgNeg=0.562
+[2025-11-04 12:55:46] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.6%), RelMargin=3.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:46] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , AbsMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: , RelMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 3.1
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), StrongMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 12.0
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), Discrim=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , Consist=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 1
+[2025-11-04 12:55:46] INFO: /
+[2025-11-04 12:55:46] INFO: 7
+[2025-11-04 12:55:46] INFO: )
+[2025-11-04 12:55:46] INFO: [Recognition] Scores: S00000 - Nicholas=0.263 S00001 - jereme=0.314 S13234 - Jin_Rae=0.834 S55555 - Tiffany=0.611 S88888 - Cavin=0.535 S99998 - Kim_Jun_Un=0.711 S99999 - Tonald_Drump=0.819 
+[2025-11-04 12:55:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.834), 2nd=0.819, Discriminative=0.725, AvgNeg=0.542
+[2025-11-04 12:55:46] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=1.7%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:46] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , AbsMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: , RelMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 1.7
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), StrongMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 12.0
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), Discrim=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , Consist=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 1
+[2025-11-04 12:55:46] INFO: /
+[2025-11-04 12:55:46] INFO: 7
+[2025-11-04 12:55:46] INFO: )
+[2025-11-04 12:55:46] INFO: [Recognition] Scores: S00000 - Nicholas=0.270 S00001 - jereme=0.315 S13234 - Jin_Rae=0.858 S55555 - Tiffany=0.742 S88888 - Cavin=0.518 S99998 - Kim_Jun_Un=0.717 S99999 - Tonald_Drump=0.793 
+[2025-11-04 12:55:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.858), 2nd=0.793, Discriminative=0.747, AvgNeg=0.559
+[2025-11-04 12:55:46] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.3%), RelMargin=7.6%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:46] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , AbsMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: , RelMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 7.6
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), StrongMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 12.0
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), Discrim=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , Consist=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 1
+[2025-11-04 12:55:46] INFO: /
+[2025-11-04 12:55:46] INFO: 7
+[2025-11-04 12:55:46] INFO: )
+[2025-11-04 12:55:46] INFO: [Recognition] Scores: S00000 - Nicholas=0.413 S00001 - jereme=0.414 S13234 - Jin_Rae=0.844 S55555 - Tiffany=0.619 S88888 - Cavin=0.643 S99998 - Kim_Jun_Un=0.721 S99999 - Tonald_Drump=0.813 
+[2025-11-04 12:55:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.844), 2nd=0.813, Discriminative=0.724, AvgNeg=0.604
+[2025-11-04 12:55:46] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.5%), RelMargin=3.7%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:46] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , AbsMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: , RelMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 3.7
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), StrongMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 12.0
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), Discrim=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , Consist=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 1
+[2025-11-04 12:55:46] INFO: /
+[2025-11-04 12:55:46] INFO: 7
+[2025-11-04 12:55:46] INFO: )
+[2025-11-04 12:55:46] INFO: [Recognition] Scores: S00000 - Nicholas=0.341 S00001 - jereme=0.377 S13234 - Jin_Rae=0.829 S55555 - Tiffany=0.614 S88888 - Cavin=0.607 S99998 - Kim_Jun_Un=0.726 S99999 - Tonald_Drump=0.838 
+[2025-11-04 12:55:46] INFO: [Decision] Best=S99999 - Tonald_Drump(0.838), 2nd=0.829, Discriminative=0.721, AvgNeg=0.582
+[2025-11-04 12:55:46] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.3%), RelMargin=1.1%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:46] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , AbsMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: , RelMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 1.1
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), StrongMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 12.0
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), Discrim=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , Consist=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 0
+[2025-11-04 12:55:46] INFO: /
+[2025-11-04 12:55:46] INFO: 7
+[2025-11-04 12:55:46] INFO: )
+[2025-11-04 12:55:46] INFO: [Recognition] Scores: S00000 - Nicholas=0.330 S00001 - jereme=0.368 S13234 - Jin_Rae=0.820 S55555 - Tiffany=0.634 S88888 - Cavin=0.588 S99998 - Kim_Jun_Un=0.705 S99999 - Tonald_Drump=0.784 
+[2025-11-04 12:55:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.820), 2nd=0.784, Discriminative=0.706, AvgNeg=0.568
+[2025-11-04 12:55:46] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.9%), RelMargin=4.3%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:46] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , AbsMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: , RelMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 4.3
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), StrongMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 12.0
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), Discrim=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , Consist=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 0
+[2025-11-04 12:55:46] INFO: /
+[2025-11-04 12:55:46] INFO: 7
+[2025-11-04 12:55:46] INFO: )
+[2025-11-04 12:55:46] INFO: [Recognition] Scores: S00000 - Nicholas=0.372 S00001 - jereme=0.381 S13234 - Jin_Rae=0.776 S55555 - Tiffany=0.587 S88888 - Cavin=0.672 S99998 - Kim_Jun_Un=0.675 S99999 - Tonald_Drump=0.771 
+[2025-11-04 12:55:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.776), 2nd=0.771, Discriminative=0.661, AvgNeg=0.576
+[2025-11-04 12:55:46] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.6%), RelMargin=0.7%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:46] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , AbsMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: , RelMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 0.7
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), StrongMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 12.0
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), Discrim=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , Consist=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 0
+[2025-11-04 12:55:46] INFO: /
+[2025-11-04 12:55:46] INFO: 7
+[2025-11-04 12:55:46] INFO: )
+[2025-11-04 12:55:46] INFO: [Recognition] Scores: S00000 - Nicholas=0.327 S00001 - jereme=0.361 S13234 - Jin_Rae=0.820 S55555 - Tiffany=0.598 S88888 - Cavin=0.634 S99998 - Kim_Jun_Un=0.721 S99999 - Tonald_Drump=0.830 
+[2025-11-04 12:55:46] INFO: [Decision] Best=S99999 - Tonald_Drump(0.830), 2nd=0.820, Discriminative=0.715, AvgNeg=0.577
+[2025-11-04 12:55:46] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.5%), RelMargin=1.2%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:46] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , AbsMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: , RelMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 1.2
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), StrongMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 12.0
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), Discrim=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , Consist=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 0
+[2025-11-04 12:55:46] INFO: /
+[2025-11-04 12:55:46] INFO: 7
+[2025-11-04 12:55:46] INFO: )
+[2025-11-04 12:55:46] INFO: [Recognition] Scores: S00000 - Nicholas=0.264 S00001 - jereme=0.307 S13234 - Jin_Rae=0.825 S55555 - Tiffany=0.607 S88888 - Cavin=0.565 S99998 - Kim_Jun_Un=0.705 S99999 - Tonald_Drump=0.783 
+[2025-11-04 12:55:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.825), 2nd=0.783, Discriminative=0.717, AvgNeg=0.538
+[2025-11-04 12:55:46] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.8%), RelMargin=5.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:46] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , AbsMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: , RelMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 5.1
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), StrongMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 12.0
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), Discrim=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , Consist=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 0
+[2025-11-04 12:55:46] INFO: /
+[2025-11-04 12:55:46] INFO: 7
+[2025-11-04 12:55:46] INFO: )
+[2025-11-04 12:55:46] INFO: [Recognition] Scores: S00000 - Nicholas=0.350 S00001 - jereme=0.396 S13234 - Jin_Rae=0.825 S55555 - Tiffany=0.595 S88888 - Cavin=0.592 S99998 - Kim_Jun_Un=0.682 S99999 - Tonald_Drump=0.785 
+[2025-11-04 12:55:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.825), 2nd=0.785, Discriminative=0.711, AvgNeg=0.567
+[2025-11-04 12:55:46] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.8%), RelMargin=4.8%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:46] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , AbsMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: , RelMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 4.8
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), StrongMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 12.0
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), Discrim=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , Consist=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 0
+[2025-11-04 12:55:46] INFO: /
+[2025-11-04 12:55:46] INFO: 7
+[2025-11-04 12:55:46] INFO: )
+[2025-11-04 12:55:46] INFO: [Recognition] Scores: S00000 - Nicholas=0.500 S00001 - jereme=0.486 S13234 - Jin_Rae=0.805 S55555 - Tiffany=0.595 S88888 - Cavin=0.666 S99998 - Kim_Jun_Un=0.781 S99999 - Tonald_Drump=0.795 
+[2025-11-04 12:55:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.805), 2nd=0.795, Discriminative=0.678, AvgNeg=0.637
+[2025-11-04 12:55:46] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.1%), RelMargin=1.3%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:46] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , AbsMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: , RelMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 1.3
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), StrongMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 12.0
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), Discrim=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , Consist=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 0
+[2025-11-04 12:55:46] INFO: /
+[2025-11-04 12:55:46] INFO: 7
+[2025-11-04 12:55:46] INFO: )
+[2025-11-04 12:55:46] INFO: [Recognition] Scores: S00000 - Nicholas=0.291 S00001 - jereme=0.334 S13234 - Jin_Rae=0.829 S55555 - Tiffany=0.610 S88888 - Cavin=0.547 S99998 - Kim_Jun_Un=0.724 S99999 - Tonald_Drump=0.751 
+[2025-11-04 12:55:46] INFO: [Decision] Best=S13234 - Jin_Rae(0.829), 2nd=0.751, Discriminative=0.720, AvgNeg=0.543
+[2025-11-04 12:55:46] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.8%), RelMargin=9.3%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:46] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , AbsMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: , RelMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 9.3
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), StrongMargin=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 12.0
+[2025-11-04 12:55:46] INFO: %
+[2025-11-04 12:55:46] INFO: ), Discrim=
+[2025-11-04 12:55:46] INFO: true
+[2025-11-04 12:55:46] INFO: , Consist=
+[2025-11-04 12:55:46] INFO: false
+[2025-11-04 12:55:46] INFO: (
+[2025-11-04 12:55:46] INFO: 0
+[2025-11-04 12:55:46] INFO: /
+[2025-11-04 12:55:46] INFO: 7
+[2025-11-04 12:55:46] INFO: )
+[2025-11-04 12:55:47] INFO: [Recognition] Scores: S00000 - Nicholas=0.413 S00001 - jereme=0.423 S13234 - Jin_Rae=0.803 S55555 - Tiffany=0.630 S88888 - Cavin=0.740 S99998 - Kim_Jun_Un=0.728 S99999 - Tonald_Drump=0.736 
+[2025-11-04 12:55:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.803), 2nd=0.740, Discriminative=0.681, AvgNeg=0.612
+[2025-11-04 12:55:47] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.2%), RelMargin=7.9%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:47] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , AbsMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: , RelMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 7.9
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), StrongMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 12.0
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), Discrim=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , Consist=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0
+[2025-11-04 12:55:47] INFO: /
+[2025-11-04 12:55:47] INFO: 7
+[2025-11-04 12:55:47] INFO: )
+[2025-11-04 12:55:47] INFO: [Recognition] Scores: S00000 - Nicholas=0.410 S00001 - jereme=0.411 S13234 - Jin_Rae=0.820 S55555 - Tiffany=0.615 S88888 - Cavin=0.651 S99998 - Kim_Jun_Un=0.743 S99999 - Tonald_Drump=0.814 
+[2025-11-04 12:55:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.820), 2nd=0.814, Discriminative=0.699, AvgNeg=0.607
+[2025-11-04 12:55:47] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.9%), RelMargin=0.7%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:47] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , AbsMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: , RelMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0.7
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), StrongMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 12.0
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), Discrim=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , Consist=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0
+[2025-11-04 12:55:47] INFO: /
+[2025-11-04 12:55:47] INFO: 7
+[2025-11-04 12:55:47] INFO: )
+[2025-11-04 12:55:47] INFO: [Recognition] Scores: S00000 - Nicholas=0.281 S00001 - jereme=0.329 S13234 - Jin_Rae=0.838 S55555 - Tiffany=0.620 S88888 - Cavin=0.577 S99998 - Kim_Jun_Un=0.715 S99999 - Tonald_Drump=0.743 
+[2025-11-04 12:55:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.838), 2nd=0.743, Discriminative=0.729, AvgNeg=0.544
+[2025-11-04 12:55:47] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.6%), RelMargin=11.3%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:47] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , AbsMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: , RelMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 11.3
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), StrongMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 12.0
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), Discrim=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , Consist=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0
+[2025-11-04 12:55:47] INFO: /
+[2025-11-04 12:55:47] INFO: 7
+[2025-11-04 12:55:47] INFO: )
+[2025-11-04 12:55:47] INFO: [Recognition] Scores: S00000 - Nicholas=0.331 S00001 - jereme=0.326 S13234 - Jin_Rae=0.806 S55555 - Tiffany=0.588 S88888 - Cavin=0.658 S99998 - Kim_Jun_Un=0.682 S99999 - Tonald_Drump=0.766 
+[2025-11-04 12:55:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.806), 2nd=0.766, Discriminative=0.694, AvgNeg=0.558
+[2025-11-04 12:55:47] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.1%), RelMargin=4.9%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:47] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , AbsMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: , RelMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 4.9
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), StrongMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 12.0
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), Discrim=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , Consist=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0
+[2025-11-04 12:55:47] INFO: /
+[2025-11-04 12:55:47] INFO: 7
+[2025-11-04 12:55:47] INFO: )
+[2025-11-04 12:55:47] INFO: [Recognition] Scores: S00000 - Nicholas=0.385 S00001 - jereme=0.389 S13234 - Jin_Rae=0.785 S55555 - Tiffany=0.589 S88888 - Cavin=0.687 S99998 - Kim_Jun_Un=0.701 S99999 - Tonald_Drump=0.783 
+[2025-11-04 12:55:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.785), 2nd=0.783, Discriminative=0.667, AvgNeg=0.589
+[2025-11-04 12:55:47] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.5%), RelMargin=0.3%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:47] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , AbsMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: , RelMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0.3
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), StrongMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 12.0
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), Discrim=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , Consist=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0
+[2025-11-04 12:55:47] INFO: /
+[2025-11-04 12:55:47] INFO: 7
+[2025-11-04 12:55:47] INFO: )
+[2025-11-04 12:55:47] INFO: [Recognition] Scores: S00000 - Nicholas=0.281 S00001 - jereme=0.324 S13234 - Jin_Rae=0.860 S55555 - Tiffany=0.681 S88888 - Cavin=0.586 S99998 - Kim_Jun_Un=0.692 S99999 - Tonald_Drump=0.764 
+[2025-11-04 12:55:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.860), 2nd=0.764, Discriminative=0.749, AvgNeg=0.555
+[2025-11-04 12:55:47] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.3%), RelMargin=11.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:47] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , AbsMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: , RelMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 11.2
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), StrongMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 12.0
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), Discrim=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , Consist=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0
+[2025-11-04 12:55:47] INFO: /
+[2025-11-04 12:55:47] INFO: 7
+[2025-11-04 12:55:47] INFO: )
+[2025-11-04 12:55:47] INFO: [Recognition] Scores: S00000 - Nicholas=0.252 S00001 - jereme=0.312 S13234 - Jin_Rae=0.832 S55555 - Tiffany=0.618 S88888 - Cavin=0.563 S99998 - Kim_Jun_Un=0.671 S99999 - Tonald_Drump=0.795 
+[2025-11-04 12:55:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.832), 2nd=0.795, Discriminative=0.725, AvgNeg=0.535
+[2025-11-04 12:55:47] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=4.5%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:47] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , AbsMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: , RelMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 4.5
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), StrongMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 12.0
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), Discrim=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , Consist=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0
+[2025-11-04 12:55:47] INFO: /
+[2025-11-04 12:55:47] INFO: 7
+[2025-11-04 12:55:47] INFO: )
+[2025-11-04 12:55:47] INFO: [Recognition] Scores: S00000 - Nicholas=0.372 S00001 - jereme=0.331 S13234 - Jin_Rae=0.807 S55555 - Tiffany=0.619 S88888 - Cavin=0.655 S99998 - Kim_Jun_Un=0.639 S99999 - Tonald_Drump=0.790 
+[2025-11-04 12:55:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.807), 2nd=0.790, Discriminative=0.694, AvgNeg=0.568
+[2025-11-04 12:55:47] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.1%), RelMargin=2.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:47] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , AbsMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: , RelMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 2.1
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), StrongMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 12.0
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), Discrim=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , Consist=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0
+[2025-11-04 12:55:47] INFO: /
+[2025-11-04 12:55:47] INFO: 7
+[2025-11-04 12:55:47] INFO: )
+[2025-11-04 12:55:47] INFO: [Recognition] Scores: S00000 - Nicholas=0.254 S00001 - jereme=0.305 S13234 - Jin_Rae=0.840 S55555 - Tiffany=0.645 S88888 - Cavin=0.559 S99998 - Kim_Jun_Un=0.668 S99999 - Tonald_Drump=0.778 
+[2025-11-04 12:55:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.840), 2nd=0.778, Discriminative=0.733, AvgNeg=0.535
+[2025-11-04 12:55:47] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.6%), RelMargin=7.5%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:47] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , AbsMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: , RelMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 7.5
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), StrongMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 12.0
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), Discrim=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , Consist=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0
+[2025-11-04 12:55:47] INFO: /
+[2025-11-04 12:55:47] INFO: 7
+[2025-11-04 12:55:47] INFO: )
+[2025-11-04 12:55:47] INFO: [Recognition] Scores: S00000 - Nicholas=0.340 S00001 - jereme=0.436 S13234 - Jin_Rae=0.832 S55555 - Tiffany=0.597 S88888 - Cavin=0.567 S99998 - Kim_Jun_Un=0.666 S99999 - Tonald_Drump=0.794 
+[2025-11-04 12:55:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.832), 2nd=0.794, Discriminative=0.719, AvgNeg=0.567
+[2025-11-04 12:55:47] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=4.6%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:47] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , AbsMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: , RelMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 4.6
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), StrongMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 12.0
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), Discrim=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , Consist=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0
+[2025-11-04 12:55:47] INFO: /
+[2025-11-04 12:55:47] INFO: 7
+[2025-11-04 12:55:47] INFO: )
+[2025-11-04 12:55:47] INFO: [Recognition] Scores: S00000 - Nicholas=0.427 S00001 - jereme=0.489 S13234 - Jin_Rae=0.809 S55555 - Tiffany=0.558 S88888 - Cavin=0.643 S99998 - Kim_Jun_Un=0.724 S99999 - Tonald_Drump=0.784 
+[2025-11-04 12:55:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.809), 2nd=0.784, Discriminative=0.688, AvgNeg=0.604
+[2025-11-04 12:55:47] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.1%), RelMargin=3.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:47] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , AbsMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: , RelMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 3.1
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), StrongMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 12.0
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), Discrim=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , Consist=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0
+[2025-11-04 12:55:47] INFO: /
+[2025-11-04 12:55:47] INFO: 7
+[2025-11-04 12:55:47] INFO: )
+[2025-11-04 12:55:47] INFO: [Recognition] Scores: S00000 - Nicholas=0.431 S00001 - jereme=0.422 S13234 - Jin_Rae=0.772 S55555 - Tiffany=0.522 S88888 - Cavin=0.686 S99998 - Kim_Jun_Un=0.718 S99999 - Tonald_Drump=0.755 
+[2025-11-04 12:55:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.772), 2nd=0.755, Discriminative=0.654, AvgNeg=0.589
+[2025-11-04 12:55:47] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.7%), RelMargin=2.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:47] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , AbsMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: , RelMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 2.2
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), StrongMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 12.0
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), Discrim=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , Consist=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0
+[2025-11-04 12:55:47] INFO: /
+[2025-11-04 12:55:47] INFO: 7
+[2025-11-04 12:55:47] INFO: )
+[2025-11-04 12:55:47] INFO: [Recognition] Scores: S00000 - Nicholas=0.371 S00001 - jereme=0.397 S13234 - Jin_Rae=0.833 S55555 - Tiffany=0.662 S88888 - Cavin=0.650 S99998 - Kim_Jun_Un=0.712 S99999 - Tonald_Drump=0.771 
+[2025-11-04 12:55:47] INFO: [Decision] Best=S13234 - Jin_Rae(0.833), 2nd=0.771, Discriminative=0.714, AvgNeg=0.594
+[2025-11-04 12:55:47] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=7.4%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:47] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , AbsMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: , RelMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 7.4
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), StrongMargin=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 12.0
+[2025-11-04 12:55:47] INFO: %
+[2025-11-04 12:55:47] INFO: ), Discrim=
+[2025-11-04 12:55:47] INFO: true
+[2025-11-04 12:55:47] INFO: , Consist=
+[2025-11-04 12:55:47] INFO: false
+[2025-11-04 12:55:47] INFO: (
+[2025-11-04 12:55:47] INFO: 0
+[2025-11-04 12:55:47] INFO: /
+[2025-11-04 12:55:47] INFO: 7
+[2025-11-04 12:55:47] INFO: )
+[2025-11-04 12:55:48] INFO: [Recognition] Scores: S00000 - Nicholas=0.298 S00001 - jereme=0.000 S13234 - Jin_Rae=0.807 S55555 - Tiffany=0.647 S88888 - Cavin=0.608 S99998 - Kim_Jun_Un=0.663 S99999 - Tonald_Drump=0.772 
+[2025-11-04 12:55:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.807), 2nd=0.772, Discriminative=0.707, AvgNeg=0.498
+[2025-11-04 12:55:48] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.1%), RelMargin=4.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:48] INFO: [Performance] Pre-filter skipped 1/7 persons (14.3% speedup)
+[2025-11-04 12:55:48] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , AbsMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: , RelMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 4.2
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), StrongMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 12.0
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), Discrim=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , Consist=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 0
+[2025-11-04 12:55:48] INFO: /
+[2025-11-04 12:55:48] INFO: 7
+[2025-11-04 12:55:48] INFO: )
+[2025-11-04 12:55:48] INFO: [Recognition] Scores: S00000 - Nicholas=0.342 S00001 - jereme=0.390 S13234 - Jin_Rae=0.779 S55555 - Tiffany=0.567 S88888 - Cavin=0.627 S99998 - Kim_Jun_Un=0.677 S99999 - Tonald_Drump=0.770 
+[2025-11-04 12:55:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.779), 2nd=0.770, Discriminative=0.667, AvgNeg=0.562
+[2025-11-04 12:55:48] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.6%), RelMargin=1.2%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:48] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , AbsMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: , RelMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 1.2
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), StrongMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 12.0
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), Discrim=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , Consist=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 0
+[2025-11-04 12:55:48] INFO: /
+[2025-11-04 12:55:48] INFO: 7
+[2025-11-04 12:55:48] INFO: )
+[2025-11-04 12:55:48] INFO: [Recognition] Scores: S00000 - Nicholas=0.228 S00001 - jereme=0.278 S13234 - Jin_Rae=0.836 S55555 - Tiffany=0.626 S88888 - Cavin=0.547 S99998 - Kim_Jun_Un=0.658 S99999 - Tonald_Drump=0.766 
+[2025-11-04 12:55:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.836), 2nd=0.766, Discriminative=0.732, AvgNeg=0.517
+[2025-11-04 12:55:48] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.7%), RelMargin=8.3%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:48] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , AbsMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: , RelMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 8.3
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), StrongMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 12.0
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), Discrim=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , Consist=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 0
+[2025-11-04 12:55:48] INFO: /
+[2025-11-04 12:55:48] INFO: 7
+[2025-11-04 12:55:48] INFO: )
+[2025-11-04 12:55:48] INFO: [Recognition] Scores: S00000 - Nicholas=0.260 S00001 - jereme=0.268 S13234 - Jin_Rae=0.801 S55555 - Tiffany=0.651 S88888 - Cavin=0.546 S99998 - Kim_Jun_Un=0.636 S99999 - Tonald_Drump=0.758 
+[2025-11-04 12:55:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.801), 2nd=0.758, Discriminative=0.697, AvgNeg=0.520
+[2025-11-04 12:55:48] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.2%), RelMargin=5.4%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:48] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , AbsMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: , RelMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 5.4
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), StrongMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 12.0
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), Discrim=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , Consist=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 0
+[2025-11-04 12:55:48] INFO: /
+[2025-11-04 12:55:48] INFO: 7
+[2025-11-04 12:55:48] INFO: )
+[2025-11-04 12:55:48] INFO: [Recognition] Scores: S00000 - Nicholas=0.363 S00001 - jereme=0.416 S13234 - Jin_Rae=0.803 S55555 - Tiffany=0.629 S88888 - Cavin=0.621 S99998 - Kim_Jun_Un=0.719 S99999 - Tonald_Drump=0.747 
+[2025-11-04 12:55:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.803), 2nd=0.747, Discriminative=0.687, AvgNeg=0.582
+[2025-11-04 12:55:48] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.2%), RelMargin=7.0%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:48] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , AbsMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: , RelMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 7.0
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), StrongMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 12.0
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), Discrim=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , Consist=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 0
+[2025-11-04 12:55:48] INFO: /
+[2025-11-04 12:55:48] INFO: 7
+[2025-11-04 12:55:48] INFO: )
+[2025-11-04 12:55:48] INFO: [Recognition] Scores: S00000 - Nicholas=0.380 S00001 - jereme=0.371 S13234 - Jin_Rae=0.807 S55555 - Tiffany=0.683 S88888 - Cavin=0.681 S99998 - Kim_Jun_Un=0.714 S99999 - Tonald_Drump=0.789 
+[2025-11-04 12:55:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.807), 2nd=0.789, Discriminative=0.687, AvgNeg=0.603
+[2025-11-04 12:55:48] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.1%), RelMargin=2.3%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:48] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , AbsMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: , RelMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 2.3
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), StrongMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 12.0
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), Discrim=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , Consist=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 0
+[2025-11-04 12:55:48] INFO: /
+[2025-11-04 12:55:48] INFO: 7
+[2025-11-04 12:55:48] INFO: )
+[2025-11-04 12:55:48] INFO: [Recognition] Scores: S00000 - Nicholas=0.412 S00001 - jereme=0.361 S13234 - Jin_Rae=0.789 S55555 - Tiffany=0.585 S88888 - Cavin=0.669 S99998 - Kim_Jun_Un=0.728 S99999 - Tonald_Drump=0.797 
+[2025-11-04 12:55:48] INFO: [Decision] Best=S99999 - Tonald_Drump(0.797), 2nd=0.789, Discriminative=0.678, AvgNeg=0.591
+[2025-11-04 12:55:48] INFO: [Thresholds] Abs=0.637, Margin=0.137(17.2%), RelMargin=0.9%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:48] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , AbsMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: , RelMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 0.9
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), StrongMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 12.0
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), Discrim=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , Consist=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 0
+[2025-11-04 12:55:48] INFO: /
+[2025-11-04 12:55:48] INFO: 7
+[2025-11-04 12:55:48] INFO: )
+[2025-11-04 12:55:48] INFO: [Recognition] Scores: S00000 - Nicholas=0.355 S00001 - jereme=0.344 S13234 - Jin_Rae=0.790 S55555 - Tiffany=0.670 S88888 - Cavin=0.651 S99998 - Kim_Jun_Un=0.707 S99999 - Tonald_Drump=0.793 
+[2025-11-04 12:55:48] INFO: [Decision] Best=S99999 - Tonald_Drump(0.793), 2nd=0.790, Discriminative=0.675, AvgNeg=0.586
+[2025-11-04 12:55:48] INFO: [Thresholds] Abs=0.637, Margin=0.137(17.3%), RelMargin=0.3%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:48] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , AbsMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: , RelMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 0.3
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), StrongMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 12.0
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), Discrim=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , Consist=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 0
+[2025-11-04 12:55:48] INFO: /
+[2025-11-04 12:55:48] INFO: 7
+[2025-11-04 12:55:48] INFO: )
+[2025-11-04 12:55:48] INFO: [Recognition] Scores: S00000 - Nicholas=0.580 S00001 - jereme=0.462 S13234 - Jin_Rae=0.773 S55555 - Tiffany=0.590 S88888 - Cavin=0.660 S99998 - Kim_Jun_Un=0.701 S99999 - Tonald_Drump=0.789 
+[2025-11-04 12:55:48] INFO: [Decision] Best=S99999 - Tonald_Drump(0.789), 2nd=0.773, Discriminative=0.664, AvgNeg=0.627
+[2025-11-04 12:55:48] INFO: [Thresholds] Abs=0.637, Margin=0.137(17.3%), RelMargin=2.1%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:48] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , AbsMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: , RelMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 2.1
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), StrongMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 12.0
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), Discrim=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , Consist=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 0
+[2025-11-04 12:55:48] INFO: /
+[2025-11-04 12:55:48] INFO: 7
+[2025-11-04 12:55:48] INFO: )
+[2025-11-04 12:55:48] INFO: [Recognition] Scores: S00000 - Nicholas=0.424 S00001 - jereme=0.392 S13234 - Jin_Rae=0.825 S55555 - Tiffany=0.654 S88888 - Cavin=0.638 S99998 - Kim_Jun_Un=0.706 S99999 - Tonald_Drump=0.792 
+[2025-11-04 12:55:48] INFO: [Decision] Best=S13234 - Jin_Rae(0.825), 2nd=0.792, Discriminative=0.705, AvgNeg=0.601
+[2025-11-04 12:55:48] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.8%), RelMargin=4.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:48] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , AbsMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: , RelMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 4.1
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), StrongMargin=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 12.0
+[2025-11-04 12:55:48] INFO: %
+[2025-11-04 12:55:48] INFO: ), Discrim=
+[2025-11-04 12:55:48] INFO: true
+[2025-11-04 12:55:48] INFO: , Consist=
+[2025-11-04 12:55:48] INFO: false
+[2025-11-04 12:55:48] INFO: (
+[2025-11-04 12:55:48] INFO: 0
+[2025-11-04 12:55:48] INFO: /
+[2025-11-04 12:55:48] INFO: 7
+[2025-11-04 12:55:48] INFO: )
+[2025-11-04 12:55:49] INFO: [Recognition] Scores: S00000 - Nicholas=0.434 S00001 - jereme=0.406 S13234 - Jin_Rae=0.814 S55555 - Tiffany=0.585 S88888 - Cavin=0.605 S99998 - Kim_Jun_Un=0.659 S99999 - Tonald_Drump=0.757 
+[2025-11-04 12:55:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.814), 2nd=0.757, Discriminative=0.700, AvgNeg=0.575
+[2025-11-04 12:55:49] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.0%), RelMargin=7.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:49] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , AbsMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: , RelMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 7.1
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), StrongMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 12.0
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), Discrim=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , Consist=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 0
+[2025-11-04 12:55:49] INFO: /
+[2025-11-04 12:55:49] INFO: 7
+[2025-11-04 12:55:49] INFO: )
+[2025-11-04 12:55:49] INFO: [Recognition] Scores: S00000 - Nicholas=0.409 S00001 - jereme=0.420 S13234 - Jin_Rae=0.823 S55555 - Tiffany=0.630 S88888 - Cavin=0.576 S99998 - Kim_Jun_Un=0.653 S99999 - Tonald_Drump=0.724 
+[2025-11-04 12:55:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.823), 2nd=0.724, Discriminative=0.709, AvgNeg=0.569
+[2025-11-04 12:55:49] INFO: [Thresholds] Abs=0.606, Margin=0.106(12.9%), RelMargin=12.0%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:49] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , AbsMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: , RelMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 12.0
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), StrongMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 12.0
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), Discrim=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , Consist=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 0
+[2025-11-04 12:55:49] INFO: /
+[2025-11-04 12:55:49] INFO: 7
+[2025-11-04 12:55:49] INFO: )
+[2025-11-04 12:55:49] INFO: [Recognition] Scores: S00000 - Nicholas=0.436 S00001 - jereme=0.432 S13234 - Jin_Rae=0.768 S55555 - Tiffany=0.546 S88888 - Cavin=0.620 S99998 - Kim_Jun_Un=0.680 S99999 - Tonald_Drump=0.701 
+[2025-11-04 12:55:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.768), 2nd=0.701, Discriminative=0.654, AvgNeg=0.569
+[2025-11-04 12:55:49] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.8%), RelMargin=8.7%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:49] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , AbsMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: , RelMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 8.7
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), StrongMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 12.0
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), Discrim=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , Consist=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 0
+[2025-11-04 12:55:49] INFO: /
+[2025-11-04 12:55:49] INFO: 7
+[2025-11-04 12:55:49] INFO: )
+[2025-11-04 12:55:49] INFO: [Recognition] Scores: S00000 - Nicholas=0.432 S00001 - jereme=0.427 S13234 - Jin_Rae=0.782 S55555 - Tiffany=0.566 S88888 - Cavin=0.623 S99998 - Kim_Jun_Un=0.664 S99999 - Tonald_Drump=0.689 
+[2025-11-04 12:55:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.782), 2nd=0.689, Discriminative=0.669, AvgNeg=0.567
+[2025-11-04 12:55:49] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.5%), RelMargin=11.8%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:49] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , AbsMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: , RelMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 11.8
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), StrongMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 12.0
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), Discrim=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , Consist=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 0
+[2025-11-04 12:55:49] INFO: /
+[2025-11-04 12:55:49] INFO: 7
+[2025-11-04 12:55:49] INFO: )
+[2025-11-04 12:55:49] INFO: [Recognition] Scores: S00000 - Nicholas=0.352 S00001 - jereme=0.355 S13234 - Jin_Rae=0.790 S55555 - Tiffany=0.617 S88888 - Cavin=0.602 S99998 - Kim_Jun_Un=0.647 S99999 - Tonald_Drump=0.751 
+[2025-11-04 12:55:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.790), 2nd=0.751, Discriminative=0.679, AvgNeg=0.554
+[2025-11-04 12:55:49] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.4%), RelMargin=4.9%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:49] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , AbsMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: , RelMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 4.9
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), StrongMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 12.0
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), Discrim=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , Consist=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 0
+[2025-11-04 12:55:49] INFO: /
+[2025-11-04 12:55:49] INFO: 7
+[2025-11-04 12:55:49] INFO: )
+[2025-11-04 12:55:49] INFO: [Recognition] Scores: S00000 - Nicholas=0.299 S00001 - jereme=0.309 S13234 - Jin_Rae=0.790 S55555 - Tiffany=0.614 S88888 - Cavin=0.576 S99998 - Kim_Jun_Un=0.631 S99999 - Tonald_Drump=0.739 
+[2025-11-04 12:55:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.790), 2nd=0.739, Discriminative=0.685, AvgNeg=0.528
+[2025-11-04 12:55:49] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.4%), RelMargin=6.5%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:49] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , AbsMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: , RelMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 6.5
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), StrongMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 12.0
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), Discrim=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , Consist=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 0
+[2025-11-04 12:55:49] INFO: /
+[2025-11-04 12:55:49] INFO: 7
+[2025-11-04 12:55:49] INFO: )
+[2025-11-04 12:55:49] INFO: [Recognition] Scores: S00000 - Nicholas=0.462 S00001 - jereme=0.459 S13234 - Jin_Rae=0.723 S55555 - Tiffany=0.573 S88888 - Cavin=0.674 S99998 - Kim_Jun_Un=0.682 S99999 - Tonald_Drump=0.695 
+[2025-11-04 12:55:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.723), 2nd=0.695, Discriminative=0.605, AvgNeg=0.591
+[2025-11-04 12:55:49] INFO: [Thresholds] Abs=0.606, Margin=0.106(14.6%), RelMargin=4.0%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:49] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , AbsMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: , RelMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 4.0
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), StrongMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 12.0
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), Discrim=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: , Consist=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 0
+[2025-11-04 12:55:49] INFO: /
+[2025-11-04 12:55:49] INFO: 7
+[2025-11-04 12:55:49] INFO: )
+[2025-11-04 12:55:49] INFO: [Recognition] Scores: S00000 - Nicholas=0.327 S00001 - jereme=0.306 S13234 - Jin_Rae=0.804 S55555 - Tiffany=0.591 S88888 - Cavin=0.623 S99998 - Kim_Jun_Un=0.644 S99999 - Tonald_Drump=0.721 
+[2025-11-04 12:55:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.804), 2nd=0.721, Discriminative=0.697, AvgNeg=0.535
+[2025-11-04 12:55:49] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.2%), RelMargin=10.4%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:49] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , AbsMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: , RelMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 10.4
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), StrongMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 12.0
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), Discrim=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , Consist=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 0
+[2025-11-04 12:55:49] INFO: /
+[2025-11-04 12:55:49] INFO: 7
+[2025-11-04 12:55:49] INFO: )
+[2025-11-04 12:55:49] INFO: [Recognition] Scores: S00000 - Nicholas=0.320 S00001 - jereme=0.401 S13234 - Jin_Rae=0.784 S55555 - Tiffany=0.583 S88888 - Cavin=0.606 S99998 - Kim_Jun_Un=0.645 S99999 - Tonald_Drump=0.741 
+[2025-11-04 12:55:49] INFO: [Decision] Best=S13234 - Jin_Rae(0.784), 2nd=0.741, Discriminative=0.674, AvgNeg=0.549
+[2025-11-04 12:55:49] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.5%), RelMargin=5.4%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:49] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , AbsMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: , RelMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 5.4
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), StrongMargin=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 12.0
+[2025-11-04 12:55:49] INFO: %
+[2025-11-04 12:55:49] INFO: ), Discrim=
+[2025-11-04 12:55:49] INFO: true
+[2025-11-04 12:55:49] INFO: , Consist=
+[2025-11-04 12:55:49] INFO: false
+[2025-11-04 12:55:49] INFO: (
+[2025-11-04 12:55:49] INFO: 0
+[2025-11-04 12:55:49] INFO: /
+[2025-11-04 12:55:49] INFO: 7
+[2025-11-04 12:55:49] INFO: )
+[2025-11-04 12:55:50] INFO: [Recognition] Scores: S00000 - Nicholas=0.557 S00001 - jereme=0.446 S13234 - Jin_Rae=0.753 S55555 - Tiffany=0.532 S88888 - Cavin=0.696 S99998 - Kim_Jun_Un=0.642 S99999 - Tonald_Drump=0.706 
+[2025-11-04 12:55:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.753), 2nd=0.706, Discriminative=0.634, AvgNeg=0.597
+[2025-11-04 12:55:50] INFO: [Thresholds] Abs=0.606, Margin=0.106(14.1%), RelMargin=6.3%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:50] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:50] INFO: true
+[2025-11-04 12:55:50] INFO: , AbsMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: , RelMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 6.3
+[2025-11-04 12:55:50] INFO: %
+[2025-11-04 12:55:50] INFO: ), StrongMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 12.0
+[2025-11-04 12:55:50] INFO: %
+[2025-11-04 12:55:50] INFO: ), Discrim=
+[2025-11-04 12:55:50] INFO: true
+[2025-11-04 12:55:50] INFO: , Consist=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 0
+[2025-11-04 12:55:50] INFO: /
+[2025-11-04 12:55:50] INFO: 7
+[2025-11-04 12:55:50] INFO: )
+[2025-11-04 12:55:50] INFO: [Recognition] Scores: S00000 - Nicholas=0.514 S00001 - jereme=0.471 S13234 - Jin_Rae=0.747 S55555 - Tiffany=0.489 S88888 - Cavin=0.721 S99998 - Kim_Jun_Un=0.633 S99999 - Tonald_Drump=0.706 
+[2025-11-04 12:55:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.747), 2nd=0.721, Discriminative=0.629, AvgNeg=0.589
+[2025-11-04 12:55:50] INFO: [Thresholds] Abs=0.606, Margin=0.106(14.2%), RelMargin=3.5%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:50] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:50] INFO: true
+[2025-11-04 12:55:50] INFO: , AbsMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: , RelMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 3.5
+[2025-11-04 12:55:50] INFO: %
+[2025-11-04 12:55:50] INFO: ), StrongMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 12.0
+[2025-11-04 12:55:50] INFO: %
+[2025-11-04 12:55:50] INFO: ), Discrim=
+[2025-11-04 12:55:50] INFO: true
+[2025-11-04 12:55:50] INFO: , Consist=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 0
+[2025-11-04 12:55:50] INFO: /
+[2025-11-04 12:55:50] INFO: 7
+[2025-11-04 12:55:50] INFO: )
+[2025-11-04 12:55:50] INFO: [Recognition] Scores: S00000 - Nicholas=0.431 S00001 - jereme=0.427 S13234 - Jin_Rae=0.752 S55555 - Tiffany=0.498 S88888 - Cavin=0.697 S99998 - Kim_Jun_Un=0.638 S99999 - Tonald_Drump=0.744 
+[2025-11-04 12:55:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.752), 2nd=0.744, Discriminative=0.638, AvgNeg=0.573
+[2025-11-04 12:55:50] INFO: [Thresholds] Abs=0.606, Margin=0.106(14.1%), RelMargin=1.1%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:50] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:50] INFO: true
+[2025-11-04 12:55:50] INFO: , AbsMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: , RelMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 1.1
+[2025-11-04 12:55:50] INFO: %
+[2025-11-04 12:55:50] INFO: ), StrongMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 12.0
+[2025-11-04 12:55:50] INFO: %
+[2025-11-04 12:55:50] INFO: ), Discrim=
+[2025-11-04 12:55:50] INFO: true
+[2025-11-04 12:55:50] INFO: , Consist=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 0
+[2025-11-04 12:55:50] INFO: /
+[2025-11-04 12:55:50] INFO: 7
+[2025-11-04 12:55:50] INFO: )
+[2025-11-04 12:55:50] INFO: [Recognition] Scores: S00000 - Nicholas=0.482 S00001 - jereme=0.437 S13234 - Jin_Rae=0.727 S55555 - Tiffany=0.477 S88888 - Cavin=0.740 S99998 - Kim_Jun_Un=0.663 S99999 - Tonald_Drump=0.725 
+[2025-11-04 12:55:50] INFO: [Decision] Best=S88888 - Cavin(0.740), 2nd=0.727, Discriminative=0.622, AvgNeg=0.585
+[2025-11-04 12:55:50] INFO: [Thresholds] Abs=0.554, Margin=0.105(14.2%), RelMargin=1.7%, Tightness=0.800, StdDev=0.122
+[2025-11-04 12:55:50] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:50] INFO: true
+[2025-11-04 12:55:50] INFO: , AbsMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: , RelMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 1.7
+[2025-11-04 12:55:50] INFO: %
+[2025-11-04 12:55:50] INFO: ), StrongMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 12.0
+[2025-11-04 12:55:50] INFO: %
+[2025-11-04 12:55:50] INFO: ), Discrim=
+[2025-11-04 12:55:50] INFO: true
+[2025-11-04 12:55:50] INFO: , Consist=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 0
+[2025-11-04 12:55:50] INFO: /
+[2025-11-04 12:55:50] INFO: 7
+[2025-11-04 12:55:50] INFO: )
+[2025-11-04 12:55:50] INFO: [Recognition] Scores: S00000 - Nicholas=0.415 S00001 - jereme=0.422 S13234 - Jin_Rae=0.749 S55555 - Tiffany=0.535 S88888 - Cavin=0.699 S99998 - Kim_Jun_Un=0.679 S99999 - Tonald_Drump=0.736 
+[2025-11-04 12:55:50] INFO: [Decision] Best=S13234 - Jin_Rae(0.749), 2nd=0.736, Discriminative=0.633, AvgNeg=0.581
+[2025-11-04 12:55:50] INFO: [Thresholds] Abs=0.606, Margin=0.106(14.1%), RelMargin=1.7%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:50] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:50] INFO: true
+[2025-11-04 12:55:50] INFO: , AbsMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: , RelMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 1.7
+[2025-11-04 12:55:50] INFO: %
+[2025-11-04 12:55:50] INFO: ), StrongMargin=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 12.0
+[2025-11-04 12:55:50] INFO: %
+[2025-11-04 12:55:50] INFO: ), Discrim=
+[2025-11-04 12:55:50] INFO: true
+[2025-11-04 12:55:50] INFO: , Consist=
+[2025-11-04 12:55:50] INFO: false
+[2025-11-04 12:55:50] INFO: (
+[2025-11-04 12:55:50] INFO: 0
+[2025-11-04 12:55:50] INFO: /
+[2025-11-04 12:55:50] INFO: 7
+[2025-11-04 12:55:50] INFO: )
+[2025-11-04 12:55:51] INFO: [Recognition] Scores: S00000 - Nicholas=0.521 S00001 - jereme=0.440 S13234 - Jin_Rae=0.764 S55555 - Tiffany=0.539 S88888 - Cavin=0.701 S99998 - Kim_Jun_Un=0.675 S99999 - Tonald_Drump=0.703 
+[2025-11-04 12:55:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.764), 2nd=0.703, Discriminative=0.645, AvgNeg=0.597
+[2025-11-04 12:55:51] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.9%), RelMargin=8.0%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:51] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:51] INFO: true
+[2025-11-04 12:55:51] INFO: , AbsMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: , RelMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 8.0
+[2025-11-04 12:55:51] INFO: %
+[2025-11-04 12:55:51] INFO: ), StrongMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 12.0
+[2025-11-04 12:55:51] INFO: %
+[2025-11-04 12:55:51] INFO: ), Discrim=
+[2025-11-04 12:55:51] INFO: true
+[2025-11-04 12:55:51] INFO: , Consist=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 0
+[2025-11-04 12:55:51] INFO: /
+[2025-11-04 12:55:51] INFO: 7
+[2025-11-04 12:55:51] INFO: )
+[2025-11-04 12:55:51] INFO: [Recognition] Scores: S00000 - Nicholas=0.377 S00001 - jereme=0.385 S13234 - Jin_Rae=0.774 S55555 - Tiffany=0.600 S88888 - Cavin=0.676 S99998 - Kim_Jun_Un=0.681 S99999 - Tonald_Drump=0.812 
+[2025-11-04 12:55:51] INFO: [Decision] Best=S99999 - Tonald_Drump(0.812), 2nd=0.774, Discriminative=0.695, AvgNeg=0.582
+[2025-11-04 12:55:51] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.9%), RelMargin=4.6%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:51] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:51] INFO: true
+[2025-11-04 12:55:51] INFO: , AbsMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: , RelMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 4.6
+[2025-11-04 12:55:51] INFO: %
+[2025-11-04 12:55:51] INFO: ), StrongMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 12.0
+[2025-11-04 12:55:51] INFO: %
+[2025-11-04 12:55:51] INFO: ), Discrim=
+[2025-11-04 12:55:51] INFO: true
+[2025-11-04 12:55:51] INFO: , Consist=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 0
+[2025-11-04 12:55:51] INFO: /
+[2025-11-04 12:55:51] INFO: 7
+[2025-11-04 12:55:51] INFO: )
+[2025-11-04 12:55:51] INFO: [Recognition] Scores: S00000 - Nicholas=0.314 S00001 - jereme=0.324 S13234 - Jin_Rae=0.812 S55555 - Tiffany=0.745 S88888 - Cavin=0.607 S99998 - Kim_Jun_Un=0.639 S99999 - Tonald_Drump=0.782 
+[2025-11-04 12:55:51] INFO: [Decision] Best=S13234 - Jin_Rae(0.812), 2nd=0.782, Discriminative=0.698, AvgNeg=0.568
+[2025-11-04 12:55:51] INFO: [Thresholds] Abs=0.606, Margin=0.106(13.0%), RelMargin=3.7%, Tightness=0.942, StdDev=0.009
+[2025-11-04 12:55:51] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:51] INFO: true
+[2025-11-04 12:55:51] INFO: , AbsMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: , RelMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 3.7
+[2025-11-04 12:55:51] INFO: %
+[2025-11-04 12:55:51] INFO: ), StrongMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 12.0
+[2025-11-04 12:55:51] INFO: %
+[2025-11-04 12:55:51] INFO: ), Discrim=
+[2025-11-04 12:55:51] INFO: true
+[2025-11-04 12:55:51] INFO: , Consist=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 0
+[2025-11-04 12:55:51] INFO: /
+[2025-11-04 12:55:51] INFO: 7
+[2025-11-04 12:55:51] INFO: )
+[2025-11-04 12:55:51] INFO: [Recognition] Scores: S00000 - Nicholas=0.378 S00001 - jereme=0.325 S13234 - Jin_Rae=0.801 S55555 - Tiffany=0.689 S88888 - Cavin=0.711 S99998 - Kim_Jun_Un=0.629 S99999 - Tonald_Drump=0.829 
+[2025-11-04 12:55:51] INFO: [Decision] Best=S99999 - Tonald_Drump(0.829), 2nd=0.801, Discriminative=0.711, AvgNeg=0.589
+[2025-11-04 12:55:51] INFO: [Thresholds] Abs=0.637, Margin=0.137(16.5%), RelMargin=3.3%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:51] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:51] INFO: true
+[2025-11-04 12:55:51] INFO: , AbsMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: , RelMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 3.3
+[2025-11-04 12:55:51] INFO: %
+[2025-11-04 12:55:51] INFO: ), StrongMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 12.0
+[2025-11-04 12:55:51] INFO: %
+[2025-11-04 12:55:51] INFO: ), Discrim=
+[2025-11-04 12:55:51] INFO: true
+[2025-11-04 12:55:51] INFO: , Consist=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 0
+[2025-11-04 12:55:51] INFO: /
+[2025-11-04 12:55:51] INFO: 7
+[2025-11-04 12:55:51] INFO: )
+[2025-11-04 12:55:51] INFO: [Recognition] Scores: S00000 - Nicholas=0.556 S00001 - jereme=0.395 S13234 - Jin_Rae=0.788 S55555 - Tiffany=0.660 S88888 - Cavin=0.720 S99998 - Kim_Jun_Un=0.661 S99999 - Tonald_Drump=0.791 
+[2025-11-04 12:55:51] INFO: [Decision] Best=S99999 - Tonald_Drump(0.791), 2nd=0.788, Discriminative=0.665, AvgNeg=0.630
+[2025-11-04 12:55:51] INFO: [Thresholds] Abs=0.637, Margin=0.137(17.3%), RelMargin=0.4%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:51] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:51] INFO: true
+[2025-11-04 12:55:51] INFO: , AbsMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: , RelMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 0.4
+[2025-11-04 12:55:51] INFO: %
+[2025-11-04 12:55:51] INFO: ), StrongMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 12.0
+[2025-11-04 12:55:51] INFO: %
+[2025-11-04 12:55:51] INFO: ), Discrim=
+[2025-11-04 12:55:51] INFO: true
+[2025-11-04 12:55:51] INFO: , Consist=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 0
+[2025-11-04 12:55:51] INFO: /
+[2025-11-04 12:55:51] INFO: 7
+[2025-11-04 12:55:51] INFO: )
+[2025-11-04 12:55:51] INFO: [Recognition] Scores: S00000 - Nicholas=0.421 S00001 - jereme=0.338 S13234 - Jin_Rae=0.779 S55555 - Tiffany=0.683 S88888 - Cavin=0.709 S99998 - Kim_Jun_Un=0.669 S99999 - Tonald_Drump=0.799 
+[2025-11-04 12:55:51] INFO: [Decision] Best=S99999 - Tonald_Drump(0.799), 2nd=0.779, Discriminative=0.679, AvgNeg=0.600
+[2025-11-04 12:55:51] INFO: [Thresholds] Abs=0.637, Margin=0.137(17.1%), RelMargin=2.5%, Tightness=0.632, StdDev=0.102
+[2025-11-04 12:55:51] INFO: [Decision] REJECT: Abs=
+[2025-11-04 12:55:51] INFO: true
+[2025-11-04 12:55:51] INFO: , AbsMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: , RelMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 2.5
+[2025-11-04 12:55:51] INFO: %
+[2025-11-04 12:55:51] INFO: ), StrongMargin=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 12.0
+[2025-11-04 12:55:51] INFO: %
+[2025-11-04 12:55:51] INFO: ), Discrim=
+[2025-11-04 12:55:51] INFO: true
+[2025-11-04 12:55:51] INFO: , Consist=
+[2025-11-04 12:55:51] INFO: false
+[2025-11-04 12:55:51] INFO: (
+[2025-11-04 12:55:51] INFO: 0
+[2025-11-04 12:55:51] INFO: /
+[2025-11-04 12:55:51] INFO: 7
+[2025-11-04 12:55:51] INFO: )
+[2025-11-04 12:55:51] INFO: Exiting Face Recognition Demo...
+[2025-11-04 12:55:51] INFO: Exiting Face Recognition Demo...
