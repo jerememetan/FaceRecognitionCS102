@@ -25,7 +25,7 @@ public class SessionViewer extends JFrame {
 
     public SessionViewer(SessionManager manager) {
         this.manager = manager;
-
+        manager.populateSessions();
         setTitle("Sessions List");
         setSize(1100, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

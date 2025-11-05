@@ -33,6 +33,7 @@ public class SessionManager {
         for(Session s : allSessions){
             sessions.put(Integer.parseInt(s.getSessionId()), s);
         }
+        nextId = Integer.parseInt(allSessions.get(allSessions.size() - 1).getSessionId()) + 1;
     }
     public boolean addStudentToSession(Session session, Student student) {
         try {
