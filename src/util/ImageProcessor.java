@@ -35,11 +35,11 @@ public class ImageProcessor {
 
     public ImageQualityResult validateImageQualityDetailed(Mat image) {
         if (image.empty()) {
-            return new ImageQualityResult(false, 0, "Image is empty");
+            return new ImageQualityResult(false, 0, "Image is empty", false);
         }
 
         if (image.width() < 50 || image.height() < 50) {
-            return new ImageQualityResult(false, 0, "Image too small (minimum 50x50 pixels)");
+            return new ImageQualityResult(false, 0, "Image too small (minimum 50x50 pixels)", false);
         }
 
         Mat grayImage = new Mat();
@@ -58,32 +58,62 @@ public class ImageProcessor {
         boolean isQualityGood = true;
         double overallScore = 0;
 
-        if (sharpness < MIN_SHARPNESS_THRESHOLD) {
+        double relaxedSharpnessThreshold = Math.max(30.0, MIN_SHARPNESS_THRESHOLD * 0.7);
+        double relaxedContrastThreshold = Math.max(8.0, MIN_CONTRAST * 0.7);
+        double brightnessLowerSoft = Math.max(10.0, MIN_BRIGHTNESS - 20.0);
+        double brightnessUpperSoft = MAX_BRIGHTNESS + 30.0;
+
+        boolean sharpnessPass = sharpness >= MIN_SHARPNESS_THRESHOLD;
+        boolean sharpnessBorderline = !sharpnessPass && sharpness >= relaxedSharpnessThreshold;
+
+        boolean brightnessPass = brightness >= MIN_BRIGHTNESS && brightness <= MAX_BRIGHTNESS;
+        boolean brightnessBorderline = !brightnessPass && brightness >= brightnessLowerSoft && brightness <= brightnessUpperSoft;
+
+        boolean contrastPass = contrast >= MIN_CONTRAST;
+        boolean contrastBorderline = !contrastPass && contrast >= relaxedContrastThreshold;
+
+        if (sharpnessPass) {
+            overallScore += 30;
+        } else {
             isQualityGood = false;
             feedback.append(String.format("Image too blurry (sharpness: %.1f). ", sharpness));
-        } else {
-            overallScore += 30;
         }
 
-        if (brightness < MIN_BRIGHTNESS) {
-            isQualityGood = false;
-            feedback.append(String.format("Image too dark (brightness: %.1f). ", brightness));
-        } else if (brightness > MAX_BRIGHTNESS) {
-            isQualityGood = false;
-            feedback.append(String.format("Image too bright (brightness: %.1f). ", brightness));
-        } else {
+        if (brightnessPass) {
             overallScore += 35;
+        } else {
+            isQualityGood = false;
+            feedback.append(String.format("Image brightness marginal (%.1f). ", brightness));
         }
 
-        if (contrast < MIN_CONTRAST) {
-            isQualityGood = false;
-            feedback.append(String.format("Image has poor contrast (contrast: %.1f). ", contrast));
-        } else {
+        if (contrastPass) {
             overallScore += 35;
+        } else {
+            isQualityGood = false;
+            feedback.append(String.format("Image has low contrast (contrast: %.1f). ", contrast));
+        }
+
+        int criteriaMet = 0;
+        if (sharpnessPass || sharpnessBorderline) {
+            criteriaMet++;
+        }
+        if (brightnessPass || brightnessBorderline) {
+            criteriaMet++;
+        }
+        if (contrastPass || contrastBorderline) {
+            criteriaMet++;
+        }
+
+        boolean borderline = false;
+        if (!isQualityGood && criteriaMet >= 2 && (sharpnessPass || sharpnessBorderline)) {
+            borderline = true;
+            isQualityGood = true;
+            overallScore = Math.max(overallScore, 60);
+            feedback.append("Proceeding with borderline quality frame. ");
         }
 
         String message = isQualityGood ? "Good image quality" : feedback.toString();
-        return new ImageQualityResult(isQualityGood, overallScore, message);
+        return new ImageQualityResult(isQualityGood, overallScore, message, borderline);
     }
 
     public boolean validateImageQuality(Mat image) {
@@ -197,10 +227,17 @@ public class ImageProcessor {
         private double qualityScore;
         private String feedback;
 
+        private final boolean borderline;
+
         public ImageQualityResult(boolean goodQuality, double qualityScore, String feedback) {
+            this(goodQuality, qualityScore, feedback, false);
+        }
+
+        public ImageQualityResult(boolean goodQuality, double qualityScore, String feedback, boolean borderline) {
             this.goodQuality = goodQuality;
             this.qualityScore = qualityScore;
             this.feedback = feedback;
+            this.borderline = borderline;
         }
 
         public boolean isGoodQuality() {
@@ -213,6 +250,10 @@ public class ImageProcessor {
 
         public String getFeedback() {
             return feedback;
+        }
+
+        public boolean isBorderline() {
+            return borderline;
         }
 
         @Override
