@@ -1,19 +1,36 @@
 package gui.session;
-import gui.homepage.UIComponents;
-import entity.Session;
-import entity.SessionStudent;
-import entity.Student;
-import gui.student.AddStudentDialog;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.util.ArrayList;
-import javax.swing.*;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+
+import config.AppLogger;
+import entity.Session;
+import entity.SessionStudent;
+import entity.Student;
+import gui.homepage.UIComponents;
+import gui.student.AddStudentDialog;
+import report.CSVGenerator;
+import report.ExcelGenerator;
+import report.PDFGenerator;
 import repository.StudentRepositoryInstance;
 import service.roster.RosterManager;
 import service.session.SessionManager;
-import config.*;
 
 //View further details of a selected session
 public class SessionRosterManagement extends JDialog {
@@ -26,6 +43,9 @@ public class SessionRosterManagement extends JDialog {
     private JButton addButton, removeButton, openButton, closeButton, editButton;
     private ArrayList<Student> allStudents; // required to add students to a session
     private JLabel nameLabel, dateLabel, timeLabel, locationLabel;
+
+    // Export buttons
+    private JButton exportCSVButton, exportExcelButton, exportPDFButton;
 
     public SessionRosterManagement(JFrame parent, SessionManager manager, Session session) {
         super(parent, "Session Roster Management", true);
@@ -109,8 +129,21 @@ public class SessionRosterManagement extends JDialog {
         addButton.addActionListener(e -> { addStudent(); refreshTable(); });
         removeButton.addActionListener(e -> { removeStudent(); refreshTable(); });
 
+        // ===== Export buttons =====
+        exportCSVButton = UIComponents.createAccentButton("Export CSV", new Color(14, 165, 233));
+        exportExcelButton = UIComponents.createAccentButton("Export Excel", new Color(34, 197, 94));
+        exportPDFButton = UIComponents.createAccentButton("Export PDF", new Color(239, 68, 68));
+
+        exportCSVButton.addActionListener(e -> exportTable("CSV"));
+        exportExcelButton.addActionListener(e -> exportTable("Excel"));
+        exportPDFButton.addActionListener(e -> exportTable("PDF"));
+
         buttonPanel.add(addButton);
         buttonPanel.add(removeButton);
+        buttonPanel.add(exportCSVButton);
+        buttonPanel.add(exportExcelButton);
+        buttonPanel.add(exportPDFButton);
+
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         // Populate existing roster
@@ -198,7 +231,6 @@ public class SessionRosterManagement extends JDialog {
         new AddStudentDialog(parent, manager, session, allStudents).setVisible(true);
     }
 
-
     private void removeStudent() {
         int selectedRow = studentTable.getSelectedRow();
         if (selectedRow >= 0) {
@@ -228,11 +260,54 @@ public class SessionRosterManagement extends JDialog {
             JOptionPane.showMessageDialog(this, "Please click on a student (row) to remove.", "No student selected", JOptionPane.WARNING_MESSAGE);
         }
     }
+
+    // ===== Export Functionality =====
+    private void exportTable(String type) {
+        String[] headers = {"Student ID", "Name", "Phone No", "Status", "Remarks"};
+        // Checkbox selection dialog
+        JCheckBox[] checkboxes = new JCheckBox[headers.length];
+        JPanel panel = new JPanel(new GridLayout(headers.length, 1));
+        for (int i = 0; i < headers.length; i++) {
+            checkboxes[i] = new JCheckBox(headers[i], true);
+            panel.add(checkboxes[i]);
+        }
+        int result = JOptionPane.showConfirmDialog(this, panel, "Select Columns to Export", JOptionPane.OK_CANCEL_OPTION);
+        if (result != JOptionPane.OK_OPTION) return;
+
+        ArrayList<String> selectedHeaders = new ArrayList<>();
+        ArrayList<ArrayList<String>> data = new ArrayList<>();
+        for (int i = 0; i < headers.length; i++) {
+            if (checkboxes[i].isSelected()) {
+                selectedHeaders.add(headers[i]);
+            }
+        }
+
+        for (int row = 0; row < tableModel.getRowCount(); row++) {
+            ArrayList<String> rowData = new ArrayList<>();
+            for (int col = 0; col < headers.length; col++) {
+                if (checkboxes[col].isSelected()) {
+                    rowData.add(tableModel.getValueAt(row, col).toString());
+                }
+            }
+            data.add(rowData);
+        }
+
+        try {
+            switch (type) {
+                case "CSV":
+                    new CSVGenerator(selectedHeaders, data).generate();
+                    break;
+                case "Excel":
+                    new ExcelGenerator(selectedHeaders, data).generate();
+                    break;
+                case "PDF":
+                    new PDFGenerator(selectedHeaders, data).generate();
+                    break;
+            }
+            JOptionPane.showMessageDialog(this, type + " exported successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Failed to export " + type + ": " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
-
-
-
-
-
-
-
