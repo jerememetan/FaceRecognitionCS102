@@ -1,4 +1,5 @@
 package gui.session;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -32,7 +33,7 @@ import repository.StudentRepositoryInstance;
 import service.roster.RosterManager;
 import service.session.SessionManager;
 
-//View further details of a selected session
+// View further details of a selected session
 public class SessionRosterManagement extends JDialog {
 
     private JFrame parent;
@@ -53,13 +54,15 @@ public class SessionRosterManagement extends JDialog {
         this.manager = manager;
         this.session = session;
         this.allStudents = new StudentRepositoryInstance().findAll();   //fetch students from db
+
         // GUI setup
         setTitle("Session Roster Management - " + session.getName());
         setSize(700, 550);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
-        // adding padding to frame
+
+        // Adding padding to frame
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
         add(mainPanel);
@@ -81,26 +84,25 @@ public class SessionRosterManagement extends JDialog {
         infoPanel.add(new JLabel("Location:"));
         locationLabel = new JLabel(session.getLocation());
         infoPanel.add(locationLabel);
-        
+
         editButton = UIComponents.createAccentButton("Edit Session Details", new Color(59, 130, 246));
         editButton.setFocusPainted(false);
         editButton.addActionListener(e -> editSessionDetails());
         infoPanel.add(editButton);
 
         // Open a session
-        if (session.isActive()){
+        if (session.isActive()) {
             closeButton = UIComponents.createAccentButton("Close Session", new Color(239, 68, 68));
-            closeButton.addActionListener(e -> { closeSession(); } );
+            closeButton.addActionListener(e -> { closeSession(); });
             infoPanel.add(closeButton);
-
-        }
-        else{
+        } else {
             openButton = UIComponents.createAccentButton("Open Session", new Color(59, 130, 246));
             openButton.addActionListener(e -> { openSession(); });
             infoPanel.add(openButton);
         }
         mainPanel.add(infoPanel, BorderLayout.NORTH);
-        //Student Roster Table
+
+        // Student Roster Table
         String[] columns = {"Student ID", "Name", "Phone No", "Status", "Remarks"};
         tableModel = new DefaultTableModel(columns, 0) {
             @Override
@@ -121,7 +123,7 @@ public class SessionRosterManagement extends JDialog {
         scrollPane.setBorder(border);
         mainPanel.add(scrollPane, BorderLayout.CENTER);
 
-        //Buttons Panel
+        // Buttons Panel
         JPanel buttonPanel = new JPanel();
         addButton = UIComponents.createAccentButton("Add Student", new Color(34, 197, 94));
         removeButton = UIComponents.createAccentButton("Remove Student", new Color(239, 68, 68));
@@ -148,9 +150,7 @@ public class SessionRosterManagement extends JDialog {
 
         // Populate existing roster
         refreshTable();
-
     }
-    
 
     private void refreshTable() {
         AppLogger.info("Refreshing roster table");
@@ -169,10 +169,9 @@ public class SessionRosterManagement extends JDialog {
     }
 
     private void openSession() {
-        JLabel confirmationJLabel = new JLabel("Do you want to open the session?"); 
+        JLabel confirmationJLabel = new JLabel("Do you want to open the session?");
         int choice = JOptionPane.showConfirmDialog(this, confirmationJLabel, "Open Session", JOptionPane.YES_NO_OPTION);
         if (choice == JOptionPane.YES_OPTION) {
-
             if (session.isActive()) {
                 JOptionPane.showMessageDialog(this, "Session is already open.");
                 dispose();
@@ -186,17 +185,15 @@ public class SessionRosterManagement extends JDialog {
             manager.openSession(session);
             JOptionPane.showMessageDialog(this, "Session opened successfully.");
             dispose();
-        }
-        else{
+        } else {
             dispose();
         }
     }
 
     private void closeSession() {
-        JLabel confirmationJLabel = new JLabel("Do you want to close the session?"); 
+        JLabel confirmationJLabel = new JLabel("Do you want to close the session?");
         int choice = JOptionPane.showConfirmDialog(this, confirmationJLabel, "Close Session", JOptionPane.YES_NO_OPTION);
         if (choice == JOptionPane.YES_OPTION) {
-
             if (!session.isActive()) {
                 JOptionPane.showMessageDialog(this, "Session is already closed.");
                 dispose();
@@ -206,17 +203,18 @@ public class SessionRosterManagement extends JDialog {
             manager.closeSession(session);
             JOptionPane.showMessageDialog(this, "Session closed successfully.");
             dispose();
-        }
-        else{
+        } else {
             dispose();
         }
     }
-    private void editSessionDetails(){
+
+    private void editSessionDetails() {
         SessionForm sessionForm = new SessionForm(this, manager, new RosterManager(), session);
         sessionForm.setVisible(true);
         refreshSessionDetails();
         refreshTable();
     }
+
     private void refreshSessionDetails() {
         nameLabel.setText(session.getName());
         dateLabel.setText(session.getDate().toString());
@@ -226,7 +224,7 @@ public class SessionRosterManagement extends JDialog {
         repaint();
     }
 
-    //open a gui dialog 'AddStudentDialog' to add students from a table of existing students.
+    // Open a GUI dialog 'AddStudentDialog' to add students from a table of existing students.
     private void addStudent() {
         new AddStudentDialog(parent, manager, session, allStudents).setVisible(true);
     }
@@ -236,27 +234,25 @@ public class SessionRosterManagement extends JDialog {
         if (selectedRow >= 0) {
             String studentId = tableModel.getValueAt(selectedRow, 0).toString();
             Student selected = session.getStudentRoster().stream()
-                .map(SessionStudent::getStudent)
-                .filter(s -> s.getStudentId().equals(studentId))
-                .findFirst()
-                .orElse(null);
+                    .map(SessionStudent::getStudent)
+                    .filter(s -> s.getStudentId().equals(studentId))
+                    .findFirst()
+                    .orElse(null);
             if (selected != null) {
-                // send data to SessionManager to remove student from session
+                // Send data to SessionManager to remove student from session
                 boolean removed = manager.removeStudentFromSession(session, selected);
                 if (removed) {
                     tableModel.removeRow(selectedRow);
                     JOptionPane.showMessageDialog(this,
-                        "Student " + selected.getName() + " removed from the session successfully.",
-                        "Success", JOptionPane.INFORMATION_MESSAGE);
-                }
-                else{
+                            "Student " + selected.getName() + " removed from the session successfully.",
+                            "Success", JOptionPane.INFORMATION_MESSAGE);
+                } else {
                     JOptionPane.showMessageDialog(this,
-                        "Failed to remove student from the session (database error).",
-                        "Error", JOptionPane.ERROR_MESSAGE);
+                            "Failed to remove student from the session (database error).",
+                            "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(this, "Please click on a student (row) to remove.", "No student selected", JOptionPane.WARNING_MESSAGE);
         }
     }
@@ -292,19 +288,44 @@ public class SessionRosterManagement extends JDialog {
             data.add(rowData);
         }
 
+        // Generate the export filename based on session details
+        String sessionId = String.valueOf(session.getSessionId());
+        String sessionName = session.getName();  // Session name
+        String sessionDate = session.getDate().toString();  // Session date
+        String sessionTime = session.getStartTime() + "-" + session.getEndTime();  // Session time
+
+        String exportTitle = "Session_" + sessionId + "_" + sessionName + "_" + sessionDate;
+
         try {
             switch (type) {
                 case "CSV":
-                    new CSVGenerator(selectedHeaders, data).generate();
+                    CSVGenerator csvGen = new CSVGenerator(selectedHeaders, data, exportTitle);
+                    boolean csvSuccess = csvGen.generate();
+                    JOptionPane.showMessageDialog(SessionRosterManagement.this,
+                            csvSuccess ? "CSV report generated successfully!"
+                                    : "CSV export cancelled or failed.",
+                            csvSuccess ? "Export Complete" : "Export Cancelled",
+                            csvSuccess ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.WARNING_MESSAGE);
                     break;
                 case "Excel":
-                    new ExcelGenerator(selectedHeaders, data).generate();
+                    ExcelGenerator excelGen = new ExcelGenerator(selectedHeaders, data, exportTitle);
+                    boolean excelSuccess = excelGen.generate();
+                    JOptionPane.showMessageDialog(SessionRosterManagement.this,
+                            excelSuccess ? "Excel report generated successfully!"
+                                    : "Excel export cancelled or failed.",
+                            excelSuccess ? "Export Complete" : "Export Cancelled",
+                            excelSuccess ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.WARNING_MESSAGE);
                     break;
                 case "PDF":
-                    new PDFGenerator(selectedHeaders, data).generate();
+                    PDFGenerator pdfGen = new PDFGenerator(selectedHeaders, data, exportTitle);
+                    boolean pdfSuccess = pdfGen.generate();
+                    JOptionPane.showMessageDialog(SessionRosterManagement.this,
+                            pdfSuccess ? "PDF report generated successfully!"
+                                    : "PDF export cancelled or failed.",
+                            pdfSuccess ? "Export Complete" : "Export Cancelled",
+                            pdfSuccess ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.WARNING_MESSAGE);
                     break;
             }
-            JOptionPane.showMessageDialog(this, type + " exported successfully.");
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Failed to export " + type + ": " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

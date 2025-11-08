@@ -147,7 +147,8 @@ public class RosterViewer extends JFrame {
                 data.add(row);
             }
 
-            ExportPanel exportPanel = new ExportPanel(headers, data);
+            // Open ExportPanel and pass "AllRosters" as the title
+            ExportPanel exportPanel = new ExportPanel( "AllRosters", headers, data);
             exportPanel.setVisible(true);
         });
 

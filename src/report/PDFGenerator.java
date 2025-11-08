@@ -17,11 +17,13 @@ public class PDFGenerator implements ReportGenerator {
 
     private ArrayList<String> headers;
     private ArrayList<ArrayList<String>> data;
+    private String title; // new title field
 
-    // Constructor
-    public PDFGenerator(ArrayList<String> headers, ArrayList<ArrayList<String>> data) {
+    // ✅ Constructor updated to include title
+    public PDFGenerator(ArrayList<String> headers, ArrayList<ArrayList<String>> data, String title) {
         this.headers = headers;
         this.data = data;
+        this.title = title;
     }
 
     @Override
@@ -31,7 +33,8 @@ public class PDFGenerator implements ReportGenerator {
             return false;
         }
 
-        String fileName = "ExportPDF.pdf";
+        // Use title for filename, fallback if null/empty
+        String fileName = (title != null && !title.isEmpty() ? title : "ExportPDF") + ".pdf";
 
         try {
             JFileChooser fileChooser = new JFileChooser();
@@ -67,6 +70,12 @@ public class PDFGenerator implements ReportGenerator {
 
             document.add(table);
             document.close();
+
+            // Modify title based on conditions
+            String modifiedTitle = ReportManager.getModifiedTitle(title);
+            
+            // Log the report generation with the modified title
+            ReportManager.addReportLog(modifiedTitle, data.size());
 
             AppLogger.info("PDF file saved successfully to: " + fileToSave.getAbsolutePath());
             return true;

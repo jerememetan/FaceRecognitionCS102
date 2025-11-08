@@ -13,11 +13,13 @@ public class CSVGenerator implements ReportGenerator {
 
     private ArrayList<String> headers;
     private ArrayList<ArrayList<String>> data;
+    private String title; // new title field
 
-    // ✅ Constructor
-    public CSVGenerator(ArrayList<String> headers, ArrayList<ArrayList<String>> data) {
+    // Constructor updated to include title
+    public CSVGenerator(ArrayList<String> headers, ArrayList<ArrayList<String>> data, String title) {
         this.headers = headers;
         this.data = data;
+        this.title = title; // assign title
     }
 
     @Override
@@ -27,7 +29,8 @@ public class CSVGenerator implements ReportGenerator {
             return false;
         }
 
-        String fileName = "ExportCSV.csv";
+        // Use title for filename; fallback to default if empty
+        String fileName = (title != null && !title.isEmpty() ? title : "ExportCSV") + ".csv";
 
         try {
             // Prompt user for save location
@@ -52,6 +55,12 @@ public class CSVGenerator implements ReportGenerator {
                         writer.append("\n");
                     }
                 }
+
+                // Modify title based on conditions
+                String modifiedTitle = ReportManager.getModifiedTitle(title);
+                
+                // Log the report generation with the modified title
+                ReportManager.addReportLog(modifiedTitle, data.size());
 
                 AppLogger.info("CSV file saved successfully to: " + fileToSave.getAbsolutePath());
                 return true;

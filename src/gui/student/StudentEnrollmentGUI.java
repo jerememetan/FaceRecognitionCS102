@@ -283,7 +283,7 @@ public class StudentEnrollmentGUI extends JFrame {
                     data.add(row);
                 }
 
-                report.ExportPanel exportWindow = new report.ExportPanel(headers, data);
+                report.ExportPanel exportWindow = new report.ExportPanel("AllStudentData", headers, data);
                 exportWindow.setVisible(true);
 
                 statusLabel.setText("Opened Export Panel");

@@ -167,8 +167,8 @@ public class SessionViewer extends JFrame {
                     data.add(rowData);
                 }
 
-                // Open Export Panel
-                report.ExportPanel exportWindow = new report.ExportPanel(headers, data);
+                // Open Export Panel and pass "AllSessions" as the title
+                report.ExportPanel exportWindow = new report.ExportPanel("AllSessions", headers, data);
                 exportWindow.setVisible(true);
 
                 AppLogger.info("Opened Export Panel for sessions.");

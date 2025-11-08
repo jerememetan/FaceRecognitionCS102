@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -205,6 +206,7 @@ public class RosterDetailsManagement extends JDialog {
     // ===== Export Functionality =====
     private void exportTable(String type) {
         String[] headers = {"Student ID", "Name", "Phone No"};
+        
         // Checkbox selection dialog
         JCheckBox[] checkboxes = new JCheckBox[headers.length];
         JPanel panel = new JPanel(new GridLayout(headers.length, 1));
@@ -233,19 +235,43 @@ public class RosterDetailsManagement extends JDialog {
             data.add(rowData);
         }
 
+        // Generate the export filename based on the roster details
+        String rosterId = String.valueOf(roster.getRosterId());
+        String rosterName = roster.getCourseCode();  // Roster name (Course Code)
+        String rosterDate = LocalDate.now().toString();  // Assuming you want the current date
+        String rosterTime = roster.getStartTime().toString() + "-" + roster.getEndTime().toString(); // Time range
+        String exportTitle = "Roster_" + rosterId + "_" + rosterName + "_" + rosterDate;
+
         try {
             switch (type) {
                 case "CSV":
-                    new CSVGenerator(selectedHeaders, data).generate();
+                    CSVGenerator csvGen = new CSVGenerator(selectedHeaders, data, exportTitle);
+                    boolean csvSuccess = csvGen.generate();
+                    JOptionPane.showMessageDialog(RosterDetailsManagement.this,
+                            csvSuccess ? "CSV report generated successfully!"
+                                    : "CSV export cancelled or failed.",
+                            csvSuccess ? "Export Complete" : "Export Cancelled",
+                            csvSuccess ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.WARNING_MESSAGE);
                     break;
                 case "Excel":
-                    new ExcelGenerator(selectedHeaders, data).generate();
+                    ExcelGenerator excelGen = new ExcelGenerator(selectedHeaders, data, exportTitle);
+                    boolean excelSuccess = excelGen.generate();
+                    JOptionPane.showMessageDialog(RosterDetailsManagement.this,
+                            excelSuccess ? "Excel report generated successfully!"
+                                    : "Excel export cancelled or failed.",
+                            excelSuccess ? "Export Complete" : "Export Cancelled",
+                            excelSuccess ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.WARNING_MESSAGE);
                     break;
                 case "PDF":
-                    new PDFGenerator(selectedHeaders, data).generate();
+                    PDFGenerator pdfGen = new PDFGenerator(selectedHeaders, data, exportTitle);
+                    boolean pdfSuccess = pdfGen.generate();
+                    JOptionPane.showMessageDialog(RosterDetailsManagement.this,
+                            pdfSuccess ? "PDF report generated successfully!"
+                                    : "PDF export cancelled or failed.",
+                            pdfSuccess ? "Export Complete" : "Export Cancelled",
+                            pdfSuccess ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.WARNING_MESSAGE);
                     break;
             }
-            JOptionPane.showMessageDialog(this, type + " exported successfully.");
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Failed to export " + type + ": " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

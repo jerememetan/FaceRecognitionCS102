@@ -29,8 +29,11 @@ public class ExportPanel extends JFrame {
     private JTable dataTable;
     private ReportBuilder reportBuilder;
     private JPanel headerSelectionPanel;
+    private String reportTitle; // new title field
 
-    public ExportPanel(ArrayList<String> headers, ArrayList<ArrayList<String>> data) {
+    // Modified constructor to take title
+    public ExportPanel(String title, ArrayList<String> headers, ArrayList<ArrayList<String>> data) {
+        this.reportTitle = title; // assign title
         // Initialize ReportBuilder
         reportBuilder = new ReportBuilder(headers, data);
 
@@ -120,7 +123,8 @@ public class ExportPanel extends JFrame {
                 case "Export Excel":
                     ExcelGenerator excelGen = new ExcelGenerator(
                             reportBuilder.getSelectedHeaders(),
-                            reportBuilder.getSelectedData()
+                            reportBuilder.getSelectedData(),
+                            reportTitle // pass title
                     );
                     boolean excelSuccess = excelGen.generate();
                     JOptionPane.showMessageDialog(ExportPanel.this,
@@ -133,7 +137,8 @@ public class ExportPanel extends JFrame {
                 case "Export PDF":
                     PDFGenerator pdfGen = new PDFGenerator(
                             reportBuilder.getSelectedHeaders(),
-                            reportBuilder.getSelectedData()
+                            reportBuilder.getSelectedData(),
+                            reportTitle // pass title
                     );
                     boolean pdfSuccess = pdfGen.generate();
                     JOptionPane.showMessageDialog(ExportPanel.this,
@@ -146,7 +151,8 @@ public class ExportPanel extends JFrame {
                 case "Export CSV":
                     CSVGenerator csvGen = new CSVGenerator(
                             reportBuilder.getSelectedHeaders(),
-                            reportBuilder.getSelectedData()
+                            reportBuilder.getSelectedData(),
+                            reportTitle
                     );
                     boolean csvSuccess = csvGen.generate();
                     JOptionPane.showMessageDialog(ExportPanel.this,
