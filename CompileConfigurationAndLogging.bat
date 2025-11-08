@@ -1,1 +1,0 @@
-javac -proc:none -Xlint:-options -d compiled -cp "src" src\ConfigurationAndLogging\*.java

@@ -1,0 +1,138 @@
+package service.session;
+
+import entity.Session;
+import entity.SessionStudent;
+import entity.Student;
+import java.time.*;
+import java.util.*;
+import repository.SessionRepositoryInstance;
+import repository.SessStuRepositoryInstance;
+import config.*;
+
+public class SessionManager {
+    private final Map<Integer,Session> sessions;
+    private static int nextId = 1;
+    private SessionRepositoryInstance sessionDB;
+    private SessStuRepositoryInstance sessStuDB;
+    public SessionManager() {
+        this.sessions = new LinkedHashMap<>();
+        this.sessionDB = new SessionRepositoryInstance();
+        this.sessStuDB = new SessStuRepositoryInstance();
+    }
+    public Session createNewSession(String name, LocalDate date, LocalTime startTime, LocalTime endTime, String location) {
+        Session newSession = new Session(Integer.toString(nextId), name, date, startTime, endTime, location);
+        sessions.put(nextId, newSession);
+        sessionDB.save(newSession);
+        AppLogger.info(nextId + " Created session: " + name);
+        nextId++;
+        return newSession;
+    }
+    //helper function to populate sessions from db
+    public void populateSessions() {
+        List<Session> allSessions = sessionDB.findAll();
+        sessions.clear();
+
+        int maxId = 0;
+        for (Session s : allSessions) {
+            sessions.put(Integer.parseInt(s.getSessionId()), s);
+            int currentId = Integer.parseInt(s.getSessionId());
+            if (currentId > maxId) {
+                maxId = currentId;
+            }
+        }
+
+        nextId = maxId + 1; // works even if list is empty (remains 1)
+        System.out.println("Next Session ID: " + nextId);
+    }
+
+    public boolean addStudentToSession(Session session, Student student) {
+        try {
+            SessionStudent ss = new SessionStudent(session, student);
+            boolean success = sessStuDB.save(ss);
+            AppLogger.info("DB insert success: " + success);
+            if (!success) {
+                return false; // Failed to add to database
+            }
+            session.addNewStudent(student);
+            return true;
+        } catch (Exception e) {
+            System.out.flush();
+            System.out.print(e.getMessage());
+            return false;
+        } 
+    }
+    public boolean removeStudentFromSession(Session session, Student student) {
+        SessionStudent ss = new SessionStudent(session, student);
+        boolean deleted = sessStuDB.delete(ss); //deletes that student-session relation from db
+        if (deleted) {
+            AppLogger.info("Removed student " + student.getName() + " from session " + session.getName());
+            session.removeStudent(student);
+        } else {
+            AppLogger.error("Failed to remove student " + student.getName() + " from session " + session.getName());
+        }
+        return deleted;
+    }
+
+    public boolean loadSessionRoster(Session session){
+        ArrayList<SessionStudent> sessStuList = sessStuDB.findBySessionId(Integer.parseInt(session.getSessionId()));
+        if(sessStuList == null){
+            AppLogger.info("No students found for session ID " + session.getSessionId());
+            return false;
+        }
+        session.setStudentRoster(sessStuList);
+        AppLogger.info("Loaded " + sessStuList.size() + " students into session " + session.getName());
+        return true;
+    }
+
+    public void openSession(Session session) {
+        if (session != null) {
+            session.open();
+            sessionDB.update(session); //sets active status in db to "True"
+        } else {
+            AppLogger.info("Session not found.");
+        }
+    }
+    public void closeSession(Session session) {
+        if (session != null) {
+            session.close();
+            sessionDB.update(session); //sets active status in db to "False"
+        } else {
+            AppLogger.info("Session not found.");
+        }
+    }
+
+    public List<Session> getAllSessions() {
+        return new ArrayList<>(sessions.values());
+    }
+    public Session getSessionById(int id) {
+        return sessions.get(id);
+    }
+    public boolean deleteSession(int id) {
+        if (sessions.containsKey(id) && sessions.get(id).isActive() == false) {
+            sessions.remove(id);
+            sessionDB.delete(Integer.toString(id));
+            AppLogger.info("Deleted session ID " + id);
+            return true; // Successfully deleted
+        }
+        return false; // Session not found
+    }
+    public boolean updateSession(Session session){
+        try{
+            boolean success = sessionDB.update(session);
+            System.out.println("Session DB update: " +  success);
+            return success;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+}
+
+
+
+
+
+
+
