@@ -20,9 +20,7 @@ public class FaceRecognitionApp {
     public static void main(String[] args) {
         // Load App Configs
         AppLogger.info("Configuration and core components loaded.");
-        AppConfig.getInstance();
         AppLogger.info("Configuration file loaded");
-
         // Start up Live Recognition Viewer
         AppLogger.info("Live Recognition Viewer Starting!");
         SwingUtilities.invokeLater(() -> {
