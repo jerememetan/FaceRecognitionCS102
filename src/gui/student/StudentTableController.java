@@ -2,18 +2,29 @@ package gui.student;
 
 import entity.Student;
 import java.awt.*;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import model.FaceImage;
+import service.embedding.SimilarityCalculator;
 import service.student.StudentManager;
 import config.*;
+
 public class StudentTableController {
-    private StudentManager studentManager;
+    private final StudentManager studentManager;
+    private final SimilarityCalculator similarityCalculator;
     private DefaultTableModel tableModel;
 
     public StudentTableController(StudentManager studentManager) {
         this.studentManager = studentManager;
+        this.similarityCalculator = new SimilarityCalculator(false);
     }
 
     public void loadStudentData(DefaultTableModel tableModel, JLabel statusLabel) {
@@ -24,23 +35,26 @@ public class StudentTableController {
 
             tableModel.setRowCount(0);
             List<Student> students = studentManager.getAllStudents();
-            AppLogger.info("DEBUG StudentTableController.loadStudentData(): Loaded " + students.size() + " students from database");
+            AppLogger.info("DEBUG StudentTableController.loadStudentData(): Loaded " + students.size()
+                    + " students from database");
 
             for (Student student : students) {
                 int imageCount = student.getFaceData() != null ? student.getFaceData().getImages().size() : 0;
                 double avgQuality = calculateAverageQuality(student);
+                Double tightness = calculateEmbeddingTightness(student);
                 Object[] rowData = {
                         student.getStudentId(),
                         student.getName(),
                         student.getEmail() != null ? student.getEmail() : "",
                         student.getPhone() != null ? student.getPhone() : "",
                         imageCount,
-                        avgQuality > 0 ? (int) (avgQuality * 100) : 0
+                        tightness != null ? tightness : (avgQuality > 0 ? avgQuality : null)
                 };
                 tableModel.addRow(rowData);
             }
 
-            AppLogger.info("DEBUG StudentTableController.loadStudentData(): Added " + tableModel.getRowCount() + " rows to table model");
+            AppLogger.info("DEBUG StudentTableController.loadStudentData(): Added " + tableModel.getRowCount()
+                    + " rows to table model");
 
         } catch (Exception e) {
             statusLabel.setText("Error loading data");
@@ -55,7 +69,8 @@ public class StudentTableController {
     public void refreshTable() {
         AppLogger.info("DEBUG StudentTableController.refreshTable(): Refreshing table");
         if (tableModel != null) {
-            AppLogger.info("DEBUG StudentTableController.refreshTable(): tableModel is not null, calling loadStudentData");
+            AppLogger.info(
+                    "DEBUG StudentTableController.refreshTable(): tableModel is not null, calling loadStudentData");
             loadStudentData(tableModel, new JLabel()); // Simplified refresh
             AppLogger.info("DEBUG StudentTableController.refreshTable(): loadStudentData completed");
         } else {
@@ -83,10 +98,78 @@ public class StudentTableController {
         }
         return count > 0 ? totalQuality / count : 0.0;
     }
+
+    private Double calculateEmbeddingTightness(Student student) {
+        if (student == null || student.getFaceData() == null) {
+            return null;
+        }
+
+        String folderPath = student.getFaceData().getFolderPath();
+        if (folderPath == null || folderPath.trim().isEmpty()) {
+            return null;
+        }
+
+        Path folder;
+        try {
+            folder = Paths.get(folderPath);
+        } catch (InvalidPathException ex) {
+            AppLogger.warn("Invalid embedding path for student " + student.getStudentId() + ": " + folderPath);
+            return null;
+        }
+        if (!Files.isDirectory(folder)) {
+            return null;
+        }
+
+        List<byte[]> embeddings = readEmbeddings(folder);
+        if (embeddings.size() < 2) {
+            return null;
+        }
+
+        int referenceLength = embeddings.get(0).length;
+        embeddings.removeIf(bytes -> bytes == null || bytes.length != referenceLength);
+        if (embeddings.size() < 2) {
+            return null;
+        }
+
+        double sum = 0.0;
+        int comparisons = 0;
+        for (int i = 0; i < embeddings.size(); i++) {
+            for (int j = i + 1; j < embeddings.size(); j++) {
+                double similarity = similarityCalculator.calculate(embeddings.get(i), embeddings.get(j));
+                if (Double.isFinite(similarity)) {
+                    sum += similarity;
+                    comparisons++;
+                }
+            }
+        }
+
+        if (comparisons == 0) {
+            return null;
+        }
+
+        double tightness = sum / comparisons;
+        if (Double.isInfinite(tightness) || Double.isNaN(tightness)) {
+            return null;
+        }
+        return Math.max(-1.0, Math.min(1.0, tightness));
+    }
+
+    private List<byte[]> readEmbeddings(Path folder) {
+        List<byte[]> embeddings = new ArrayList<>();
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(folder, "*.emb")) {
+            for (Path path : stream) {
+                try {
+                    byte[] data = Files.readAllBytes(path);
+                    if (data != null && data.length > 0) {
+                        embeddings.add(data);
+                    }
+                } catch (IOException ex) {
+                    AppLogger.warn("Failed to read embedding file: " + path.toAbsolutePath());
+                }
+            }
+        } catch (IOException e) {
+            AppLogger.warn("Failed to scan embeddings in folder: " + folder.toAbsolutePath());
+        }
+        return embeddings;
+    }
 }
-
-
-
-
-
-
