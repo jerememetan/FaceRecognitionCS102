@@ -1,24 +1,41 @@
 package gui.roster;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
 import entity.Roster;
+import gui.homepage.UIComponents;
+import report.ExportPanel;
 import service.roster.RosterManager;
-import java.util.List;
-import gui.homepage.*;
-//First page you see when clicking "Manage Rosters" from RosterSessionMenu
-//View all available rosters
+
+// First page you see when clicking "Manage Rosters" from RosterSessionMenu
+// View all available rosters
 public class RosterViewer extends JFrame {
 
     private RosterManager manager;
     private JTable rosterTable;
     private DefaultTableModel tableModel;
-    private JButton refreshButton, createButton, deleteButton;
+    private JButton refreshButton, createButton, deleteButton, exportButton;
 
     public RosterViewer(RosterManager manager) {
         this.manager = manager;
@@ -81,12 +98,11 @@ public class RosterViewer extends JFrame {
                     if (row >= 0) {
                         Object rosterObj = tableModel.getValueAt(row, 0);
                         int rosterId;
-                        //set rosterId to the selected rosterId 
+                        // set rosterId to the selected rosterId
                         if (rosterObj instanceof Number) {
                             rosterId = ((Number) rosterObj).intValue();
                             System.out.println("Selected roster ID: " + rosterId);
-                        }
-                        else{
+                        } else {
                             rosterId = Integer.parseInt(rosterObj.toString());
                             System.out.println("Selected roster ID: " + rosterId);
                         }
@@ -103,6 +119,39 @@ public class RosterViewer extends JFrame {
             }
         });
 
+        // --- Bottom Export button ---
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        exportButton = UIComponents.createAccentButton("📤 Export Report", new Color(99, 102, 241));
+        bottomPanel.add(exportButton);
+        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+
+        exportButton.addActionListener(e -> {
+            // Prepare headers and data for ExportPanel
+            List<Roster> rosters = manager.getAllRosters();
+            ArrayList<String> headers = new ArrayList<>();
+            headers.add("ID");
+            headers.add("Course Code");
+            headers.add("Start Time");
+            headers.add("End Time");
+            headers.add("Location");
+
+            ArrayList<ArrayList<String>> data = new ArrayList<>();
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm"); // format LocalTime to string
+            for (Roster r : rosters) {
+                ArrayList<String> row = new ArrayList<>();
+                row.add(r.getRosterId());
+                row.add(r.getCourseCode());
+                row.add(r.getStartTime().format(timeFormatter));  // convert LocalTime to String
+                row.add(r.getEndTime().format(timeFormatter));    // convert LocalTime to String
+                row.add(r.getLocation());
+                data.add(row);
+            }
+
+            // Open ExportPanel and pass "AllRosters" as the title
+            ExportPanel exportPanel = new ExportPanel( "AllRosters", headers, data);
+            exportPanel.setVisible(true);
+        });
+
         refreshTable();
         setVisible(true);
     }
@@ -113,16 +162,15 @@ public class RosterViewer extends JFrame {
         List<Roster> rosters = manager.getAllRosters();
         for (Roster r : rosters) {
             tableModel.addRow(new Object[]{
-                r.getRosterId(),
-                r.getCourseCode(),
-                r.getStartTime(),
-                r.getEndTime(),
-                r.getLocation()
+                    r.getRosterId(),
+                    r.getCourseCode(),
+                    r.getStartTime(),
+                    r.getEndTime(),
+                    r.getLocation()
             });
         }
     }
 
-    
     // === Delete selected Roster ===
     private void deleteRoster() {
         int selectedRow = rosterTable.getSelectedRow();
@@ -131,8 +179,7 @@ public class RosterViewer extends JFrame {
             int rosterId;
             if (rosterObj instanceof Number) {
                 rosterId = ((Number) rosterObj).intValue();
-            }
-            else{
+            } else {
                 rosterId = Integer.parseInt(rosterObj.toString());
             }
             System.out.println(rosterId);
@@ -163,4 +210,3 @@ public class RosterViewer extends JFrame {
         }
     }
 }
-

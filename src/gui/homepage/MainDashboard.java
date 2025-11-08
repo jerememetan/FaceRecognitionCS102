@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import service.session.SessionManager;
 import service.roster.RosterManager;
+import report.ReportManager;
 public class MainDashboard extends JFrame {
     private String role;
     private String id;
@@ -236,6 +237,9 @@ public class MainDashboard extends JFrame {
 
         reportBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
+
+            new ReportManager(); // call constructor to load reportLogs data
+
             JFrame reportsFrame = new ReportsGUI(role, id);
             reportsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             reportsFrame.addWindowListener(new WindowAdapter() {

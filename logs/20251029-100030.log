@@ -1,0 +1,6 @@
+[2025-10-29 10:00:30] INFO: Application Logger Initialized.
+[2025-10-29 10:00:30] INFO: app.properties normalized (55 entries).
+[2025-10-29 10:00:30] INFO: Configuration loaded from file: C:\Users\nicho\Projects\FaceRecognitionCS102\app.properties
+[2025-10-29 10:00:30] INFO: CSV file [ 
+[2025-10-29 10:00:30] INFO: StudentFaceRecognitionData8.csv
+[2025-10-29 10:00:30] INFO:  ] created successfully!
