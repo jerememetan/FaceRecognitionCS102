@@ -1,0 +1,343 @@
+================================================================================
+EMBEDDING QUALITY REPORT
+================================================================================
+Generated: 2025-10-25 22:19:07
+Database: C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata
+
+================================================================================
+STUDENT: S00000_Nicholas
+================================================================================
+
+Embeddings found: 8
+
+--- NORMALIZATION CHECK ---
+Norm range: 1.000000 to 1.000000 (avg: 1.000000)
+✓ All embeddings properly L2-normalized
+
+--- QUALITY ANALYSIS ---
+Overall tightness: 0.9027
+Quality level: EXCELLENT
+Expected live recognition scores: 0.82-0.95
+
+--- EMBEDDING RANKING ---
+  OK    S00000_007.emb  0.9443  (dev: +0.042)
+  OK    S00000_003.emb  0.9436  (dev: +0.041)
+  OK    S00000_009.emb  0.9360  (dev: +0.033)
+  OK    S00000_005.emb  0.9277  (dev: +0.025)
+  OK    S00000_002.emb  0.9153  (dev: +0.013)
+  OK    S00000_008.emb  0.9138  (dev: +0.011)
+  OK    S00000_004.emb  0.9133  (dev: +0.011)
+✗ OUTLIER  S00000_006.emb  0.7274  (dev: -0.175)
+
+--- OUTLIERS DETECTED ---
+These embeddings should be REMOVED:
+  ✗ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S00000_Nicholas\S00000_006.emb
+
+--- PROJECTED IMPROVEMENT ---
+Current tightness: 0.9027
+After removing outliers: 0.9611
+Improvement: +0.0584 (+6.5%)
+New expected scores: 0.91-1.11
+
+
+================================================================================
+STUDENT: S00001_jereme
+================================================================================
+
+Embeddings found: 18
+
+--- NORMALIZATION CHECK ---
+Norm range: 1.000000 to 1.000000 (avg: 1.000000)
+✓ All embeddings properly L2-normalized
+
+--- QUALITY ANALYSIS ---
+Overall tightness: 0.8307
+Quality level: GOOD
+Expected live recognition scores: 0.75-0.90
+
+--- EMBEDDING RANKING ---
+  OK    S00001_016.emb  0.8768  (dev: +0.046)
+  OK    S00001_012.emb  0.8650  (dev: +0.034)
+  OK    S00001_017.emb  0.8614  (dev: +0.031)
+  OK    S00001_014.emb  0.8589  (dev: +0.028)
+  OK    S00001_019.emb  0.8574  (dev: +0.027)
+  OK    S00001_011.emb  0.8500  (dev: +0.019)
+  OK    S00001_010.emb  0.8441  (dev: +0.013)
+  OK    S00001_013.emb  0.8435  (dev: +0.013)
+  OK    S00001_020.emb  0.8406  (dev: +0.010)
+  OK    S00001_004.emb  0.8397  (dev: +0.009)
+  OK    S00001_007.emb  0.8280  (dev: -0.003)
+  OK    S00001_006.emb  0.8259  (dev: -0.005)
+  OK    S00001_015.emb  0.8231  (dev: -0.008)
+  OK    S00001_002.emb  0.8144  (dev: -0.016)
+  OK    S00001_001.emb  0.7979  (dev: -0.033)
+  OK    S00001_018.emb  0.7942  (dev: -0.037)
+  OK    S00001_005.emb  0.7810  (dev: -0.050)
+⚠ WEAK  S00001_008.emb  0.7502  (dev: -0.080)
+
+--- WEAK EMBEDDINGS ---
+Consider removing if tightness needs improvement:
+  ⚠ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S00001_jereme\S00001_008.emb
+
+--- PROJECTED IMPROVEMENT ---
+Current tightness: 0.8307
+After removing outliers: 0.8307
+Improvement: +0.0000 (+0.0%)
+New expected scores: 0.78-0.98
+
+
+================================================================================
+STUDENT: S13234_Jin_Rae
+================================================================================
+
+Embeddings found: 11
+
+--- NORMALIZATION CHECK ---
+Norm range: 1.000000 to 1.000000 (avg: 1.000000)
+✓ All embeddings properly L2-normalized
+
+--- QUALITY ANALYSIS ---
+Overall tightness: 0.9417
+Quality level: EXCELLENT
+Expected live recognition scores: 0.82-0.95
+
+--- EMBEDDING RANKING ---
+  OK    S13234_020.emb  0.9534  (dev: +0.012)
+  OK    S13234_018.emb  0.9523  (dev: +0.011)
+  OK    S13234_006.emb  0.9516  (dev: +0.010)
+  OK    S13234_002.emb  0.9463  (dev: +0.005)
+  OK    S13234_014.emb  0.9454  (dev: +0.004)
+  OK    S13234_009.emb  0.9449  (dev: +0.003)
+  OK    S13234_008.emb  0.9383  (dev: -0.003)
+  OK    S13234_013.emb  0.9379  (dev: -0.004)
+  OK    S13234_017.emb  0.9354  (dev: -0.006)
+  OK    S13234_010.emb  0.9266  (dev: -0.015)
+  OK    S13234_001.emb  0.9261  (dev: -0.016)
+
+✓ No outliers detected - all embeddings are of good quality
+
+
+================================================================================
+STUDENT: S55555_Tiffany
+================================================================================
+
+Embeddings found: 13
+
+--- NORMALIZATION CHECK ---
+Norm range: 1.000000 to 1.000000 (avg: 1.000000)
+✓ All embeddings properly L2-normalized
+
+--- QUALITY ANALYSIS ---
+Overall tightness: 0.8638
+Quality level: EXCELLENT
+Expected live recognition scores: 0.82-0.95
+
+--- EMBEDDING RANKING ---
+  OK    S55555_002.emb  0.9045  (dev: +0.041)
+  OK    S55555_010.emb  0.8983  (dev: +0.035)
+  OK    S55555_004.emb  0.8970  (dev: +0.033)
+  OK    S55555_014.emb  0.8947  (dev: +0.031)
+  OK    S55555_011.emb  0.8852  (dev: +0.021)
+  OK    S55555_005.emb  0.8805  (dev: +0.017)
+  OK    S55555_015.emb  0.8731  (dev: +0.009)
+  OK    S55555_013.emb  0.8579  (dev: -0.006)
+  OK    S55555_001.emb  0.8555  (dev: -0.008)
+  OK    S55555_006.emb  0.8496  (dev: -0.014)
+  OK    S55555_012.emb  0.8483  (dev: -0.015)
+  OK    S55555_009.emb  0.8328  (dev: -0.031)
+✗ OUTLIER  S55555_003.emb  0.7514  (dev: -0.112)
+
+--- OUTLIERS DETECTED ---
+These embeddings should be REMOVED:
+  ✗ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S55555_Tiffany\S55555_003.emb
+
+--- PROJECTED IMPROVEMENT ---
+Current tightness: 0.8638
+After removing outliers: 0.8842
+Improvement: +0.0204 (+2.4%)
+New expected scores: 0.83-1.03
+
+
+================================================================================
+STUDENT: S88888_Cavin
+================================================================================
+
+Embeddings found: 11
+
+--- NORMALIZATION CHECK ---
+Norm range: 1.000000 to 1.000000 (avg: 1.000000)
+✓ All embeddings properly L2-normalized
+
+--- QUALITY ANALYSIS ---
+Overall tightness: 0.7996
+Quality level: GOOD
+Expected live recognition scores: 0.75-0.90
+
+--- EMBEDDING RANKING ---
+✓ GOOD  S88888_005.emb  0.8813  (dev: +0.082)
+✓ GOOD  S88888_006.emb  0.8765  (dev: +0.077)
+✓ GOOD  S88888_013.emb  0.8764  (dev: +0.077)
+✓ GOOD  S88888_010.emb  0.8758  (dev: +0.076)
+✓ GOOD  S88888_009.emb  0.8752  (dev: +0.076)
+✓ GOOD  S88888_008.emb  0.8729  (dev: +0.073)
+✓ GOOD  S88888_003.emb  0.8718  (dev: +0.072)
+  OK    S88888_011.emb  0.8384  (dev: +0.039)
+✗ OUTLIER  S88888_014.emb  0.6720  (dev: -0.128)
+✗ OUTLIER  S88888_004.emb  0.6242  (dev: -0.175)
+✗ OUTLIER  S88888_012.emb  0.5312  (dev: -0.268)
+
+--- OUTLIERS DETECTED ---
+These embeddings should be REMOVED:
+  ✗ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S88888_Cavin\S88888_014.emb
+  ✗ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S88888_Cavin\S88888_004.emb
+  ✗ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S88888_Cavin\S88888_012.emb
+
+--- PROJECTED IMPROVEMENT ---
+Current tightness: 0.7996
+After removing outliers: 0.9745
+Improvement: +0.1749 (+21.9%)
+New expected scores: 0.92-1.12
+
+
+================================================================================
+STUDENT: S99998_Kim_Jun_Un
+================================================================================
+
+Embeddings found: 15
+
+--- NORMALIZATION CHECK ---
+Norm range: 1.000000 to 1.000000 (avg: 1.000000)
+✓ All embeddings properly L2-normalized
+
+--- QUALITY ANALYSIS ---
+Overall tightness: 0.6411
+Quality level: POOR
+Expected live recognition scores: 0.55-0.75
+
+--- EMBEDDING RANKING ---
+✓ GOOD  S99998_008.emb  0.7620  (dev: +0.121)
+✓ GOOD  S99998_003.emb  0.7496  (dev: +0.108)
+✓ GOOD  S99998_006.emb  0.7486  (dev: +0.107)
+✓ GOOD  S99998_015.emb  0.7476  (dev: +0.106)
+✓ GOOD  S99998_013.emb  0.7468  (dev: +0.106)
+✓ GOOD  S99998_002.emb  0.7404  (dev: +0.099)
+✓ GOOD  S99998_009.emb  0.7338  (dev: +0.093)
+✓ GOOD  S99998_001.emb  0.7297  (dev: +0.089)
+✓ GOOD  S99998_007.emb  0.7131  (dev: +0.072)
+  OK    S99998_014.emb  0.6807  (dev: +0.040)
+  OK    S99998_011.emb  0.6753  (dev: +0.034)
+  OK    S99998_004.emb  0.6138  (dev: -0.027)
+✗ OUTLIER  S99998_005.emb  0.4027  (dev: -0.238)
+✗ OUTLIER  S99998_010.emb  0.3046  (dev: -0.337)
+✗ OUTLIER  S99998_012.emb  0.2682  (dev: -0.373)
+
+--- OUTLIERS DETECTED ---
+These embeddings should be REMOVED:
+  ✗ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S99998_Kim_Jun_Un\S99998_005.emb
+  ✗ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S99998_Kim_Jun_Un\S99998_010.emb
+  ✗ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S99998_Kim_Jun_Un\S99998_012.emb
+
+--- PROJECTED IMPROVEMENT ---
+Current tightness: 0.6411
+After removing outliers: 0.8238
+Improvement: +0.1827 (+28.5%)
+New expected scores: 0.77-0.97
+
+
+================================================================================
+STUDENT: S99999_Tonald_Drump
+================================================================================
+
+Embeddings found: 17
+
+--- NORMALIZATION CHECK ---
+Norm range: 1.000000 to 1.000000 (avg: 1.000000)
+✓ All embeddings properly L2-normalized
+
+--- QUALITY ANALYSIS ---
+Overall tightness: 0.6320
+Quality level: POOR
+Expected live recognition scores: 0.55-0.75
+
+--- EMBEDDING RANKING ---
+✓ GOOD  S99999_003.emb  0.7329  (dev: +0.101)
+✓ GOOD  S99999_002.emb  0.7323  (dev: +0.100)
+✓ GOOD  S99999_012.emb  0.7283  (dev: +0.096)
+✓ GOOD  S99999_010.emb  0.7143  (dev: +0.082)
+✓ GOOD  S99999_001.emb  0.7136  (dev: +0.082)
+✓ GOOD  S99999_007.emb  0.7105  (dev: +0.079)
+✓ GOOD  S99999_013.emb  0.6923  (dev: +0.060)
+✓ GOOD  S99999_014.emb  0.6833  (dev: +0.051)
+  OK    S99999_004.emb  0.6729  (dev: +0.041)
+  OK    S99999_008.emb  0.5994  (dev: -0.033)
+⚠ WEAK  S99999_005.emb  0.5758  (dev: -0.056)
+⚠ WEAK  S99999_006.emb  0.5743  (dev: -0.058)
+⚠ WEAK  S99999_020.emb  0.5667  (dev: -0.065)
+⚠ WEAK  S99999_011.emb  0.5438  (dev: -0.088)
+⚠ WEAK  S99999_015.emb  0.5339  (dev: -0.098)
+✗ OUTLIER  S99999_009.emb  0.4903  (dev: -0.142)
+✗ OUTLIER  S99999_017.emb  0.4797  (dev: -0.152)
+
+--- OUTLIERS DETECTED ---
+These embeddings should be REMOVED:
+  ✗ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S99999_Tonald_Drump\S99999_009.emb
+  ✗ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S99999_Tonald_Drump\S99999_017.emb
+
+--- WEAK EMBEDDINGS ---
+Consider removing if tightness needs improvement:
+  ⚠ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S99999_Tonald_Drump\S99999_005.emb
+  ⚠ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S99999_Tonald_Drump\S99999_006.emb
+  ⚠ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S99999_Tonald_Drump\S99999_020.emb
+  ⚠ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S99999_Tonald_Drump\S99999_011.emb
+  ⚠ C:\Users\nicho\Projects\FaceRecognitionCS102\data\facedata\S99999_Tonald_Drump\S99999_015.emb
+
+--- PROJECTED IMPROVEMENT ---
+Current tightness: 0.6320
+After removing outliers: 0.6798
+Improvement: +0.0477 (+7.6%)
+New expected scores: 0.63-0.83
+
+
+================================================================================
+OVERALL SUMMARY
+================================================================================
+
+--- STATISTICS ---
+Total students analyzed: 7
+Total embeddings: 93
+Average embeddings per student: 13.3
+
+--- QUALITY METRICS ---
+Average tightness: 0.8016
+Students with outliers: 5 (71.4%)
+Total outliers found: 10
+
+--- QUALITY DISTRIBUTION ---
+EXCELLENT (≥0.85): 3
+GOOD (0.75-0.84): 2
+MODERATE (0.65-0.74): 0
+POOR (<0.65): 2
+
+--- TOP 5 PERFORMERS (Highest Tightness) ---
+  S13234_Jin_Rae: 0.9417 (EXCELLENT, 11 embeddings)
+  S00000_Nicholas: 0.9027 (EXCELLENT, 8 embeddings)
+  S55555_Tiffany: 0.8638 (EXCELLENT, 13 embeddings)
+  S00001_jereme: 0.8307 (GOOD, 18 embeddings)
+  S88888_Cavin: 0.7996 (GOOD, 11 embeddings)
+
+--- STUDENTS NEEDING ATTENTION ---
+  S88888_Cavin: tightness=0.7996, outliers=3, weak=0
+  S99998_Kim_Jun_Un: tightness=0.6411, outliers=3, weak=0
+  S99999_Tonald_Drump: tightness=0.6320, outliers=2, weak=5
+  S00000_Nicholas: tightness=0.9027, outliers=1, weak=0
+  S55555_Tiffany: tightness=0.8638, outliers=1, weak=0
+
+--- RECOMMENDATIONS ---
+✗ 5 student(s) have outlier embeddings
+  → Remove outlier files listed above to improve recognition accuracy
+✓ Excellent overall quality (tightness ≥0.80)
+  → Training data is in good shape
+
+================================================================================
+END OF REPORT
+================================================================================

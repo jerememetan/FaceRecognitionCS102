@@ -1,18 +1,37 @@
 package gui.roster;
 
-import entity.Roster;
-import entity.Student;
-import entity.RosterStudent;
-import gui.student.AddStudentDialog;
-import repository.StudentRepositoryInstance;
-import service.roster.RosterManager;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.util.ArrayList;
-import gui.homepage.*;
+
+import entity.Roster;
+import entity.RosterStudent;
+import entity.Student;
+import gui.homepage.UIComponents;
+import gui.student.AddStudentDialog;
+import report.CSVGenerator;
+import report.ExcelGenerator;
+import report.PDFGenerator;
+import repository.StudentRepositoryInstance;
+import service.roster.RosterManager;
+
 //GUI class to view/modify details in a Roster entity
 public class RosterDetailsManagement extends JDialog {
 
@@ -24,6 +43,10 @@ public class RosterDetailsManagement extends JDialog {
     private JButton addButton, removeButton, editButton;
     private ArrayList<Student> allStudents;
     private JLabel courseCodeLabel, timeLabel, locationLabel;
+
+    // Export buttons
+    private JButton exportCSVButton, exportExcelButton, exportPDFButton;
+
     public RosterDetailsManagement(JFrame parent, RosterManager manager, Roster roster) {
         super(parent, "Roster Management", ModalityType.APPLICATION_MODAL);
         this.parent = parent;
@@ -99,8 +122,21 @@ public class RosterDetailsManagement extends JDialog {
             refreshTable();
         });
 
+        // ===== Export buttons =====
+        exportCSVButton = UIComponents.createAccentButton("Export CSV", new Color(14, 165, 233));
+        exportExcelButton = UIComponents.createAccentButton("Export Excel", new Color(34, 197, 94));
+        exportPDFButton = UIComponents.createAccentButton("Export PDF", new Color(239, 68, 68));
+
+        exportCSVButton.addActionListener(e -> exportTable("CSV"));
+        exportExcelButton.addActionListener(e -> exportTable("Excel"));
+        exportPDFButton.addActionListener(e -> exportTable("PDF"));
+
         buttonPanel.add(addButton);
         buttonPanel.add(removeButton);
+        buttonPanel.add(exportCSVButton);
+        buttonPanel.add(exportExcelButton);
+        buttonPanel.add(exportPDFButton);
+
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         // Load initial roster
@@ -158,11 +194,87 @@ public class RosterDetailsManagement extends JDialog {
         rosterForm.setVisible(true);
         refreshRosterDetails();
     }
+
     private void refreshRosterDetails(){
         courseCodeLabel.setText(roster.getCourseCode());
         timeLabel.setText(roster.getStartTime() + " - " + roster.getEndTime());
         locationLabel.setText(roster.getLocation());
         revalidate();
         repaint();
+    }
+
+    // ===== Export Functionality =====
+    private void exportTable(String type) {
+        String[] headers = {"Student ID", "Name", "Phone No"};
+        
+        // Checkbox selection dialog
+        JCheckBox[] checkboxes = new JCheckBox[headers.length];
+        JPanel panel = new JPanel(new GridLayout(headers.length, 1));
+        for (int i = 0; i < headers.length; i++) {
+            checkboxes[i] = new JCheckBox(headers[i], true);
+            panel.add(checkboxes[i]);
+        }
+        int result = JOptionPane.showConfirmDialog(this, panel, "Select Columns to Export", JOptionPane.OK_CANCEL_OPTION);
+        if (result != JOptionPane.OK_OPTION) return;
+
+        ArrayList<String> selectedHeaders = new ArrayList<>();
+        ArrayList<ArrayList<String>> data = new ArrayList<>();
+        for (int i = 0; i < headers.length; i++) {
+            if (checkboxes[i].isSelected()) {
+                selectedHeaders.add(headers[i]);
+            }
+        }
+
+        for (int row = 0; row < tableModel.getRowCount(); row++) {
+            ArrayList<String> rowData = new ArrayList<>();
+            for (int col = 0; col < headers.length; col++) {
+                if (checkboxes[col].isSelected()) {
+                    rowData.add(tableModel.getValueAt(row, col).toString());
+                }
+            }
+            data.add(rowData);
+        }
+
+        // Generate the export filename based on the roster details
+        String rosterId = String.valueOf(roster.getRosterId());
+        String rosterName = roster.getCourseCode();  // Roster name (Course Code)
+        String rosterDate = LocalDate.now().toString();  // Assuming you want the current date
+        String rosterTime = roster.getStartTime().toString() + "-" + roster.getEndTime().toString(); // Time range
+        String exportTitle = "Roster_" + rosterId + "_" + rosterName + "_" + rosterDate;
+
+        try {
+            switch (type) {
+                case "CSV":
+                    CSVGenerator csvGen = new CSVGenerator(selectedHeaders, data, exportTitle);
+                    boolean csvSuccess = csvGen.generate();
+                    JOptionPane.showMessageDialog(RosterDetailsManagement.this,
+                            csvSuccess ? "CSV report generated successfully!"
+                                    : "CSV export cancelled or failed.",
+                            csvSuccess ? "Export Complete" : "Export Cancelled",
+                            csvSuccess ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.WARNING_MESSAGE);
+                    break;
+                case "Excel":
+                    ExcelGenerator excelGen = new ExcelGenerator(selectedHeaders, data, exportTitle);
+                    boolean excelSuccess = excelGen.generate();
+                    JOptionPane.showMessageDialog(RosterDetailsManagement.this,
+                            excelSuccess ? "Excel report generated successfully!"
+                                    : "Excel export cancelled or failed.",
+                            excelSuccess ? "Export Complete" : "Export Cancelled",
+                            excelSuccess ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.WARNING_MESSAGE);
+                    break;
+                case "PDF":
+                    PDFGenerator pdfGen = new PDFGenerator(selectedHeaders, data, exportTitle);
+                    boolean pdfSuccess = pdfGen.generate();
+                    JOptionPane.showMessageDialog(RosterDetailsManagement.this,
+                            pdfSuccess ? "PDF report generated successfully!"
+                                    : "PDF export cancelled or failed.",
+                            pdfSuccess ? "Export Complete" : "Export Cancelled",
+                            pdfSuccess ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.WARNING_MESSAGE);
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Failed to export " + type + ": " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

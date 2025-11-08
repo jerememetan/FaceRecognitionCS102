@@ -1,21 +1,38 @@
 package gui.session;
 
-import entity.Session;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.*;
-import javax.swing.*;
+import java.util.ArrayList;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import gui.homepage.*;
+
+import config.AppLogger;
+import entity.Session;
+import gui.homepage.UIComponents;
 import service.roster.RosterManager;
 import service.session.SessionManager;
-import config.*;
 public class SessionViewer extends JFrame {
 
     private SessionManager manager;
@@ -126,6 +143,47 @@ public class SessionViewer extends JFrame {
 
 
         deleteButton.addActionListener(e -> deleteSession());
+
+        // --- Export Panel at the bottom ---
+        JPanel exportPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        JButton exportButton = UIComponents.createAccentButton("📤 Export Options", new Color(37, 99, 235)); // Blue color
+
+        exportButton.addActionListener(e -> {
+            try {
+                // Collect headers from table model
+                ArrayList<String> headers = new ArrayList<>();
+                for (int i = 0; i < tableModel.getColumnCount(); i++) {
+                    headers.add(tableModel.getColumnName(i));
+                }
+
+                // Collect data from table model
+                ArrayList<ArrayList<String>> data = new ArrayList<>();
+                for (int row = 0; row < tableModel.getRowCount(); row++) {
+                    ArrayList<String> rowData = new ArrayList<>();
+                    for (int col = 0; col < tableModel.getColumnCount(); col++) {
+                        Object value = tableModel.getValueAt(row, col);
+                        rowData.add(value != null ? value.toString() : "");
+                    }
+                    data.add(rowData);
+                }
+
+                // Open Export Panel and pass "AllSessions" as the title
+                report.ExportPanel exportWindow = new report.ExportPanel("AllSessions", headers, data);
+                exportWindow.setVisible(true);
+
+                AppLogger.info("Opened Export Panel for sessions.");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this,
+                        "Failed to open export panel: " + ex.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+        exportPanel.add(exportButton);
+        viewerPanel.add(exportPanel, BorderLayout.SOUTH);
+
 
         // --- Double-click a row to view details ---
         sessionTable.addMouseListener(new MouseAdapter() {

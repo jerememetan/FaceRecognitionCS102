@@ -1,74 +1,79 @@
 package report;
 
-import config.*;
-import entity.Student;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+import java.util.ArrayList;
 
+import javax.swing.JFileChooser;
 
-// CSVGenerator: creates a new .csv file in export folder
+import config.AppLogger;
+
 public class CSVGenerator implements ReportGenerator {
-    @Override
-    public void generate(){
-        // Create a ReportBuilder class
-        ReportBuilder ReportBuilder = new ReportBuilder();
 
-        // Initialize Headers in ReportBuilder
-        List<String> headers = Arrays.asList("StudentID", "Name", "Status", "Timestamp", "Confidence", "Method", "Notes");
-        ReportBuilder.initializeFieldHeaders(headers);
+    private ArrayList<String> headers;
+    private ArrayList<ArrayList<String>> data;
+    private String title; // new title field
 
-        // Initialize Sample Student Data in ReportBuilder
-        String studentsFileName = "./data/sampledata/sampleStudentData.txt";
-        StudentData.loadSampleDataFromFile(studentsFileName);
-        ReportBuilder.initializeData(StudentData.SampleStudentData);
-
-        // Get both Headers and Data -> fullData
-        List<List<String>> fullData = ReportBuilder.getFullData();
-
-
-        // Export Path
-        String exportedFolderPath = AppConfig.getInstance().getExportCsvFolderPath();
-
-        // Get the count of .*** files in export folder
-        // Error Handling to access export files
-        int newCSVCount = 0;
-        try {
-            long csvCount = util.countFilesInFolder(exportedFolderPath, "csv");
-            newCSVCount = (int)csvCount + 1;
-        } catch (IOException e) {
-            System.err.println("\nCSVReport: Error accessing the exportedDataFiles folder: " + e.getMessage());
-        }
-
-        // New Exported File Name with incremented count
-        String fileName = String.format("StudentFaceRecognitionData%d.csv", newCSVCount);
-
-        // Exported File Name with full path to export folder
-        String exportedFileName = exportedFolderPath + fileName;
-
-
-        // Fill the exported file with data
-        try (FileWriter writer = new FileWriter(exportedFileName)) {
-            for (List<String> row : fullData) {
-                writer.append(String.join(",", row));
-                writer.append("\n");
-            }
-            System.out.printf("CSV file [ %s ] created successfully!", fileName);
-        } catch (IOException e) {
-            AppLogger.warn("CSVReport: Error writing to CSV file: " + e.getMessage());
-        }
+    // Constructor updated to include title
+    public CSVGenerator(ArrayList<String> headers, ArrayList<ArrayList<String>> data, String title) {
+        this.headers = headers;
+        this.data = data;
+        this.title = title; // assign title
     }
 
-    public static void main(String[] args) {
-        ReportGenerator generator = new CSVGenerator();
-        generator.generate();
+    @Override
+    public boolean generate() {
+        if (headers == null || data == null || headers.isEmpty()) {
+            AppLogger.error("CSVGenerator: No headers or data provided.");
+            return false;
+        }
+
+        // Use title for filename; fallback to default if empty
+        String fileName = (title != null && !title.isEmpty() ? title : "ExportCSV") + ".csv";
+
+        try {
+            // Prompt user for save location
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Choose where to save your CSV file");
+            fileChooser.setSelectedFile(new File(fileName));
+
+            int userSelection = fileChooser.showSaveDialog(null);
+
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                File fileToSave = fileChooser.getSelectedFile();
+
+                try (FileWriter writer = new FileWriter(fileToSave)) {
+
+                    // ✅ Write headers first
+                    writer.append(String.join(",", headers));
+                    writer.append("\n");
+
+                    // Write data rows
+                    for (ArrayList<String> row : data) {
+                        writer.append(String.join(",", row));
+                        writer.append("\n");
+                    }
+                }
+
+                // Modify title based on conditions
+                String modifiedTitle = ReportManager.getModifiedTitle(title);
+                
+                // Log the report generation with the modified title
+                ReportManager.addReportLog(modifiedTitle, data.size());
+
+                AppLogger.info("CSV file saved successfully to: " + fileToSave.getAbsolutePath());
+                return true;
+
+            } else {
+                AppLogger.info("CSV export cancelled by user.");
+                return false;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            AppLogger.error("Error generating CSV file: " + e.getMessage());
+            return false;
+        }
     }
 }
-
-
-
-
-
-
-
