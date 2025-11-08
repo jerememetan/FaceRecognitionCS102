@@ -7,13 +7,16 @@ package service.recognition;
 final class RecognitionDecisionEngine {
 
     private static final double CONFIDENCE_THRESHOLD_RELAXATION = 0.92;
-    private static final double MIN_LIVE_ABSOLUTE_THRESHOLD = 0.48;
+    private static final double MIN_LIVE_ABSOLUTE_THRESHOLD = 0.42;
     private static final double MARGIN_CONFIDENCE_WEIGHT = 0.6;
     private static final double DISCRIMINATIVE_CONFIDENCE_WEIGHT = 0.4;
-    private static final double MIN_RELATIVE_MARGIN_PCT = 0.10;
-    private static final double MIN_ABSOLUTE_MARGIN = 0.08;
+    private static final double MIN_RELATIVE_MARGIN_PCT = 0.08;
+    private static final double MIN_ABSOLUTE_MARGIN = 0.07;
     private static final double MIN_CONFIDENCE = 0.20;
-    private static final double STRONG_CONFIDENCE = 0.65;
+    private static final double STRONG_CONFIDENCE = 0.55;
+    private static final double NEAR_THRESHOLD_DELTA = 0.09;
+    private static final double NEAR_THRESHOLD_MARGIN_FACTOR = 0.85;
+    private static final double NEAR_THRESHOLD_CONFIDENCE = 0.28;
 
     RecognitionDecision evaluate(
             RecognitionProfile profile,
@@ -32,31 +35,31 @@ final class RecognitionDecisionEngine {
         double absoluteThreshold = profile.absoluteThreshold();
         double absoluteMargin = bestScore - secondBest;
 
-    double marginConfidence = calculateMarginConfidence(bestScore, secondBest);
-    double confidenceFloor = Math.max(
-        MIN_LIVE_ABSOLUTE_THRESHOLD,
-        Math.min(0.99, absoluteThreshold * CONFIDENCE_THRESHOLD_RELAXATION));
-    double discriminativeConfidence = calculateDiscriminativeConfidence(
-        scores.discriminativeScore(), confidenceFloor);
-    double combinedConfidence = clamp01(
-        (MARGIN_CONFIDENCE_WEIGHT * marginConfidence)
-            + (DISCRIMINATIVE_CONFIDENCE_WEIGHT * discriminativeConfidence));
+        double marginConfidence = calculateMarginConfidence(bestScore, secondBest);
+        double confidenceFloor = Math.max(
+                MIN_LIVE_ABSOLUTE_THRESHOLD,
+                Math.min(0.99, absoluteThreshold * CONFIDENCE_THRESHOLD_RELAXATION));
+        double discriminativeConfidence = calculateDiscriminativeConfidence(
+                scores.discriminativeScore(), confidenceFloor);
+        double combinedConfidence = clamp01(
+                (MARGIN_CONFIDENCE_WEIGHT * marginConfidence)
+                        + (DISCRIMINATIVE_CONFIDENCE_WEIGHT * discriminativeConfidence));
 
-    double dynamicRawRequirement = Math.max(absoluteThreshold - 0.02, MIN_LIVE_ABSOLUTE_THRESHOLD);
+        double dynamicRawRequirement = Math.max(absoluteThreshold - 0.25, MIN_LIVE_ABSOLUTE_THRESHOLD);
         boolean rawScorePass = bestScore >= dynamicRawRequirement;
-    boolean strongRawPass = bestScore >= Math.max(absoluteThreshold + 0.04, MIN_LIVE_ABSOLUTE_THRESHOLD + 0.05);
+        boolean strongRawPass = bestScore >= Math.max(absoluteThreshold + 0.04, MIN_LIVE_ABSOLUTE_THRESHOLD + 0.05);
         boolean absoluteThresholdPass = bestScore >= absoluteThreshold;
         boolean absoluteMarginPass = absoluteMargin >= MIN_ABSOLUTE_MARGIN;
         boolean confidencePass = combinedConfidence >= MIN_CONFIDENCE;
         boolean strongConfidencePass = combinedConfidence >= STRONG_CONFIDENCE;
-        boolean discriminativePass = scores.discriminativeScore() >= absoluteThreshold;
+        boolean discriminativePass = scores.discriminativeScore() >= confidenceFloor;
 
         double relativeMarginPct = bestScore > 0 ? (bestScore - secondBest) / bestScore : 0.0;
         double requiredMarginPct = Math.max(
                 MIN_RELATIVE_MARGIN_PCT,
                 profile.relativeMargin() / Math.max(bestScore, 1e-6));
 
-    if (strongRawPass && strongConfidencePass && relativeMarginPct >= requiredMarginPct) {
+        if (strongRawPass && strongConfidencePass && relativeMarginPct >= requiredMarginPct) {
             return RecognitionDecision.accept(
                     profile.displayLabel(),
                     bestScore,
@@ -67,7 +70,7 @@ final class RecognitionDecisionEngine {
                     "Strong confidence match");
         }
 
-    if (rawScorePass && absoluteThresholdPass && absoluteMarginPass && confidencePass) {
+        if (rawScorePass && absoluteThresholdPass && absoluteMarginPass && confidencePass) {
             return RecognitionDecision.accept(
                     profile.displayLabel(),
                     bestScore,
@@ -78,8 +81,24 @@ final class RecognitionDecisionEngine {
                     "Standard confidence match");
         }
 
-    if (rawScorePass && absoluteThresholdPass && consistent &&
-        matchCount >= minimumConsistencyCount && combinedConfidence >= 0.10) {
+        double nearThreshold = Math.max(absoluteThreshold - NEAR_THRESHOLD_DELTA, MIN_LIVE_ABSOLUTE_THRESHOLD);
+        boolean nearThresholdEligible = bestScore >= nearThreshold;
+
+        if (!absoluteThresholdPass && nearThresholdEligible && absoluteMarginPass
+                && relativeMarginPct >= requiredMarginPct * NEAR_THRESHOLD_MARGIN_FACTOR
+                && combinedConfidence >= NEAR_THRESHOLD_CONFIDENCE) {
+            return RecognitionDecision.accept(
+                    profile.displayLabel(),
+                    bestScore,
+                    combinedConfidence,
+                    absoluteMargin,
+                    relativeMarginPct,
+                    requiredMarginPct,
+                    "Near-threshold margin match");
+        }
+
+        if (rawScorePass && absoluteThresholdPass && consistent
+                && matchCount >= minimumConsistencyCount && combinedConfidence >= 0.10) {
             String reason = String.format(
                     "Consistency override (%d/%d frames)",
                     matchCount,
@@ -105,17 +124,17 @@ final class RecognitionDecisionEngine {
                     "Discriminative match (low negative evidence)");
         }
 
-    if (!rawScorePass && absoluteMarginPass && relativeMarginPct >= requiredMarginPct
-        && combinedConfidence >= STRONG_CONFIDENCE) {
-        return RecognitionDecision.accept(
-            profile.displayLabel(),
-            bestScore,
-            combinedConfidence,
-            absoluteMargin,
-            relativeMarginPct,
-            requiredMarginPct,
-            "Relative evidence override");
-    }
+        if (!rawScorePass && absoluteMarginPass && relativeMarginPct >= requiredMarginPct
+                && combinedConfidence >= STRONG_CONFIDENCE) {
+            return RecognitionDecision.accept(
+                    profile.displayLabel(),
+                    bestScore,
+                    combinedConfidence,
+                    absoluteMargin,
+                    relativeMarginPct,
+                    requiredMarginPct,
+                    "Relative evidence override");
+        }
 
         String reason;
         if (!rawScorePass) {
@@ -226,10 +245,3 @@ final class RecognitionDecisionEngine {
         }
     }
 }
-
-
-
-
-
-
-

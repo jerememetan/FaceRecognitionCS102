@@ -17,6 +17,7 @@ import javax.swing.table.TableRowSorter;
 import service.student.StudentManager;
 import gui.homepage.UIComponents;
 import config.*;
+
 public class StudentEnrollmentGUI extends JFrame {
     private StudentManager studentManager;
     private JTable studentTable;
@@ -88,10 +89,12 @@ public class StudentEnrollmentGUI extends JFrame {
         JPanel searchPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         searchPanel.add(new JLabel("Search:"));
         searchField = new JTextField(20);
-        searchField.addActionListener(e -> searchFilter.performSearch(searchField.getText().trim(), rowSorter, statusLabel));
+        searchField.addActionListener(
+                e -> searchFilter.performSearch(searchField.getText().trim(), rowSorter, statusLabel));
 
         JButton searchButton = UIComponents.createAccentButton("Search", new Color(59, 130, 246));
-        searchButton.addActionListener(e -> searchFilter.performSearch(searchField.getText().trim(), rowSorter, statusLabel));
+        searchButton.addActionListener(
+                e -> searchFilter.performSearch(searchField.getText().trim(), rowSorter, statusLabel));
 
         JButton clearButton = new JButton("Clear");
         clearButton.addActionListener(e -> searchFilter.clearSearch(searchField, rowSorter, statusLabel));
@@ -105,28 +108,29 @@ public class StudentEnrollmentGUI extends JFrame {
 
         showAllButton.addActionListener(e -> searchFilter.filterStudents("all", rowSorter, statusLabel));
         showWithFacesButton.addActionListener(e -> searchFilter.filterStudents("with_faces", rowSorter, statusLabel));
-        showWithoutFacesButton.addActionListener(e -> searchFilter.filterStudents("without_faces", rowSorter, statusLabel));
+        showWithoutFacesButton
+                .addActionListener(e -> searchFilter.filterStudents("without_faces", rowSorter, statusLabel));
 
-    // style these controls like the sidebar buttons (blue)
-    UIComponents.styleSidebarButton(searchButton);
-    UIComponents.styleSidebarButton(clearButton);
-    UIComponents.styleSidebarButton(refreshButton);
-    UIComponents.styleSidebarButton(showAllButton);
-    UIComponents.styleSidebarButton(showWithFacesButton);
-    UIComponents.styleSidebarButton(showWithoutFacesButton);
-    // Ensure background is painted (some LAFs require opaque)
-    searchButton.setOpaque(true);
-    searchButton.setContentAreaFilled(true);
-    clearButton.setOpaque(true);
-    clearButton.setContentAreaFilled(true);
-    refreshButton.setOpaque(true);
-    refreshButton.setContentAreaFilled(true);
-    showAllButton.setOpaque(true);
-    showAllButton.setContentAreaFilled(true);
-    showWithFacesButton.setOpaque(true);
-    showWithFacesButton.setContentAreaFilled(true);
-    showWithoutFacesButton.setOpaque(true);
-    showWithoutFacesButton.setContentAreaFilled(true);
+        // style these controls like the sidebar buttons (blue)
+        UIComponents.styleSidebarButton(searchButton);
+        UIComponents.styleSidebarButton(clearButton);
+        UIComponents.styleSidebarButton(refreshButton);
+        UIComponents.styleSidebarButton(showAllButton);
+        UIComponents.styleSidebarButton(showWithFacesButton);
+        UIComponents.styleSidebarButton(showWithoutFacesButton);
+        // Ensure background is painted (some LAFs require opaque)
+        searchButton.setOpaque(true);
+        searchButton.setContentAreaFilled(true);
+        clearButton.setOpaque(true);
+        clearButton.setContentAreaFilled(true);
+        refreshButton.setOpaque(true);
+        refreshButton.setContentAreaFilled(true);
+        showAllButton.setOpaque(true);
+        showAllButton.setContentAreaFilled(true);
+        showWithFacesButton.setOpaque(true);
+        showWithFacesButton.setContentAreaFilled(true);
+        showWithoutFacesButton.setOpaque(true);
+        showWithoutFacesButton.setContentAreaFilled(true);
 
         searchPanel.add(searchField);
         searchPanel.add(searchButton);
@@ -160,8 +164,11 @@ public class StudentEnrollmentGUI extends JFrame {
 
             @Override
             public Class<?> getColumnClass(int column) {
-                if (column == 4 || column == 5) {
+                if (column == 4) {
                     return Integer.class;
+                }
+                if (column == 5) {
+                    return Double.class;
                 }
                 return String.class;
             }
@@ -190,11 +197,40 @@ public class StudentEnrollmentGUI extends JFrame {
 
                 int count = (Integer) value;
                 if (count >= 10) {
-                    c.setForeground(new Color(46, 125, 50)); 
+                    c.setForeground(new Color(46, 125, 50));
                 } else if (count > 0) {
-                    c.setForeground(new Color(255, 152, 0)); 
+                    c.setForeground(new Color(255, 152, 0));
                 } else {
-                    c.setForeground(new Color(211, 47, 47)); 
+                    c.setForeground(new Color(211, 47, 47));
+                }
+
+                return c;
+            }
+        });
+
+        studentTable.getColumnModel().getColumn(5).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+                if (value instanceof Number) {
+                    double tightness = ((Number) value).doubleValue();
+                    setText(String.format("%.3f", tightness));
+                    if (!isSelected) {
+                        if (tightness >= 0.90) {
+                            c.setForeground(new Color(46, 125, 50));
+                        } else if (tightness >= 0.80) {
+                            c.setForeground(new Color(255, 152, 0));
+                        } else {
+                            c.setForeground(new Color(211, 47, 47));
+                        }
+                    }
+                } else {
+                    setText("N/A");
+                    if (!isSelected) {
+                        c.setForeground(new Color(158, 158, 158));
+                    }
                 }
 
                 return c;
@@ -213,14 +249,14 @@ public class StudentEnrollmentGUI extends JFrame {
 
         JPanel buttonPanel = new JPanel(new FlowLayout());
 
-    addButton = UIComponents.createAccentButton("➕ Add Student", new Color(76, 175, 80));
-    editButton = UIComponents.createAccentButton("✏️ Edit Student", new Color(255, 152, 0));
-    deleteButton = UIComponents.createAccentButton("🗑️ Delete Student", new Color(244, 67, 54));
-    captureButton = UIComponents.createAccentButton("📷 Capture Face Images", new Color(33, 150, 243));
+        addButton = UIComponents.createAccentButton("➕ Add Student", new Color(76, 175, 80));
+        editButton = UIComponents.createAccentButton("✏️ Edit Student", new Color(255, 152, 0));
+        deleteButton = UIComponents.createAccentButton("🗑️ Delete Student", new Color(244, 67, 54));
+        captureButton = UIComponents.createAccentButton("📷 Capture Face Images", new Color(33, 150, 243));
 
-    // emphasize primary actions
-    addButton.setFont(addButton.getFont().deriveFont(Font.BOLD));
-    captureButton.setFont(captureButton.getFont().deriveFont(Font.BOLD));
+        // emphasize primary actions
+        addButton.setFont(addButton.getFont().deriveFont(Font.BOLD));
+        captureButton.setFont(captureButton.getFont().deriveFont(Font.BOLD));
 
         // Set action commands for StudentActionHandler
         addButton.setActionCommand("Add Student");
@@ -238,24 +274,24 @@ public class StudentEnrollmentGUI extends JFrame {
         buttonPanel.add(deleteButton);
         buttonPanel.add(captureButton);
 
-    // Export buttons (styled)
-    JPanel exportPanel = new JPanel(new FlowLayout());
-    exportCsvButton = UIComponents.createAccentButton("📊 Export CSV", new Color(99, 102, 241));
-    exportExcelButton = UIComponents.createAccentButton("📈 Export Excel", new Color(16, 185, 129));
-    exportPdfButton = UIComponents.createAccentButton("📄 Export PDF", new Color(234, 88, 12));
+        // Export buttons (styled)
+        JPanel exportPanel = new JPanel(new FlowLayout());
+        exportCsvButton = UIComponents.createAccentButton("📊 Export CSV", new Color(99, 102, 241));
+        exportExcelButton = UIComponents.createAccentButton("📈 Export Excel", new Color(16, 185, 129));
+        exportPdfButton = UIComponents.createAccentButton("📄 Export PDF", new Color(234, 88, 12));
 
-    exportCsvButton.setActionCommand("Export CSV");
-    exportExcelButton.setActionCommand("Export Excel");
-    exportPdfButton.setActionCommand("Export PDF");
+        exportCsvButton.setActionCommand("Export CSV");
+        exportExcelButton.setActionCommand("Export Excel");
+        exportPdfButton.setActionCommand("Export PDF");
 
-    exportCsvButton.addActionListener(actionHandler);
-    exportExcelButton.addActionListener(actionHandler);
-    exportPdfButton.addActionListener(actionHandler);
+        exportCsvButton.addActionListener(actionHandler);
+        exportExcelButton.addActionListener(actionHandler);
+        exportPdfButton.addActionListener(actionHandler);
 
-    exportPanel.add(exportCsvButton);
-    exportPanel.add(exportExcelButton);
-    exportPanel.add(exportPdfButton);
-    JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        exportPanel.add(exportCsvButton);
+        exportPanel.add(exportExcelButton);
+        exportPanel.add(exportPdfButton);
+        JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         statusLabel = new JLabel("Ready");
         statusLabel.setFont(statusLabel.getFont().deriveFont(Font.BOLD));
         statusPanel.add(new JLabel("Status: "));
@@ -295,12 +331,6 @@ public class StudentEnrollmentGUI extends JFrame {
         statsLabel.setText(statistics.calculateStatistics());
     }
 
-
-
-
-
-
-
     private void cleanup() {
         if (studentManager != null) {
             studentManager.cleanup();
@@ -308,9 +338,11 @@ public class StudentEnrollmentGUI extends JFrame {
     }
 
     private String htmlize(String text) {
-        if (text == null) return "";
+        if (text == null)
+            return "";
         String trimmed = text.trim();
-        if (trimmed.toLowerCase().startsWith("<html>")) return text;
+        if (trimmed.toLowerCase().startsWith("<html>"))
+            return text;
         String escaped = trimmed
                 .replace("&", "&amp;")
                 .replace("<", "&lt;")
@@ -342,9 +374,3 @@ public class StudentEnrollmentGUI extends JFrame {
         });
     }
 }
-
-
-
-
-
-
