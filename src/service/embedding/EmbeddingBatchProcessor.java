@@ -19,13 +19,15 @@ public class EmbeddingBatchProcessor {
     private final FaceEmbeddingGenerator embeddingGenerator;
     private final EmbeddingValidator embeddingValidator;
     private final EmbeddingQualityAnalyzer qualityAnalyzer;
+    private final FaceEmbeddingPreprocessor facePreprocessor;
 
     public EmbeddingBatchProcessor(FaceEmbeddingGenerator embeddingGenerator,
-                                   EmbeddingValidator embeddingValidator,
-                                   EmbeddingQualityAnalyzer qualityAnalyzer) {
+            EmbeddingValidator embeddingValidator,
+            EmbeddingQualityAnalyzer qualityAnalyzer) {
         this.embeddingGenerator = embeddingGenerator;
         this.embeddingValidator = embeddingValidator;
         this.qualityAnalyzer = qualityAnalyzer;
+        this.facePreprocessor = new FaceEmbeddingPreprocessor();
     }
 
     public FaceEmbeddingGenerator.BatchProcessingResult processCapturedImages(
@@ -61,10 +63,26 @@ public class EmbeddingBatchProcessor {
                 Mat faceROI = extractFaceRegion(image, faceRect);
                 image.release();
 
-                byte[] embedding = embeddingGenerator.generateEmbedding(faceROI);
-                faceROI.release();
+                byte[] embedding = null;
+                Mat blob = new Mat();
+                try {
+                    if (embeddingGenerator.isDeepLearningAvailable()) {
+                        blob = facePreprocessor.preprocessForEmbedding(faceROI);
+                        if (blob != null && !blob.empty()) {
+                            embedding = embeddingGenerator.generateEmbeddingFromBlob(blob);
+                        }
+                    }
 
-                if (embedding != null && embeddingValidator.isValid(embedding, embeddingGenerator.isDeepLearningAvailable())) {
+                    if (embedding == null) {
+                        embedding = embeddingGenerator.generateEmbedding(faceROI);
+                    }
+                } finally {
+                    blob.release();
+                    faceROI.release();
+                }
+
+                if (embedding != null
+                        && embeddingValidator.isValid(embedding, embeddingGenerator.isDeepLearningAvailable())) {
                     String embPath = imagePath.replace(".png", ".emb");
                     try {
                         Files.write(Path.of(embPath), embedding);
@@ -138,10 +156,3 @@ public class EmbeddingBatchProcessor {
                 && rect.y + rect.height <= imageHeight;
     }
 }
-
-
-
-
-
-
-
