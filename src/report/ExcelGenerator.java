@@ -1,136 +1,108 @@
 package report;
 
-import entity.Student;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import config.*;
+import config.AppLogger;
 
-// ExcelGenerator: creates a new .xls file in export folder
 public class ExcelGenerator implements ReportGenerator {
+
+    private ArrayList<String> headers;
+    private ArrayList<ArrayList<String>> data;
+
+    // ✅ Constructor to accept headers and data
+    public ExcelGenerator(ArrayList<String> headers, ArrayList<ArrayList<String>> data) {
+        this.headers = headers;
+        this.data = data;
+    }
+
+    // ✅ Default constructor (if ever called by legacy code)
+    public ExcelGenerator() {
+        this.headers = new ArrayList<>();
+        this.data = new ArrayList<>();
+    }
+
     @Override
-    public void generate(){
-        // Create a ReportBuilder class
-        ReportBuilder ReportBuilder = new ReportBuilder();
-
-        // Initialize Headers in ReportBuilder
-        List<String> headers = Arrays.asList("StudentID", "Name", "Status", "Timestamp", "Confidence", "Method", "Notes");
-        ReportBuilder.initializeFieldHeaders(headers);
-
-        // Initialize Sample Student Data in ReportBuilder
-        String studentsFileName = "./data/sampledata/sampleStudentData.txt";
-        StudentData.loadSampleDataFromFile(studentsFileName);
-        ReportBuilder.initializeData(StudentData.SampleStudentData);
-
-        // Get both Headers and Data -> fullData
-        List<List<String>> fullData = ReportBuilder.getFullData();
-
-
-        // Export Path
-
-        // // Get the count of .*** files in export folder
-        // // Error Handling to access export files
-        // int newPDFCount = 0;
-        // try {
-        //     long pdfCount = util.countFilesInFolder(exportedFolderPath, "xlsx");
-        //     newPDFCount = (int)pdfCount + 1;
-        // } catch (IOException e) {
-        //     System.err.println("ExcelReport: Error accessing the exportedDataFiles folder: " + e.getMessage());
-        // }
-
-        // // New Exported File Name with incremented count
-        // String fileName = String.format("StudentFaceRecognitionData%d.xlsx", newPDFCount);
-
-        String fileName = "StudentFaceRecognitionData.xlsx";
+    public boolean generate() {  // change return type to boolean
+        if (headers == null || data == null || headers.isEmpty()) {
+            AppLogger.error("ExcelGenerator: No headers or data provided. Nothing to export.");
+            return false;
+        }
 
         try {
-            // Prompt user to save the file using JFileChooser
-            JFrame frame = new JFrame("Excel Export");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(400, 300);
-            frame.setVisible(true);
-            
+            List<List<String>> fullData = new ArrayList<>();
+            fullData.add(new ArrayList<>(headers));
+            for (ArrayList<String> row : data) fullData.add(new ArrayList<>(row));
+
+            String fileName = "ExportExcel.xlsx";
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setDialogTitle("Choose where to save your file");
             fileChooser.setSelectedFile(new File(fileName));
 
-            int userSelection = fileChooser.showSaveDialog(frame);
+            int userSelection = fileChooser.showSaveDialog(null);
 
-            if (userSelection == JFileChooser.APPROVE_OPTION) {
-                    File fileToSave = fileChooser.getSelectedFile();
-
-                    Workbook workbook = new XSSFWorkbook();
-                    Sheet sheet = workbook.createSheet("Report");
-                    int rowNum = 0;
-
-                    // Create header cell style
-                    CellStyle style = workbook.createCellStyle();
-                    Font font = workbook.createFont();
-                    font.setBold(true);
-                    style.setFont(font);
-                    style.setAlignment(HorizontalAlignment.CENTER);
-                    style.setVerticalAlignment(VerticalAlignment.CENTER);
-                    style.setBorderBottom(BorderStyle.THIN);
-                    style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-                    style.setBorderLeft(BorderStyle.THIN);
-                    style.setLeftBorderColor(IndexedColors.BLACK.getIndex());
-                    style.setBorderRight(BorderStyle.THIN);
-                    style.setRightBorderColor(IndexedColors.BLACK.getIndex());
-                    style.setBorderTop(BorderStyle.THIN);
-                    style.setTopBorderColor(IndexedColors.BLACK.getIndex());
-                    style.setFillForegroundColor(IndexedColors.LIGHT_YELLOW.getIndex());
-                    style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-
-                    for (List<String> rowData : fullData) {
-                        Row row = sheet.createRow(rowNum);
-                        for (int i = 0; i < rowData.size(); i++) {
-                            Cell cell = row.createCell(i);
-                            cell.setCellValue(rowData.get(i));
-                            if (rowNum == 0) {
-                                cell.setCellStyle(style);
-                            }
-                        }
-                        rowNum++;
-                    }
-
-                    for (int i = 0; i < fullData.get(0).size(); i++) {
-                        sheet.autoSizeColumn(i);
-                    }
-
-                    sheet.setAutoFilter(new CellRangeAddress(0, fullData.size(), 0, 5));
-
-                    try (FileOutputStream out = new FileOutputStream(fileToSave)) {
-                        workbook.write(out);
-                    }
-
-                    workbook.close();
-                    AppLogger.info("Excel file saved successfully to: " + fileToSave.getAbsolutePath());
-                } else {
-                    AppLogger.info("File save cancelled by user.");
-                }
-
-                frame.dispose(); // Close the frame
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (userSelection != JFileChooser.APPROVE_OPTION) {
+                AppLogger.info("File save cancelled by user.");
+                return false;  // <-- user cancelled
             }
+
+            File fileToSave = fileChooser.getSelectedFile();
+            Workbook workbook = new XSSFWorkbook();
+            Sheet sheet = workbook.createSheet("Report");
+            int rowNum = 0;
+
+            CellStyle headerStyle = workbook.createCellStyle();
+            Font headerFont = workbook.createFont();
+            headerFont.setBold(true);
+            headerStyle.setFont(headerFont);
+            headerStyle.setAlignment(HorizontalAlignment.CENTER);
+            headerStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+            headerStyle.setBorderBottom(BorderStyle.THIN);
+            headerStyle.setBorderTop(BorderStyle.THIN);
+            headerStyle.setBorderLeft(BorderStyle.THIN);
+            headerStyle.setBorderRight(BorderStyle.THIN);
+            headerStyle.setFillForegroundColor(IndexedColors.LIGHT_YELLOW.getIndex());
+            headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            for (List<String> rowData : fullData) {
+                Row row = sheet.createRow(rowNum);
+                for (int i = 0; i < rowData.size(); i++) {
+                    Cell cell = row.createCell(i);
+                    cell.setCellValue(rowData.get(i));
+                    if (rowNum == 0) cell.setCellStyle(headerStyle);
+                }
+                rowNum++;
+            }
+
+            for (int i = 0; i < fullData.get(0).size(); i++) sheet.autoSizeColumn(i);
+            sheet.setAutoFilter(new CellRangeAddress(0, fullData.size(), 0, fullData.get(0).size() - 1));
+
+            try (FileOutputStream out = new FileOutputStream(fileToSave)) {
+                workbook.write(out);
+            }
+            workbook.close();
+
+            AppLogger.info("Excel file saved successfully to: " + fileToSave.getAbsolutePath());
+            return true;  // <-- file successfully saved
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            AppLogger.error("Error generating Excel file: " + e.getMessage());
+            return false;
+        }
     }
 
+
+    // ✅ Keep this unchanged
     public static void main(String[] args) {
         ReportGenerator generator = new ExcelGenerator();
-        generator.generate();
+        generator.generate(); // Will not export anything if no headers/data are provided
     }
 }
-
-
-
-
-
-
-

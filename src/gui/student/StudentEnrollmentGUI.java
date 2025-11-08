@@ -1,22 +1,41 @@
 package gui.student;
 
-import entity.Student;
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import service.student.StudentManager;
+
+import config.AppLogger;
+import entity.Student;
 import gui.homepage.UIComponents;
-import config.*;
+import repository.StudentRepository;
+import repository.StudentRepositoryInstance;
+import service.student.StudentManager;
+
 public class StudentEnrollmentGUI extends JFrame {
     private StudentManager studentManager;
     private JTable studentTable;
@@ -238,24 +257,49 @@ public class StudentEnrollmentGUI extends JFrame {
         buttonPanel.add(deleteButton);
         buttonPanel.add(captureButton);
 
-    // Export buttons (styled)
-    JPanel exportPanel = new JPanel(new FlowLayout());
-    exportCsvButton = UIComponents.createAccentButton("📊 Export CSV", new Color(99, 102, 241));
-    exportExcelButton = UIComponents.createAccentButton("📈 Export Excel", new Color(16, 185, 129));
-    exportPdfButton = UIComponents.createAccentButton("📄 Export PDF", new Color(234, 88, 12));
+        JPanel exportPanel = new JPanel(new FlowLayout());
 
-    exportCsvButton.setActionCommand("Export CSV");
-    exportExcelButton.setActionCommand("Export Excel");
-    exportPdfButton.setActionCommand("Export PDF");
+        JButton openExportPanelButton = UIComponents.createAccentButton("📤 Export Options", new Color(37, 99, 235)); // Blue color
+        openExportPanelButton.setActionCommand("Open Export Panel");
 
-    exportCsvButton.addActionListener(actionHandler);
-    exportExcelButton.addActionListener(actionHandler);
-    exportPdfButton.addActionListener(actionHandler);
+        openExportPanelButton.addActionListener(e -> {
+            try {
+                StudentRepository studentRepo = new StudentRepositoryInstance();
+                List<Student> students = studentRepo.findAll();
 
-    exportPanel.add(exportCsvButton);
-    exportPanel.add(exportExcelButton);
-    exportPanel.add(exportPdfButton);
-    JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+                ArrayList<String> headers = new ArrayList<>();
+                headers.add("Student ID");
+                headers.add("Name");
+                headers.add("Email");
+                headers.add("Phone");
+
+                ArrayList<ArrayList<String>> data = new ArrayList<>();
+                for (Student s : students) {
+                    ArrayList<String> row = new ArrayList<>();
+                    row.add(s.getStudentId());
+                    row.add(s.getName());
+                    row.add(s.getEmail());
+                    row.add(s.getPhone());
+                    data.add(row);
+                }
+
+                report.ExportPanel exportWindow = new report.ExportPanel(headers, data);
+                exportWindow.setVisible(true);
+
+                statusLabel.setText("Opened Export Panel");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                statusLabel.setText("Error loading export data");
+                JOptionPane.showMessageDialog(null,
+                        "Failed to open export panel: " + ex.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+        exportPanel.add(openExportPanelButton);
+
+        JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         statusLabel = new JLabel("Ready");
         statusLabel.setFont(statusLabel.getFont().deriveFont(Font.BOLD));
         statusPanel.add(new JLabel("Status: "));
