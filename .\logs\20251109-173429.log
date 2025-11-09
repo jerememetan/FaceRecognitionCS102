@@ -1,0 +1,718 @@
+[2025-11-09 17:34:29] INFO: Application Logger Initialized.
+[2025-11-09 17:34:29] INFO: Logging in as Admin with ID: 123
+[2025-11-09 17:34:45] INFO: app.properties normalized (57 entries).
+[2025-11-09 17:34:45] INFO: Configuration loaded from file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/app.properties
+[2025-11-09 17:34:46] INFO: OpenCV library loaded from: lib/libopencv_java4130.dylib
+[2025-11-09 17:34:46] INFO: Configuration and core components loaded.
+[2025-11-09 17:34:46] INFO: Configuration file loaded
+[2025-11-09 17:34:46] INFO: Live Recognition Viewer Starting!
+[2025-11-09 17:34:46] INFO: OpenCV library loaded in LiveRecognitionViewer from: lib/libopencv_java4130.dylib
+[2025-11-09 17:34:46] WARNING: Configured preprocessing.min_sharpness_threshold 80.0 is too strict; using 60.0 instead for better tolerance.
+[2025-11-09 17:34:46] INFO: OpenCV native library loaded successfully from absolute path: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/lib/libopencv_java4130.dylib
+[2025-11-09 17:34:46] INFO: PostgreSQL JDBC driver loaded successfully
+[2025-11-09 17:34:46] INFO: Apache POI libraries loaded successfully
+[2025-11-09 17:34:46] INFO: Logging frameworks loaded successfully
+[2025-11-09 17:34:46] INFO: Apache Commons libraries loaded successfully
+[2025-11-09 17:34:46] INFO: All external modules loaded successfully
+[2025-11-09 17:34:46] INFO: ✓ FaceAligner initialized with 5-point alignment support
+[2025-11-09 17:34:46] INFO: ⚠️ ArcFace model not found, using feature-based embeddings
+[2025-11-09 17:34:46] INFO: ✓ FaceAligner initialized with 5-point alignment support
+[2025-11-09 17:34:46] INFO: ✓ FaceAligner initialized with 5-point alignment support
+[2025-11-09 17:34:46] INFO: === Folder debug ===
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome
+[2025-11-09 17:34:46] INFO:   Contains: 28 items
+[2025-11-09 17:34:46] INFO:   Display label: S12344 - rome
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme
+[2025-11-09 17:34:46] INFO:   Contains: 32 items
+[2025-11-09 17:34:46] INFO:   Display label: S00001 - jereme
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic
+[2025-11-09 17:34:46] INFO:   Contains: 30 items
+[2025-11-09 17:34:46] INFO:   Display label: S43231 - Nic
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May
+[2025-11-09 17:34:46] INFO:   Contains: 32 items
+[2025-11-09 17:34:46] INFO:   Display label: S12348 - May
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas
+[2025-11-09 17:34:46] INFO:   Contains: 36 items
+[2025-11-09 17:34:46] INFO:   Display label: S00000 - Nicholas
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S99999_Justin_Lim
+[2025-11-09 17:34:46] INFO:   Contains: 34 items
+[2025-11-09 17:34:46] INFO:   Display label: S99999 - Justin_Lim
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae
+[2025-11-09 17:34:46] INFO:   Contains: 28 items
+[2025-11-09 17:34:46] INFO:   Display label: S12432 - Jin_Rae
+[2025-11-09 17:34:46] INFO: ====================
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_019.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_008.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_020.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_009.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_004.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_005.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_011.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_007.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_006.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_002.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_017.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_003.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_001.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_014.emb
+[2025-11-09 17:34:46] INFO: Person S12344 - rome: tightness=1.000, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_019.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_008.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_009.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_013.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_007.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_006.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_012.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_004.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_010.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_005.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_001.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_015.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_014.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_016.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_002.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_003.emb
+[2025-11-09 17:34:46] INFO: Person S00001 - jereme: tightness=1.000, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_018.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_019.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_009.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_008.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_005.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_010.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_012.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_006.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_007.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_013.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_017.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_002.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_016.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_014.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_015.emb
+[2025-11-09 17:34:46] INFO: Person S43231 - Nic: tightness=1.000, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_017.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_003.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_016.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_015.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_001.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_005.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_011.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_010.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_004.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_012.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_006.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_007.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_013.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_009.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_018.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_019.emb
+[2025-11-09 17:34:46] INFO: Person S12348 - May: tightness=1.000, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_023.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_022.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_008.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_020.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_021.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_019.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_018.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_024.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_002.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_016.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_017.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_003.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_015.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_001.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_014.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_010.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_007.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_013.emb
+[2025-11-09 17:34:46] INFO: Person S00000 - Nicholas: tightness=1.000, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] INFO: Person S99999 - Justin_Lim: tightness=0.999, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_002.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_003.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_017.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_001.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_014.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_004.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_010.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_005.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_007.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_012.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_020.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_009.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_019.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_018.emb
+[2025-11-09 17:34:46] INFO: Person S12432 - Jin_Rae: tightness=1.000, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] INFO: === Folder debug ===
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome
+[2025-11-09 17:34:46] INFO:   Contains: 28 items
+[2025-11-09 17:34:46] INFO:   Display label: S12344 - rome
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme
+[2025-11-09 17:34:46] INFO:   Contains: 32 items
+[2025-11-09 17:34:46] INFO:   Display label: S00001 - jereme
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic
+[2025-11-09 17:34:46] INFO:   Contains: 30 items
+[2025-11-09 17:34:46] INFO:   Display label: S43231 - Nic
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May
+[2025-11-09 17:34:46] INFO:   Contains: 32 items
+[2025-11-09 17:34:46] INFO:   Display label: S12348 - May
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas
+[2025-11-09 17:34:46] INFO:   Contains: 36 items
+[2025-11-09 17:34:46] INFO:   Display label: S00000 - Nicholas
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S99999_Justin_Lim
+[2025-11-09 17:34:46] INFO:   Contains: 34 items
+[2025-11-09 17:34:46] INFO:   Display label: S99999 - Justin_Lim
+[2025-11-09 17:34:46] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae
+[2025-11-09 17:34:46] INFO:   Contains: 28 items
+[2025-11-09 17:34:46] INFO:   Display label: S12432 - Jin_Rae
+[2025-11-09 17:34:46] INFO: ====================
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_019.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_008.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_020.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_009.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_004.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_005.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_011.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_007.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_006.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_002.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_017.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_003.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_001.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome/S12344_014.emb
+[2025-11-09 17:34:46] INFO: Person S12344 - rome: tightness=1.000, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_019.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_008.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_009.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_013.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_007.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_006.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_012.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_004.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_010.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_005.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_001.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_015.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_014.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_016.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_002.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme/S00001_003.emb
+[2025-11-09 17:34:46] INFO: Person S00001 - jereme: tightness=1.000, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_018.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_019.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_009.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_008.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_005.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_010.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_012.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_006.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_007.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_013.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_017.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_002.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_016.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_014.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic/S43231_015.emb
+[2025-11-09 17:34:46] INFO: Person S43231 - Nic: tightness=1.000, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_017.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_003.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_016.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_015.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_001.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_005.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_011.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_010.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_004.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_012.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_006.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_007.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_013.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_009.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_018.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May/S12348_019.emb
+[2025-11-09 17:34:46] INFO: Person S12348 - May: tightness=1.000, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_023.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_022.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_008.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_020.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_021.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_019.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_018.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_024.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_002.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_016.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_017.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_003.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_015.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_001.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_014.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_010.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_007.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 512, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_013.emb
+[2025-11-09 17:34:46] INFO: Person S00000 - Nicholas: tightness=1.000, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] INFO: Person S99999 - Justin_Lim: tightness=0.999, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_002.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_003.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_017.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_001.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_014.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_004.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_010.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_005.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_007.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_012.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_020.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_009.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_019.emb
+[2025-11-09 17:34:46] SEVERE: Invalid embedding size: 2048, expected: 4096
+[2025-11-09 17:34:46] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae/S12432_018.emb
+[2025-11-09 17:34:46] INFO: Person S12432 - Jin_Rae: tightness=1.000, stdDev=0.000, absThresh.live=0.480 (training=0.550), margin=0.120
+[2025-11-09 17:34:46] INFO: DNN face detector loaded successfully for recognition
+[2025-11-09 17:34:46] INFO: Attempting camera index 0 with AVFOUNDATION backend...
+[2025-11-09 17:34:48] INFO: Camera opened successfully: index 0 with AVFOUNDATION backend
+[2025-11-09 17:34:48] INFO: MJPEG codec not supported, using default codec
+[2025-11-09 17:34:48] INFO: Camera configured: 640x480 @ 30fps (MJPEG: no)
+[2025-11-09 17:34:48] INFO: Camera initialized successfully
+[2025-11-09 17:34:48] INFO: FaceCropSettingsPanel ctor - showCapture=false showSave=true
+[2025-11-09 17:34:49] INFO: Live Recognition Viewer launched successfully
+[2025-11-09 17:34:49] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:49] INFO: Face ROI size: 228x307
+[2025-11-09 17:34:49] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:49] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:49] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:49] INFO: Face ROI size: 227x306
+[2025-11-09 17:34:49] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:49] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:49] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:49] INFO: Face ROI size: 228x309
+[2025-11-09 17:34:49] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:49] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:50] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:50] INFO: Face ROI size: 232x311
+[2025-11-09 17:34:50] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:50] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:50] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:50] INFO: Face ROI size: 227x312
+[2025-11-09 17:34:50] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:50] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:50] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:50] INFO: Face ROI size: 227x309
+[2025-11-09 17:34:50] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:50] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:50] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:50] INFO: Face ROI size: 224x306
+[2025-11-09 17:34:50] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:50] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:50] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:50] INFO: Face ROI size: 223x301
+[2025-11-09 17:34:50] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:50] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:51] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:51] INFO: Face ROI size: 224x300
+[2025-11-09 17:34:51] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:51] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:51] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:51] INFO: Face ROI size: 225x301
+[2025-11-09 17:34:51] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:51] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:51] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:51] INFO: Face ROI size: 218x304
+[2025-11-09 17:34:51] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:51] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:51] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:51] INFO: Face ROI size: 220x301
+[2025-11-09 17:34:51] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:51] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:51] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:51] INFO: Face ROI size: 221x293
+[2025-11-09 17:34:51] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:51] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:52] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:52] INFO: Face ROI size: 221x292
+[2025-11-09 17:34:52] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:52] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:52] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:52] INFO: Face ROI size: 220x292
+[2025-11-09 17:34:52] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:52] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:52] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:52] INFO: Face ROI size: 223x291
+[2025-11-09 17:34:52] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:52] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:52] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:52] INFO: Face ROI size: 225x291
+[2025-11-09 17:34:52] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:52] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:52] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:52] INFO: Face ROI size: 231x293
+[2025-11-09 17:34:52] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:52] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:53] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:53] INFO: Face ROI size: 224x297
+[2025-11-09 17:34:53] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:53] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:53] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:53] INFO: Face ROI size: 233x294
+[2025-11-09 17:34:53] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:53] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:53] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:53] INFO: Face ROI size: 229x299
+[2025-11-09 17:34:53] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:53] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:53] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:53] INFO: Face ROI size: 230x301
+[2025-11-09 17:34:53] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:53] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:53] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:53] INFO: Face ROI size: 227x302
+[2025-11-09 17:34:53] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:53] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:54] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:54] INFO: Face ROI size: 232x300
+[2025-11-09 17:34:54] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:54] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:54] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:54] INFO: Face ROI size: 223x299
+[2025-11-09 17:34:54] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:54] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:54] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:54] INFO: Face ROI size: 235x298
+[2025-11-09 17:34:54] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:54] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:54] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:54] INFO: Face ROI size: 229x297
+[2025-11-09 17:34:54] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:54] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:54] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:54] INFO: Face ROI size: 225x306
+[2025-11-09 17:34:54] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:54] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:55] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:55] INFO: Face ROI size: 221x289
+[2025-11-09 17:34:55] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:55] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:55] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:55] INFO: Face ROI size: 212x290
+[2025-11-09 17:34:55] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:55] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:55] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:55] INFO: Face ROI size: 229x297
+[2025-11-09 17:34:55] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:55] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:55] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:55] INFO: Face ROI size: 223x292
+[2025-11-09 17:34:55] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:55] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:55] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:55] INFO: Face ROI size: 221x277
+[2025-11-09 17:34:55] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:55] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:56] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:56] INFO: Face ROI size: 222x271
+[2025-11-09 17:34:56] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:56] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:56] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:56] INFO: Face ROI size: 214x274
+[2025-11-09 17:34:56] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:56] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:56] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:56] INFO: Face ROI size: 230x276
+[2025-11-09 17:34:56] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:56] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:56] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:56] INFO: Face ROI size: 217x283
+[2025-11-09 17:34:56] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:56] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:56] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:56] INFO: Face ROI size: 220x296
+[2025-11-09 17:34:56] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:56] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:57] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:57] INFO: Face ROI size: 230x291
+[2025-11-09 17:34:57] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:57] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:57] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:57] INFO: Face ROI size: 222x286
+[2025-11-09 17:34:57] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:57] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:57] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:57] INFO: Face ROI size: 224x285
+[2025-11-09 17:34:57] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:57] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:57] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:57] INFO: Face ROI size: 229x288
+[2025-11-09 17:34:57] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:57] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:57] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:57] INFO: Face ROI size: 218x288
+[2025-11-09 17:34:57] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:57] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:58] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:58] INFO: Face ROI size: 224x274
+[2025-11-09 17:34:58] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:58] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:58] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:58] INFO: Face ROI size: 222x263
+[2025-11-09 17:34:58] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:58] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:58] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:58] INFO: Face ROI size: 227x266
+[2025-11-09 17:34:58] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:58] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:58] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:58] INFO: Face ROI size: 224x283
+[2025-11-09 17:34:58] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:58] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:58] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:58] INFO: Face ROI size: 217x288
+[2025-11-09 17:34:58] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:58] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:59] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:59] INFO: Face ROI size: 227x279
+[2025-11-09 17:34:59] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:59] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:59] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:59] INFO: Face ROI size: 229x268
+[2025-11-09 17:34:59] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:59] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:59] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:59] INFO: Face ROI size: 227x254
+[2025-11-09 17:34:59] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:59] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:59] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:59] INFO: Face ROI size: 229x262
+[2025-11-09 17:34:59] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:59] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:34:59] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:34:59] INFO: Face ROI size: 229x281
+[2025-11-09 17:34:59] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:34:59] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:35:00] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:35:00] INFO: Face ROI size: 215x283
+[2025-11-09 17:35:00] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:35:00] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:35:00] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:35:00] INFO: Face ROI size: 225x269
+[2025-11-09 17:35:00] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:35:00] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:35:00] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:35:00] INFO: Face ROI size: 227x275
+[2025-11-09 17:35:00] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:35:00] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:35:00] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:35:00] INFO: Face ROI size: 223x282
+[2025-11-09 17:35:00] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:35:00] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:35:00] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:35:00] INFO: Face ROI size: 220x290
+[2025-11-09 17:35:00] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:35:00] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:35:01] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:35:01] INFO: Face ROI size: 216x301
+[2025-11-09 17:35:01] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:35:01] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:35:01] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:35:01] INFO: Face ROI size: 216x305
+[2025-11-09 17:35:01] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:35:01] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:35:01] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:35:01] INFO: Face ROI size: 217x304
+[2025-11-09 17:35:01] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:35:01] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:35:01] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:35:01] INFO: Face ROI size: 217x293
+[2025-11-09 17:35:01] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:35:01] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:35:01] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:35:01] INFO: Face ROI size: 218x293
+[2025-11-09 17:35:01] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:35:01] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:35:02] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-09 17:35:02] INFO: Face ROI size: 217x293
+[2025-11-09 17:35:02] SEVERE: ￢ﾚﾠ￯ﾸﾏ Invalid blob or model not available, cannot generate embedding from blob
+[2025-11-09 17:35:02] INFO: [Reject] Face rejected: Embedding generation failed.
+[2025-11-09 17:35:02] INFO: Exiting Face Recognition Viewer...
+[2025-11-09 17:35:02] INFO: Exiting Face Recognition Viewer...

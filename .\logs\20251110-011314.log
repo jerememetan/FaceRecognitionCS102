@@ -1,0 +1,340 @@
+[2025-11-10 01:13:14] INFO: Application Logger Initialized.
+[2025-11-10 01:13:14] INFO: Logging in as Admin with ID: 123
+[2025-11-10 01:13:15] INFO: app.properties normalized (57 entries).
+[2025-11-10 01:13:15] INFO: Configuration loaded from file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/app.properties
+[2025-11-10 01:13:15] INFO: Session CS102-G2-G1 is now closed.
+[2025-11-10 01:13:15] INFO: Session CS102-G2 is now closed.
+[2025-11-10 01:13:15] INFO: Session CS102-G2 is now closed.
+[2025-11-10 01:13:15] INFO: Session CS102-G2 Special class is now closed.
+[2025-11-10 01:13:15] INFO: Session test is now closed.
+[2025-11-10 01:13:15] INFO: Session CS104 Discrete Mathematics is now closed.
+[2025-11-10 01:13:15] INFO: Session Test@Playground is now open.
+[2025-11-10 01:13:15] INFO: Session CS101 is now open.
+[2025-11-10 01:13:15] INFO: Session test2 is now closed.
+[2025-11-10 01:13:15] INFO: Session test_mark_attendance is now open.
+[2025-11-10 01:13:15] INFO: Session CS104-G2 is now open.
+[2025-11-10 01:13:15] INFO: Session test@home1 is now open.
+[2025-11-10 01:13:15] INFO: Session CS104-G3 is now open.
+[2025-11-10 01:13:15] INFO: Next Session ID: 15
+[2025-11-10 01:13:16] INFO: Session CS102-G2-G1 is now closed.
+[2025-11-10 01:13:16] INFO: Session CS102-G2 is now closed.
+[2025-11-10 01:13:16] INFO: Session CS102-G2 is now closed.
+[2025-11-10 01:13:16] INFO: Session CS102-G2 Special class is now closed.
+[2025-11-10 01:13:16] INFO: Session test is now closed.
+[2025-11-10 01:13:16] INFO: Session CS104 Discrete Mathematics is now closed.
+[2025-11-10 01:13:16] INFO: Session Test@Playground is now open.
+[2025-11-10 01:13:16] INFO: Session CS101 is now open.
+[2025-11-10 01:13:16] INFO: Session test2 is now closed.
+[2025-11-10 01:13:16] INFO: Session test_mark_attendance is now open.
+[2025-11-10 01:13:16] INFO: Session CS104-G2 is now open.
+[2025-11-10 01:13:16] INFO: Session test@home1 is now open.
+[2025-11-10 01:13:16] INFO: Session CS104-G3 is now open.
+[2025-11-10 01:13:16] INFO: Next Session ID: 15
+[2025-11-10 01:13:21] INFO: Double-clicked row: 11
+[2025-11-10 01:13:21] INFO: Selected session ID: 14
+[2025-11-10 01:13:21] INFO: Refreshing roster table
+[2025-11-10 01:13:21] INFO: Session test@home1 is now open.
+[2025-11-10 01:13:21] INFO: Loaded 1 students into session test@home1
+[2025-11-10 01:13:25] INFO: Session test@home1 is now closed.
+[2025-11-10 01:13:29] INFO: Session CS102-G2-G1 is now closed.
+[2025-11-10 01:13:29] INFO: Session CS102-G2 is now closed.
+[2025-11-10 01:13:29] INFO: Session CS102-G2 is now closed.
+[2025-11-10 01:13:29] INFO: Session CS102-G2 Special class is now closed.
+[2025-11-10 01:13:29] INFO: Session test is now closed.
+[2025-11-10 01:13:29] INFO: Session CS104 Discrete Mathematics is now closed.
+[2025-11-10 01:13:29] INFO: Session Test@Playground is now open.
+[2025-11-10 01:13:29] INFO: Session CS101 is now open.
+[2025-11-10 01:13:29] INFO: Session test2 is now closed.
+[2025-11-10 01:13:29] INFO: Session test_mark_attendance is now open.
+[2025-11-10 01:13:29] INFO: Session CS104-G2 is now open.
+[2025-11-10 01:13:29] INFO: Session CS104-G3 is now open.
+[2025-11-10 01:13:29] INFO: Session test@home1 is now closed.
+[2025-11-10 01:13:29] INFO: Next Session ID: 15
+[2025-11-10 01:13:32] INFO: Double-clicked row: 12
+[2025-11-10 01:13:32] INFO: Selected session ID: 14
+[2025-11-10 01:13:33] INFO: Refreshing roster table
+[2025-11-10 01:13:33] INFO: Session test@home1 is now closed.
+[2025-11-10 01:13:34] INFO: Loaded 1 students into session test@home1
+[2025-11-10 01:13:38] INFO: Session test@home1 is now closed.
+[2025-11-10 01:13:38] INFO: Loaded 1 students into session test@home1
+[2025-11-10 01:13:38] INFO: Session test@home1 is now open.
+[2025-11-10 01:13:38] WARNING: Configured preprocessing.min_sharpness_threshold 80.0 is too strict; using 60.0 instead for better tolerance.
+[2025-11-10 01:13:39] INFO: OpenCV native library loaded successfully from absolute path: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/lib/libopencv_java4130.dylib
+[2025-11-10 01:13:39] INFO: PostgreSQL JDBC driver loaded successfully
+[2025-11-10 01:13:39] INFO: Apache POI libraries loaded successfully
+[2025-11-10 01:13:39] INFO: Logging frameworks loaded successfully
+[2025-11-10 01:13:39] INFO: Apache Commons libraries loaded successfully
+[2025-11-10 01:13:39] INFO: All external modules loaded successfully
+[2025-11-10 01:13:39] INFO: ✓ FaceAligner initialized with 5-point alignment support
+[2025-11-10 01:13:39] INFO: ✅ ArcFace ResNet100 model loaded successfully
+[2025-11-10 01:13:39] INFO: ✓ FaceAligner initialized with 5-point alignment support
+[2025-11-10 01:13:39] INFO: ✓ FaceAligner initialized with 5-point alignment support
+[2025-11-10 01:13:39] INFO: === Folder debug ===
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S23465_Jodie
+[2025-11-10 01:13:39] INFO:   Contains: 28 items
+[2025-11-10 01:13:39] INFO:   Display label: S23465 - Jodie
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome
+[2025-11-10 01:13:39] INFO:   Contains: 28 items
+[2025-11-10 01:13:39] INFO:   Display label: S12344 - rome
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S23443_Haggai
+[2025-11-10 01:13:39] INFO:   Contains: 32 items
+[2025-11-10 01:13:39] INFO:   Display label: S23443 - Haggai
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme
+[2025-11-10 01:13:39] INFO:   Contains: 32 items
+[2025-11-10 01:13:39] INFO:   Display label: S00001 - jereme
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic
+[2025-11-10 01:13:39] INFO:   Contains: 30 items
+[2025-11-10 01:13:39] INFO:   Display label: S43231 - Nic
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May
+[2025-11-10 01:13:39] INFO:   Contains: 32 items
+[2025-11-10 01:13:39] INFO:   Display label: S12348 - May
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S67865_Zhi_Hean
+[2025-11-10 01:13:39] INFO:   Contains: 30 items
+[2025-11-10 01:13:39] INFO:   Display label: S67865 - Zhi_Hean
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S67898_Allan
+[2025-11-10 01:13:39] INFO:   Contains: 30 items
+[2025-11-10 01:13:39] INFO:   Display label: S67898 - Allan
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas
+[2025-11-10 01:13:39] INFO:   Contains: 36 items
+[2025-11-10 01:13:39] INFO:   Display label: S00000 - Nicholas
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S99999_Justin_Lim
+[2025-11-10 01:13:39] INFO:   Contains: 30 items
+[2025-11-10 01:13:39] INFO:   Display label: S99999 - Justin_Lim
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S98765_Cheng_Feng
+[2025-11-10 01:13:39] INFO:   Contains: 28 items
+[2025-11-10 01:13:39] INFO:   Display label: S98765 - Cheng_Feng
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12332_Elle
+[2025-11-10 01:13:39] INFO:   Contains: 32 items
+[2025-11-10 01:13:39] INFO:   Display label: S12332 - Elle
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae
+[2025-11-10 01:13:39] INFO:   Contains: 28 items
+[2025-11-10 01:13:39] INFO:   Display label: S12432 - Jin_Rae
+[2025-11-10 01:13:39] INFO: ====================
+[2025-11-10 01:13:39] INFO: Person S23465 - Jodie: tightness=0.870, stdDev=0.023, absThresh.live=0.521 (training=0.613), margin=0.113
+[2025-11-10 01:13:39] INFO:   [Glasses Mode] S12344 - rome variation stdDev=0.207 -> relaxed thresholds by 12.0%
+[2025-11-10 01:13:39] INFO: Person S12344 - rome: tightness=0.528, stdDev=0.207, absThresh.live=0.489 (training=0.575), margin=0.132
+[2025-11-10 01:13:39] INFO: Person S23443 - Haggai: tightness=0.855, stdDev=0.023, absThresh.live=0.522 (training=0.614), margin=0.114
+[2025-11-10 01:13:39] INFO: Person S00001 - jereme: tightness=0.812, stdDev=0.039, absThresh.live=0.526 (training=0.619), margin=0.119
+[2025-11-10 01:13:39] INFO: Person S43231 - Nic: tightness=0.778, stdDev=0.057, absThresh.live=0.529 (training=0.622), margin=0.122
+[2025-11-10 01:13:39] INFO: Person S12348 - May: tightness=0.871, stdDev=0.027, absThresh.live=0.521 (training=0.613), margin=0.113
+[2025-11-10 01:13:39] INFO: Person S67865 - Zhi_Hean: tightness=0.742, stdDev=0.089, absThresh.live=0.532 (training=0.626), margin=0.126
+[2025-11-10 01:13:39] INFO: Person S67898 - Allan: tightness=0.762, stdDev=0.055, absThresh.live=0.530 (training=0.624), margin=0.124
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_023.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_022.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_008.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_020.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_021.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_019.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_018.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_024.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_002.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_016.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_017.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_003.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_015.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_001.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_014.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_010.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_007.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_013.emb
+[2025-11-10 01:13:39] INFO: Person S00000 - Nicholas: tightness=1.000, stdDev=0.000, absThresh.live=0.510 (training=0.600), margin=0.100
+[2025-11-10 01:13:39] INFO: Person S99999 - Justin_Lim: tightness=0.823, stdDev=0.041, absThresh.live=0.525 (training=0.618), margin=0.118
+[2025-11-10 01:13:39] INFO:   [Glasses Mode] S98765 - Cheng_Feng variation stdDev=0.175 -> relaxed thresholds by 12.0%
+[2025-11-10 01:13:39] INFO: Person S98765 - Cheng_Feng: tightness=0.547, stdDev=0.175, absThresh.live=0.487 (training=0.573), margin=0.130
+[2025-11-10 01:13:39] INFO: Person S12332 - Elle: tightness=0.749, stdDev=0.059, absThresh.live=0.531 (training=0.625), margin=0.125
+[2025-11-10 01:13:39] INFO:   [Glasses Mode] S12432 - Jin_Rae variation stdDev=0.123 -> relaxed thresholds by 11.1%
+[2025-11-10 01:13:39] INFO: Person S12432 - Jin_Rae: tightness=0.670, stdDev=0.123, absThresh.live=0.481 (training=0.566), margin=0.118
+[2025-11-10 01:13:39] INFO: DEBUG CENTROID:
+[2025-11-10 01:13:39] INFO:   Centroid length: 512
+[2025-11-10 01:13:39] INFO:   Centroid first 10 values: -0.022701283743094786 -5.804099648146079E-4 -0.05391006542732285 -0.03176291635855644 -0.08212138470067963 -0.0365284361837785 0.03134935314678263 0.026190966987280746 -0.013329226734194222 0.04073557344334259
+[2025-11-10 01:13:39] INFO:   Centroid magnitude: 1.0000000000000002
+[2025-11-10 01:13:39] INFO: DNN face detector loaded successfully
+[2025-11-10 01:13:39] INFO: Initialized 1 attendance records for session 14
+[2025-11-10 01:13:39] INFO: === Folder debug ===
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S23465_Jodie
+[2025-11-10 01:13:39] INFO:   Contains: 28 items
+[2025-11-10 01:13:39] INFO:   Display label: S23465 - Jodie
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12344_rome
+[2025-11-10 01:13:39] INFO:   Contains: 28 items
+[2025-11-10 01:13:39] INFO:   Display label: S12344 - rome
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S23443_Haggai
+[2025-11-10 01:13:39] INFO:   Contains: 32 items
+[2025-11-10 01:13:39] INFO:   Display label: S23443 - Haggai
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00001_jereme
+[2025-11-10 01:13:39] INFO:   Contains: 32 items
+[2025-11-10 01:13:39] INFO:   Display label: S00001 - jereme
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S43231_Nic
+[2025-11-10 01:13:39] INFO:   Contains: 30 items
+[2025-11-10 01:13:39] INFO:   Display label: S43231 - Nic
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12348_May
+[2025-11-10 01:13:39] INFO:   Contains: 32 items
+[2025-11-10 01:13:39] INFO:   Display label: S12348 - May
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S67865_Zhi_Hean
+[2025-11-10 01:13:39] INFO:   Contains: 30 items
+[2025-11-10 01:13:39] INFO:   Display label: S67865 - Zhi_Hean
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S67898_Allan
+[2025-11-10 01:13:39] INFO:   Contains: 30 items
+[2025-11-10 01:13:39] INFO:   Display label: S67898 - Allan
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas
+[2025-11-10 01:13:39] INFO:   Contains: 36 items
+[2025-11-10 01:13:39] INFO:   Display label: S00000 - Nicholas
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S99999_Justin_Lim
+[2025-11-10 01:13:39] INFO:   Contains: 30 items
+[2025-11-10 01:13:39] INFO:   Display label: S99999 - Justin_Lim
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S98765_Cheng_Feng
+[2025-11-10 01:13:39] INFO:   Contains: 28 items
+[2025-11-10 01:13:39] INFO:   Display label: S98765 - Cheng_Feng
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12332_Elle
+[2025-11-10 01:13:39] INFO:   Contains: 32 items
+[2025-11-10 01:13:39] INFO:   Display label: S12332 - Elle
+[2025-11-10 01:13:39] INFO: Found folder: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S12432_Jin_Rae
+[2025-11-10 01:13:39] INFO:   Contains: 28 items
+[2025-11-10 01:13:39] INFO:   Display label: S12432 - Jin_Rae
+[2025-11-10 01:13:39] INFO: ====================
+[2025-11-10 01:13:39] INFO: Person S23465 - Jodie: tightness=0.870, stdDev=0.023, absThresh.live=0.521 (training=0.613), margin=0.113
+[2025-11-10 01:13:39] INFO:   [Glasses Mode] S12344 - rome variation stdDev=0.207 -> relaxed thresholds by 12.0%
+[2025-11-10 01:13:39] INFO: Person S12344 - rome: tightness=0.528, stdDev=0.207, absThresh.live=0.489 (training=0.575), margin=0.132
+[2025-11-10 01:13:39] INFO: Person S23443 - Haggai: tightness=0.855, stdDev=0.023, absThresh.live=0.522 (training=0.614), margin=0.114
+[2025-11-10 01:13:39] INFO: Person S00001 - jereme: tightness=0.812, stdDev=0.039, absThresh.live=0.526 (training=0.619), margin=0.119
+[2025-11-10 01:13:39] INFO: Person S43231 - Nic: tightness=0.778, stdDev=0.057, absThresh.live=0.529 (training=0.622), margin=0.122
+[2025-11-10 01:13:39] INFO: Person S12348 - May: tightness=0.871, stdDev=0.027, absThresh.live=0.521 (training=0.613), margin=0.113
+[2025-11-10 01:13:39] INFO: Person S67865 - Zhi_Hean: tightness=0.742, stdDev=0.089, absThresh.live=0.532 (training=0.626), margin=0.126
+[2025-11-10 01:13:39] INFO: Person S67898 - Allan: tightness=0.762, stdDev=0.055, absThresh.live=0.530 (training=0.624), margin=0.124
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_023.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_022.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_008.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_020.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_021.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_019.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_018.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_024.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_002.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_016.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_017.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_003.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_015.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_001.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_014.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_010.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_007.emb
+[2025-11-10 01:13:39] SEVERE: Invalid embedding size: 512, expected: 2048
+[2025-11-10 01:13:39] WARNING: Skipping invalid embedding file: /Users/justinlimchunkiat/FundProg2/FaceRecognitionCS102/data/facedata/S00000_Nicholas/S00000_013.emb
+[2025-11-10 01:13:39] INFO: Person S00000 - Nicholas: tightness=1.000, stdDev=0.000, absThresh.live=0.510 (training=0.600), margin=0.100
+[2025-11-10 01:13:39] INFO: Person S99999 - Justin_Lim: tightness=0.823, stdDev=0.041, absThresh.live=0.525 (training=0.618), margin=0.118
+[2025-11-10 01:13:39] INFO:   [Glasses Mode] S98765 - Cheng_Feng variation stdDev=0.175 -> relaxed thresholds by 12.0%
+[2025-11-10 01:13:39] INFO: Person S98765 - Cheng_Feng: tightness=0.547, stdDev=0.175, absThresh.live=0.487 (training=0.573), margin=0.130
+[2025-11-10 01:13:39] INFO: Person S12332 - Elle: tightness=0.749, stdDev=0.059, absThresh.live=0.531 (training=0.625), margin=0.125
+[2025-11-10 01:13:39] INFO:   [Glasses Mode] S12432 - Jin_Rae variation stdDev=0.123 -> relaxed thresholds by 11.1%
+[2025-11-10 01:13:39] INFO: Person S12432 - Jin_Rae: tightness=0.670, stdDev=0.123, absThresh.live=0.481 (training=0.566), margin=0.118
+[2025-11-10 01:13:39] INFO: DEBUG CENTROID:
+[2025-11-10 01:13:39] INFO:   Centroid length: 512
+[2025-11-10 01:13:39] INFO:   Centroid first 10 values: -0.022701283743094786 -5.804099648146079E-4 -0.05391006542732285 -0.03176291635855644 -0.08212138470067963 -0.0365284361837785 0.03134935314678263 0.026190966987280746 -0.013329226734194222 0.04073557344334259
+[2025-11-10 01:13:39] INFO:   Centroid magnitude: 1.0000000000000002
+[2025-11-10 01:13:39] INFO: Recognition dataset reloaded for attendance window
+[2025-11-10 01:13:46] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:46] INFO: Face ROI size: 270x322
+[2025-11-10 01:13:47] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.07, RawScore=0.503, Accepted=false
+[2025-11-10 01:13:47] INFO: Recognition result: studentId=S99999, confidence=0.50, recognized=false
+[2025-11-10 01:13:50] INFO: Frame cadence gap detected; resetting recognition history for session 14
+[2025-11-10 01:13:50] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:50] INFO: Face ROI size: 244x288
+[2025-11-10 01:13:50] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.18, RawScore=0.577, Accepted=true
+[2025-11-10 01:13:50] INFO: Recognition result: studentId=S99999, confidence=0.58, recognized=true
+[2025-11-10 01:13:51] INFO: Frame cadence gap detected; resetting recognition history for session 14
+[2025-11-10 01:13:51] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:51] INFO: Face ROI size: 244x309
+[2025-11-10 01:13:52] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.25, RawScore=0.683, Accepted=true
+[2025-11-10 01:13:52] INFO: Recognition result: studentId=S99999, confidence=0.68, recognized=true
+[2025-11-10 01:13:52] INFO: Auto-marked S99999 as PRESENT at 2025-11-10T01:13:52.217222 with confidence 0.6831767375689409
+[2025-11-10 01:13:52] INFO: Auto-marked attendance: Student=S99999, Status=PRESENT, Timestamp=2025-11-10T01:13:52.217222, Method=AUTOMATIC
+[2025-11-10 01:13:52] INFO: Updated table row 0: Status=PRESENT, Timestamp=2025-11-10T01:13:52.217222, Method=AUTOMATIC, Confidence=68.3%, Notes=
+[2025-11-10 01:13:52] INFO: Frame cadence gap detected; resetting recognition history for session 14
+[2025-11-10 01:13:52] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:52] INFO: Face ROI size: 245x312
+[2025-11-10 01:13:52] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.26, RawScore=0.687, Accepted=true
+[2025-11-10 01:13:52] INFO: Recognition result: studentId=S99999, confidence=0.69, recognized=true
+[2025-11-10 01:13:52] INFO: Frame cadence gap detected; resetting recognition history for session 14
+[2025-11-10 01:13:52] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:52] INFO: Face ROI size: 246x312
+[2025-11-10 01:13:53] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.22, RawScore=0.661, Accepted=true
+[2025-11-10 01:13:53] INFO: Recognition result: studentId=S99999, confidence=0.66, recognized=true
+[2025-11-10 01:13:53] INFO: Frame cadence gap detected; resetting recognition history for session 14
+[2025-11-10 01:13:53] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:53] INFO: Face ROI size: 246x312
+[2025-11-10 01:13:53] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.19, RawScore=0.645, Accepted=true
+[2025-11-10 01:13:53] INFO: Recognition result: studentId=S99999, confidence=0.64, recognized=true
+[2025-11-10 01:13:53] INFO: Frame cadence gap detected; resetting recognition history for session 14
+[2025-11-10 01:13:53] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:53] INFO: Face ROI size: 245x317
+[2025-11-10 01:13:54] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.13, RawScore=0.617, Accepted=false
+[2025-11-10 01:13:54] INFO: Recognition result: studentId=S99999, confidence=0.62, recognized=false
+[2025-11-10 01:13:54] INFO: Frame cadence gap detected; resetting recognition history for session 14
+[2025-11-10 01:13:54] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:54] INFO: Face ROI size: 239x306
+[2025-11-10 01:13:54] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.15, RawScore=0.611, Accepted=true
+[2025-11-10 01:13:54] INFO: Recognition result: studentId=S99999, confidence=0.61, recognized=true
+[2025-11-10 01:13:55] INFO: Frame cadence gap detected; resetting recognition history for session 14
+[2025-11-10 01:13:55] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:55] INFO: Face ROI size: 238x300
+[2025-11-10 01:13:55] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.21, RawScore=0.590, Accepted=true
+[2025-11-10 01:13:55] INFO: Recognition result: studentId=S99999, confidence=0.59, recognized=true
+[2025-11-10 01:13:55] INFO: Frame cadence gap detected; resetting recognition history for session 14
+[2025-11-10 01:13:55] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:55] INFO: Face ROI size: 238x301
+[2025-11-10 01:13:55] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.19, RawScore=0.582, Accepted=true
+[2025-11-10 01:13:55] INFO: Recognition result: studentId=S99999, confidence=0.58, recognized=true
+[2025-11-10 01:13:55] INFO: Frame cadence gap detected; resetting recognition history for session 14
+[2025-11-10 01:13:55] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:55] INFO: Face ROI size: 237x302
+[2025-11-10 01:13:56] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.26, RawScore=0.611, Accepted=true
+[2025-11-10 01:13:56] INFO: Recognition result: studentId=S99999, confidence=0.61, recognized=true
+[2025-11-10 01:13:56] INFO: Frame cadence gap detected; resetting recognition history for session 14
+[2025-11-10 01:13:56] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:56] INFO: Face ROI size: 244x302
+[2025-11-10 01:13:56] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.12, RawScore=0.577, Accepted=true
+[2025-11-10 01:13:56] INFO: Recognition result: studentId=S99999, confidence=0.58, recognized=true
+[2025-11-10 01:13:56] INFO: Frame cadence gap detected; resetting recognition history for session 14
+[2025-11-10 01:13:56] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:56] INFO: Face ROI size: 243x307
+[2025-11-10 01:13:57] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.17, RawScore=0.563, Accepted=true
+[2025-11-10 01:13:57] INFO: Recognition result: studentId=S99999, confidence=0.56, recognized=true
+[2025-11-10 01:13:57] INFO: Frame cadence gap detected; resetting recognition history for session 14
+[2025-11-10 01:13:57] INFO: === STAGE 1: Face Detection & Preprocessing ===
+[2025-11-10 01:13:57] INFO: Face ROI size: 238x305
+[2025-11-10 01:13:57] INFO: [Attendance Recognition] ProfileLabel=S99999 - Justin_Lim, StudentID=S99999, Confidence=0.12, RawScore=0.549, Accepted=true
+[2025-11-10 01:13:57] INFO: Recognition result: studentId=S99999, confidence=0.55, recognized=true
