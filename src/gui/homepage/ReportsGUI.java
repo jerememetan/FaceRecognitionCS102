@@ -31,6 +31,7 @@ import javax.swing.SwingConstants;
 import report.ReportLog;
 import report.ReportManager;
 import config.AppLogger;
+import gui.FullScreenUtil;
 
 public class ReportsGUI extends JFrame {
     private String role;
@@ -45,8 +46,10 @@ public class ReportsGUI extends JFrame {
         setSize(1000, 700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
-        setVisible(true);
+    setLayout(new BorderLayout());
+    // open maximized by default
+    FullScreenUtil.enableFullScreen(this, FullScreenUtil.Mode.MAXIMIZED);
+    setVisible(true);
 
         createUI();
     }

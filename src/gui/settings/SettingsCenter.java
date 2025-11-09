@@ -29,8 +29,6 @@ public class SettingsCenter extends JPanel {
         // Detection uses the FaceCropSettingsPanel (no internal save; SettingsGUI keeps the centered save button)
         cards.add(new FaceCropSettingsPanel(listener, false, true), DETECTION);
 
-        // register MYPAGE here so callers can just call showCard(MYPAGE)
-        cards.add(new MyCustomView(), MYPAGE);
         // add the cards at the end
         add(cards, BorderLayout.CENTER);
     }

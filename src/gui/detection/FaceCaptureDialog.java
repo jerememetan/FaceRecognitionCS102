@@ -17,6 +17,7 @@ import org.opencv.core.*;
 import service.detection.FaceDetection;
 import service.student.StudentManager;
 import gui.homepage.UIComponents;
+import gui.FullScreenUtil;
 
 public class FaceCaptureDialog extends JDialog {
     private Student student;
@@ -54,7 +55,7 @@ public class FaceCaptureDialog extends JDialog {
         AppLogger.info("FaceCaptureDialog created for student: " + student.getName());
 
         cameraPreviewManager = new CameraPreviewManager(faceDetection, null, null, null);
-    captureManager = new CaptureManager(faceDetection, student, studentManager, isCapturing, capturedCount,
+        captureManager = new CaptureManager(faceDetection, student, studentManager, isCapturing, capturedCount,
         targetImages, captureCompleted, null, null, null, null, cameraPreviewManager, this);
 
         initializeDialog();
@@ -256,6 +257,13 @@ public class FaceCaptureDialog extends JDialog {
         if (faceDetection != null) {
             faceDetection.release();
             AppLogger.info("Face detection resources released");
+        }
+
+        // Restore any fullscreen state applied to this dialog
+        try {
+            FullScreenUtil.disableFullScreen(this);
+        } catch (Throwable t) {
+            AppLogger.warn("Failed to restore fullscreen state for FaceCaptureDialog: " + t.getMessage());
         }
 
         super.dispose();

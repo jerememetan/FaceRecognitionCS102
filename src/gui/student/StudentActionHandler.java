@@ -3,9 +3,13 @@ package gui.student;
 import config.AppLogger;
 import entity.Student;
 import gui.detection.FaceCaptureDialog;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.*;
+
+import gui.FullScreenUtil;
 import service.student.StudentManager;
 
 public class StudentActionHandler implements ActionListener {
@@ -121,6 +125,12 @@ public class StudentActionHandler implements ActionListener {
         }
         Student selectedStudent = tableController.getStudentAt(selectedRow);
         FaceCaptureDialog dialog = new FaceCaptureDialog(gui, selectedStudent, studentManager);
+        try {
+            FullScreenUtil.enableFullScreen(dialog, FullScreenUtil.Mode.MAXIMIZED);
+        }
+        catch (Throwable t){
+            
+        }
         dialog.setVisible(true);
         if (dialog.isCaptureCompleted()) {
             tableController.refreshTable();

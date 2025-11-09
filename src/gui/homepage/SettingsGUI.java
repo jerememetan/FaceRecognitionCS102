@@ -23,6 +23,7 @@ import config.AppConfig;
 import config.AppLogger;
 import config.IConfigChangeListener;
 import gui.settings.SettingsCenter;
+import gui.FullScreenUtil;
 
 public class SettingsGUI extends JFrame {
     private String role;
@@ -36,8 +37,10 @@ public class SettingsGUI extends JFrame {
         setSize(1000, 700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
-        setVisible(true);
+    setLayout(new BorderLayout());
+    // open maximized by default
+    FullScreenUtil.enableFullScreen(this, FullScreenUtil.Mode.MAXIMIZED);
+    setVisible(true);
 
         createUI();
     }
