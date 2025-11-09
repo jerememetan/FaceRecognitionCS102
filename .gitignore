@@ -5,6 +5,9 @@
 # Ignore Gradle build output directory
 build
 
+# Ignore compiled Java class files
+compiled/
+
 # Ignore large model files
 data/resources/arcface.onnx
 
