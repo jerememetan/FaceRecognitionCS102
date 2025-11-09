@@ -8,15 +8,24 @@ import java.util.logging.*;
 
 public class AppLogger {
 
-    // 1. Private Logger Instance
-    private static final Logger logger = Logger.getLogger(AppLogger.class.getName());
+    // 1. Use the root logger so that all java.util.logging records (from any package)
+    //    are routed to our FileHandler and therefore into the same log file.
+    private static final Logger rootLogger = Logger.getLogger("");
 
     // Static block runs once when the class is first loaded
     static {
         try {
-            // Stop the logger from printing to the console (default behavior)
-            logger.setUseParentHandlers(false); 
-            logger.setLevel(Level.INFO); // Set the default minimum logging level
+            // Ensure the root logger does not keep any pre-existing handlers
+            // (avoids duplicate output) and then configure it for our file output.
+            for (Handler h : rootLogger.getHandlers()) {
+                try {
+                    rootLogger.removeHandler(h);
+                    h.close();
+                } catch (Exception ignored) {
+                }
+            }
+            rootLogger.setUseParentHandlers(false);
+            rootLogger.setLevel(Level.INFO); // Set the default minimum logging level
 
        
             java.io.File logsDir = new java.io.File(".\\logs\\");
@@ -31,14 +40,16 @@ public class AppLogger {
             FileHandler fileHandler = new FileHandler(".\\logs\\" + tsName, false);
             
             fileHandler.setFormatter(new LogFormatter());
-            logger.addHandler(fileHandler);
-            logger.info("Application Logger Initialized.");
+            rootLogger.addHandler(fileHandler);
+            rootLogger.info("Application Logger Initialized.");
 
-            System.setOut(new PrintStream(new LoggingOutputStream(logger, Level.INFO), true));
-            System.setErr(new PrintStream(new LoggingOutputStream(logger, Level.SEVERE), true));
+            System.setOut(new PrintStream(new LoggingOutputStream(rootLogger, Level.INFO), true));
+            System.setErr(new PrintStream(new LoggingOutputStream(rootLogger, Level.SEVERE), true));
 
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Could not set up file logger!", e);
+            // If we can't configure the root logger, fallback to a class-specific logger
+            Logger fallback = Logger.getLogger(AppLogger.class.getName());
+            fallback.log(Level.SEVERE, "Could not set up file logger!", e);
         }
     }
 
@@ -66,22 +77,22 @@ public class AppLogger {
 
     /** Logs an informational message. Used for successful events. */
     public static void info(String message) {
-        logger.log(Level.INFO, message);
+        rootLogger.log(Level.INFO, message);
     }
 
     /** Logs a warning message. Used for non-critical issues or unexpected events. */
     public static void warn(String message) {
-        logger.log(Level.WARNING, message);
+        rootLogger.log(Level.WARNING, message);
     }
 
     /** Logs an error or severe message. Used for program failures or exceptions. */
     public static void error(String message) {
-        logger.log(Level.SEVERE, message);
+        rootLogger.log(Level.SEVERE, message);
     }
     
     /** Logs an error along with an exception. */
     public static void error(String message, Throwable thrown) {
-        logger.log(Level.SEVERE, message, thrown);
+        rootLogger.log(Level.SEVERE, message, thrown);
     }
 
     // --- Internal helper to redirect System.out/err into logger ---
