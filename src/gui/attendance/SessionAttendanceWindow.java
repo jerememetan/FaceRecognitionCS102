@@ -97,14 +97,71 @@ public class SessionAttendanceWindow extends JFrame {
     }
     
     private void initializeAttendanceRecords() {
-        // Create attendance records for all students in session roster
+        // Load existing attendance records from database for this session
+        List<AttendanceRecord> existingRecords = attendanceRecordRepository.findBySessionId(session.getSessionId());
+        Map<String, AttendanceRecord> existingRecordMap = new HashMap<>();
+        for (AttendanceRecord record : existingRecords) {
+            existingRecordMap.put(record.getStudent().getStudentId(), record);
+        }
+        
+        AppLogger.info("Found " + existingRecords.size() + " existing attendance records in database for session " + session.getSessionId());
+        
+        // Create or load attendance records for all students in session roster
+        int loadedCount = 0;
+        int createdCount = 0;
+        
         for (SessionStudent sessionStudent : session.getStudentRoster()) {
             Student student = sessionStudent.getStudent();
-            AttendanceRecord record = new AttendanceRecord(student, session);
+            AttendanceRecord record;
+            
+            // Check if record exists in database
+            AttendanceRecord existingRecord = existingRecordMap.get(student.getStudentId());
+            
+            if (existingRecord != null) {
+                // Use existing record from database (has all the data: status, timestamp, method, confidence, notes)
+                record = existingRecord;
+                loadedCount++;
+                AppLogger.info("Loaded existing attendance record from database for " + student.getStudentId() + 
+                             " - Status: " + record.getStatus() + ", Notes: '" + record.getNotes() + "'");
+            } else {
+                // Create new record with default PENDING status
+                record = new AttendanceRecord(student, session);
+                
+                // Sync initial status and notes from SessionStudent if available
+                if (sessionStudent.getStatus() != null && !sessionStudent.getStatus().isEmpty()) {
+                    try {
+                        // Map SessionStudent status string to AttendanceRecord.Status enum
+                        String sessStuStatus = sessionStudent.getStatus();
+                        if (sessStuStatus.equalsIgnoreCase("Present")) {
+                            record.setStatus(AttendanceRecord.Status.PRESENT);
+                        } else if (sessStuStatus.equalsIgnoreCase("Late")) {
+                            record.setStatus(AttendanceRecord.Status.LATE);
+                        } else if (sessStuStatus.equalsIgnoreCase("Absent")) {
+                            record.setStatus(AttendanceRecord.Status.ABSENT);
+                        } else {
+                            record.setStatus(AttendanceRecord.Status.PENDING);
+                        }
+                    } catch (Exception e) {
+                        AppLogger.warn("Could not map SessionStudent status '" + sessionStudent.getStatus() + 
+                                     "' for " + student.getStudentId() + ", using PENDING");
+                    }
+                }
+                
+                // Sync notes from SessionStudent
+                if (sessionStudent.getNotes() != null && !sessionStudent.getNotes().isEmpty()) {
+                    record.setNotes(sessionStudent.getNotes());
+                }
+                
+                createdCount++;
+                AppLogger.info("Created new attendance record for " + student.getStudentId());
+            }
+            
             attendanceRecords.add(record);
             recordMap.put(student.getStudentId(), record);
         }
-        AppLogger.info("Initialized " + attendanceRecords.size() + " attendance records for session " + session.getSessionId());
+        
+        AppLogger.info("Initialized " + attendanceRecords.size() + " attendance records for session " + session.getSessionId() + 
+                      " (Loaded: " + loadedCount + ", Created: " + createdCount + ")");
     }
     
     private void initializeUI() {
