@@ -10,8 +10,11 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import service.session.SessionManager;
+import gui.FullScreenUtil;
 import service.roster.RosterManager;
 import report.ReportManager;
+import util.ModuleLoader;
+import config.AppLogger;
 public class MainDashboard extends JFrame {
     private String role;
     private String id;
@@ -31,8 +34,10 @@ public class MainDashboard extends JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout()); // set the root layout
-        setVisible(true);
+    setLayout(new BorderLayout()); // set the root layout
+    // Enable fullscreen (windowed fullscreen) by default for the main dashboard
+    FullScreenUtil.enableFullScreen(this, FullScreenUtil.Mode.MAXIMIZED);
+    setVisible(true);
 
         // burger menu button
         JPanel burger = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -106,6 +111,15 @@ public class MainDashboard extends JFrame {
                 toggleSidebar(); // all the function
             }
         });
+        new Thread(() -> {
+            try {
+                // Touch ModuleLoader to trigger static initialization and collect status
+                String status = ModuleLoader.getModuleStatusSummary();
+                AppLogger.info("Module preload summary:\n" + status);
+            } catch (Throwable t) {
+                AppLogger.error("Module preload failed: " + t.getMessage(), t);
+            }
+        }, "ModulePreloader").start();
 
     }
 
@@ -142,7 +156,7 @@ public class MainDashboard extends JFrame {
 
         // ---------ActionListener for the buttons--------------
         recognitionBtn.addActionListener(e -> {
-            MainDashboard.this.setVisible(false);
+        MainDashboard.this.setVisible(false);
             
             // Create a timer to detect when the recognition window appears and attach our listener
             Timer findWindowTimer = new Timer(100, null);
