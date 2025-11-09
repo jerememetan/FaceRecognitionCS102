@@ -27,21 +27,32 @@ public class AppLogger {
             rootLogger.setUseParentHandlers(false);
             rootLogger.setLevel(Level.INFO); // Set the default minimum logging level
 
-       
-            java.io.File logsDir = new java.io.File(".\\logs\\");
+            // Ensure logs directory exists (cross-platform path)
+            // Use absolute path to ensure logs are always in project root/logs
+            java.nio.file.Path logsPath = java.nio.file.Paths.get("logs").toAbsolutePath().normalize();
+            java.io.File logsDir = logsPath.toFile();
             if (!logsDir.exists()) {
-                logsDir.mkdirs();
+                boolean created = logsDir.mkdirs();
+                if (!created && !logsDir.exists()) {
+                    throw new IOException("Failed to create logs directory: " + logsPath);
+                }
             }
 
-           
+            // Create log file with timestamp in logs directory
             String tsName = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss")
                     .format(LocalDateTime.now()) + ".log";
+            
+            // Use cross-platform path separator
+            java.nio.file.Path logFilePath = logsPath.resolve(tsName);
+            String logFileString = logFilePath.toString().replace("\\", "/"); // Normalize for FileHandler
 
-            FileHandler fileHandler = new FileHandler(".\\logs\\" + tsName, false);
+            FileHandler fileHandler = new FileHandler(logFileString, false);
             
             fileHandler.setFormatter(new LogFormatter());
             rootLogger.addHandler(fileHandler);
-            rootLogger.info("Application Logger Initialized.");
+            
+            // Log initialization with the actual log file path
+            rootLogger.info("Application Logger Initialized. Log file: " + logFilePath.toAbsolutePath());
 
             System.setOut(new PrintStream(new LoggingOutputStream(rootLogger, Level.INFO), true));
             System.setErr(new PrintStream(new LoggingOutputStream(rootLogger, Level.SEVERE), true));
