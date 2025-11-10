@@ -57,6 +57,7 @@ public class PDFGenerator implements ReportGenerator {
 
             // Add header row
             for (String header : headers) {
+                if (header == null) header = "";
                 Cell headerCell = new Cell().add(new Paragraph(header).setBold());
                 table.addCell(headerCell);
             }
@@ -64,6 +65,7 @@ public class PDFGenerator implements ReportGenerator {
             // Add data rows
             for (ArrayList<String> row : data) {
                 for (String cellData : row) {
+                    if (cellData == null) cellData = "";
                     table.addCell(new Cell().add(new Paragraph(cellData)));
                 }
             }

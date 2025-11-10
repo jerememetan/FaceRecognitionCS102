@@ -138,6 +138,8 @@ public class ReportsGUI extends JFrame {
 
     /** Updates reportName and refreshes content area */
     private void updateReportName(String newReportName) {
+        if (role.equals("TA")) return;
+        
         this.reportName = newReportName;
         AppLogger.info("🔄 Updating report view for: " + newReportName);
 
@@ -174,14 +176,22 @@ public class ReportsGUI extends JFrame {
         welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
         welcomeLabel.setForeground(new Color(30, 41, 59));
         welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JTextArea textArea;
 
-        JTextArea textArea = new JTextArea("""
-        Welcome to the Reports & Analytics section.
-        
-        Generate comprehensive reports and analyze attendance data.
-        
-        Select a report type from the sidebar to get started.
-        """);
+        if (role.equals("TA")){
+            textArea = new JTextArea("""
+                As a TA, you do not have permission to view this.
+            """);
+        } else {
+            textArea = new JTextArea("""
+            Welcome to the Reports & Analytics section.
+            
+            Generate comprehensive reports and analyze attendance data.
+            
+            Select a report type from the sidebar to get started.
+            """);
+        }
+
         textArea.setEditable(false);
         textArea.setOpaque(false);
         textArea.setFont(new Font("Segoe UI", Font.PLAIN, 16));
