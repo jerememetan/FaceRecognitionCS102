@@ -51,7 +51,7 @@ public class SessionAttendanceWindow extends JFrame {
     private VideoCapture capture;
     private Timer recognitionTimer;
     private Timer sessionEndTimer;
-    private Thread cameraThread; // Separate thread for smooth video display
+    // Note: Removed camera background thread to run capture/recognition synchronously on EDT
     private Mat currentFrame; // Current frame for display
     private final Object frameLock = new Object(); // Lock for thread-safe frame access
     private Map<String, FaceRecognitionInfo> recognitionCache = new HashMap<>(); // Cache recognition results by face position
@@ -447,76 +447,39 @@ public class SessionAttendanceWindow extends JFrame {
         capture.set(org.opencv.videoio.Videoio.CAP_PROP_FRAME_HEIGHT, 480);
         
         isRunning = true;
-        
-        // Start camera capture thread for smooth video display at 15+ FPS
-        cameraThread = new Thread(() -> {
-            Mat frame = new Mat();
-            long lastFrameTime = System.currentTimeMillis();
-            long frameInterval = 1000 / CAMERA_FPS_TARGET; // Target frame interval in ms (66ms for 15fps)
-            
-            while (isRunning && capture.isOpened()) {
-                long currentTime = System.currentTimeMillis();
-                
-                // Control frame rate to maintain minimum 15 FPS
-                if (currentTime - lastFrameTime < frameInterval) {
-                    try {
-                        Thread.sleep(frameInterval - (currentTime - lastFrameTime));
-                    } catch (InterruptedException e) {
-                        break;
-                    }
-                }
-                lastFrameTime = System.currentTimeMillis();
-                
-                if (capture.read(frame) && !frame.empty()) {
-                    // Create display frame with face detection boxes
-                    Mat displayFrame = drawFrameWithBoxes(frame.clone());
-                    
-                    synchronized (frameLock) {
-                        if (currentFrame != null) {
-                            currentFrame.release();
-                        }
-                        currentFrame = frame.clone();
-                    }
-                    
-                    // Display frame immediately
-                    cameraPanel.displayMat(displayFrame);
-                    displayFrame.release();
-                }
-            }
-            
-            frame.release();
-            AppLogger.info("Camera thread stopped");
-        }, "CameraCaptureThread");
-        cameraThread.setDaemon(true);
-        cameraThread.start();
-        
-        // Recognition timer - processes recognition periodically on separate thread
-        recognitionTimer = new Timer(RECOGNITION_INTERVAL_MS, new ActionListener() {
+
+        // Run capture + recognition synchronously using a Swing Timer (EDT) to avoid background threads.
+        int frameInterval = 1000 / CAMERA_FPS_TARGET; // ms per frame
+        recognitionTimer = new Timer(frameInterval, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!isRunning) return;
-                
-                // Process recognition on a separate thread to avoid blocking video
-                new Thread(() -> {
-                    Mat frameToProcess = null;
-                    synchronized (frameLock) {
-                        if (currentFrame != null && !currentFrame.empty()) {
-                            frameToProcess = currentFrame.clone();
-                        }
-                    }
-                    
-                    if (frameToProcess != null) {
+                Mat frame = new Mat();
+                try {
+                    if (capture.read(frame) && !frame.empty()) {
+                        // Run recognition synchronously for this frame
                         try {
-                            processRecognition(frameToProcess);
+                            processRecognition(frame);
                         } catch (Exception ex) {
-                            AppLogger.error("Error processing recognition: " + ex.getMessage(), ex);
-                        } finally {
-                            frameToProcess.release();
+                            AppLogger.error("Error processing recognition inline: " + ex.getMessage(), ex);
                         }
+
+                        // Draw boxes and display
+                        Mat displayFrame = drawFrameWithBoxes(frame.clone());
+                        synchronized (frameLock) {
+                            if (currentFrame != null) {
+                                currentFrame.release();
+                            }
+                            currentFrame = frame.clone();
+                        }
+                        cameraPanel.displayMat(displayFrame);
+                        displayFrame.release();
                     }
-                }, "RecognitionThread").start();
+                } finally {
+                    frame.release();
+                }
             }
         });
+        recognitionTimer.setRepeats(true);
         recognitionTimer.start();
     }
     
@@ -1018,17 +981,8 @@ public class SessionAttendanceWindow extends JFrame {
         if (choice == JOptionPane.YES_OPTION) {
             // Stop all timers and release resources first
             isRunning = false;
-            
-            // Stop camera thread
-            if (cameraThread != null && cameraThread.isAlive()) {
-                try {
-                    cameraThread.interrupt();
-                    cameraThread.join(1000); // Wait up to 1 second for thread to finish
-                } catch (InterruptedException e) {
-                    AppLogger.warn("Interrupted while waiting for camera thread to stop");
-                }
-            }
-            
+
+            // Stop the capture/recognition timer if running
             if (recognitionTimer != null) {
                 recognitionTimer.stop();
                 recognitionTimer = null;
@@ -1102,4 +1056,3 @@ public class SessionAttendanceWindow extends JFrame {
     }
     
 }
-
