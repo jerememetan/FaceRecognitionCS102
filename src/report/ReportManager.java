@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import config.AppLogger;
+
 public class ReportManager {
     private static final String REPORT_LOG_FILE = getReportLogFilePath();
     private static List<ReportLog> reportLogs = new ArrayList<>();
@@ -49,7 +51,7 @@ public class ReportManager {
 
     // Save report logs to a CSV file
     private static void saveReportLogs() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(REPORT_LOG_FILE, true))) { // 'true' for append mode
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(REPORT_LOG_FILE, false))) { // 'true' for append mode
             for (ReportLog log : reportLogs) {
                 // Write each log entry to the file, with a newline after each entry
                 writer.write(log.getReportName() + "," + log.getRowCount() + "," + log.getExportTime() + "\n");
@@ -82,8 +84,23 @@ public class ReportManager {
 
     // Get last export date/time for each kind of report
     public static LocalDateTime getLastExportDateTime(String reportName) {
+        AppLogger.info("All reports inside manager: " + reportLogs.toString());
+
+        if (reportName == null) {
+            AppLogger.warn("⚠️ getLastExportDateTime() called with null reportName!");
+            return null;
+        }
+
+        AppLogger.info("Looking up last export date/time for report: " + reportName);
+
         return reportLogs.stream()
-                .filter(log -> log.getReportName().equals(reportName))
+                .filter(log -> {
+                    if (log.getReportName() == null) {
+                        AppLogger.warn("⚠️ Found a ReportLog entry with null reportName in reportLogs");
+                        return false;
+                    }
+                    return log.getReportName().equals(reportName);
+                })
                 .map(ReportLog::getExportTime)
                 .max(LocalDateTime::compareTo)
                 .orElse(null);
@@ -102,12 +119,12 @@ public class ReportManager {
     public static String getModifiedTitle(String title) {
         // Check if the title contains 'Session' and '_'
         if (title.contains("Session") && title.contains("_")) {
-            return "SessionToStudent"; // Modify title to "SessionToStudent"
+            return "SessionToStudent";
         }
         
         // Check if the title contains 'Roster' and '_'
         if (title.contains("Roster") && title.contains("_")) {
-            return "RosterToStudent"; // Modify title to "RosterToStudent"
+            return "RosterToStudent";
         }
         
         // Return the original title if no conditions are met

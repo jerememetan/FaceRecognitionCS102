@@ -14,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,15 +29,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
-import report.ReportLog;
-import report.ReportManager;
 import config.AppLogger;
 import gui.FullScreenUtil;
+import report.ReportLog;
+import report.ReportManager;
 
 public class ReportsGUI extends JFrame {
     private String role;
     private String id;
-    private String reportName = "AllStudentData";
+    private String reportName = "none";
+
+    private JPanel mainPanel; // main layout container
 
     public ReportsGUI(String role, String id) {
         this.role = role;
@@ -46,10 +49,11 @@ public class ReportsGUI extends JFrame {
         setSize(1000, 700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-    setLayout(new BorderLayout());
-    // open maximized by default
-    FullScreenUtil.enableFullScreen(this, FullScreenUtil.Mode.MAXIMIZED);
-    setVisible(true);
+        setLayout(new BorderLayout());
+
+        // Open maximized by default
+        FullScreenUtil.enableFullScreen(this, FullScreenUtil.Mode.MAXIMIZED);
+        setVisible(true);
 
         createUI();
     }
@@ -60,28 +64,21 @@ public class ReportsGUI extends JFrame {
         add(headerPanel, BorderLayout.NORTH);
 
         // Main Content Panel
-        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(new Color(248, 250, 252));
 
-        // Left Panel - Simple sidebar with report options
+        // Left Sidebar
         JPanel leftPanel = createSidebar();
         mainPanel.add(leftPanel, BorderLayout.WEST);
 
-        // Center Panel - Simple content area
+        // Center Panel
         JPanel centerPanel = createContentArea();
+        JScrollPane scrollableCenterPanel = new JScrollPane(centerPanel);
+        scrollableCenterPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollableCenterPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        mainPanel.add(scrollableCenterPanel, BorderLayout.CENTER);
 
-        try {
-            // Wrap the centerPanel with a JScrollPane to enable scrolling
-            JScrollPane scrollableCenterPanel = new JScrollPane(centerPanel);
-            scrollableCenterPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  // Always show vertical scrollbar
-            scrollableCenterPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // Horizontal scrollbar when needed
-
-            mainPanel.add(scrollableCenterPanel, BorderLayout.CENTER);  // Add the scrollable panel to the center of mainPanel
-
-            add(mainPanel, BorderLayout.CENTER);
-        } catch (Exception e) {
-            AppLogger.error("Error Loading UI: ", e);
-        }
+        add(mainPanel, BorderLayout.CENTER);
     }
 
     private JPanel createHeaderPanel() {
@@ -89,18 +86,15 @@ public class ReportsGUI extends JFrame {
         headerPanel.setBackground(new Color(45, 55, 72));
         headerPanel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
 
-        // Title
         JLabel titleLabel = new JLabel("Reports & Analytics");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
         titleLabel.setForeground(Color.WHITE);
 
-        // Back Button
         JButton backButton = createStyledButton("← Back to Dashboard", new Color(239, 68, 68));
         backButton.addActionListener(e -> dispose());
 
         headerPanel.add(titleLabel, BorderLayout.WEST);
         headerPanel.add(backButton, BorderLayout.EAST);
-
         return headerPanel;
     }
 
@@ -111,54 +105,60 @@ public class ReportsGUI extends JFrame {
         sidebar.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         sidebar.setPreferredSize(new Dimension(200, 0));
 
-        // Sidebar Title
         JLabel sidebarTitle = new JLabel("Report Types");
         sidebarTitle.setFont(new Font("Segoe UI", Font.BOLD, 16));
         sidebarTitle.setForeground(Color.WHITE);
         sidebarTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         sidebar.add(sidebarTitle);
         sidebar.add(Box.createRigidArea(new Dimension(0, 20)));
 
         // Report type buttons
-        JButton attendanceReportBtn = createButton("Attendance Report");
-        JButton studentReportBtn = createButton("All Students Report");
-        JButton sessionReportBtn = createButton("All Sessions Report");
-        JButton rosterReportBtn = createButton("All Rosters Report");
-        JButton sessToStuReportBtn = createButton("Sess->Stu Report");
-        JButton rosToStuReportBtn = createButton("Ros->Stu Report");
-
-        sidebar.add(attendanceReportBtn);
+        sidebar.add(createSidebarButton("Attendance Report", "none"));
         sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
-        sidebar.add(studentReportBtn);
+        sidebar.add(createSidebarButton("All Students Report", "AllStudentData"));
         sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
-        sidebar.add(sessionReportBtn);
+        sidebar.add(createSidebarButton("All Sessions Report", "AllSessions"));
         sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
-        sidebar.add(rosterReportBtn);
+        sidebar.add(createSidebarButton("All Rosters Report", "AllRosters"));
         sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
-        sidebar.add(sessToStuReportBtn);
+        sidebar.add(createSidebarButton("Sess->Stu Report", "SessionToStudent"));
         sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
-        sidebar.add(rosToStuReportBtn);
-
-        // Add action listeners to each button
-        attendanceReportBtn.addActionListener(e -> updateReportName("none"));
-        studentReportBtn.addActionListener(e -> updateReportName("AllStudentData"));
-        sessionReportBtn.addActionListener(e -> updateReportName("AllSessions"));
-        rosterReportBtn.addActionListener(e -> updateReportName("AllRosters"));
-        sessToStuReportBtn.addActionListener(e -> updateReportName("SessionToStudent"));
-        rosToStuReportBtn.addActionListener(e -> updateReportName("rosToStuReportBtn"));
+        sidebar.add(createSidebarButton("Ros->Stu Report", "RosterToStudent"));
 
         sidebar.add(Box.createVerticalGlue());
-
         return sidebar;
     }
 
-    // Add the action listener method that updates the reportName
+    private JButton createSidebarButton(String text, String targetReportName) {
+        JButton button = createButton(text);
+        button.addActionListener(e -> updateReportName(targetReportName));
+        return button;
+    }
+
+    /** Updates reportName and refreshes content area */
     private void updateReportName(String newReportName) {
         this.reportName = newReportName;
-        System.out.println("Current Report: " + reportName); 
+        AppLogger.info("🔄 Updating report view for: " + newReportName);
+
+        // Create new content panel
+        JPanel newContent = createContentArea();
+        JScrollPane scrollableCenterPanel = new JScrollPane(newContent);
+        scrollableCenterPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollableCenterPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+        // Replace old center panel with new one
+        mainPanel.remove(1); // remove old center (index 0 = sidebar)
+        mainPanel.add(scrollableCenterPanel, BorderLayout.CENTER);
+
+        // Refresh UI
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }
 
     private JPanel createContentArea() {
+        AppLogger.info("reportName: " + this.reportName);
+
         JPanel contentPanel = new JPanel(new GridBagLayout());
         contentPanel.setBackground(new Color(248, 250, 252));
 
@@ -170,47 +170,48 @@ public class ReportsGUI extends JFrame {
             BorderFactory.createEmptyBorder(30, 30, 30, 30)
         ));
 
-        // Welcome label
         JLabel welcomeLabel = new JLabel("Reports & Analytics Center", SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
         welcomeLabel.setForeground(new Color(30, 41, 59));
         welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Text area
-        JTextArea textArea = new JTextArea();
-        textArea.setEditable(false);
-        textArea.setOpaque(false);
-        textArea.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        textArea.setForeground(new Color(71, 85, 105));
-        textArea.setText("""
+        JTextArea textArea = new JTextArea("""
         Welcome to the Reports & Analytics section.
         
         Generate comprehensive reports and analyze attendance data.
         
         Select a report type from the sidebar to get started.
         """);
-        
+        textArea.setEditable(false);
+        textArea.setOpaque(false);
+        textArea.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        textArea.setForeground(new Color(71, 85, 105));
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        textArea.setColumns(40); 
+        textArea.setColumns(40);
         textArea.setAlignmentX(Component.CENTER_ALIGNMENT);
         textArea.setMargin(new Insets(10, 30, 10, 30));
 
-        // stats panel
+        // Stats panel
         JPanel statsPanel = new JPanel(new GridLayout(1, 4, 15, 0));
         statsPanel.setBackground(Color.WHITE);
 
-        // Fetch data for the stats
+        // Fetch updated stats
         int totalReports = ReportManager.getTotalReportsGenerated(reportName);
         int reportsToday = ReportManager.getTotalReportsGeneratedToday(reportName);
         LocalDateTime lastExport = ReportManager.getLastExportDateTime(reportName);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedLastExport = lastExport.format(formatter);
+        String formattedLastExport;
+        if (lastExport != null) {
+            formattedLastExport = lastExport.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        } else {
+            AppLogger.warn("⚠️ No last export date found for report: " + reportName);
+            formattedLastExport = "N/A";
+        }
 
         statsPanel.add(createStatCard("Total Reports", String.valueOf(totalReports), new Color(59, 130, 246)));
         statsPanel.add(createStatCard("Generated Today", String.valueOf(reportsToday), new Color(34, 197, 94)));
-        statsPanel.add(createStatCard("Last Export", formattedLastExport != null ? formattedLastExport : "Never", new Color(251, 191, 36)));
+        statsPanel.add(createStatCard("Last Export", formattedLastExport, new Color(251, 191, 36)));
 
         textPanel.add(Box.createRigidArea(new Dimension(0, 40)));
         textPanel.add(welcomeLabel);
@@ -218,13 +219,9 @@ public class ReportsGUI extends JFrame {
         textPanel.add(textArea);
         textPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         textPanel.add(statsPanel);
-
-        // Table for Report Logs
-        JPanel logTablePanel = createLogTablePanel();
         textPanel.add(Box.createRigidArea(new Dimension(0, 30)));
-        textPanel.add(logTablePanel);
+        textPanel.add(createLogTablePanel());
 
-        // Center the text block in the main content panel
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -238,41 +235,42 @@ public class ReportsGUI extends JFrame {
         JPanel tablePanel = new JPanel();
         tablePanel.setLayout(new BoxLayout(tablePanel, BoxLayout.Y_AXIS));
 
-        // Fetch all report logs
         List<ReportLog> allLogs = ReportManager.getAllReportLogs();
-
-        // Filter the logs by the reportName
         List<ReportLog> filteredLogs = allLogs.stream()
-                .filter(log -> log.getReportName().equals(reportName)) // Assuming getLog() returns a string representing the log type
-                .collect(Collectors.toList()); // Collect the filtered results into a new list
-        
-        // Column names for the table
+                .filter(log -> log.getReportName() != null && log.getReportName().equals(reportName))
+                .collect(Collectors.toList());
+
         String[] columns = {"Report Type", "Data Points", "Export Time"};
-        
-        // Create a panel to hold the table
+
         JPanel table = new JPanel();
-        table.setLayout(new GridLayout(allLogs.size() + 1, columns.length, 10, 10));
+        table.setLayout(new GridLayout(filteredLogs.size() + 1, columns.length, 10, 10));
         table.setBackground(Color.WHITE);
-        
-        // Create the header row
+
         for (String column : columns) {
             JLabel headerLabel = new JLabel(column, SwingConstants.CENTER);
             headerLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
             headerLabel.setForeground(new Color(71, 85, 105));
             table.add(headerLabel);
         }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         
-        // Create data rows
-        for (ReportLog log : allLogs) {
+        // Sort the logs by the earliest exportTime
+        filteredLogs = filteredLogs.stream()
+            .sorted(Comparator.comparing(ReportLog::getExportTime))  // Sort by exportTime in ascending order
+            .collect(Collectors.toList());
+
+        for (ReportLog log : filteredLogs) {
             table.add(new JLabel(log.getReportName(), SwingConstants.CENTER));
             table.add(new JLabel(String.valueOf(log.getRowCount()), SwingConstants.CENTER));
 
             LocalDateTime exportDateTime = log.getExportTime();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String formattedExportDateTime = exportDateTime.format(formatter);
+            String formattedExportDateTime = (exportDateTime != null)
+                    ? exportDateTime.format(formatter)
+                    : "N/A";
             table.add(new JLabel(formattedExportDateTime, SwingConstants.CENTER));
         }
-        
+
         tablePanel.add(table);
         return tablePanel;
     }
@@ -285,19 +283,16 @@ public class ReportsGUI extends JFrame {
             BorderFactory.createEmptyBorder(15, 15, 15, 15)
         ));
 
-        JLabel titleLabel = new JLabel(title);
+        JLabel titleLabel = new JLabel(title, SwingConstants.CENTER);
         titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         titleLabel.setForeground(new Color(71, 85, 105));
-        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JLabel valueLabel = new JLabel(value);
+        JLabel valueLabel = new JLabel(value, SwingConstants.CENTER);
         valueLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
         valueLabel.setForeground(color);
-        valueLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         card.add(titleLabel, BorderLayout.NORTH);
         card.add(valueLabel, BorderLayout.CENTER);
-
         return card;
     }
 
@@ -311,20 +306,11 @@ public class ReportsGUI extends JFrame {
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setMaximumSize(new Dimension(180, 40));
-        
-        // hover effects
+
         button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                button.setBackground(new Color(37, 99, 235));
-            }
-            
-            @Override
-            public void mouseExited(MouseEvent e) {
-                button.setBackground(new Color(59, 130, 246));
-            }
+            @Override public void mouseEntered(MouseEvent e) { button.setBackground(new Color(37, 99, 235)); }
+            @Override public void mouseExited(MouseEvent e) { button.setBackground(new Color(59, 130, 246)); }
         });
-        
         return button;
     }
 
@@ -336,13 +322,6 @@ public class ReportsGUI extends JFrame {
         button.setBorder(BorderFactory.createEmptyBorder(8, 16, 8, 16));
         button.setFocusPainted(false);
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        
         return button;
     }
 }
-
-
-
-
-
-
