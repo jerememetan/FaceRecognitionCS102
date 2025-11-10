@@ -646,16 +646,19 @@ public class AppConfig {
      * Stores a normalized short name into properties for later use (windows/mac/linux).
      */
     public String getOperatingSystem() {
-        String configured = properties.getProperty(KEY_OPERATING_SYSTEM, "").trim();
-        if (!configured.isEmpty()) {
-            return configured.toLowerCase();
-        }
+        // Always detect the OS from the running JVM rather than trusting a saved property.
         String osName = System.getProperty("os.name", "").toLowerCase();
         String normalized;
         if (osName.contains("win")) normalized = "windows";
         else if (osName.contains("mac") || osName.contains("darwin")) normalized = "mac";
         else normalized = "linux";
+        // store normalized value in properties for visibility; persist if possible
         properties.setProperty(KEY_OPERATING_SYSTEM, normalized);
+        try {
+            save();
+        } catch (Exception ex) {
+            AppLogger.warn("Unable to persist detected operating system to app.properties: " + ex.getMessage());
+        }
         AppLogger.info("Operating system auto-detected as: " + normalized);
         return normalized;
     }
@@ -665,28 +668,25 @@ public class AppConfig {
      * Otherwise a sensible default path is computed based on OS and stored into properties.
      */
     public String getOpenCvLibPath() {
-        String raw = properties.getProperty(KEY_OPENCV_LIBPATH, "").trim();
-        if (!raw.isEmpty()) {
-            // Remove surrounding quotes if present
-            String cleaned = raw;
-            if ((cleaned.startsWith("\"") && cleaned.endsWith("\"")) || (cleaned.startsWith("'") && cleaned.endsWith("'"))) {
-                cleaned = cleaned.substring(1, cleaned.length() - 1);
-            }
-            return cleaned;
-        }
-
         // compute default
-    String os = getOperatingSystem();
+        String os = getOperatingSystem();
         String defaultPath;
         // Use library names commonly produced by OpenCV builds
         if (os.contains("win")) {
             defaultPath = "lib/opencv_java480.dll";
-        } else if (os.contains("mac")) {
-            defaultPath = "lib/libopencv_java480.dylib";
+        } else if (os.equals("mac")) {
+            defaultPath = "lib/libopencv_java4130.dylib";
         } else {
-            defaultPath = "lib/libopencv_java480.dll";
+            // assume linux/unix -> use .so
+            defaultPath = "lib/libopencv_java480.so";
         }
         properties.setProperty(KEY_OPENCV_LIBPATH, defaultPath);
+        // Persist default so users see the auto-detected setting in app.properties
+        try {
+            save();
+        } catch (Exception ex) {
+            AppLogger.warn("Unable to save default OpenCV lib path to app.properties: " + ex.getMessage());
+        }
         AppLogger.info("Set default OpenCV native lib path to: " + defaultPath);
         return defaultPath;
     }

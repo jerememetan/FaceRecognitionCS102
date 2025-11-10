@@ -114,7 +114,7 @@ public class ReportsGUI extends JFrame {
         sidebar.add(Box.createRigidArea(new Dimension(0, 20)));
 
         // Report type buttons
-        sidebar.add(createSidebarButton("Attendance Report", "none"));
+        sidebar.add(createSidebarButton("Attendance Report", "AttendanceHistory"));
         sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
         sidebar.add(createSidebarButton("All Students Report", "AllStudentData"));
         sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
