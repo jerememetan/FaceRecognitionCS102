@@ -35,6 +35,7 @@ import gui.homepage.UIComponents;
 import repository.StudentRepository;
 import repository.StudentRepositoryInstance;
 import service.student.StudentManager;
+import gui.student.StudentTableController;
 
 public class StudentEnrollmentGUI extends JFrame {
     private StudentManager studentManager;
@@ -307,14 +308,23 @@ public class StudentEnrollmentGUI extends JFrame {
                 headers.add("Name");
                 headers.add("Email");
                 headers.add("Phone");
+                headers.add("Face Images");
+                headers.add("Quality Score");
 
                 ArrayList<ArrayList<String>> data = new ArrayList<>();
+
                 for (Student s : students) {
+                    int imageCount = s.getFaceData() != null ? s.getFaceData().getImages().size() : 0;
+                    double avgQuality = tableController.calculateAverageQuality(s);
+                    Double tightness = tableController.calculateEmbeddingTightness(s);
+
                     ArrayList<String> row = new ArrayList<>();
                     row.add(s.getStudentId());
                     row.add(s.getName());
                     row.add(s.getEmail());
                     row.add(s.getPhone());
+                    row.add(Integer.toString(imageCount));
+                    row.add(tightness != null ? Double.toString(tightness) : (avgQuality > 0 ? Double.toString(avgQuality) : null));
                     data.add(row);
                 }
 

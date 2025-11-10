@@ -1,7 +1,6 @@
 package gui.student;
 
-import entity.Student;
-import java.awt.*;
+import java.awt.Color;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -10,12 +9,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.FaceImage;
+
+import config.AppLogger;
+import entity.Student;
 import service.embedding.SimilarityCalculator;
 import service.student.StudentManager;
-import config.*;
 
 public class StudentTableController {
     private final StudentManager studentManager;
@@ -86,7 +88,8 @@ public class StudentTableController {
         return studentManager.findStudentById(studentId);
     }
 
-    private double calculateAverageQuality(Student student) {
+    // Changed from private to public to allow call for Report&Export inside StudentEnrollmentGUI
+    public double calculateAverageQuality(Student student) {
         if (student.getFaceData() == null || student.getFaceData().getImages().isEmpty()) {
             return 0.0;
         }
@@ -99,7 +102,8 @@ public class StudentTableController {
         return count > 0 ? totalQuality / count : 0.0;
     }
 
-    private Double calculateEmbeddingTightness(Student student) {
+    // Changed from private to public to allow call for Report&Export inside StudentEnrollmentGUI
+    public Double calculateEmbeddingTightness(Student student) {
         if (student == null || student.getFaceData() == null) {
             return null;
         }
