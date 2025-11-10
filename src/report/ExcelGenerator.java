@@ -95,7 +95,7 @@ public class ExcelGenerator implements ReportGenerator {
             String modifiedTitle = ReportManager.getModifiedTitle(title);
             
             // Log the report generation with the modified title
-            ReportManager.addReportLog(modifiedTitle, fullData.size());
+            ReportManager.addReportLog(modifiedTitle, fullData.size() - 1);
 
             AppLogger.info("Excel file saved successfully to: " + fileToSave.getAbsolutePath());
             return true;

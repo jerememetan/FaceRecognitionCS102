@@ -3,8 +3,8 @@ package report;
 import java.time.LocalDateTime;
 
 public class ReportLog {
-    private String reportName;  // e.g., "AllStudents", "AllRosters"
-    private int rowCount;       // Number of rows in the report
+    private String reportName; 
+    private int rowCount;      
     private LocalDateTime exportTime;
 
     public ReportLog(String reportName, int rowCount, LocalDateTime exportTime) {
