@@ -53,7 +53,19 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
     private int frameCounter = 0;
 
     static {
-        System.load(new File(AppConfig.getInstance().getOpenCvLibPath()).getAbsolutePath());
+        // Load OpenCV library if not already loaded
+        try {
+            String libPath = AppConfig.getInstance().getOpenCvLibPath();
+            System.load(new File(libPath).getAbsolutePath());
+            AppLogger.info("OpenCV library loaded in LiveRecognitionViewer from: " + libPath);
+        } catch (UnsatisfiedLinkError e) {
+            // Library might already be loaded, which is fine
+            if (!e.getMessage().contains("already loaded")) {
+                AppLogger.warn("OpenCV library may already be loaded or failed to load: " + e.getMessage());
+            }
+        } catch (Exception e) {
+            AppLogger.error("Failed to load OpenCV library in LiveRecognitionViewer: " + e.getMessage(), e);
+        }
     }
 
     public LiveRecognitionViewer() {
@@ -171,13 +183,36 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
 
     private VideoCapture openCameraWithFallback() {
         int[] cameraIndices = { 0, 1, 2, 3, 4 };
-        int[] backends = {
-                org.opencv.videoio.Videoio.CAP_DSHOW,
-                org.opencv.videoio.Videoio.CAP_MSMF,
-                org.opencv.videoio.Videoio.CAP_WINRT,
-                org.opencv.videoio.Videoio.CAP_ANY
-        };
-        String[] backendNames = { "DSHOW", "MSMF", "WINRT", "ANY" };
+        
+        // OS-specific camera backends
+        String os = AppConfig.getInstance().getOperatingSystem();
+        int[] backends;
+        String[] backendNames;
+        
+        if (os.contains("mac")) {
+            // macOS backends
+            backends = new int[] {
+                    org.opencv.videoio.Videoio.CAP_AVFOUNDATION,
+                    org.opencv.videoio.Videoio.CAP_ANY
+            };
+            backendNames = new String[] { "AVFOUNDATION", "ANY" };
+        } else if (os.contains("win")) {
+            // Windows backends
+            backends = new int[] {
+                    org.opencv.videoio.Videoio.CAP_DSHOW,
+                    org.opencv.videoio.Videoio.CAP_MSMF,
+                    org.opencv.videoio.Videoio.CAP_WINRT,
+                    org.opencv.videoio.Videoio.CAP_ANY
+            };
+            backendNames = new String[] { "DSHOW", "MSMF", "WINRT", "ANY" };
+        } else {
+            // Linux/Unix backends
+            backends = new int[] {
+                    org.opencv.videoio.Videoio.CAP_V4L2,
+                    org.opencv.videoio.Videoio.CAP_ANY
+            };
+            backendNames = new String[] { "V4L2", "ANY" };
+        }
 
         for (int cameraIndex : cameraIndices) {
             for (int i = 0; i < backends.length; i++) {

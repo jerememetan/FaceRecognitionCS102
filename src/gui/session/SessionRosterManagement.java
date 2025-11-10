@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
@@ -181,9 +182,21 @@ public class SessionRosterManagement extends JDialog {
                 JOptionPane.showMessageDialog(this, "Cannot open session with an empty student roster.");
                 return;
             }
+            
+            // Load session roster from database
+            manager.loadSessionRoster(session);
+            
             // Logic to open the session
             manager.openSession(session);
-            JOptionPane.showMessageDialog(this, "Session opened successfully.");
+            
+            // Open attendance marking window
+            SwingUtilities.invokeLater(() -> {
+                gui.attendance.SessionAttendanceWindow attendanceWindow = 
+                    new gui.attendance.SessionAttendanceWindow(session);
+                attendanceWindow.setVisible(true);
+            });
+            
+            JOptionPane.showMessageDialog(this, "Session opened successfully. Attendance window opened.");
             dispose();
         } else {
             dispose();

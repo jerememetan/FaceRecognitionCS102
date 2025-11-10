@@ -143,6 +143,151 @@ public class LiveRecognitionService {
         }
     }
 
+    /**
+     * Analyzes a face and returns detailed recognition information including confidence and student ID.
+     * This method is used for attendance marking where confidence levels are needed.
+     * 
+     * @param frame The video frame
+     * @param faceRect The detected face rectangle
+     * @param sessionId Session identifier
+     * @return DetailedRecognitionResult with student ID, confidence, and recognition status
+     */
+    public DetailedRecognitionResult analyzeFaceDetailed(Mat frame, Rect faceRect, String sessionId) {
+        if (frame == null || frame.empty() || faceRect == null) {
+            return new DetailedRecognitionResult(null, 0.0, false);
+        }
+
+        String key = (sessionId == null || sessionId.isBlank()) ? "default" : sessionId;
+        RecognitionSession session = sessionFor(key);
+        long frameTimestamp = System.currentTimeMillis();
+        session.touch();
+        cleanupStaleSessions();
+
+        if (session.registerFrame(frameTimestamp, FRAME_LAG_RESET_MS)) {
+            AppLogger.info("Frame cadence gap detected; resetting recognition history for session " + key);
+            session.history.reset();
+        }
+
+        Rect paddedRect = RecognitionGeometry.paddedFaceRect(frame.size(), faceRect, 0.15);
+        Mat faceColor = new Mat(frame, paddedRect).clone();
+        try {
+            ImageQualityResult qualityResult = imageProcessor.validateImageQualityDetailed(faceColor);
+            if (!qualityResult.isGoodQuality()) {
+                return new DetailedRecognitionResult(null, 0.0, false);
+            }
+
+            Mat preprocessedBlob = livePreprocessor.preprocessForLiveRecognition(faceColor, paddedRect);
+            if (preprocessedBlob == null || preprocessedBlob.empty()) {
+                return new DetailedRecognitionResult(null, 0.0, false);
+            }
+
+            byte[] queryEmbedding = embeddingGenerator.generateEmbeddingFromBlob(preprocessedBlob);
+            preprocessedBlob.release();
+
+            if (queryEmbedding == null) {
+                return new DetailedRecognitionResult(null, 0.0, false);
+            }
+
+            RecognitionHistory history = session.history;
+            history.recordEmbedding(queryEmbedding);
+            byte[] smoothedEmbedding = history.buildSmoothedEmbedding(embeddingGenerator);
+
+            RecognitionScorer.ScoreResult scoreResult = scorer.score(queryEmbedding, smoothedEmbedding);
+            if (scoreResult.isEmpty() || scoreResult.bestIndex() < 0) {
+                return new DetailedRecognitionResult(null, 0.0, false);
+            }
+
+            RecognitionProfile profile = datasetRepository.profileAt(scoreResult.bestIndex());
+            if (profile == null) {
+                return new DetailedRecognitionResult(null, 0.0, false);
+            }
+
+            boolean consistent = history.isConsistent(scoreResult.bestIndex());
+            int matchCount = history.countMatches(scoreResult.bestIndex());
+
+            RecognitionDecisionEngine.RecognitionDecision decision = decisionEngine.evaluate(
+                    profile,
+                    scoreResult,
+                    consistent,
+                    matchCount,
+                    history.consistencyWindowSize(),
+                    history.minimumConsistencyCount());
+
+            history.recordPrediction(decision.accepted() ? scoreResult.bestIndex() : -1);
+
+            // Extract student ID from profile's displayLabel (format: "S12345 - Name")
+            // Use profile label instead of decision label, as decision label might be "unknown" when rejected
+            String profileLabel = profile.displayLabel();
+            String studentId = extractStudentIdFromLabel(profileLabel);
+            
+            // Use decision confidence (0.0-1.0 scale)
+            double confidence = decision.confidence();
+            
+            // Also calculate raw similarity score as a fallback confidence measure
+            double rawScore = scoreResult.bestScore();
+            
+            // Log the recognition decision for debugging
+            AppLogger.info(String.format(
+                "[Attendance Recognition] ProfileLabel=%s, StudentID=%s, Confidence=%.2f, RawScore=%.3f, Accepted=%b",
+                profileLabel, studentId, confidence, rawScore, decision.accepted()));
+            
+            // Return result even if not accepted, so we can use confidence for attendance marking
+            // This allows the attendance window to show recognition results even with lower confidence
+            // Use the higher of decision confidence or a normalized raw score
+            double effectiveConfidence = Math.max(confidence, Math.min(1.0, rawScore));
+            return new DetailedRecognitionResult(studentId, effectiveConfidence, decision.accepted());
+        } catch (Exception e) {
+            AppLogger.error("Recognition error in analyzeFaceDetailed: " + e.getMessage(), e);
+            return new DetailedRecognitionResult(null, 0.0, false);
+        } finally {
+            faceColor.release();
+        }
+    }
+    
+    private String extractStudentIdFromLabel(String label) {
+        if (label == null || label.isEmpty() || label.equals("unknown")) {
+            return null;
+        }
+        
+        // Format: "S12345 - Name"
+        String[] parts = label.split(" - ");
+        if (parts.length > 0) {
+            String studentId = parts[0].trim();
+            // Validate student ID format (S followed by 5 digits)
+            if (studentId.matches("^S\\d{5}$")) {
+                return studentId;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Detailed recognition result containing student ID, confidence, and recognition status.
+     */
+    public static class DetailedRecognitionResult {
+        private final String studentId;
+        private final double confidence;
+        private final boolean recognized;
+        
+        public DetailedRecognitionResult(String studentId, double confidence, boolean recognized) {
+            this.studentId = studentId;
+            this.confidence = confidence;
+            this.recognized = recognized;
+        }
+        
+        public String getStudentId() {
+            return studentId;
+        }
+        
+        public double getConfidence() {
+            return confidence;
+        }
+        
+        public boolean isRecognized() {
+            return recognized;
+        }
+    }
+
     public int getAdaptiveFrameSkip() {
         return datasetRepository.getAdaptiveFrameSkip();
     }
