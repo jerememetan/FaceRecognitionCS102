@@ -141,8 +141,8 @@ public class RosterViewer extends JFrame {
                 ArrayList<String> row = new ArrayList<>();
                 row.add(r.getRosterId());
                 row.add(r.getCourseCode());
-                row.add(r.getStartTime().format(timeFormatter));  // convert LocalTime to String
-                row.add(r.getEndTime().format(timeFormatter));    // convert LocalTime to String
+                row.add(r.getStartTime().format(timeFormatter));
+                row.add(r.getEndTime().format(timeFormatter));   
                 row.add(r.getLocation());
                 data.add(row);
             }
