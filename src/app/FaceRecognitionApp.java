@@ -3,6 +3,7 @@ package app;
 import config.AppConfig;
 import config.AppLogger;
 import gui.recognition.LiveRecognitionViewer;
+import gui.FullScreenUtil;
 import java.io.File;
 import javax.swing.*;
 
@@ -13,8 +14,15 @@ import javax.swing.*;
 public class FaceRecognitionApp {
 
     static {
-        // Load OpenCV native library
-        System.load(new File(AppConfig.getInstance().getOpenCvLibPath()).getAbsolutePath());
+        // Load OpenCV native library using AppConfig
+        try {
+            String libPath = AppConfig.getInstance().getOpenCvLibPath();
+            System.load(new File(libPath).getAbsolutePath());
+            AppLogger.info("OpenCV library loaded from: " + libPath);
+        } catch (Exception e) {
+            AppLogger.error("Failed to load OpenCV library: " + e.getMessage(), e);
+            throw new RuntimeException("Failed to load OpenCV native library", e);
+        }
     }
 
     public static void main(String[] args) {
@@ -26,6 +34,13 @@ public class FaceRecognitionApp {
         SwingUtilities.invokeLater(() -> {
             try {
                 LiveRecognitionViewer viewer = new LiveRecognitionViewer();
+                // Make the recognition viewer fullscreen (windowed fullscreen) by default
+                try {
+                    FullScreenUtil.enableFullScreen(viewer, FullScreenUtil.Mode.MAXIMIZED);
+                } catch (Throwable t) {
+                    // If fullscreen fails for any reason, log and continue showing normally
+                    AppLogger.warn("Unable to enable fullscreen for LiveRecognitionViewer: " + t.getMessage());
+                }
                 viewer.setVisible(true);
                 AppLogger.info("Live Recognition Viewer launched successfully");
             } catch (Exception e) {
