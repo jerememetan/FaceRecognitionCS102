@@ -66,11 +66,32 @@ public class SessionAttendanceWindow extends JFrame {
     private VideoCapture capture;
     private Timer recognitionTimer;
     private Timer sessionEndTimer;
+    private Thread cameraThread; // Separate thread for smooth video display
+    private Mat currentFrame; // Current frame for display
+    private final Object frameLock = new Object(); // Lock for thread-safe frame access
+    private Map<String, FaceRecognitionInfo> recognitionCache = new HashMap<>(); // Cache recognition results by face position
     private boolean isRunning = false;
     private boolean isUpdatingTable = false; // Flag to prevent recursive updates
     
+    // Helper class to store recognition info for a face
+    private static class FaceRecognitionInfo {
+        Rect faceRect;
+        Scalar color;
+        String label;
+        long timestamp; // When this recognition was done
+        
+        FaceRecognitionInfo(Rect faceRect, Scalar color, String label) {
+            this.faceRect = faceRect;
+            this.color = color;
+            this.label = label;
+            this.timestamp = System.currentTimeMillis();
+        }
+    }
+    
     private static final String[] COLUMNS = {"Student ID", "Name", "Status", "Timestamp", "Method", "Confidence", "Notes"};
-    private static final int RECOGNITION_INTERVAL_MS = 500; // Check every 500ms
+    private static final int RECOGNITION_INTERVAL_MS = 500; // Process recognition every 500ms
+    private static final int CAMERA_FPS_TARGET = 15; // Target FPS for camera display (minimum 15)
+    private static final long RECOGNITION_CACHE_TIMEOUT_MS = 1000; // Recognition cache valid for 1 second
     
     public SessionAttendanceWindow(Session session) {
         super("Attendance Marking - " + session.getName());
@@ -436,112 +457,274 @@ public class SessionAttendanceWindow extends JFrame {
             return;
         }
         
+        // Set camera resolution for better performance
+        capture.set(org.opencv.videoio.Videoio.CAP_PROP_FRAME_WIDTH, 640);
+        capture.set(org.opencv.videoio.Videoio.CAP_PROP_FRAME_HEIGHT, 480);
+        
         isRunning = true;
         
-        // Recognition timer - processes frames periodically
+        // Start camera capture thread for smooth video display at 15+ FPS
+        cameraThread = new Thread(() -> {
+            Mat frame = new Mat();
+            long lastFrameTime = System.currentTimeMillis();
+            long frameInterval = 1000 / CAMERA_FPS_TARGET; // Target frame interval in ms (66ms for 15fps)
+            
+            while (isRunning && capture.isOpened()) {
+                long currentTime = System.currentTimeMillis();
+                
+                // Control frame rate to maintain minimum 15 FPS
+                if (currentTime - lastFrameTime < frameInterval) {
+                    try {
+                        Thread.sleep(frameInterval - (currentTime - lastFrameTime));
+                    } catch (InterruptedException e) {
+                        break;
+                    }
+                }
+                lastFrameTime = System.currentTimeMillis();
+                
+                if (capture.read(frame) && !frame.empty()) {
+                    // Create display frame with face detection boxes
+                    Mat displayFrame = drawFrameWithBoxes(frame.clone());
+                    
+                    synchronized (frameLock) {
+                        if (currentFrame != null) {
+                            currentFrame.release();
+                        }
+                        currentFrame = frame.clone();
+                    }
+                    
+                    // Display frame immediately
+                    cameraPanel.displayMat(displayFrame);
+                    displayFrame.release();
+                }
+            }
+            
+            frame.release();
+            AppLogger.info("Camera thread stopped");
+        }, "CameraCaptureThread");
+        cameraThread.setDaemon(true);
+        cameraThread.start();
+        
+        // Recognition timer - processes recognition periodically on separate thread
         recognitionTimer = new Timer(RECOGNITION_INTERVAL_MS, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!isRunning) return;
                 
-                Mat frame = new Mat();
-                if (capture.read(frame) && !frame.empty()) {
-                    // Detect faces, recognize, and draw overlays
-                    Mat frameWithOverlays = processFrameForAttendance(frame);
+                // Process recognition on a separate thread to avoid blocking video
+                new Thread(() -> {
+                    Mat frameToProcess = null;
+                    synchronized (frameLock) {
+                        if (currentFrame != null && !currentFrame.empty()) {
+                            frameToProcess = currentFrame.clone();
+                        }
+                    }
                     
-                    // Display frame with overlays
-                    cameraPanel.displayMat(frameWithOverlays);
-                    
-                    frameWithOverlays.release();
-                }
-                frame.release();
+                    if (frameToProcess != null) {
+                        try {
+                            processRecognition(frameToProcess);
+                        } catch (Exception ex) {
+                            AppLogger.error("Error processing recognition: " + ex.getMessage(), ex);
+                        } finally {
+                            frameToProcess.release();
+                        }
+                    }
+                }, "RecognitionThread").start();
             }
         });
         recognitionTimer.start();
     }
     
-    private Mat processFrameForAttendance(Mat frame) {
-        // Create a copy of the frame to draw on
-        Mat frameWithOverlays = frame.clone();
+    /**
+     * Draws face detection boxes on every frame. Shows boxes immediately when faces are detected,
+     * and uses cached recognition results when available.
+     */
+    private Mat drawFrameWithBoxes(Mat frame) {
+        Mat frameWithBoxes = frame.clone();
         
         try {
-            // Detect all faces in the frame
-            List<Rect> faces = detectFaces(frame);
+            // Detect faces (lightweight operation - fast)
+            List<Rect> detectedFaces = detectFaces(frame);
             
-            if (faces.isEmpty()) {
-                return frameWithOverlays;
-            }
+            // Clean up old recognition cache entries
+            long currentTime = System.currentTimeMillis();
+            recognitionCache.entrySet().removeIf(entry -> 
+                currentTime - entry.getValue().timestamp > RECOGNITION_CACHE_TIMEOUT_MS);
             
-            // Process each detected face
-            for (Rect faceRect : faces) {
-                // Recognize with detailed confidence info
-                LiveRecognitionService.DetailedRecognitionResult result = 
-                    recognitionService.analyzeFaceDetailed(frame, faceRect, session.getSessionId());
+            // Draw boxes for all detected faces
+            for (Rect faceRect : detectedFaces) {
+                // Try to find matching recognition result in cache
+                FaceRecognitionInfo recognitionInfo = findMatchingRecognition(faceRect);
                 
-                // Log recognition result for debugging
-                if (result != null) {
-                    AppLogger.info(String.format("Recognition result: studentId=%s, confidence=%.2f, recognized=%b",
-                        result.getStudentId(), result.getConfidence(), result.isRecognized()));
+                Scalar boxColor;
+                String label;
+                
+                if (recognitionInfo != null) {
+                    // Use cached recognition result (has name and confidence-based color)
+                    boxColor = recognitionInfo.color;
+                    label = recognitionInfo.label;
                 } else {
-                    AppLogger.warn("Recognition result is null");
+                    // Draw gray box for detected but not yet recognized face
+                    boxColor = new Scalar(128, 128, 128); // Gray
+                    label = "Detecting...";
                 }
                 
-                // Get color and label based on confidence
-                Scalar boxColor = getColorForConfidence(result.getConfidence());
-                String displayLabel = getDisplayLabel(result);
-                
                 // Draw bounding box
-                Imgproc.rectangle(frameWithOverlays, 
+                Imgproc.rectangle(frameWithBoxes, 
                     new Point(faceRect.x, faceRect.y),
                     new Point(faceRect.x + faceRect.width, faceRect.y + faceRect.height),
                     boxColor, 3);
                 
                 // Draw label text above the box
                 Point textPosition = new Point(faceRect.x, Math.max(25, faceRect.y - 10));
-                Imgproc.putText(frameWithOverlays, displayLabel,
+                Imgproc.putText(frameWithBoxes, label,
                     textPosition,
                     Imgproc.FONT_HERSHEY_SIMPLEX, 0.7, boxColor, 2);
+            }
+        } catch (Exception e) {
+            AppLogger.error("Error drawing face detection boxes: " + e.getMessage(), e);
+        }
+        
+        return frameWithBoxes;
+    }
+    
+    /**
+     * Finds a matching recognition result for a face rectangle.
+     * Uses distance-based matching to find the closest recognition result.
+     */
+    private FaceRecognitionInfo findMatchingRecognition(Rect faceRect) {
+        int faceCenterX = faceRect.x + faceRect.width / 2;
+        int faceCenterY = faceRect.y + faceRect.height / 2;
+        
+        FaceRecognitionInfo bestMatch = null;
+        int minDistance = Integer.MAX_VALUE;
+        
+        for (FaceRecognitionInfo info : recognitionCache.values()) {
+            int infoCenterX = info.faceRect.x + info.faceRect.width / 2;
+            int infoCenterY = info.faceRect.y + info.faceRect.height / 2;
+            
+            int distance = (int) Math.sqrt(
+                Math.pow(faceCenterX - infoCenterX, 2) + 
+                Math.pow(faceCenterY - infoCenterY, 2)
+            );
+            
+            // If faces are close (within 80 pixels), consider it a match
+            if (distance < 80 && distance < minDistance) {
+                minDistance = distance;
+                bestMatch = info;
+            }
+        }
+        
+        return bestMatch;
+    }
+    
+    /**
+     * Processes recognition for faces in a frame and updates the recognition cache.
+     * This runs less frequently to avoid blocking the video feed.
+     */
+    private void processRecognition(Mat frame) {
+        try {
+            // Detect faces
+            List<Rect> faces = detectFaces(frame);
+            
+            if (faces.isEmpty()) {
+                return;
+            }
+            
+            // Process each detected face for recognition
+            for (Rect faceRect : faces) {
+                // Validate face rectangle is reasonable
+                if (faceRect.width <= 0 || faceRect.height <= 0 || 
+                    faceRect.x < 0 || faceRect.y < 0 ||
+                    faceRect.x + faceRect.width > frame.width() ||
+                    faceRect.y + faceRect.height > frame.height()) {
+                    AppLogger.warn("Invalid face rectangle detected, skipping: " + faceRect);
+                    continue;
+                }
                 
-                // Process attendance marking for recognized students
-                if (result != null && result.getStudentId() != null && result.getConfidence() > 0) {
-                    String studentId = result.getStudentId();
-                    AttendanceRecord record = recordMap.get(studentId);
+                // Recognize with detailed confidence info
+                LiveRecognitionService.DetailedRecognitionResult result = 
+                    recognitionService.analyzeFaceDetailed(frame, faceRect, session.getSessionId());
+                
+                if (result != null) {
+                    // Get color and label based on confidence
+                    Scalar boxColor = getColorForConfidence(result.getConfidence());
+                    String displayLabel = getDisplayLabel(result);
                     
-                    if (record != null && record.getStatus() == AttendanceRecord.Status.PENDING) {
-                        // Create AutoMarker with recognition result
-                        Student student = studentManager.findStudentById(studentId);
-                        if (student != null) {
-                            AutoMarker.RecognitionResult recResult = new AutoMarker.RecognitionResult(
-                                student, result.getConfidence(), result.isRecognized());
-                            AutoMarker autoMarker = new AutoMarker(recResult);
-                            
-                            if (autoMarker.markAttendance(record)) {
-                                // Sync to SessionStudent
-                                syncAttendanceRecordToSessionStudent(record);
-                                
-                                // Log that attendance was marked
-                                AppLogger.info(String.format(
-                                    "Auto-marked attendance: Student=%s, Status=%s, Timestamp=%s, Method=%s",
-                                    studentId, record.getStatus(), record.getTimestamp(), record.getMarkingMethod()));
-                                
-                                // Update table immediately
-                                SwingUtilities.invokeLater(() -> {
-                                    int row = findRowByStudentId(studentId);
-                                    if (row >= 0) {
-                                        updateTableRow(row, record);
-                                    }
-                                });
-                            }
+                    // Store in recognition cache (always cache for display purposes)
+                    String cacheKey = faceRect.x + "," + faceRect.y + "," + faceRect.width + "," + faceRect.height;
+                    recognitionCache.put(cacheKey, new FaceRecognitionInfo(faceRect.clone(), boxColor, displayLabel));
+                    
+                    // Only process attendance marking if:
+                    // 1. Result has valid student ID
+                    // 2. Result is actually recognized (decision.accepted() == true) OR confidence is very high (>= 0.6)
+                    // 3. Confidence is above minimum threshold (>= 0.4)
+                    boolean shouldProcessAttendance = false;
+                    
+                    if (result.getStudentId() != null && !result.getStudentId().isEmpty()) {
+                        // Only mark attendance if:
+                        // - Recognition was accepted by the decision engine, OR
+                        // - Confidence is high enough (>= 60%) to auto-mark
+                        if (result.isRecognized()) {
+                            // Recognition was accepted, process attendance if confidence >= 40%
+                            shouldProcessAttendance = result.getConfidence() >= 0.40;
+                        } else {
+                            // Recognition was not accepted, only process if confidence is very high (>= 60%)
+                            // This prevents false positives from low-quality matches
+                            shouldProcessAttendance = result.getConfidence() >= 0.60;
                         }
                     }
+                    
+                    if (shouldProcessAttendance) {
+                        String studentId = result.getStudentId();
+                        AttendanceRecord record = recordMap.get(studentId);
+                        
+                        if (record != null && record.getStatus() == AttendanceRecord.Status.PENDING) {
+                            // Create AutoMarker with recognition result
+                            Student student = studentManager.findStudentById(studentId);
+                            if (student != null) {
+                                AutoMarker.RecognitionResult recResult = new AutoMarker.RecognitionResult(
+                                    student, result.getConfidence(), result.isRecognized());
+                                AutoMarker autoMarker = new AutoMarker(recResult);
+                                
+                                if (autoMarker.markAttendance(record)) {
+                                    // Sync to SessionStudent
+                                    syncAttendanceRecordToSessionStudent(record);
+                                    
+                                    // Log that attendance was marked
+                                    AppLogger.info(String.format(
+                                        "Auto-marked attendance: Student=%s, Status=%s, Timestamp=%s, Method=%s, Confidence=%.2f, Recognized=%b",
+                                        studentId, record.getStatus(), record.getTimestamp(), record.getMarkingMethod(),
+                                        result.getConfidence(), result.isRecognized()));
+                                    
+                                    // Update table immediately
+                                    SwingUtilities.invokeLater(() -> {
+                                        int row = findRowByStudentId(studentId);
+                                        if (row >= 0) {
+                                            updateTableRow(row, record);
+                                        }
+                                    });
+                                }
+                            } else {
+                                AppLogger.warn("Student not found for ID: " + studentId);
+                            }
+                        } else if (record != null) {
+                            // Record exists but status is not PENDING - skip silently
+                            // (This is expected behavior when attendance is already marked)
+                        }
+                    }
+                    // Note: We don't log when not processing attendance to avoid log spam
+                    // Only process attendance when recognition is accepted OR confidence is very high
+                } else {
+                    // No recognition result - this is normal for unrecognized faces
+                    // Don't log to avoid spam
                 }
             }
         } catch (Exception e) {
-            AppLogger.error("Error processing frame for attendance: " + e.getMessage(), e);
+            AppLogger.error("Error processing recognition: " + e.getMessage(), e);
         }
-        
-        return frameWithOverlays;
     }
+    
     
     /**
      * Returns color based on confidence level:
@@ -850,6 +1033,17 @@ public class SessionAttendanceWindow extends JFrame {
         if (choice == JOptionPane.YES_OPTION) {
             // Stop all timers and release resources first
             isRunning = false;
+            
+            // Stop camera thread
+            if (cameraThread != null && cameraThread.isAlive()) {
+                try {
+                    cameraThread.interrupt();
+                    cameraThread.join(1000); // Wait up to 1 second for thread to finish
+                } catch (InterruptedException e) {
+                    AppLogger.warn("Interrupted while waiting for camera thread to stop");
+                }
+            }
+            
             if (recognitionTimer != null) {
                 recognitionTimer.stop();
                 recognitionTimer = null;
@@ -858,6 +1052,18 @@ public class SessionAttendanceWindow extends JFrame {
                 sessionEndTimer.stop();
                 sessionEndTimer = null;
             }
+            
+            // Release frame resources
+            synchronized (frameLock) {
+                if (currentFrame != null) {
+                    currentFrame.release();
+                    currentFrame = null;
+                }
+            }
+            
+            // Clear recognition cache
+            recognitionCache.clear();
+            
             if (capture != null && capture.isOpened()) {
                 capture.release();
                 capture = null;
