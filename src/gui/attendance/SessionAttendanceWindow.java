@@ -12,6 +12,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.*;
 import javax.swing.Timer;
 import javax.swing.border.TitledBorder;
@@ -54,7 +59,9 @@ public class SessionAttendanceWindow extends JFrame {
     private Thread cameraThread; // Separate thread for smooth video display
     private Mat currentFrame; // Current frame for display
     private final Object frameLock = new Object(); // Lock for thread-safe frame access
-    private Map<String, FaceRecognitionInfo> recognitionCache = new HashMap<>(); // Cache recognition results by face position
+    private final Map<String, FaceRecognitionInfo> recognitionCache = new ConcurrentHashMap<>(); // Cache recognition results by face position
+    private final ExecutorService recognitionExecutor;
+    private final AtomicBoolean recognitionTaskRunning = new AtomicBoolean(false);
     private boolean isRunning = false;
     private boolean isUpdatingTable = false; // Flag to prevent recursive updates
     
@@ -90,6 +97,14 @@ public class SessionAttendanceWindow extends JFrame {
         this.sessionManager = new service.session.SessionManager();
         this.attendanceRecordRepository = new repository.AttendanceRecordRepositoryInstance();
         this.sessStuRepository = new repository.SessStuRepositoryInstance();
+        this.recognitionExecutor = Executors.newSingleThreadExecutor(new ThreadFactory() {
+            @Override
+            public Thread newThread(Runnable r) {
+                Thread t = new Thread(r, "AttendanceRecognitionWorker");
+                t.setDaemon(true);
+                return t;
+            }
+        });
         
         initializeAttendanceRecords();
         initializeUI();
@@ -494,27 +509,41 @@ public class SessionAttendanceWindow extends JFrame {
         recognitionTimer = new Timer(RECOGNITION_INTERVAL_MS, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!isRunning) return;
-                
-                // Process recognition on a separate thread to avoid blocking video
-                new Thread(() -> {
-                    Mat frameToProcess = null;
-                    synchronized (frameLock) {
-                        if (currentFrame != null && !currentFrame.empty()) {
-                            frameToProcess = currentFrame.clone();
-                        }
+                if (!isRunning) {
+                    return;
+                }
+
+                if (!recognitionTaskRunning.compareAndSet(false, true)) {
+                    return; // Prior run still in flight
+                }
+
+                Mat frameToProcess = null;
+                synchronized (frameLock) {
+                    if (currentFrame != null && !currentFrame.empty()) {
+                        frameToProcess = currentFrame.clone();
                     }
-                    
-                    if (frameToProcess != null) {
+                }
+
+                if (frameToProcess == null) {
+                    recognitionTaskRunning.set(false);
+                    return;
+                }
+
+                final Mat processingFrame = frameToProcess;
+                recognitionExecutor.submit(() -> {
+                    try {
+                        processRecognition(processingFrame);
+                    } catch (Exception ex) {
+                        AppLogger.error("Error processing recognition: " + ex.getMessage(), ex);
+                    } finally {
                         try {
-                            processRecognition(frameToProcess);
-                        } catch (Exception ex) {
-                            AppLogger.error("Error processing recognition: " + ex.getMessage(), ex);
-                        } finally {
-                            frameToProcess.release();
+                            processingFrame.release();
+                        } catch (Exception releaseEx) {
+                            AppLogger.warn("Failed to release processing frame: " + releaseEx.getMessage());
                         }
+                        recognitionTaskRunning.set(false);
                     }
-                }, "RecognitionThread").start();
+                });
             }
         });
         recognitionTimer.start();
@@ -1033,6 +1062,8 @@ public class SessionAttendanceWindow extends JFrame {
                 recognitionTimer.stop();
                 recognitionTimer = null;
             }
+            recognitionTaskRunning.set(false);
+            recognitionExecutor.shutdownNow();
             if (sessionEndTimer != null) {
                 sessionEndTimer.stop();
                 sessionEndTimer = null;

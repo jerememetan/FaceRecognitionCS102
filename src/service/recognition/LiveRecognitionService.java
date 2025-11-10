@@ -23,7 +23,7 @@ public class LiveRecognitionService {
     private static final Scalar REJECT_COLOR = new Scalar(0, 0, 255);
 
     private static final long SESSION_TIMEOUT_MILLIS = 5_000;
-    private static final long FRAME_LAG_RESET_MS = 450;
+    private static final long FRAME_LAG_RESET_MS = 900;
 
     private final ImageProcessor imageProcessor = new ImageProcessor();
     private final FaceEmbeddingGenerator embeddingGenerator = new FaceEmbeddingGenerator();
