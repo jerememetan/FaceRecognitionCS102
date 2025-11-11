@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -42,7 +43,7 @@ public class SessionRosterManagement extends JDialog {
     private Session session;
     private DefaultTableModel tableModel;
     private JTable studentTable;
-    private JButton addButton, removeButton, openButton, closeButton, editButton;
+    private JButton addButton, removeButton, markAttendanceButton, editButton;
     private ArrayList<Student> allStudents; // required to add students to a session
     private JLabel nameLabel, dateLabel, timeLabel, locationLabel;
 
@@ -91,16 +92,18 @@ public class SessionRosterManagement extends JDialog {
         editButton.addActionListener(e -> editSessionDetails());
         infoPanel.add(editButton);
 
-        // Open a session
+        // Check if session should be automatically closed based on date mismatch
+        // This must happen before setting up the buttons
+        checkAndCloseSessionIfDateMismatch();
+
+        // Mark Attendance button logic
+        // Only show "Mark Attendance" button if session is active (opened)
         if (session.isActive()) {
-            closeButton = UIComponents.createAccentButton("Close Session", new Color(239, 68, 68));
-            closeButton.addActionListener(e -> { closeSession(); });
-            infoPanel.add(closeButton);
-        } else {
-            openButton = UIComponents.createAccentButton("Open Session", new Color(59, 130, 246));
-            openButton.addActionListener(e -> { openSession(); });
-            infoPanel.add(openButton);
+            markAttendanceButton = UIComponents.createAccentButton("Mark Attendance", new Color(59, 130, 246));
+            markAttendanceButton.addActionListener(e -> { openSession(); });
+            infoPanel.add(markAttendanceButton);
         }
+        // If session is not active, don't show any button
         mainPanel.add(infoPanel, BorderLayout.NORTH);
 
         // Student Roster Table
@@ -152,6 +155,29 @@ public class SessionRosterManagement extends JDialog {
         // Populate existing roster
         refreshTable();
     }
+    
+    /**
+     * Automatically closes the session if the current date doesn't match the session date.
+     * Sessions should only be active on their scheduled date.
+     * This method updates the session state in memory and database.
+     */
+    private void checkAndCloseSessionIfDateMismatch() {
+        if (session.getDate() == null) {
+            return; // Cannot check without date
+        }
+        
+        LocalDate currentDate = LocalDate.now();
+        LocalDate sessionDate = session.getDate();
+        
+        // If session is active but current date doesn't match session date, close it
+        if (session.isActive() && !currentDate.equals(sessionDate)) {
+            AppLogger.info("Auto-closing session " + session.getSessionId() + " - current date (" + 
+                         currentDate + ") doesn't match session date (" + sessionDate + ")");
+            // Close the session (updates both in-memory state and database)
+            manager.closeSession(session);
+            AppLogger.info("Session " + session.getSessionId() + " has been closed due to date mismatch");
+        }
+    }
 
     private void refreshTable() {
         AppLogger.info("Refreshing roster table");
@@ -170,56 +196,34 @@ public class SessionRosterManagement extends JDialog {
     }
 
     private void openSession() {
-        JLabel confirmationJLabel = new JLabel("Do you want to open the session?");
-        int choice = JOptionPane.showConfirmDialog(this, confirmationJLabel, "Open Session", JOptionPane.YES_NO_OPTION);
-        if (choice == JOptionPane.YES_OPTION) {
-            if (session.isActive()) {
-                JOptionPane.showMessageDialog(this, "Session is already open.");
-                dispose();
-                return;
-            }
-            if (session.getStudentRoster().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Cannot open session with an empty student roster.");
-                return;
-            }
-            
-            // Load session roster from database
-            manager.loadSessionRoster(session);
-            
-            // Logic to open the session
-            manager.openSession(session);
-            
-            // Open attendance marking window
-            SwingUtilities.invokeLater(() -> {
-                gui.attendance.SessionAttendanceWindow attendanceWindow = 
-                    new gui.attendance.SessionAttendanceWindow(session);
-                attendanceWindow.setVisible(true);
-            });
-            
-            JOptionPane.showMessageDialog(this, "Session opened successfully. Attendance window opened.");
-            dispose();
-        } else {
-            dispose();
+        // This method is called when "Mark Attendance" button is clicked
+        // Session should already be open (active) at this point since button only shows when active
+        if (!session.isActive()) {
+            JOptionPane.showMessageDialog(this, 
+                "Session is not open. Cannot mark attendance.",
+                "Session Not Open", 
+                JOptionPane.WARNING_MESSAGE);
+            return;
         }
+        
+        if (session.getStudentRoster().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Cannot mark attendance with an empty student roster.");
+            return;
+        }
+        
+        // Load session roster from database
+        manager.loadSessionRoster(session);
+        
+        // Open attendance marking window
+        SwingUtilities.invokeLater(() -> {
+            gui.attendance.SessionAttendanceWindow attendanceWindow = 
+                new gui.attendance.SessionAttendanceWindow(session);
+            attendanceWindow.setVisible(true);
+        });
+        
+        dispose();
     }
 
-    private void closeSession() {
-        JLabel confirmationJLabel = new JLabel("Do you want to close the session?");
-        int choice = JOptionPane.showConfirmDialog(this, confirmationJLabel, "Close Session", JOptionPane.YES_NO_OPTION);
-        if (choice == JOptionPane.YES_OPTION) {
-            if (!session.isActive()) {
-                JOptionPane.showMessageDialog(this, "Session is already closed.");
-                dispose();
-                return;
-            }
-            // Logic to close the session
-            manager.closeSession(session);
-            JOptionPane.showMessageDialog(this, "Session closed successfully.");
-            dispose();
-        } else {
-            dispose();
-        }
-    }
 
     private void editSessionDetails() {
         SessionForm sessionForm = new SessionForm(this, manager, new RosterManager(), session);
@@ -305,7 +309,6 @@ public class SessionRosterManagement extends JDialog {
         String sessionId = String.valueOf(session.getSessionId());
         String sessionName = session.getName();  // Session name
         String sessionDate = session.getDate().toString();  // Session date
-        String sessionTime = session.getStartTime() + "-" + session.getEndTime();  // Session time
 
         String exportTitle = "Session_" + sessionId + "_" + sessionName + "_" + sessionDate;
 
