@@ -2,11 +2,14 @@ package gui.session;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -25,6 +28,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -79,6 +83,9 @@ public class SessionViewer extends JFrame {
         sessionTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         sessionTable.getTableHeader().setReorderingAllowed(false);
         sessionTable.getTableHeader().setResizingAllowed(false);
+
+        // Set custom renderer for Status column (column 6) to highlight with colors
+        sessionTable.getColumnModel().getColumn(6).setCellRenderer(new StatusCellRenderer());
 
         sorter = new TableRowSorter<>(tableModel);
         sessionTable.setRowSorter(sorter);
@@ -262,7 +269,51 @@ public class SessionViewer extends JFrame {
 
     private void refreshTable() {
         tableModel.setRowCount(0); // Clear existing rows
+        LocalDate currentDate = LocalDate.now();
+        LocalTime currentTime = LocalTime.now();
+        
         for (Session s : manager.getAllSessions()) {
+            // Check if session should be automatically opened based on date and time
+            boolean shouldBeOpen = false;
+            if (s.getDate() != null && s.getStartTime() != null && s.getEndTime() != null) {
+                LocalDate sessionDate = s.getDate();
+                LocalTime sessionStartTime = s.getStartTime();
+                LocalTime sessionEndTime = s.getEndTime();
+                
+                // Session should be open if:
+                // 1. Current date matches session date
+                // 2. Current time is after start time and before end time
+                if (currentDate.equals(sessionDate) && 
+                    currentTime.isAfter(sessionStartTime) && 
+                    currentTime.isBefore(sessionEndTime)) {
+                    shouldBeOpen = true;
+                }
+            }
+            
+            // Auto-open or auto-close session based on time window
+            if (shouldBeOpen && !s.isActive()) {
+                // Auto-open the session when conditions are met
+                manager.openSession(s);
+                AppLogger.info("Auto-opened session " + s.getSessionId() + " - within time window");
+            } else if (!shouldBeOpen && s.isActive()) {
+                // Auto-close the session if outside time window
+                // Close if date doesn't match OR if date matches but time is outside window
+                if (s.getDate() != null) {
+                    if (!currentDate.equals(s.getDate())) {
+                        manager.closeSession(s);
+                        AppLogger.info("Auto-closed session " + s.getSessionId() + " - date mismatch");
+                    } else if (s.getStartTime() != null && s.getEndTime() != null) {
+                        // Date matches but time is outside window - close it
+                        LocalTime sessionStartTime = s.getStartTime();
+                        LocalTime sessionEndTime = s.getEndTime();
+                        if (currentTime.isBefore(sessionStartTime) || currentTime.isAfter(sessionEndTime)) {
+                            manager.closeSession(s);
+                            AppLogger.info("Auto-closed session " + s.getSessionId() + " - outside time window");
+                        }
+                    }
+                }
+            }
+            
             tableModel.addRow(new Object[]{
                     s.getSessionId(),
                     s.getName(),
@@ -272,6 +323,42 @@ public class SessionViewer extends JFrame {
                     s.getLocation(),
                     s.isActive() ? "Opened" : "Closed"
             });
+        }
+    }
+    
+    /**
+     * Custom cell renderer for the Status column to highlight with colors.
+     * Green background for "Opened", red background for "Closed".
+     */
+    private class StatusCellRenderer extends DefaultTableCellRenderer {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            
+            // Only apply colors to the Status column
+            if (column == 6) {
+                String status = value != null ? value.toString() : "";
+                if ("Opened".equals(status)) {
+                    setBackground(new Color(34, 197, 94)); // Green
+                    setForeground(Color.WHITE);
+                } else if ("Closed".equals(status)) {
+                    setBackground(new Color(239, 68, 68)); // Red
+                    setForeground(Color.WHITE);
+                } else {
+                    setBackground(isSelected ? table.getSelectionBackground() : table.getBackground());
+                    setForeground(isSelected ? table.getSelectionForeground() : table.getForeground());
+                }
+                
+                // Center align the text
+                setHorizontalAlignment(JLabel.CENTER);
+            } else {
+                // For other columns, use default colors
+                setBackground(isSelected ? table.getSelectionBackground() : table.getBackground());
+                setForeground(isSelected ? table.getSelectionForeground() : table.getForeground());
+            }
+            
+            return this;
         }
     }
 
