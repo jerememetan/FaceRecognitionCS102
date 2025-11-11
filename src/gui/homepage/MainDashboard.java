@@ -60,7 +60,7 @@ public class MainDashboard extends JFrame {
         UIComponents.applyTextPanelStyle(textPanel);
 
         // Welcome label
-        JLabel welcomeLabel = new JLabel("Welcome to Face Recognition System!", SwingConstants.CENTER);
+        JLabel welcomeLabel = new JLabel("Welcome to Face Recognition System, "+ this.role +"!", SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 28)); 
         welcomeLabel.setForeground(new Color(30, 41, 59)); // Dark blue text
         welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -68,17 +68,31 @@ public class MainDashboard extends JFrame {
         // Text area
         JTextArea textArea = new JTextArea();
         UIComponents.styleInfoTextArea(textArea); // call from UIComponents.java
+        if (this.role.equals("admin") ){
+            textArea.setText("""
+            Live Recognition - Start real-time face detection and attendance marking
+            
+            Students - Manage student enrollment and facial data
+            
+            Attendance Sessions - Create and manage attendance sessions
+            
+            Reports - View and export attendance reports
+            
+            Settings - Configure application and camera settings
+            """);
+        }
+        else {
         textArea.setText("""
          Live Recognition - Start real-time face detection and attendance marking
         
-         Students - Manage student enrollment and facial data
-        
-         Attendance Sessions - Create and manage attendance sessions
+         Attendance - Mark/View Attendance for classes
         
          Reports - View and export attendance reports
         
          Settings - Configure application and camera settings
         """);
+        }
+
         
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
@@ -135,7 +149,10 @@ public class MainDashboard extends JFrame {
         sidebar.add(Box.createRigidArea(new Dimension(0, 20)));
 
         JButton recognitionBtn = new JButton("Live Recognition");
-        JButton studentBtn = new JButton("Students");
+        JButton studentBtn = null;
+        if (this.role.equals("TA")){
+            studentBtn = new JButton("Students");
+        }
         JButton sessionBtn = new JButton("Sessions");
         JButton reportBtn = new JButton("Reports");
         JButton settingBtn = new JButton("Settings");
@@ -143,7 +160,15 @@ public class MainDashboard extends JFrame {
         // define a consistent size for all the buttons
         Dimension buttonSize = new Dimension(200, 45);
         // put them in an array
-        JButton[] buttons = { recognitionBtn, studentBtn, sessionBtn, reportBtn, settingBtn };
+        JButton[] buttons;
+        if (this.role.equals("TA")){
+             buttons = new JButton[]{ recognitionBtn, sessionBtn, reportBtn, settingBtn };
+        }
+        else{
+            buttons = new JButton[]{ recognitionBtn, studentBtn, sessionBtn, reportBtn, settingBtn };
+        }
+
+        
         for (JButton btn : buttons) {
             UIComponents.styleSidebarButton(btn);
             btn.setMaximumSize(buttonSize);
@@ -195,44 +220,47 @@ public class MainDashboard extends JFrame {
         });
 
         // open the student enrollment application
-        studentBtn.addActionListener(e -> {
-            MainDashboard.this.setVisible(false);
-            
-            // Create a timer to detect when the student window appears and attach our listener
-            Timer findWindowTimer = new Timer(100, null);
-            findWindowTimer.addActionListener(evt -> {
-                Window[] windows = Window.getWindows();
-                for (Window window : windows) {
-                    if (window.isVisible() && window instanceof JFrame && 
-                        ((JFrame)window).getTitle().contains("Student")) {
-                        JFrame studentFrame = (JFrame)window;
-                        studentFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                        studentFrame.addWindowListener(new WindowAdapter() {
-                            @Override
-                            public void windowClosed(WindowEvent e) {
-                                SwingUtilities.invokeLater(() -> {
-                                    MainDashboard.this.setVisible(true);
-                                });
-                            }
-                        });
-                        findWindowTimer.stop();
-                        break;
+        if (studentBtn != null){
+            studentBtn.addActionListener(e -> {
+                MainDashboard.this.setVisible(false);
+                
+                // Create a timer to detect when the student window appears and attach our listener
+                Timer findWindowTimer = new Timer(100, null);
+                findWindowTimer.addActionListener(evt -> {
+                    Window[] windows = Window.getWindows();
+                    for (Window window : windows) {
+                        if (window.isVisible() && window instanceof JFrame && 
+                            ((JFrame)window).getTitle().contains("Student")) {
+                            JFrame studentFrame = (JFrame)window;
+                            studentFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                            studentFrame.addWindowListener(new WindowAdapter() {
+                                @Override
+                                public void windowClosed(WindowEvent e) {
+                                    SwingUtilities.invokeLater(() -> {
+                                        MainDashboard.this.setVisible(true);
+                                    });
+                                }
+                            });
+                            findWindowTimer.stop();
+                            break;
+                        }
                     }
-                }
+                });
+                findWindowTimer.start();
+                
+                // Launch the student management window
+                SwingUtilities.invokeLater(() -> {
+                    try {
+                        StudentManagerApp.main(null);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        findWindowTimer.stop();
+                        MainDashboard.this.setVisible(true);
+                    }
+                });
             });
-            findWindowTimer.start();
-            
-            // Launch the student management window
-            SwingUtilities.invokeLater(() -> {
-                try {
-                    StudentManagerApp.main(null);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    findWindowTimer.stop();
-                    MainDashboard.this.setVisible(true);
-                }
-            });
-        });
+        }
+
 
         sessionBtn.addActionListener(e -> {
             MainDashboard.this.setVisible(false);
