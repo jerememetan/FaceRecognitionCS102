@@ -68,7 +68,7 @@ public class MainDashboard extends JFrame {
         // Text area
         JTextArea textArea = new JTextArea();
         UIComponents.styleInfoTextArea(textArea); // call from UIComponents.java
-        if (this.role.equals("admin") ){
+        if (this.role.equals("Admin") ){
             textArea.setText("""
             Live Recognition - Start real-time face detection and attendance marking
             
@@ -149,10 +149,8 @@ public class MainDashboard extends JFrame {
         sidebar.add(Box.createRigidArea(new Dimension(0, 20)));
 
         JButton recognitionBtn = new JButton("Live Recognition");
-        JButton studentBtn = null;
-        if (this.role.equals("TA")){
-            studentBtn = new JButton("Students");
-        }
+        JButton studentBtn = new JButton("Students");
+
         JButton sessionBtn = new JButton("Sessions");
         JButton reportBtn = new JButton("Reports");
         JButton settingBtn = new JButton("Settings");
