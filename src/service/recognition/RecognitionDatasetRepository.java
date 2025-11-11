@@ -20,20 +20,22 @@ final class RecognitionDatasetRepository {
 
     private final FaceEmbeddingGenerator embeddingGenerator;
     private final List<RecognitionProfile> profiles = new ArrayList<>();
+    private final Object lock = new Object();
 
     RecognitionDatasetRepository(FaceEmbeddingGenerator embeddingGenerator) {
         this.embeddingGenerator = embeddingGenerator;
     }
 
     void reload() {
-        profiles.clear();
-
         String databaseRoot = AppConfig.getInstance().getDatabaseStoragePath();
         File root = new File(databaseRoot);
         File[] directories = root.listFiles(File::isDirectory);
 
         if (directories == null || directories.length == 0) {
             AppLogger.error("No image folders found at " + databaseRoot + "!");
+            synchronized (lock) {
+                profiles.clear();
+            }
             return;
         }
 
@@ -51,6 +53,7 @@ final class RecognitionDatasetRepository {
         AppLogger.info("====================");
 
         boolean deepLearning = embeddingGenerator.isDeepLearningAvailable();
+        List<RecognitionProfile> refreshedProfiles = new ArrayList<>();
 
         for (File dir : directories) {
             String displayLabel = buildDisplayLabel(dir.getName());
@@ -62,17 +65,17 @@ final class RecognitionDatasetRepository {
             double baseAbsolute = deepLearning ? 0.60 : 0.55;
             double baseMargin = deepLearning ? 0.10 : 0.12;
 
-        boolean likelyHasGlasses = stdDev > 0.12;
+            boolean likelyHasGlasses = stdDev > 0.12;
 
             if (likelyHasGlasses) {
                 double relaxationFactor = Math.max(0.88, 0.95 - (stdDev * 0.5));
                 baseAbsolute *= relaxationFactor;
                 baseMargin *= 0.85;
                 AppLogger.info(String.format(
-            "  [Glasses Mode] %s variation stdDev=%.3f -> relaxed thresholds by %.1f%%",
-            displayLabel,
-            stdDev,
-            (1.0 - relaxationFactor) * 100));
+                        "  [Glasses Mode] %s variation stdDev=%.3f -> relaxed thresholds by %.1f%%",
+                        displayLabel,
+                        stdDev,
+                        (1.0 - relaxationFactor) * 100));
             }
 
             double trainingAbsoluteThreshold = baseAbsolute + ((1.0 - tightness) * 0.10);
@@ -83,7 +86,7 @@ final class RecognitionDatasetRepository {
 
             RecognitionProfile profile = new RecognitionProfile(
                     dir.getAbsolutePath(),
-            displayLabel,
+                    displayLabel,
                     embeddings,
                     centroid,
                     tightness,
@@ -91,7 +94,7 @@ final class RecognitionDatasetRepository {
                     relativeMargin,
                     stdDev);
 
-            profiles.add(profile);
+            refreshedProfiles.add(profile);
 
             AppLogger.info(String.format(
                     "Person %s: tightness=%.3f, stdDev=%.3f, absThresh.live=%.3f (training=%.3f), margin=%.3f",
@@ -103,30 +106,45 @@ final class RecognitionDatasetRepository {
                     relativeMargin));
         }
 
-        debugCentroid();
+        synchronized (lock) {
+            profiles.clear();
+            profiles.addAll(refreshedProfiles);
+            debugCentroidLocked();
+        }
     }
 
     List<RecognitionProfile> profiles() {
-        return List.copyOf(profiles);
+        synchronized (lock) {
+            return List.copyOf(profiles);
+        }
     }
 
     RecognitionProfile profileAt(int index) {
-        if (index < 0 || index >= profiles.size()) {
-            return null;
+        synchronized (lock) {
+            if (index < 0 || index >= profiles.size()) {
+                return null;
+            }
+            return profiles.get(index);
         }
-        return profiles.get(index);
     }
 
     int size() {
-        return profiles.size();
+        synchronized (lock) {
+            return profiles.size();
+        }
     }
 
     boolean isEmpty() {
-        return profiles.isEmpty();
+        synchronized (lock) {
+            return profiles.isEmpty();
+        }
     }
 
     int getAdaptiveFrameSkip() {
-        int numPeople = profiles.size();
+        int numPeople;
+        synchronized (lock) {
+            numPeople = profiles.size();
+        }
         if (numPeople <= 5) {
             return 2;
         } else if (numPeople <= 20) {
@@ -241,6 +259,12 @@ final class RecognitionDatasetRepository {
     }
 
     private void debugCentroid() {
+        synchronized (lock) {
+            debugCentroidLocked();
+        }
+    }
+
+    private void debugCentroidLocked() {
         if (profiles.isEmpty()) {
             return;
         }
