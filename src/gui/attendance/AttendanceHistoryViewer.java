@@ -1,5 +1,5 @@
 package gui.attendance;
-
+import util.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -37,7 +37,8 @@ import repository.AttendanceRecordRepositoryInstance;
 import repository.RosterRepository;
 import repository.RosterRepositoryInstance;
 import repository.SessionRepositoryInstance;
-
+import gui.homepage.*;
+import util.*;
 /**
  * Window for viewing attendance history in a hierarchical view:
  * Level 1: Rosters
@@ -101,7 +102,7 @@ public class AttendanceHistoryViewer extends JFrame {
 
         // Left side: Back button and breadcrumb
         JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        backButton = new JButton("← Back");
+        backButton =  UIComponents.createAccentButton("← Back", ColourTheme.PRIMARY_COLOR);
         backButton.setVisible(false); // Hidden by default (at top level)
         backButton.addActionListener(e -> navigateBack());
         navPanel.add(backButton);
@@ -119,13 +120,13 @@ public class AttendanceHistoryViewer extends JFrame {
         searchField.setFont(new Font("SansSerif", Font.PLAIN, 14));
         searchField.setToolTipText("Search in the current view");
 
-        JButton searchButton = new JButton("Search");
+        JButton searchButton = UIComponents.createAccentButton("Search", ColourTheme.PRIMARY_COLOR);
         searchButton.addActionListener(e -> performSearch());
 
-        JButton clearButton = new JButton("Clear");
+        JButton clearButton = UIComponents.createAccentButton("Clear", new Color(239, 68, 68));
         clearButton.addActionListener(e -> clearSearch());
 
-        JButton refreshButton = new JButton("Refresh");
+        JButton refreshButton = UIComponents.createAccentButton("Refresh", ColourTheme.PRIMARY_COLOR);
         refreshButton.addActionListener(e -> refreshCurrentView());
 
         searchPanel.add(searchLabel);
@@ -137,10 +138,7 @@ public class AttendanceHistoryViewer extends JFrame {
 
         // Right side: Export button
         JPanel exportPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        JButton exportButton = new JButton("📤 Export Options");
-        exportButton.setBackground(new Color(37, 99, 235));
-        exportButton.setForeground(Color.WHITE);
-        exportButton.setFocusPainted(false);
+        JButton exportButton = UIComponents.createAccentButton("📤 Export Options", ColourTheme.PRIMARY_COLOR);
         exportButton.addActionListener(e -> exportCurrentView());
         exportPanel.add(exportButton);
         topPanel.add(exportPanel, BorderLayout.EAST);

@@ -1,5 +1,5 @@
 package gui.homepage;
-
+import util.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -219,7 +219,7 @@ public class ReportsGUI extends JFrame {
             formattedLastExport = "N/A";
         }
 
-        statsPanel.add(createStatCard("Total Reports", String.valueOf(totalReports), new Color(59, 130, 246)));
+        statsPanel.add(createStatCard("Total Reports", String.valueOf(totalReports), ColourTheme.PRIMARY_COLOR));
         statsPanel.add(createStatCard("Generated Today", String.valueOf(reportsToday), new Color(34, 197, 94)));
         statsPanel.add(createStatCard("Last Export", formattedLastExport, new Color(251, 191, 36)));
 
@@ -310,7 +310,7 @@ public class ReportsGUI extends JFrame {
         JButton button = new JButton(text);
         button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         button.setForeground(Color.WHITE);
-        button.setBackground(new Color(59, 130, 246));
+        button.setBackground(ColourTheme.PRIMARY_COLOR);
         button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
         button.setFocusPainted(false);
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -319,7 +319,7 @@ public class ReportsGUI extends JFrame {
 
         button.addMouseListener(new MouseAdapter() {
             @Override public void mouseEntered(MouseEvent e) { button.setBackground(new Color(37, 99, 235)); }
-            @Override public void mouseExited(MouseEvent e) { button.setBackground(new Color(59, 130, 246)); }
+            @Override public void mouseExited(MouseEvent e) { button.setBackground(ColourTheme.PRIMARY_COLOR); }
         });
         return button;
     }

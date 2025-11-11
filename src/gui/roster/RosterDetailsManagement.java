@@ -1,5 +1,5 @@
 package gui.roster;
-
+import util.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -80,7 +80,7 @@ public class RosterDetailsManagement extends JDialog {
         infoPanel.add(locationLabel);
 
         // Edit button to modify roster details
-        editButton = UIComponents.createAccentButton("Edit Roster Details", new Color(59, 130, 246));
+        editButton = UIComponents.createAccentButton("Edit Roster Details", ColourTheme.PRIMARY_COLOR);
         editButton.setFocusPainted(false);
         editButton.addActionListener(e -> editRosterDetails());
         infoPanel.add(editButton);
@@ -110,8 +110,8 @@ public class RosterDetailsManagement extends JDialog {
 
         // Buttons Panel
         JPanel buttonPanel = new JPanel();
-        addButton = UIComponents.createAccentButton("Add Student", new Color(59, 130, 246));
-        removeButton = UIComponents.createAccentButton("Remove Student", new Color(59, 130, 246));
+        addButton = UIComponents.createAccentButton("Add Student", ColourTheme.PRIMARY_COLOR);
+        removeButton = UIComponents.createAccentButton("Remove Student", ColourTheme.PRIMARY_COLOR);
 
         addButton.addActionListener(e -> {
             addStudent();

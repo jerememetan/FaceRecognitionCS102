@@ -13,7 +13,7 @@ import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-
+import util.*;
 public class SessionForm extends JDialog {
     private JComboBox<Roster> rosterDropdown;
     private JTextField nameField;
@@ -87,7 +87,7 @@ public class SessionForm extends JDialog {
         locationField = new JTextField();
         formPanel.add(locationField);
 
-        submitButton = UIComponents.createAccentButton(sessionToEdit == null ? "Create Session" : "Save Changes", new Color(59, 130, 246));
+        submitButton = UIComponents.createAccentButton(sessionToEdit == null ? "Create Session" : "Save Changes", ColourTheme.PRIMARY_COLOR);
         cancelButton = UIComponents.createAccentButton("Cancel",  new Color(239, 68, 68));
         formPanel.add(submitButton);
         formPanel.add(cancelButton);
