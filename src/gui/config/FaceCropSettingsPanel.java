@@ -114,16 +114,16 @@ public class FaceCropSettingsPanel extends JPanel {
         gbc.gridy = row++;
         controls.add(confidenceHint, gbc);
 
-        int initialMinSize = AppConfig.getInstance().getDetectionMinSize();
-        initialMinSize = Math.max(24, Math.min(400, initialMinSize));
+    int initialMinSize = AppConfig.getInstance().getDetectionMinSize();
+    initialMinSize = Math.max(24, Math.min(260, initialMinSize));
 
         JLabel minSizeLabel = new JLabel("Minimum Face Size: " + initialMinSize + " px", SwingConstants.CENTER);
         gbc.gridy = row++;
         controls.add(minSizeLabel, gbc);
 
-        JSlider minSizeSlider = new JSlider(JSlider.HORIZONTAL, 24, 400, initialMinSize);
+    JSlider minSizeSlider = new JSlider(JSlider.HORIZONTAL, 24, 260, initialMinSize);
         minSizeSlider.setPaintTicks(true);
-        minSizeSlider.setMajorTickSpacing(50);
+    minSizeSlider.setMajorTickSpacing(40);
         minSizeSlider.addChangeListener(e -> {
             int value = minSizeSlider.getValue();
             minSizeLabel.setText("Minimum Face Size: " + value + " px");
@@ -150,17 +150,17 @@ public class FaceCropSettingsPanel extends JPanel {
         gbc.gridy = row++;
         controls.add(recognitionHeader, gbc);
 
-        int initialMinWidth = AppConfig.getInstance().getRecognitionMinFaceWidthPx();
-        initialMinWidth = Math.max(48, Math.min(220, initialMinWidth));
+    int initialMinWidth = AppConfig.getInstance().getRecognitionMinFaceWidthPx();
+    initialMinWidth = Math.max(48, Math.min(260, initialMinWidth));
 
         JLabel minWidthLabel = new JLabel("Min Face Width for Recognition: " + initialMinWidth + " px",
                 SwingConstants.CENTER);
         gbc.gridy = row++;
         controls.add(minWidthLabel, gbc);
 
-        JSlider minWidthSlider = new JSlider(JSlider.HORIZONTAL, 48, 220, initialMinWidth);
+    JSlider minWidthSlider = new JSlider(JSlider.HORIZONTAL, 48, 260, initialMinWidth);
         minWidthSlider.setPaintTicks(true);
-        minWidthSlider.setMajorTickSpacing(20);
+    minWidthSlider.setMajorTickSpacing(32);
         minWidthSlider.addChangeListener(e -> {
             int value = minWidthSlider.getValue();
             minWidthLabel.setText("Min Face Width for Recognition: " + value + " px");

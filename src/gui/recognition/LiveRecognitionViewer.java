@@ -41,7 +41,10 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
     private final CameraPanel cameraPanel = new CameraPanel();
     private final LiveRecognitionService recognitionService = new LiveRecognitionService();
     private volatile double dnnConfidenceThreshold = AppConfig.getInstance().getDnnConfidence();
-    private volatile int minRecognitionWidthPx = AppConfig.getInstance().getRecognitionMinFaceWidthPx();
+    private volatile int minDetectionSizePx = Math.max(20,
+        Math.min(260, AppConfig.getInstance().getDetectionMinSize()));
+    private volatile int minRecognitionWidthPx = Math.max(minDetectionSizePx,
+        Math.max(32, Math.min(260, AppConfig.getInstance().getRecognitionMinFaceWidthPx())));
     private final Map<String, TrackedFace> activeTracks = new HashMap<>();
     private int nextTrackId = 0;
 
@@ -71,7 +74,7 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
     public LiveRecognitionViewer() {
         super("Real-Time Face Recognition");
 
-        recognitionService.reloadDataset();
+        applyConfigFromAppConfig();
         initializeOpenCV();
 
         setLayout(new BorderLayout());
@@ -104,6 +107,8 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
             int numDetections = (int) detectionsFloat.size(2);
             int dims = (int) detectionsFloat.size(3);
 
+            int detectionMin = Math.max(20, minDetectionSizePx);
+
             for (int i = 0; i < numDetections; i++) {
                 float[] detection = new float[dims];
                 detectionsFloat.get(new int[] { 0, 0, i, 0 }, detection);
@@ -130,6 +135,10 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
 
                 int width = x2 - x1;
                 int height = y2 - y1;
+
+                if (width < detectionMin || height < detectionMin) {
+                    continue;
+                }
 
                 if (width < minRecognitionWidthPx) {
                     continue;
@@ -409,13 +418,21 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
 
     @Override
     public void onMinSizeChanged(int newMinSize) {
-        int clamped = Math.max(20, newMinSize);
+        int clamped = Math.max(20, Math.min(260, newMinSize));
+        minDetectionSizePx = clamped;
+        if (minRecognitionWidthPx < minDetectionSizePx) {
+            minRecognitionWidthPx = minDetectionSizePx;
+            AppConfig.getInstance().setRecognitionMinFaceWidthPx(minRecognitionWidthPx);
+        }
         AppConfig.getInstance().setDetectionMinSize(clamped);
     }
 
     @Override
     public void onRecognitionMinFaceWidthChanged(int newMinWidth) {
-        int clamped = Math.max(32, newMinWidth);
+        int clamped = Math.max(32, Math.min(260, newMinWidth));
+        if (clamped < minDetectionSizePx) {
+            clamped = minDetectionSizePx;
+        }
         minRecognitionWidthPx = clamped;
         AppConfig.getInstance().setRecognitionMinFaceWidthPx(clamped);
     }
@@ -437,7 +454,18 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
 
     @Override
     public void onSaveSettingsRequested() {
-        AppConfig.getInstance().save();
+        try {
+            AppConfig config = AppConfig.getInstance();
+            config.setDetectionMinSize(minDetectionSizePx);
+            int persistedRecognitionWidth = Math.max(minDetectionSizePx, minRecognitionWidthPx);
+            minRecognitionWidthPx = persistedRecognitionWidth;
+            config.setRecognitionMinFaceWidthPx(persistedRecognitionWidth);
+            config.save();
+            applyConfigFromAppConfig();
+            AppLogger.info("Configuration saved and runtime settings refreshed.");
+        } catch (Exception e) {
+            AppLogger.error("Failed to persist configuration changes: " + e.getMessage(), e);
+        }
     }
 
     public static void main(String[] args) {
@@ -455,6 +483,15 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
                         "Startup Error", JOptionPane.ERROR_MESSAGE);
             }
         });
+    }
+
+    private void applyConfigFromAppConfig() {
+        AppConfig config = AppConfig.getInstance();
+        dnnConfidenceThreshold = Math.max(0.05, Math.min(0.99, config.getDnnConfidence()));
+        minDetectionSizePx = Math.max(20, Math.min(260, config.getDetectionMinSize()));
+        int configuredRecognitionWidth = Math.max(32, Math.min(260, config.getRecognitionMinFaceWidthPx()));
+        minRecognitionWidthPx = Math.max(minDetectionSizePx, configuredRecognitionWidth);
+        recognitionService.reloadDataset();
     }
 
     private void incrementTrackMissCounters() {
