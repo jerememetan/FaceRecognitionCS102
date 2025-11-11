@@ -31,6 +31,7 @@ public class LiveRecognitionService {
     private final RecognitionDatasetRepository datasetRepository = new RecognitionDatasetRepository(embeddingGenerator);
     private final RecognitionScorer scorer = new RecognitionScorer(datasetRepository, embeddingGenerator);
     private final RecognitionDecisionEngine decisionEngine = new RecognitionDecisionEngine();
+    private final RecognitionConfidenceCalibrator confidenceCalibrator = new RecognitionConfidenceCalibrator();
     private final Map<String, RecognitionSession> sessions = new ConcurrentHashMap<>();
 
     public LiveRecognitionService() {
@@ -102,7 +103,18 @@ public class LiveRecognitionService {
                 return RecognitionOutcome.rejected();
             }
 
-            logScores(scoreResult);
+            RecognitionFrameMetrics frameMetrics = RecognitionFrameMetrics.from(
+                    frame.cols(),
+                    frame.rows(),
+                    faceRect,
+                    paddedRect,
+                    qualityResult);
+
+            RecognitionConfidenceCalibrator.Calibration calibration = confidenceCalibrator.calibrate(
+                scoreResult,
+                frameMetrics);
+
+            logScores(scoreResult, calibration);
 
             boolean consistent = history.isConsistent(scoreResult.bestIndex());
             int matchCount = history.countMatches(scoreResult.bestIndex());
@@ -110,6 +122,7 @@ public class LiveRecognitionService {
             RecognitionDecisionEngine.RecognitionDecision decision = decisionEngine.evaluate(
                     profile,
                     scoreResult,
+                    calibration,
                     consistent,
                     matchCount,
                     history.consistencyWindowSize(),
@@ -123,6 +136,7 @@ public class LiveRecognitionService {
                         "[Accept] %s | Raw=%.3f, Confidence=%.2f, Margin=%.3f | %s",
                         decision.label(), decision.rawScore(), decision.confidence(), decision.margin(),
                         decision.reason()));
+                logDecisionAdjustments(decision);
                 return RecognitionOutcome.accept(displayText);
             }
 
@@ -134,6 +148,7 @@ public class LiveRecognitionService {
                     decision.confidence(),
                     decision.margin(),
                     decision.reason()));
+            logDecisionAdjustments(decision);
             return RecognitionOutcome.rejected();
         } catch (Exception e) {
             AppLogger.error("Recognition error: " + e.getMessage(), e);
@@ -176,6 +191,13 @@ public class LiveRecognitionService {
                 return new DetailedRecognitionResult(null, 0.0, false);
             }
 
+            RecognitionFrameMetrics frameMetrics = RecognitionFrameMetrics.from(
+                    frame.cols(),
+                    frame.rows(),
+                    faceRect,
+                    paddedRect,
+                    qualityResult);
+
             Mat preprocessedBlob = livePreprocessor.preprocessForLiveRecognition(faceColor, paddedRect);
             if (preprocessedBlob == null || preprocessedBlob.empty()) {
                 return new DetailedRecognitionResult(null, 0.0, false);
@@ -205,9 +227,14 @@ public class LiveRecognitionService {
             boolean consistent = history.isConsistent(scoreResult.bestIndex());
             int matchCount = history.countMatches(scoreResult.bestIndex());
 
+            RecognitionConfidenceCalibrator.Calibration calibration = confidenceCalibrator.calibrate(
+                    scoreResult,
+                    frameMetrics);
+
             RecognitionDecisionEngine.RecognitionDecision decision = decisionEngine.evaluate(
                     profile,
                     scoreResult,
+                    calibration,
                     consistent,
                     matchCount,
                     history.consistencyWindowSize(),
@@ -234,7 +261,9 @@ public class LiveRecognitionService {
             // Return result even if not accepted, so we can use confidence for attendance marking
             // This allows the attendance window to show recognition results even with lower confidence
             // Use the higher of decision confidence or a normalized raw score
-            double effectiveConfidence = Math.max(confidence, Math.min(1.0, rawScore));
+        double effectiveConfidence = Math.max(
+            decision.confidence(),
+            Math.min(1.0, rawScore + decision.thresholdRelief()));
             return new DetailedRecognitionResult(studentId, effectiveConfidence, decision.accepted());
         } catch (Exception e) {
             AppLogger.error("Recognition error in analyzeFaceDetailed: " + e.getMessage(), e);
@@ -303,7 +332,8 @@ public class LiveRecognitionService {
         }
     }
 
-    private void logScores(RecognitionScorer.ScoreResult scoreResult) {
+    private void logScores(RecognitionScorer.ScoreResult scoreResult,
+            RecognitionConfidenceCalibrator.Calibration calibration) {
         List<RecognitionScorer.ProfileScore> scores = scoreResult.scores();
         StringBuilder builder = new StringBuilder("[Recognition] Scores: ");
         for (RecognitionScorer.ProfileScore profileScore : scores) {
@@ -332,6 +362,18 @@ public class LiveRecognitionService {
                 bestProfile.tightness(),
                 bestProfile.standardDeviation()));
 
+    if (calibration != null && calibration.adjusted()) {
+        AppLogger.info(String.format(
+            "[Calibration] scale=%.2f, coverage=%.3f, relief=%.3f, marginRelax=%.2f, confBoost=%.2f, discBoost=%.2f %s",
+            calibration.normalizedScale(),
+            calibration.faceCoverage(),
+            calibration.thresholdRelief(),
+            calibration.marginRelaxation(),
+            calibration.confidenceBoost(),
+            calibration.discriminativeBoost(),
+            calibration.notes().isEmpty() ? "" : ("| " + calibration.notes())));
+    }
+
         if (scoreResult.prefilterSkipped() > 0) {
             AppLogger.info(String.format(
                     "[Performance] Pre-filter skipped %d/%d persons (%.1f%% speedup)",
@@ -339,6 +381,32 @@ public class LiveRecognitionService {
                     scores.size(),
                     (scoreResult.prefilterSkipped() * 100.0) / scores.size()));
         }
+    }
+
+    private void logDecisionAdjustments(RecognitionDecisionEngine.RecognitionDecision decision) {
+        if (decision == null) {
+            return;
+        }
+
+        double relief = decision.thresholdRelief();
+        double confAdj = decision.confidenceAdjustment();
+        double marginRelax = decision.marginRelaxation();
+        double scaleRatio = decision.scaleRatio();
+
+        if (Math.abs(relief) < 1e-6
+                && Math.abs(confAdj) < 1e-6
+                && Math.abs(1.0 - marginRelax) < 1e-6
+                && Math.abs(scaleRatio - 1.0) < 1e-6) {
+            return;
+        }
+
+        AppLogger.info(String.format(
+                "[DecisionAdjust] relief=%.3f, confAdj=%.2f, marginRelax=%.2f, scale=%.2f, borderline=%b",
+                relief,
+                confAdj,
+                marginRelax,
+                scaleRatio,
+                decision.borderlineQuality()));
     }
 
     public static class RecognitionOutcome {
