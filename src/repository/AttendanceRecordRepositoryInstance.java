@@ -163,6 +163,39 @@ public class AttendanceRecordRepositoryInstance implements AttendanceRecordRepos
     @Override
     public List<AttendanceRecord> findAll() {
         List<AttendanceRecord> records = new ArrayList<>();
+        // Try optimized JOIN query first (much faster than N+1 queries)
+        try {
+            String sql = "SELECT ar.id, ar.studentid, ar.sessionid, ar.status, ar.timestamp, " +
+                         "ar.markingmethod, ar.confidence, ar.notes, " +
+                         "s.id as s_id, s.name as student_name, " +
+                         "sess.id as sess_id, sess.name as session_name, sess.date as session_date, " +
+                         "sess.starttime as session_starttime, sess.endtime as session_endtime, " +
+                         "sess.location as session_location " +
+                         "FROM attendancerecords ar " +
+                         "LEFT JOIN students s ON ar.studentid = s.id " +
+                         "LEFT JOIN sessions sess ON ar.sessionid = sess.id " +
+                         "ORDER BY ar.timestamp DESC";
+            
+            try (Connection con = DBConnection.getConnection();
+                 PreparedStatement ps = con.prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery()) {
+                
+                while (rs.next()) {
+                    AttendanceRecord record = mapResultSetToAttendanceRecordWithJoins(rs);
+                    if (record != null) {
+                        records.add(record);
+                    }
+                }
+                
+                AppLogger.info("Successfully loaded " + records.size() + " attendance records using JOIN query");
+                return records;
+            }
+        } catch (SQLException e) {
+            AppLogger.error("Error with JOIN query, falling back to original method: " + e.getMessage(), e);
+            // Fall back to original method if JOIN fails
+        }
+        
+        // Fallback: Use original method (slower but more reliable)
         String sql = "SELECT * FROM attendancerecords";
         try (Connection con = DBConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
@@ -174,6 +207,7 @@ public class AttendanceRecordRepositoryInstance implements AttendanceRecordRepos
                     records.add(record);
                 }
             }
+            AppLogger.info("Loaded " + records.size() + " attendance records using fallback method");
         } catch (SQLException e) {
             AppLogger.error("Error while retrieving all attendance records: " + e.getMessage(), e);
         }
@@ -304,6 +338,119 @@ public class AttendanceRecordRepositoryInstance implements AttendanceRecordRepos
             
         } catch (SQLException e) {
             AppLogger.error("Error mapping ResultSet to AttendanceRecord: " + e.getMessage(), e);
+            throw e;
+        }
+    }
+    
+    /**
+     * Maps a ResultSet row to an AttendanceRecord object using JOIN data.
+     * This is much faster than making separate queries for each student and session.
+     * Used by findAll() to avoid N+1 query problem.
+     */
+    private AttendanceRecord mapResultSetToAttendanceRecordWithJoins(ResultSet rs) throws SQLException {
+        try {
+            // Extract student data from JOIN
+            String studentId = rs.getString("studentid");
+            String studentName = rs.getString("student_name");
+            
+            // If JOIN didn't return student name, fall back to loading from repository
+            Student student;
+            if (studentId == null) {
+                AppLogger.warn("Student ID is null in attendance record, skipping");
+                return null;
+            }
+            
+            if (studentName == null) {
+                // Fall back to loading student from repository
+                AppLogger.warn("Student name not found in JOIN for studentId: " + studentId + ", loading from repository");
+                StudentRepositoryInstance studentRepo = new StudentRepositoryInstance();
+                student = studentRepo.findById(studentId);
+                if (student == null) {
+                    AppLogger.warn("Could not load student from repository for ID: " + studentId);
+                    return null;
+                }
+            } else {
+                // Create student object from JOIN data (avoiding separate query)
+                student = new Student(studentId, studentName);
+            }
+            
+            // Extract session data from JOIN
+            int sessionIdInt = rs.getInt("sessionid");
+            String sessionId = String.valueOf(sessionIdInt);
+            String sessionName = rs.getString("session_name");
+            java.sql.Date sessionDate = rs.getDate("session_date");
+            java.sql.Time sessionStartTime = rs.getTime("session_starttime");
+            java.sql.Time sessionEndTime = rs.getTime("session_endtime");
+            
+            // If JOIN didn't return session name, fall back to loading from repository
+            Session session;
+            if (sessionName == null) {
+                // Fall back to loading session from repository
+                AppLogger.warn("Session name not found in JOIN for sessionId: " + sessionId + ", loading from repository");
+                SessionRepositoryInstance sessionRepo = new SessionRepositoryInstance();
+                session = sessionRepo.findById(sessionId);
+                if (session == null) {
+                    AppLogger.warn("Could not load session from repository for ID: " + sessionId);
+                    return null;
+                }
+            } else {
+                // Create session object from JOIN data (avoiding separate query)
+                // Session constructor: (String nextId, String name, LocalDate date, LocalTime startTime, LocalTime endTime, String location)
+                java.time.LocalDate date = sessionDate != null ? sessionDate.toLocalDate() : java.time.LocalDate.now();
+                java.time.LocalTime startTime = sessionStartTime != null ? sessionStartTime.toLocalTime() : java.time.LocalTime.now();
+                java.time.LocalTime endTime = sessionEndTime != null ? sessionEndTime.toLocalTime() : java.time.LocalTime.now();
+                String location = rs.getString("session_location");
+                if (location == null) {
+                    location = ""; // Default to empty string if location is null
+                }
+                
+                session = new Session(sessionId, sessionName, date, startTime, endTime, location);
+            }
+            
+            AttendanceRecord record = new AttendanceRecord(student, session);
+            
+            // Set status
+            String statusStr = rs.getString("status");
+            if (statusStr != null) {
+                try {
+                    record.setStatus(AttendanceRecord.Status.valueOf(statusStr));
+                } catch (IllegalArgumentException e) {
+                    AppLogger.warn("Invalid status value: " + statusStr);
+                }
+            }
+            
+            // Set timestamp
+            Timestamp timestamp = rs.getTimestamp("timestamp");
+            if (timestamp != null) {
+                record.setTimestamp(timestamp.toLocalDateTime());
+            }
+            
+            // Set marking method
+            String methodStr = rs.getString("markingmethod");
+            if (methodStr != null) {
+                try {
+                    record.setMarkingMethod(AttendanceRecord.MarkingMethod.valueOf(methodStr));
+                } catch (IllegalArgumentException e) {
+                    AppLogger.warn("Invalid marking method value: " + methodStr);
+                }
+            }
+            
+            // Set confidence
+            double confidence = rs.getDouble("confidence");
+            if (!rs.wasNull()) {
+                record.setConfidence(confidence);
+            }
+            
+            // Set notes
+            String notes = rs.getString("notes");
+            if (notes != null) {
+                record.setNotes(notes);
+            }
+            
+            return record;
+            
+        } catch (SQLException e) {
+            AppLogger.error("Error mapping ResultSet to AttendanceRecord with JOINs: " + e.getMessage(), e);
             throw e;
         }
     }
