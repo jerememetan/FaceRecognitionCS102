@@ -2,24 +2,28 @@ package gui.detection;
 
 import config.AppLogger;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import javax.swing.*;
-import model.FaceDetectionResult;
 import org.opencv.core.Mat;
 import service.detection.FaceDetection;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CameraPreviewManager {
     private FaceDetection faceDetection;
-    private Timer previewTimer;
+    private final ScheduledExecutorService previewExecutor;
+    private ScheduledFuture<?> previewTask;
+    private final AtomicBoolean previewActive = new AtomicBoolean(false);
     private int frameCounter = 0;
     private static final int DETECTION_INTERVAL = 5;
     private static final int CAPTURE_DETECTION_INTERVAL = 8;
     private FaceDetection.FaceDetectionResult lastDetectionResult = null;
     private long lastDetectionTimestampMs = 0L;
-    private volatile Mat sharedFrame = null;
-    private final Object frameLock = new Object();
     private JLabel videoLabel;
     private JLabel statusLabel;
     private JLabel qualityLabel;
@@ -31,6 +35,8 @@ public class CameraPreviewManager {
     public CameraPreviewManager(FaceDetection fd, JLabel vl, JLabel sl, JLabel ql) {
         this.faceDetection = fd;
         setLabels(vl, sl, ql);
+        this.previewExecutor = Executors.newSingleThreadScheduledExecutor(
+                createDaemonThreadFactory("camera-preview-manager"));
     }
 
     public void setLabels(JLabel vl, JLabel sl, JLabel ql) {
@@ -49,63 +55,114 @@ public class CameraPreviewManager {
             showError("Camera not available. Please check camera connection.");
             return;
         }
-        statusLabel.setText("Camera ready");
-        statusLabel.setForeground(SUCCESS_COLOR);
-        previewTimer = new Timer(50, e -> updatePreview());
-        previewTimer.start();
-        AppLogger.info("Preview timer started at 20fps");
+        runOnUiThread(() -> {
+            statusLabel.setText("Camera ready");
+            statusLabel.setForeground(SUCCESS_COLOR);
+        });
+        frameCounter = 0;
+        lastDetectionResult = null;
+        previewActive.set(true);
+        previewTask = previewExecutor.scheduleAtFixedRate(
+                this::processPreview,
+                0,
+                50,
+                TimeUnit.MILLISECONDS);
+        AppLogger.info("Preview scheduler started at 20fps");
     }
 
     public void stopPreview() {
-        if (previewTimer != null) {
-            previewTimer.stop();
-            AppLogger.info("Preview timer stopped");
+        if (!previewActive.get()) {
+            return;
         }
+
+        previewActive.set(false);
+        if (previewTask != null) {
+            previewTask.cancel(true);
+            previewTask = null;
+        }
+
+        SwingUtilities.invokeLater(() -> {
+            if (videoLabel != null) {
+                videoLabel.setIcon(null);
+                videoLabel.setText("");
+            }
+        });
+
+        lastDetectionResult = null;
+        AppLogger.info("Preview scheduler stopped");
     }
 
-    private void updatePreview() {
-        Mat frame = faceDetection.getCurrentFrame();
+    private void processPreview() {
+        if (!previewActive.get()) {
+            return;
+        }
+
+        Mat frame = null;
+        Mat displayFrame = null;
         try {
-            if (frame != null && !frame.empty()) {
-                frameCounter++;
-                int detectionInterval = isCapturing ? CAPTURE_DETECTION_INTERVAL : DETECTION_INTERVAL;
-                if (frameCounter >= detectionInterval) {
-                    frameCounter = 0;
-                    lastDetectionResult = faceDetection.detectFaceForPreview(frame);
-                    lastDetectionTimestampMs = System.currentTimeMillis();
-                }
-                Mat displayFrame;
-                if (lastDetectionResult != null && isDetectionFresh()) {
-                    displayFrame = faceDetection.drawFaceOverlay(frame, lastDetectionResult);
-                } else {
-                    displayFrame = frame.clone();
-                }
-                BufferedImage bufferedImage = matToBufferedImage(displayFrame);
-                if (bufferedImage != null) {
-                    int displayWidth = videoLabel.getWidth();
-                    int displayHeight = videoLabel.getHeight();
-                    if (displayWidth > 0 && displayHeight > 0) {
-                        Image scaledImage = bufferedImage.getScaledInstance(displayWidth, displayHeight, Image.SCALE_FAST);
-                        ImageIcon icon = new ImageIcon(scaledImage);
-                        videoLabel.setIcon(icon);
-                        videoLabel.setText("");
-                    }
-                }
-                if (!isCapturing && lastDetectionResult != null) {
-                    updateQualityFeedback(lastDetectionResult);
-                }
-                displayFrame.release();
-            } else {
+            frame = faceDetection.getCurrentFrame();
+            if (frame == null || frame.empty()) {
                 if (!isCapturing) {
                     AppLogger.warn("Debug: Empty frame received");
                 }
+                return;
+            }
+
+            frameCounter++;
+            int detectionInterval = isCapturing ? CAPTURE_DETECTION_INTERVAL : DETECTION_INTERVAL;
+            boolean refreshDetection = lastDetectionResult == null || frameCounter >= detectionInterval;
+            if (refreshDetection) {
+                frameCounter = 0;
+                lastDetectionResult = faceDetection.detectFaceForPreview(frame);
+                lastDetectionTimestampMs = System.currentTimeMillis();
+            }
+
+            FaceDetection.FaceDetectionResult detectionForUi =
+                    (lastDetectionResult != null && isDetectionFresh()) ? lastDetectionResult : null;
+
+            displayFrame = (detectionForUi != null)
+                    ? faceDetection.drawFaceOverlay(frame, detectionForUi)
+                    : frame.clone();
+
+            BufferedImage bufferedImage = matToBufferedImage(displayFrame);
+            if (bufferedImage != null) {
+                SwingUtilities.invokeLater(() -> renderPreview(bufferedImage, detectionForUi));
             }
         } catch (Exception e) {
             AppLogger.error("Preview update failed: " + e.getMessage(), e);
         } finally {
+            if (displayFrame != null) {
+                displayFrame.release();
+            }
             if (frame != null) {
                 frame.release();
             }
+        }
+    }
+
+    private void renderPreview(BufferedImage bufferedImage, FaceDetection.FaceDetectionResult detectionResult) {
+        if (!previewActive.get()) {
+            return;
+        }
+
+        if (videoLabel != null && bufferedImage != null) {
+            int displayWidth = videoLabel.getWidth();
+            int displayHeight = videoLabel.getHeight();
+            Image imageToShow;
+            if (displayWidth > 0 && displayHeight > 0) {
+                imageToShow = bufferedImage.getScaledInstance(displayWidth, displayHeight, Image.SCALE_FAST);
+            } else {
+                imageToShow = bufferedImage;
+            }
+            videoLabel.setIcon(new ImageIcon(imageToShow));
+            videoLabel.setText("");
+        }
+
+        if (!isCapturing && detectionResult != null) {
+            updateQualityFeedback(detectionResult);
+        } else if (!isCapturing && detectionResult == null && qualityLabel != null && !isDetectionFresh()) {
+            qualityLabel.setText("Face quality: No face detected");
+            qualityLabel.setForeground(ERROR_COLOR);
         }
     }
 
@@ -169,10 +226,35 @@ public class CameraPreviewManager {
     }
 
     private void showError(String message) {
-        statusLabel.setText("Error: " + message);
-        statusLabel.setForeground(ERROR_COLOR);
-        AppLogger.error("Debug: Error - " + message);
-        JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+        runOnUiThread(() -> {
+            statusLabel.setText("Error: " + message);
+            statusLabel.setForeground(ERROR_COLOR);
+            AppLogger.error("Debug: Error - " + message);
+            JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+        });
+    }
+
+    public void dispose() {
+        stopPreview();
+        previewExecutor.shutdownNow();
+    }
+
+    private ThreadFactory createDaemonThreadFactory(String threadName) {
+        return runnable -> {
+            Thread thread = new Thread(runnable, threadName);
+            thread.setDaemon(true);
+            thread.setUncaughtExceptionHandler((t, e) ->
+                    AppLogger.error("Preview thread error: " + e.getMessage(), e));
+            return thread;
+        };
+    }
+
+    private void runOnUiThread(Runnable action) {
+        if (SwingUtilities.isEventDispatchThread()) {
+            action.run();
+        } else {
+            SwingUtilities.invokeLater(action);
+        }
     }
 }
 
