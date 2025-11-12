@@ -17,6 +17,8 @@ final class RecognitionDecisionEngine {
     private static final double NEAR_THRESHOLD_DELTA = 0.09;
     private static final double NEAR_THRESHOLD_MARGIN_FACTOR = 0.85;
     private static final double NEAR_THRESHOLD_CONFIDENCE = 0.28;
+    private static final double MIN_NEGATIVE_GAP = 0.22;
+    private static final double STRONG_NEGATIVE_GAP = 0.27;
 
     RecognitionDecision evaluate(
         RecognitionProfile profile,
@@ -82,12 +84,23 @@ final class RecognitionDecisionEngine {
     boolean strongConfidencePass = combinedConfidence >= strongConfidenceThreshold;
     boolean discriminativePass = discriminativeScore >= confidenceFloor;
 
+    double negativeGap = bestScore - scores.averageNegativeScore();
+    double negativeGapRequirement = Math.max(
+        0.12,
+        (MIN_NEGATIVE_GAP + adjustments.thresholdRelief() * 0.15)
+            + (adjustments.borderlineQuality() ? 0.03 : 0.0)
+            - adjustments.confidenceBoost() * 0.20);
+    negativeGapRequirement *= Math.max(0.75, adjustments.marginRelaxation());
+    boolean negativeGapPass = negativeGap >= negativeGapRequirement;
+
     double relativeMarginPct = bestScore > 0 ? (bestScore - secondBest) / bestScore : 0.0;
     double requiredMarginPct = Math.max(
         MIN_RELATIVE_MARGIN_PCT * adjustments.marginRelaxation(),
         (profile.relativeMargin() / Math.max(bestScore, 1e-6)) * adjustments.marginRelaxation());
 
-        if (strongRawPass && strongConfidencePass && relativeMarginPct >= requiredMarginPct) {
+    if (strongRawPass && strongConfidencePass && relativeMarginPct >= requiredMarginPct
+        && negativeGap >= Math.max(negativeGapRequirement, STRONG_NEGATIVE_GAP
+            - adjustments.thresholdRelief() * 0.15)) {
             return RecognitionDecision.accept(
                     profile.displayLabel(),
                     bestScore,
@@ -99,7 +112,7 @@ final class RecognitionDecisionEngine {
                     adjustments);
         }
 
-        if (rawScorePass && absoluteThresholdPass && absoluteMarginPass && confidencePass) {
+    if (rawScorePass && absoluteThresholdPass && absoluteMarginPass && confidencePass && negativeGapPass) {
             return RecognitionDecision.accept(
                     profile.displayLabel(),
                     bestScore,
@@ -120,8 +133,9 @@ final class RecognitionDecisionEngine {
                         - (adjustments.borderlineQuality() ? 0.04 : 0.0));
 
         if (!absoluteThresholdPass && nearThresholdEligible && absoluteMarginPass
-                && relativeMarginPct >= requiredMarginPct * NEAR_THRESHOLD_MARGIN_FACTOR
-                && combinedConfidence >= nearConfidenceRequirement) {
+        && relativeMarginPct >= requiredMarginPct * NEAR_THRESHOLD_MARGIN_FACTOR
+        && combinedConfidence >= nearConfidenceRequirement
+        && negativeGap >= negativeGapRequirement * 1.1) {
             return RecognitionDecision.accept(
                     profile.displayLabel(),
                     bestScore,
@@ -133,8 +147,9 @@ final class RecognitionDecisionEngine {
                     adjustments);
         }
 
-        if (rawScorePass && absoluteThresholdPass && consistent
-                && matchCount >= minimumConsistencyCount && combinedConfidence >= 0.10) {
+    if (rawScorePass && absoluteThresholdPass && consistent
+        && matchCount >= minimumConsistencyCount && combinedConfidence >= 0.10
+        && negativeGapPass) {
             String reason = String.format(
                     "Consistency override (%d/%d frames)",
                     matchCount,
@@ -150,7 +165,7 @@ final class RecognitionDecisionEngine {
                     adjustments);
         }
 
-        if (rawScorePass && discriminativePass && absoluteMarginPass) {
+    if (rawScorePass && discriminativePass && absoluteMarginPass && negativeGapPass) {
             return RecognitionDecision.accept(
                     profile.displayLabel(),
                     bestScore,
@@ -162,8 +177,8 @@ final class RecognitionDecisionEngine {
                     adjustments);
         }
 
-        if (!rawScorePass && absoluteMarginPass && relativeMarginPct >= requiredMarginPct
-                && combinedConfidence >= STRONG_CONFIDENCE) {
+    if (!rawScorePass && absoluteMarginPass && relativeMarginPct >= requiredMarginPct
+        && combinedConfidence >= STRONG_CONFIDENCE && negativeGapPass) {
             return RecognitionDecision.accept(
                     profile.displayLabel(),
                     bestScore,
@@ -182,6 +197,10 @@ final class RecognitionDecisionEngine {
             reason = String.format("Insufficient margin (%.3f < %.2f)", absoluteMargin, MIN_ABSOLUTE_MARGIN);
         } else if (!confidencePass) {
             reason = String.format("Low confidence (%.2f < %.2f)", combinedConfidence, MIN_CONFIDENCE);
+        } else if (!negativeGapPass) {
+            reason = String.format("Insufficient negative gap (%.3f < %.3f)",
+                    negativeGap,
+                    negativeGapRequirement);
         } else {
             reason = "Multiple criteria failed";
         }
