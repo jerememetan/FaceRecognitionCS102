@@ -36,6 +36,7 @@ import repository.StudentRepository;
 import repository.StudentRepositoryInstance;
 import service.student.StudentManager;
 import gui.student.StudentTableController;
+import util.*;
 
 public class StudentEnrollmentGUI extends JFrame {
     private StudentManager studentManager;
@@ -111,7 +112,7 @@ public class StudentEnrollmentGUI extends JFrame {
         searchField.addActionListener(
                 e -> searchFilter.performSearch(searchField.getText().trim(), rowSorter, statusLabel));
 
-        JButton searchButton = UIComponents.createAccentButton("Search", new Color(59, 130, 246));
+        JButton searchButton = UIComponents.createAccentButton("Search", ColourTheme.PRIMARY_COLOR);
         searchButton.addActionListener(
                 e -> searchFilter.performSearch(searchField.getText().trim(), rowSorter, statusLabel));
 

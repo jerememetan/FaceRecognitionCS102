@@ -34,7 +34,7 @@ import report.PDFGenerator;
 import repository.StudentRepositoryInstance;
 import service.roster.RosterManager;
 import service.session.SessionManager;
-
+import util.*;
 // View further details of a selected session
 public class SessionRosterManagement extends JDialog {
 
@@ -87,7 +87,7 @@ public class SessionRosterManagement extends JDialog {
         locationLabel = new JLabel(session.getLocation());
         infoPanel.add(locationLabel);
 
-        editButton = UIComponents.createAccentButton("Edit Session Details", new Color(59, 130, 246));
+        editButton = UIComponents.createAccentButton("Edit Session Details", ColourTheme.PRIMARY_COLOR);
         editButton.setFocusPainted(false);
         editButton.addActionListener(e -> editSessionDetails());
         infoPanel.add(editButton);
@@ -99,7 +99,7 @@ public class SessionRosterManagement extends JDialog {
         // Mark Attendance button logic
         // Only show "Mark Attendance" button if session is active (opened)
         if (session.isActive()) {
-            markAttendanceButton = UIComponents.createAccentButton("Mark Attendance", new Color(59, 130, 246));
+            markAttendanceButton = UIComponents.createAccentButton("Mark Attendance", ColourTheme.PRIMARY_COLOR);
             markAttendanceButton.addActionListener(e -> { openSession(); });
             infoPanel.add(markAttendanceButton);
         }

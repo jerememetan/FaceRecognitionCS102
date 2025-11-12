@@ -1,5 +1,5 @@
 package gui.roster;
-
+import util.*;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -45,9 +45,9 @@ public class RosterSessionMenu extends JFrame{
         buttonPanel.setLayout(new GridLayout(3, 1, 20, 30));
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(40, 200, 40, 200)); // side margins
 
-        JButton manageRosterButton = UIComponents.createAccentButton("Manage Roster", new Color(59, 130, 246));
-        JButton viewSessionsButton = UIComponents.createAccentButton("View Sessions", new Color(59, 130, 246));
-        JButton attendanceHistoryButton = UIComponents.createAccentButton("Attendance History", new Color(59, 130, 246));
+        JButton manageRosterButton = UIComponents.createAccentButton("Manage Roster", ColourTheme.PRIMARY_COLOR);
+        JButton viewSessionsButton = UIComponents.createAccentButton("View Sessions", ColourTheme.PRIMARY_COLOR);
+        JButton attendanceHistoryButton = UIComponents.createAccentButton("Attendance History", ColourTheme.PRIMARY_COLOR);
 
         manageRosterButton.setFont(new Font("SansSerif", Font.BOLD, 22));
         viewSessionsButton.setFont(new Font("SansSerif", Font.BOLD, 22));

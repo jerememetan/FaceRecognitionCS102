@@ -37,6 +37,7 @@ import entity.Session;
 import gui.homepage.UIComponents;
 import service.roster.RosterManager;
 import service.session.SessionManager;
+import util.*;
 public class SessionViewer extends JFrame {
 
     private SessionManager manager;
@@ -114,8 +115,8 @@ public class SessionViewer extends JFrame {
 
         searchPanel.add(searchField);
         topPanel.add(searchPanel, BorderLayout.WEST);
-        refreshButton = UIComponents.createAccentButton("Refresh", new Color(59, 130, 246) );
-        createButton = UIComponents.createAccentButton("➕ Create Session", new Color(59, 130, 246)) ;
+        refreshButton = UIComponents.createAccentButton("Refresh", ColourTheme.PRIMARY_COLOR );
+        createButton = UIComponents.createAccentButton("➕ Create Session", ColourTheme.PRIMARY_COLOR) ;
         deleteButton = UIComponents.createAccentButton("🗑️ Delete Session", new Color(239, 68, 68));
 
         topPanel.add(refreshButton);

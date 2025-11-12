@@ -1,5 +1,5 @@
 package gui.homepage;
-
+import util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -47,7 +47,7 @@ public final class UIComponents {
 	public static void styleSidebarButton(JButton button) {
 		button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		button.setForeground(Color.WHITE);
-		button.setBackground(new Color(59, 130, 246)); // Blue color
+		button.setBackground(ColourTheme.PRIMARY_COLOR); // Blue color
 		button.setBorder(BorderFactory.createCompoundBorder(
 			BorderFactory.createLineBorder(new Color(37, 99, 235), 1),
 			BorderFactory.createEmptyBorder(8, 16, 8, 16)
@@ -63,7 +63,7 @@ public final class UIComponents {
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				button.setBackground(new Color(59, 130, 246));
+				button.setBackground(ColourTheme.PRIMARY_COLOR);
 			}
 		});
 	}

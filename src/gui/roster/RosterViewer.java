@@ -27,7 +27,7 @@ import entity.Roster;
 import gui.homepage.UIComponents;
 import report.ExportPanel;
 import service.roster.RosterManager;
-
+import util.*;
 // First page you see when clicking "Manage Rosters" from RosterSessionMenu
 // View all available rosters
 public class RosterViewer extends JFrame {
@@ -72,7 +72,7 @@ public class RosterViewer extends JFrame {
 
         // --- Top controls ---
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
-        refreshButton = UIComponents.createAccentButton("🔄 Refresh", new Color(59, 130, 246));
+        refreshButton = UIComponents.createAccentButton("🔄 Refresh", ColourTheme.PRIMARY_COLOR);
         createButton = UIComponents.createAccentButton("➕ Create Roster", new Color(59, 246, 59));
         deleteButton = UIComponents.createAccentButton("🗑️ Delete Roster", new Color(239, 68, 68));
         topPanel.add(refreshButton);

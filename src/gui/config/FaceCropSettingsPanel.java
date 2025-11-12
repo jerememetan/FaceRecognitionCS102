@@ -1,5 +1,5 @@
 package gui.config;
-
+import util.*;
 import config.AppConfig;
 import config.AppLogger;
 import config.IConfigChangeListener;
@@ -13,7 +13,7 @@ public class FaceCropSettingsPanel extends JPanel {
     private final IConfigChangeListener listener;
     private final JLabel footerLabel;
 
-    private final Color PRIMARY = new Color(59, 130, 246);
+    private final Color PRIMARY = ColourTheme.PRIMARY_COLOR;
     // hover variants no longer required; UIComponents handles hover internally
     private final Color DANGER = new Color(239, 68, 68);
 

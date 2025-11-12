@@ -87,10 +87,19 @@ public class RosterManager {
     }
     public void populateRosters() {
         List<Roster> allRosters = rosterDB.findAll();
+        rosters.clear();
+        int maxId = 0;
+
         for(Roster r : allRosters){
+
             rosters.put(Integer.parseInt(r.getRosterId()), r);
+            int currentId = Integer.parseInt(r.getRosterId());
+            if (currentId > maxId){
+                maxId = currentId;
+            }
+
         }
-        nextId = Integer.parseInt(allRosters.get(allRosters.size() - 1).getRosterId()) + 1;
+        nextId = maxId + 1;
     }
     public List<Roster> getAllRosters() {
         return new ArrayList<>(rosters.values());

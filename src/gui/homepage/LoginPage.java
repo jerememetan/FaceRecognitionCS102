@@ -1,5 +1,5 @@
 package gui.homepage;
-
+import util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -34,7 +34,7 @@ public class LoginPage extends JFrame{
         add(formPanel);
         
         //login button
-        loginButton = UIComponents.createAccentButton("Login", new Color(59, 130, 246));
+        loginButton = UIComponents.createAccentButton("Login", ColourTheme.PRIMARY_COLOR);
         // create the button panel
         JPanel buttonPanel = new JPanel(new BorderLayout());
         buttonPanel.add(loginButton, BorderLayout.CENTER);

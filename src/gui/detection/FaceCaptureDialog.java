@@ -1,5 +1,5 @@
 package gui.detection;
-
+import util.*;
 import config.AppConfig;
 import config.AppLogger;
 import config.IConfigChangeListener;
@@ -220,7 +220,7 @@ public class FaceCaptureDialog extends JDialog {
         JComboBox<String> targetCombo = new JComboBox<>(options);
         targetCombo.setSelectedItem("20"); // Was "15" - more training data recommended
 
-    startButton = UIComponents.createAccentButton("Start Capture", new Color(59, 130, 246));
+    startButton = UIComponents.createAccentButton("Start Capture", ColourTheme.PRIMARY_COLOR);
     stopButton = UIComponents.createAccentButton("Stop Capture", new Color(239, 68, 68));
     closeButton = UIComponents.createAccentButton("Close", new Color(107, 114, 128));
 
