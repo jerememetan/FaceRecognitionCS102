@@ -18,7 +18,7 @@ import service.detection.FaceDetection;
 import service.student.StudentManager;
 import gui.homepage.UIComponents;
 import gui.FullScreenUtil;
-
+import util.*;
 public class FaceCaptureDialog extends JDialog {
     private Student student;
     private StudentManager studentManager;
@@ -42,9 +42,9 @@ public class FaceCaptureDialog extends JDialog {
     private CameraPreviewManager cameraPreviewManager;
     private CaptureManager captureManager;
 
-    private static final Color SUCCESS_COLOR = new Color(46, 125, 50);
-    private static final Color WARNING_COLOR = new Color(255, 152, 0);
-    private static final Color ERROR_COLOR = new Color(211, 47, 47);
+    private static final Color SUCCESS_COLOR = ColourTheme.SUCCESS_COLOR;
+    private static final Color WARNING_COLOR = ColourTheme.WARNING_COLOR;
+    private static final Color ERROR_COLOR = ColourTheme.DANGER;
 
     public FaceCaptureDialog(Frame parent, Student student, StudentManager studentManager) {
         super(parent, "Face Capture - " + student.getName(), true);
@@ -221,8 +221,8 @@ public class FaceCaptureDialog extends JDialog {
         targetCombo.setSelectedItem("20"); // Was "15" - more training data recommended
 
     startButton = UIComponents.createAccentButton("Start Capture", ColourTheme.PRIMARY_COLOR);
-    stopButton = UIComponents.createAccentButton("Stop Capture", new Color(239, 68, 68));
-    closeButton = UIComponents.createAccentButton("Close", new Color(107, 114, 128));
+    stopButton = UIComponents.createAccentButton("Stop Capture", ColourTheme.DANGER);
+    closeButton = UIComponents.createAccentButton("Close", ColourTheme.TEXT_SECONDARY);
 
         stopButton.setEnabled(false);
 

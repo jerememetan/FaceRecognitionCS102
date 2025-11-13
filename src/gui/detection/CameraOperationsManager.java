@@ -18,6 +18,7 @@ import org.opencv.core.Mat;
 import service.camera.CameraService;
 import service.detection.FaceDetectionService;
 import service.student.StudentManager;
+import util.*;
 
 /**
  * Unified camera operations manager that combines preview and capture functionality
@@ -54,9 +55,9 @@ public class CameraOperationsManager {
     private FaceDetectionService.FaceCaptureCallback captureCallback;
 
     // Colors for UI feedback
-    private static final Color SUCCESS_COLOR = new Color(46, 125, 50);
-    private static final Color WARNING_COLOR = new Color(255, 152, 0);
-    private static final Color ERROR_COLOR = new Color(211, 47, 47);
+    private static final Color SUCCESS_COLOR = ColourTheme.SUCCESS_COLOR;
+    private static final Color WARNING_COLOR = ColourTheme.WARNING_COLOR;
+    private static final Color ERROR_COLOR = ColourTheme.DANGER;
 
     /**
      * Constructor with dependency injection

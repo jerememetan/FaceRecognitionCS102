@@ -11,7 +11,7 @@ import org.opencv.core.Mat;
 import service.detection.FaceDetection;
 import service.embedding.FaceEmbeddingGenerator;
 import service.student.StudentManager;
-
+import util.*;
 public class CaptureManager {
     private FaceDetection faceDetection;
     private Student student;
@@ -26,9 +26,9 @@ public class CaptureManager {
     private JLabel progressLabel;
     private JLabel instructionLabel;
     private FaceCaptureDialog dialog;
-    private static final Color SUCCESS_COLOR = new Color(46, 125, 50);
-    private static final Color WARNING_COLOR = new Color(255, 152, 0);
-    private static final Color ERROR_COLOR = new Color(211, 47, 47);
+    private static final Color SUCCESS_COLOR = ColourTheme.SUCCESS_COLOR;
+    private static final Color WARNING_COLOR = ColourTheme.WARNING_COLOR;
+    private static final Color ERROR_COLOR = ColourTheme.DANGER;
 
     public CaptureManager(FaceDetection fd, Student s, StudentManager sm, AtomicBoolean ic, AtomicInteger cc, int ti,
                           boolean cc2, JLabel sl, JProgressBar pb, JLabel pl, JLabel il,

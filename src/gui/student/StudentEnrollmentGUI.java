@@ -217,11 +217,11 @@ public class StudentEnrollmentGUI extends JFrame {
 
                 int count = (Integer) value;
                 if (count >= 10) {
-                    c.setForeground(new Color(46, 125, 50));
+                    c.setForeground(ColourTheme.SUCCESS_COLOR);
                 } else if (count > 0) {
-                    c.setForeground(new Color(255, 152, 0));
+                    c.setForeground(ColourTheme.WARNING_COLOR);
                 } else {
-                    c.setForeground(new Color(211, 47, 47));
+                    c.setForeground(ColourTheme.DANGER);
                 }
 
                 return c;
@@ -239,11 +239,11 @@ public class StudentEnrollmentGUI extends JFrame {
                     setText(String.format("%.3f", tightness));
                     if (!isSelected) {
                         if (tightness >= 0.90) {
-                            c.setForeground(new Color(46, 125, 50));
+                            c.setForeground(ColourTheme.SUCCESS_COLOR);
                         } else if (tightness >= 0.80) {
-                            c.setForeground(new Color(255, 152, 0));
+                            c.setForeground(ColourTheme.WARNING_COLOR);
                         } else {
-                            c.setForeground(new Color(211, 47, 47));
+                            c.setForeground(ColourTheme.DANGER);
                         }
                     }
                 } else {
@@ -269,10 +269,10 @@ public class StudentEnrollmentGUI extends JFrame {
 
         JPanel buttonPanel = new JPanel(new FlowLayout());
 
-        addButton = UIComponents.createAccentButton("➕ Add Student", new Color(76, 175, 80));
-        editButton = UIComponents.createAccentButton("✏️ Edit Student", new Color(255, 152, 0));
-        deleteButton = UIComponents.createAccentButton("🗑️ Delete Student", new Color(244, 67, 54));
-        captureButton = UIComponents.createAccentButton("📷 Capture Face Images", new Color(33, 150, 243));
+        addButton = UIComponents.createAccentButton("➕ Add Student", ColourTheme.SUCCESS_COLOR);
+        editButton = UIComponents.createAccentButton("✏️ Edit Student", ColourTheme.WARNING_COLOR);
+        deleteButton = UIComponents.createAccentButton("🗑️ Delete Student", ColourTheme.DANGER);
+        captureButton = UIComponents.createAccentButton("📷 Capture Face Images", ColourTheme.PRIMARY_COLOR);
 
         // emphasize primary actions
         addButton.setFont(addButton.getFont().deriveFont(Font.BOLD));
@@ -296,7 +296,7 @@ public class StudentEnrollmentGUI extends JFrame {
 
         JPanel exportPanel = new JPanel(new FlowLayout());
 
-        JButton openExportPanelButton = UIComponents.createAccentButton("📤 Export Options", new Color(37, 99, 235)); // Blue color
+        JButton openExportPanelButton = UIComponents.createAccentButton("📤 Export Options", ColourTheme.PRIMARY_COLOR); // Blue color
         openExportPanelButton.setActionCommand("Open Export Panel");
 
         openExportPanelButton.addActionListener(e -> {
@@ -361,7 +361,7 @@ public class StudentEnrollmentGUI extends JFrame {
     private void loadStudentData() {
         try {
             statusLabel.setText("Loading student data...");
-            statusLabel.setForeground(new Color(255, 152, 0));
+            statusLabel.setForeground(ColourTheme.WARNING_COLOR);
 
             tableController.loadStudentData(tableModel, statusLabel);
             searchFilter.setTableModel(tableModel);
@@ -369,11 +369,11 @@ public class StudentEnrollmentGUI extends JFrame {
 
             updateStatistics();
             statusLabel.setText("Ready - " + tableModel.getRowCount() + " students loaded");
-            statusLabel.setForeground(new Color(46, 125, 50));
+            statusLabel.setForeground(ColourTheme.SUCCESS_COLOR);
 
         } catch (Exception e) {
             statusLabel.setText("Error loading data");
-            statusLabel.setForeground(new Color(211, 47, 47));
+            statusLabel.setForeground(ColourTheme.DANGER);
             JOptionPane.showMessageDialog(this,
                     "Error loading student data: " + e.getMessage(),
                     "Load Error",

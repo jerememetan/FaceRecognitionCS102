@@ -5,6 +5,7 @@ import gui.config.FaceCropSettingsPanel;
 import gui.homepage.SettingsGUI;
 import java.awt.*;
 import javax.swing.*;
+import util.*;
 
 /**
  * Small CardLayout wrapper for center content.
@@ -21,7 +22,7 @@ public class SettingsCenter extends JPanel {
 
     public SettingsCenter(IConfigChangeListener listener) {
         setLayout(new BorderLayout());
-        setBackground(new Color(248, 250, 252));
+        setBackground(ColourTheme.BACKGROUND);
 
         // register cards
         cards.add(new WelcomeView(), WELCOME);

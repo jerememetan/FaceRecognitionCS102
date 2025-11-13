@@ -24,6 +24,7 @@ import config.AppLogger;
 import config.IConfigChangeListener;
 import gui.settings.SettingsCenter;
 import gui.FullScreenUtil;
+import util.ColourTheme;
 
 public class SettingsGUI extends JFrame {
     private String role;
@@ -52,7 +53,7 @@ public class SettingsGUI extends JFrame {
 
         // Main Content Panel
         JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setBackground(new Color(248, 250, 252));
+        mainPanel.setBackground(ColourTheme.BACKGROUND);
 
         // Create the settings center (cards) and pass the same listener used by the pages
         IConfigChangeListener listener = new IConfigChangeListener() {
@@ -93,7 +94,7 @@ public class SettingsGUI extends JFrame {
 
     private JPanel createHeaderPanel() {
         JPanel headerPanel = new JPanel(new BorderLayout());
-        headerPanel.setBackground(new Color(45, 55, 72));
+        headerPanel.setBackground(ColourTheme.HEADER_PANEL_BACKGROUND);
         headerPanel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
 
         // Title
@@ -102,7 +103,7 @@ public class SettingsGUI extends JFrame {
         titleLabel.setForeground(Color.WHITE);
 
     // Back Button (use shared UIComponents styling)
-    JButton backButton = UIComponents.createAccentButton("← Back to Dashboard", new Color(239, 68, 68));
+    JButton backButton = UIComponents.createAccentButton("← Back to Dashboard", ColourTheme.DANGER);
     backButton.addActionListener(e -> dispose());
 
         headerPanel.add(titleLabel, BorderLayout.WEST);
@@ -115,7 +116,7 @@ public class SettingsGUI extends JFrame {
     private JPanel createCategoriesPanel(SettingsCenter center) {
         JPanel categoriesPanel = new JPanel();
         categoriesPanel.setLayout(new BoxLayout(categoriesPanel, BoxLayout.Y_AXIS));
-        categoriesPanel.setBackground(new Color(45, 55, 72));
+        categoriesPanel.setBackground(ColourTheme.HEADER_PANEL_BACKGROUND);
         categoriesPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         categoriesPanel.setPreferredSize(new Dimension(200, 0));
 
@@ -151,7 +152,7 @@ public class SettingsGUI extends JFrame {
 
     private JPanel createSettingsContent() {
         JPanel contentPanel = new JPanel(new BorderLayout());
-        contentPanel.setBackground(new Color(248, 250, 252));
+        contentPanel.setBackground(ColourTheme.BACKGROUND);
         contentPanel.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
 
         // Inner white card to match previous style
@@ -161,7 +162,7 @@ public class SettingsGUI extends JFrame {
     card.add(new JLabel(""), BorderLayout.CENTER);
 
         JPanel wrapper = new JPanel(new GridBagLayout());
-        wrapper.setBackground(new Color(248, 250, 252));
+        wrapper.setBackground(ColourTheme.BACKGROUND);
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;

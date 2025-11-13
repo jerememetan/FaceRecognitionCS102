@@ -13,7 +13,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-
+import util.ColourTheme;
 public class CameraPreviewManager {
     private FaceDetection faceDetection;
     private final ScheduledExecutorService previewExecutor;
@@ -28,9 +28,9 @@ public class CameraPreviewManager {
     private JLabel statusLabel;
     private JLabel qualityLabel;
     private boolean isCapturing = false;
-    private static final Color SUCCESS_COLOR = new Color(46, 125, 50);
-    private static final Color WARNING_COLOR = new Color(255, 152, 0);
-    private static final Color ERROR_COLOR = new Color(211, 47, 47);
+    private static final Color SUCCESS_COLOR = ColourTheme.SUCCESS_COLOR;
+    private static final Color WARNING_COLOR = ColourTheme.WARNING_COLOR;
+    private static final Color ERROR_COLOR = ColourTheme.DANGER;
 
     public CameraPreviewManager(FaceDetection fd, JLabel vl, JLabel sl, JLabel ql) {
         this.faceDetection = fd;

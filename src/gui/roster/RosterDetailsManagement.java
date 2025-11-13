@@ -123,9 +123,9 @@ public class RosterDetailsManagement extends JDialog {
         });
 
         // ===== Export buttons =====
-        exportCSVButton = UIComponents.createAccentButton("Export CSV", new Color(14, 165, 233));
+        exportCSVButton = UIComponents.createAccentButton("Export CSV", ColourTheme.PRIMARY_COLOR);
         exportExcelButton = UIComponents.createAccentButton("Export Excel", new Color(34, 197, 94));
-        exportPDFButton = UIComponents.createAccentButton("Export PDF", new Color(239, 68, 68));
+        exportPDFButton = UIComponents.createAccentButton("Export PDF", ColourTheme.DANGER);
 
         exportCSVButton.addActionListener(e -> exportTable("CSV"));
         exportExcelButton.addActionListener(e -> exportTable("Excel"));

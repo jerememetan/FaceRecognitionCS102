@@ -129,16 +129,16 @@ public class SessionRosterManagement extends JDialog {
 
         // Buttons Panel
         JPanel buttonPanel = new JPanel();
-        addButton = UIComponents.createAccentButton("Add Student", new Color(34, 197, 94));
-        removeButton = UIComponents.createAccentButton("Remove Student", new Color(239, 68, 68));
+        addButton = UIComponents.createAccentButton("Add Student", ColourTheme.SUCCESS_COLOR);
+        removeButton = UIComponents.createAccentButton("Remove Student", ColourTheme.DANGER);
 
         addButton.addActionListener(e -> { addStudent(); refreshTable(); });
         removeButton.addActionListener(e -> { removeStudent(); refreshTable(); });
 
         // ===== Export buttons =====
-        exportCSVButton = UIComponents.createAccentButton("Export CSV", new Color(14, 165, 233));
+        exportCSVButton = UIComponents.createAccentButton("Export CSV", ColourTheme.PRIMARY_COLOR);
         exportExcelButton = UIComponents.createAccentButton("Export Excel", new Color(34, 197, 94));
-        exportPDFButton = UIComponents.createAccentButton("Export PDF", new Color(239, 68, 68));
+        exportPDFButton = UIComponents.createAccentButton("Export PDF", ColourTheme.DANGER);
 
         exportCSVButton.addActionListener(e -> exportTable("CSV"));
         exportExcelButton.addActionListener(e -> exportTable("Excel"));

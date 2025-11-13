@@ -9,7 +9,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
-
+import util.*;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -34,7 +34,7 @@ public class WelcomeView extends JPanel {
 
     public WelcomeView() {
         setLayout(new GridBagLayout());
-        setBackground(new Color(248, 250, 252));
+        setBackground(ColourTheme.BACKGROUND);
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         JPanel textPanel = new JPanel();
@@ -45,7 +45,7 @@ public class WelcomeView extends JPanel {
         // Welcome label
         JLabel welcomeLabel = new JLabel("Settings & Configuration", SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
-        welcomeLabel.setForeground(new Color(30, 41, 59));
+        welcomeLabel.setForeground(ColourTheme.TEXT_PRIMARY);
         welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Text area
@@ -53,7 +53,7 @@ public class WelcomeView extends JPanel {
         textArea.setEditable(false);
         textArea.setOpaque(false);
         textArea.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        textArea.setForeground(new Color(71, 85, 105));
+        textArea.setForeground(ColourTheme.FOREGROUND_COLOR);
         textArea.setText(
             "Welcome to the Settings & Configuration section.\n\n" +
             "Configure system preferences, camera settings, and application behavior.\n\n" +
@@ -83,12 +83,12 @@ public class WelcomeView extends JPanel {
             switch (evt.getPropertyName()) {
                 case "camera": {
                     boolean ok = Boolean.TRUE.equals(evt.getNewValue());
-                    cameraCard.setValue(ok ? "🟢 Connected" : "🔴 Not available", ok ? new Color(34,197,94) : Color.RED);
+                    cameraCard.setValue(ok ? "🟢 Connected" : "🔴 Not available", ok ? ColourTheme.SUCCESS_COLOR: ColourTheme.DANGER);
                     break;
                 }
                 case "database": {
                     boolean ok = Boolean.TRUE.equals(evt.getNewValue());
-                    dbCard.setValue(ok ? "🟢 Active" : "🔴 Unreachable", ok ? new Color(34,197,94) : Color.RED);
+                    dbCard.setValue(ok ? "🟢 Active" : "🔴 Unreachable", ok ? ColourTheme.SUCCESS_COLOR: ColourTheme.DANGER);
                     break;
                 }
             }

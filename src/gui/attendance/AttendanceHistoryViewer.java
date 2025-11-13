@@ -123,7 +123,7 @@ public class AttendanceHistoryViewer extends JFrame {
         JButton searchButton = UIComponents.createAccentButton("Search", ColourTheme.PRIMARY_COLOR);
         searchButton.addActionListener(e -> performSearch());
 
-        JButton clearButton = UIComponents.createAccentButton("Clear", new Color(239, 68, 68));
+        JButton clearButton = UIComponents.createAccentButton("Clear", ColourTheme.DANGER);
         clearButton.addActionListener(e -> clearSearch());
 
         JButton refreshButton = UIComponents.createAccentButton("Refresh", ColourTheme.PRIMARY_COLOR);
