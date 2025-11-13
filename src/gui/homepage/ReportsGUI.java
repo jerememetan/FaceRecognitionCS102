@@ -65,7 +65,7 @@ public class ReportsGUI extends JFrame {
 
         // Main Content Panel
         mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setBackground(new Color(248, 250, 252));
+        mainPanel.setBackground(ColourTheme.BACKGROUND);
 
         // Left Sidebar
         JPanel leftPanel = createSidebar();
@@ -83,14 +83,14 @@ public class ReportsGUI extends JFrame {
 
     private JPanel createHeaderPanel() {
         JPanel headerPanel = new JPanel(new BorderLayout());
-        headerPanel.setBackground(new Color(45, 55, 72));
+        headerPanel.setBackground(ColourTheme.HEADER_PANEL_BACKGROUND);
         headerPanel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
 
         JLabel titleLabel = new JLabel("Reports & Analytics");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
         titleLabel.setForeground(Color.WHITE);
 
-        JButton backButton = createStyledButton("← Back to Dashboard", new Color(239, 68, 68));
+        JButton backButton = createStyledButton("← Back to Dashboard", ColourTheme.DANGER);
         backButton.addActionListener(e -> dispose());
 
         headerPanel.add(titleLabel, BorderLayout.WEST);
@@ -101,7 +101,7 @@ public class ReportsGUI extends JFrame {
     private JPanel createSidebar() {
         JPanel sidebar = new JPanel();
         sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
-        sidebar.setBackground(new Color(45, 55, 72));
+        sidebar.setBackground(ColourTheme.HEADER_PANEL_BACKGROUND);
         sidebar.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         sidebar.setPreferredSize(new Dimension(200, 0));
 
@@ -162,19 +162,19 @@ public class ReportsGUI extends JFrame {
         AppLogger.info("reportName: " + this.reportName);
 
         JPanel contentPanel = new JPanel(new GridBagLayout());
-        contentPanel.setBackground(new Color(248, 250, 252));
+        contentPanel.setBackground(ColourTheme.BACKGROUND);
 
         JPanel textPanel = new JPanel();
         textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
         textPanel.setBackground(Color.WHITE);
         textPanel.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
+            BorderFactory.createLineBorder(ColourTheme.LINE_BORDER, 1),
             BorderFactory.createEmptyBorder(30, 30, 30, 30)
         ));
 
         JLabel welcomeLabel = new JLabel("Reports & Analytics Center", SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
-        welcomeLabel.setForeground(new Color(30, 41, 59));
+        welcomeLabel.setForeground(ColourTheme.TEXT_PRIMARY);
         welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         JTextArea textArea;
 
@@ -195,7 +195,7 @@ public class ReportsGUI extends JFrame {
         textArea.setEditable(false);
         textArea.setOpaque(false);
         textArea.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        textArea.setForeground(new Color(71, 85, 105));
+        textArea.setForeground(ColourTheme.FOREGROUND_COLOR);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setColumns(40);
@@ -220,8 +220,8 @@ public class ReportsGUI extends JFrame {
         }
 
         statsPanel.add(createStatCard("Total Reports", String.valueOf(totalReports), ColourTheme.PRIMARY_COLOR));
-        statsPanel.add(createStatCard("Generated Today", String.valueOf(reportsToday), new Color(34, 197, 94)));
-        statsPanel.add(createStatCard("Last Export", formattedLastExport, new Color(251, 191, 36)));
+        statsPanel.add(createStatCard("Generated Today", String.valueOf(reportsToday), ColourTheme.SUCCESS_COLOR));
+        statsPanel.add(createStatCard("Last Export", formattedLastExport, ColourTheme.WARNING_COLOR));
 
         textPanel.add(Box.createRigidArea(new Dimension(0, 40)));
         textPanel.add(welcomeLabel);
@@ -259,7 +259,7 @@ public class ReportsGUI extends JFrame {
         for (String column : columns) {
             JLabel headerLabel = new JLabel(column, SwingConstants.CENTER);
             headerLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
-            headerLabel.setForeground(new Color(71, 85, 105));
+            headerLabel.setForeground(ColourTheme.FOREGROUND_COLOR);
             table.add(headerLabel);
         }
 
@@ -289,13 +289,13 @@ public class ReportsGUI extends JFrame {
         JPanel card = new JPanel(new BorderLayout());
         card.setBackground(Color.WHITE);
         card.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
+            BorderFactory.createLineBorder(ColourTheme.LINE_BORDER, 1),
             BorderFactory.createEmptyBorder(15, 15, 15, 15)
         ));
 
         JLabel titleLabel = new JLabel(title, SwingConstants.CENTER);
         titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        titleLabel.setForeground(new Color(71, 85, 105));
+        titleLabel.setForeground(ColourTheme.FOREGROUND_COLOR);
 
         JLabel valueLabel = new JLabel(value, SwingConstants.CENTER);
         valueLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));

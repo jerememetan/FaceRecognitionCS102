@@ -18,7 +18,7 @@ import config.AppLogger;
 import entity.Student;
 import service.embedding.SimilarityCalculator;
 import service.student.StudentManager;
-
+import util.*;
 public class StudentTableController {
     private final StudentManager studentManager;
     private final SimilarityCalculator similarityCalculator;
@@ -33,7 +33,7 @@ public class StudentTableController {
         this.tableModel = tableModel;
         try {
             statusLabel.setText("Loading student data...");
-            statusLabel.setForeground(new Color(255, 152, 0));
+            statusLabel.setForeground(ColourTheme.WARNING_COLOR);
 
             tableModel.setRowCount(0);
             List<Student> students = studentManager.getAllStudents();

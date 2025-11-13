@@ -4,9 +4,11 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+
 import entity.Student;
 import entity.Session;
 import entity.SessionStudent;
@@ -14,6 +16,7 @@ import entity.Roster;
 import service.session.SessionManager;
 import service.roster.RosterManager;
 import gui.homepage.UIComponents;
+import util.ColourTheme;
 
 //GUI class to handle addition of students from both Roster and Session entities
 public class AddStudentDialog extends JDialog {
@@ -99,7 +102,7 @@ public class AddStudentDialog extends JDialog {
         });
 
         // Button
-    JButton addButton = UIComponents.createAccentButton(multiSelect ? "Add Selected Students" : "Add Student", new Color(34, 197, 94));
+    JButton addButton = UIComponents.createAccentButton(multiSelect ? "Add Selected Students" : "Add Student", ColourTheme.SUCCESS_COLOR);
     addButton.addActionListener(e -> onAddStudent(multiSelect));
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         buttonPanel.add(addButton);

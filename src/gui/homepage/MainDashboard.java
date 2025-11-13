@@ -1,5 +1,5 @@
 package gui.homepage;
-
+import util.*;
 import app.FaceRecognitionApp;
 import app.StudentManagerApp;
 import entity.Student;
@@ -41,7 +41,7 @@ public class MainDashboard extends JFrame {
 
         // burger menu button
         JPanel burger = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        menuButton = UIComponents.createAccentButton("Menu",new Color(230, 130, 246)); // the symbol
+        menuButton = UIComponents.createAccentButton("Menu",Color.MAGENTA); // the symbol
         menuButton.setFont(new Font("Arial", Font.BOLD, 20)); // font, fontstyle, fontsize
         burger.add(menuButton);
         add(burger, BorderLayout.NORTH); // put it at the top
@@ -62,7 +62,7 @@ public class MainDashboard extends JFrame {
         // Welcome label
         JLabel welcomeLabel = new JLabel("Welcome to Face Recognition System, "+ this.role +"!", SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 28)); 
-        welcomeLabel.setForeground(new Color(30, 41, 59)); // Dark blue text
+        welcomeLabel.setForeground(ColourTheme.TEXT_PRIMARY); // Dark blue text
         welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Text area

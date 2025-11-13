@@ -15,7 +15,7 @@ public class FaceCropSettingsPanel extends JPanel {
 
     private final Color PRIMARY = ColourTheme.PRIMARY_COLOR;
     // hover variants no longer required; UIComponents handles hover internally
-    private final Color DANGER = new Color(239, 68, 68);
+    private final Color DANGER = ColourTheme.DANGER;
 
     private static final int FOOTER_DURATION_MS = 3000;
 

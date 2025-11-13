@@ -10,22 +10,22 @@ public final class UIComponents {
 	// Apply consistent sidebar styling
 	public static void applySidebarStyle(JPanel sidebar) {
 		sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
-		sidebar.setBackground(new Color(45, 55, 72));
+		sidebar.setBackground(ColourTheme.HEADER_PANEL_BACKGROUND);
 		sidebar.setPreferredSize(new Dimension(220, 600));
 	}
 
 	// Apply consistent main content background
 	public static void applyMainContentStyle(JPanel mainContent) {
 		mainContent.setLayout(new GridBagLayout());
-		mainContent.setBackground(new Color(248, 250, 252));
+		mainContent.setBackground(ColourTheme.BACKGROUND);
 	}
 
 	// Apply consistent text panel appearance used on the dashboard
 	public static void applyTextPanelStyle(JPanel textPanel) {
 		textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
-		textPanel.setBackground(new Color(255, 255, 255));
+		textPanel.setBackground(Color.WHITE);
 		textPanel.setBorder(BorderFactory.createCompoundBorder(
-			BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
+			BorderFactory.createLineBorder(ColourTheme.LINE_BORDER, 1),
 			BorderFactory.createEmptyBorder(30, 30, 30, 30)
 		));
 	}
@@ -35,7 +35,7 @@ public final class UIComponents {
 		textArea.setEditable(false);
 		textArea.setOpaque(false);
 		textArea.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		textArea.setForeground(new Color(71, 85, 105));
+		textArea.setForeground(ColourTheme.FOREGROUND_COLOR);
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
 		textArea.setColumns(40);
@@ -119,13 +119,13 @@ public final class UIComponents {
 		JPanel card = new JPanel(new BorderLayout());
 		card.setBackground(Color.WHITE);
 		card.setBorder(BorderFactory.createCompoundBorder(
-			BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
+			BorderFactory.createLineBorder(ColourTheme.LINE_BORDER, 1),
 			BorderFactory.createEmptyBorder(15, 15, 15, 15)
 		));
 
 		JLabel titleLabel = new JLabel(title);
 		titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		titleLabel.setForeground(new Color(71, 85, 105));
+		titleLabel.setForeground(ColourTheme.FOREGROUND_COLOR);
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
 		JLabel valueLabel = new JLabel(value);
@@ -144,7 +144,7 @@ public final class UIComponents {
 		JPanel card = new JPanel(new BorderLayout());
 		card.setBackground(Color.WHITE);
 		card.setBorder(BorderFactory.createCompoundBorder(
-			BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
+			BorderFactory.createLineBorder(ColourTheme.LINE_BORDER, 1),
 			BorderFactory.createEmptyBorder(8, 8, 8, 8)
 		));
 		return card;

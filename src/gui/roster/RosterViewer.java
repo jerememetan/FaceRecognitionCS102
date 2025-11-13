@@ -73,8 +73,8 @@ public class RosterViewer extends JFrame {
         // --- Top controls ---
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
         refreshButton = UIComponents.createAccentButton("🔄 Refresh", ColourTheme.PRIMARY_COLOR);
-        createButton = UIComponents.createAccentButton("➕ Create Roster", new Color(59, 246, 59));
-        deleteButton = UIComponents.createAccentButton("🗑️ Delete Roster", new Color(239, 68, 68));
+        createButton = UIComponents.createAccentButton("➕ Create Roster", ColourTheme.SUCCESS_COLOR);
+        deleteButton = UIComponents.createAccentButton("🗑️ Delete Roster", ColourTheme.DANGER);
         topPanel.add(refreshButton);
         topPanel.add(createButton);
         topPanel.add(deleteButton);
@@ -121,7 +121,7 @@ public class RosterViewer extends JFrame {
 
         // --- Bottom Export button ---
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        exportButton = UIComponents.createAccentButton("📤 Export Report", new Color(99, 102, 241));
+        exportButton = UIComponents.createAccentButton("📤 Export Report", ColourTheme.PRIMARY_COLOR);
         bottomPanel.add(exportButton);
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
 

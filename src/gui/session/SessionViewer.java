@@ -117,7 +117,7 @@ public class SessionViewer extends JFrame {
         topPanel.add(searchPanel, BorderLayout.WEST);
         refreshButton = UIComponents.createAccentButton("Refresh", ColourTheme.PRIMARY_COLOR );
         createButton = UIComponents.createAccentButton("➕ Create Session", ColourTheme.PRIMARY_COLOR) ;
-        deleteButton = UIComponents.createAccentButton("🗑️ Delete Session", new Color(239, 68, 68));
+        deleteButton = UIComponents.createAccentButton("🗑️ Delete Session", ColourTheme.DANGER);
 
         topPanel.add(refreshButton);
         topPanel.add(createButton);
@@ -154,7 +154,7 @@ public class SessionViewer extends JFrame {
 
         // --- Export Panel at the bottom ---
         JPanel exportPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
-        JButton exportButton = UIComponents.createAccentButton("📤 Export Options", new Color(37, 99, 235)); // Blue color
+        JButton exportButton = UIComponents.createAccentButton("📤 Export Options", ColourTheme.PRIMARY_COLOR); // Blue color
 
         exportButton.addActionListener(e -> {
             try {
@@ -341,10 +341,10 @@ public class SessionViewer extends JFrame {
             if (column == 6) {
                 String status = value != null ? value.toString() : "";
                 if ("Opened".equals(status)) {
-                    setBackground(new Color(34, 197, 94)); // Green
+                    setBackground(ColourTheme.SUCCESS_COLOR); // Green
                     setForeground(Color.WHITE);
                 } else if ("Closed".equals(status)) {
-                    setBackground(new Color(239, 68, 68)); // Red
+                    setBackground(ColourTheme.DANGER); // Red
                     setForeground(Color.WHITE);
                 } else {
                     setBackground(isSelected ? table.getSelectionBackground() : table.getBackground());

@@ -10,7 +10,7 @@ import java.time.format.DateTimeParseException;
 import gui.homepage.*;
 import service.roster.RosterManager;
 import entity.Roster;
-
+import util.*;
 //GUI class to create/edit a Roster entity
 public class RosterForm extends JDialog {
     private JTextField courseCodeField;
@@ -48,8 +48,8 @@ public class RosterForm extends JDialog {
         locationField = new JTextField();
         formPanel.add(locationField);
 
-        submitButton = UIComponents.createAccentButton("Save Roster", new Color(59, 246, 59));
-        cancelButton = UIComponents.createAccentButton("Cancel", new Color(239, 68, 68) );
+        submitButton = UIComponents.createAccentButton("Save Roster", ColourTheme.SUCCESS_COLOR);
+        cancelButton = UIComponents.createAccentButton("Cancel", ColourTheme.DANGER);
         formPanel.add(submitButton);
         formPanel.add(cancelButton);
 

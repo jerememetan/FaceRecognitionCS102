@@ -88,7 +88,7 @@ public class SessionForm extends JDialog {
         formPanel.add(locationField);
 
         submitButton = UIComponents.createAccentButton(sessionToEdit == null ? "Create Session" : "Save Changes", ColourTheme.PRIMARY_COLOR);
-        cancelButton = UIComponents.createAccentButton("Cancel",  new Color(239, 68, 68));
+        cancelButton = UIComponents.createAccentButton("Cancel",  ColourTheme.DANGER);
         formPanel.add(submitButton);
         formPanel.add(cancelButton);
 

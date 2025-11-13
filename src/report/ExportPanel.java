@@ -21,6 +21,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import util.ColourTheme;
+
 public class ExportPanel extends JFrame {
 
     private JButton exportCsvButton;
@@ -109,9 +111,9 @@ public class ExportPanel extends JFrame {
         JPanel exportPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 15));
         exportPanel.setBackground(new Color(245, 245, 245));
 
-        exportCsvButton = createAccentButton("📊 Export CSV", new Color(99, 102, 241));
+        exportCsvButton = createAccentButton("📊 Export CSV", ColourTheme.PRIMARY_COLOR);
         exportExcelButton = createAccentButton("📈 Export Excel", new Color(16, 185, 129));
-        exportPdfButton = createAccentButton("📄 Export PDF", new Color(234, 88, 12));
+        exportPdfButton = createAccentButton("📄 Export PDF", ColourTheme.DANGER);
 
         exportCsvButton.setActionCommand("Export CSV");
         exportExcelButton.setActionCommand("Export Excel");

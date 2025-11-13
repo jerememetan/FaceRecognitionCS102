@@ -1,5 +1,5 @@
 package gui;
-
+import util.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,12 +18,12 @@ public class StatusCard extends JPanel {
         setPreferredSize(new Dimension(220, 90));
         setBackground(Color.WHITE);
         setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(226, 232, 240), 1),
+            BorderFactory.createLineBorder(ColourTheme.LINE_BORDER, 1),
             BorderFactory.createEmptyBorder(12,12,12,12)
         ));
         JLabel lblTitle = new JLabel(title);
         lblTitle.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        lblTitle.setForeground(new Color(71,85,105));
+        lblTitle.setForeground(ColourTheme.FOREGROUND_COLOR);
         lblValue = new JLabel(initialValue);
         lblValue.setFont(new Font("Segoe UI", Font.BOLD, 14));
         lblValue.setForeground(new Color(107,114,128));
