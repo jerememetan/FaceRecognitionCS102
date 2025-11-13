@@ -37,7 +37,7 @@ import report.ReportManager;
 public class ReportsGUI extends JFrame {
     private String role;
     private String id;
-    private String reportName = "none";
+    private String reportName = "";
 
     private JPanel mainPanel; // main layout container
 
@@ -247,7 +247,7 @@ public class ReportsGUI extends JFrame {
 
         List<ReportLog> allLogs = ReportManager.getAllReportLogs();
         List<ReportLog> filteredLogs = allLogs.stream()
-                .filter(log -> log.getReportName() != null && log.getReportName().equals(reportName))
+                .filter(log -> log.getReportName() != null && log.getReportName().contains(reportName))
                 .collect(Collectors.toList());
 
         String[] columns = {"Report Type", "Data Points", "Export Time"};
@@ -279,6 +279,7 @@ public class ReportsGUI extends JFrame {
                     ? exportDateTime.format(formatter)
                     : "N/A";
             table.add(new JLabel(formattedExportDateTime, SwingConstants.CENTER));
+            AppLogger.info(formattedExportDateTime);
         }
 
         tablePanel.add(table);

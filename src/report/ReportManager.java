@@ -71,14 +71,14 @@ public class ReportManager {
 
     // Get total reports generated forever for each kind of report
     public static int getTotalReportsGenerated(String reportName) {
-        return (int) reportLogs.stream().filter(log -> log.getReportName().equals(reportName)).count();
+        return (int) reportLogs.stream().filter(log -> log.getReportName().contains(reportName)).count();
     }
 
     // Get total reports generated today for each kind of report
     public static int getTotalReportsGeneratedToday(String reportName) {
         LocalDateTime todayStart = LocalDateTime.now().toLocalDate().atStartOfDay();
         return (int) reportLogs.stream()
-                .filter(log -> log.getReportName().equals(reportName) && log.getExportTime().isAfter(todayStart))
+                .filter(log -> log.getReportName().contains(reportName) && log.getExportTime().isAfter(todayStart))
                 .count();
     }
 
@@ -99,7 +99,7 @@ public class ReportManager {
                         AppLogger.warn("⚠️ Found a ReportLog entry with null reportName in reportLogs");
                         return false;
                     }
-                    return log.getReportName().equals(reportName);
+                    return log.getReportName().contains(reportName);
                 })
                 .map(ReportLog::getExportTime)
                 .max(LocalDateTime::compareTo)

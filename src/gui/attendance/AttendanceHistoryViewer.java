@@ -547,8 +547,10 @@ public class AttendanceHistoryViewer extends JFrame {
                 }
                 data.add(rowData);
             }
+            String temp = currentLevel.toString().toLowerCase();
+            temp = temp.substring(0,1).toUpperCase() + temp.substring(1);
 
-            String exportName = "AttendanceHistory_" + currentLevel.toString();
+            String exportName = "AttendanceHistory" + temp;
             report.ExportPanel exportWindow = new report.ExportPanel(exportName, headers, data);
             exportWindow.setVisible(true);
 
