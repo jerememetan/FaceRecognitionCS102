@@ -2,12 +2,19 @@ package service.student;
 
 import config.AppLogger;
 import entity.Student;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import repository.Repository;
+import java.util.Objects;
+import java.util.stream.Stream;
+import model.FaceData;
 import repository.StudentRepository;
 import repository.StudentRepositoryInstance;
-import service.detection.FaceDetection;
 
 public class StudentManager {
     private StudentRepository studentRepository;
@@ -67,7 +74,42 @@ public class StudentManager {
                 return false;
             }
 
-            return studentRepository.update(student);
+            Student existingStudent = studentRepository.findById(student.getStudentId());
+            if (existingStudent == null) {
+                AppLogger.warn("Cannot update student; no existing record for ID: " + student.getStudentId());
+                return false;
+            }
+
+            FaceData oldFaceData = existingStudent.getFaceData();
+            FaceData newFaceData = student.getFaceData();
+            if (newFaceData == null) {
+                newFaceData = new FaceData(student.getStudentId(), student.getName());
+                student.setFaceData(newFaceData);
+            }
+
+            Path oldPath = getFaceDataPath(oldFaceData);
+            Path newPath = getFaceDataPath(newFaceData);
+            boolean renameNeeded = oldPath != null && newPath != null && !pathsEquivalent(oldPath, newPath);
+
+            if (renameNeeded) {
+                if (!moveFaceDataDirectory(oldPath, newPath, student.getStudentId())) {
+                    AppLogger.error("Aborting update; failed to relocate face data for student " + student.getStudentId());
+                    return false;
+                }
+
+                // Refresh face data reference so it points at the relocated folder and loads existing images
+                student.setFaceData(new FaceData(student.getStudentId(), student.getName()));
+            }
+
+            boolean updated = studentRepository.update(student);
+            if (!updated && renameNeeded) {
+                // Attempt to move the face data back to its original location to keep filesystem consistent
+                if (!moveFaceDataDirectory(newPath, oldPath, student.getStudentId())) {
+                    AppLogger.error("Failed to restore face data directory after unsuccessful update for student " + student.getStudentId());
+                }
+            }
+
+            return updated;
 
         } catch (Exception e) {
             System.err.println("Error updating student: " + e.getMessage());
@@ -93,6 +135,11 @@ public class StudentManager {
             AppLogger.info("Repository delete operation completed. Result: " + result);
 
             if (result) {
+                boolean faceDataDeleted = deleteFaceDataDirectory(student != null ? student.getFaceData() : null, studentId);
+                if (!faceDataDeleted) {
+                    AppLogger.warn("Student deletion completed in database but face data directory could not be removed for ID: " + studentId);
+                    return false;
+                }
                 AppLogger.info("Student deletion successful for ID: " + studentId);
             } else {
                 AppLogger.warn("Student deletion failed for ID: " + studentId + " - repository returned false");
@@ -207,6 +254,99 @@ public class StudentManager {
         // if (faceDetection != null) {
         //     faceDetection.release();
         // } // Temporarily commented out for testing
+    }
+
+    private Path getFaceDataPath(FaceData faceData) {
+        if (faceData == null) {
+            return null;
+        }
+        try {
+            String folderPath = faceData.getFolderPath();
+            if (folderPath == null || folderPath.trim().isEmpty()) {
+                return null;
+            }
+            return Paths.get(folderPath).toAbsolutePath().normalize();
+        } catch (Exception e) {
+            AppLogger.warn("Unable to resolve face data path: " + e.getMessage());
+            return null;
+        }
+    }
+
+    private boolean pathsEquivalent(Path first, Path second) {
+        if (first == null || second == null) {
+            return false;
+        }
+        return Objects.equals(first.normalize(), second.normalize());
+    }
+
+    private boolean moveFaceDataDirectory(Path source, Path target, String studentId) {
+        if (source == null || target == null) {
+            return true;
+        }
+
+        if (!Files.exists(source)) {
+            AppLogger.info("No existing face data directory to move for student " + studentId + " (source: " + source + ")");
+            return true;
+        }
+
+        if (pathsEquivalent(source, target)) {
+            return true;
+        }
+
+        try {
+            if (Files.exists(target)) {
+                AppLogger.warn("Target face data directory already exists for student " + studentId + ": " + target);
+                return false;
+            }
+
+            if (target.getParent() != null) {
+                Files.createDirectories(target.getParent());
+            }
+
+            try {
+                Files.move(source, target, StandardCopyOption.ATOMIC_MOVE);
+            } catch (IOException atomicMoveException) {
+                // Fallback for filesystems that do not support atomic move
+                Files.move(source, target, StandardCopyOption.REPLACE_EXISTING);
+            }
+
+            AppLogger.info("Moved face data directory for student " + studentId + " from " + source + " to " + target);
+            return true;
+        } catch (IOException moveException) {
+            AppLogger.error("Failed to move face data directory for student " + studentId + ": " + moveException.getMessage(), moveException);
+            return false;
+        }
+    }
+
+    private boolean deleteFaceDataDirectory(FaceData faceData, String studentId) {
+        Path folder = getFaceDataPath(faceData);
+        if (folder == null) {
+            AppLogger.info("No face data directory configured for student " + studentId);
+            return true;
+        }
+
+        if (!Files.exists(folder)) {
+            AppLogger.info("Face data directory already absent for student " + studentId + ": " + folder);
+            return true;
+        }
+
+        try (Stream<Path> walk = Files.walk(folder)) {
+            walk.sorted(Comparator.reverseOrder()).forEach(path -> {
+                try {
+                    Files.deleteIfExists(path);
+                } catch (IOException deletionException) {
+                    throw new RuntimeException(deletionException);
+                }
+            });
+            AppLogger.info("Deleted face data directory for student " + studentId + ": " + folder);
+            return true;
+        } catch (RuntimeException | IOException deletionFailure) {
+            Throwable cause = deletionFailure instanceof RuntimeException && deletionFailure.getCause() != null
+                ? deletionFailure.getCause()
+                : deletionFailure;
+            AppLogger.error("Failed to delete face data directory for student " + studentId + ": " + cause.getMessage(), cause);
+            return false;
+        }
     }
 }
 
