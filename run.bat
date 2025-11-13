@@ -1,1 +1,1 @@
-java -cp "compiled;lib/*" gui.homepage.LoginPage
+java --enable-native-access=ALL-UNNAMED -cp "compiled;lib/*" gui.homepage.LoginPage
