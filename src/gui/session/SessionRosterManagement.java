@@ -34,7 +34,7 @@ import report.PDFGenerator;
 import repository.StudentRepositoryInstance;
 import service.roster.RosterManager;
 import service.session.SessionManager;
-import util.*;
+import util.ColourTheme;
 // View further details of a selected session
 public class SessionRosterManagement extends JDialog {
 
@@ -218,10 +218,21 @@ public class SessionRosterManagement extends JDialog {
         SwingUtilities.invokeLater(() -> {
             gui.attendance.SessionAttendanceWindow attendanceWindow = 
                 new gui.attendance.SessionAttendanceWindow(session);
+            
+            // Listen for window closing to restore this window
+            attendanceWindow.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent e) {
+                    // When attendance window closes, show this window again
+                    SessionRosterManagement.this.setVisible(true);
+                }
+            });
+            
             attendanceWindow.setVisible(true);
         });
         
-        dispose();
+        // Hide this window instead of disposing
+        setVisible(false);
     }
 
 

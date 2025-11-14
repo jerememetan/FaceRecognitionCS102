@@ -29,10 +29,22 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * attendance marking.
  */
 public class AttendanceRecognitionManager {
+    
+    /**
+     * Callback interface for camera errors
+     */
+    public interface CameraErrorCallback {
+        void onCameraError(String errorMessage);
+    }
 
     private static final int RECOGNITION_INTERVAL_MS = 500; // Process recognition every 500ms
     private static final int CAMERA_FPS_TARGET = 15; // Target FPS for camera display (minimum 15)
     private static final long RECOGNITION_CACHE_TIMEOUT_MS = 1000; // Recognition cache valid for 1 second
+    private static final int MAX_CONSECUTIVE_FRAME_FAILURES = 30; // ~2 seconds at 15fps
+    
+    // Camera error tracking
+    private int consecutiveFrameFailures = 0;
+    private CameraErrorCallback cameraErrorCallback;
 
     private final Session session;
     private final LiveRecognitionService recognitionService;
@@ -122,6 +134,9 @@ public class AttendanceRecognitionManager {
                 lastFrameTime = System.currentTimeMillis();
 
                 if (capture.read(frame) && !frame.empty()) {
+                    // Reset failure counter on successful read
+                    consecutiveFrameFailures = 0;
+                    
                     scheduleDetection(frame);
 
                     List<Rect> facesSnapshot = latestDetectedFaces;
@@ -138,6 +153,25 @@ public class AttendanceRecognitionManager {
                     // Display frame immediately
                     cameraPanel.displayMat(displayFrame);
                     displayFrame.release();
+                } else {
+                    // Failed to read frame
+                    consecutiveFrameFailures++;
+                    AppLogger.warn("Failed to read camera frame (" + consecutiveFrameFailures + "/" + MAX_CONSECUTIVE_FRAME_FAILURES + ")");
+                    
+                    if (consecutiveFrameFailures >= MAX_CONSECUTIVE_FRAME_FAILURES) {
+                        AppLogger.error("Camera failed after " + MAX_CONSECUTIVE_FRAME_FAILURES + " consecutive failures");
+                        isRunning = false;
+                        
+                        // Notify callback on EDT
+                        if (cameraErrorCallback != null) {
+                            SwingUtilities.invokeLater(() -> {
+                                cameraErrorCallback.onCameraError(
+                                    "Camera stopped responding after multiple failed frame reads.\n" +
+                                    "The camera may have been disconnected or is being used by another application.");
+                            });
+                        }
+                        break;
+                    }
                 }
             }
 
@@ -417,5 +451,12 @@ public class AttendanceRecognitionManager {
 
     public void setAttendanceMarkedListener(AttendanceMarkedListener listener) {
         this.onAttendanceMarked = listener;
+    }
+    
+    /**
+     * Sets the camera error callback to be notified when camera fails repeatedly
+     */
+    public void setCameraErrorCallback(CameraErrorCallback callback) {
+        this.cameraErrorCallback = callback;
     }
 }

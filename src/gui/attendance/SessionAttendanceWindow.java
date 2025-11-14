@@ -94,6 +94,19 @@ public class SessionAttendanceWindow extends JFrame {
         recognitionService.reloadDataset();
         AppLogger.info("Recognition dataset reloaded for attendance window");
 
+        // Set camera error callback to handle camera failures
+        recognitionManager.setCameraErrorCallback(errorMessage -> {
+            SwingUtilities.invokeLater(() -> {
+                JOptionPane.showMessageDialog(
+                    this,
+                    errorMessage,
+                    "Camera Error",
+                    JOptionPane.ERROR_MESSAGE
+                );
+                closeWindow();
+            });
+        });
+
         // Start recognition and session end timer
         recognitionManager.start();
         startSessionEndTimer();

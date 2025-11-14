@@ -1,11 +1,14 @@
 package app;
 
+import java.io.File;
+
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 import config.AppConfig;
 import config.AppLogger;
-import gui.recognition.LiveRecognitionViewer;
 import gui.FullScreenUtil;
-import java.io.File;
-import javax.swing.*;
+import gui.recognition.LiveRecognitionViewer;
 
 /**
  * Entry point for the Face Recognition system.
@@ -31,6 +34,9 @@ public class FaceRecognitionApp {
         AppLogger.info("Configuration file loaded");
         // Start up Live Recognition Viewer
         AppLogger.info("Live Recognition Viewer Starting!");
+        
+        boolean launchedFromDashboard = "true".equals(System.getProperty("launched.from.dashboard"));
+        
         SwingUtilities.invokeLater(() -> {
             try {
                 LiveRecognitionViewer viewer = new LiveRecognitionViewer();
@@ -46,11 +52,31 @@ public class FaceRecognitionApp {
             } catch (Exception e) {
                 AppLogger.error("Failed to launch Live Recognition Viewer: " + e.getMessage());
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(null,
-                    "Failed to start Live Recognition: " + e.getMessage(),
-                    "Startup Error",
-                    JOptionPane.ERROR_MESSAGE);
-                System.exit(1);
+                
+                // Show user-friendly error message
+                String errorMsg = e.getMessage();
+                if (errorMsg != null && errorMsg.toLowerCase().contains("camera")) {
+                    JOptionPane.showMessageDialog(null,
+                        "Failed to initialize camera!\n\n" +
+                        "Please check:\n" +
+                        "• Camera is connected and not in use by another app\n" +
+                        "• Camera permissions are granted\n" +
+                        "• Camera drivers are installed",
+                        "Camera Error",
+                        JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                        "Failed to start Live Recognition:\n" + errorMsg,
+                        "Startup Error",
+                        JOptionPane.ERROR_MESSAGE);
+                }
+                
+                // Only exit if launched standalone, not from MainDashboard
+                if (!launchedFromDashboard) {
+                    System.exit(1);
+                }
+                // If launched from dashboard, just show error dialog and return
+                // MainDashboard will detect no window was created and become visible again
             }
         });
     }

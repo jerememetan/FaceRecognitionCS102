@@ -191,92 +191,87 @@ public class LiveRecognitionViewer extends JFrame implements IConfigChangeListen
     }
 
     private VideoCapture openCameraWithFallback() {
-        int[] cameraIndices = { 0, 1, 2, 3, 4 };
+        // Suppress OpenCV native errors during probing - they're expected when cameras don't exist
+        AppLogger.info("Starting camera detection...");
         
-        // OS-specific camera backends
-        String os = AppConfig.getInstance().getOperatingSystem();
-        int[] backends;
-        String[] backendNames;
+        // Try only camera index 0 first (most common case)
+        // Use CAP_ANY to let OpenCV choose the best backend automatically
+        VideoCapture cap = new VideoCapture(0, org.opencv.videoio.Videoio.CAP_ANY);
         
-        if (os.contains("mac")) {
-            // macOS backends
-            backends = new int[] {
-                    org.opencv.videoio.Videoio.CAP_AVFOUNDATION,
-                    org.opencv.videoio.Videoio.CAP_ANY
-            };
-            backendNames = new String[] { "AVFOUNDATION", "ANY" };
-        } else if (os.contains("win")) {
-            // Windows backends
-            backends = new int[] {
-                    org.opencv.videoio.Videoio.CAP_DSHOW,
-                    org.opencv.videoio.Videoio.CAP_MSMF,
-                    org.opencv.videoio.Videoio.CAP_WINRT,
-                    org.opencv.videoio.Videoio.CAP_ANY
-            };
-            backendNames = new String[] { "DSHOW", "MSMF", "WINRT", "ANY" };
-        } else {
-            // Linux/Unix backends
-            backends = new int[] {
-                    org.opencv.videoio.Videoio.CAP_V4L2,
-                    org.opencv.videoio.Videoio.CAP_ANY
-            };
-            backendNames = new String[] { "V4L2", "ANY" };
-        }
+        if (cap.isOpened()) {
+            Mat testFrame = new Mat();
+            boolean canRead = false;
 
-        for (int cameraIndex : cameraIndices) {
-            for (int i = 0; i < backends.length; i++) {
-                int backend = backends[i];
-                String backendName = backendNames[i];
-
-                AppLogger.info("Attempting camera index " + cameraIndex + " with " + backendName + " backend...");
-
-                VideoCapture cap = new VideoCapture(cameraIndex, backend);
-
-                if (cap.isOpened()) {
-                    Mat testFrame = new Mat();
-                    boolean canRead = false;
-
-                    try {
-                        Thread.sleep(500);
-
-                        for (int attempt = 0; attempt < 3; attempt++) {
-                            if (cap.read(testFrame) && !testFrame.empty()) {
-                                canRead = true;
-                                break;
-                            }
-                            Thread.sleep(200);
-                        }
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                        AppLogger.warn("Camera initialization interrupted");
-                    } finally {
-                        testFrame.release();
+            try {
+                // Wait a bit for camera to initialize
+                Thread.sleep(300);
+                
+                // Try to read a test frame
+                for (int attempt = 0; attempt < 3; attempt++) {
+                    if (cap.read(testFrame) && !testFrame.empty()) {
+                        canRead = true;
+                        break;
                     }
-
-                    if (canRead) {
-                        AppLogger.info("Camera opened successfully: index " + cameraIndex + " with " + backendName
-                                + " backend");
-                        return cap;
-                    } else {
-                        AppLogger.warn(
-                                "Camera opened but cannot read frames: index " + cameraIndex + " with " + backendName);
-                        cap.release();
-                    }
-                } else {
-                    AppLogger.warn("Failed to open camera: index " + cameraIndex + " with " + backendName);
-                    cap.release();
-                }
-
-                try {
                     Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    break;
                 }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                AppLogger.warn("Camera initialization interrupted");
+            } finally {
+                testFrame.release();
+            }
+
+            if (canRead) {
+                AppLogger.info("Camera detected and working at index 0");
+                // Re-enable logging for runtime errors
+                return cap;
+            } else {
+                AppLogger.warn("Camera at index 0 opened but cannot read frames");
+                cap.release();
+            }
+        } else {
+            AppLogger.warn("No camera detected at index 0");
+            cap.release();
+        }
+        
+        // If index 0 failed, try index 1 as fallback
+        AppLogger.info("Trying camera index 1 as fallback...");
+        cap = new VideoCapture(1, org.opencv.videoio.Videoio.CAP_ANY);
+        
+        if (cap.isOpened()) {
+            Mat testFrame = new Mat();
+            boolean canRead = false;
+
+            try {
+                Thread.sleep(300);
+                for (int attempt = 0; attempt < 3; attempt++) {
+                    if (cap.read(testFrame) && !testFrame.empty()) {
+                        canRead = true;
+                        break;
+                    }
+                    Thread.sleep(100);
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            } finally {
+                testFrame.release();
+            }
+
+            if (canRead) {
+                AppLogger.info("Camera detected and working at index 1");
+                return cap;
+            } else {
+                AppLogger.warn("Camera at index 1 opened but cannot read frames");
+                cap.release();
             }
         }
-
-        AppLogger.error("All camera initialization attempts failed!");
+        
+        // Re-enable logging before failing
+        AppLogger.error("No working camera found. Please check:\n" +
+            "  • Camera is connected\n" +
+            "  • Camera is not in use by another application\n" +
+            "  • Camera permissions are granted\n" +
+            "  • Camera drivers are installed");
         return new VideoCapture();
     }
 

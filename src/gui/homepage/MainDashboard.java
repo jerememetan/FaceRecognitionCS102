@@ -1,5 +1,5 @@
 package gui.homepage;
-import util.*;
+
 import app.FaceRecognitionApp;
 import app.StudentManagerApp;
 import entity.Student;
@@ -41,7 +41,7 @@ public class MainDashboard extends JFrame {
 
         // burger menu button
         JPanel burger = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        menuButton = UIComponents.createAccentButton("Menu",Color.MAGENTA); // the symbol
+        menuButton = UIComponents.createAccentButton("Menu",new Color(230, 130, 246)); // the symbol
         menuButton.setFont(new Font("Arial", Font.BOLD, 20)); // font, fontstyle, fontsize
         burger.add(menuButton);
         add(burger, BorderLayout.NORTH); // put it at the top
@@ -62,7 +62,7 @@ public class MainDashboard extends JFrame {
         // Welcome label
         JLabel welcomeLabel = new JLabel("Welcome to Face Recognition System, "+ this.role +"!", SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 28)); 
-        welcomeLabel.setForeground(ColourTheme.TEXT_PRIMARY); // Dark blue text
+        welcomeLabel.setForeground(new Color(30, 41, 59)); // Dark blue text
         welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Text area
@@ -179,11 +179,17 @@ public class MainDashboard extends JFrame {
 
         // ---------ActionListener for the buttons--------------
         recognitionBtn.addActionListener(e -> {
-        MainDashboard.this.setVisible(false);
+            MainDashboard.this.setVisible(false);
+            
+            final boolean[] windowFound = {false};
+            final int[] checkCount = {0};
+            final int MAX_CHECKS = 50; // 5 seconds max (50 * 100ms)
             
             // Create a timer to detect when the recognition window appears and attach our listener
             Timer findWindowTimer = new Timer(100, null);
             findWindowTimer.addActionListener(evt -> {
+                checkCount[0]++;
+                
                 Window[] windows = Window.getWindows();
                 for (Window window : windows) {
                     if (window.isVisible() && window instanceof JFrame && 
@@ -198,9 +204,17 @@ public class MainDashboard extends JFrame {
                                 });
                             }
                         });
+                        windowFound[0] = true;
                         findWindowTimer.stop();
                         break;
                     }
+                }
+                
+                // If window not found after max checks, assume error and show dashboard
+                if (!windowFound[0] && checkCount[0] >= MAX_CHECKS) {
+                    findWindowTimer.stop();
+                    AppLogger.warn("Recognition window did not appear after 5 seconds - returning to dashboard");
+                    MainDashboard.this.setVisible(true);
                 }
             });
             findWindowTimer.start();
@@ -208,11 +222,17 @@ public class MainDashboard extends JFrame {
             // Launch the recognition window
             SwingUtilities.invokeLater(() -> {
                 try {
+                    // Set property so FaceRecognitionApp knows not to exit on error
+                    System.setProperty("launched.from.dashboard", "true");
                     FaceRecognitionApp.main(null);
                 } catch (Exception ex) {
                     ex.printStackTrace();
+                    AppLogger.error("Failed to launch Face Recognition: " + ex.getMessage());
                     findWindowTimer.stop();
                     MainDashboard.this.setVisible(true);
+                } finally {
+                    // Clear the property after launch attempt
+                    System.clearProperty("launched.from.dashboard");
                 }
             });
         });
